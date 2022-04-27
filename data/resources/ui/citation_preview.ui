@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="CitationPreview" parent="AdwBin">
+    <signal name="notify::template" handler="on_template_notify" swapped="true"/>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkRevealer" id="template_revealer">
+            <property name="reveal-child">False</property>
+            <property name="transition-type">slide-up</property>
+            <child>
+              <object class="GtkBox">
+                <property name="spacing">6</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="hexpand">True</property>
+                        <property name="yalign">1</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">Custom Citation Format</property>
+                        <style>
+                          <class name="heading"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="icon-name">dialog-question-symbolic</property>
+                        <style>
+                          <class name="flat"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="height_request">90</property>
+                    <child>
+                      <object class="GtkTextView" id="text_view">
+                        <property name="hexpand">True</property>
+                        <property name="wrap_mode">word</property>
+                      </object>
+                    </child>
+                    <style>
+                      <class name="entry"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="hexpand">True</property>
+                <property name="yalign">1</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">Citation</property>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkDropDown" id="template_drop_down">
+                <property name="model">
+                  <object class="AdwEnumListModel">
+                    <property name="enum-type">Template</property>
+                  </object>
+                </property>
+                <property name="expression">
+                  <closure type="gchararray" function="template_type_name"/>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkDropDown" id="drop_down">
+                <property name="model">
+                  <object class="GtkStringList">
+                    <items>
+                      <item translatable="yes" comments="Plain as in Plain Text">Plain</item>
+                      <item>Markdown</item>
+                      <item>LaTeX</item>
+                    </items>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="height_request">90</property>
+            <child>
+              <object class="GtkOverlay">
+                <child type="overlay">
+                  <object class="GtkButton">
+                    <property name="halign">end</property>
+                    <property name="valign">end</property>
+                    <property name="icon-name">edit-copy-symbolic</property>
+                    <property name="margin-end">6</property>
+                    <property name="margin-start">6</property>
+                    <property name="margin-top">6</property>
+                    <property name="margin-bottom">6</property>
+                    <signal name="clicked" handler="on_clicked" swapped="true"/>
+                    <style>
+                      <class name="flat"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSourceView" id="source_view">
+                    <property name="hexpand">True</property>
+                    <property name="wrap_mode">word</property>
+                    <property name="editable">False</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <style>
+              <class name="entry"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

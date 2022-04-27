@@ -1,0 +1,128 @@
+use anyhow::Result;
+use gio::prelude::*;
+use gio::subclass::prelude::*;
+use std::cell::RefCell;
+
+use crate::entry::EntryExt;
+use crate::Entry;
+
+mod imp {
+    use super::*;
+
+    use std::cell::Cell;
+
+    #[derive(Debug, Default)]
+    pub struct Bib {
+        pub inner: RefCell<nom_bibtex::Bibtex>,
+        pub entries: RefCell<Vec<Entry>>,
+        pub n_items: Cell<u32>,
+    }
+
+    #[glib::object_subclass]
+    impl ObjectSubclass for Bib {
+        const NAME: &'static str = "Bib";
+        type Type = super::Bib;
+        type ParentType = glib::Object;
+        type Interfaces = (gio::ListModel,);
+    }
+
+    impl ObjectImpl for Bib {}
+    impl ListModelImpl for Bib {
+        fn item_type(&self, _list_model: &Self::Type) -> glib::Type {
+            Entry::static_type()
+        }
+
+        fn n_items(&self, _list_model: &Self::Type) -> u32 {
+            self.n_items.get()
+        }
+
+        fn item(&self, _list_model: &Self::Type, position: u32) -> Option<glib::Object> {
+            self.entries
+                .borrow()
+                .get(position as usize)
+                .map(|o| o.clone().upcast::<glib::Object>())
+        }
+    }
+}
+
+glib::wrapper! {
+    pub struct Bib(ObjectSubclass<imp::Bib>) @implements gio::ListModel;
+}
+
+impl Default for Bib {
+    fn default() -> Self {
+        glib::Object::new(&[]).unwrap()
+    }
+}
+
+impl Bib {
+    pub fn parse(&self, data: &str) -> Result<()> {
+        let bibtex = nom_bibtex::Bibtex::parse(data)?;
+        let entries = bibtex
+            .bibliographies()
+            .iter()
+            .map(From::from)
+            .collect::<Vec<Entry>>();
+        let n_items = entries.len() as u32;
+
+        self.imp().inner.replace(bibtex);
+        let old_entries = self.imp().entries.replace(entries);
+
+        self.imp().n_items.set(n_items);
+        self.items_changed(0, old_entries.len() as u32, n_items);
+
+        Ok(())
+    }
+
+    pub fn serialize(&self) -> String {
+        let mut entries = vec![];
+        for entry in self.imp().entries.borrow().iter() {
+            entries.push(entry.serialize())
+        }
+        entries.join("\n\n")
+    }
+
+    pub fn add_entry(&self, entry: Entry) -> u32 {
+        {
+            // We create a block to free the borrow asap.
+            let mut entries = self.imp().entries.borrow_mut();
+            entries.push(entry);
+        };
+        let n_items = self.imp().n_items.get();
+        self.imp().n_items.set(self.imp().n_items.get() + 1);
+        self.items_changed(n_items, 0, 1);
+
+        n_items
+    }
+
+    pub fn remove_entry(&self, citation_key: &str) {
+        let mut entries = self.imp().entries.borrow_mut();
+        let mut index = None;
+        for (idx, entry) in entries.iter().enumerate() {
+            if entry.citation_key() == citation_key {
+                index = Some(idx);
+                break;
+            }
+        }
+        if let Some(idx) = index {
+            entries.remove(idx);
+            self.imp().n_items.set(self.imp().n_items.get() - 1);
+            self.items_changed(idx as u32, 1, 0);
+        }
+    }
+
+    pub fn remove_pos(&self, pos: u32) {
+        self.imp().entries.borrow_mut().remove(pos as usize);
+        self.imp().n_items.set(self.imp().n_items.get() - 1);
+        self.items_changed(pos, 1, 0);
+    }
+
+    pub fn find_pos<E: glib::IsA<Entry>>(&self, entry: &E) -> Option<u32> {
+        for (pos, e) in self.imp().entries.borrow().iter().enumerate() {
+            if e.citation_key() == entry.citation_key() {
+                return Some(pos as u32);
+            }
+        }
+        None
+    }
+}

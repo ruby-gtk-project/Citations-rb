@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="EntryList" parent="AdwBin">
+    <child>
+      <object class="GtkStack" id="stack">
+        <child>
+          <object class="AdwStatusPage" id="empty_list">
+            <property name="icon-name">document-open-symbolic</property>
+            <property name="title" translatable="yes">Open a File</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolled_window">
+            <child>
+              <object class="AdwClampScrollable">
+                <child>
+                  <object class="GtkListView" id="list_view">
+                    <property name="single-click-activate">True</property>
+                    <property name="show-separators">True</property>
+                    <signal name="activate" handler="on_activate" swapped="true"/>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
