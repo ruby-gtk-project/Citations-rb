@@ -61,6 +61,8 @@ mod imp {
                     "institution",
                     "doi",
                     "url",
+                    "issn",
+                    "isbn",
                 ])
             });
             PROPERTIES.as_ref()
