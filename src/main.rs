@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 mod application;
 #[rustfmt::skip]
 mod citation_preview;

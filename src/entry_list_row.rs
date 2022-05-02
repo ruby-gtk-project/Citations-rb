@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 use cratebibtex::EntryExt;
 use gtk::glib;
 use gtk::subclass::prelude::*;
