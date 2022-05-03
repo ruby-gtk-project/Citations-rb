@@ -276,6 +276,7 @@ impl Window {
         self.imp().file.replace(Some(file.clone()));
         self.imp().search_button.set_sensitive(true);
         self.imp().search_bar.set_key_capture_widget(Some(self));
+        self.imp().entry_page.set_empty_page();
 
         self.action_set_enabled("win.new_entry", true);
         self.action_set_enabled("win.save", true);

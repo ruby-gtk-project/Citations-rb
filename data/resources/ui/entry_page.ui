@@ -4,6 +4,9 @@
     <child>
       <object class="GtkStack" id="stack">
         <child>
+          <object class="AdwStatusPage"/>
+        </child>
+        <child>
           <object class="AdwStatusPage" id="empty_page">
             <property name="vexpand">True</property>
             <property name="hexpand">True</property>

@@ -208,4 +208,10 @@ impl EntryPage {
             .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
             .build();
     }
+
+    pub fn set_empty_page(&self) {
+        self.imp()
+            .stack
+            .set_visible_child(&self.imp().empty_page.get());
+    }
 }
