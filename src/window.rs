@@ -246,8 +246,8 @@ impl Window {
 
             let bib_filter = gtk::FileFilter::new();
             bib_filter.set_name(Some(&gettext("Bibtex Files")));
-            // TODO Verify this mime type.
             bib_filter.add_mime_type("text/plain");
+            bib_filter.add_mime_type("text/x-bibtex");
             bib_filter.add_pattern("*.bib");
             dialog.add_filter(&bib_filter);
 
