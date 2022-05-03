@@ -126,10 +126,32 @@ impl EntryType {
 
     pub fn fields(&self) -> Vec<String> {
         match self {
-            Self::Article => vec!["journal", "volume", "number", "pages"],
-            Self::Book => vec!["publisher", "address"],
-            Self::Misc => vec!["howpublished", "note"],
-            Self::InProceedings => vec!["booktitle", "series", "pages", "publisher", "address"],
+            Self::Article => vec![
+                "journal", "volume", "number", "pages", "month", "note", "issn", "eprint",
+            ],
+            Self::Book => vec![
+                "publisher",
+                "address",
+                "editor",
+                "volume",
+                "number",
+                "pages",
+                "month",
+                "note",
+                "isbn",
+                "eprint",
+            ],
+            Self::Misc => vec!["howpublished", "note", "eprint"],
+            Self::InProceedings => vec![
+                "booktitle",
+                "series",
+                "pages",
+                "publisher",
+                "address",
+                "volume",
+                "number",
+                "isbn",
+            ],
             Self::Unpublished => vec![],
             Self::Online => vec!["archiveprefix", "eprint", "primaryclass"],
             Self::Other => vec![],
