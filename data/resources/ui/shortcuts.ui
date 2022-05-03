@@ -21,10 +21,21 @@
                 <property name="action-name">app.quit</property>
               </object>
             </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes" context="shortcut window">Bibliography</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Open</property>
-                <property name="accelerator">&lt;Control&gt;o</property>
+                <property name="action-name">win.open('')</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Save</property>
+                <property name="action-name">win.save</property>
               </object>
             </child>
           </object>
