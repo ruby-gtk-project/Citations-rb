@@ -19,7 +19,11 @@
   <url type="bugtracker">https://gitlab.gnome.org/msandova/citations/issues</url>
   <content_rating type="oars-1.0" />
   <releases>
-    <release version="0.0.1" date="2020-07-11" />
+    <release version="0.1.0" date="2022-05-03">
+      <description>
+        <p>Initial alpha release of Citations.</p>
+      </description>
+    </release>
   </releases>
   <kudos>
      <!--
