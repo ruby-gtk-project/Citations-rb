@@ -6,7 +6,8 @@
         <child>
           <object class="AdwStatusPage" id="empty_list">
             <property name="icon-name">document-open-symbolic</property>
-            <property name="title" translatable="yes">Open a File</property>
+            <property name="title" translatable="yes">Open a BibTeX File</property>
+            <property name="description" translatable="yes">Or drag-and-drop a file</property>
           </object>
         </child>
         <child>

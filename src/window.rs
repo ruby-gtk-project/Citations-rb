@@ -2,7 +2,7 @@
 use gettextrs::gettext;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::{gio, glib};
+use gtk::{gdk, gio, glib};
 
 use crate::application::Application;
 use crate::config::{APP_ID, PROFILE};
@@ -151,6 +151,30 @@ mod imp {
 
             obj.action_set_enabled("win.new_entry", false);
             obj.action_set_enabled("win.delete_entry", false);
+
+            // Setup drag-n-drop
+            let target = gtk::DropTarget::new(
+                gio::File::static_type(),
+                gdk::DragAction::COPY | gdk::DragAction::MOVE,
+            );
+
+            target.connect_drop(
+                glib::clone!(@weak obj => @default-return false, move |_, value, _, _| {
+                    if let Ok(file) = value.get::<gio::File>() {
+                        if file.query_exists(gio::Cancellable::NONE) {
+                            crate::spawn!(glib::clone!(@weak obj => async move {
+                                if let Err(err) = obj.open(&file).await {
+                                    log::error!("Could not open file: {err:?}")
+                                };
+                            }));
+                        }
+                        return true;
+                    }
+                    false
+                }),
+            );
+
+            obj.add_controller(&target);
         }
     }
 
