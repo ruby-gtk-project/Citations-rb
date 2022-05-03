@@ -130,13 +130,14 @@ impl Application {
         let dialog = gtk::AboutDialog::builder()
             .logo_icon_name(APP_ID)
             .license_type(gtk::License::Gpl30)
+            .comments(&gettext("Manage your bibliography"))
             .website("https://gitlab.gnome.org/msandova/citations/")
             .version(VERSION)
             .transient_for(&self.main_window())
             .translator_credits(&gettext("translator-credits"))
             .modal(true)
-            .authors(vec!["Maximiliano Sandoval".into()])
-            .artists(vec!["Maximiliano Sandoval".into()])
+            .authors(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
+            .artists(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
             .build();
 
         dialog.present();
