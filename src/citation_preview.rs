@@ -32,8 +32,8 @@ const VANCOUVER_BOOK_TEMPLATE: &str = r#"%AUTHOR%: %TITLE%. %PUBLISHER%; %YEAR% 
 #[repr(u32)]
 #[enum_type(name = "Template")]
 pub enum Template {
-    AMS,
     MLA,
+    AMS,
     APA,
     Chicago,
     Harvar,
@@ -43,15 +43,15 @@ pub enum Template {
 
 impl Default for Template {
     fn default() -> Self {
-        Self::AMS
+        Self::MLA
     }
 }
 
 impl Template {
     pub fn to_translatable_string(&self) -> String {
         match self {
-            Template::AMS => "AMS".to_string(),
             Template::MLA => "MLA".to_string(),
+            Template::AMS => "AMS".to_string(),
             Template::APA => "APA".to_string(),
             // TODO Should this be translatable?
             Template::Chicago => gettext("Chicago"),
@@ -66,13 +66,13 @@ impl Template {
 impl From<u32> for Template {
     fn from(u: u32) -> Self {
         match u {
+            0 => Self::MLA,
             1 => Self::AMS,
-            2 => Self::MLA,
-            3 => Self::APA,
-            4 => Self::Chicago,
-            5 => Self::Harvar,
-            6 => Self::Vancouver,
-            7 => Self::Custom,
+            2 => Self::APA,
+            3 => Self::Chicago,
+            4 => Self::Harvar,
+            5 => Self::Vancouver,
+            6 => Self::Custom,
             _ => Self::default(),
         }
     }
