@@ -14,7 +14,7 @@ mod imp {
     use std::cell::RefCell;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(resource = "/org/gnome/World/Papers/ui/entry_list.ui")]
+    #[template(resource = "/org/gnome/World/Citations/ui/entry_list.ui")]
     pub struct EntryList {
         #[template_child]
         pub list_view: TemplateChild<gtk::ListView>,

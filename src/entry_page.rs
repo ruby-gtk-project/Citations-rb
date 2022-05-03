@@ -15,7 +15,7 @@ mod imp {
     use std::cell::RefCell;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(resource = "/org/gnome/World/Papers/ui/entry_page.ui")]
+    #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,

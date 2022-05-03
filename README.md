@@ -1,22 +1,22 @@
-<!-- <a href="https://flathub.org/apps/details/org.gnome.World.Papers"> -->
+<!-- <a href="https://flathub.org/apps/details/org.gnome.World.Citations"> -->
 <!-- <img src="https://flathub.org/assets/badges/flathub-badge-i-en.png" width="190px" /> -->
 <!-- </a> -->
 
-# Papers
+# Citations
 
-<img src="https://gitlab.gnome.org/msandova/papers/raw/master/data/icons/org.gnome.World.Papers.svg" width="128" height="128" />
+<img src="https://gitlab.gnome.org/msandova/citations/raw/master/data/icons/org.gnome.World.Citations.svg" width="128" height="128" />
 <p>Manage your bibliographies using the BibTeX format.</p>
 
 
 ## Screenshots
 
 <div align="center">
-![screenshot](https://gitlab.gnome.org/msandova/papers/raw/master/data/screenshots/main_window.png)
+![screenshot](https://gitlab.gnome.org/msandova/citations/raw/master/data/screenshots/main_window.png)
 </div>
 
-## Hack on Papers
+## Hack on Citations
 
-To build the development version of Papers and hack on the code
+To build the development version of Citations and hack on the code
 see the [general guide](https://wiki.gnome.org/Newcomers/BuildProject)
 for building GNOME apps with Flatpak and GNOME Builder.
 
@@ -25,5 +25,5 @@ spaces.
 
 <!-- ## Translations -->
 
-<!-- Helping to translate Papers or add support to a new language is very welcome. -->
-<!-- You can find everything you need at: [l10n.gnome.org/module/papers/](https://l10n.gnome.org/module/papers/) -->
+<!-- Helping to translate Citations or add support to a new language is very welcome. -->
+<!-- You can find everything you need at: [l10n.gnome.org/module/citations/](https://l10n.gnome.org/module/citations/) -->

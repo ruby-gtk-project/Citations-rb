@@ -86,7 +86,7 @@ mod imp {
     use std::cell::{Cell, RefCell};
 
     #[derive(Debug, CompositeTemplate)]
-    #[template(resource = "/org/gnome/World/Papers/ui/citation_preview.ui")]
+    #[template(resource = "/org/gnome/World/Citations/ui/citation_preview.ui")]
     pub struct CitationPreview {
         #[template_child]
         pub source_view: TemplateChild<gsv::View>,

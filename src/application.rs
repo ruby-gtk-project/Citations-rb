@@ -80,7 +80,7 @@ impl Application {
         glib::Object::new(&[
             ("application-id", &Some(APP_ID)),
             ("flags", &gio::ApplicationFlags::empty()),
-            ("resource-base-path", &Some("/org/gnome/World/Papers/")),
+            ("resource-base-path", &Some("/org/gnome/World/Citations/")),
         ])
         .expect("Application initialization failed...")
     }
@@ -115,7 +115,7 @@ impl Application {
 
     fn setup_css(&self) {
         let provider = gtk::CssProvider::new();
-        provider.load_from_resource("/org/gnome/World/Papers/style.css");
+        provider.load_from_resource("/org/gnome/World/Citations/style.css");
         if let Some(display) = gdk::Display::default() {
             gtk::StyleContext::add_provider_for_display(
                 &display,
@@ -129,7 +129,7 @@ impl Application {
         let dialog = gtk::AboutDialog::builder()
             .logo_icon_name(APP_ID)
             .license_type(gtk::License::Gpl30)
-            .website("https://gitlab.gnome.org/msandova/papers/")
+            .website("https://gitlab.gnome.org/msandova/citations/")
             .version(VERSION)
             .transient_for(&self.main_window())
             .translator_credits(&gettext("translator-credits"))
@@ -142,7 +142,7 @@ impl Application {
     }
 
     pub fn run(&self) {
-        info!("Papers ({})", APP_ID);
+        info!("Citations ({})", APP_ID);
         info!("Version: {} ({})", VERSION, PROFILE);
         info!("Datadir: {}", PKGDATADIR);
 

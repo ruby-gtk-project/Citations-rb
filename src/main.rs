@@ -34,7 +34,7 @@ fn main() {
     cratebibtex::init(GETTEXT_PACKAGE, LOCALEDIR);
 
     // NOTE: This is the app name
-    glib::set_application_name(&gettext("Papers"));
+    glib::set_application_name(&gettext("Citations"));
 
     let res = gio::Resource::load(RESOURCES_FILE).expect("Could not load gresource file");
     gio::resources_register(&res);

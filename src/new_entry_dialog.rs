@@ -11,7 +11,7 @@ mod imp {
     use std::cell::RefCell;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(resource = "/org/gnome/World/Papers/ui/new_entry_dialog.ui")]
+    #[template(resource = "/org/gnome/World/Citations/ui/new_entry_dialog.ui")]
     pub struct NewEntryDialog {
         #[template_child]
         pub combo_row: TemplateChild<adw::ComboRow>,

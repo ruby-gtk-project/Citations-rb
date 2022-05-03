@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Papers
+Name=Citations
 Comment=Manage your bibliography
 Type=Application
-Exec=papers
+Exec=citations
 Terminal=false
 Categories=GNOME;GTK;
 Keywords=Gnome;GTK;

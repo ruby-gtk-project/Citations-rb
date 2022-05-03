@@ -8,10 +8,10 @@ flatpak:
   tags:
     - flatpak
   variables:
-    BUNDLE: "papers-nightly.flatpak"
-    MANIFEST_PATH: "build-aux/org.gnome.World.Papers.Devel.json"
-    FLATPAK_MODULE: "papers"
-    APP_ID: "org.gnome.World.Papers.Devel"
+    BUNDLE: "citations-nightly.flatpak"
+    MANIFEST_PATH: "build-aux/org.gnome.World.Citations.Devel.json"
+    FLATPAK_MODULE: "citations"
+    APP_ID: "org.gnome.World.Citations.Devel"
     RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
   script:
     - >

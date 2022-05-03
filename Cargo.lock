@@ -108,6 +108,23 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
+name = "citations"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "cratebibtex",
+ "futures-channel",
+ "gettext-rs",
+ "glib",
+ "gtk4",
+ "libadwaita",
+ "log",
+ "once_cell",
+ "sourceview5",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "cratebibtex"
 version = "0.1.0"
 dependencies = [
@@ -690,23 +707,6 @@ dependencies = [
  "gobject-sys",
  "libc",
  "system-deps",
-]
-
-[[package]]
-name = "papers"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "cratebibtex",
- "futures-channel",
- "gettext-rs",
- "glib",
- "gtk4",
- "libadwaita",
- "log",
- "once_cell",
- "sourceview5",
- "tracing-subscriber",
 ]
 
 [[package]]

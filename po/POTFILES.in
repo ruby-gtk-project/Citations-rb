@@ -1,8 +1,8 @@
 cratebibtex/src/entry_type.rs
 cratebibtex/src/format.rs
-data/org.gnome.World.Papers.desktop.in.in
-data/org.gnome.World.Papers.gschema.xml.in
-data/org.gnome.World.Papers.metainfo.xml.in.in
+data/org.gnome.World.Citations.desktop.in.in
+data/org.gnome.World.Citations.gschema.xml.in
+data/org.gnome.World.Citations.metainfo.xml.in.in
 data/resources/ui/citation_preview.ui
 data/resources/ui/entry_list.ui
 data/resources/ui/entry_page.ui

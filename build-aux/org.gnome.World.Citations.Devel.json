@@ -1,15 +1,15 @@
 {
-    "app-id": "org.gnome.World.Papers.Devel",
+    "app-id": "org.gnome.World.Citations.Devel",
     "runtime": "org.gnome.Platform",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
-    "command": "papers",
+    "command": "citations",
     "finish-args" : [
         "--socket=fallback-x11",
         "--socket=wayland",
         "--device=dri",
-        "--env=RUST_LOG=papers,cratebibtex=debug",
+        "--env=RUST_LOG=citations,cratebibtex=debug",
         "--env=G_MESSAGES_DEBUG=none",
         "--env=RUST_BACKTRACE=1"
     ],
@@ -25,7 +25,7 @@
     },
     "modules": [
         {
-            "name": "papers",
+            "name": "citations",
             "buildsystem": "meson",
             "run-tests": true,
             "config-opts": ["-Dprofile=development"],

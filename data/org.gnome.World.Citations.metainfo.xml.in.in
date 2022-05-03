@@ -4,19 +4,19 @@
   <id>@app-id@</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
-  <name>Papers</name>
+  <name>Citations</name>
   <summary>Manage your bibliography</summary>
   <description>
     <p>Manage your bibliographies using the BibTeX format.</p>
   </description>
   <screenshots>
     <screenshot type="default">
-      <image>https://gitlab.gnome.org/msandova/papers/raw/master/data/screenshots/main_window.png</image>
+      <image>https://gitlab.gnome.org/msandova/citations/raw/master/data/screenshots/main_window.png</image>
       <caption>Main window</caption>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://gitlab.gnome.org/msandova/papers</url>
-  <url type="bugtracker">https://gitlab.gnome.org/msandova/papers/issues</url>
+  <url type="homepage">https://gitlab.gnome.org/msandova/citations</url>
+  <url type="bugtracker">https://gitlab.gnome.org/msandova/citations/issues</url>
   <content_rating type="oars-1.0" />
   <releases>
     <release version="0.0.1" date="2020-07-11" />

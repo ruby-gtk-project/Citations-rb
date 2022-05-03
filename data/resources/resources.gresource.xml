@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/org/gnome/World/Papers/">
+  <gresource prefix="/org/gnome/World/Citations/">
     <file compressed="true" preprocess="xml-stripblanks">ui/citation_preview.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/entry_list.ui</file>
     <file preprocess="xml-stripblanks">ui/entry_list_row.ui</file>
@@ -10,7 +10,7 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
     <file compressed="true">style.css</file>
   </gresource>
-  <gresource prefix="/org/gnome/World/Papers/icons/16x16/actions/">
+  <gresource prefix="/org/gnome/World/Citations/icons/16x16/actions/">
     <file preprocess="xml-stripblanks" alias="external-link-symbolic.svg">icons/external-link-symbolic.svg</file>
   </gresource>
 </gresources>

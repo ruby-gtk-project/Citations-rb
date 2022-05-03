@@ -15,7 +15,7 @@ mod imp {
     use std::cell::RefCell;
 
     #[derive(Debug, CompositeTemplate)]
-    #[template(resource = "/org/gnome/World/Papers/ui/window.ui")]
+    #[template(resource = "/org/gnome/World/Citations/ui/window.ui")]
     pub struct Window {
         pub bib: RefCell<cratebibtex::Bib>,
         pub settings: gio::Settings,
