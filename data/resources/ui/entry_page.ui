@@ -2,158 +2,137 @@
 <interface>
   <template class="EntryPage" parent="AdwBin">
     <child>
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <property name="vexpand">True</property>
+      <object class="GtkStack" id="stack">
         <child>
-          <object class="AdwHeaderBar">
-            <property name="title-widget">
-              <object class="AdwWindowTitle"/>
-            </property>
-            <child type="end">
-              <object class="GtkMenuButton" id="secondary_menu">
-                <property name="icon-name">view-more-symbolic</property>
-                <property name="tooltip-text" translatable="yes">Secondary Menu</property>
-                <property name="menu-model">menu</property>
-                <property name="sensitive">False</property>
-              </object>
-            </child>
+          <object class="AdwStatusPage" id="empty_page">
+            <property name="vexpand">True</property>
+            <property name="hexpand">True</property>
+            <property name="valign">center</property>
+            <property name="icon-name">accessories-dictionary-symbolic</property>
+            <property name="title" translatable="yes">Click on an Entry</property>
           </object>
         </child>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="GtkScrolledWindow" id="non_empty_page">
             <child>
-              <object class="AdwStatusPage" id="empty_page">
-                <property name="vexpand">True</property>
-                <property name="hexpand">True</property>
-                <property name="valign">center</property>
-                <property name="icon-name">accessories-dictionary-symbolic</property>
-                <property name="title" translatable="yes">Click on an Entry</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="non_empty_page">
+              <object class="AdwClamp">
+                <property name="margin-start">12</property>
+                <property name="margin-end">12</property>
+                <property name="margin-top">36</property>
+                <property name="margin-bottom">36</property>
                 <child>
-                  <object class="AdwClamp">
-                    <property name="margin-start">12</property>
-                    <property name="margin-end">12</property>
-                    <property name="margin-top">36</property>
-                    <property name="margin-bottom">36</property>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">12</property>
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">vertical</property>
-                        <property name="spacing">12</property>
+                        <property name="spacing">6</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
-                              <object class="GtkBox">
-                                <property name="spacing">6</property>
-                                <child>
-                                  <object class="GtkLabel" id="entry_type_label">
-                                    <property name="hexpand">True</property>
-                                    <property name="xalign">0</property>
-                                    <property name="yalign">1</property>
-                                    <property name="ellipsize">none</property>
-                                    <property name="lines">0</property>
-                                    <property name="wrap">True</property>
-                                    <property name="wrap-mode">word-char</property>
-                                    <style>
-                                      <class name="title-1"/>
-                                    </style>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="yalign">1</property>
-                                    <binding name="label">
-                                      <lookup name="citation-key">
-                                        <lookup name="entry">EntryPage</lookup>
-                                      </lookup>
-                                    </binding>
-                                    <style>
-                                      <class name="dim-label"/>
-                                    </style>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkListBox">
-                                <property name="selection-mode">none</property>
+                              <object class="GtkLabel" id="entry_type_label">
+                                <property name="hexpand">True</property>
+                                <property name="xalign">0</property>
+                                <property name="yalign">1</property>
+                                <property name="ellipsize">none</property>
+                                <property name="lines">0</property>
+                                <property name="wrap">True</property>
+                                <property name="wrap-mode">word-char</property>
                                 <style>
-                                  <class name="boxed-list"/>
+                                  <class name="title-1"/>
                                 </style>
-                                <child>
-                                  <object class="AdwEntryRow" id="author_entry">
-                                    <property name="title" translatable="yes">_Author</property>
-                                    <property name="use-underline">True</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="AdwEntryRow" id="title_entry">
-                                    <property name="title" translatable="yes">_Title</property>
-                                    <property name="use-underline">True</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="AdwEntryRow" id="year_entry">
-                                    <property name="title" translatable="yes">_Year</property>
-                                    <property name="use-underline">True</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="AdwEntryRow" id="doi_entry">
-                                    <property name="title">_DOI</property>
-                                    <property name="use-underline">True</property>
-                                    <child>
-                                      <object class="GtkButton">
-                                        <property name="valign">center</property>
-                                        <property name="icon-name">external-link-symbolic</property>
-                                        <signal name="clicked" handler="on_doi_clicked" swapped="true"/>
-                                        <style>
-                                          <class name="flat"/>
-                                        </style>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
                               </object>
                             </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="extras_box">
-                            <property name="visible">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">6</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="label" translatable="yes">Other Properties</property>
-                                <property name="xalign">0</property>
+                                <property name="yalign">1</property>
+                                <binding name="label">
+                                  <lookup name="citation-key">
+                                    <lookup name="entry">EntryPage</lookup>
+                                  </lookup>
+                                </binding>
                                 <style>
-                                  <class name="heading"/>
-                                </style>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkListBox" id="extras_list_box">
-                                <property name="selection-mode">none</property>
-                                <style>
-                                  <class name="boxed-list"/>
+                                  <class name="dim-label"/>
                                 </style>
                               </object>
                             </child>
                           </object>
                         </child>
                         <child>
-                          <object class="CitationPreview">
-                            <binding name="entry">
-                              <lookup name="entry">EntryPage</lookup>
-                            </binding>
+                          <object class="GtkListBox">
+                            <property name="selection-mode">none</property>
+                            <style>
+                              <class name="boxed-list"/>
+                            </style>
+                            <child>
+                              <object class="AdwEntryRow" id="author_entry">
+                                <property name="title" translatable="yes">_Author</property>
+                                <property name="use-underline">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwEntryRow" id="title_entry">
+                                <property name="title" translatable="yes">_Title</property>
+                                <property name="use-underline">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwEntryRow" id="year_entry">
+                                <property name="title" translatable="yes">_Year</property>
+                                <property name="use-underline">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwEntryRow" id="doi_entry">
+                                <property name="title">_DOI</property>
+                                <property name="use-underline">True</property>
+                                <child>
+                                  <object class="GtkButton">
+                                    <property name="valign">center</property>
+                                    <property name="icon-name">external-link-symbolic</property>
+                                    <signal name="clicked" handler="on_doi_clicked" swapped="true"/>
+                                    <style>
+                                      <class name="flat"/>
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
                           </object>
                         </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="extras_box">
+                        <property name="visible">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Other Properties</property>
+                            <property name="xalign">0</property>
+                            <style>
+                              <class name="heading"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkListBox" id="extras_list_box">
+                            <property name="selection-mode">none</property>
+                            <style>
+                              <class name="boxed-list"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="CitationPreview">
+                        <binding name="entry">
+                          <lookup name="entry">EntryPage</lookup>
+                        </binding>
                       </object>
                     </child>
                   </object>
@@ -165,12 +144,4 @@
       </object>
     </child>
   </template>
-  <menu id="menu">
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">_Delete</attribute>
-        <attribute name="action">entry.delete</attribute>
-      </item>
-    </section>
-  </menu>
 </interface>

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use cratebibtex::EntryExt;
-use gettextrs::gettext;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 use gtk::{prelude::*, CompositeTemplate};
@@ -37,8 +36,6 @@ mod imp {
         pub extras_box: TemplateChild<gtk::Box>,
         #[template_child]
         pub extras_list_box: TemplateChild<gtk::ListBox>,
-        #[template_child]
-        pub secondary_menu: TemplateChild<gtk::Widget>,
 
         pub entry: RefCell<Option<cratebibtex::Entry>>,
         pub bindings: glib::BindingGroup,
@@ -53,10 +50,6 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
             Self::bind_template_callbacks(klass);
-
-            klass.install_action("entry.delete", None, move |obj, _, _| {
-                obj.delete_entry();
-            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -155,7 +148,6 @@ impl EntryPage {
             self.notify("entry");
 
             if let Some(entry) = entry {
-                self.imp().secondary_menu.set_sensitive(true);
                 self.bind_entry(entry);
                 self.imp()
                     .entry_type_label
@@ -177,7 +169,6 @@ impl EntryPage {
                     row.upcast()
             }));
             } else {
-                self.imp().secondary_menu.set_sensitive(false);
                 self.imp()
                     .stack
                     .set_visible_child(&self.imp().empty_page.get());
@@ -216,20 +207,5 @@ impl EntryPage {
             .bind("doi", &*self.imp().doi_entry, "text")
             .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
             .build();
-    }
-
-    fn delete_entry(&self) {
-        let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
-        let pos = if let Some(entry) = &*self.imp().entry.borrow() {
-            window.bib().find_pos(entry)
-        } else {
-            None
-        };
-        if let Some(pos) = pos {
-            self.set_entry(None::<&cratebibtex::Entry>);
-            window.bib().remove_pos(pos);
-            // TODO Implement Undo
-            window.send_toast(&gettext("Entry Deleted"))
-        };
     }
 }

@@ -35,6 +35,10 @@ mod imp {
         pub split_button: TemplateChild<adw::SplitButton>,
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
+        #[template_child]
+        pub secondary_menu_button: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub main_leaflet: TemplateChild<adw::Leaflet>,
     }
 
     impl Default for Window {
@@ -50,6 +54,8 @@ mod imp {
                 search_entry: TemplateChild::default(),
                 split_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
+                secondary_menu_button: TemplateChild::default(),
+                main_leaflet: TemplateChild::default(),
             }
         }
     }
@@ -82,6 +88,9 @@ mod imp {
                     }
                 }));
             });
+            klass.install_action("win.delete_entry", None, move |obj, _, _| {
+                obj.delete_entry();
+            });
         }
 
         // You must call `Widget`'s `init_template()` within `instance_init()`.
@@ -109,6 +118,14 @@ mod imp {
         #[template_callback]
         fn on_entry_selected(&self, entry: cratebibtex::Entry) {
             self.entry_page.set_entry(Some(&entry));
+            self.secondary_menu_button.set_sensitive(true);
+            self.main_leaflet
+                .navigate(adw::NavigationDirection::Forward);
+        }
+
+        #[template_callback]
+        fn on_back_button_clicked(&self) {
+            self.main_leaflet.navigate(adw::NavigationDirection::Back);
         }
     }
 
@@ -133,6 +150,7 @@ mod imp {
             );
 
             obj.action_set_enabled("win.new_entry", false);
+            obj.action_set_enabled("win.delete_entry", false);
         }
     }
 
@@ -232,8 +250,10 @@ impl Window {
         self.imp().bib.replace(bib);
         self.imp().file.replace(Some(file.clone()));
         self.imp().search_button.set_sensitive(true);
-        self.action_set_enabled("win.new_entry", true);
         self.imp().search_bar.set_key_capture_widget(Some(self));
+
+        self.action_set_enabled("win.new_entry", true);
+        self.action_set_enabled("win.delete_entry", true);
 
         let mut recent_files = settings.strv("recent-files");
         let path = file
@@ -332,5 +352,23 @@ impl Window {
         self.send_toast(&gettext("Bibliography saved"));
 
         Ok(())
+    }
+
+    fn delete_entry(&self) {
+        let pos = if let Some(entry) = self.imp().entry_page.entry() {
+            self.bib().find_pos(&entry)
+        } else {
+            None
+        };
+        if let Some(pos) = pos {
+            // self.set_entry(None::<&cratebibtex::Entry>);
+            self.bib().remove_pos(pos);
+            // TODO Implement Undo
+            self.send_toast(&gettext("Entry Deleted"));
+            self.imp().secondary_menu_button.set_sensitive(false);
+            self.imp()
+                .main_leaflet
+                .navigate(adw::NavigationDirection::Back);
+        };
     }
 }
