@@ -150,6 +150,7 @@ mod imp {
             );
 
             obj.action_set_enabled("win.new_entry", false);
+            obj.action_set_enabled("win.save", false);
             obj.action_set_enabled("win.delete_entry", false);
 
             // Setup drag-n-drop
@@ -277,6 +278,7 @@ impl Window {
         self.imp().search_bar.set_key_capture_widget(Some(self));
 
         self.action_set_enabled("win.new_entry", true);
+        self.action_set_enabled("win.save", true);
         self.action_set_enabled("win.delete_entry", true);
 
         let mut recent_files = settings.strv("recent-files");
