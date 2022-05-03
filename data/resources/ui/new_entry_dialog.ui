@@ -22,6 +22,9 @@
                 <property name="label" translatable="yes">C_reate</property>
                 <property name="use-underline">True</property>
                 <signal name="clicked" handler="on_create_clicked" swapped="true"/>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
