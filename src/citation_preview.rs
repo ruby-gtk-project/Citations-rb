@@ -98,6 +98,8 @@ mod imp {
         pub template_drop_down: TemplateChild<gtk::DropDown>,
         #[template_child]
         pub template_revealer: TemplateChild<gtk::Revealer>,
+        #[template_child]
+        pub help_source_view: TemplateChild<gsv::View>,
 
         pub entry: RefCell<Option<cratebibtex::Entry>>,
         pub template_kind: Cell<Template>,
@@ -113,6 +115,7 @@ mod imp {
                 drop_down: TemplateChild::default(),
                 template_drop_down: TemplateChild::default(),
                 template_revealer: TemplateChild::default(),
+                help_source_view: TemplateChild::default(),
                 entry: RefCell::default(),
                 template_kind: Cell::default(),
                 format_kind: Cell::default(),
@@ -180,6 +183,10 @@ mod imp {
                 .downcast::<gsv::Buffer>()
                 .unwrap()
                 .set_highlight_matching_brackets(false);
+
+            self.help_source_view
+                .buffer()
+                .set_text(AMS_ARTICLE_TEMPLATE);
 
             self.text_view
                 .buffer()
