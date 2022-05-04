@@ -5,6 +5,7 @@ pub mod format;
 mod bib;
 mod entry;
 mod entry_type;
+mod parser;
 mod utils;
 
 pub use bib::Bib;
