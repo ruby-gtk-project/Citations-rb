@@ -26,11 +26,11 @@
                 <child>
                   <object class="GtkBox">
                     <property name="orientation">vertical</property>
-                    <property name="spacing">12</property>
+                    <property name="spacing">30</property>
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">vertical</property>
-                        <property name="spacing">6</property>
+                        <property name="spacing">12</property>
                         <child>
                           <object class="GtkBox">
                             <property name="spacing">6</property>
@@ -112,7 +112,7 @@
                       <object class="GtkBox" id="extras_box">
                         <property name="visible">False</property>
                         <property name="orientation">vertical</property>
-                        <property name="spacing">6</property>
+                        <property name="spacing">12</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="label" translatable="yes">Other Properties</property>
