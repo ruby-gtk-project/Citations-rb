@@ -39,6 +39,10 @@
   <menu id="entry_menu">
     <section>
       <item>
+        <attribute name="label" translatable="yes">_Search in Google Scholar</attribute>
+        <attribute name="action">win.search-google-scholar</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">_Delete</attribute>
         <attribute name="action">win.delete_entry</attribute>
       </item>

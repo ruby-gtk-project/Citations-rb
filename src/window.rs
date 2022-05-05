@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+use cratebibtex::EntryExt;
 use gettextrs::gettext;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -6,6 +7,7 @@ use gtk::{gdk, gio, glib};
 
 use crate::application::Application;
 use crate::config::{APP_ID, PROFILE, VERSION};
+use crate::utils;
 
 mod imp {
     use super::*;
@@ -102,6 +104,11 @@ mod imp {
             });
             klass.install_action("win.delete_entry", None, move |obj, _, _| {
                 obj.delete_entry();
+            });
+            klass.install_action("win.search-google-scholar", None, move |obj, _, _| {
+                if let Err(err) = obj.search_google_schoolar_entry() {
+                    log::error!("Could not search in Google Schoolar: {err}");
+                }
             });
             klass.install_action("win.undo_delete", None, move |obj, _, _| {
                 if let Some((entry, pos, _toast)) = obj.imp().undo_entry.replace(None) {
@@ -430,6 +437,22 @@ impl Window {
             .map_err(|err| err.1)?;
 
         self.send_toast(&gettext("Bibliography saved"));
+
+        Ok(())
+    }
+
+    pub fn search_google_schoolar_entry(&self) -> anyhow::Result<()> {
+        use anyhow::Context;
+
+        let entry = self.imp().entry_page.entry().context("No entry selected")?;
+
+        let author = entry.find_tag_pretty("author").unwrap_or_else(|| "".into());
+        let title = entry.find_tag_pretty("title").unwrap_or_else(|| "".into());
+        let year = entry.find_tag("year");
+
+        let uri = utils::build_google_schoolar_url(&author, &title, year)?;
+
+        gtk::show_uri(Some(self), &uri, gdk::CURRENT_TIME);
 
         Ok(())
     }

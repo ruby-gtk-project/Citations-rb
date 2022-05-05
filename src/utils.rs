@@ -41,3 +41,35 @@ pub fn translated_key(key: &str) -> String {
         _ => unreachable!(),
     }
 }
+
+pub fn build_google_schoolar_url(
+    author: &str,
+    title: &str,
+    year: Option<String>,
+) -> anyhow::Result<String> {
+    let mut url = "https://scholar.google.com/scholar?".to_string();
+
+    url.push_str(&format!("q={author} {title}"));
+
+    if let Some(i) = year {
+        // from
+        url.push_str(&format!("&as_ylo={i}"));
+        // to
+        url.push_str(&format!("&as_yhi={i}"));
+    }
+    url.push_str("&scisbd=0");
+
+    // Lang
+    // if let Some(i) = lang {
+    //     url.push_str("&hl=");
+    //     url.push_str(i);
+    // }
+    url.push_str("&num=10");
+    url.push_str("&start=0");
+    url.push_str("&safe=active");
+    url.push_str("&filter=1");
+    url.push_str("&as_vis=1");
+
+    let sanitized = url::Url::parse(&url)?;
+    Ok(sanitized.to_string())
+}
