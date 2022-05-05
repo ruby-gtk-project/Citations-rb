@@ -18,6 +18,8 @@ mod imp {
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
         #[template_child]
+        pub citation_key_entry: TemplateChild<adw::EntryRow>,
+        #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub entry_type_label: TemplateChild<gtk::Label>,
@@ -84,6 +86,26 @@ mod imp {
                 .downcast::<crate::Window>()
                 .unwrap();
             window.send_toast(&gettext("Copied"));
+        }
+
+        #[template_callback]
+        fn on_citation_key_apply(entry_row: &adw::EntryRow, entry_page: &super::EntryPage) {
+            let text = entry_row.text();
+            let entry = entry_page.imp().entry.borrow().clone().unwrap();
+            let old_key = entry.citation_key();
+            let window = entry_page
+                .root()
+                .unwrap()
+                .downcast::<crate::Window>()
+                .unwrap();
+
+            if !window.bib().key_exists(&text) || &old_key == &text {
+                entry_row.remove_css_class("error");
+                entry.set_citation_key(&text);
+            } else {
+                entry_row.add_css_class("error");
+                window.send_toast(&gettext("Citation Key already exists"));
+            }
         }
     }
 
@@ -174,6 +196,9 @@ impl EntryPage {
                 let model =
                     gtk::StringList::new(&fields.iter().map(|x| x.as_str()).collect::<Vec<&str>>());
                 self.imp().extras_box.set_visible(model.item(0).is_some());
+                self.imp()
+                    .citation_key_entry
+                    .set_text(&entry.citation_key());
                 self.imp().extras_list_box.bind_model(Some(&model), glib::clone!(@weak entry => @default-panic, move |obj| {
                     let key = obj.downcast_ref::<gtk::StringObject>().unwrap().string();
 

@@ -138,7 +138,11 @@ impl Bib {
         None
     }
 
-    pub fn entries(&self) -> Vec<crate::Entry> {
-        self.imp().entries.borrow().clone()
+    pub fn key_exists(&self, citation_key: &str) -> bool {
+        self.imp()
+            .entries
+            .borrow()
+            .iter()
+            .any(|entry| entry.citation_key() == citation_key)
     }
 }

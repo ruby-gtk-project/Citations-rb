@@ -85,7 +85,11 @@ mod imp {
             pspec: &glib::ParamSpec,
         ) {
             let value = value.get::<String>().unwrap_or_else(|_| "".into());
-            obj.set_prop(pspec.name(), &value);
+            let pspec_name = pspec.name();
+            match pspec_name {
+                "citation-key" => obj.set_citation_key(&value),
+                _ => obj.set_prop(pspec_name, &value),
+            }
         }
     }
     impl crate::EntryImpl for Entry {}
@@ -121,6 +125,13 @@ impl From<&nom_bibtex::Bibliography> for Entry {
 }
 
 impl Entry {
+    pub fn set_citation_key(&self, citation_key: &str) {
+        let citation_key = citation_key.to_string();
+        if Some(citation_key.clone()) != self.imp().citation_key.replace(Some(citation_key)) {
+            self.notify("citation-key");
+        }
+    }
+
     pub fn tags(&self) -> HashMap<String, String> {
         self.imp().tags.borrow().clone()
     }

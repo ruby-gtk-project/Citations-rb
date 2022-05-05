@@ -13,7 +13,7 @@ pub(crate) fn new_props(names: &[&str]) -> Vec<glib::ParamSpec> {
         "citation-key",
         "citation-key",
         "".into(),
-        glib::ParamFlags::READABLE,
+        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
     );
     let entry_type_prop = glib::ParamSpecEnum::new(
         "entry-type",
