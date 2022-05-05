@@ -22,6 +22,8 @@ mod imp {
         pub file: RefCell<Option<gio::File>>,
 
         #[template_child]
+        pub empty_state_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
         pub entry_list: TemplateChild<crate::EntryList>,
         #[template_child]
         pub entry_page: TemplateChild<crate::EntryPage>,
@@ -48,6 +50,7 @@ mod imp {
                 bib: Default::default(),
                 file: Default::default(),
                 entry_list: TemplateChild::default(),
+                empty_state_stack: TemplateChild::default(),
                 entry_page: TemplateChild::default(),
                 search_bar: TemplateChild::default(),
                 search_button: TemplateChild::default(),
@@ -274,9 +277,10 @@ impl Window {
         self.imp().entry_list.populate(&bib);
         self.imp().bib.replace(bib);
         self.imp().file.replace(Some(file.clone()));
-        self.imp().search_button.set_sensitive(true);
         self.imp().search_bar.set_key_capture_widget(Some(self));
-        self.imp().entry_page.set_empty_page();
+        self.imp()
+            .empty_state_stack
+            .set_visible_child(&*self.imp().main_leaflet);
 
         self.action_set_enabled("win.new_entry", true);
         self.action_set_enabled("win.save", true);
@@ -388,7 +392,7 @@ impl Window {
             None
         };
         if let Some(pos) = pos {
-            // self.set_entry(None::<&cratebibtex::Entry>);
+            self.imp().entry_page.set_entry(None);
             self.bib().remove_pos(pos);
             // TODO Implement Undo
             self.send_toast(&gettext("Entry Deleted"));
