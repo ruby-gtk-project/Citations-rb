@@ -46,6 +46,7 @@
                     <child>
                       <object class="GtkTextView" id="text_view">
                         <property name="hexpand">True</property>
+                        <property name="monospace">True</property>
                         <property name="wrap_mode">word</property>
                       </object>
                     </child>
@@ -183,10 +184,11 @@
             <property name="max-content-width">300</property>
             <property name="hscrollbar-policy">never</property>
             <child>
-              <object class="GtkSourceView" id="help_source_view">
+              <object class="GtkTextView" id="help_source_view">
                 <property name="hexpand">True</property>
                 <property name="wrap_mode">word</property>
                 <property name="editable">False</property>
+                <property name="monospace">True</property>
               </object>
             </child>
             <style>

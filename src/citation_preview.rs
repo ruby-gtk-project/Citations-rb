@@ -99,7 +99,7 @@ mod imp {
         #[template_child]
         pub template_revealer: TemplateChild<gtk::Revealer>,
         #[template_child]
-        pub help_source_view: TemplateChild<gsv::View>,
+        pub help_source_view: TemplateChild<gtk::TextView>,
 
         pub entry: RefCell<Option<cratebibtex::Entry>>,
         pub template_kind: Cell<Template>,
