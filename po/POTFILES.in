@@ -10,6 +10,7 @@ data/resources/ui/new_entry_dialog.ui
 data/resources/ui/shortcuts.ui
 data/resources/ui/window.ui
 src/citation_preview.rs
+src/entry_page.rs
 src/main.rs
 src/utils.rs
 src/window.rs

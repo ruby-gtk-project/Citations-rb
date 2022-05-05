@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use cratebibtex::EntryExt;
+use gettextrs::gettext;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 use gtk::{prelude::*, CompositeTemplate};
@@ -69,6 +70,20 @@ mod imp {
                 .downcast::<crate::Window>()
                 .unwrap();
             gtk::show_uri(Some(&window), &uri, gdk::CURRENT_TIME);
+        }
+
+        #[template_callback]
+        fn on_copy_key_clicked(&self) {
+            let key = self.entry.borrow().as_ref().unwrap().citation_key();
+            self.instance().clipboard().set_text(&key);
+
+            let window = self
+                .instance()
+                .root()
+                .unwrap()
+                .downcast::<crate::Window>()
+                .unwrap();
+            window.send_toast(&gettext("Copied"));
         }
     }
 

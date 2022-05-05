@@ -113,6 +113,7 @@
                     <property name="margin-start">6</property>
                     <property name="margin-top">6</property>
                     <property name="margin-bottom">6</property>
+                    <property name="tooltip-text" translatable="yes">Copy</property>
                     <signal name="clicked" handler="on_clicked" swapped="true"/>
                     <style>
                       <class name="flat"/>

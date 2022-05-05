@@ -56,6 +56,13 @@
                                 </style>
                               </object>
                             </child>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="icon-name">edit-copy-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Copy</property>
+                                <signal name="clicked" handler="on_copy_key_clicked" swapped="true"/>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child>
