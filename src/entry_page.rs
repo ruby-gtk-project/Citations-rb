@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+use adw::prelude::ComboRowExt;
 use cratebibtex::EntryExt;
 use gettextrs::gettext;
 use gtk::subclass::prelude::*;
@@ -17,6 +18,8 @@ mod imp {
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
+        #[template_child]
+        pub entry_type_entry: TemplateChild<adw::ComboRow>,
         #[template_child]
         pub citation_key_entry: TemplateChild<adw::EntryRow>,
         #[template_child]
@@ -62,6 +65,29 @@ mod imp {
 
     #[gtk::template_callbacks]
     impl EntryPage {
+        #[template_callback]
+        fn on_entry_type_selected_notify(
+            &self,
+            _pspec: &glib::ParamSpec,
+            combo_row: &adw::ComboRow,
+        ) {
+            let type_ = cratebibtex::EntryType::from(combo_row.selected());
+            let entry = self.entry.borrow().clone().unwrap();
+            entry.set_entry_type(type_);
+            self.instance().bind_extras_list_model(&entry);
+        }
+
+        #[template_callback]
+        fn entry_type_name(item: adw::EnumListItem) -> String {
+            let type_ = cratebibtex::EntryType::from(item.value() as u32);
+            type_.to_translatable_string()
+        }
+
+        #[template_callback]
+        fn entry_type_name_str(&self, type_: cratebibtex::EntryType) -> String {
+            type_.to_translatable_string()
+        }
+
         #[template_callback]
         fn on_doi_clicked(&self) {
             let uri = format!("https://doi.org/{}", self.doi_entry.text());
@@ -187,27 +213,12 @@ impl EntryPage {
             if let Some(entry) = entry {
                 self.bind_entry(entry);
                 self.imp()
-                    .entry_type_label
-                    .set_label(&entry.entry_type().to_translatable_string());
-                self.imp()
                     .stack
                     .set_visible_child(&self.imp().non_empty_page.get());
-                let fields: Vec<String> = entry.fields();
-                let model =
-                    gtk::StringList::new(&fields.iter().map(|x| x.as_str()).collect::<Vec<&str>>());
-                self.imp().extras_box.set_visible(model.item(0).is_some());
                 self.imp()
                     .citation_key_entry
                     .set_text(&entry.citation_key());
-                self.imp().extras_list_box.bind_model(Some(&model), glib::clone!(@weak entry => @default-panic, move |obj| {
-                    let key = obj.downcast_ref::<gtk::StringObject>().unwrap().string();
-
-                    let row = adw::EntryRow::new();
-                    row.set_title(&utils::translated_key(&key));
-                    entry.bind_property(&key, &row, "text").flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL).build();
-
-                    row.upcast()
-            }));
+                self.bind_extras_list_model(&entry);
             } else {
                 self.imp()
                     .stack
@@ -218,6 +229,21 @@ impl EntryPage {
                     .bind_model(gio::ListModel::NONE, move |_| adw::Bin::new().upcast());
             }
         }
+    }
+
+    pub fn bind_extras_list_model(&self, entry: &cratebibtex::Entry) {
+        let fields: Vec<String> = entry.fields();
+        let model = gtk::StringList::new(&fields.iter().map(|x| x.as_str()).collect::<Vec<&str>>());
+        self.imp().extras_box.set_visible(model.item(0).is_some());
+        self.imp().extras_list_box.bind_model(Some(&model), glib::clone!(@weak entry => @default-panic, move |obj| {
+            let key = obj.downcast_ref::<gtk::StringObject>().unwrap().string();
+
+            let row = adw::EntryRow::new();
+            row.set_title(&utils::translated_key(&key));
+            entry.bind_property(&key, &row, "text").flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL).build();
+
+            row.upcast()
+        }));
     }
 
     pub fn entry(&self) -> Option<cratebibtex::Entry> {
@@ -246,6 +272,11 @@ impl EntryPage {
             .bindings
             .bind("doi", &*self.imp().doi_entry, "text")
             .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+            .build();
+        self.imp()
+            .bindings
+            .bind("entry-type", &*self.imp().entry_type_entry, "selected")
+            .flags(glib::BindingFlags::SYNC_CREATE)
             .build();
     }
 }

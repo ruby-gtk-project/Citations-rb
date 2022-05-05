@@ -37,6 +37,13 @@
                                 <property name="xalign">0</property>
                                 <property name="yalign">1</property>
                                 <property name="ellipsize">none</property>
+                                <binding name="label">
+                                  <closure type="gchararray" function="entry_type_name_str">
+                                    <lookup name="entry-type">
+                                      <lookup name="entry">EntryPage</lookup>
+                                    </lookup>
+                                  </closure>
+                                </binding>
                                 <style>
                                   <class name="title-1"/>
                                 </style>
@@ -64,6 +71,21 @@
                             <style>
                               <class name="boxed-list"/>
                             </style>
+                            <child>
+                              <object class="AdwComboRow" id="entry_type_entry">
+                                <property name="title" translatable="yes">_Entry Type</property>
+                                <property name="use-underline">True</property>
+                                <property name="model">
+                                  <object class="AdwEnumListModel">
+                                    <property name="enum-type">EntryType</property>
+                                  </object>
+                                </property>
+                                <property name="expression">
+                                  <closure type="gchararray" function="entry_type_name"/>
+                                </property>
+                                <signal name="notify::selected" handler="on_entry_type_selected_notify" swapped="true"/>
+                              </object>
+                            </child>
                             <child>
                               <object class="AdwEntryRow" id="citation_key_entry">
                                 <property name="title" translatable="yes">_Citation Key</property>

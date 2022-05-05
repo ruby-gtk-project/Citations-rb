@@ -21,7 +21,7 @@ pub(crate) fn new_props(names: &[&str]) -> Vec<glib::ParamSpec> {
         "entry-type",
         crate::EntryType::static_type(),
         crate::EntryType::default() as i32,
-        glib::ParamFlags::READABLE,
+        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
     );
     generated_props.push(citation_key_prop);
     generated_props.push(entry_type_prop);

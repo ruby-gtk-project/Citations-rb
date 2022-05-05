@@ -84,11 +84,17 @@ mod imp {
             value: &glib::Value,
             pspec: &glib::ParamSpec,
         ) {
-            let value = value.get::<String>().unwrap_or_else(|_| "".into());
             let pspec_name = pspec.name();
             match pspec_name {
-                "citation-key" => obj.set_citation_key(&value),
-                _ => obj.set_prop(pspec_name, &value),
+                "citation-key" => {
+                    let value = value.get::<String>().unwrap_or_else(|_| "".into());
+                    obj.set_citation_key(&value)
+                }
+                "entry-type" => obj.set_entry_type(value.get::<crate::EntryType>().unwrap()),
+                _ => {
+                    let value = value.get::<String>().unwrap_or_else(|_| "".into());
+                    obj.set_prop(pspec_name, &value)
+                }
             }
         }
     }
@@ -125,6 +131,12 @@ impl From<&nom_bibtex::Bibliography> for Entry {
 }
 
 impl Entry {
+    pub fn set_entry_type(&self, entry_type: crate::EntryType) {
+        if entry_type != self.imp().entry_type.replace(entry_type) {
+            self.notify("entry-type");
+        }
+    }
+
     pub fn set_citation_key(&self, citation_key: &str) {
         let citation_key = citation_key.to_string();
         if Some(citation_key.clone()) != self.imp().citation_key.replace(Some(citation_key)) {
