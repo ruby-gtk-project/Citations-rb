@@ -12,7 +12,7 @@
             <property name="hexpand">True</property>
             <property name="valign">center</property>
             <property name="icon-name">accessories-dictionary-symbolic</property>
-            <property name="title" translatable="yes">Click on an Entry</property>
+            <property name="title" translatable="yes">No Citation Selected</property>
           </object>
         </child>
         <child>
