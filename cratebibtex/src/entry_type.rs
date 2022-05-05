@@ -103,7 +103,7 @@ impl fmt::Display for EntryType {
 }
 
 impl EntryType {
-    pub fn to_translatable_string(&self) -> String {
+    pub fn to_translatable_string(self) -> String {
         match self {
             Self::Article => gettext("Article"),
             Self::Book => gettext("Book"),

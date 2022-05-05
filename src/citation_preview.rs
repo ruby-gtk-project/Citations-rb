@@ -48,7 +48,7 @@ impl Default for Template {
 }
 
 impl Template {
-    pub fn to_translatable_string(&self) -> String {
+    pub fn to_translatable_string(self) -> String {
         match self {
             Template::MLA => "MLA".to_string(),
             Template::AMS => "AMS".to_string(),
@@ -285,7 +285,7 @@ mod imp {
         ) {
             match pspec.name() {
                 "entry" => {
-                    if let Some(entry) = value.get().ok() {
+                    if let Ok(entry) = value.get() {
                         self.entry.replace(Some(entry));
 
                         let template = if obj.use_book_format() {

@@ -98,7 +98,7 @@ mod imp {
             });
             klass.install_action("win.undo_delete", None, move |obj, _, _| {
                 if let Some((entry, pos)) = obj.imp().undo_entry.replace(None) {
-                    obj.imp().bib.borrow().add_entry_at_pos(entry.clone(), pos);
+                    obj.imp().bib.borrow().add_entry_at_pos(entry, pos);
                 }
             });
         }
@@ -395,7 +395,7 @@ impl Window {
     fn delete_entry(&self) {
         if let Some(entry) = self.imp().entry_page.entry() {
             if let Some(pos) = self.bib().find_pos(&entry) {
-                self.imp().undo_entry.replace(Some((entry.clone(), pos)));
+                self.imp().undo_entry.replace(Some((entry, pos)));
                 self.imp().entry_page.set_entry(None);
                 self.bib().remove_pos(pos);
 

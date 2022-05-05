@@ -46,7 +46,7 @@ impl fmt::Display for Format {
 }
 
 impl Format {
-    pub fn to_translatable_string(&self) -> String {
+    pub fn to_translatable_string(self) -> String {
         match self {
             // NOTE Plain as in Plain Text
             Format::Plain => gettext("Plain"),
