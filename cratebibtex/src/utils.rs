@@ -4,11 +4,7 @@ pub(crate) fn new_props(names: &[&str]) -> Vec<glib::ParamSpec> {
     let mut generated_props = names
         .iter()
         .map(|name| {
-            let flags = if name.starts_with("p-") {
-                glib::ParamFlags::READABLE | glib::ParamFlags::EXPLICIT_NOTIFY
-            } else {
-                glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY
-            };
+            let flags = glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY;
             glib::ParamSpecString::new(name, name, name, "".into(), flags)
         })
         .collect::<Vec<glib::ParamSpec>>();

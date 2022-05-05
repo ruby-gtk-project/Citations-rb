@@ -20,10 +20,11 @@
                 <property name="lines">0</property>
                 <property name="wrap">True</property>
                 <property name="wrap-mode">word-char</property>
+                <property name="use-markup">True</property>
                 <binding name="label">
-                  <lookup name="p-author">
+                  <closure type="gchararray" function="pretty_author">
                     <lookup name="entry">EntryListRow</lookup>
-                  </lookup>
+                  </closure>
                 </binding>
                 <style>
                   <class name="title"/>
@@ -52,10 +53,11 @@
             <property name="wrap">True</property>
             <property name="wrap-mode">word-char</property>
             <property name="xalign">0</property>
+            <property name="use-markup">True</property>
             <binding name="label">
-              <lookup name="p-title">
+              <closure type="gchararray" function="pretty_title">
                 <lookup name="entry">EntryListRow</lookup>
-              </lookup>
+              </closure>
             </binding>
             <style>
               <class name="subtitle"/>

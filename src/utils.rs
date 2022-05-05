@@ -18,8 +18,6 @@ pub fn translated_key(key: &str) -> String {
         "author" => gettext("Author"),
         "year" => gettext("Year"),
         "title" => gettext("Title"),
-        "p-author" => gettext("Author"),
-        "p-title" => gettext("Title"),
         "volume" => gettext("Volume"),
         "number" => gettext("Number"),
         "pages" => gettext("Pages"),

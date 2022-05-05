@@ -29,11 +29,36 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
+            Self::bind_template_callbacks(klass);
             klass.set_layout_manager_type::<gtk::BinLayout>();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
             obj.init_template();
+        }
+    }
+
+    #[gtk::template_callbacks]
+    impl EntryListRow {
+        #[template_callback]
+        fn pretty_author(&self, entry: Option<&cratebibtex::Entry>) -> String {
+            if let Some(entry) = entry {
+                entry
+                    .find_tag_pretty("author")
+                    .unwrap_or_else(|| "<i>Author not set</i>".to_string())
+            } else {
+                "".to_string()
+            }
+        }
+        #[template_callback]
+        fn pretty_title(&self, entry: Option<&cratebibtex::Entry>) -> String {
+            if let Some(entry) = entry {
+                entry
+                    .find_tag_pretty("title")
+                    .unwrap_or_else(|| "<i>Title not set</i>".to_string())
+            } else {
+                "".to_string()
+            }
         }
     }
 

@@ -39,8 +39,6 @@ mod imp {
                     "author",
                     "year",
                     "title",
-                    "p-author",
-                    "p-title",
                     "volume",
                     "number",
                     "pages",
@@ -70,18 +68,12 @@ mod imp {
 
         fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             let pspec_name = pspec.name();
-            if let Some(name) = pspec_name.strip_prefix("p-") {
-                obj.find_tag_pretty(name)
-                    .unwrap_or_else(|| "".into())
-                    .to_value()
-            } else {
-                match pspec_name {
-                    "citation-key" => obj.citation_key().to_value(),
-                    "entry-type" => obj.entry_type().to_value(),
-                    _ => {
-                        let prop = obj.find_tag(pspec_name).unwrap_or_else(|| "".into());
-                        utils::format_string(&prop).to_value()
-                    }
+            match pspec_name {
+                "citation-key" => obj.citation_key().to_value(),
+                "entry-type" => obj.entry_type().to_value(),
+                _ => {
+                    let prop = obj.find_tag(pspec_name).unwrap_or_else(|| "".into());
+                    utils::format_string(&prop).to_value()
                 }
             }
         }
@@ -145,7 +137,7 @@ impl Entry {
         entry
     }
 
-    fn find_tag_pretty(&self, tag: &str) -> Option<String> {
+    pub fn find_tag_pretty(&self, tag: &str) -> Option<String> {
         let value = self.find_tag(tag)?;
         let s = format::replace_c(&value)
             .split_whitespace()
@@ -231,7 +223,6 @@ pub trait EntryExt {
     fn find_tag(&self, tag: &str) -> Option<String>;
     fn insert_tag(&self, tag: &str, value: &str) -> Option<String>;
     fn set_prop(&self, tag: &str, value: &str);
-    fn replace_tags(&self, tags: HashMap<String, String>);
     fn citation_key(&self) -> String;
     fn entry_type(&self) -> crate::EntryType;
 }
@@ -257,24 +248,7 @@ impl<O: glib::IsA<Entry>> EntryExt for O {
         let old_value = self.insert_tag(tag, value);
         if old_value != Some(value.into()) {
             self.as_ref().notify(tag);
-            let p_property = format!("p-{tag}");
-            if self.as_ref().has_property(&p_property, None) {
-                self.as_ref().notify(&p_property);
-            }
         }
-    }
-
-    fn replace_tags(&self, tags: HashMap<String, String>) {
-        let keys: Vec<String> = tags.keys().map(|x| x.to_string()).collect();
-        self.as_ref().imp().tags.replace(tags);
-        keys.iter().for_each(move |key| {
-            let key = key.to_lowercase();
-            self.notify(&key);
-            let p_property = format!("p-{key}");
-            if self.as_ref().has_property(&p_property, None) {
-                self.as_ref().notify(&p_property);
-            }
-        });
     }
 }
 
