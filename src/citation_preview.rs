@@ -149,6 +149,14 @@ mod imp {
             let text = buffer.text(&start, &end, true);
 
             self.instance().clipboard().set_text(&text);
+
+            let window = self
+                .instance()
+                .root()
+                .unwrap()
+                .downcast::<crate::Window>()
+                .unwrap();
+            window.send_toast(&gettext("Copied"));
         }
 
         #[template_callback]
