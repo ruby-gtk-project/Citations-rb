@@ -36,7 +36,7 @@ pub enum Template {
     AMS,
     APA,
     Chicago,
-    Harvar,
+    Harvard,
     Vancouver,
     Custom,
 }
@@ -55,7 +55,7 @@ impl Template {
             Template::APA => "APA".to_string(),
             // TODO Should this be translatable?
             Template::Chicago => gettext("Chicago"),
-            Template::Harvar => gettext("Harvar"),
+            Template::Harvard => gettext("Harvard"),
             Template::Vancouver => gettext("Vancouver"),
             // NOTE: Custom as in Custom Template.
             Template::Custom => gettext("Custom"),
@@ -70,7 +70,7 @@ impl From<u32> for Template {
             1 => Self::AMS,
             2 => Self::APA,
             3 => Self::Chicago,
-            4 => Self::Harvar,
+            4 => Self::Harvard,
             5 => Self::Vancouver,
             6 => Self::Custom,
             _ => Self::default(),
@@ -417,7 +417,7 @@ impl CitationPreview {
                     CHICAGO_ARTICLE_TEMPLATE.into()
                 }
             }
-            Template::Harvar => {
+            Template::Harvard => {
                 if self.use_book_format() {
                     HARVAR_BOOK_TEMPLATE.into()
                 } else {
