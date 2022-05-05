@@ -20,7 +20,7 @@ mod imp {
         pub bib: RefCell<cratebibtex::Bib>,
         pub settings: gio::Settings,
         pub file: RefCell<Option<gio::File>>,
-        pub undo_entry: RefCell<Option<(cratebibtex::Entry, u32)>>,
+        pub undo_entry: RefCell<Option<(cratebibtex::Entry, u32, adw::Toast)>>,
 
         #[template_child]
         pub empty_state_stack: TemplateChild<gtk::Stack>,
@@ -97,7 +97,7 @@ mod imp {
                 obj.delete_entry();
             });
             klass.install_action("win.undo_delete", None, move |obj, _, _| {
-                if let Some((entry, pos)) = obj.imp().undo_entry.replace(None) {
+                if let Some((entry, pos, _toast)) = obj.imp().undo_entry.replace(None) {
                     obj.imp().bib.borrow().add_entry_at_pos(entry, pos);
                 }
             });
@@ -395,16 +395,23 @@ impl Window {
     fn delete_entry(&self) {
         if let Some(entry) = self.imp().entry_page.entry() {
             if let Some(pos) = self.bib().find_pos(&entry) {
-                self.imp().undo_entry.replace(Some((entry, pos)));
-                self.imp().entry_page.set_entry(None);
-                self.bib().remove_pos(pos);
-
                 let toast = adw::Toast::new(&gettext("Entry Deleted"));
                 toast.set_action_name(Some("win.undo_delete"));
                 toast.set_button_label(Some(&gettext("Undo")));
                 toast.connect_dismissed(glib::clone!(@weak self as obj => move |_| {
                     obj.imp().undo_entry.replace(None);
                 }));
+
+                if let Some((_, _, toast)) =
+                    self.imp()
+                        .undo_entry
+                        .replace(Some((entry, pos, toast.clone())))
+                {
+                    toast.dismiss();
+                };
+                self.imp().entry_page.set_entry(None);
+                self.bib().remove_pos(pos);
+
                 self.imp().toast_overlay.add_toast(&toast);
 
                 self.imp().secondary_menu_button.set_sensitive(false);
