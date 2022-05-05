@@ -217,6 +217,19 @@ pub(crate) fn replace_latex_accents(citation: &str) -> String {
     .to_string()
 }
 
+pub fn pretty_author(author: &str) -> String {
+    replace_latex_accents(&replace_latex_symbols(&replace_c(author)))
+}
+
+pub fn pretty_title(title: &str) -> String {
+    let s = replace_c(title)
+        .split_whitespace()
+        .collect::<Vec<_>>()
+        .join(" ")
+        .replace(|c| matches!(c, '{' | '}' | '$'), "");
+    replace_latex_accents(&replace_latex_symbols(&s))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

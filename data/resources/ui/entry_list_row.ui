@@ -23,7 +23,9 @@
                 <property name="use-markup">True</property>
                 <binding name="label">
                   <closure type="gchararray" function="pretty_author">
-                    <lookup name="entry">EntryListRow</lookup>
+                    <lookup name="author">
+                      <lookup name="entry">EntryListRow</lookup>
+                    </lookup>
                   </closure>
                 </binding>
                 <style>
@@ -56,7 +58,9 @@
             <property name="use-markup">True</property>
             <binding name="label">
               <closure type="gchararray" function="pretty_title">
-                <lookup name="entry">EntryListRow</lookup>
+                <lookup name="title">
+                  <lookup name="entry">EntryListRow</lookup>
+                </lookup>
               </closure>
             </binding>
             <style>

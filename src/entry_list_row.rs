@@ -41,23 +41,22 @@ mod imp {
     #[gtk::template_callbacks]
     impl EntryListRow {
         #[template_callback]
-        fn pretty_author(&self, entry: Option<&cratebibtex::Entry>) -> String {
-            if let Some(entry) = entry {
-                entry
-                    .find_tag_pretty("author")
-                    .unwrap_or_else(|| "<i>Author not set</i>".to_string())
+        fn pretty_author(&self, author: &str) -> String {
+            let author = cratebibtex::format::pretty_author(author);
+            if author.is_empty() {
+                "<i>Author not set</i>".to_string()
             } else {
-                "".to_string()
+                author
             }
         }
+
         #[template_callback]
-        fn pretty_title(&self, entry: Option<&cratebibtex::Entry>) -> String {
-            if let Some(entry) = entry {
-                entry
-                    .find_tag_pretty("title")
-                    .unwrap_or_else(|| "<i>Title not set</i>".to_string())
+        fn pretty_title(&self, title: &str) -> String {
+            let title = cratebibtex::format::pretty_title(title);
+            if title.is_empty() {
+                "<i>Title not set</i>".to_string()
             } else {
-                "".to_string()
+                title
             }
         }
     }
