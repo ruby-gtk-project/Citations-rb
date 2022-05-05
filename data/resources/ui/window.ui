@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
+  <menu id="primary_menu_empty">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Create New Bibliography</attribute>
+        <attribute name="action">win.new_biblio</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About Citations</attribute>
+        <attribute name="action">win.about</attribute>
+      </item>
+    </section>
+  </menu>
   <menu id="primary_menu">
     <section>
       <item>
@@ -42,6 +60,13 @@
                         <property name="use-underline">True</property>
                         <property name="action-name">win.open</property>
                         <property name="action-target">''</property>
+                      </object>
+                    </child>
+                    <child type="end">
+                      <object class="GtkMenuButton">
+                        <property name="icon-name">open-menu-symbolic</property>
+                        <property name="menu-model">primary_menu_empty</property>
+                        <property name="tooltip-text" translatable="yes">Main Menu</property>
                       </object>
                     </child>
                   </object>

@@ -83,6 +83,13 @@ mod imp {
                     }
                 }));
             });
+            klass.install_action("win.new_biblio", None, move |window, _, _| {
+                crate::spawn!(glib::clone!(@weak window => async move {
+                    if let Err(err) = window.new_biblio_action().await {
+                        log::error!("Could not create file: {err}");
+                    }
+                }));
+            });
             klass.install_action("win.new_entry", None, move |window, _, _| {
                 window.new_entry_dialog();
             });
@@ -272,6 +279,34 @@ impl Window {
             }
         } else {
             let file = gio::File::for_path(&path);
+            self.open(&file).await?;
+        }
+
+        Ok(())
+    }
+
+    async fn new_biblio_action(&self) -> anyhow::Result<()> {
+        let dialog = gtk::FileChooserNative::new(
+            Some(&gettext("Create New Bibliography")),
+            Some(self),
+            gtk::FileChooserAction::Save,
+            Some(&gettext("Create")),
+            None,
+        );
+
+        let bib_filter = gtk::FileFilter::new();
+        bib_filter.set_name(Some(&gettext("Bibtex Files")));
+        bib_filter.add_mime_type("text/plain");
+        bib_filter.add_mime_type("text/x-bibtex");
+        bib_filter.add_pattern("*.bib");
+        dialog.add_filter(&bib_filter);
+
+        if gtk::ResponseType::Accept == dialog.run_future().await {
+            let file = dialog.file().unwrap();
+            let stream = file
+                .create_future(gio::FileCreateFlags::NONE, glib::Priority::default())
+                .await?;
+            stream.close_future(glib::Priority::default()).await?;
             self.open(&file).await?;
         }
 
