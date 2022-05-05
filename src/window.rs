@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+use cratebibtex::EntryExt;
 use gettextrs::gettext;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -398,7 +399,12 @@ impl Window {
         crate::spawn!(
             glib::clone!(@weak self as window, @weak dialog => async move {
                 if let Some((citation_key, type_)) = dialog.run().await {
-                    window.new_entry(&citation_key, type_);
+                    let is_present = window.imp().bib.borrow().entries().iter().map(|entry| entry.citation_key() == citation_key).fold(false, |acc, b| acc || b);
+                    if !is_present {
+                        window.new_entry(&citation_key, type_);
+                    } else {
+                        window.send_toast(&gettext("Entry with key {citation_key} already exists"));
+                    }
                 }
             })
         );

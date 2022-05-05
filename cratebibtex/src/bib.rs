@@ -137,4 +137,8 @@ impl Bib {
         }
         None
     }
+
+    pub fn entries(&self) -> Vec<crate::Entry> {
+        self.imp().entries.borrow().clone()
+    }
 }

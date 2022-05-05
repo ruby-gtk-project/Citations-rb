@@ -56,7 +56,6 @@ mod imp {
 
         #[template_callback]
         fn on_create_clicked(&self) {
-            // TODO verify there isnt another entry with that key already.
             let citation_key = self.entry_row.text().to_string();
             let type_ = cratebibtex::EntryType::from(self.combo_row.selected() as u32);
             let sender = self.sender.replace(None).unwrap();

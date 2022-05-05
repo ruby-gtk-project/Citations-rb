@@ -8,7 +8,6 @@ use std::rc::Rc;
 use crate::Format;
 use crate::{format, utils};
 
-// TODO Move formating stuff into formating.rs
 // TODO Make a better and more efficient parser
 mod imp {
     use super::*;
