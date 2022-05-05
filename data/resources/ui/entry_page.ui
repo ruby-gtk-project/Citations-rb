@@ -95,6 +95,7 @@
                                   <object class="GtkButton">
                                     <property name="valign">center</property>
                                     <property name="icon-name">external-link-symbolic</property>
+                                    <property name="tooltip-text" translatable="yes">Open in Browser</property>
                                     <signal name="clicked" handler="on_doi_clicked" swapped="true"/>
                                     <style>
                                       <class name="flat"/>
