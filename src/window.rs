@@ -110,6 +110,11 @@ mod imp {
                     log::error!("Could not search in Google Schoolar: {err}");
                 }
             });
+            klass.install_action("win.search-arxiv", None, move |obj, _, _| {
+                if let Err(err) = obj.search_arxiv_entry() {
+                    log::error!("Could not search in arXiv: {err}");
+                }
+            });
             klass.install_action("win.undo_delete", None, move |obj, _, _| {
                 if let Some((entry, pos, _toast)) = obj.imp().undo_entry.replace(None) {
                     obj.imp().bib.borrow().add_entry_at_pos(entry, pos);
@@ -451,6 +456,24 @@ impl Window {
         let year = entry.find_tag("year");
 
         let uri = utils::build_google_schoolar_url(&author, &title, year)?;
+        log::debug!("Trying to open {uri}");
+
+        gtk::show_uri(Some(self), &uri, gdk::CURRENT_TIME);
+
+        Ok(())
+    }
+
+    pub fn search_arxiv_entry(&self) -> anyhow::Result<()> {
+        use anyhow::Context;
+
+        let entry = self.imp().entry_page.entry().context("No entry selected")?;
+
+        let author = entry.find_tag_pretty("author").unwrap_or_else(|| "".into());
+        let title = entry.find_tag_pretty("title").unwrap_or_else(|| "".into());
+        let year = entry.find_tag("year");
+
+        let uri = utils::build_arxiv_url(&author, &title, year)?;
+        log::debug!("Trying to open {uri}");
 
         gtk::show_uri(Some(self), &uri, gdk::CURRENT_TIME);
 

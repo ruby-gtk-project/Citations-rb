@@ -43,6 +43,12 @@
         <attribute name="action">win.search-google-scholar</attribute>
       </item>
       <item>
+        <attribute name="label" translatable="yes" comments="arXiv is a proper name">_Search in arXiv</attribute>
+        <attribute name="action">win.search-arxiv</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label" translatable="yes">_Delete</attribute>
         <attribute name="action">win.delete_entry</attribute>
       </item>

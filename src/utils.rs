@@ -51,11 +51,13 @@ pub fn build_google_schoolar_url(
 
     url.push_str(&format!("q={author} {title}"));
 
-    if let Some(i) = year {
-        // from
-        url.push_str(&format!("&as_ylo={i}"));
-        // to
-        url.push_str(&format!("&as_yhi={i}"));
+    if let Some(year) = year {
+        if !year.is_empty() && year.parse::<u32>().is_ok() {
+            // from
+            url.push_str(&format!("&as_ylo={year}"));
+            // to
+            url.push_str(&format!("&as_yhi={year}"));
+        }
     }
     url.push_str("&scisbd=0");
 
@@ -70,6 +72,21 @@ pub fn build_google_schoolar_url(
     url.push_str("&filter=1");
     url.push_str("&as_vis=1");
 
+    let sanitized = url::Url::parse(&url)?;
+    Ok(sanitized.to_string())
+}
+
+pub fn build_arxiv_url(author: &str, title: &str, year: Option<String>) -> anyhow::Result<String> {
+    let mut url = format!("https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term={title}&terms-0-field=title&terms-1-operator=OR&terms-1-term={author}&terms-1-field=author&classification-physics_archives=all&classification-include_cross_list=include&abstracts=show&size=25&order=-announced_date_first");
+    if let Some(year) = year {
+        if !year.is_empty() && year.parse::<u32>().is_ok() {
+            url.push_str(&format!("&date-filter_by=specific_year&date-year={year}&date-from_date=&date-to_date=&date-date_type=submitted_date"));
+        } else {
+            url.push_str("&date-filter_by=all_dates&date-year=&date-from_date=&date-to_date=&date-date_type=submitted_date");
+        }
+    } else {
+        url.push_str("&date-filter_by=all_dates&date-year=&date-from_date=&date-to_date=&date-date_type=submitted_date");
+    }
     let sanitized = url::Url::parse(&url)?;
     Ok(sanitized.to_string())
 }
