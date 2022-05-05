@@ -16,8 +16,6 @@
               <object class="AdwClampScrollable">
                 <child>
                   <object class="GtkListView" id="list_view">
-                    <property name="single-click-activate">True</property>
-                    <signal name="activate" handler="on_activate" swapped="true"/>
                     <style>
                       <class name="navigation-sidebar"/>
                     </style>

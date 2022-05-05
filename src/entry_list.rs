@@ -38,26 +38,10 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
             obj.init_template();
-        }
-    }
-
-    #[gtk::template_callbacks]
-    impl EntryList {
-        #[template_callback]
-        fn on_activate(&self, pos: u32, listview: gtk::ListView) {
-            let entry = listview
-                .model()
-                .unwrap()
-                .item(pos)
-                .unwrap()
-                .downcast::<cratebibtex::Entry>()
-                .unwrap();
-            self.instance().entry_selected(&entry);
         }
     }
 
@@ -78,7 +62,17 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            let selection = gtk::NoSelection::new(Some(&self.filter_model));
+            let selection = gtk::SingleSelection::new(Some(&self.filter_model));
+            selection.connect_selected_notify(glib::clone!(@weak obj => move |model| {
+                let pos = model.selected();
+                let entry = model
+                    .item(pos)
+                    .unwrap()
+                    .downcast::<cratebibtex::Entry>()
+                    .unwrap();
+                obj.entry_selected(&entry);
+            }));
+
             let factory = gtk::SignalListItemFactory::new();
 
             factory.connect_setup(|_, item| {
