@@ -10,3 +10,4 @@ Keywords=Gnome;GTK;
 Icon=@icon@
 StartupNotify=true
 MimeType=text/x-bibtex;
+X-GNOME-SingleWindow=false

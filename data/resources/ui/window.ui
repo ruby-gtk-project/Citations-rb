@@ -14,7 +14,7 @@
       </item>
       <item>
         <attribute name="label" translatable="yes">_About Citations</attribute>
-        <attribute name="action">app.about</attribute>
+        <attribute name="action">win.about</attribute>
       </item>
     </section>
   </menu>
@@ -37,14 +37,11 @@
                 <child>
                   <object class="AdwHeaderBar">
                     <child>
-                      <object class="AdwSplitButton">
+                      <object class="AdwSplitButton" id="split_button">
                         <property name="label" translatable="yes">_Open</property>
                         <property name="use-underline">True</property>
                         <property name="action-name">win.open</property>
                         <property name="action-target">''</property>
-                        <binding name="menu-model">
-                          <lookup name="menu-model">split_button</lookup>
-                        </binding>
                       </object>
                     </child>
                   </object>
@@ -70,14 +67,6 @@
                         <property name="title-widget">
                           <object class="AdwWindowTitle"/>
                         </property>
-                        <child>
-                          <object class="AdwSplitButton" id="split_button">
-                            <property name="label" translatable="yes">_Open</property>
-                            <property name="use-underline">True</property>
-                            <property name="action-name">win.open</property>
-                            <property name="action-target">''</property>
-                          </object>
-                        </child>
                         <child>
                           <object class="GtkButton">
                             <property name="sensitive">False</property>

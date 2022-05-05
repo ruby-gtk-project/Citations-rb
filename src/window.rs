@@ -5,7 +5,7 @@ use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
 use crate::application::Application;
-use crate::config::{APP_ID, PROFILE};
+use crate::config::{APP_ID, PROFILE, VERSION};
 
 mod imp {
     use super::*;
@@ -100,6 +100,9 @@ mod imp {
                 if let Some((entry, pos, _toast)) = obj.imp().undo_entry.replace(None) {
                     obj.imp().bib.borrow().add_entry_at_pos(entry, pos);
                 }
+            });
+            klass.install_action("win.about", None, move |obj, _, _| {
+                obj.show_about_dialog();
             });
         }
 
@@ -420,5 +423,22 @@ impl Window {
                     .navigate(adw::NavigationDirection::Back);
             };
         };
+    }
+
+    fn show_about_dialog(&self) {
+        let dialog = gtk::AboutDialog::builder()
+            .logo_icon_name(APP_ID)
+            .license_type(gtk::License::Gpl30)
+            .comments(&gettext("Manage your bibliography"))
+            .website("https://gitlab.gnome.org/msandova/citations/")
+            .version(VERSION)
+            .transient_for(self)
+            .translator_credits(&gettext("translator-credits"))
+            .modal(true)
+            .authors(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
+            .artists(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
+            .build();
+
+        dialog.present();
     }
 }

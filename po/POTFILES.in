@@ -9,7 +9,6 @@ data/resources/ui/entry_page.ui
 data/resources/ui/new_entry_dialog.ui
 data/resources/ui/shortcuts.ui
 data/resources/ui/window.ui
-src/application.rs
 src/citation_preview.rs
 src/main.rs
 src/utils.rs
