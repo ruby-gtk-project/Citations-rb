@@ -88,13 +88,12 @@
             <child>
               <object class="GtkDropDown" id="drop_down">
                 <property name="model">
-                  <object class="GtkStringList">
-                    <items>
-                      <item translatable="yes" comments="Plain as in Plain Text">Plain</item>
-                      <item>Markdown</item>
-                      <item>LaTeX</item>
-                    </items>
+                  <object class="AdwEnumListModel">
+                    <property name="enum-type">Format</property>
                   </object>
+                </property>
+                <property name="expression">
+                  <closure type="gchararray" function="format_type_name"/>
                 </property>
               </object>
             </child>
