@@ -95,6 +95,18 @@ impl Bib {
         n_items
     }
 
+    pub fn add_entry_at_pos(&self, entry: Entry, pos: u32) {
+        let mut pos = pos;
+        {
+            // We create a block to free the borrow asap.
+            let mut entries = self.imp().entries.borrow_mut();
+            pos = pos.min(entries.len() as u32);
+            entries.insert(pos as usize, entry);
+        };
+        self.imp().n_items.set(self.imp().n_items.get() + 1);
+        self.items_changed(pos, 0, 1);
+    }
+
     pub fn remove_entry(&self, citation_key: &str) {
         let mut entries = self.imp().entries.borrow_mut();
         let mut index = None;

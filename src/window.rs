@@ -20,6 +20,7 @@ mod imp {
         pub bib: RefCell<cratebibtex::Bib>,
         pub settings: gio::Settings,
         pub file: RefCell<Option<gio::File>>,
+        pub undo_entry: RefCell<Option<(cratebibtex::Entry, u32)>>,
 
         #[template_child]
         pub empty_state_stack: TemplateChild<gtk::Stack>,
@@ -49,6 +50,7 @@ mod imp {
                 settings: gio::Settings::new(APP_ID),
                 bib: Default::default(),
                 file: Default::default(),
+                undo_entry: Default::default(),
                 entry_list: TemplateChild::default(),
                 empty_state_stack: TemplateChild::default(),
                 entry_page: TemplateChild::default(),
@@ -93,6 +95,11 @@ mod imp {
             });
             klass.install_action("win.delete_entry", None, move |obj, _, _| {
                 obj.delete_entry();
+            });
+            klass.install_action("win.undo_delete", None, move |obj, _, _| {
+                if let Some((entry, pos)) = obj.imp().undo_entry.replace(None) {
+                    obj.imp().bib.borrow().add_entry_at_pos(entry.clone(), pos);
+                }
             });
         }
 
@@ -386,20 +393,25 @@ impl Window {
     }
 
     fn delete_entry(&self) {
-        let pos = if let Some(entry) = self.imp().entry_page.entry() {
-            self.bib().find_pos(&entry)
-        } else {
-            None
-        };
-        if let Some(pos) = pos {
-            self.imp().entry_page.set_entry(None);
-            self.bib().remove_pos(pos);
-            // TODO Implement Undo
-            self.send_toast(&gettext("Entry Deleted"));
-            self.imp().secondary_menu_button.set_sensitive(false);
-            self.imp()
-                .main_leaflet
-                .navigate(adw::NavigationDirection::Back);
+        if let Some(entry) = self.imp().entry_page.entry() {
+            if let Some(pos) = self.bib().find_pos(&entry) {
+                self.imp().undo_entry.replace(Some((entry.clone(), pos)));
+                self.imp().entry_page.set_entry(None);
+                self.bib().remove_pos(pos);
+
+                let toast = adw::Toast::new(&gettext("Entry Deleted"));
+                toast.set_action_name(Some("win.undo_delete"));
+                toast.set_button_label(Some(&gettext("Undo")));
+                toast.connect_dismissed(glib::clone!(@weak self as obj => move |_| {
+                    obj.imp().undo_entry.replace(None);
+                }));
+                self.imp().toast_overlay.add_toast(&toast);
+
+                self.imp().secondary_menu_button.set_sensitive(false);
+                self.imp()
+                    .main_leaflet
+                    .navigate(adw::NavigationDirection::Back);
+            };
         };
     }
 }
