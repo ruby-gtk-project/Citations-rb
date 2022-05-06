@@ -157,14 +157,8 @@ impl Entry {
 
     pub fn find_tag_pretty(&self, tag: &str) -> Option<String> {
         let value = self.find_tag(tag)?;
-        let s = format::replace_c(&value)
-            .split_whitespace()
-            .collect::<Vec<_>>()
-            .join(" ")
-            .replace(|c| matches!(c, '{' | '}' | '$'), "");
-        Some(format::replace_latex_accents(
-            &format::replace_latex_symbols(&s),
-        ))
+
+        Some(format::texer(&value))
     }
 
     pub fn fields(&self) -> Vec<String> {

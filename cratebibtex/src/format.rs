@@ -1,7 +1,6 @@
 use gettextrs::gettext;
 use once_cell::sync::Lazy;
 use regex::Regex;
-use std::collections::HashMap;
 use std::fmt;
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
@@ -149,71 +148,109 @@ pub(crate) fn format_authors(authors: &str) -> String {
     vec_authors.join(", ")
 }
 
-pub(crate) fn replace_c(citation: &str) -> String {
-    static RE: Lazy<Regex> =
-        Lazy::new(|| Regex::new(r#"\\c[\s\{]?(?P<letter>[a-zA-z])\}?"#).unwrap());
-    RE.replace_all(citation, |captures: &regex::Captures| {
-        format!("{}{}", &captures["letter"], '̧')
-    })
-    .to_string()
-}
+static COMBINING_MAP: &[(char, char)] = &[
+    ('\'', '\u{301}'),
+    ('`', '\u{300}'),
+    ('~', '\u{303}'),
+    ('^', '̂'),
+    ('"', '\u{308}'), // COMBINING DIAERESIS
+];
 
-pub(crate) fn replace_latex_symbols(citation: &str) -> String {
-    // See https://en.m.wikibooks.org/wiki/LaTeX/Special_Characters
-    static RE: Lazy<Regex> = Lazy::new(|| {
-        Regex::new(r#"[\s\{]?\\(?P<symbol>[oOlL]|aa|AA|ae|AE|ss)(?P<end>[\}\s\\\{])"#).unwrap()
-    });
-    let replaces = HashMap::from([
-        ("o", "ø"),
-        ("O", "Ø"),
-        ("ae", "æ"),
-        ("AE", "Æ"),
-        ("aa", "å"),
-        ("AA", "Å"),
-        ("l", "ł"),
-        ("L", "Ł"),
-        ("ss", "ß"),
-    ]);
-    RE.replace_all(citation, |captures: &regex::Captures| {
-        let mut end = &captures["end"];
-        if end == "}" {
-            end = ""
+static COMBINING_MAP_ALPHA: &[(char, char)] = &[
+    ('c', '\u{327}'), // COMBINING CEDILLA
+    ('u', '̆'),
+    ('v', '̌'),
+];
+
+static SYMBOLS_MAP: &[(char, char)] = &[('o', 'ø'), ('O', 'Ø'), ('l', 'ł'), ('L', 'Ł')];
+
+pub fn push_math<T: Iterator<Item = char>>(chars: &mut T, output: &mut String) {
+    match chars.next() {
+        Some('$') => (),
+        Some(c) => {
+            output.push(c);
+            push_math(chars, output);
         }
-        format!("{}{}", replaces[&captures["symbol"]], end)
-    })
-    .to_string()
+        _ => (),
+    }
 }
 
-pub(crate) fn replace_latex_accents(citation: &str) -> String {
-    static RE: Lazy<Regex> =
-        Lazy::new(|| Regex::new(r#"\\(?P<symbol>['`\^"u~v])(?P<letter>[a-zA-z])"#).unwrap());
-
-    let replaces = HashMap::from([
-        ("'", '́'),
-        ("`", '̀'),
-        ("u", '̆'),
-        ("^", '̂'),
-        (r#"""#, '̈'),
-        ("~", '̃'),
-        ("v", '̌'),
-    ]);
-    RE.replace_all(citation, |captures: &regex::Captures| {
-        format!("{}{}", &captures["letter"], replaces[&captures["symbol"]])
-    })
-    .to_string()
-}
-
-pub fn pretty_author(author: &str) -> String {
-    replace_latex_accents(&replace_latex_symbols(&replace_c(author)))
-}
-
-pub fn pretty_title(title: &str) -> String {
-    let s = replace_c(title)
-        .split_whitespace()
-        .collect::<Vec<_>>()
-        .join(" ")
-        .replace(|c| matches!(c, '{' | '}' | '$'), "");
-    replace_latex_accents(&replace_latex_symbols(&s))
+pub fn texer(input: &str) -> String {
+    let mut output = String::new();
+    let mut chars = input.chars();
+    while let Some(c) = chars.next() {
+        match c {
+            '$' => push_math(&mut chars, &mut output),
+            '{' => {
+                if let Some(c) = chars.next() {
+                    let checkpoint = chars.clone();
+                    match c {
+                        '$' => push_math(&mut chars, &mut output),
+                        '\\' => {
+                            if let (Some(symbol), Some(paren)) = (chars.next(), chars.next()) {
+                                if paren == '}' {
+                                    if let Some((_, to)) =
+                                        SYMBOLS_MAP.iter().find(|(from, _)| symbol == *from)
+                                    {
+                                        output.push(*to);
+                                    } else {
+                                        chars = checkpoint;
+                                    }
+                                } else if let Some((_, to)) =
+                                    COMBINING_MAP.iter().find(|(from, _)| symbol == *from)
+                                {
+                                    output.push(paren);
+                                    output.push(*to);
+                                    if let Some('}') = chars.next() {
+                                        continue;
+                                    }
+                                } else {
+                                    output.push(symbol);
+                                    output.push(paren);
+                                }
+                            }
+                        }
+                        c => output.push(c),
+                    }
+                }
+            }
+            '\\' => {
+                if let Some(compose) = chars.next() {
+                    let checkpoint = chars.clone();
+                    if let Some((_, to)) = COMBINING_MAP_ALPHA
+                        .iter()
+                        .find(|(from, _)| compose == *from)
+                    {
+                        if let (Some('{'), Some(c), Some('}')) =
+                            (chars.next(), chars.next(), chars.next())
+                        {
+                            output.push(c);
+                            output.push(*to);
+                        } else {
+                            chars = checkpoint;
+                            output.push(compose);
+                        }
+                    } else if let Some((_, to)) =
+                        COMBINING_MAP.iter().find(|(from, _)| compose == *from)
+                    {
+                        if let Some(c) = chars.next() {
+                            output.push(c);
+                            output.push(*to);
+                        } else {
+                            output.push(compose);
+                        }
+                    } else {
+                        output.push(compose);
+                    }
+                } else {
+                    output.push(c);
+                }
+            }
+            '}' => (),
+            c => output.push(c),
+        }
+    }
+    output
 }
 
 #[cfg(test)]
@@ -274,15 +311,16 @@ mod tests {
     }
 
     #[test]
-    fn test_zalgo() {
-        assert_eq!(replace_latex_accents(r"\'u"), "u\u{301}");
-        assert_eq!(replace_c(r"\c c"), "c\u{0327}");
-        assert_eq!(replace_c(r"\c{c}"), "c\u{0327}");
-        assert_eq!(replace_latex_symbols(r"\o a"), "ø a");
-        assert_eq!(replace_latex_symbols(r"{\o}a"), "øa");
-        assert_eq!(replace_latex_symbols(r"{\o}"), "ø");
-        assert_eq!(replace_latex_symbols(r"{\ss}"), "ß");
-        // FIXME
-        // assert_eq!(replace_latex_symbols(r"\o"), "ø");
+    fn test_texer() {
+        assert_eq!(texer(r"\'u"), "u\u{301}");
+        assert_eq!(texer(r"\c{c}"), "c\u{0327}");
+        assert_eq!(texer(r"{\o}a"), "øa");
+        assert_eq!(texer(r"{\o}"), "ø");
+        assert_eq!(texer(r#"{\"o}"#), "o\u{308}");
+        assert_eq!(texer(r"a {some}"), "a some");
+        assert_eq!(texer(r"a {\some}"), "a some");
+        assert_eq!(texer(r"a {$some$}"), "a some");
+        assert_eq!(texer(r"a {$so\ ^\ast asda \me$}"), r"a so\ ^\ast asda \me");
+        // assert_eq!(texer(r"{\ss}"), "ß");
     }
 }

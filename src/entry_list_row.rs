@@ -42,7 +42,7 @@ mod imp {
     impl EntryListRow {
         #[template_callback]
         fn pretty_author(&self, author: &str) -> String {
-            let author = cratebibtex::format::pretty_author(author);
+            let author = cratebibtex::format::texer(author);
             if author.is_empty() {
                 "<i>Author not set</i>".to_string()
             } else {
@@ -52,7 +52,7 @@ mod imp {
 
         #[template_callback]
         fn pretty_title(&self, title: &str) -> String {
-            let title = cratebibtex::format::pretty_title(title);
+            let title = cratebibtex::format::texer(title);
             if title.is_empty() {
                 "<i>Title not set</i>".to_string()
             } else {
