@@ -4,14 +4,14 @@
 
 # Citations
 
-<img src="https://gitlab.gnome.org/msandova/citations/raw/master/data/icons/org.gnome.World.Citations.svg" width="128" height="128" />
+<img src="https://gitlab.gnome.org/World/citations/raw/master/data/icons/org.gnome.World.Citations.svg" width="128" height="128" />
 <p>Manage your bibliographies using the BibTeX format.</p>
 
 
 ## Screenshots
 
 <div align="center">
-![screenshot](https://gitlab.gnome.org/msandova/citations/raw/master/data/screenshots/main_window.png)
+![screenshot](https://gitlab.gnome.org/World/citations/raw/master/data/screenshots/main_window.png)
 </div>
 
 ## Hack on Citations

@@ -525,7 +525,7 @@ impl Window {
             .logo_icon_name(APP_ID)
             .license_type(gtk::License::Gpl30)
             .comments(&gettext("Manage your bibliography"))
-            .website("https://gitlab.gnome.org/msandova/citations/")
+            .website("https://gitlab.gnome.org/World/citations/")
             .version(VERSION)
             .transient_for(self)
             .translator_credits(&gettext("translator-credits"))
