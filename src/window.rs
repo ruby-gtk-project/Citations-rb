@@ -14,12 +14,13 @@ mod imp {
 
     use adw::subclass::prelude::*;
     use gtk::CompositeTemplate;
+    use once_cell::sync::OnceCell;
     use std::cell::RefCell;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/window.ui")]
     pub struct Window {
-        pub bib: RefCell<cratebibtex::Bib>,
+        pub bib: OnceCell<cratebibtex::Bib>,
         pub settings: gio::Settings,
         pub file: RefCell<Option<gio::File>>,
         pub undo_entry: RefCell<Option<(cratebibtex::Entry, u32, adw::Toast)>>,
@@ -117,7 +118,7 @@ mod imp {
             });
             klass.install_action("win.undo_delete", None, move |obj, _, _| {
                 if let Some((entry, pos, _toast)) = obj.imp().undo_entry.replace(None) {
-                    obj.imp().bib.borrow().add_entry_at_pos(entry, pos);
+                    obj.imp().bib.get().unwrap().add_entry_at_pos(entry, pos);
                 }
             });
             klass.install_action("win.about", None, move |obj, _, _| {
@@ -196,7 +197,7 @@ mod imp {
                     if let Ok(file) = value.get::<gio::File>() {
                         if file.query_exists(gio::Cancellable::NONE) {
                             crate::spawn!(glib::clone!(@weak obj => async move {
-                                if let Err(err) = obj.open(&file).await {
+                                if let Err(err) = obj.open_wrapper(&file).await {
                                     log::error!("Could not open file: {err:?}")
                                 };
                             }));
@@ -287,11 +288,11 @@ impl Window {
             let response = dialog.run_future().await;
             if response == gtk::ResponseType::Accept {
                 let file = dialog.file().unwrap();
-                self.open(&file).await?;
+                self.open_wrapper(&file).await?;
             }
         } else {
             let file = gio::File::for_path(&path);
-            self.open(&file).await?;
+            self.open_wrapper(&file).await?;
         }
 
         Ok(())
@@ -319,7 +320,27 @@ impl Window {
                 .create_future(gio::FileCreateFlags::NONE, glib::Priority::default())
                 .await?;
             stream.close_future(glib::Priority::default()).await?;
-            self.open(&file).await?;
+            self.open_wrapper(&file).await?;
+        }
+
+        Ok(())
+    }
+
+    async fn open_wrapper(&self, file: &gio::File) -> anyhow::Result<()> {
+        if self.imp().bib.get().is_some() {
+            let app = self
+                .application()
+                .unwrap()
+                .downcast::<crate::Application>()
+                .unwrap();
+            let window = Window::new(&app);
+            let group = gtk::WindowGroup::new();
+            group.add_window(&window);
+            window.open(file).await?;
+
+            window.present();
+        } else {
+            self.open(file).await?;
         }
 
         Ok(())
@@ -332,7 +353,7 @@ impl Window {
         bib.parse(&data)?;
 
         self.imp().entry_list.populate(&bib);
-        self.imp().bib.replace(bib);
+        self.imp().bib.set(bib).unwrap();
         self.imp().file.replace(Some(file.clone()));
         self.imp().search_bar.set_key_capture_widget(Some(self));
         self.imp()
@@ -396,7 +417,7 @@ impl Window {
     }
 
     pub fn bib(&self) -> cratebibtex::Bib {
-        self.imp().bib.borrow().clone()
+        self.imp().bib.get().cloned().unwrap()
     }
 
     pub fn send_toast(&self, text: &str) {
@@ -410,7 +431,7 @@ impl Window {
         crate::spawn!(
             glib::clone!(@weak self as window, @weak dialog => async move {
                 if let Some((citation_key, type_)) = dialog.run().await {
-                    if window.imp().bib.borrow().key_exists(&citation_key) {
+                    if window.imp().bib.get().unwrap().key_exists(&citation_key) {
                         window.send_toast(&gettext("Entry with key {citation_key} already exists"));
                     } else {
                         window.new_entry(&citation_key, type_);
@@ -422,7 +443,7 @@ impl Window {
 
     pub fn new_entry(&self, citation_key: &str, type_: cratebibtex::EntryType) {
         let entry = cratebibtex::Entry::new(citation_key, type_);
-        let pos = self.imp().bib.borrow().add_entry(entry);
+        let pos = self.imp().bib.get().unwrap().add_entry(entry);
         self.imp().entry_list.set_selected(pos);
     }
 
