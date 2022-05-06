@@ -125,7 +125,7 @@ mod imp {
                 .downcast::<crate::Window>()
                 .unwrap();
 
-            if !window.bib().key_exists(&text) || &old_key == &text {
+            if !window.bib().key_exists(&text) || old_key == text {
                 entry_row.remove_css_class("error");
                 entry.set_citation_key(&text);
             } else {
@@ -218,7 +218,7 @@ impl EntryPage {
                 self.imp()
                     .citation_key_entry
                     .set_text(&entry.citation_key());
-                self.bind_extras_list_model(&entry);
+                self.bind_extras_list_model(entry);
             } else {
                 self.imp()
                     .stack
