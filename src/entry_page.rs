@@ -5,6 +5,7 @@ use gettextrs::gettext;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 use gtk::{prelude::*, CompositeTemplate};
+use once_cell::sync::OnceCell;
 
 use crate::utils;
 
@@ -209,9 +210,9 @@ impl EntryPage {
     pub fn set_entry(&self, entry: Option<&cratebibtex::Entry>) {
         if entry != self.imp().entry.replace(entry.cloned()).as_ref() {
             self.notify("entry");
+            self.bind_entry(entry);
 
             if let Some(entry) = entry {
-                self.bind_entry(entry);
                 self.imp()
                     .stack
                     .set_visible_child(&self.imp().non_empty_page.get());
@@ -250,8 +251,13 @@ impl EntryPage {
         self.imp().entry.borrow().clone()
     }
 
-    fn bind_entry(&self, entry: &cratebibtex::Entry) {
-        self.imp().bindings.set_source(Some(entry));
+    fn bind_entry(&self, entry: Option<&cratebibtex::Entry>) {
+        static INITIALIZED: OnceCell<()> = OnceCell::new();
+        self.imp().bindings.set_source(entry);
+
+        if INITIALIZED.get().is_some() || entry.is_none() {
+            return;
+        }
 
         self.imp()
             .bindings
@@ -278,5 +284,9 @@ impl EntryPage {
             .bind("entry-type", &*self.imp().entry_type_entry, "selected")
             .flags(glib::BindingFlags::SYNC_CREATE)
             .build();
+
+        if entry.is_some() {
+            INITIALIZED.set(()).unwrap();
+        }
     }
 }
