@@ -1,5 +1,5 @@
 use gettextrs::gettext;
-use once_cell::sync::OnceCell;
+use once_cell::sync::Lazy;
 use regex::Regex;
 use std::collections::HashMap;
 use std::fmt;
@@ -59,10 +59,10 @@ impl Format {
 pub(crate) fn format_plain(citation: &str) -> String {
     const MATCHES: &[char] = &['*', '_'];
 
-    static RE: OnceCell<Regex> = OnceCell::new();
-    let re = RE.get_or_init(|| Regex::new(r"\*\S[^\*]+\S\*|\*{2}[^\*]+\*{2}|_\S[^_]+\S_").unwrap());
+    static RE: Lazy<Regex> =
+        Lazy::new(|| Regex::new(r"\*\S[^\*]+\S\*|\*{2}[^\*]+\*{2}|_\S[^_]+\S_").unwrap());
 
-    re.replace_all(citation, |captures: &regex::Captures| {
+    RE.replace_all(citation, |captures: &regex::Captures| {
         captures[0].trim_matches(MATCHES).to_string()
     })
     .to_string()
@@ -70,14 +70,11 @@ pub(crate) fn format_plain(citation: &str) -> String {
 
 pub(crate) fn format_latex(citation: &str, key: &str) -> String {
     const MATCHES: &[char] = &['*', '_'];
-    static IT_RE: OnceCell<Regex> = OnceCell::new();
-    static BF_RE: OnceCell<Regex> = OnceCell::new();
+    static IT_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\*[^\*]+\*|_\S[^_]+\S_").unwrap());
+    static BF_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\*{2}(?P<b>[^\*]+)\*{2}").unwrap());
 
-    let bf_re = BF_RE.get_or_init(|| Regex::new(r"\*{2}(?P<b>[^\*]+)\*{2}").unwrap());
-    let it_re = IT_RE.get_or_init(|| Regex::new(r"\*[^\*]+\*|_\S[^_]+\S_").unwrap());
-
-    let formated = bf_re.replace_all(citation, r"\textbf{$b}").to_string();
-    let formated = it_re
+    let formated = BF_RE.replace_all(citation, r"\textbf{$b}").to_string();
+    let formated = IT_RE
         .replace_all(&formated, |captures: &regex::Captures| {
             format!(r"\emph{{{}}}", captures[0].trim_matches(MATCHES))
         })
@@ -87,63 +84,54 @@ pub(crate) fn format_latex(citation: &str, key: &str) -> String {
 }
 
 pub(crate) fn clear_citation(citation: &str) -> String {
-    static CLEAR3_REGEX: OnceCell<Regex> = OnceCell::new();
-    static CLEAR_END_REGEX: OnceCell<Regex> = OnceCell::new();
-    static CLEAR_START_REGEX: OnceCell<Regex> = OnceCell::new();
+    static CLEAR_RE: Lazy<Regex> =
+        Lazy::new(|| Regex::new(r"\s*([,\.;:])(\s*[,\.;:]\s*)+|(\s)[\n\s]+").unwrap());
+    static CLEAR_END_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\s*[,\.;:]\s*$").unwrap());
+    static CLEAR_START_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"^(\s*[,\.]\s*)+").unwrap());
 
-    static NO_REGEX: OnceCell<Regex> = OnceCell::new();
+    static NO_RE: Lazy<Regex> =
+        Lazy::new(|| Regex::new(r"([\.,])\s*([Nn]o|[Vv]ol|pp)\.\s*[,\.]\s*").unwrap());
 
-    static EMPTY_REGEX: OnceCell<Regex> = OnceCell::new();
+    static EMPTY_RE: Lazy<Regex> =
+        Lazy::new(|| Regex::new(r#"("\s*"\s*|'\s*'\s*|\(\s*\)\s*|`\s*`\s*|\{\s*\}\s*)"#).unwrap());
 
-    let re3 = CLEAR3_REGEX
-        .get_or_init(|| Regex::new(r"\s*([,\.;:])(\s*[,\.;:]\s*)+|(\s)[\n\s]+").unwrap());
-    let no_re =
-        NO_REGEX.get_or_init(|| Regex::new(r"([\.,])\s*([Nn]o|[Vv]ol|pp)\.\s*[,\.]\s*").unwrap());
-    let end_re = CLEAR_END_REGEX.get_or_init(|| Regex::new(r"\s*[,\.;:]\s*$").unwrap());
-    let start_re = CLEAR_START_REGEX.get_or_init(|| Regex::new(r"^(\s*[,\.]\s*)+").unwrap());
-
-    let re_empty = EMPTY_REGEX.get_or_init(|| {
-        Regex::new(r#"("\s*"\s*|'\s*'\s*|\(\s*\)\s*|`\s*`\s*|\{\s*\}\s*)"#).unwrap()
-    });
     let mut formated = String::from(citation);
 
     // Remove "no.  ," and "no,   ."
-    formated = no_re.replace_all(&formated, "$1 ").to_string();
+    formated = NO_RE.replace_all(&formated, "$1 ").to_string();
 
     // Remove empty quotes, braces, etc
-    while re_empty.is_match(&formated) {
-        formated = re_empty.replace_all(&formated, "").to_string();
+    while EMPTY_RE.is_match(&formated) {
+        formated = EMPTY_RE.replace_all(&formated, "").to_string();
     }
 
     // Flatten consecutive punctuation
-    formated = re3.replace_all(&formated, "$1 ").to_string();
+    formated = CLEAR_RE.replace_all(&formated, "$1 ").to_string();
     // Turn last punctuation into a period
-    formated = end_re.replace_all(&formated, ".").to_string();
+    formated = CLEAR_END_RE.replace_all(&formated, ".").to_string();
     // Remove punctuation at the start, e.g. " , some title" into "some title"
-    formated = start_re.replace_all(&formated, "").to_string();
+    formated = CLEAR_START_RE.replace_all(&formated, "").to_string();
 
     formated
 }
 
 pub(crate) fn clear_markdown(citation: &str) -> String {
-    static REGEX: OnceCell<Regex> = OnceCell::new();
-    let re = REGEX.get_or_init(|| Regex::new(r#"(\*{2}\s*\*{2}|\*\s+\*|_\s*_)"#).unwrap());
+    static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r#"(\*{2}\s*\*{2}|\*\s+\*|_\s*_)"#).unwrap());
 
-    re.replace_all(citation, "").to_string()
+    RE.replace_all(citation, "").to_string()
 }
 
 pub(crate) fn clear_non_markdown(citation: &str) -> String {
-    static REGEX: OnceCell<Regex> = OnceCell::new();
-    let re = REGEX.get_or_init(|| Regex::new(r#"\*\s*\*\s*|\*{2}\s*\*{2}\s*|_\s*_\s*"#).unwrap());
+    static RE: Lazy<Regex> =
+        Lazy::new(|| Regex::new(r#"\*\s*\*\s*|\*{2}\s*\*{2}\s*|_\s*_\s*"#).unwrap());
 
-    re.replace_all(citation, "").to_string()
+    RE.replace_all(citation, "").to_string()
 }
 
 pub(crate) fn clear_latex(citation: &str) -> String {
-    static REGEX: OnceCell<Regex> = OnceCell::new();
-    let re = REGEX.get_or_init(|| Regex::new(r"\\emph\{\s*\}|\\textbf\{\s*\}").unwrap());
+    static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\\emph\{\s*\}|\\textbf\{\s*\}").unwrap());
 
-    re.replace_all(citation, "").to_string()
+    RE.replace_all(citation, "").to_string()
 }
 
 pub(crate) fn format_authors(authors: &str) -> String {
@@ -162,9 +150,9 @@ pub(crate) fn format_authors(authors: &str) -> String {
 }
 
 pub(crate) fn replace_c(citation: &str) -> String {
-    static RE: OnceCell<Regex> = OnceCell::new();
-    let re = RE.get_or_init(|| Regex::new(r#"\\c[\s\{]?(?P<letter>[a-zA-z])\}?"#).unwrap());
-    re.replace_all(citation, |captures: &regex::Captures| {
+    static RE: Lazy<Regex> =
+        Lazy::new(|| Regex::new(r#"\\c[\s\{]?(?P<letter>[a-zA-z])\}?"#).unwrap());
+    RE.replace_all(citation, |captures: &regex::Captures| {
         format!("{}{}", &captures["letter"], '̧')
     })
     .to_string()
@@ -172,8 +160,7 @@ pub(crate) fn replace_c(citation: &str) -> String {
 
 pub(crate) fn replace_latex_symbols(citation: &str) -> String {
     // See https://en.m.wikibooks.org/wiki/LaTeX/Special_Characters
-    static RE: OnceCell<Regex> = OnceCell::new();
-    let re = RE.get_or_init(|| {
+    static RE: Lazy<Regex> = Lazy::new(|| {
         Regex::new(r#"[\s\{]?\\(?P<symbol>[oOlL]|aa|AA|ae|AE|ss)(?P<end>[\}\s\\\{])"#).unwrap()
     });
     let replaces = HashMap::from([
@@ -187,7 +174,7 @@ pub(crate) fn replace_latex_symbols(citation: &str) -> String {
         ("L", "Ł"),
         ("ss", "ß"),
     ]);
-    re.replace_all(citation, |captures: &regex::Captures| {
+    RE.replace_all(citation, |captures: &regex::Captures| {
         let mut end = &captures["end"];
         if end == "}" {
             end = ""
@@ -198,9 +185,8 @@ pub(crate) fn replace_latex_symbols(citation: &str) -> String {
 }
 
 pub(crate) fn replace_latex_accents(citation: &str) -> String {
-    static RE: OnceCell<Regex> = OnceCell::new();
-    let re =
-        RE.get_or_init(|| Regex::new(r#"\\(?P<symbol>['`\^"u~v])(?P<letter>[a-zA-z])"#).unwrap());
+    static RE: Lazy<Regex> =
+        Lazy::new(|| Regex::new(r#"\\(?P<symbol>['`\^"u~v])(?P<letter>[a-zA-z])"#).unwrap());
 
     let replaces = HashMap::from([
         ("'", '́'),
@@ -211,7 +197,7 @@ pub(crate) fn replace_latex_accents(citation: &str) -> String {
         ("~", '̃'),
         ("v", '̌'),
     ]);
-    re.replace_all(citation, |captures: &regex::Captures| {
+    RE.replace_all(citation, |captures: &regex::Captures| {
         format!("{}{}", &captures["letter"], replaces[&captures["symbol"]])
     })
     .to_string()

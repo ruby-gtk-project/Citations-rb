@@ -625,7 +625,7 @@ dependencies = [
 [[package]]
 name = "nom-bibtex"
 version = "0.3.0"
-source = "git+https://github.com/A6GibKm/nom-bibtex.git#11b39e30ce89a17f6de97f7d76b50d33e8a4b5f5"
+source = "git+https://github.com/A6GibKm/nom-bibtex.git#ddc6a8fc85aa27b76a521c1d135852e89f53fd65"
 dependencies = [
  "nom",
  "nom-tracable",

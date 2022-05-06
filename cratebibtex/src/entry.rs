@@ -1,6 +1,6 @@
 use glib::prelude::*;
 use glib::subclass::prelude::*;
-use once_cell::sync::OnceCell;
+use once_cell::sync::Lazy;
 use regex::Regex;
 use std::collections::HashMap;
 use std::rc::Rc;
@@ -172,8 +172,7 @@ impl Entry {
     }
 
     pub fn format_citation(&self, citation: &str, format: Format) -> String {
-        static REGEX: OnceCell<Regex> = OnceCell::new();
-        let re = REGEX.get_or_init(|| Regex::new(r"(%[A-Z]+%)").unwrap());
+        static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"%(?P<tag>[A-Z]+)%").unwrap());
 
         let mut formated = String::from(citation);
 
@@ -196,19 +195,17 @@ impl Entry {
             &format::format_authors(name_prop.unwrap_or_else(|| "".into()).as_str()),
         );
 
-        let citation = formated.clone();
-        for catch in re.find_iter(&citation) {
-            let tag = catch.as_str().trim_matches('%').to_lowercase();
-            let opt_prop = match format {
-                Format::LaTeX => self.find_tag(&tag),
-                _ => self.find_tag_pretty(&tag),
-            };
-            if let Some(prop) = opt_prop {
-                formated = formated.replace(catch.as_str(), &prop);
-            } else {
-                formated = formated.replace(catch.as_str(), "");
-            }
-        }
+        formated = RE
+            .replace_all(&formated, |capture: &regex::Captures| {
+                let tag = capture["tag"].to_lowercase();
+                let opt_prop = match format {
+                    Format::LaTeX => self.find_tag(&tag),
+                    _ => self.find_tag_pretty(&tag),
+                };
+
+                opt_prop.unwrap_or_else(|| "".to_string())
+            })
+            .to_string();
 
         match format {
             Format::Markdown => format::clear_citation(&format::clear_markdown(&formated)),
