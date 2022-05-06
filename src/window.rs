@@ -423,15 +423,7 @@ impl Window {
     pub fn new_entry(&self, citation_key: &str, type_: cratebibtex::EntryType) {
         let entry = cratebibtex::Entry::new(citation_key, type_);
         let pos = self.imp().bib.borrow().add_entry(entry);
-        let entry = self
-            .imp()
-            .bib
-            .borrow()
-            .item(pos)
-            .unwrap()
-            .downcast::<cratebibtex::Entry>()
-            .unwrap();
-        self.imp().entry_page.set_entry(Some(&entry));
+        self.imp().entry_list.set_selected(pos);
     }
 
     pub async fn save(&self) -> anyhow::Result<()> {

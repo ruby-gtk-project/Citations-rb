@@ -25,6 +25,7 @@ mod imp {
         #[template_child]
         pub scrolled_window: TemplateChild<gtk::ScrolledWindow>,
 
+        pub selection_model: RefCell<gtk::SingleSelection>,
         pub filter_model: gtk::FilterListModel,
         pub filter: gtk::StringFilter,
         pub id: RefCell<Option<glib::SignalHandlerId>>,
@@ -89,6 +90,8 @@ mod imp {
             });
             self.list_view.set_factory(Some(&factory));
             self.list_view.set_model(Some(&selection));
+
+            self.selection_model.replace(selection);
 
             let search_expression = gtk::ClosureExpression::new::<String, &[gtk::Expression], _>(
                 &[],
@@ -156,5 +159,13 @@ impl EntryList {
 
     fn entry_selected(&self, entry: &cratebibtex::Entry) {
         self.emit_by_name::<()>("entry-selected", &[entry]);
+    }
+
+    pub fn set_selected(&self, pos: u32) {
+        self.imp().selection_model.borrow().set_selected(pos);
+        self.imp()
+            .list_view
+            .activate_action("list.scroll-to-item", Some(&pos.to_variant()))
+            .unwrap();
     }
 }
