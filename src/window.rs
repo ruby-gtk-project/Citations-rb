@@ -492,6 +492,9 @@ impl Window {
                 self.bib().remove_pos(pos);
 
                 self.imp().toast_overlay.add_toast(&toast);
+                self.imp()
+                    .main_leaflet
+                    .navigate(adw::NavigationDirection::Back);
             };
         };
     }

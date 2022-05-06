@@ -164,6 +164,7 @@
                 <child>
                   <object class="GtkBox">
                     <property name="orientation">vertical</property>
+                    <property name="width-request">360</property>
                     <child>
                       <object class="AdwHeaderBar">
                         <property name="show-start-title-buttons" bind-source="main_leaflet" bind-property="folded" bind-flags="sync-create"/>
