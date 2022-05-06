@@ -69,7 +69,7 @@
                             </style>
                             <child>
                               <object class="AdwComboRow" id="entry_type_entry">
-                                <property name="title" translatable="yes">_Entry Type</property>
+                                <property name="title" translatable="yes">Citation _Type</property>
                                 <property name="use-underline">True</property>
                                 <property name="model">
                                   <object class="AdwEnumListModel">

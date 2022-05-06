@@ -6,8 +6,8 @@
         <child>
           <object class="AdwStatusPage" id="empty_list">
             <property name="icon-name">list-add-symbolic</property>
-            <property name="title" translatable="yes">No Entries Found</property>
-            <property name="description" translatable="yes">Create a new entry</property>
+            <property name="title" translatable="yes">No Citations Found</property>
+            <property name="description" translatable="yes">Create a new citation</property>
           </object>
         </child>
         <child>

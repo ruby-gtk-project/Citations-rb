@@ -50,7 +50,7 @@
                 </child>
                 <child>
                   <object class="AdwComboRow" id="combo_row">
-                    <property name="title" translatable="yes">Entry Type</property>
+                    <property name="title" translatable="yes">Citation Type</property>
                     <property name="model">
                       <object class="AdwEnumListModel">
                         <property name="enum-type">EntryType</property>
