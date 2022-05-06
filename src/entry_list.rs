@@ -51,7 +51,7 @@ mod imp {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
                 vec![Signal::builder(
                     "entry-selected",
-                    &[cratebibtex::Entry::static_type().into()],
+                    &[Option::<cratebibtex::Entry>::static_type().into()],
                     <()>::static_type().into(),
                 )
                 .run_last()
@@ -66,12 +66,14 @@ mod imp {
             let selection = gtk::SingleSelection::new(Some(&self.filter_model));
             selection.connect_selected_notify(glib::clone!(@weak obj => move |model| {
                 let pos = model.selected();
-                let entry = model
-                    .item(pos)
-                    .unwrap()
-                    .downcast::<cratebibtex::Entry>()
-                    .unwrap();
-                obj.entry_selected(&entry);
+                if let Some(entry) = model.item(pos) {
+                    let entry = entry
+                        .downcast::<cratebibtex::Entry>()
+                        .unwrap();
+                    obj.entry_selected(Some(&entry));
+                } else {
+                    obj.entry_selected(None);
+                }
             }));
 
             let factory = gtk::SignalListItemFactory::new();
@@ -132,8 +134,8 @@ impl EntryList {
         self.set_empty_view(bib.item(0).is_none());
 
         let id =
-            bib.connect_items_changed(glib::clone!(@weak self as window => move|model, _, _, _| {
-                window.set_empty_view(model.item(0).is_none());
+            bib.connect_items_changed(glib::clone!(@weak self as obj => move|model, _, _, _| {
+                obj.set_empty_view(model.item(0).is_none());
             }));
 
         if let Some(old_id) = self.imp().id.replace(Some(id)) {
@@ -157,8 +159,8 @@ impl EntryList {
         }
     }
 
-    fn entry_selected(&self, entry: &cratebibtex::Entry) {
-        self.emit_by_name::<()>("entry-selected", &[entry]);
+    fn entry_selected(&self, entry: Option<&cratebibtex::Entry>) {
+        self.emit_by_name::<()>("entry-selected", &[&entry]);
     }
 
     pub fn set_selected(&self, pos: u32) {

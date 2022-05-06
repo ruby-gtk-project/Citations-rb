@@ -148,9 +148,9 @@ mod imp {
         }
 
         #[template_callback]
-        fn on_entry_selected(&self, entry: cratebibtex::Entry) {
-            self.entry_page.set_entry(Some(&entry));
-            self.secondary_menu_button.set_sensitive(true);
+        fn on_entry_selected(&self, entry: Option<&cratebibtex::Entry>) {
+            self.entry_page.set_entry(entry);
+            self.secondary_menu_button.set_sensitive(entry.is_some());
             self.main_leaflet
                 .navigate(adw::NavigationDirection::Forward);
         }
@@ -489,15 +489,9 @@ impl Window {
                 {
                     toast.dismiss();
                 };
-                self.imp().entry_page.set_entry(None);
                 self.bib().remove_pos(pos);
 
                 self.imp().toast_overlay.add_toast(&toast);
-
-                self.imp().secondary_menu_button.set_sensitive(false);
-                self.imp()
-                    .main_leaflet
-                    .navigate(adw::NavigationDirection::Back);
             };
         };
     }
