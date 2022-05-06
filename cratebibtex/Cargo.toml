@@ -9,6 +9,6 @@ gettext-rs = { version = "0.7", features = ["gettext-system"] }
 gio = "0.15"
 glib = { version = "0.15", features = ["v2_72"] }
 log = "0.4"
-nom-bibtex = {git="https://github.com/charlesvdv/nom-bibtex"}
+nom-bibtex = { git = "https://github.com/A6GibKm/nom-bibtex.git" }
 once_cell = "1.10"
 regex = "1.5"

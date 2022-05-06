@@ -113,11 +113,7 @@ impl Default for Entry {
 
 impl From<&nom_bibtex::Bibliography> for Entry {
     fn from(bib: &nom_bibtex::Bibliography) -> Self {
-        let tags = bib
-            .tags()
-            .iter()
-            .map(|(x, y)| (x.to_lowercase(), y.to_string()))
-            .collect();
+        let tags = bib.tags();
         let entry = Self::default();
         entry.imp().tags.replace(tags);
         entry
