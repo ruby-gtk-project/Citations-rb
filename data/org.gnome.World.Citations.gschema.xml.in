@@ -2,7 +2,7 @@
 <schemalist>
   <schema path="/org/gnome/World/Citations/" id="@app-id@" gettext-domain="@gettext-package@">
     <key name="window-width" type="i">
-      <default>600</default>
+      <default>730</default>
       <summary>Window width</summary>
     </key>
     <key name="window-height" type="i">
