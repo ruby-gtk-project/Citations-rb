@@ -188,7 +188,7 @@
                             <property name="icon-name">view-more-symbolic</property>
                             <property name="tooltip-text" translatable="yes">Secondary Menu</property>
                             <property name="menu-model">entry_menu</property>
-                            <property name="sensitive">False</property>
+                            <property name="visible">False</property>
                           </object>
                         </child>
                       </object>

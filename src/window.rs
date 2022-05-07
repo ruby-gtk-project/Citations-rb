@@ -153,7 +153,7 @@ mod imp {
         #[template_callback]
         fn on_entry_selected(&self, entry: Option<&cratebibtex::Entry>) {
             self.entry_page.set_entry(entry);
-            self.secondary_menu_button.set_sensitive(entry.is_some());
+            self.secondary_menu_button.set_visible(entry.is_some());
             self.main_leaflet
                 .navigate(adw::NavigationDirection::Forward);
         }
