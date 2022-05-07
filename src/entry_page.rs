@@ -4,7 +4,6 @@ use gettextrs::gettext;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 use gtk::{prelude::*, CompositeTemplate};
-use once_cell::sync::OnceCell;
 
 use crate::utils;
 
@@ -140,19 +139,45 @@ mod imp {
             self.parent_constructed(obj);
 
             // FIXME See https://github.com/gtk-rs/gtk-rs-core/pull/665
-            //
-            // self.bindings
-            //     .bind("author", &*self.author_entry, "text")
-            //     .build();
-            // self.bindings
-            //     .bind("title", &*self.title_entry, "text")
-            //     .build();
-            // self.bindings
-            //     .bind("year", &*self.year_entry, "text")
-            //     .build();
-            // self.bindings
-            //     .bind("doi", &*self.doi_entry, "text")
-            //     .build();
+            let entry = cratebibtex::Entry::default();
+            self.bindings.set_source(Some(&entry));
+
+            self.bindings
+                .bind("author", &*self.author_entry, "text")
+                .transform_to(|_binding, value| {
+                    value
+                        .get::<String>()
+                        .map(|x| {
+                            x.split_whitespace()
+                                .collect::<Vec<_>>()
+                                .join(" ")
+                                .to_value()
+                        })
+                        .ok()
+                })
+                .build();
+            self.bindings
+                .bind("title", &*self.title_entry, "text")
+                .transform_to(|_binding, value| {
+                    value
+                        .get::<String>()
+                        .map(|x| {
+                            x.split_whitespace()
+                                .collect::<Vec<_>>()
+                                .join(" ")
+                                .to_value()
+                        })
+                        .ok()
+                })
+                .build();
+            self.bindings
+                .bind("year", &*self.year_entry, "text")
+                .build();
+            self.bindings.bind("doi", &*self.doi_entry, "text").build();
+            self.bindings
+                .bind("entry-type", &*self.entry_type_entry, "selected")
+                .flags(glib::BindingFlags::SYNC_CREATE)
+                .build();
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
@@ -209,7 +234,7 @@ impl EntryPage {
     pub fn set_entry(&self, entry: Option<&cratebibtex::Entry>) {
         if entry != self.imp().entry.replace(entry.cloned()).as_ref() {
             self.notify("entry");
-            self.bind_entry(entry);
+            self.imp().bindings.set_source(entry);
 
             if let Some(entry) = entry {
                 self.imp()
@@ -248,66 +273,5 @@ impl EntryPage {
 
     pub fn entry(&self) -> Option<cratebibtex::Entry> {
         self.imp().entry.borrow().clone()
-    }
-
-    fn bind_entry(&self, entry: Option<&cratebibtex::Entry>) {
-        static INITIALIZED: OnceCell<()> = OnceCell::new();
-        self.imp().bindings.set_source(entry);
-
-        if INITIALIZED.get().is_some() || entry.is_none() {
-            return;
-        }
-
-        self.imp()
-            .bindings
-            .bind("author", &*self.imp().author_entry, "text")
-            .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
-            .transform_to(|_binding, value| {
-                value
-                    .get::<String>()
-                    .map(|x| {
-                        x.split_whitespace()
-                            .collect::<Vec<_>>()
-                            .join(" ")
-                            .to_value()
-                    })
-                    .ok()
-            })
-            .build();
-        self.imp()
-            .bindings
-            .bind("title", &*self.imp().title_entry, "text")
-            .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
-            .transform_to(|_binding, value| {
-                value
-                    .get::<String>()
-                    .map(|x| {
-                        x.split_whitespace()
-                            .collect::<Vec<_>>()
-                            .join(" ")
-                            .to_value()
-                    })
-                    .ok()
-            })
-            .build();
-        self.imp()
-            .bindings
-            .bind("year", &*self.imp().year_entry, "text")
-            .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
-            .build();
-        self.imp()
-            .bindings
-            .bind("doi", &*self.imp().doi_entry, "text")
-            .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
-            .build();
-        self.imp()
-            .bindings
-            .bind("entry-type", &*self.imp().entry_type_entry, "selected")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-
-        if entry.is_some() {
-            INITIALIZED.set(()).unwrap();
-        }
     }
 }
