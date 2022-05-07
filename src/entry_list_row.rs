@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-use cratebibtex::EntryExt;
 use gtk::glib;
 use gtk::subclass::prelude::*;
 use gtk::{prelude::*, CompositeTemplate};
@@ -115,11 +114,7 @@ impl Default for EntryListRow {
 
 impl EntryListRow {
     pub fn set_entry(&self, entry: &cratebibtex::Entry) {
-        if let Some(old_entry) = self.imp().entry.replace(Some(entry.clone())) {
-            if old_entry.citation_key() != entry.citation_key() {
-                self.notify("entry");
-            }
-        } else {
+        if Some(entry) != self.imp().entry.replace(Some(entry.clone())).as_ref() {
             self.notify("entry");
         }
     }
