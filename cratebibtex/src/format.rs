@@ -168,7 +168,7 @@ pub fn push_math<T: Iterator<Item = char>>(chars: &mut T, output: &mut String) {
     match chars.next() {
         Some('$') => (),
         Some(c) => {
-            output.push(c);
+            push_non_space(output, c);
             push_math(chars, output);
         }
         _ => (),
@@ -206,11 +206,11 @@ pub fn texer(input: &str) -> String {
                                     }
                                 } else {
                                     output.push(symbol);
-                                    output.push(paren);
+                                    push_non_space(&mut output, paren);
                                 }
                             }
                         }
-                        c => output.push(c),
+                        c => push_non_space(&mut output, c),
                     }
                 }
             }
@@ -243,14 +243,24 @@ pub fn texer(input: &str) -> String {
                         output.push(compose);
                     }
                 } else {
-                    output.push(c);
+                    push_non_space(&mut output, c);
                 }
             }
             '}' => (),
-            c => output.push(c),
+            c => push_non_space(&mut output, c),
         }
     }
     output
+}
+
+fn push_non_space(output: &mut String, c: char) {
+    if matches!(c, ' ' | '\t' | '\n') {
+        if !output.ends_with(' ') {
+            output.push(' ');
+        }
+    } else {
+        output.push(c);
+    }
 }
 
 #[cfg(test)]
@@ -320,6 +330,16 @@ mod tests {
         assert_eq!(texer(r"a {some}"), "a some");
         assert_eq!(texer(r"a {\some}"), "a some");
         assert_eq!(texer(r"a {$some$}"), "a some");
+        assert_eq!(texer(r"a  b"), r"a b");
+        assert_eq!(texer(r"$a  b$"), r"a b");
+        assert_eq!(
+            texer(
+                r"
+                  "
+            ),
+            " "
+        );
+        assert_eq!(texer(r"{a  b}"), r"a b");
         assert_eq!(texer(r"a {$so\ ^\ast asda \me$}"), r"a so\ ^\ast asda \me");
         // assert_eq!(texer(r"{\ss}"), "ß");
     }

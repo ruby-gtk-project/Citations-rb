@@ -263,11 +263,33 @@ impl EntryPage {
             .bindings
             .bind("author", &*self.imp().author_entry, "text")
             .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+            .transform_to(|_binding, value| {
+                value
+                    .get::<String>()
+                    .map(|x| {
+                        x.split_whitespace()
+                            .collect::<Vec<_>>()
+                            .join(" ")
+                            .to_value()
+                    })
+                    .ok()
+            })
             .build();
         self.imp()
             .bindings
             .bind("title", &*self.imp().title_entry, "text")
             .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+            .transform_to(|_binding, value| {
+                value
+                    .get::<String>()
+                    .map(|x| {
+                        x.split_whitespace()
+                            .collect::<Vec<_>>()
+                            .join(" ")
+                            .to_value()
+                    })
+                    .ok()
+            })
             .build();
         self.imp()
             .bindings

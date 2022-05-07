@@ -70,10 +70,10 @@ mod imp {
             match pspec_name {
                 "citation-key" => obj.citation_key().to_value(),
                 "entry-type" => obj.entry_type().to_value(),
-                _ => {
-                    let prop = obj.find_tag(pspec_name).unwrap_or_else(|| "".into());
-                    utils::format_string(&prop).to_value()
-                }
+                _ => obj
+                    .find_tag(pspec_name)
+                    .unwrap_or_else(|| "".into())
+                    .to_value(),
             }
         }
 

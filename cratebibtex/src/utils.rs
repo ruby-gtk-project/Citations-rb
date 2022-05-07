@@ -27,7 +27,3 @@ pub(crate) fn new_props(names: &[&str]) -> Vec<glib::ParamSpec> {
     generated_props.push(entry_type_prop);
     generated_props
 }
-
-pub(crate) fn format_string(string: &str) -> String {
-    string.split_whitespace().collect::<Vec<_>>().join(" ")
-}
