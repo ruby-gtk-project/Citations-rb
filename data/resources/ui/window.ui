@@ -24,6 +24,11 @@
         <attribute name="label" translatable="yes">_Save</attribute>
         <attribute name="action">win.save</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">_Open</attribute>
+        <attribute name="action">win.open</attribute>
+        <attribute name="target"></attribute>
+      </item>
     </section>
     <section>
       <item>
