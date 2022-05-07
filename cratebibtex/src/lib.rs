@@ -9,8 +9,6 @@ mod utils;
 
 pub use bib::Bib;
 pub use entry::Entry;
-pub use entry::EntryExt;
-pub use entry::EntryImpl;
 pub use entry_type::EntryType;
 pub use format::Format;
 

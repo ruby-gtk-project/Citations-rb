@@ -3,7 +3,6 @@ use gio::prelude::*;
 use gio::subclass::prelude::*;
 use std::cell::RefCell;
 
-use crate::entry::EntryExt;
 use crate::Entry;
 
 mod imp {
@@ -129,7 +128,7 @@ impl Bib {
         self.items_changed(pos, 1, 0);
     }
 
-    pub fn find_pos<E: glib::IsA<Entry>>(&self, entry: &E) -> Option<u32> {
+    pub fn find_pos(&self, entry: &crate::Entry) -> Option<u32> {
         for (pos, e) in self.imp().entries.borrow().iter().enumerate() {
             if e.citation_key() == entry.citation_key() {
                 return Some(pos as u32);

@@ -98,7 +98,6 @@ mod imp {
             }
         }
     }
-    impl crate::EntryImpl for Entry {}
 }
 
 glib::wrapper! {
@@ -127,10 +126,35 @@ impl From<&nom_bibtex::Bibliography> for Entry {
 }
 
 impl Entry {
+    pub fn find_tag(&self, tag: &str) -> Option<String> {
+        self.imp().tags.borrow().get(tag).cloned()
+    }
+
+    fn insert_tag(&self, tag: &str, value: &str) -> Option<String> {
+        let mut hashmap = self.imp().tags.borrow_mut();
+
+        hashmap.insert(tag.to_string(), value.into())
+    }
+
+    fn set_prop(&self, tag: &str, value: &str) {
+        let old_value = self.insert_tag(tag, value);
+        if old_value != Some(value.into()) {
+            self.notify(tag);
+        }
+    }
+
+    pub fn entry_type(&self) -> crate::EntryType {
+        self.imp().entry_type.get()
+    }
+
     pub fn set_entry_type(&self, entry_type: crate::EntryType) {
         if entry_type != self.imp().entry_type.replace(entry_type) {
             self.notify("entry-type");
         }
+    }
+
+    pub fn citation_key(&self) -> String {
+        self.imp().citation_key.borrow().clone().unwrap()
     }
 
     pub fn set_citation_key(&self, citation_key: &str) {
@@ -194,7 +218,13 @@ impl Entry {
                 let tag = capture["tag"].to_lowercase();
                 let opt_prop = match format {
                     Format::LaTeX => self.find_tag(&tag),
-                    _ => self.find_tag_pretty(&tag),
+                    _ => {
+                        if tag == "title" {
+                            self.find_tag_pretty(&tag)
+                        } else {
+                            self.find_tag(&tag)
+                        }
+                    }
                 };
 
                 opt_prop.unwrap_or_else(|| "".to_string())
@@ -225,50 +255,6 @@ impl Entry {
         entry += "\n}";
 
         entry
-    }
-}
-
-pub trait EntryExt {
-    fn find_tag(&self, tag: &str) -> Option<String>;
-    fn insert_tag(&self, tag: &str, value: &str) -> Option<String>;
-    fn set_prop(&self, tag: &str, value: &str);
-    fn citation_key(&self) -> String;
-    fn entry_type(&self) -> crate::EntryType;
-}
-
-impl<O: glib::IsA<Entry>> EntryExt for O {
-    fn citation_key(&self) -> String {
-        self.as_ref().imp().citation_key.borrow().clone().unwrap()
-    }
-    fn entry_type(&self) -> crate::EntryType {
-        self.as_ref().imp().entry_type.get()
-    }
-    fn find_tag(&self, tag: &str) -> Option<String> {
-        self.as_ref().imp().tags.borrow().get(tag).cloned()
-    }
-
-    fn insert_tag(&self, tag: &str, value: &str) -> Option<String> {
-        let mut hashmap = self.as_ref().imp().tags.borrow_mut();
-
-        hashmap.insert(tag.to_string(), value.into())
-    }
-
-    fn set_prop(&self, tag: &str, value: &str) {
-        let old_value = self.insert_tag(tag, value);
-        if old_value != Some(value.into()) {
-            self.as_ref().notify(tag);
-        }
-    }
-}
-
-pub trait EntryImpl: ObjectImpl {}
-
-unsafe impl<T: EntryImpl> IsSubclassable<T> for Entry {
-    fn class_init(class: &mut glib::Class<Self>) {
-        <glib::Object as IsSubclassable<T>>::class_init(class);
-    }
-    fn instance_init(instance: &mut glib::subclass::InitializingObject<T>) {
-        <glib::Object as IsSubclassable<T>>::instance_init(instance);
     }
 }
 

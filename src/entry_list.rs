@@ -3,8 +3,6 @@ use gtk::glib;
 use gtk::subclass::prelude::*;
 use gtk::{prelude::*, CompositeTemplate};
 
-use cratebibtex::EntryExt;
-
 mod imp {
     use super::*;
 
