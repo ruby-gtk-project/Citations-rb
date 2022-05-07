@@ -134,9 +134,12 @@ mod imp {
     #[gtk::template_callbacks]
     impl Window {
         #[template_callback]
-        fn on_toggled(&self, button: gtk::ToggleButton) {
-            let search_started = button.is_active();
-            if !search_started {
+        fn on_search_mode_enabled_notify(
+            &self,
+            _pspec: &glib::ParamSpec,
+            search_bar: &gtk::SearchBar,
+        ) {
+            if !search_bar.is_search_mode() {
                 self.search_entry.set_text("");
             }
         }
