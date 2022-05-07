@@ -42,30 +42,13 @@ pub fn translated_key(key: &str) -> String {
     }
 }
 
-pub fn build_google_schoolar_url(
-    author: &str,
-    title: &str,
-    year: Option<String>,
-) -> anyhow::Result<String> {
+pub fn build_google_schoolar_url(author: &str, title: &str) -> anyhow::Result<String> {
     let mut url = "https://scholar.google.com/scholar?".to_string();
 
-    url.push_str(&format!("q={author} {title}"));
+    let authors = cratebibtex::format::format_authors(author);
+    url.push_str(&format!("q={authors} {title}"));
 
-    if let Some(year) = year {
-        if !year.is_empty() && year.parse::<u32>().is_ok() {
-            // from
-            url.push_str(&format!("&as_ylo={year}"));
-            // to
-            url.push_str(&format!("&as_yhi={year}"));
-        }
-    }
     url.push_str("&scisbd=0");
-
-    // Lang
-    // if let Some(i) = lang {
-    //     url.push_str("&hl=");
-    //     url.push_str(i);
-    // }
     url.push_str("&num=10");
     url.push_str("&start=0");
     url.push_str("&safe=active");
@@ -76,17 +59,19 @@ pub fn build_google_schoolar_url(
     Ok(sanitized.to_string())
 }
 
-pub fn build_arxiv_url(author: &str, title: &str, year: Option<String>) -> anyhow::Result<String> {
-    let mut url = format!("https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term={title}&terms-0-field=title&terms-1-operator=OR&terms-1-term={author}&terms-1-field=author&classification-physics_archives=all&classification-include_cross_list=include&abstracts=show&size=25&order=-announced_date_first");
-    if let Some(year) = year {
-        if !year.is_empty() && year.parse::<u32>().is_ok() {
-            url.push_str(&format!("&date-filter_by=specific_year&date-year={year}&date-from_date=&date-to_date=&date-date_type=submitted_date"));
-        } else {
-            url.push_str("&date-filter_by=all_dates&date-year=&date-from_date=&date-to_date=&date-date_type=submitted_date");
-        }
-    } else {
-        url.push_str("&date-filter_by=all_dates&date-year=&date-from_date=&date-to_date=&date-date_type=submitted_date");
-    }
+pub fn build_arxiv_url(author: &str, title: &str) -> anyhow::Result<String> {
+    let authors = cratebibtex::format::format_authors(author);
+    let mut url = "https://arxiv.org/search/advanced?advanced=".to_string();
+
+    url.push_str(&format!(
+        "&terms-0-operator=AND&terms-0-term={title}&terms-0-field=title"
+    ));
+    url.push_str(&format!(
+        "&terms-1-operator=OR&terms-1-term={authors}&terms-1-field=author"
+    ));
+    url.push_str("&date-filter_by=all_dates&date-year=&date-from_date=&date-to_date=&date-date_type=submitted_date");
+    url.push_str("&classification-physics_archives=all&classification-include_cross_list=include&abstracts=show&size=25&order=-announced_date_first");
+
     let sanitized = url::Url::parse(&url)?;
     Ok(sanitized.to_string())
 }

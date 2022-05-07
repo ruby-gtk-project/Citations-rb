@@ -465,9 +465,8 @@ impl Window {
 
         let author = entry.find_tag_pretty("author").unwrap_or_else(|| "".into());
         let title = entry.find_tag_pretty("title").unwrap_or_else(|| "".into());
-        let year = entry.find_tag("year");
 
-        let uri = utils::build_google_schoolar_url(&author, &title, year)?;
+        let uri = utils::build_google_schoolar_url(&author, &title)?;
         log::debug!("Trying to open {uri}");
 
         gtk::show_uri(Some(self), &uri, gdk::CURRENT_TIME);
@@ -482,9 +481,8 @@ impl Window {
 
         let author = entry.find_tag_pretty("author").unwrap_or_else(|| "".into());
         let title = entry.find_tag_pretty("title").unwrap_or_else(|| "".into());
-        let year = entry.find_tag("year");
 
-        let uri = utils::build_arxiv_url(&author, &title, year)?;
+        let uri = utils::build_arxiv_url(&author, &title)?;
         log::debug!("Trying to open {uri}");
 
         gtk::show_uri(Some(self), &uri, gdk::CURRENT_TIME);

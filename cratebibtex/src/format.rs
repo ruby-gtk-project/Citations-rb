@@ -133,7 +133,7 @@ pub(crate) fn clear_latex(citation: &str) -> String {
     RE.replace_all(citation, "").to_string()
 }
 
-pub(crate) fn format_authors(authors: &str) -> String {
+pub fn format_authors(authors: &str) -> String {
     let authors = authors.replace(" and ", " AND ").replace(" & ", " AND ");
     let mut vec_authors = authors
         .split(" AND ")
