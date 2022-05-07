@@ -1,6 +1,6 @@
-<!-- <a href="https://flathub.org/apps/details/org.gnome.World.Citations"> -->
-<!-- <img src="https://flathub.org/assets/badges/flathub-badge-i-en.png" width="190px" /> -->
-<!-- </a> -->
+<a href="https://flathub.org/apps/details/org.gnome.World.Citations">
+<img src="https://flathub.org/assets/badges/flathub-badge-i-en.png" width="190px" />
+</a>
 
 # Citations
 
@@ -23,7 +23,7 @@ for building GNOME apps with Flatpak and GNOME Builder.
 You are expected to follow our [Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct) when participating in project
 spaces.
 
-<!-- ## Translations -->
+## Translations
 
-<!-- Helping to translate Citations or add support to a new language is very welcome. -->
-<!-- You can find everything you need at: [l10n.gnome.org/module/citations/](https://l10n.gnome.org/module/citations/) -->
+Helping to translate Citations or add support to a new language is very welcome.
+You can find everything you need at: [l10n.gnome.org/module/citations/](https://l10n.gnome.org/module/citations/)
