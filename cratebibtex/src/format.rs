@@ -154,12 +154,14 @@ static COMBINING_MAP: &[(char, char)] = &[
     ('~', '\u{303}'),  // COMBINING TILDE
     ('^', '\u{302}'),  // COMBINING CIRCUMFLEX ACCENT
     ('"', '\u{308}'),  // COMBINING DIAERESIS
+    ('=', '\u{304}'),  // COMBINING MACRON
 ];
 
 static COMBINING_MAP_ALPHA: &[(char, char)] = &[
     ('c', '\u{327}'), // COMBINING CEDILLA
     ('u', '\u{306}'), // COMBINING BREVE
     ('v', '\u{30C}'), // COMBINING CARON
+    ('k', '\u{328}'), // COMBINING OGONEK
 ];
 
 // See https://en.m.wikibooks.org/wiki/LaTeX/Special_Characters
@@ -325,6 +327,7 @@ mod tests {
     fn test_texer() {
         assert_eq!(texer(r"\'u"), "u\u{301}");
         assert_eq!(texer(r"\c{c}"), "c\u{0327}");
+        assert_eq!(texer(r"\v{c}"), "c\u{30C}");
         assert_eq!(texer(r"{\o}a"), "øa");
         assert_eq!(texer(r"{\o}"), "ø");
         assert_eq!(texer(r#"{\"o}"#), "o\u{308}");
