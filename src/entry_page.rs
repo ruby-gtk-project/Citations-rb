@@ -144,6 +144,7 @@ mod imp {
 
             self.bindings
                 .bind("author", &*self.author_entry, "text")
+                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
                 .transform_to(|_binding, value| {
                     value
                         .get::<String>()
@@ -158,6 +159,7 @@ mod imp {
                 .build();
             self.bindings
                 .bind("title", &*self.title_entry, "text")
+                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
                 .transform_to(|_binding, value| {
                     value
                         .get::<String>()
@@ -172,8 +174,12 @@ mod imp {
                 .build();
             self.bindings
                 .bind("year", &*self.year_entry, "text")
+                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
                 .build();
-            self.bindings.bind("doi", &*self.doi_entry, "text").build();
+            self.bindings
+                .bind("doi", &*self.doi_entry, "text")
+                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+                .build();
             self.bindings
                 .bind("entry-type", &*self.entry_type_entry, "selected")
                 .flags(glib::BindingFlags::SYNC_CREATE)
@@ -260,15 +266,20 @@ impl EntryPage {
         let fields: Vec<String> = entry.fields();
         let model = gtk::StringList::new(&fields.iter().map(|x| x.as_str()).collect::<Vec<&str>>());
         self.imp().extras_box.set_visible(model.item(0).is_some());
-        self.imp().extras_list_box.bind_model(Some(&model), glib::clone!(@weak entry => @default-panic, move |obj| {
-            let key = obj.downcast_ref::<gtk::StringObject>().unwrap().string();
+        self.imp().extras_list_box.bind_model(
+            Some(&model),
+            glib::clone!(@weak entry => @default-panic, move |obj| {
+                let key = obj.downcast_ref::<gtk::StringObject>().unwrap().string();
 
-            let row = adw::EntryRow::new();
-            row.set_title(&utils::translated_key(&key));
-            entry.bind_property(&key, &row, "text").flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL).build();
+                let row = adw::EntryRow::new();
+                row.set_title(&utils::translated_key(&key));
+                entry.bind_property(&key, &row, "text")
+                     .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+                     .build();
 
-            row.upcast()
-        }));
+                row.upcast()
+            }),
+        );
     }
 
     pub fn entry(&self) -> Option<cratebibtex::Entry> {
