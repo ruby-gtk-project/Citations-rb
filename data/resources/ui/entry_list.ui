@@ -16,6 +16,8 @@
               <object class="AdwClampScrollable">
                 <child>
                   <object class="GtkListView" id="list_view">
+                    <property name="margin-start">6</property>
+                    <property name="margin-end">6</property>
                     <style>
                       <class name="navigation-sidebar"/>
                     </style>
