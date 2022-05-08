@@ -34,6 +34,9 @@
      <kudo>ModernToolkit</kudo>
      <kudo>HiDpiIcon</kudo>
   </kudos>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
   <developer_name>Maximiliano Sandoval</developer_name>
   <update_contact>msandova@gnome.org</update_contact>
   <translation type="gettext">@gettext-package@</translation>
