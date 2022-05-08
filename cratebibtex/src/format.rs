@@ -149,19 +149,20 @@ pub fn format_authors(authors: &str) -> String {
 }
 
 static COMBINING_MAP: &[(char, char)] = &[
-    ('\'', '\u{301}'),
-    ('`', '\u{300}'),
-    ('~', '\u{303}'),
-    ('^', '̂'),
-    ('"', '\u{308}'), // COMBINING DIAERESIS
+    ('\'', '\u{301}'), // COMBINING ACCUTE ACCENT
+    ('`', '\u{300}'),  // COMBINING GRAVE
+    ('~', '\u{303}'),  // COMBINING TILDE
+    ('^', '\u{302}'),  // COMBINING CIRCUMFLEX ACCENT
+    ('"', '\u{308}'),  // COMBINING DIAERESIS
 ];
 
 static COMBINING_MAP_ALPHA: &[(char, char)] = &[
     ('c', '\u{327}'), // COMBINING CEDILLA
-    ('u', '̆'),
-    ('v', '̌'),
+    ('u', '\u{306}'), // COMBINING BREVE
+    ('v', '\u{30C}'), // COMBINING CARON
 ];
 
+// See https://en.m.wikibooks.org/wiki/LaTeX/Special_Characters
 static SYMBOLS_MAP: &[(char, char)] = &[('o', 'ø'), ('O', 'Ø'), ('l', 'ł'), ('L', 'Ł')];
 
 pub fn push_math<T: Iterator<Item = char>>(chars: &mut T, output: &mut String) {
