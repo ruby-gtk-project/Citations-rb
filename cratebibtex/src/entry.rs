@@ -1,3 +1,4 @@
+use gio::prelude::ListModelExt;
 use glib::prelude::*;
 use glib::subclass::prelude::*;
 use once_cell::sync::Lazy;
@@ -134,6 +135,18 @@ impl From<&nom_bibtex::Bibliography> for Entry {
 }
 
 impl Entry {
+    pub fn from_bibtex(data: &str) -> anyhow::Result<Self> {
+        let bib = crate::Bib::default();
+        bib.parse(data)?;
+
+        if let Some(entry) = bib.item(0) {
+            let entry = entry.downcast::<Self>().unwrap();
+            Ok(entry)
+        } else {
+            anyhow::bail!("Invalid BibTeX data");
+        }
+    }
+
     pub fn find_tag(&self, tag: &str) -> Option<String> {
         self.imp().tags.borrow().get(tag).cloned()
     }

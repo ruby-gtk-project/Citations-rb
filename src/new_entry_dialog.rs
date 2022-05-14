@@ -1,9 +1,17 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gsv::prelude::*;
 use gtk::glib;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
+
+const SAMPLE_ENTRY: &str = r"@book{lamport1985i1,
+  title={\LaTeX: A Document Preparation System},
+  author={Lamport, Leslie},
+  year={1991},
+  publisher={Addison-Wesley}
+}";
 
 mod imp {
     use super::*;
@@ -17,10 +25,12 @@ mod imp {
         pub combo_row: TemplateChild<adw::ComboRow>,
         #[template_child]
         pub entry_row: TemplateChild<adw::EntryRow>,
+        #[template_child]
+        pub source_view: TemplateChild<gsv::View>,
+        #[template_child]
+        pub view_stack: TemplateChild<adw::ViewStack>,
 
-        pub sender: RefCell<
-            Option<futures_channel::oneshot::Sender<Option<(String, cratebibtex::EntryType)>>>,
-        >,
+        pub sender: RefCell<Option<futures_channel::oneshot::Sender<Option<String>>>>,
     }
 
     #[glib::object_subclass]
@@ -56,15 +66,50 @@ mod imp {
 
         #[template_callback]
         fn on_create_clicked(&self) {
-            let citation_key = self.entry_row.text().to_string();
-            let type_ = cratebibtex::EntryType::from(self.combo_row.selected() as u32);
             let sender = self.sender.replace(None).unwrap();
-            sender.send(Some((citation_key, type_))).unwrap();
+
+            let data = match &self.view_stack.visible_child_name().as_deref() {
+                Some("new") => {
+                    let citation_key = self.entry_row.text().to_string();
+                    let type_ =
+                        cratebibtex::EntryType::from(self.combo_row.selected() as u32).to_string();
+                    format!("@{type_}{{{citation_key},}}")
+                }
+                Some("from_bibtex") => {
+                    let buffer = self.source_view.buffer();
+                    let (start, end) = buffer.bounds();
+                    buffer.text(&start, &end, true).into()
+                }
+                _ => unreachable!(),
+            };
+            sender.send(Some(data)).unwrap();
+
             self.instance().destroy();
         }
     }
 
-    impl ObjectImpl for NewEntryDialog {}
+    impl ObjectImpl for NewEntryDialog {
+        fn constructed(&self, obj: &Self::Type) {
+            self.parent_constructed(obj);
+
+            let language_manager = gsv::LanguageManager::default();
+            let lang = language_manager.language("bibtex").unwrap();
+            let buffer = gsv::Buffer::with_language(&lang);
+
+            buffer.set_highlight_syntax(true);
+            buffer.set_highlight_matching_brackets(false);
+            self.source_view.set_buffer(Some(&buffer));
+
+            obj.update_style_scheme();
+            let manager = adw::StyleManager::default();
+            manager.connect_dark_notify(glib::clone!(@weak obj => move |_| {
+                obj.update_style_scheme();
+            }));
+
+            buffer.set_text(SAMPLE_ENTRY);
+        }
+    }
+
     impl WidgetImpl for NewEntryDialog {}
     impl WindowImpl for NewEntryDialog {}
     impl AdwWindowImpl for NewEntryDialog {}
@@ -86,7 +131,7 @@ impl NewEntryDialog {
         glib::Object::new(&[("modal", &true), ("transient-for", &window)]).unwrap()
     }
 
-    pub async fn run(&self) -> Option<(String, cratebibtex::EntryType)> {
+    pub async fn run(&self) -> Option<String> {
         let (sender, receiver) = futures_channel::oneshot::channel();
         self.imp().sender.replace(Some(sender));
 
@@ -97,5 +142,25 @@ impl NewEntryDialog {
         } else {
             None
         }
+    }
+
+    fn update_style_scheme(&self) {
+        let manager = adw::StyleManager::default();
+        let scheme_name = if manager.is_dark() {
+            "solarized-dark"
+        } else {
+            "solarized-light"
+        };
+        let scheme = gsv::StyleSchemeManager::default()
+            .scheme(scheme_name)
+            .unwrap();
+
+        let buffer = self
+            .imp()
+            .source_view
+            .buffer()
+            .downcast::<gsv::Buffer>()
+            .unwrap();
+        buffer.set_style_scheme(Some(&scheme));
     }
 }

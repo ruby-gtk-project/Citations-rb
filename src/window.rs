@@ -432,21 +432,28 @@ impl Window {
 
         crate::spawn!(
             glib::clone!(@weak self as window, @weak dialog => async move {
-                if let Some((citation_key, type_)) = dialog.run().await {
-                    if window.imp().bib.get().unwrap().key_exists(&citation_key) {
-                        window.send_toast(&gettext("Entry with key {citation_key} already exists"));
-                    } else {
-                        window.new_entry(&citation_key, type_);
+                if let Some(data) = dialog.run().await {
+                    if let Err(err) = window.new_entry(data){
+                        log::error!("Could not add entry: {err}");
                     }
                 }
             })
         );
     }
 
-    pub fn new_entry(&self, citation_key: &str, type_: cratebibtex::EntryType) {
-        let entry = cratebibtex::Entry::new(citation_key, type_);
-        let pos = self.imp().bib.get().unwrap().add_entry(entry);
-        self.imp().entry_list.set_selected(pos);
+    pub fn new_entry(&self, data: String) -> anyhow::Result<()> {
+        let entry = cratebibtex::Entry::from_bibtex(&data)?;
+        let citation_key = entry.citation_key();
+        if self.imp().bib.get().unwrap().key_exists(&citation_key) {
+            self.send_toast(&gettext(
+                "An entry with the given citation key already exists",
+            ));
+        } else {
+            let pos = self.imp().bib.get().unwrap().add_entry(entry);
+            self.imp().entry_list.set_selected(pos);
+        }
+
+        Ok(())
     }
 
     pub async fn save(&self) -> anyhow::Result<()> {
