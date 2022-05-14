@@ -13,6 +13,10 @@
 ![screenshot](https://gitlab.gnome.org/World/citations/raw/master/data/screenshots/main_window.png)
 </div>
 
+## Warning
+
+Citations does not support local variables nor comments, and that data might be lost. Please make a backup of your BibTeX file if you use them.
+
 ## Hack on Citations
 
 To build the development version of Citations and hack on the code
