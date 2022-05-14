@@ -7,7 +7,6 @@
 <img src="https://gitlab.gnome.org/World/citations/raw/master/data/icons/org.gnome.World.Citations.svg" width="128" height="128" />
 <p>Manage your bibliographies using the BibTeX format.</p>
 
-
 ## Screenshots
 
 <div align="center">
