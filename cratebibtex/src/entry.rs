@@ -20,6 +20,7 @@ mod imp {
     pub struct Entry {
         pub tags: RefCell<HashMap<String, String>>,
         pub entry_type: Cell<crate::EntryType>,
+        pub other_entry_type: RefCell<Option<String>>,
         pub citation_key: RefCell<Option<String>>,
         pub inner: RefCell<Option<Rc<nom_bibtex::Bibliography>>>,
     }
@@ -28,7 +29,6 @@ mod imp {
     impl ObjectSubclass for Entry {
         const NAME: &'static str = "Entry";
         type Type = super::Entry;
-        type ParentType = glib::Object;
     }
 
     impl ObjectImpl for Entry {
@@ -119,7 +119,15 @@ impl From<&nom_bibtex::Bibliography> for Entry {
             .imp()
             .citation_key
             .replace(Some(bib.citation_key().into()));
-        entry.imp().entry_type.replace(bib.entry_type().into());
+
+        let entry_type = bib.entry_type().into();
+        if entry_type == crate::EntryType::Other {
+            entry
+                .imp()
+                .other_entry_type
+                .replace(Some(bib.entry_type().to_string()));
+        }
+        entry.imp().entry_type.replace(entry_type);
 
         entry
     }
@@ -145,6 +153,16 @@ impl Entry {
 
     pub fn entry_type(&self) -> crate::EntryType {
         self.imp().entry_type.get()
+    }
+
+    pub fn other_entry_type(&self) -> Option<String> {
+        self.imp().other_entry_type.borrow().clone()
+    }
+
+    pub fn set_other_entry_type(&self, other_type: &str) {
+        self.imp()
+            .other_entry_type
+            .replace(Some(other_type.to_string()));
     }
 
     pub fn set_entry_type(&self, entry_type: crate::EntryType) {
@@ -242,7 +260,15 @@ impl Entry {
 
     pub fn serialize(&self) -> String {
         let citation_key = self.citation_key();
-        let type_ = self.entry_type().to_string();
+        let type_ = match self.entry_type() {
+            crate::EntryType::Other => self
+                .imp()
+                .other_entry_type
+                .borrow()
+                .clone()
+                .unwrap_or_else(|| "other".to_string()),
+            s => s.to_string(),
+        };
         let mut entry = format!("@{type_}{{{citation_key},\n");
 
         let lines = self

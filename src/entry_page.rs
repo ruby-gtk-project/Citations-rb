@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-use adw::prelude::ComboRowExt;
 use gettextrs::gettext;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
@@ -18,7 +17,9 @@ mod imp {
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
         #[template_child]
-        pub entry_type_entry: TemplateChild<adw::ComboRow>,
+        pub entry_type_drop_down: TemplateChild<gtk::DropDown>,
+        #[template_child]
+        pub entry_type_entry_row: TemplateChild<adw::EntryRow>,
         #[template_child]
         pub citation_key_entry: TemplateChild<adw::EntryRow>,
         #[template_child]
@@ -68,18 +69,34 @@ mod imp {
         fn on_entry_type_selected_notify(
             &self,
             _pspec: &glib::ParamSpec,
-            combo_row: &adw::ComboRow,
+            drop_down: &gtk::DropDown,
         ) {
-            let type_ = cratebibtex::EntryType::from(combo_row.selected());
+            let type_ = cratebibtex::EntryType::from(drop_down.selected());
             let entry = self.entry.borrow().clone().unwrap();
             entry.set_entry_type(type_);
             self.instance().bind_extras_list_model(&entry);
+            self.instance().setup_other_entry_row();
         }
 
         #[template_callback]
-        fn entry_type_name(item: adw::EnumListItem) -> String {
+        fn on_entry_type_entry_row_changed(&self, entry_row: &adw::EntryRow) {
+            let text = entry_row.text();
+            if text.is_empty() {
+                return;
+            }
+            let entry = self.entry.borrow().clone().unwrap();
+            // TODO If the user types "article" the type should change to it.
+            entry.set_other_entry_type(&text);
+        }
+
+        #[template_callback]
+        fn drop_down_entry_type_name(item: &adw::EnumListItem) -> String {
             let type_ = cratebibtex::EntryType::from(item.value() as u32);
-            type_.to_translatable_string()
+            if type_ == cratebibtex::EntryType::Other {
+                gettext("Other…")
+            } else {
+                type_.to_translatable_string()
+            }
         }
 
         #[template_callback]
@@ -181,7 +198,7 @@ mod imp {
                 .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
                 .build();
             self.bindings
-                .bind("entry-type", &*self.entry_type_entry, "selected")
+                .bind("entry-type", &*self.entry_type_drop_down, "selected")
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
         }
@@ -237,12 +254,28 @@ impl Default for EntryPage {
 use adw::prelude::PreferencesRowExt;
 
 impl EntryPage {
+    fn setup_other_entry_row(&self) {
+        let entry = self.imp().entry.borrow().clone().unwrap();
+        let type_ = entry.entry_type();
+        let editable = type_ == cratebibtex::EntryType::Other;
+        self.imp().entry_type_entry_row.set_editable(editable);
+        let editable_text = if !editable {
+            "".to_string()
+        } else {
+            entry
+                .other_entry_type()
+                .unwrap_or_else(|| "other".to_string())
+        };
+        self.imp().entry_type_entry_row.set_text(&editable_text);
+    }
+
     pub fn set_entry(&self, entry: Option<&cratebibtex::Entry>) {
         if entry != self.imp().entry.replace(entry.cloned()).as_ref() {
             self.notify("entry");
             self.imp().bindings.set_source(entry);
 
             if let Some(entry) = entry {
+                self.setup_other_entry_row();
                 self.imp()
                     .stack
                     .set_visible_child(&self.imp().non_empty_page.get());

@@ -68,18 +68,27 @@
                               <class name="boxed-list"/>
                             </style>
                             <child>
-                              <object class="AdwComboRow" id="entry_type_entry">
+                              <object class="AdwEntryRow" id="entry_type_entry_row">
                                 <property name="title" translatable="yes">Citation _Type</property>
                                 <property name="use-underline">True</property>
-                                <property name="model">
-                                  <object class="AdwEnumListModel">
-                                    <property name="enum-type">EntryType</property>
+                                <signal name="changed" handler="on_entry_type_entry_row_changed" swapped="true"/>
+                                <child>
+                                  <object class="GtkDropDown" id="entry_type_drop_down">
+                                    <property name="valign">center</property>
+                                    <property name="model">
+                                      <object class="AdwEnumListModel">
+                                        <property name="enum-type">EntryType</property>
+                                      </object>
+                                    </property>
+                                    <property name="expression">
+                                      <closure type="gchararray" function="drop_down_entry_type_name"/>
+                                    </property>
+                                    <signal name="notify::selected" handler="on_entry_type_selected_notify" swapped="true"/>
+                                    <style>
+                                      <class name="flat"/>
+                                    </style>
                                   </object>
-                                </property>
-                                <property name="expression">
-                                  <closure type="gchararray" function="entry_type_name"/>
-                                </property>
-                                <signal name="notify::selected" handler="on_entry_type_selected_notify" swapped="true"/>
+                                </child>
                               </object>
                             </child>
                             <child>
