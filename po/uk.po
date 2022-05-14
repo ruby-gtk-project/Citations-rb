@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-07 15:46+0000\n"
-"PO-Revision-Date: 2022-05-07 19:33+0300\n"
+"POT-Creation-Date: 2022-05-14 18:14+0000\n"
+"PO-Revision-Date: 2022-05-14 22:16+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -140,7 +140,7 @@ msgstr "Керування вашими бібліографіями з вико
 msgid "Main window"
 msgstr "Головне вікно"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:37
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:41
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -152,7 +152,8 @@ msgstr "Нетиповий формат цитування"
 msgid "Citation"
 msgstr "Оголошувати подяку"
 
-#: data/resources/ui/citation_preview.ui:116 data/resources/ui/entry_page.ui:95
+#: data/resources/ui/citation_preview.ui:116
+#: data/resources/ui/entry_page.ui:104
 msgid "Copy"
 msgstr "Копіювати"
 
@@ -167,9 +168,9 @@ msgid ""
 "and italics is supported.\n"
 "            "
 msgstr ""
-"Напишіть нетиповий формат для ваших посилань. Щоб вставити вміст теґу <tt"
-">якийсь_теґ</tt>, напишіть <tt>%ЯКИЙСЬ_ТЕҐ%</tt>. Передбачено базову"
-" підтримку синтаксису markdown для напівжирного та курсивного шрифтів.\n"
+"Напишіть нетиповий формат для ваших посилань. Щоб вставити вміст теґу "
+"<tt>якийсь_теґ</tt>, напишіть <tt>%ЯКИЙСЬ_ТЕҐ%</tt>. Передбачено базову "
+"підтримку синтаксису markdown для напівжирного та курсивного шрифтів.\n"
 "            "
 
 #: data/resources/ui/citation_preview.ui:173
@@ -188,27 +189,27 @@ msgstr "Створити посилання"
 msgid "Citation _Type"
 msgstr "_Тип посилання"
 
-#: data/resources/ui/entry_page.ui:87
+#: data/resources/ui/entry_page.ui:96
 msgid "_Citation Key"
 msgstr "Кл_юч посилання"
 
-#: data/resources/ui/entry_page.ui:106
+#: data/resources/ui/entry_page.ui:115
 msgid "_Author"
 msgstr "_Автор"
 
-#: data/resources/ui/entry_page.ui:112
+#: data/resources/ui/entry_page.ui:121
 msgid "_Title"
 msgstr "_Назва"
 
-#: data/resources/ui/entry_page.ui:118
+#: data/resources/ui/entry_page.ui:127
 msgid "_Year"
 msgstr "Р_ік"
 
-#: data/resources/ui/entry_page.ui:130
+#: data/resources/ui/entry_page.ui:139
 msgid "Open in Browser"
 msgstr "Відкрити у переглядачі"
 
-#: data/resources/ui/entry_page.ui:150
+#: data/resources/ui/entry_page.ui:159
 msgid "Other Properties"
 msgstr "Інші властивості"
 
@@ -338,11 +339,16 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/citation_preview.rs:158 src/entry_page.rs:113
+#: src/citation_preview.rs:158 src/entry_page.rs:130
 msgid "Copied"
 msgstr "Скопійовано"
 
-#: src/entry_page.rs:132
+#: src/entry_page.rs:96
+#| msgid "Other"
+msgid "Other…"
+msgstr "Інше…"
+
+#: src/entry_page.rs:149
 msgid "Citation Key already exists"
 msgstr "Ключ цитування вже існує"
 
