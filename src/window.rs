@@ -531,7 +531,7 @@ impl Window {
             .translator_credits(&gettext("translator-credits"))
             .modal(true)
             .authors(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
-            .artists(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
+            .artists(vec!["Tobias Bernard <tbernard@gnome.org>".into()])
             .build();
 
         dialog.present();
