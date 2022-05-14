@@ -159,13 +159,13 @@ mod imp {
         }
 
         #[template_callback]
-        fn template_type_name(item: adw::EnumListItem) -> String {
+        fn template_type_name(item: &adw::EnumListItem) -> String {
             let type_ = Template::from(item.value() as u32);
             type_.to_translatable_string()
         }
 
         #[template_callback]
-        fn format_type_name(item: adw::EnumListItem) -> String {
+        fn format_type_name(item: &adw::EnumListItem) -> String {
             let type_ = Format::from(item.value() as u32);
             type_.to_translatable_string()
         }

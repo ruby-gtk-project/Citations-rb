@@ -145,7 +145,7 @@ mod imp {
         }
 
         #[template_callback]
-        fn on_changed(&self, search_entry: gtk::SearchEntry) {
+        fn on_changed(&self, search_entry: &gtk::SearchEntry) {
             let query = search_entry.text();
             self.entry_list.filter(&query);
         }

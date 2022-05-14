@@ -42,7 +42,7 @@ mod imp {
     #[gtk::template_callbacks]
     impl NewEntryDialog {
         #[template_callback]
-        fn entry_type_name(item: adw::EnumListItem) -> String {
+        fn entry_type_name(item: &adw::EnumListItem) -> String {
             let type_ = cratebibtex::EntryType::from(item.value() as u32);
             type_.to_translatable_string()
         }
