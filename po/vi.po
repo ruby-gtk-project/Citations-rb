@@ -1,0 +1,466 @@
+# Vietnamese translation for citations.
+# Copyright (C) 2022 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+# Ngọc Quân Trần <vnwildman@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
+"POT-Creation-Date: 2022-05-12 22:55+0000\n"
+"PO-Revision-Date: 2022-05-14 14:17+0700\n"
+"Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
+"Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 3.38.0\n"
+
+#: cratebibtex/src/entry_type.rs:108
+msgid "Article"
+msgstr "Bài viết"
+
+#: cratebibtex/src/entry_type.rs:109
+msgid "Book"
+msgstr "Sách"
+
+#: cratebibtex/src/entry_type.rs:110
+msgid "Misc"
+msgstr "Linh tinh"
+
+#: cratebibtex/src/entry_type.rs:111
+msgid "In Proceedings"
+msgstr "Đang xử lý"
+
+#: cratebibtex/src/entry_type.rs:112
+msgid "Unpublished"
+msgstr "Chưa xuất bản"
+
+#: cratebibtex/src/entry_type.rs:113
+msgid "Online"
+msgstr "Trực tuyến"
+
+#: cratebibtex/src/entry_type.rs:114
+msgid "Other"
+msgstr "Khác"
+
+#: cratebibtex/src/entry_type.rs:115
+msgid "Booklet"
+msgstr "Sách nhỏ"
+
+#: cratebibtex/src/entry_type.rs:116
+msgid "Conference"
+msgstr "Hội thảo"
+
+#: cratebibtex/src/entry_type.rs:117
+msgid "In Book"
+msgstr "Trong sách"
+
+#: cratebibtex/src/entry_type.rs:118
+msgid "In Collection"
+msgstr "Trong bộ sưu tập"
+
+#: cratebibtex/src/entry_type.rs:119
+msgid "Manual"
+msgstr "Thủ công"
+
+#: cratebibtex/src/entry_type.rs:120
+msgid "Master Thesis"
+msgstr "Luận văn thạc sỹ"
+
+#: cratebibtex/src/entry_type.rs:121
+msgid "PhD. Thesis"
+msgstr "Luận văn Tiến sĩ"
+
+#: cratebibtex/src/entry_type.rs:122
+msgid "Proceedings"
+msgstr "Đang xử lý"
+
+#: cratebibtex/src/entry_type.rs:123
+msgid "Tech Report"
+msgstr "Báo cáo kỹ thuật"
+
+#. NOTE Plain as in Plain Text
+#: cratebibtex/src/format.rs:51
+msgid "Plain"
+msgstr "Thường"
+
+#. NOTE: This is the app name
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:37
+msgid "Citations"
+msgstr "Trích dẫn"
+
+#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:527
+msgid "Manage your bibliography"
+msgstr "Quản lý thư tịch của bạn"
+
+#: data/org.gnome.World.Citations.desktop.in.in:9
+msgid "Gnome;GTK;"
+msgstr "Gnome;GTK;"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "Độ rộng cửa sổ"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "Độ cao cửa sổ"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Trạng thái phóng to cửa sổ"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
+msgid "List of paths of recent files"
+msgstr "Danh sách các tập tin mới dùng"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
+msgid "Default template for book citation"
+msgstr "Mẫu mặc định cho trích dẫn sách"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:30
+msgid "Default template kind for citations"
+msgstr "Kiểu mẫu mặc định cho trích dẫn"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:34
+msgid "Default template format for citations"
+msgstr "Định dạng mẫu mặc định cho trích dẫn"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "Quản lý thư tịch của bạn sử dụng định dạng BibTeX."
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:15
+msgid "Main window"
+msgstr "Cửa sổ chính"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:41
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
+#: data/resources/ui/citation_preview.ui:25
+msgid "Custom Citation Format"
+msgstr "Định dạng trích dẫn tự chọn"
+
+#: data/resources/ui/citation_preview.ui:70
+msgid "Citation"
+msgstr "Trích dẫn"
+
+#: data/resources/ui/citation_preview.ui:116 data/resources/ui/entry_page.ui:95
+msgid "Copy"
+msgstr "Sao chép"
+
+#: data/resources/ui/citation_preview.ui:151
+msgid "Custom Template"
+msgstr "Mẫu tự chọn"
+
+#: data/resources/ui/citation_preview.ui:167
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported.\n"
+"            "
+msgstr ""
+"Ghi một định dạng tự chọn cho trích dẫn của bạn, để chèn những nội dung của "
+"một thẻ <tt>một_số_thẻ</tt> ghi <tt>%SOMETAG%</tt>. Các cú pháp đánh dấu cơ "
+"bản cho đậm và nghiêng được hỗ trợ.\n"
+"            "
+
+#: data/resources/ui/citation_preview.ui:173
+msgid "Example:"
+msgstr "Ví dụ:"
+
+#: data/resources/ui/entry_list.ui:9
+msgid "No Citations"
+msgstr "Không trích dẫn"
+
+#: data/resources/ui/entry_list.ui:10
+msgid "Create a new citation"
+msgstr "Tạo một trích dẫn mới"
+
+#: data/resources/ui/entry_page.ui:72
+msgid "Citation _Type"
+msgstr "_Kiểu trích dẫn"
+
+#: data/resources/ui/entry_page.ui:87
+msgid "_Citation Key"
+msgstr "Khóa trí_ch dẫn"
+
+#: data/resources/ui/entry_page.ui:106
+msgid "_Author"
+msgstr "Tác _giả"
+
+#: data/resources/ui/entry_page.ui:112
+msgid "_Title"
+msgstr "_Tựa đề"
+
+#: data/resources/ui/entry_page.ui:118
+msgid "_Year"
+msgstr "_Năm"
+
+#: data/resources/ui/entry_page.ui:130
+msgid "Open in Browser"
+msgstr "Mở trong trình duyệt"
+
+#: data/resources/ui/entry_page.ui:150
+msgid "Other Properties"
+msgstr "Các thuộc tính khác"
+
+#: data/resources/ui/new_entry_dialog.ui:25
+msgid "_Cancel"
+msgstr "_Thôi"
+
+#: data/resources/ui/new_entry_dialog.ui:32
+msgid "C_reate"
+msgstr "Tạ_o"
+
+#: data/resources/ui/new_entry_dialog.ui:58
+msgid "Citation Key"
+msgstr "Khóa Trích dẫn"
+
+#: data/resources/ui/new_entry_dialog.ui:63
+msgid "Citation Type"
+msgstr "Kiểu Trích dẫn"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Chung"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Hiện phím tắt"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Thoát"
+
+#: data/resources/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Thư tịch"
+
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Mở"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Ghi"
+
+#: data/resources/ui/window.ui:6
+msgid "_Create New Bibliography"
+msgstr "Tạ_o một thư tịch mới"
+
+#: data/resources/ui/window.ui:12 data/resources/ui/window.ui:35
+msgid "_Keyboard Shortcuts"
+msgstr "_Phím tắt"
+
+#: data/resources/ui/window.ui:16 data/resources/ui/window.ui:39
+msgid "_About Citations"
+msgstr "_Giới thiệu Trích dẫn"
+
+#: data/resources/ui/window.ui:24
+msgid "_Save"
+msgstr "_Lưu"
+
+#: data/resources/ui/window.ui:28 data/resources/ui/window.ui:74
+msgid "_Open"
+msgstr "_Mở"
+
+#: data/resources/ui/window.ui:47
+msgid "_Search in Google Scholar"
+msgstr "Tìm _kiếm trong Google Scholar"
+
+#. arXiv is a proper name
+#: data/resources/ui/window.ui:51
+msgid "_Search in arXiv"
+msgstr "_Tìm kiếm trong arXiv"
+
+#: data/resources/ui/window.ui:57
+msgid "_Delete"
+msgstr "_Xoá"
+
+#: data/resources/ui/window.ui:84 data/resources/ui/window.ui:122
+msgid "Main Menu"
+msgstr "Trình đơn chính"
+
+#. BibTeX is a proper name
+#: data/resources/ui/window.ui:93
+msgid "Open a BibTeX File"
+msgstr "Mở một tập tin BibTeX"
+
+#: data/resources/ui/window.ui:94
+msgid "Or drag-and-drop a file"
+msgstr "Hoặc kéo và thả tập tin vào đây"
+
+#: data/resources/ui/window.ui:115
+msgid "Add New Citation"
+msgstr "Thêm một trích dẫn mới"
+
+#: data/resources/ui/window.ui:128
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: data/resources/ui/window.ui:180
+msgid "Back"
+msgstr "Lùi lại"
+
+#: data/resources/ui/window.ui:189
+msgid "Secondary Menu"
+msgstr "Trình đơn con"
+
+#. TODO Should this be translatable?
+#: src/citation_preview.rs:56
+msgid "Chicago"
+msgstr "Chicago"
+
+#: src/citation_preview.rs:57
+msgid "Harvard"
+msgstr "Harvard"
+
+#: src/citation_preview.rs:58
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#. NOTE: Custom as in Custom Template.
+#: src/citation_preview.rs:60
+msgid "Custom"
+msgstr "Riêng"
+
+#: src/citation_preview.rs:158 src/entry_page.rs:113
+msgid "Copied"
+msgstr "Đã sao chép"
+
+#: src/entry_page.rs:132
+msgid "Citation Key already exists"
+msgstr "Khóa trích dẫn đã có rồi"
+
+#: src/utils.rs:18
+msgid "Author"
+msgstr "Tác giả"
+
+#: src/utils.rs:19
+msgid "Year"
+msgstr "Năm"
+
+#: src/utils.rs:20
+msgid "Title"
+msgstr "Tước"
+
+#: src/utils.rs:21
+msgid "Volume"
+msgstr "Âm lượng"
+
+#: src/utils.rs:22
+msgid "Number"
+msgstr "Số"
+
+#: src/utils.rs:23
+msgid "Pages"
+msgstr "Trang"
+
+#: src/utils.rs:24
+msgid "Publisher"
+msgstr "Nhà xuất bản"
+
+#: src/utils.rs:25
+msgid "Journal"
+msgstr "Nhật ký"
+
+#: src/utils.rs:26
+msgid "Address"
+msgstr "Địa chỉ"
+
+#: src/utils.rs:27
+msgid "How Published"
+msgstr "Xuất bản bằng cách nào"
+
+#: src/utils.rs:28
+msgid "Note"
+msgstr "Ghi chú"
+
+#: src/utils.rs:29
+msgid "Book Title"
+msgstr "Tựa sách"
+
+#: src/utils.rs:30
+msgid "Series"
+msgstr "Sê-ri"
+
+#: src/utils.rs:31
+msgid "Archive Prefix"
+msgstr "Tiền tố kho nén"
+
+#: src/utils.rs:32
+msgid "ePrint"
+msgstr "ePrint"
+
+#: src/utils.rs:33
+msgid "Primary Class"
+msgstr "Lớp sơ cấp"
+
+#: src/utils.rs:34
+msgid "Month"
+msgstr "Tháng"
+
+#: src/utils.rs:35
+msgid "Editor"
+msgstr "Bộ soạn thảo"
+
+#: src/utils.rs:36
+msgid "Organization"
+msgstr "Tổ chức"
+
+#: src/utils.rs:37
+msgid "School"
+msgstr "Trường học"
+
+#: src/utils.rs:38
+msgid "Institution"
+msgstr "Tổ chức xã hội"
+
+#: src/window.rs:284 src/window.rs:313
+msgid "Bibtex Files"
+msgstr "Tập tin Bibtex"
+
+#: src/window.rs:305
+msgid "Create New Bibliography"
+msgstr "Tạo một thư tịch mới"
+
+#: src/window.rs:308
+msgid "Create"
+msgstr "Tạo"
+
+#: src/window.rs:411
+msgid "Recent Files"
+msgstr "Tập tin mới dùng"
+
+#: src/window.rs:437
+msgid "Entry with key {citation_key} already exists"
+msgstr "Mục tin với khóa {citation_key} đã có từ trước rồi"
+
+#: src/window.rs:459
+msgid "Bibliography saved"
+msgstr "Thư tịch đã được lưu"
+
+#: src/window.rs:499
+msgid "Entry Deleted"
+msgstr "Mục tin đã bị xóa"
+
+#: src/window.rs:501
+msgid "Undo"
+msgstr "Hồi lại"
+
+#: src/window.rs:531
+msgid "translator-credits"
+msgstr "Nhóm Việt hóa GNOME <gnome-vi-list@gnome.org>"
