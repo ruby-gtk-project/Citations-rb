@@ -2,13 +2,14 @@
 # Copyright (C) 2022 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
 # Enrico Nicoletto <hiko@duck.com>, 2022.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-10 02:10+0000\n"
-"PO-Revision-Date: 2022-05-11 10:18-0300\n"
+"POT-Creation-Date: 2022-05-14 18:14+0000\n"
+"PO-Revision-Date: 2022-05-17 04:50-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -151,7 +152,8 @@ msgstr "Formato de citação personalizada"
 msgid "Citation"
 msgstr "Citação"
 
-#: data/resources/ui/citation_preview.ui:116 data/resources/ui/entry_page.ui:95
+#: data/resources/ui/citation_preview.ui:116
+#: data/resources/ui/entry_page.ui:104
 msgid "Copy"
 msgstr "Copiar"
 
@@ -187,27 +189,27 @@ msgstr "Criar nova citação"
 msgid "Citation _Type"
 msgstr "_Tipo de citação"
 
-#: data/resources/ui/entry_page.ui:87
+#: data/resources/ui/entry_page.ui:96
 msgid "_Citation Key"
 msgstr "Chave da _citação"
 
-#: data/resources/ui/entry_page.ui:106
+#: data/resources/ui/entry_page.ui:115
 msgid "_Author"
 msgstr "_Autor"
 
-#: data/resources/ui/entry_page.ui:112
+#: data/resources/ui/entry_page.ui:121
 msgid "_Title"
 msgstr "_Título"
 
-#: data/resources/ui/entry_page.ui:118
+#: data/resources/ui/entry_page.ui:127
 msgid "_Year"
 msgstr "A_no"
 
-#: data/resources/ui/entry_page.ui:130
+#: data/resources/ui/entry_page.ui:139
 msgid "Open in Browser"
 msgstr "Abrir no navegador"
 
-#: data/resources/ui/entry_page.ui:150
+#: data/resources/ui/entry_page.ui:159
 msgid "Other Properties"
 msgstr "Outras propriedades"
 
@@ -337,11 +339,15 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Personalizado"
 
-#: src/citation_preview.rs:158 src/entry_page.rs:113
+#: src/citation_preview.rs:158 src/entry_page.rs:130
 msgid "Copied"
 msgstr "Copiado"
 
-#: src/entry_page.rs:132
+#: src/entry_page.rs:96
+msgid "Other…"
+msgstr "Outros…"
+
+#: src/entry_page.rs:149
 msgid "Citation Key already exists"
 msgstr "A chave de citação já existe"
 
