@@ -7,6 +7,7 @@ edition = "2021"
 [dependencies]
 adw = {package = "libadwaita", git = "https://gitlab.gnome.org/msandova/libadwaita-rs", branch = "test-entry", features = ["v1_2"] }
 anyhow = "1.0"
+async-std = "1.11"
 cratebibtex = { path = "cratebibtex" }
 futures-channel = "0.3"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }

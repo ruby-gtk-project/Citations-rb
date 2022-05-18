@@ -21,7 +21,6 @@ mod imp {
     impl ObjectSubclass for Bib {
         const NAME: &'static str = "Bib";
         type Type = super::Bib;
-        type ParentType = glib::Object;
         type Interfaces = (gio::ListModel,);
     }
 

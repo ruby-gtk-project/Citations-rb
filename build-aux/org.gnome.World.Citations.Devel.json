@@ -6,12 +6,13 @@
     "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
     "command": "citations",
     "finish-args" : [
-        "--socket=fallback-x11",
-        "--socket=wayland",
         "--device=dri",
-        "--env=RUST_LOG=citations,cratebibtex=debug",
         "--env=G_MESSAGES_DEBUG=none",
-        "--env=RUST_BACKTRACE=1"
+        "--env=RUST_BACKTRACE=1",
+        "--env=RUST_LOG=citations,cratebibtex=debug",
+        "--filesystem=xdg-documents/Bibliography",
+        "--socket=fallback-x11",
+        "--socket=wayland"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",

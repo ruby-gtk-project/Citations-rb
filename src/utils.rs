@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use gettextrs::gettext;
+use gtk::glib;
+use std::path::PathBuf;
 
 #[macro_export]
 macro_rules! spawn {
@@ -74,4 +76,10 @@ pub fn build_arxiv_url(author: &str, title: &str) -> anyhow::Result<String> {
 
     let sanitized = url::Url::parse(&url)?;
     Ok(sanitized.to_string())
+}
+
+pub fn bibliography_path() -> Option<PathBuf> {
+    // TODO Use a user defined directory, see
+    // https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/issues/41
+    glib::user_special_dir(glib::UserDirectory::Documents).map(|path| path.join("Bibliography"))
 }
