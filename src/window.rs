@@ -123,6 +123,9 @@ mod imp {
             klass.install_action("win.about", None, move |obj, _, _| {
                 obj.show_about_dialog();
             });
+            klass.install_action("win.show-preferences", None, move |obj, _, _| {
+                obj.show_preferences_window();
+            });
         }
 
         // You must call `Widget`'s `init_template()` within `instance_init()`.
@@ -542,5 +545,14 @@ impl Window {
             .build();
 
         dialog.present();
+    }
+
+    pub fn show_preferences_window(&self) {
+        let preferences_window = crate::PreferencesWindow::new(Some(self));
+        preferences_window.present();
+    }
+
+    pub fn settings(&self) -> gio::Settings {
+        self.imp().settings.clone()
     }
 }

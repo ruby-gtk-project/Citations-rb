@@ -6,6 +6,10 @@
         <attribute name="label" translatable="yes">_Create New Bibliography</attribute>
         <attribute name="action">win.new_biblio</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">win.show-preferences</attribute>
+      </item>
     </section>
     <section>
       <item>
@@ -28,6 +32,10 @@
         <attribute name="label" translatable="yes">_Open</attribute>
         <attribute name="action">win.open</attribute>
         <attribute name="target"></attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">win.show-preferences</attribute>
       </item>
     </section>
     <section>

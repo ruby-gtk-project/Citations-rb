@@ -33,5 +33,9 @@
       <default>0</default>
       <summary>Default template format for citations</summary>
     </key>
+    <key name="bibliography-path" type="s">
+      <default>""</default>
+      <summary>Default path to store PDF files</summary>
+    </key>
   </schema>
 </schemalist>

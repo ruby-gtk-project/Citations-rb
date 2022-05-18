@@ -6,6 +6,7 @@
     <file preprocess="xml-stripblanks">ui/entry_list_row.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/entry_page.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/new_entry_dialog.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/preferences_window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/shortcuts.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
     <file compressed="true">style.css</file>
