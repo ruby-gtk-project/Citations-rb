@@ -6,6 +6,7 @@ use gtk::{gdk, gio, glib, CompositeTemplate};
 
 use crate::utils;
 
+// TODO Show preview for PDF using poppler bindings
 mod imp {
     use super::*;
 
