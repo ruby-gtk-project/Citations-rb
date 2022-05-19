@@ -511,7 +511,7 @@ impl Window {
     fn delete_entry(&self) {
         if let Some(entry) = self.imp().entry_page.entry() {
             if let Some(pos) = self.bib().find_pos(&entry) {
-                let toast = adw::Toast::new(&gettext("Entry Deleted"));
+                let toast = adw::Toast::new(&gettext("Citation Deleted"));
                 toast.set_action_name(Some("win.undo_delete"));
                 toast.set_button_label(Some(&gettext("Undo")));
                 toast.connect_dismissed(glib::clone!(@weak self as obj => move |_| {
