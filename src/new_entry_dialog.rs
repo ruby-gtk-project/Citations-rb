@@ -6,7 +6,8 @@ use gtk::glib;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
-const SAMPLE_ENTRY: &str = r"@book{lamport1985i1,
+const SAMPLE_ENTRY: &str = r"Replace this sample citation
+@book{lamport1985i1,
   title={\LaTeX: A Document Preparation System},
   author={Lamport, Leslie},
   year={1991},
