@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-14 18:14+0000\n"
-"PO-Revision-Date: 2022-05-14 22:16+0300\n"
+"POT-Creation-Date: 2022-05-18 16:54+0000\n"
+"PO-Revision-Date: 2022-05-19 19:20+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -95,7 +95,7 @@ msgid "Citations"
 msgstr "Цитати"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:527
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:534
 msgid "Manage your bibliography"
 msgstr "Керування вашою бібліографією"
 
@@ -213,21 +213,36 @@ msgstr "Відкрити у переглядачі"
 msgid "Other Properties"
 msgstr "Інші властивості"
 
-#: data/resources/ui/new_entry_dialog.ui:25
+#: data/resources/ui/entry_page.ui:190 src/entry_page.rs:363
+#| msgctxt "shortcut window"
+#| msgid "Open"
+msgid "Open PDF"
+msgstr "Відкрити PDF"
+
+#: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: data/resources/ui/new_entry_dialog.ui:32
+#: data/resources/ui/new_entry_dialog.ui:34
 msgid "C_reate"
 msgstr "С_творити"
 
-#: data/resources/ui/new_entry_dialog.ui:58
+#: data/resources/ui/new_entry_dialog.ui:49
+msgid "New"
+msgstr "Створити"
+
+#: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Key"
 msgstr "Ключ посилання"
 
-#: data/resources/ui/new_entry_dialog.ui:63
+#: data/resources/ui/new_entry_dialog.ui:73
 msgid "Citation Type"
 msgstr "Тип посилання"
+
+#. BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:93
+msgid "From BibTeX"
+msgstr "З BibTeX"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -339,100 +354,116 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/citation_preview.rs:158 src/entry_page.rs:130
+#: src/citation_preview.rs:158 src/entry_page.rs:132
 msgid "Copied"
 msgstr "Скопійовано"
 
-#: src/entry_page.rs:96
-#| msgid "Other"
+#: src/entry_page.rs:98
 msgid "Other…"
 msgstr "Інше…"
 
-#: src/entry_page.rs:149
+#: src/entry_page.rs:151
 msgid "Citation Key already exists"
 msgstr "Ключ цитування вже існує"
 
-#: src/utils.rs:18
+#: src/entry_page.rs:366
+msgid "Set PDF"
+msgstr "Встановити PDF"
+
+#: src/entry_page.rs:374
+#| msgid "Bibliography saved"
+msgid "Bibliography folder not set"
+msgstr "Не встановлено теки бібліографії"
+
+#: src/entry_page.rs:378
+msgid "Make sure ~/Documents/Bibliography exists"
+msgstr "Переконайтеся, що тека ~/Документи/Бібліографія існує"
+
+#: src/entry_page.rs:400
+msgid "PDF Files"
+msgstr "файли PDF"
+
+#: src/utils.rs:20
 msgid "Author"
 msgstr "Автор"
 
-#: src/utils.rs:19
+#: src/utils.rs:21
 msgid "Year"
 msgstr "Рік"
 
-#: src/utils.rs:20
+#: src/utils.rs:22
 msgid "Title"
 msgstr "Назва"
 
-#: src/utils.rs:21
+#: src/utils.rs:23
 msgid "Volume"
 msgstr "Том"
 
-#: src/utils.rs:22
+#: src/utils.rs:24
 msgid "Number"
 msgstr "Номер"
 
-#: src/utils.rs:23
+#: src/utils.rs:25
 msgid "Pages"
 msgstr "Сторінки"
 
-#: src/utils.rs:24
+#: src/utils.rs:26
 msgid "Publisher"
 msgstr "Видавець"
 
-#: src/utils.rs:25
+#: src/utils.rs:27
 msgid "Journal"
 msgstr "Журнал"
 
-#: src/utils.rs:26
+#: src/utils.rs:28
 msgid "Address"
 msgstr "Адреса"
 
-#: src/utils.rs:27
+#: src/utils.rs:29
 msgid "How Published"
 msgstr "Як видавалася"
 
-#: src/utils.rs:28
+#: src/utils.rs:30
 msgid "Note"
 msgstr "Нотатка"
 
-#: src/utils.rs:29
+#: src/utils.rs:31
 msgid "Book Title"
 msgstr "Назва книги"
 
-#: src/utils.rs:30
+#: src/utils.rs:32
 msgid "Series"
 msgstr "Цикл"
 
-#: src/utils.rs:31
+#: src/utils.rs:33
 msgid "Archive Prefix"
 msgstr "Префікс архівів"
 
-#: src/utils.rs:32
+#: src/utils.rs:34
 msgid "ePrint"
 msgstr "Електронний відбиток"
 
-#: src/utils.rs:33
+#: src/utils.rs:35
 msgid "Primary Class"
 msgstr "Основний клас"
 
-#: src/utils.rs:34
+#: src/utils.rs:36
 msgid "Month"
 msgstr "Місяць"
 
-#: src/utils.rs:35
+#: src/utils.rs:37
 msgid "Editor"
 msgstr "Редактор"
 
-#: src/utils.rs:36
+#: src/utils.rs:38
 msgid "Organization"
 msgstr "Організація"
 
-#: src/utils.rs:37
+#: src/utils.rs:39
 msgid "School"
 msgstr "Школа"
 
-#: src/utils.rs:38
+#: src/utils.rs:40
 msgid "Institution"
 msgstr "Установа"
 
@@ -452,22 +483,23 @@ msgstr "Створити"
 msgid "Recent Files"
 msgstr "Нещодавні файли"
 
-#: src/window.rs:437
-msgid "Entry with key {citation_key} already exists"
-msgstr "Запис із ключем {citation_key} вже існує"
+#: src/window.rs:449
+#| msgid "Entry with key {citation_key} already exists"
+msgid "An entry with the given citation key already exists"
+msgstr "Запис із вказаним ключем цитування вже існує"
 
-#: src/window.rs:459
+#: src/window.rs:466
 msgid "Bibliography saved"
 msgstr "Бібліографію збережено"
 
-#: src/window.rs:499
+#: src/window.rs:506
 msgid "Entry Deleted"
 msgstr "Запис вилучено"
 
-#: src/window.rs:501
+#: src/window.rs:508
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:531
+#: src/window.rs:538
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2022"
