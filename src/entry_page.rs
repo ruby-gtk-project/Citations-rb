@@ -376,9 +376,9 @@ impl EntryPage {
             self.imp()
                 .pdf_action_row
                 .set_title(&gettext("Bibliography folder not set"));
-            // NOTE Do not translate the path.
             self.imp()
                 .pdf_action_row
+                // NOTE Do not translate the path.
                 .set_subtitle(&gettext("Make sure ~/Documents/Bibliography exists"));
             // TODO
             // self.imp().pdf_action_row.set_subtitle("Open settings");

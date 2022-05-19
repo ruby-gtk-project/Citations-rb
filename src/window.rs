@@ -562,8 +562,8 @@ impl Window {
             // NOTE Dialog title which informs the user about unsaved changes.
             &gettext("Unsaved Changes"),
         );
-        // NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
         dialog.set_secondary_text(Some(&gettext(
+            // NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
             "Do you want to write all changes to the safe?",
         )));
 
