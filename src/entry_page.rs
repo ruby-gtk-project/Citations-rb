@@ -168,7 +168,7 @@ mod imp {
             if let Some(path) = crate::utils::bibliography_path() {
                 let folder = gio::File::for_path(&path);
                 // TODO Add djvu support, is it needed?
-                let pdf = folder.child(&format!("{}.pdf", entry.citation_key()));
+                let pdf = folder.child(&utils::pdf_filename(&entry.citation_key()));
                 if pdf.query_exists(gio::Cancellable::NONE) {
                     gtk::show_uri(Some(&window), &pdf.uri(), gdk::CURRENT_TIME);
                 } else {
@@ -361,7 +361,7 @@ impl EntryPage {
 
         if let Some(path) = crate::utils::bibliography_path() {
             let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&format!("{}.pdf", entry.citation_key()));
+            let pdf = folder.child(&utils::pdf_filename(&entry.citation_key()));
             if pdf.query_exists(gio::Cancellable::NONE) {
                 self.imp().pdf_action_row.set_title(&gettext("Open PDF"));
                 self.imp().pdf_action_row.set_subtitle("");
@@ -406,7 +406,7 @@ impl EntryPage {
 
             if dialog.run_future().await == gtk::ResponseType::Accept {
                 let file = dialog.file().unwrap();
-                let filename = format!("{}.pdf", entry.citation_key());
+                let filename = utils::pdf_filename(&entry.citation_key());
                 let dest = folder.child(&filename);
 
                 if let Err(err) = async_std::fs::create_dir_all(&path).await {
@@ -430,9 +430,9 @@ impl EntryPage {
 
         if let Some(path) = crate::utils::bibliography_path() {
             let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&format!("{}.pdf", old_citation_key));
+            let pdf = folder.child(&utils::pdf_filename(&old_citation_key));
             if pdf.query_exists(gio::Cancellable::NONE) {
-                let new_pdf = folder.child(&format!("{}.pdf", new_citation_key));
+                let new_pdf = folder.child(&utils::pdf_filename(&new_citation_key));
                 pdf.move_future(
                     &new_pdf,
                     gio::FileCopyFlags::NONE,

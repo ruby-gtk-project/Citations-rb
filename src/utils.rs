@@ -83,3 +83,7 @@ pub fn bibliography_path() -> Option<PathBuf> {
     // https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/issues/41
     glib::user_special_dir(glib::UserDirectory::Documents).map(|path| path.join("Bibliography"))
 }
+
+pub fn pdf_filename(citation_key: &str) -> String {
+    sanitize_filename::sanitize(&format!("{citation_key}.pdf"))
+}
