@@ -133,8 +133,8 @@ mod imp {
         }
 
         #[template_callback]
-        fn on_citation_key_apply(entry_row: &adw::EntryRow, entry_page: &super::EntryPage) {
-            let text = entry_row.text();
+        async fn on_citation_key_apply(entry_row: &adw::EntryRow, entry_page: &super::EntryPage) {
+            let new_key = entry_row.text();
             let entry = entry_page.imp().entry.borrow().clone().unwrap();
             let old_key = entry.citation_key();
             let window = entry_page
@@ -143,9 +143,12 @@ mod imp {
                 .downcast::<crate::Window>()
                 .unwrap();
 
-            if !window.bib().key_exists(&text) || old_key == text {
+            if !window.bib().key_exists(&new_key) || old_key == new_key {
                 entry_row.remove_css_class("error");
-                entry.set_citation_key(&text);
+                entry.set_citation_key(&new_key);
+                if let Err(err) = entry_page.move_pdf_for_entry(&old_key).await {
+                    log::error!("Could not move pdf: {err}");
+                }
             } else {
                 entry_row.add_css_class("error");
                 window.send_toast(&gettext("Citation Key already exists"));
@@ -414,6 +417,33 @@ impl EntryPage {
                     .0
                     .await?;
                 log::debug!("Copied {filename} to {}", path.to_str().unwrap());
+            }
+        }
+
+        Ok(())
+    }
+
+    async fn move_pdf_for_entry(&self, old_citation_key: &str) -> anyhow::Result<()> {
+        let entry = self.imp().entry.borrow().clone().unwrap();
+        let new_citation_key = entry.citation_key();
+
+        if let Some(path) = crate::utils::bibliography_path() {
+            let folder = gio::File::for_path(&path);
+            let pdf = folder.child(&format!("{}.pdf", old_citation_key));
+            if pdf.query_exists(gio::Cancellable::NONE) {
+                let new_pdf = folder.child(&format!("{}.pdf", new_citation_key));
+                pdf.move_future(
+                    &new_pdf,
+                    gio::FileCopyFlags::NONE,
+                    glib::Priority::default(),
+                )
+                .0
+                .await?;
+                log::debug!(
+                    "Moved {} to {}",
+                    pdf.path().unwrap().to_str().unwrap(),
+                    new_pdf.path().unwrap().to_str().unwrap()
+                );
             }
         }
 

@@ -259,6 +259,7 @@ dependencies = [
  "cratebibtex",
  "futures-channel",
  "gettext-rs",
+ "gio",
  "glib",
  "gtk4",
  "libadwaita",
