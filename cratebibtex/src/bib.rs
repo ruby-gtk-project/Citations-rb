@@ -8,6 +8,7 @@ use crate::Entry;
 mod imp {
     use super::*;
 
+    use once_cell::sync::Lazy;
     use std::cell::Cell;
 
     #[derive(Debug, Default)]
@@ -15,6 +16,7 @@ mod imp {
         pub inner: RefCell<nom_bibtex::Bibtex>,
         pub entries: RefCell<Vec<Entry>>,
         pub n_items: Cell<u32>,
+        pub modified: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -24,7 +26,41 @@ mod imp {
         type Interfaces = (gio::ListModel,);
     }
 
-    impl ObjectImpl for Bib {}
+    impl ObjectImpl for Bib {
+        fn properties() -> &'static [glib::ParamSpec] {
+            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
+                vec![glib::ParamSpecBoolean::new(
+                    "modified",
+                    "modified",
+                    "modified",
+                    false,
+                    glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
+                )]
+            });
+            PROPERTIES.as_ref()
+        }
+
+        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            match pspec.name() {
+                "modified" => obj.modified().to_value(),
+                _ => unimplemented!(),
+            }
+        }
+
+        fn set_property(
+            &self,
+            obj: &Self::Type,
+            _id: usize,
+            value: &glib::Value,
+            pspec: &glib::ParamSpec,
+        ) {
+            match pspec.name() {
+                "modified" => obj.set_modified(value.get().unwrap()),
+                _ => unimplemented!(),
+            };
+        }
+    }
+
     impl ListModelImpl for Bib {
         fn item_type(&self, _list_model: &Self::Type) -> glib::Type {
             Entry::static_type()
@@ -63,6 +99,20 @@ impl Bib {
             .collect::<Vec<Entry>>();
         let n_items = entries.len() as u32;
 
+        for entry in entries.iter() {
+            entry.connect_notify_local(
+                None,
+                glib::clone!(@weak self as bib, @weak entry => move |_entry, pspec| {
+                    log::debug!(
+                        "Entry {}'s property {} was modified",
+                        entry.citation_key(),
+                        pspec.name()
+                    );
+                    bib.set_modified(true);
+                }),
+            );
+        }
+
         self.imp().inner.replace(bibtex);
         let old_entries = self.imp().entries.replace(entries);
 
@@ -84,12 +134,23 @@ impl Bib {
         {
             // We create a block to free the borrow asap.
             let mut entries = self.imp().entries.borrow_mut();
+            entry.connect_notify_local(
+                None,
+                glib::clone!(@weak self as bib, @weak entry => move |_entry, pspec| {
+                    log::debug!(
+                        "Entry {} property {} was modified",
+                        entry.citation_key(),
+                        pspec.name()
+                    );
+                    bib.set_modified(true);
+                }),
+            );
             entries.push(entry);
         };
         let n_items = self.imp().n_items.get();
         self.imp().n_items.set(self.imp().n_items.get() + 1);
         self.items_changed(n_items, 0, 1);
-
+        self.set_modified(true);
         n_items
     }
 
@@ -99,10 +160,22 @@ impl Bib {
             // We create a block to free the borrow asap.
             let mut entries = self.imp().entries.borrow_mut();
             pos = pos.min(entries.len() as u32);
+            entry.connect_notify_local(
+                None,
+                glib::clone!(@weak self as bib, @weak entry => move |_entry, pspec| {
+                    log::debug!(
+                        "Entry {} property {} was modified",
+                        entry.citation_key(),
+                        pspec.name()
+                    );
+                    bib.set_modified(true);
+                }),
+            );
             entries.insert(pos as usize, entry);
         };
         self.imp().n_items.set(self.imp().n_items.get() + 1);
         self.items_changed(pos, 0, 1);
+        self.set_modified(true);
     }
 
     pub fn remove_entry(&self, citation_key: &str) {
@@ -119,12 +192,14 @@ impl Bib {
             self.imp().n_items.set(self.imp().n_items.get() - 1);
             self.items_changed(idx as u32, 1, 0);
         }
+        self.set_modified(true);
     }
 
     pub fn remove_pos(&self, pos: u32) {
         self.imp().entries.borrow_mut().remove(pos as usize);
         self.imp().n_items.set(self.imp().n_items.get() - 1);
         self.items_changed(pos, 1, 0);
+        self.set_modified(true);
     }
 
     pub fn find_pos(&self, entry: &crate::Entry) -> Option<u32> {
@@ -142,5 +217,25 @@ impl Bib {
             .borrow()
             .iter()
             .any(|entry| entry.citation_key() == citation_key)
+    }
+
+    pub fn modified(&self) -> bool {
+        self.imp().modified.get()
+    }
+
+    pub fn set_modified(&self, modified: bool) {
+        if modified != self.imp().modified.replace(modified) {
+            self.notify("modified");
+        }
+    }
+
+    pub async fn save_to_file(&self, file: &gio::File) -> anyhow::Result<()> {
+        let content = self.serialize();
+        file.replace_contents_future(content, None, true, gio::FileCreateFlags::NONE)
+            .await
+            .map_err(|err| err.1)?;
+        self.set_modified(false);
+
+        Ok(())
     }
 }

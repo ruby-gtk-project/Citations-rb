@@ -457,11 +457,8 @@ impl Window {
     }
 
     pub async fn save(&self) -> anyhow::Result<()> {
-        let content = self.bib().serialize();
         let file = self.imp().file.borrow().clone().unwrap();
-        file.replace_contents_future(content, None, true, gio::FileCreateFlags::NONE)
-            .await
-            .map_err(|err| err.1)?;
+        self.bib().save_to_file(&file).await?;
 
         self.send_toast(&gettext("Bibliography saved"));
 

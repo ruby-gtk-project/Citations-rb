@@ -416,6 +416,7 @@ impl EntryPage {
                 file.copy_future(&dest, gio::FileCopyFlags::NONE, glib::Priority::default())
                     .0
                     .await?;
+                window.bib().set_modified(true);
                 log::debug!("Copied {filename} to {}", path.to_str().unwrap());
             }
         }
