@@ -161,7 +161,11 @@ mod imp {
         #[template_callback]
         fn template_type_name(item: &adw::EnumListItem) -> String {
             let type_ = Template::from(item.value() as u32);
-            type_.to_translatable_string()
+            if type_ == Template::Custom {
+                gettext("Custom…")
+            } else {
+                type_.to_translatable_string()
+            }
         }
 
         #[template_callback]
