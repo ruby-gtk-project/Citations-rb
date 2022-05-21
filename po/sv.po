@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-07 16:33+0000\n"
-"PO-Revision-Date: 2022-05-07 21:59+0200\n"
+"POT-Creation-Date: 2022-05-21 08:18+0000\n"
+"PO-Revision-Date: 2022-05-21 11:09+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -94,7 +94,7 @@ msgid "Citations"
 msgstr "Citations"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:527
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:542
 msgid "Manage your bibliography"
 msgstr "Hantera din bibliografi"
 
@@ -139,7 +139,7 @@ msgstr "Hantera dina bibliografier med BibTeX-formatet."
 msgid "Main window"
 msgstr "Huvudfönster"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:37
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:52
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -151,7 +151,8 @@ msgstr "Anpassat citeringsformat"
 msgid "Citation"
 msgstr "Citering"
 
-#: data/resources/ui/citation_preview.ui:116 data/resources/ui/entry_page.ui:95
+#: data/resources/ui/citation_preview.ui:116
+#: data/resources/ui/entry_page.ui:104
 msgid "Copy"
 msgstr "Kopiera"
 
@@ -187,45 +188,58 @@ msgstr "Skapa en ny citering"
 msgid "Citation _Type"
 msgstr "Citerings_typ"
 
-#: data/resources/ui/entry_page.ui:87
+#: data/resources/ui/entry_page.ui:96
 msgid "_Citation Key"
 msgstr "_Citeringsnyckel"
 
-#: data/resources/ui/entry_page.ui:106
+#: data/resources/ui/entry_page.ui:115
 msgid "_Author"
 msgstr "_Författare"
 
-#: data/resources/ui/entry_page.ui:112
+#: data/resources/ui/entry_page.ui:121
 msgid "_Title"
 msgstr "_Titel"
 
-#: data/resources/ui/entry_page.ui:118
+#: data/resources/ui/entry_page.ui:127
 msgid "_Year"
 msgstr "Å_r"
 
-#: data/resources/ui/entry_page.ui:130
+#: data/resources/ui/entry_page.ui:139
 msgid "Open in Browser"
 msgstr "Öppna i webbläsare"
 
-#: data/resources/ui/entry_page.ui:150
+#: data/resources/ui/entry_page.ui:159
 msgid "Other Properties"
 msgstr "Andra egenskaper"
 
-#: data/resources/ui/new_entry_dialog.ui:25
+#: data/resources/ui/entry_page.ui:190 src/entry_page.rs:367
+msgid "Open PDF"
+msgstr "Öppna PDF"
+
+#: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
 msgstr "A_vbryt"
 
-#: data/resources/ui/new_entry_dialog.ui:32
+#: data/resources/ui/new_entry_dialog.ui:34
 msgid "C_reate"
 msgstr "S_kapa"
 
-#: data/resources/ui/new_entry_dialog.ui:58
+#: data/resources/ui/new_entry_dialog.ui:49
+msgid "New"
+msgstr "Ny"
+
+#: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Key"
 msgstr "Citeringsnyckel"
 
-#: data/resources/ui/new_entry_dialog.ui:63
+#: data/resources/ui/new_entry_dialog.ui:73
 msgid "Citation Type"
 msgstr "Citeringstyp"
+
+#. BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:93
+msgid "From BibTeX"
+msgstr "Från BibTeX"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -337,134 +351,189 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Anpassad"
 
-#: src/citation_preview.rs:158 src/entry_page.rs:113
+#: src/citation_preview.rs:158 src/entry_page.rs:133
 msgid "Copied"
 msgstr "Kopierad"
 
-#: src/entry_page.rs:132
+#: src/citation_preview.rs:165
+msgid "Custom…"
+msgstr "Anpassad…"
+
+#: src/entry_page.rs:99
+msgid "Other…"
+msgstr "Annan…"
+
+#: src/entry_page.rs:155
 msgid "Citation Key already exists"
 msgstr "Citeringsnyckel finns redan"
 
-#: src/utils.rs:18
+#: src/entry_page.rs:370
+msgid "Set PDF"
+msgstr "Ställ in PDF"
+
+#: src/entry_page.rs:373
+msgid "Copy file to bibliography folder"
+msgstr "Kopiera fil till bibliografimapp"
+
+#: src/entry_page.rs:378
+msgid "Bibliography folder not set"
+msgstr "Bibliografimapp inte inställd"
+
+# # Documents is called Dokument on Swedish desktop
+#. NOTE Do not translate the path.
+#: src/entry_page.rs:382
+msgid "Make sure ~/Documents/Bibliography exists"
+msgstr "Se till att ~/Dokument/Bibliography existerar"
+
+#: src/entry_page.rs:404
+msgid "PDF Files"
+msgstr "PDF-filer"
+
+#: src/utils.rs:20
 msgid "Author"
 msgstr "Författare"
 
-#: src/utils.rs:19
+#: src/utils.rs:21
 msgid "Year"
 msgstr "År"
 
-#: src/utils.rs:20
+#: src/utils.rs:22
 msgid "Title"
 msgstr "Titel"
 
-#: src/utils.rs:21
+#: src/utils.rs:23
 msgid "Volume"
 msgstr "Volym"
 
-#: src/utils.rs:22
+#: src/utils.rs:24
 msgid "Number"
 msgstr "Nummer"
 
-#: src/utils.rs:23
+#: src/utils.rs:25
 msgid "Pages"
 msgstr "Sidor"
 
-#: src/utils.rs:24
+#: src/utils.rs:26
 msgid "Publisher"
 msgstr "Förlag"
 
-#: src/utils.rs:25
+#: src/utils.rs:27
 msgid "Journal"
 msgstr "Tidskrift"
 
-#: src/utils.rs:26
+#: src/utils.rs:28
 msgid "Address"
 msgstr "Adress"
 
-#: src/utils.rs:27
+#: src/utils.rs:29
 msgid "How Published"
 msgstr "Publiceringssätt"
 
-#: src/utils.rs:28
+#: src/utils.rs:30
 msgid "Note"
 msgstr "Anteckning"
 
-#: src/utils.rs:29
+#: src/utils.rs:31
 msgid "Book Title"
 msgstr "Boktitel"
 
-#: src/utils.rs:30
+#: src/utils.rs:32
 msgid "Series"
 msgstr "Serie"
 
-#: src/utils.rs:31
+#: src/utils.rs:33
 msgid "Archive Prefix"
 msgstr "Arkivprefix"
 
-#: src/utils.rs:32
+#: src/utils.rs:34
 msgid "ePrint"
 msgstr "ePrint"
 
-#: src/utils.rs:33
+#: src/utils.rs:35
 msgid "Primary Class"
 msgstr "Primär klass"
 
-#: src/utils.rs:34
+#: src/utils.rs:36
 msgid "Month"
 msgstr "Månad"
 
-#: src/utils.rs:35
+#: src/utils.rs:37
 msgid "Editor"
 msgstr "Redaktör"
 
-#: src/utils.rs:36
+#: src/utils.rs:38
 msgid "Organization"
 msgstr "Organisation"
 
-#: src/utils.rs:37
+#: src/utils.rs:39
 msgid "School"
 msgstr "Skola"
 
-#: src/utils.rs:38
+#: src/utils.rs:40
 msgid "Institution"
 msgstr "Institution"
 
-#: src/window.rs:284 src/window.rs:313
+#: src/window.rs:295 src/window.rs:324
 msgid "Bibtex Files"
 msgstr "BibTeX-filer"
 
-#: src/window.rs:305
+#: src/window.rs:316
 msgid "Create New Bibliography"
 msgstr "Skapa ny bibliografi"
 
-#: src/window.rs:308
+#: src/window.rs:319
 msgid "Create"
 msgstr "Skapa"
 
-#: src/window.rs:411
+#: src/window.rs:422
 msgid "Recent Files"
 msgstr "Senaste filer"
 
-#: src/window.rs:437
-msgid "Entry with key {citation_key} already exists"
-msgstr "Det finns redan en post med nyckeln {citation_key}"
+#: src/window.rs:460
+msgid "An entry with the given citation key already exists"
+msgstr "Det finns redan en post med angiven citeringsnyckel"
 
-#: src/window.rs:459
+#: src/window.rs:474
 msgid "Bibliography saved"
 msgstr "Bibliografi sparad"
 
-#: src/window.rs:499
-msgid "Entry Deleted"
-msgstr "Post borttagen"
+#: src/window.rs:514
+msgid "Citation Deleted"
+msgstr "Citering borttagen"
 
-#: src/window.rs:501
+#: src/window.rs:516
 msgid "Undo"
 msgstr "Ångra"
 
-#: src/window.rs:531
+#: src/window.rs:546
 msgid "translator-credits"
 msgstr ""
 "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "\n"
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
+
+#. NOTE Dialog title which informs the user about unsaved changes.
+#: src/window.rs:563
+msgid "Unsaved Changes"
+msgstr "Osparade ändringar"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:567
+msgid "Do you want to write all changes to the safe?"
+msgstr "Vill du skriva alla ändringar till kassaskåpet?"
+
+#: src/window.rs:570
+msgid "_Quit Without Saving"
+msgstr "A_vsluta utan att spara"
+
+#: src/window.rs:576
+msgid "_Don't Quit"
+msgstr "Avsluta _inte"
+
+#: src/window.rs:581
+msgid "_Save and Quit"
+msgstr "_Spara och avsluta"
+
+#~ msgid "Entry Deleted"
+#~ msgstr "Post borttagen"
