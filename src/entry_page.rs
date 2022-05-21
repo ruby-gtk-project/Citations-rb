@@ -370,7 +370,7 @@ impl EntryPage {
                 self.imp().pdf_action_row.set_title(&gettext("Set PDF"));
                 self.imp()
                     .pdf_action_row
-                    .set_subtitle("Copy file to bibiliography folder");
+                    .set_subtitle(&gettext("Copy file to bibliography folder"));
             }
         } else {
             self.imp()
