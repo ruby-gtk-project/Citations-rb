@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-20 16:18+0000\n"
-"PO-Revision-Date: 2022-05-20 22:29+0300\n"
+"POT-Creation-Date: 2022-05-21 08:18+0000\n"
+"PO-Revision-Date: 2022-05-21 12:12+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -357,7 +357,6 @@ msgid "Copied"
 msgstr "Скопійовано"
 
 #: src/citation_preview.rs:165
-#| msgid "Custom"
 msgid "Custom…"
 msgstr "Нетиповий…"
 
@@ -372,6 +371,11 @@ msgstr "Ключ цитування вже існує"
 #: src/entry_page.rs:370
 msgid "Set PDF"
 msgstr "Встановити PDF"
+
+#: src/entry_page.rs:373
+#| msgid "Bibliography folder not set"
+msgid "Copy file to bibliography folder"
+msgstr "Копіювати файл до теки бібліографії"
 
 #: src/entry_page.rs:378
 msgid "Bibliography folder not set"
