@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-21 08:18+0000\n"
-"PO-Revision-Date: 2022-05-21 12:12+0300\n"
+"POT-Creation-Date: 2022-05-24 14:29+0000\n"
+"PO-Revision-Date: 2022-05-24 22:02+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -95,7 +95,7 @@ msgid "Citations"
 msgstr "Цитати"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:542
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:565
 msgid "Manage your bibliography"
 msgstr "Керування вашою бібліографією"
 
@@ -153,7 +153,7 @@ msgid "Citation"
 msgstr "Оголошувати подяку"
 
 #: data/resources/ui/citation_preview.ui:116
-#: data/resources/ui/entry_page.ui:104
+#: data/resources/ui/entry_page.ui:106
 msgid "Copy"
 msgstr "Копіювати"
 
@@ -185,35 +185,40 @@ msgstr "Немає посилань"
 msgid "Create a new citation"
 msgstr "Створити посилання"
 
-#: data/resources/ui/entry_page.ui:72
+#: data/resources/ui/entry_page.ui:10
+#| msgid "Citation Deleted"
+msgid "No Citation Selected"
+msgstr "Не позначено жодного посилання"
+
+#: data/resources/ui/entry_page.ui:74
 msgid "Citation _Type"
 msgstr "_Тип посилання"
 
-#: data/resources/ui/entry_page.ui:96
+#: data/resources/ui/entry_page.ui:98
 msgid "_Citation Key"
 msgstr "Кл_юч посилання"
 
-#: data/resources/ui/entry_page.ui:115
+#: data/resources/ui/entry_page.ui:117
 msgid "_Author"
 msgstr "_Автор"
 
-#: data/resources/ui/entry_page.ui:121
+#: data/resources/ui/entry_page.ui:123
 msgid "_Title"
 msgstr "_Назва"
 
-#: data/resources/ui/entry_page.ui:127
+#: data/resources/ui/entry_page.ui:129
 msgid "_Year"
 msgstr "Р_ік"
 
-#: data/resources/ui/entry_page.ui:139
+#: data/resources/ui/entry_page.ui:141 src/entry_page.rs:351
 msgid "Open in Browser"
 msgstr "Відкрити у переглядачі"
 
-#: data/resources/ui/entry_page.ui:159
+#: data/resources/ui/entry_page.ui:161
 msgid "Other Properties"
 msgstr "Інші властивості"
 
-#: data/resources/ui/entry_page.ui:190 src/entry_page.rs:367
+#: data/resources/ui/entry_page.ui:192 src/entry_page.rs:395
 msgid "Open PDF"
 msgstr "Відкрити PDF"
 
@@ -305,7 +310,7 @@ msgstr "_Шукати в arXiv"
 msgid "_Delete"
 msgstr "В_илучити"
 
-#: data/resources/ui/window.ui:84 data/resources/ui/window.ui:122
+#: data/resources/ui/window.ui:84 data/resources/ui/window.ui:123
 msgid "Main Menu"
 msgstr "Головне меню"
 
@@ -318,19 +323,19 @@ msgstr "Відкрийте файл BibTeX"
 msgid "Or drag-and-drop a file"
 msgstr "Або перетягніть і скиньте файл"
 
-#: data/resources/ui/window.ui:115
+#: data/resources/ui/window.ui:116
 msgid "Add New Citation"
 msgstr "Додати нове посилання"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:129
 msgid "Search"
 msgstr "Пошук"
 
-#: data/resources/ui/window.ui:180
+#: data/resources/ui/window.ui:181
 msgid "Back"
 msgstr "Назад"
 
-#: data/resources/ui/window.ui:189
+#: data/resources/ui/window.ui:190
 msgid "Secondary Menu"
 msgstr "Вторинне меню"
 
@@ -352,11 +357,11 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/citation_preview.rs:158 src/entry_page.rs:133
+#: src/citation_preview.rs:160 src/entry_page.rs:133
 msgid "Copied"
 msgstr "Скопійовано"
 
-#: src/citation_preview.rs:165
+#: src/citation_preview.rs:167
 msgid "Custom…"
 msgstr "Нетиповий…"
 
@@ -368,25 +373,24 @@ msgstr "Інше…"
 msgid "Citation Key already exists"
 msgstr "Ключ цитування вже існує"
 
-#: src/entry_page.rs:370
+#: src/entry_page.rs:398
 msgid "Set PDF"
 msgstr "Встановити PDF"
 
-#: src/entry_page.rs:373
-#| msgid "Bibliography folder not set"
+#: src/entry_page.rs:401
 msgid "Copy file to bibliography folder"
 msgstr "Копіювати файл до теки бібліографії"
 
-#: src/entry_page.rs:378
+#: src/entry_page.rs:406
 msgid "Bibliography folder not set"
 msgstr "Не встановлено теки бібліографії"
 
 #. NOTE Do not translate the path.
-#: src/entry_page.rs:382
+#: src/entry_page.rs:410
 msgid "Make sure ~/Documents/Bibliography exists"
 msgstr "Переконайтеся, що тека ~/Документи/Бібліографія існує"
 
-#: src/entry_page.rs:404
+#: src/entry_page.rs:432
 msgid "PDF Files"
 msgstr "файли PDF"
 
@@ -474,61 +478,61 @@ msgstr "Школа"
 msgid "Institution"
 msgstr "Установа"
 
-#: src/window.rs:295 src/window.rs:324
+#: src/window.rs:317 src/window.rs:346
 msgid "Bibtex Files"
 msgstr "файли BibTeX"
 
-#: src/window.rs:316
+#: src/window.rs:338
 msgid "Create New Bibliography"
 msgstr "Створити бібліографію"
 
-#: src/window.rs:319
+#: src/window.rs:341
 msgid "Create"
 msgstr "Створити"
 
-#: src/window.rs:422
+#: src/window.rs:444
 msgid "Recent Files"
 msgstr "Нещодавні файли"
 
-#: src/window.rs:460
+#: src/window.rs:482
 msgid "An entry with the given citation key already exists"
 msgstr "Запис із вказаним ключем цитування вже існує"
 
-#: src/window.rs:474
+#: src/window.rs:497
 msgid "Bibliography saved"
 msgstr "Бібліографію збережено"
 
-#: src/window.rs:514
+#: src/window.rs:537
 msgid "Citation Deleted"
 msgstr "Посилання вилучено"
 
-#: src/window.rs:516
+#: src/window.rs:539
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:546
+#: src/window.rs:569
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:563
+#: src/window.rs:586
 msgid "Unsaved Changes"
 msgstr "Незбережені зміни"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:567
+#: src/window.rs:590
 msgid "Do you want to write all changes to the safe?"
 msgstr "Хочете записати усі зміни до сейфа?"
 
-#: src/window.rs:570
+#: src/window.rs:593
 msgid "_Quit Without Saving"
 msgstr "В_ийти без збереження"
 
-#: src/window.rs:576
+#: src/window.rs:599
 msgid "_Don't Quit"
 msgstr "_Не виходити"
 
-#: src/window.rs:581
+#: src/window.rs:604
 msgid "_Save and Quit"
 msgstr "З_берегти та вийти"
 
