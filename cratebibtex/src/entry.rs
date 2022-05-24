@@ -4,7 +4,6 @@ use glib::subclass::prelude::*;
 use once_cell::sync::Lazy;
 use regex::Regex;
 use std::collections::HashMap;
-use std::rc::Rc;
 
 use crate::Format;
 use crate::{format, utils};
@@ -23,7 +22,6 @@ mod imp {
         pub entry_type: Cell<crate::EntryType>,
         pub other_entry_type: RefCell<Option<String>>,
         pub citation_key: RefCell<Option<String>>,
-        pub inner: RefCell<Option<Rc<nom_bibtex::Bibliography>>>,
     }
 
     #[glib::object_subclass]
