@@ -344,6 +344,34 @@ impl EntryPage {
                      .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
                      .build();
 
+                if key.to_lowercase() == "eprint" {
+                    let button = gtk::Button::from_icon_name("external-link-symbolic");
+                    button.set_valign(gtk::Align::Center);
+
+                    button.set_tooltip_text(Some(&gettext("Open in Browser")));
+                    button.connect_clicked(glib::clone!(@weak row => move |_| {
+                        let window = row
+                            .root()
+                            .unwrap()
+                            .downcast::<crate::Window>()
+                            .unwrap();
+
+                        let value = row.text();
+                        let uri = if value.contains("https://") || value.contains("http://") {
+                            value.to_string()
+                        } else {
+                            // TODO Read archive prefix to deduce if it is not an arXiv
+                            format!("https://arxiv.org/abs/{}", value
+                                .replace("arxiv.org/abs/", "")
+                                .replace("arxiv.org/", ""))
+                        };
+
+                        gtk::show_uri(Some(&window), &uri, gdk::CURRENT_TIME);
+                    }));
+                    button.add_css_class("flat");
+                    row.add_suffix(&button);
+                }
+
                 row.upcast()
             }),
         );
