@@ -444,7 +444,7 @@ impl Window {
         crate::spawn!(
             glib::clone!(@weak self as window, @weak dialog => async move {
                 if let Some(data) = dialog.run().await {
-                    if let Err(err) = window.new_entry(data){
+                    if let Err(err) = window.new_entry(data) {
                         log::error!("Could not add entry: {err}");
                     }
                 }
@@ -460,6 +460,7 @@ impl Window {
                 "An entry with the given citation key already exists",
             ));
         } else {
+            self.imp().search_bar.set_search_mode(false);
             let pos = self.imp().bib.get().unwrap().add_entry(entry);
             self.imp().entry_list.set_selected(pos);
         }
