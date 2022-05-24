@@ -62,6 +62,7 @@ mod imp {
             self.parent_constructed(obj);
 
             let selection = gtk::SingleSelection::new(Some(&self.filter_model));
+            selection.set_can_unselect(true);
             selection.connect_selected_notify(glib::clone!(@weak obj => move |model| {
                 let pos = model.selected();
                 if let Some(entry) = model.item(pos) {
@@ -167,5 +168,10 @@ impl EntryList {
             .list_view
             .activate_action("list.scroll-to-item", Some(&pos.to_variant()))
             .unwrap();
+    }
+
+    pub fn unselect(&self) {
+        let selection_model = self.imp().selection_model.borrow();
+        selection_model.unselect_item(selection_model.selected());
     }
 }

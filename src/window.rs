@@ -15,6 +15,7 @@ mod imp {
     use gtk::CompositeTemplate;
     use once_cell::sync::OnceCell;
     use std::cell::RefCell;
+    use std::sync::Once;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/window.ui")]
@@ -23,6 +24,7 @@ mod imp {
         pub settings: gio::Settings,
         pub file: RefCell<Option<gio::File>>,
         pub undo_entry: RefCell<Option<(cratebibtex::Entry, u32, adw::Toast)>>,
+        pub loaded: Once,
 
         #[template_child]
         pub empty_state_stack: TemplateChild<gtk::Stack>,
@@ -63,6 +65,7 @@ mod imp {
                 toast_overlay: TemplateChild::default(),
                 secondary_menu_button: TemplateChild::default(),
                 main_leaflet: TemplateChild::default(),
+                loaded: Once::new(),
             }
         }
     }
@@ -134,6 +137,24 @@ mod imp {
     #[gtk::template_callbacks]
     impl Window {
         #[template_callback]
+        fn on_leaflet_folded_notify(
+            obj: &super::Window,
+            _pspec: &glib::ParamSpec,
+            leaflet: &adw::Leaflet,
+        ) {
+            // NOTE We only want to unselect + navigate forward on the first run
+            // in mobile mode.
+            obj.imp()
+                .loaded
+                .call_once(glib::clone!(@weak leaflet, @weak obj => move|| {
+                    if leaflet.is_folded() {
+                        obj.imp().entry_list.unselect();
+                        obj.imp().main_leaflet.navigate(adw::NavigationDirection::Back);
+                    }
+                }));
+        }
+
+        #[template_callback]
         fn on_search_mode_enabled_notify(
             &self,
             _pspec: &glib::ParamSpec,
@@ -160,6 +181,7 @@ mod imp {
 
         #[template_callback]
         fn on_back_button_clicked(&self) {
+            self.entry_list.unselect();
             self.main_leaflet.navigate(adw::NavigationDirection::Back);
         }
     }

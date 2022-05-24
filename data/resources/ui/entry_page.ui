@@ -6,6 +6,8 @@
         <child>
           <object class="AdwStatusPage" id="empty_page">
             <property name="vexpand">True</property>
+            <property name="icon-name">emblem-documents-symbolic</property>
+            <property name="title" translatable="yes">No Citation Selected</property>
           </object>
         </child>
         <child>
