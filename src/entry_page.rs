@@ -2,11 +2,10 @@
 use adw::prelude::*;
 use gettextrs::gettext;
 use gtk::subclass::prelude::*;
-use gtk::{gdk, gio, glib, CompositeTemplate};
+use gtk::{cairo, gdk, gio, glib, CompositeTemplate};
 
 use crate::utils;
 
-// TODO Show preview for PDF using poppler bindings
 mod imp {
     use super::*;
 
@@ -17,6 +16,10 @@ mod imp {
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
+        #[template_child]
+        pub pdf_picture: TemplateChild<gtk::Picture>,
+        #[template_child]
+        pub pdf_url_entry_row: TemplateChild<adw::EntryRow>,
         #[template_child]
         pub pdf_action_row: TemplateChild<adw::ActionRow>,
         #[template_child]
@@ -68,6 +71,39 @@ mod imp {
 
     #[gtk::template_callbacks]
     impl EntryPage {
+        #[template_callback]
+        async fn on_trash_pdf_button_clicked(&self) {
+            let entry = self.entry.borrow();
+            let entry = entry.as_ref().unwrap();
+            if let Some(path) = crate::utils::bibliography_path() {
+                let folder = gio::File::for_path(&path);
+                let pdf = folder.child(&utils::pdf_filename(&entry.citation_key()));
+                if let Err(err) = pdf.trash_future(glib::Priority::default()).await {
+                    log::error!("Could not trash pdf: {err}");
+                } else {
+                    self.instance().setup_pdf();
+                }
+            }
+        }
+
+        #[template_callback]
+        async fn on_download_pdf_button_clicked(&self) {
+            if let Err(err) = self.instance().download_pdf_for_entry().await {
+                log::error!("Could not download pdf: {err}");
+                self.pdf_url_entry_row.add_css_class("error");
+            } else {
+                self.pdf_url_entry_row.remove_css_class("error");
+                let window = self
+                    .instance()
+                    .root()
+                    .unwrap()
+                    .downcast::<crate::Window>()
+                    .unwrap();
+                window.send_toast(&gettext("PDF Downloaded"));
+                self.instance().setup_pdf();
+            }
+        }
+
         #[template_callback]
         fn on_entry_type_selected_notify(
             &self,
@@ -162,7 +198,24 @@ mod imp {
         }
 
         #[template_callback]
-        fn on_pdf_row_activated(&self) {
+        fn on_set_pdf_button_clicked(&self) {
+            if let Some(_path) = crate::utils::bibliography_path() {
+                let obj = self.instance();
+                crate::spawn!(glib::clone!(@weak obj => async move {
+                    if let Err(err) = obj.set_pdf_for_entry().await {
+                        log::error!("Could not set pdf: {err}");
+                    } else {
+                        obj.setup_pdf();
+                    }
+                }));
+            }
+        }
+
+        #[template_callback]
+        fn on_pdf_row_activated(&self, row: &adw::ActionRow) {
+            if row != &self.pdf_action_row.get() {
+                return;
+            }
             let entry = self.entry.borrow().clone().unwrap();
             let window = self
                 .instance()
@@ -393,17 +446,17 @@ impl EntryPage {
         }
         let entry = entry.unwrap();
 
-        if let Some(path) = crate::utils::bibliography_path() {
+        let pdf = if let Some(path) = crate::utils::bibliography_path() {
             let folder = gio::File::for_path(&path);
             let pdf = folder.child(&utils::pdf_filename(&entry.citation_key()));
             if pdf.query_exists(gio::Cancellable::NONE) {
-                self.imp().pdf_action_row.set_title(&gettext("Open PDF"));
-                self.imp().pdf_action_row.set_subtitle("");
+                self.imp().pdf_action_row.show();
+
+                Some(pdf)
             } else {
-                self.imp().pdf_action_row.set_title(&gettext("Set PDF"));
-                self.imp()
-                    .pdf_action_row
-                    .set_subtitle(&gettext("Copy file to bibliography folder"));
+                self.imp().pdf_action_row.hide();
+
+                None
             }
         } else {
             self.imp()
@@ -416,7 +469,51 @@ impl EntryPage {
             // TODO
             // self.imp().pdf_action_row.set_subtitle("Open settings");
             // window.show_preferences_window();
+
+            None
+        };
+
+        crate::spawn!(glib::clone!(@weak self as obj => async move {
+            if let Err(err) = obj.set_pdf_preview(pdf.as_ref()).await {
+                log::error!("Could not set pdf preview: {err}");
+            }
+        }));
+    }
+
+    pub async fn set_pdf_preview(&self, file: Option<&gio::File>) -> anyhow::Result<()> {
+        if let Some(file) = file {
+            let (bytes, _etag) = file.load_bytes_future().await?;
+            let document = poppler::Document::from_bytes(&bytes, None)?;
+            let page = match document.page(0) {
+                Some(page) => page,
+                None => anyhow::bail!("Document does not have any pages"),
+            };
+            let (width, height) = page.size();
+            let surface =
+                cairo::ImageSurface::create(cairo::Format::Rgb24, width as i32, height as i32)?;
+            let ctxt = cairo::Context::new(&surface)?;
+            ctxt.set_source_rgb(1.0, 1.0, 1.0);
+            ctxt.paint()?;
+            page.render(&ctxt);
+
+            let stream = gio::MemoryOutputStream::new_resizable();
+            let mut write_stream = stream.into_write();
+            surface.write_to_png(&mut write_stream)?;
+            let stream = write_stream.output_stream();
+            stream.close(gio::Cancellable::NONE)?;
+            let bytes = stream.steal_as_bytes();
+            let texture = gdk::Texture::from_bytes(&bytes)?;
+
+            self.imp().pdf_picture.set_paintable(Some(&texture));
+
+            self.imp().pdf_picture.set_height_request(height as i32);
+        } else {
+            self.imp().pdf_picture.set_paintable(gdk::Texture::NONE);
+
+            self.imp().pdf_picture.set_height_request(0);
         }
+
+        Ok(())
     }
 
     async fn set_pdf_for_entry(&self) -> anyhow::Result<()> {
@@ -480,6 +577,40 @@ impl EntryPage {
                     new_pdf.path().unwrap().to_str().unwrap()
                 );
             }
+        }
+
+        Ok(())
+    }
+
+    async fn download_pdf_for_entry(&self) -> anyhow::Result<()> {
+        let url_text = self.imp().pdf_url_entry_row.text();
+        let url = url::Url::parse(&url_text)?;
+
+        if let Some(path) = crate::utils::bibliography_path() {
+            let mut res = match surf::get(&url).await {
+                Ok(res) => res,
+                Err(err) => anyhow::bail!("{err}"),
+            };
+            let bytes = match res.body_bytes().await {
+                Ok(bytes) => bytes,
+                Err(err) => anyhow::bail!("{err}"),
+            };
+            let bytes = glib::Bytes::from_owned(bytes);
+
+            // Validate the document
+            poppler::Document::from_bytes(&bytes, None)?;
+
+            let entry = self.imp().entry.borrow();
+            let entry = entry.as_ref().unwrap();
+
+            let citation_key = entry.citation_key();
+
+            let folder = gio::File::for_path(&path);
+            let pdf = folder.child(&utils::pdf_filename(&citation_key));
+
+            pdf.replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
+                .await
+                .map_err(|err| err.1)?;
         }
 
         Ok(())
