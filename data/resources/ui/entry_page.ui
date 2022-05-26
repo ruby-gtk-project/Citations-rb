@@ -12,6 +12,7 @@
         </child>
         <child>
           <object class="GtkScrolledWindow" id="non_empty_page">
+            <property name="hscrollbar-policy">never</property>
             <child>
               <object class="AdwClamp">
                 <property name="margin-start">12</property>
@@ -186,14 +187,88 @@
                         <property name="selection-mode">none</property>
                         <signal name="row_activated" handler="on_pdf_row_activated" swapped="true"/>
                         <child>
+                          <object class="AdwExpanderRow" id="set_pdf_expander_row">
+                            <property name="title" translatable="yes">Set PDF</property>
+                            <property name="subtitle" translatable="yes">Copy file to bibliography folder</property>
+                            <child>
+                              <object class="AdwActionRow">
+                                <property name="activatable">True</property>
+                                <property name="title" translatable="yes">From file</property>
+                                <property name="activatable-widget">from-file-button</property>
+                                <child>
+                                  <object class="GtkButton" id="from-file-button">
+                                    <property name="valign">center</property>
+                                    <property name="icon-name">document-open-symbolic</property>
+                                    <signal name="clicked" handler="on_set_pdf_button_clicked" swapped="true"/>
+                                    <style>
+                                      <class name="flat"/>
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwEntryRow" id="pdf_url_entry_row">
+                                <property name="activatable">True</property>
+                                <property name="title" translatable="yes">From URL</property>
+                                <child>
+                                  <object class="GtkButton">
+                                    <property name="valign">center</property>
+                                    <property name="icon-name">go-next-symbolic</property>
+                                    <signal name="clicked" handler="on_download_pdf_button_clicked" swapped="true"/>
+                                    <style>
+                                      <class name="flat"/>
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
                           <object class="AdwActionRow" id="pdf_action_row">
                             <property name="activatable">True</property>
+                            <property name="visible">False</property>
                             <property name="title" translatable="yes">Open PDF</property>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="valign">center</property>
+                                <property name="icon-name">user-trash-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Delete PDF</property>
+                                <signal name="clicked" handler="on_trash_pdf_button_clicked" swapped="yes"/>
+                                <style>
+                                  <class name="destructive-action"/>
+                                </style>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <style>
                           <class name="boxed-list"/>
                         </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
+                        <binding name="visible">
+                          <lookup name="visible">pdf_action_row</lookup>
+                        </binding>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">PDF Preview</property>
+                            <property name="xalign">0</property>
+                            <style>
+                              <class name="heading"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkPicture" id="pdf_picture">
+                            <property name="keep-aspect-ratio">True</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
