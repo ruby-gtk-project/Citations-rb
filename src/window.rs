@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+use adw::prelude::*;
 use gettextrs::gettext;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -29,6 +30,12 @@ mod imp {
         #[template_child]
         pub empty_state_stack: TemplateChild<gtk::Stack>,
         #[template_child]
+        pub recent_files_stack_page: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub empty_state_stack_page: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub recent_files_list: TemplateChild<gtk::ListBox>,
+        #[template_child]
         pub entry_list: TemplateChild<crate::EntryList>,
         #[template_child]
         pub entry_page: TemplateChild<crate::EntryPage>,
@@ -38,8 +45,6 @@ mod imp {
         pub search_button: TemplateChild<gtk::ToggleButton>,
         #[template_child]
         pub search_entry: TemplateChild<gtk::SearchEntry>,
-        #[template_child]
-        pub split_button: TemplateChild<adw::SplitButton>,
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
@@ -61,10 +66,12 @@ mod imp {
                 search_bar: TemplateChild::default(),
                 search_button: TemplateChild::default(),
                 search_entry: TemplateChild::default(),
-                split_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
                 secondary_menu_button: TemplateChild::default(),
                 main_leaflet: TemplateChild::default(),
+                recent_files_stack_page: TemplateChild::default(),
+                empty_state_stack_page: TemplateChild::default(),
+                recent_files_list: TemplateChild::default(),
                 loaded: Once::new(),
             }
         }
@@ -426,31 +433,39 @@ impl Window {
     }
 
     fn populate_recent_files(&self) {
-        let recent_files = self.imp().settings.strv("recent-files");
-        let menu = gio::Menu::new();
-        let section = gio::Menu::new();
-        let mut some_item = false;
+        let imp = self.imp();
+        let model = gio::ListStore::new(gio::File::static_type());
 
-        for file in recent_files
+        let recent_files = imp
+            .settings
+            .strv("recent-files")
             .iter()
             .rev()
             .map(glib::GString::to_string)
             .map(gio::File::for_path)
             .filter(|file| file.query_exists(gio::Cancellable::NONE))
-        {
-            let basename = file.basename().unwrap();
+            .collect::<Vec<gio::File>>();
+        model.splice(0, 0, &recent_files);
+
+        imp.recent_files_list.bind_model(Some(&model), move |item| {
+            let file = item.downcast_ref::<gio::File>().unwrap();
+            let action_row = adw::ActionRow::new();
             let path = file.path().unwrap().to_str().map(String::from).unwrap();
             let action = format!("win.open::{path}");
-            section.append(basename.to_str(), Some(&action));
-            some_item = true;
-        }
-        menu.append_section(Some(&gettext("Recent Files")), &section);
-        menu.freeze();
+            action_row.set_title(file.basename().unwrap().to_str().unwrap());
+            action_row.set_subtitle(&path);
+            action_row.set_detailed_action_name(&action);
+            action_row.set_activatable(true);
 
-        if some_item {
-            self.imp().split_button.set_menu_model(Some(&menu));
+            action_row.upcast()
+        });
+
+        if recent_files.is_empty() {
+            imp.empty_state_stack
+                .set_visible_child(&imp.empty_state_stack_page.get());
         } else {
-            self.imp().split_button.set_menu_model(gio::MenuModel::NONE);
+            imp.empty_state_stack
+                .set_visible_child(&imp.recent_files_stack_page.get());
         }
     }
 
