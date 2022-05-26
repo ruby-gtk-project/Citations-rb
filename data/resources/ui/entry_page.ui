@@ -13,260 +13,270 @@
         <child>
           <object class="GtkScrolledWindow" id="non_empty_page">
             <property name="hscrollbar-policy">never</property>
+            <property name="vexpand">True</property>
             <child>
-              <object class="AdwClamp">
-                <property name="margin-start">12</property>
-                <property name="margin-end">12</property>
-                <property name="margin-top">36</property>
-                <property name="margin-bottom">36</property>
+              <object class="GtkViewport">
+                <property name="vscroll-policy">natural</property>
                 <child>
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">30</property>
+                  <object class="AdwClamp">
+                    <property name="margin-start">12</property>
+                    <property name="margin-end">12</property>
+                    <property name="margin-top">36</property>
+                    <property name="margin-bottom">36</property>
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">vertical</property>
-                        <property name="spacing">12</property>
+                        <property name="spacing">30</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="spacing">6</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">12</property>
                             <child>
-                              <object class="GtkLabel" id="entry_type_label">
-                                <property name="hexpand">True</property>
-                                <property name="xalign">0</property>
-                                <property name="yalign">1</property>
-                                <property name="ellipsize">none</property>
-                                <binding name="label">
-                                  <closure type="gchararray" function="entry_type_name_str">
-                                    <lookup name="entry-type">
-                                      <lookup name="entry">EntryPage</lookup>
-                                    </lookup>
-                                  </closure>
-                                </binding>
-                                <style>
-                                  <class name="title-1"/>
-                                </style>
+                              <object class="GtkBox">
+                                <property name="spacing">6</property>
+                                <child>
+                                  <object class="GtkLabel" id="entry_type_label">
+                                    <property name="hexpand">True</property>
+                                    <property name="xalign">0</property>
+                                    <property name="yalign">1</property>
+                                    <property name="ellipsize">none</property>
+                                    <binding name="label">
+                                      <closure type="gchararray" function="entry_type_name_str">
+                                        <lookup name="entry-type">
+                                          <lookup name="entry">EntryPage</lookup>
+                                        </lookup>
+                                      </closure>
+                                    </binding>
+                                    <style>
+                                      <class name="title-1"/>
+                                    </style>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="yalign">1</property>
+                                    <property name="ellipsize">end</property>
+                                    <binding name="label">
+                                      <lookup name="citation-key">
+                                        <lookup name="entry">EntryPage</lookup>
+                                      </lookup>
+                                    </binding>
+                                    <style>
+                                      <class name="dim-label"/>
+                                    </style>
+                                  </object>
+                                </child>
                               </object>
                             </child>
+                            <child>
+                              <object class="GtkListBox">
+                                <property name="selection-mode">none</property>
+                                <style>
+                                  <class name="boxed-list"/>
+                                </style>
+                                <child>
+                                  <object class="AdwComboRow" id="entry_type_combo_row">
+                                    <property name="title" translatable="yes">Citation _Type</property>
+                                    <property name="use-underline">True</property>
+                                    <property name="model">
+                                      <object class="AdwEnumListModel">
+                                        <property name="enum-type">EntryType</property>
+                                      </object>
+                                    </property>
+                                    <property name="expression">
+                                      <closure type="gchararray" function="drop_down_entry_type_name"/>
+                                    </property>
+                                    <signal name="notify::selected" handler="on_entry_type_selected_notify" swapped="true"/>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwEntryRow" id="other_entry_type_row">
+                                    <property name="visible">False</property>
+                                    <property name="title" translatable="yes">_Other Citation Type</property>
+                                    <property name="use-underline">True</property>
+                                    <signal name="changed" handler="on_entry_type_entry_row_changed" swapped="true"/>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwEntryRow" id="citation_key_entry">
+                                    <property name="title" translatable="yes">_Citation Key</property>
+                                    <property name="use-underline">True</property>
+                                    <property name="show-apply-button">True</property>
+                                    <signal name="apply" handler="on_citation_key_apply"/>
+                                    <child>
+                                      <object class="GtkButton">
+                                        <property name="valign">center</property>
+                                        <property name="icon-name">edit-copy-symbolic</property>
+                                        <property name="tooltip-text" translatable="yes">Copy</property>
+                                        <signal name="clicked" handler="on_copy_key_clicked" swapped="true"/>
+                                        <style>
+                                          <class name="flat"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwEntryRow" id="author_entry">
+                                    <property name="title" translatable="yes">_Author</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwEntryRow" id="title_entry">
+                                    <property name="title" translatable="yes">_Title</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwEntryRow" id="year_entry">
+                                    <property name="title" translatable="yes">_Year</property>
+                                    <property name="use-underline">True</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwEntryRow" id="doi_entry">
+                                    <property name="title">_DOI</property>
+                                    <property name="use-underline">True</property>
+                                    <child>
+                                      <object class="GtkButton">
+                                        <property name="valign">center</property>
+                                        <property name="icon-name">external-link-symbolic</property>
+                                        <property name="tooltip-text" translatable="yes">Open in Browser</property>
+                                        <signal name="clicked" handler="on_doi_clicked" swapped="true"/>
+                                        <style>
+                                          <class name="flat"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="extras_box">
+                            <property name="visible">False</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">12</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="yalign">1</property>
-                                <property name="ellipsize">end</property>
-                                <binding name="label">
-                                  <lookup name="citation-key">
-                                    <lookup name="entry">EntryPage</lookup>
-                                  </lookup>
-                                </binding>
+                                <property name="label" translatable="yes">Other Properties</property>
+                                <property name="xalign">0</property>
                                 <style>
-                                  <class name="dim-label"/>
+                                  <class name="heading"/>
                                 </style>
                               </object>
                             </child>
+                            <child>
+                              <object class="GtkListBox" id="extras_list_box">
+                                <property name="selection-mode">none</property>
+                                <style>
+                                  <class name="boxed-list"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="CitationPreview">
+                            <binding name="entry">
+                              <lookup name="entry">EntryPage</lookup>
+                            </binding>
                           </object>
                         </child>
                         <child>
                           <object class="GtkListBox">
                             <property name="selection-mode">none</property>
-                            <style>
-                              <class name="boxed-list"/>
-                            </style>
+                            <signal name="row_activated" handler="on_pdf_row_activated" swapped="true"/>
                             <child>
-                              <object class="AdwComboRow" id="entry_type_combo_row">
-                                <property name="title" translatable="yes">Citation _Type</property>
-                                <property name="use-underline">True</property>
-                                <property name="model">
-                                  <object class="AdwEnumListModel">
-                                    <property name="enum-type">EntryType</property>
+                              <object class="AdwExpanderRow" id="set_pdf_expander_row">
+                                <property name="title" translatable="yes">Set PDF</property>
+                                <property name="subtitle" translatable="yes">Copy file to bibliography folder</property>
+                                <child>
+                                  <object class="AdwActionRow">
+                                    <property name="activatable">True</property>
+                                    <property name="title" translatable="yes">From file</property>
+                                    <property name="activatable-widget">from-file-button</property>
+                                    <child>
+                                      <object class="GtkButton" id="from-file-button">
+                                        <property name="valign">center</property>
+                                        <property name="icon-name">document-open-symbolic</property>
+                                        <signal name="clicked" handler="on_set_pdf_button_clicked" swapped="true"/>
+                                        <style>
+                                          <class name="flat"/>
+                                        </style>
+                                      </object>
+                                    </child>
                                   </object>
-                                </property>
-                                <property name="expression">
-                                  <closure type="gchararray" function="drop_down_entry_type_name"/>
-                                </property>
-                                <signal name="notify::selected" handler="on_entry_type_selected_notify" swapped="true"/>
+                                </child>
+                                <child>
+                                  <object class="AdwEntryRow" id="pdf_url_entry_row">
+                                    <property name="activatable">True</property>
+                                    <property name="title" translatable="yes">From URL</property>
+                                    <child>
+                                      <object class="GtkButton">
+                                        <property name="valign">center</property>
+                                        <property name="icon-name">go-next-symbolic</property>
+                                        <signal name="clicked" handler="on_download_pdf_button_clicked" swapped="true"/>
+                                        <style>
+                                          <class name="flat"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                             <child>
-                              <object class="AdwEntryRow" id="other_entry_type_row">
+                              <object class="AdwActionRow" id="pdf_action_row">
+                                <property name="activatable">True</property>
                                 <property name="visible">False</property>
-                                <property name="title" translatable="yes">_Other Citation Type</property>
-                                <property name="use-underline">True</property>
-                                <signal name="changed" handler="on_entry_type_entry_row_changed" swapped="true"/>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="AdwEntryRow" id="citation_key_entry">
-                                <property name="title" translatable="yes">_Citation Key</property>
-                                <property name="use-underline">True</property>
-                                <property name="show-apply-button">True</property>
-                                <signal name="apply" handler="on_citation_key_apply"/>
+                                <property name="title" translatable="yes">Open PDF</property>
                                 <child>
                                   <object class="GtkButton">
                                     <property name="valign">center</property>
-                                    <property name="icon-name">edit-copy-symbolic</property>
-                                    <property name="tooltip-text" translatable="yes">Copy</property>
-                                    <signal name="clicked" handler="on_copy_key_clicked" swapped="true"/>
+                                    <property name="icon-name">user-trash-symbolic</property>
+                                    <property name="tooltip-text" translatable="yes">Delete PDF</property>
+                                    <signal name="clicked" handler="on_trash_pdf_button_clicked" swapped="yes"/>
                                     <style>
-                                      <class name="flat"/>
+                                      <class name="destructive-action"/>
                                     </style>
                                   </object>
                                 </child>
                               </object>
                             </child>
-                            <child>
-                              <object class="AdwEntryRow" id="author_entry">
-                                <property name="title" translatable="yes">_Author</property>
-                                <property name="use-underline">True</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="AdwEntryRow" id="title_entry">
-                                <property name="title" translatable="yes">_Title</property>
-                                <property name="use-underline">True</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="AdwEntryRow" id="year_entry">
-                                <property name="title" translatable="yes">_Year</property>
-                                <property name="use-underline">True</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="AdwEntryRow" id="doi_entry">
-                                <property name="title">_DOI</property>
-                                <property name="use-underline">True</property>
-                                <child>
-                                  <object class="GtkButton">
-                                    <property name="valign">center</property>
-                                    <property name="icon-name">external-link-symbolic</property>
-                                    <property name="tooltip-text" translatable="yes">Open in Browser</property>
-                                    <signal name="clicked" handler="on_doi_clicked" swapped="true"/>
-                                    <style>
-                                      <class name="flat"/>
-                                    </style>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkBox" id="extras_box">
-                        <property name="visible">False</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">12</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="yes">Other Properties</property>
-                            <property name="xalign">0</property>
-                            <style>
-                              <class name="heading"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkListBox" id="extras_list_box">
-                            <property name="selection-mode">none</property>
                             <style>
                               <class name="boxed-list"/>
                             </style>
                           </object>
                         </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="CitationPreview">
-                        <binding name="entry">
-                          <lookup name="entry">EntryPage</lookup>
-                        </binding>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkListBox">
-                        <property name="selection-mode">none</property>
-                        <signal name="row_activated" handler="on_pdf_row_activated" swapped="true"/>
                         <child>
-                          <object class="AdwExpanderRow" id="set_pdf_expander_row">
-                            <property name="title" translatable="yes">Set PDF</property>
-                            <property name="subtitle" translatable="yes">Copy file to bibliography folder</property>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">12</property>
+                            <binding name="visible">
+                              <lookup name="visible">pdf_action_row</lookup>
+                            </binding>
                             <child>
-                              <object class="AdwActionRow">
-                                <property name="activatable">True</property>
-                                <property name="title" translatable="yes">From file</property>
-                                <property name="activatable-widget">from-file-button</property>
-                                <child>
-                                  <object class="GtkButton" id="from-file-button">
-                                    <property name="valign">center</property>
-                                    <property name="icon-name">document-open-symbolic</property>
-                                    <signal name="clicked" handler="on_set_pdf_button_clicked" swapped="true"/>
-                                    <style>
-                                      <class name="flat"/>
-                                    </style>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="AdwEntryRow" id="pdf_url_entry_row">
-                                <property name="activatable">True</property>
-                                <property name="title" translatable="yes">From URL</property>
-                                <child>
-                                  <object class="GtkButton">
-                                    <property name="valign">center</property>
-                                    <property name="icon-name">go-next-symbolic</property>
-                                    <signal name="clicked" handler="on_download_pdf_button_clicked" swapped="true"/>
-                                    <style>
-                                      <class name="flat"/>
-                                    </style>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="AdwActionRow" id="pdf_action_row">
-                            <property name="activatable">True</property>
-                            <property name="visible">False</property>
-                            <property name="title" translatable="yes">Open PDF</property>
-                            <child>
-                              <object class="GtkButton">
-                                <property name="valign">center</property>
-                                <property name="icon-name">user-trash-symbolic</property>
-                                <property name="tooltip-text" translatable="yes">Delete PDF</property>
-                                <signal name="clicked" handler="on_trash_pdf_button_clicked" swapped="yes"/>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">PDF Preview</property>
+                                <property name="xalign">0</property>
                                 <style>
-                                  <class name="destructive-action"/>
+                                  <class name="heading"/>
                                 </style>
                               </object>
                             </child>
-                          </object>
-                        </child>
-                        <style>
-                          <class name="boxed-list"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">12</property>
-                        <binding name="visible">
-                          <lookup name="visible">pdf_action_row</lookup>
-                        </binding>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="yes">PDF Preview</property>
-                            <property name="xalign">0</property>
-                            <style>
-                              <class name="heading"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkPicture" id="pdf_picture">
-                            <property name="keep-aspect-ratio">True</property>
+                            <child>
+                              <object class="GtkPicture" id="pdf_picture">
+                                <property name="keep-aspect-ratio">True</property>
+                                <property name="overflow">hidden</property>
+                                <style>
+                                  <class name="pdfpreview"/>
+                                </style>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>

@@ -505,12 +505,8 @@ impl EntryPage {
             let texture = gdk::Texture::from_bytes(&bytes)?;
 
             self.imp().pdf_picture.set_paintable(Some(&texture));
-
-            self.imp().pdf_picture.set_height_request(height as i32);
         } else {
             self.imp().pdf_picture.set_paintable(gdk::Texture::NONE);
-
-            self.imp().pdf_picture.set_height_request(0);
         }
 
         Ok(())

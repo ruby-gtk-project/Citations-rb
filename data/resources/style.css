@@ -19,3 +19,7 @@ scrolledwindow.entry textview text {
 textview {
   padding: 6px;
 }
+
+.pdfpreview {
+  border-radius: 12px;
+}
