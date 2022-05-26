@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use adw::prelude::*;
 use gettextrs::gettext;
-use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
