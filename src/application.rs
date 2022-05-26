@@ -91,6 +91,7 @@ impl Application {
         self.set_accels_for_action("app.quit", &["<Control>q"]);
         self.set_accels_for_action("win.open('')", &["<Control>o"]);
         self.set_accels_for_action("win.save", &["<Control>s"]);
+        self.set_accels_for_action("win.search", &["<Control>f"]);
     }
 
     fn setup_css(&self) {

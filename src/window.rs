@@ -126,6 +126,9 @@ mod imp {
             klass.install_action("win.about", None, move |obj, _, _| {
                 obj.show_about_dialog();
             });
+            klass.install_action("win.search", None, move |obj, _, _| {
+                obj.start_search_action();
+            });
         }
 
         // You must call `Widget`'s `init_template()` within `instance_init()`.
@@ -556,6 +559,16 @@ impl Window {
                     .navigate(adw::NavigationDirection::Back);
             };
         };
+    }
+
+    fn start_search_action(&self) {
+        let imp = self.imp();
+        if imp.main_leaflet.is_folded() {
+            imp.entry_list.unselect();
+            imp.main_leaflet.navigate(adw::NavigationDirection::Back);
+        }
+        let search_mode = imp.search_bar.is_search_mode();
+        imp.search_bar.set_search_mode(!search_mode);
     }
 
     fn show_about_dialog(&self) {
