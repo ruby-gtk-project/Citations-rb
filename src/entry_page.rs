@@ -109,7 +109,12 @@ mod imp {
 
         #[template_callback]
         fn on_doi_clicked(&self) {
-            let uri = format!("https://doi.org/{}", self.doi_entry.text());
+            let value = self.doi_entry.text();
+            let uri = if value.contains("https://") || value.contains("http://") {
+                value.to_string()
+            } else {
+                format!("https://doi.org/{}", value.replace("doi.org/", ""))
+            };
             let window = self
                 .instance()
                 .root()
