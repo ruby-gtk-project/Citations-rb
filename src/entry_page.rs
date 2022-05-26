@@ -20,9 +20,9 @@ mod imp {
         #[template_child]
         pub pdf_action_row: TemplateChild<adw::ActionRow>,
         #[template_child]
-        pub entry_type_drop_down: TemplateChild<gtk::DropDown>,
+        pub other_entry_type_row: TemplateChild<adw::EntryRow>,
         #[template_child]
-        pub entry_type_entry_row: TemplateChild<adw::EntryRow>,
+        pub entry_type_combo_row: TemplateChild<adw::ComboRow>,
         #[template_child]
         pub citation_key_entry: TemplateChild<adw::EntryRow>,
         #[template_child]
@@ -72,9 +72,9 @@ mod imp {
         fn on_entry_type_selected_notify(
             &self,
             _pspec: &glib::ParamSpec,
-            drop_down: &gtk::DropDown,
+            combo_row: &adw::ComboRow,
         ) {
-            let type_ = cratebibtex::EntryType::from(drop_down.selected());
+            let type_ = cratebibtex::EntryType::from(combo_row.selected());
             let entry = self.entry.borrow().clone().unwrap();
             entry.set_entry_type(type_);
             self.instance().bind_extras_list_model(&entry);
@@ -233,7 +233,7 @@ mod imp {
                 .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
                 .build();
             self.bindings
-                .bind("entry-type", &*self.entry_type_drop_down, "selected")
+                .bind("entry-type", &*self.entry_type_combo_row, "selected")
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
         }
@@ -290,16 +290,16 @@ impl EntryPage {
     fn setup_other_entry_row(&self) {
         let entry = self.imp().entry.borrow().clone().unwrap();
         let type_ = entry.entry_type();
-        let editable = type_ == cratebibtex::EntryType::Other;
-        self.imp().entry_type_entry_row.set_editable(editable);
-        let editable_text = if !editable {
+        let is_visible = type_ == cratebibtex::EntryType::Other;
+        self.imp().other_entry_type_row.set_visible(is_visible);
+        let editable_text = if !is_visible {
             "".to_string()
         } else {
             entry
                 .other_entry_type()
                 .unwrap_or_else(|| "other".to_string())
         };
-        self.imp().entry_type_entry_row.set_text(&editable_text);
+        self.imp().other_entry_type_row.set_text(&editable_text);
     }
 
     pub fn set_entry(&self, entry: Option<&cratebibtex::Entry>) {
