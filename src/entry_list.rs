@@ -63,6 +63,7 @@ mod imp {
 
             let selection = gtk::SingleSelection::new(Some(&self.filter_model));
             selection.set_can_unselect(true);
+            selection.set_autoselect(false);
             selection.connect_selected_notify(glib::clone!(@weak obj => move |model| {
                 let pos = model.selected();
                 if let Some(entry) = model.item(pos) {
