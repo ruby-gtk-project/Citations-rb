@@ -375,14 +375,6 @@ impl EntryPage {
                     .set_text(&entry.citation_key());
                 self.bind_extras_list_model(entry);
                 self.setup_pdf();
-            } else {
-                self.imp()
-                    .stack
-                    .set_visible_child(&self.imp().empty_page.get());
-
-                self.imp()
-                    .extras_list_box
-                    .bind_model(gio::ListModel::NONE, move |_| adw::Bin::new().upcast());
             }
         }
     }
