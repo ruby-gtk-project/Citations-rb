@@ -1,0 +1,564 @@
+# Slovenian translation for citations.
+# Copyright (C) 2022 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+#
+# Matej Urbančič <mateju@src.gnome.org>, 2022–.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
+"POT-Creation-Date: 2022-05-26 19:34+0000\n"
+"PO-Revision-Date: 2022-05-26 21:55+0200\n"
+"Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
+"Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups."
+"com>\n"
+"Language: sl_SI\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: cratebibtex/src/entry_type.rs:108
+msgid "Article"
+msgstr "Prispevek"
+
+#: cratebibtex/src/entry_type.rs:109
+msgid "Book"
+msgstr "Knjiga"
+
+#: cratebibtex/src/entry_type.rs:110
+msgid "Misc"
+msgstr "Drugo"
+
+#: cratebibtex/src/entry_type.rs:111
+msgid "In Proceedings"
+msgstr ""
+
+#: cratebibtex/src/entry_type.rs:112
+msgid "Unpublished"
+msgstr "Neobjavljeno"
+
+#: cratebibtex/src/entry_type.rs:113
+#, fuzzy
+msgid "Online"
+msgstr "Povezano"
+
+#: cratebibtex/src/entry_type.rs:114
+msgid "Other"
+msgstr "Drugo"
+
+#: cratebibtex/src/entry_type.rs:115
+msgid "Booklet"
+msgstr "Knjižica"
+
+#: cratebibtex/src/entry_type.rs:116
+msgid "Conference"
+msgstr "Konferenca"
+
+#: cratebibtex/src/entry_type.rs:117
+msgid "In Book"
+msgstr ""
+
+#: cratebibtex/src/entry_type.rs:118
+msgid "In Collection"
+msgstr ""
+
+#: cratebibtex/src/entry_type.rs:119
+msgid "Manual"
+msgstr "Priročnik"
+
+#: cratebibtex/src/entry_type.rs:120
+msgid "Master Thesis"
+msgstr "Magistrska naloga"
+
+#: cratebibtex/src/entry_type.rs:121
+msgid "PhD. Thesis"
+msgstr "Doktorska naloga"
+
+#: cratebibtex/src/entry_type.rs:122
+msgid "Proceedings"
+msgstr "Zbornik"
+
+#: cratebibtex/src/entry_type.rs:123
+msgid "Tech Report"
+msgstr "Tehnično poročilo"
+
+#. NOTE Plain as in Plain Text
+#: cratebibtex/src/format.rs:51
+#, fuzzy
+msgid "Plain"
+msgstr "Običajno"
+
+#. NOTE: This is the app name
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:37
+msgid "Citations"
+msgstr ""
+
+#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:592
+msgid "Manage your bibliography"
+msgstr "Upravljanje z bibliografijo"
+
+#: data/org.gnome.World.Citations.desktop.in.in:9
+msgid "Gnome;GTK;"
+msgstr "Gnome;GTK;Vodnik;bibliografija;cobiss;knjige;prispevki;članki;"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "Širina okna"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "Višina okna"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Stanje razpetega okna"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
+msgid "List of paths of recent files"
+msgstr ""
+
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
+msgid "Default template for book citation"
+msgstr ""
+
+#: data/org.gnome.World.Citations.gschema.xml.in:30
+msgid "Default template kind for citations"
+msgstr ""
+
+#: data/org.gnome.World.Citations.gschema.xml.in:34
+msgid "Default template format for citations"
+msgstr ""
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr ""
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:15
+msgid "Main window"
+msgstr "Glavno okno"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:52
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
+#: data/resources/ui/citation_preview.ui:25
+msgid "Custom Citation Format"
+msgstr ""
+
+#: data/resources/ui/citation_preview.ui:70
+msgid "Citation"
+msgstr "Navedek"
+
+#: data/resources/ui/citation_preview.ui:116
+#: data/resources/ui/entry_page.ui:110
+msgid "Copy"
+msgstr "Kopiraj"
+
+#: data/resources/ui/citation_preview.ui:151
+msgid "Custom Template"
+msgstr "Predloga po meri"
+
+#: data/resources/ui/citation_preview.ui:167
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported.\n"
+"            "
+msgstr ""
+
+#: data/resources/ui/citation_preview.ui:173
+msgid "Example:"
+msgstr "Primer:"
+
+#: data/resources/ui/entry_list.ui:9
+msgid "No Citations"
+msgstr ""
+
+#: data/resources/ui/entry_list.ui:10
+msgid "Create a new citation"
+msgstr ""
+
+#: data/resources/ui/entry_page.ui:10
+msgid "No Citation Selected"
+msgstr ""
+
+#: data/resources/ui/entry_page.ui:79
+msgid "Citation _Type"
+msgstr "Vrsta _navedka"
+
+#: data/resources/ui/entry_page.ui:95
+msgid "_Other Citation Type"
+msgstr ""
+
+#: data/resources/ui/entry_page.ui:102
+msgid "_Citation Key"
+msgstr ""
+
+#: data/resources/ui/entry_page.ui:121
+msgid "_Author"
+msgstr "_Avtor"
+
+#: data/resources/ui/entry_page.ui:127
+msgid "_Title"
+msgstr "_Naslov"
+
+#: data/resources/ui/entry_page.ui:133
+msgid "_Year"
+msgstr "_Leto"
+
+#: data/resources/ui/entry_page.ui:145 src/entry_page.rs:401
+msgid "Open in Browser"
+msgstr "Odpri v brskalniku"
+
+#: data/resources/ui/entry_page.ui:165
+msgid "Other Properties"
+msgstr "Druge lastnosti"
+
+#: data/resources/ui/entry_page.ui:195
+msgid "Set PDF"
+msgstr "Nastavi PDF"
+
+#: data/resources/ui/entry_page.ui:196
+msgid "Copy file to bibliography folder"
+msgstr ""
+
+#: data/resources/ui/entry_page.ui:200
+msgid "From file"
+msgstr "Iz datoteke"
+
+#: data/resources/ui/entry_page.ui:217
+msgid "From URL"
+msgstr "Na naslovu"
+
+#: data/resources/ui/entry_page.ui:236
+msgid "Open PDF"
+msgstr "Odpri PDF"
+
+#: data/resources/ui/entry_page.ui:241
+msgid "Delete PDF"
+msgstr "Izbriši PDF"
+
+#: data/resources/ui/entry_page.ui:264
+msgid "PDF Preview"
+msgstr "Predogled PDF"
+
+#: data/resources/ui/new_entry_dialog.ui:27
+msgid "_Cancel"
+msgstr "_Prekliči"
+
+#: data/resources/ui/new_entry_dialog.ui:34
+msgid "C_reate"
+msgstr "_Ustvari"
+
+#: data/resources/ui/new_entry_dialog.ui:49
+msgid "New"
+msgstr "Novo"
+
+#: data/resources/ui/new_entry_dialog.ui:68
+msgid "Citation Key"
+msgstr ""
+
+#: data/resources/ui/new_entry_dialog.ui:73
+msgid "Citation Type"
+msgstr ""
+
+#. BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:93
+msgid "From BibTeX"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Splošno"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Pokaže tipkovne bližnjice‫"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Konča program"
+
+#: data/resources/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Pokaže bibliografijo"
+
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Odpre vir"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Shrani zbirko"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Poišče iskalni niz"
+
+#: data/resources/ui/window.ui:6
+msgid "_Create New Bibliography"
+msgstr "_Ustvari nov bibliografski vnos"
+
+#: data/resources/ui/window.ui:10 data/resources/ui/window.ui:33
+msgid "_Open"
+msgstr "_Odpri "
+
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+msgid "_Keyboard Shortcuts"
+msgstr "_Tipkovne bližnjice"
+
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+msgid "_About Citations"
+msgstr "_O programu"
+
+#: data/resources/ui/window.ui:29
+msgid "_Save"
+msgstr "_Shrani"
+
+#: data/resources/ui/window.ui:52
+msgid "_Search in Google Scholar"
+msgstr ""
+
+#. arXiv is a proper name
+#: data/resources/ui/window.ui:56
+msgid "_Search in arXiv"
+msgstr ""
+
+#: data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "_Izbriši"
+
+#: data/resources/ui/window.ui:81 data/resources/ui/window.ui:106
+#: data/resources/ui/window.ui:174
+msgid "Main Menu"
+msgstr "Glavni meni"
+
+#. BibTeX is a proper name
+#: data/resources/ui/window.ui:90
+msgid "Open a BibTeX File"
+msgstr "Odpri datoteko BibTeX"
+
+#: data/resources/ui/window.ui:127
+msgid "Recent Files"
+msgstr "Nedavne datoteke"
+
+#: data/resources/ui/window.ui:167
+msgid "Add New Citation"
+msgstr "Dodaj nov navedek"
+
+#: data/resources/ui/window.ui:180
+msgid "Search"
+msgstr "Poišči"
+
+#: data/resources/ui/window.ui:232
+msgid "Back"
+msgstr "Nazaj"
+
+#: data/resources/ui/window.ui:241
+msgid "Secondary Menu"
+msgstr ""
+
+#. TODO Should this be translatable?
+#: src/citation_preview.rs:56
+msgid "Chicago"
+msgstr "Chicago"
+
+#: src/citation_preview.rs:57
+msgid "Harvard"
+msgstr "Harvard"
+
+#: src/citation_preview.rs:58
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#. NOTE: Custom as in Custom Template.
+#: src/citation_preview.rs:60
+msgid "Custom"
+msgstr "Po meri"
+
+#: src/citation_preview.rs:160 src/entry_page.rs:174
+msgid "Copied"
+msgstr "Kopirano"
+
+#: src/citation_preview.rs:167
+msgid "Custom…"
+msgstr "Po meri …"
+
+#: src/entry_page.rs:102
+msgid "PDF Downloaded"
+msgstr "Dokument PDF je prejet"
+
+#: src/entry_page.rs:135
+msgid "Other…"
+msgstr "Drugo …"
+
+#: src/entry_page.rs:196
+msgid "Citation Key already exists"
+msgstr ""
+
+#: src/entry_page.rs:456
+msgid "Bibliography folder not set"
+msgstr ""
+
+#. NOTE Do not translate the path.
+#: src/entry_page.rs:460
+msgid "Make sure ~/Documents/Bibliography exists"
+msgstr ""
+
+#: src/entry_page.rs:522
+msgid "PDF Files"
+msgstr "Datoteke PDF"
+
+#: src/utils.rs:20
+msgid "Author"
+msgstr "Avtor"
+
+#: src/utils.rs:21
+msgid "Year"
+msgstr "Leto"
+
+#: src/utils.rs:22
+msgid "Title"
+msgstr "Naslov"
+
+#: src/utils.rs:23
+msgid "Volume"
+msgstr "Zvezek"
+
+#: src/utils.rs:24
+msgid "Number"
+msgstr "Številka"
+
+#: src/utils.rs:25
+msgid "Pages"
+msgstr "Strani"
+
+#: src/utils.rs:26
+msgid "Publisher"
+msgstr "Založnik"
+
+#: src/utils.rs:27
+msgid "Journal"
+msgstr "Revija"
+
+#: src/utils.rs:28
+msgid "Address"
+msgstr "Naslov"
+
+#: src/utils.rs:29
+#, fuzzy
+msgid "How Published"
+msgstr "Kako je predmet objavljen"
+
+#: src/utils.rs:30
+msgid "Note"
+msgstr "Opomba"
+
+#: src/utils.rs:31
+msgid "Book Title"
+msgstr "Naslov knjige"
+
+#: src/utils.rs:32
+msgid "Series"
+msgstr "Serija"
+
+#: src/utils.rs:33
+msgid "Archive Prefix"
+msgstr "Predpona arhiva"
+
+#: src/utils.rs:34
+msgid "ePrint"
+msgstr "ePrint"
+
+#: src/utils.rs:35
+msgid "Primary Class"
+msgstr ""
+
+#: src/utils.rs:36
+msgid "Month"
+msgstr "Mesec"
+
+#: src/utils.rs:37
+msgid "Editor"
+msgstr "Urednik"
+
+#: src/utils.rs:38
+msgid "Organization"
+msgstr "Ustanova"
+
+#: src/utils.rs:39
+msgid "School"
+msgstr "Šola"
+
+#: src/utils.rs:40
+msgid "Institution"
+msgstr "Ustanova"
+
+#: src/window.rs:326 src/window.rs:355
+msgid "Bibtex Files"
+msgstr "Datoteke Bibtex"
+
+#: src/window.rs:347
+msgid "Create New Bibliography"
+msgstr ""
+
+#: src/window.rs:350
+msgid "Create"
+msgstr "Ustvari"
+
+#: src/window.rs:499
+msgid "An entry with the given citation key already exists"
+msgstr ""
+
+#: src/window.rs:514
+msgid "Bibliography saved"
+msgstr ""
+
+#: src/window.rs:554
+msgid "Citation Deleted"
+msgstr ""
+
+#: src/window.rs:556
+msgid "Undo"
+msgstr "Razveljavi"
+
+#: src/window.rs:596
+msgid "translator-credits"
+msgstr "Matej Urbančič <mateju@svn.gnome.org>"
+
+#. NOTE Dialog title which informs the user about unsaved changes.
+#: src/window.rs:613
+msgid "Unsaved Changes"
+msgstr "Neshranjene spremembe"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:617
+msgid "Do you want to write all changes to the safe?"
+msgstr "Ali želite zapisati vse spremembe v sef?"
+
+#: src/window.rs:620
+msgid "_Quit Without Saving"
+msgstr "_Končaj brez shranjevanja"
+
+#: src/window.rs:626
+msgid "_Don't Quit"
+msgstr "_Ne končaj"
+
+#: src/window.rs:631
+msgid "_Save and Quit"
+msgstr "_Shrani in končaj"
