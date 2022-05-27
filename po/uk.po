@@ -4,20 +4,7 @@
 #
 # Yuri Chornoivan <yurchor@ukr.net>, 2022.
 msgid ""
-msgstr ""
-"Project-Id-Version: citations master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-26 11:16+0000\n"
-"PO-Revision-Date: 2022-05-26 14:46+0300\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
-"Language: uk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.0\n"
+msgstr "Project-Id-Version: citations master\nReport-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\nPOT-Creation-Date: 2022-05-26 16:00+0000\nPO-Revision-Date: 2022-05-27 09:40+0300\nLast-Translator: Yuri Chornoivan <yurchor@ukr.net>\nLanguage-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Lokalize 20.12.0\n"
 
 #: cratebibtex/src/entry_type.rs:108
 msgid "Article"
@@ -153,7 +140,7 @@ msgid "Citation"
 msgstr "Оголошувати подяку"
 
 #: data/resources/ui/citation_preview.ui:116
-#: data/resources/ui/entry_page.ui:105
+#: data/resources/ui/entry_page.ui:106
 msgid "Copy"
 msgstr "Копіювати"
 
@@ -162,16 +149,8 @@ msgid "Custom Template"
 msgstr "Нетиповий шаблон"
 
 #: data/resources/ui/citation_preview.ui:167
-msgid ""
-"Write a custom format for your citations, to insert the contents of a tag "
-"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
-"and italics is supported.\n"
-"            "
-msgstr ""
-"Напишіть нетиповий формат для ваших посилань. Щоб вставити вміст теґу "
-"<tt>якийсь_теґ</tt>, напишіть <tt>%ЯКИЙСЬ_ТЕҐ%</tt>. Передбачено базову "
-"підтримку синтаксису markdown для напівжирного та курсивного шрифтів.\n"
-"            "
+msgid "Write a custom format for your citations, to insert the contents of a tag <tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold and italics is supported.\n            "
+msgstr "Напишіть нетиповий формат для ваших посилань. Щоб вставити вміст теґу <tt>якийсь_теґ</tt>, напишіть <tt>%ЯКИЙСЬ_ТЕҐ%</tt>. Передбачено базову підтримку синтаксису markdown для напівжирного та курсивного шрифтів.\n            "
 
 #: data/resources/ui/citation_preview.ui:173
 msgid "Example:"
@@ -189,42 +168,68 @@ msgstr "Створити посилання"
 msgid "No Citation Selected"
 msgstr "Не позначено жодного посилання"
 
-#: data/resources/ui/entry_page.ui:74
+#: data/resources/ui/entry_page.ui:75
 msgid "Citation _Type"
 msgstr "_Тип посилання"
 
-#: data/resources/ui/entry_page.ui:90
-#| msgid "Citation Type"
+#: data/resources/ui/entry_page.ui:91
 msgid "_Other Citation Type"
 msgstr "_Інший тип посилання"
 
-#: data/resources/ui/entry_page.ui:97
+#: data/resources/ui/entry_page.ui:98
 msgid "_Citation Key"
 msgstr "Кл_юч посилання"
 
-#: data/resources/ui/entry_page.ui:116
+#: data/resources/ui/entry_page.ui:117
 msgid "_Author"
 msgstr "_Автор"
 
-#: data/resources/ui/entry_page.ui:122
+#: data/resources/ui/entry_page.ui:123
 msgid "_Title"
 msgstr "_Назва"
 
-#: data/resources/ui/entry_page.ui:128
+#: data/resources/ui/entry_page.ui:129
 msgid "_Year"
 msgstr "Р_ік"
 
-#: data/resources/ui/entry_page.ui:140 src/entry_page.rs:356
+#: data/resources/ui/entry_page.ui:141 src/entry_page.rs:409
 msgid "Open in Browser"
 msgstr "Відкрити у переглядачі"
 
-#: data/resources/ui/entry_page.ui:160
+#: data/resources/ui/entry_page.ui:161
 msgid "Other Properties"
 msgstr "Інші властивості"
 
-#: data/resources/ui/entry_page.ui:191 src/entry_page.rs:400
+#: data/resources/ui/entry_page.ui:191
+msgid "Set PDF"
+msgstr "Встановити PDF"
+
+#: data/resources/ui/entry_page.ui:192
+msgid "Copy file to bibliography folder"
+msgstr "Копіювати файл до теки бібліографії"
+
+#: data/resources/ui/entry_page.ui:196
+#| msgid "From BibTeX"
+msgid "From file"
+msgstr "З файла"
+
+#: data/resources/ui/entry_page.ui:213
+msgid "From URL"
+msgstr "З адреси"
+
+#: data/resources/ui/entry_page.ui:232
 msgid "Open PDF"
 msgstr "Відкрити PDF"
+
+#: data/resources/ui/entry_page.ui:237
+#| msgid "_Delete"
+msgid "Delete PDF"
+msgstr "Вилучити PDF"
+
+#: data/resources/ui/entry_page.ui:260
+#| msgid "PDF Files"
+msgid "PDF Preview"
+msgstr "Попередній перегляд PDF"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
@@ -282,7 +287,6 @@ msgid "Save"
 msgstr "Зберегти"
 
 #: data/resources/ui/shortcuts.ui:43
-#| msgid "Search"
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Шукати"
@@ -368,7 +372,7 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:138
+#: src/citation_preview.rs:160 src/entry_page.rs:174
 msgid "Copied"
 msgstr "Скопійовано"
 
@@ -376,32 +380,28 @@ msgstr "Скопійовано"
 msgid "Custom…"
 msgstr "Нетиповий…"
 
-#: src/entry_page.rs:99
+#: src/entry_page.rs:102
+msgid "PDF Downloaded"
+msgstr "Отримано PDF"
+
+#: src/entry_page.rs:135
 msgid "Other…"
 msgstr "Інше…"
 
-#: src/entry_page.rs:160
+#: src/entry_page.rs:196
 msgid "Citation Key already exists"
 msgstr "Ключ цитування вже існує"
 
-#: src/entry_page.rs:403
-msgid "Set PDF"
-msgstr "Встановити PDF"
-
-#: src/entry_page.rs:406
-msgid "Copy file to bibliography folder"
-msgstr "Копіювати файл до теки бібліографії"
-
-#: src/entry_page.rs:411
+#: src/entry_page.rs:464
 msgid "Bibliography folder not set"
 msgstr "Не встановлено теки бібліографії"
 
 #. NOTE Do not translate the path.
-#: src/entry_page.rs:415
+#: src/entry_page.rs:468
 msgid "Make sure ~/Documents/Bibliography exists"
 msgstr "Переконайтеся, що тека ~/Документи/Бібліографія існує"
 
-#: src/entry_page.rs:437
+#: src/entry_page.rs:534
 msgid "PDF Files"
 msgstr "файли PDF"
 
