@@ -31,9 +31,9 @@ const VANCOUVER_BOOK_TEMPLATE: &str = r#"%AUTHOR%: %TITLE%. %PUBLISHER%; %YEAR% 
 #[repr(u32)]
 #[enum_type(name = "Template")]
 pub enum Template {
-    MLA,
-    AMS,
-    APA,
+    Mla,
+    Ams,
+    Apa,
     Chicago,
     Harvard,
     Vancouver,
@@ -42,16 +42,16 @@ pub enum Template {
 
 impl Default for Template {
     fn default() -> Self {
-        Self::MLA
+        Self::Mla
     }
 }
 
 impl Template {
     pub fn to_translatable_string(self) -> String {
         match self {
-            Template::MLA => "MLA".to_string(),
-            Template::AMS => "AMS".to_string(),
-            Template::APA => "APA".to_string(),
+            Template::Mla => "MLA".to_string(),
+            Template::Ams => "AMS".to_string(),
+            Template::Apa => "APA".to_string(),
             // TODO Should this be translatable?
             Template::Chicago => gettext("Chicago"),
             Template::Harvard => gettext("Harvard"),
@@ -65,9 +65,9 @@ impl Template {
 impl From<u32> for Template {
     fn from(u: u32) -> Self {
         match u {
-            0 => Self::MLA,
-            1 => Self::AMS,
-            2 => Self::APA,
+            0 => Self::Mla,
+            1 => Self::Ams,
+            2 => Self::Apa,
             3 => Self::Chicago,
             4 => Self::Harvard,
             5 => Self::Vancouver,
@@ -307,8 +307,8 @@ mod imp {
                         }));
 
                         let old_entry = self.entry.replace(Some(entry));
-                        if let Some(old_id) = self.signal_handler.replace(Some(id)) {
-                            old_entry.map(|entry| entry.disconnect(old_id));
+                        if let (Some(old_id), Some(entry)) = (self.signal_handler.replace(Some(id)), old_entry) {
+                            entry.disconnect(old_id);
                         }
 
                         let template = if obj.use_book_format() {
@@ -420,21 +420,21 @@ impl CitationPreview {
                 let (start, end) = buffer.bounds();
                 buffer.text(&start, &end, true).into()
             }
-            Template::AMS => {
+            Template::Ams => {
                 if self.use_book_format() {
                     AMS_BOOK_TEMPLATE.into()
                 } else {
                     AMS_ARTICLE_TEMPLATE.into()
                 }
             }
-            Template::MLA => {
+            Template::Mla => {
                 if self.use_book_format() {
                     MLA_BOOK_TEMPLATE.into()
                 } else {
                     MLA_ARTICLE_TEMPLATE.into()
                 }
             }
-            Template::APA => {
+            Template::Apa => {
                 if self.use_book_format() {
                     APA_BOOK_TEMPLATE.into()
                 } else {

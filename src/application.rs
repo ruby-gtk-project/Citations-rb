@@ -63,8 +63,8 @@ glib::wrapper! {
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
-impl Application {
-    pub fn new() -> Self {
+impl Default for Application {
+    fn default() -> Self {
         glib::Object::new(&[
             ("application-id", &Some(APP_ID)),
             ("flags", &gio::ApplicationFlags::empty()),
@@ -72,7 +72,9 @@ impl Application {
         ])
         .expect("Application initialization failed...")
     }
+}
 
+impl Application {
     fn setup_gactions(&self) {
         // Quit
         let action_quit = gio::SimpleAction::new("quit", None);

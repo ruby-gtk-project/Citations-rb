@@ -73,11 +73,14 @@ mod imp {
     impl EntryPage {
         #[template_callback]
         async fn on_trash_pdf_button_clicked(&self) {
-            let entry = self.entry.borrow();
-            let entry = entry.as_ref().unwrap();
+            let citation_key = {
+                let entry = self.entry.borrow();
+
+                entry.as_ref().unwrap().citation_key()
+            };
             if let Some(path) = crate::utils::bibliography_path() {
                 let folder = gio::File::for_path(&path);
-                let pdf = folder.child(&utils::pdf_filename(&entry.citation_key()));
+                let pdf = folder.child(&utils::pdf_filename(&citation_key));
                 if let Err(err) = pdf.trash_future(glib::Priority::default()).await {
                     log::error!("Could not trash pdf: {err}");
                 } else {
@@ -111,10 +114,11 @@ mod imp {
             combo_row: &adw::ComboRow,
         ) {
             let type_ = cratebibtex::EntryType::from(combo_row.selected());
-            let entry = self.entry.borrow().clone().unwrap();
-            entry.set_entry_type(type_);
-            self.instance().bind_extras_list_model(&entry);
-            self.instance().setup_other_entry_row();
+            if let Some(entry) = self.entry.borrow().as_ref() {
+                entry.set_entry_type(type_);
+                self.instance().bind_extras_list_model(entry);
+                self.instance().setup_other_entry_row();
+            }
         }
 
         #[template_callback]
@@ -123,9 +127,12 @@ mod imp {
             if text.is_empty() {
                 return;
             }
-            let entry = self.entry.borrow().clone().unwrap();
             // TODO If the user types "article" the type should change to it.
-            entry.set_other_entry_type(&text);
+            self.entry
+                .borrow()
+                .as_ref()
+                .unwrap()
+                .set_other_entry_type(&text);
         }
 
         #[template_callback]
@@ -556,7 +563,7 @@ impl EntryPage {
 
         if let Some(path) = crate::utils::bibliography_path() {
             let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&utils::pdf_filename(&old_citation_key));
+            let pdf = folder.child(&utils::pdf_filename(old_citation_key));
             if pdf.query_exists(gio::Cancellable::NONE) {
                 let new_pdf = folder.child(&utils::pdf_filename(&new_citation_key));
                 pdf.move_future(
@@ -595,10 +602,11 @@ impl EntryPage {
             // Validate the document
             poppler::Document::from_bytes(&bytes, None)?;
 
-            let entry = self.imp().entry.borrow();
-            let entry = entry.as_ref().unwrap();
+            let citation_key = {
+                let entry = self.imp().entry.borrow();
 
-            let citation_key = entry.citation_key();
+                entry.as_ref().unwrap().citation_key()
+            };
 
             let folder = gio::File::for_path(&path);
             let pdf = folder.child(&utils::pdf_filename(&citation_key));
