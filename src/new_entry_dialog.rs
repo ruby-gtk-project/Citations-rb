@@ -124,7 +124,7 @@ mod imp {
 
             // TODO Use placeholder-text see
             // https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
-            let instructions = gettext("Insert here a BibTeX citation");
+            let instructions = gettext("Insert a BibTeX citation here");
             buffer.set_text(&format!("{instructions}\n\n{SAMPLE_ENTRY}"));
 
             let controller = gtk::EventControllerFocus::new();
