@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-27 22:04+0000\n"
-"PO-Revision-Date: 2022-05-28 14:56+0300\n"
+"POT-Creation-Date: 2022-05-28 16:55+0000\n"
+"PO-Revision-Date: 2022-05-28 22:06+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -99,11 +99,12 @@ msgstr "Цитати"
 msgid "Manage your bibliography"
 msgstr "Керування вашою бібліографією"
 
-#: data/org.gnome.World.Citations.desktop.in.in:9
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.World.Citations.desktop.in.in:10
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
-"bibliography;citing;literature;BibTeX;LaTeX;TeX;бібліографія;цитування;посилан"
-"ня;література;бібтех;латех;тех;"
+"bibliography;citing;literature;BibTeX;LaTeX;TeX;бібліографія;цитування;"
+"посилання;література;бібтех;латех;тех;"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -424,6 +425,13 @@ msgstr "Переконайтеся, що тека ~/Документи/Бібл�
 #: src/entry_page.rs:537
 msgid "PDF Files"
 msgstr "файли PDF"
+
+#. TODO Use placeholder-text see
+#. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
+#: src/new_entry_dialog.rs:127
+#| msgid "Create a new citation"
+msgid "Insert a BibTeX citation here"
+msgstr "Вставте сюди посилання BibTeX"
 
 #: src/utils.rs:20
 msgid "Author"
