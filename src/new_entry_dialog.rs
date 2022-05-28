@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use gsv::prelude::*;
 use gtk::glib;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
-const SAMPLE_ENTRY: &str = r"Replace this sample citation
-@book{lamport1985i1,
+const SAMPLE_ENTRY: &str = r"@book{lamport1985i1,
   title={\LaTeX: A Document Preparation System},
   author={Lamport, Leslie},
   year={1991},
@@ -18,8 +18,9 @@ mod imp {
     use super::*;
 
     use std::cell::RefCell;
+    use std::sync::Once;
 
-    #[derive(Debug, Default, CompositeTemplate)]
+    #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/new_entry_dialog.ui")]
     pub struct NewEntryDialog {
         #[template_child]
@@ -32,6 +33,20 @@ mod imp {
         pub view_stack: TemplateChild<adw::ViewStack>,
 
         pub sender: RefCell<Option<futures_channel::oneshot::Sender<Option<String>>>>,
+        pub remove_text: Once,
+    }
+
+    impl Default for NewEntryDialog {
+        fn default() -> Self {
+            Self {
+                combo_row: TemplateChild::default(),
+                entry_row: TemplateChild::default(),
+                source_view: TemplateChild::default(),
+                view_stack: TemplateChild::default(),
+                sender: RefCell::default(),
+                remove_text: Once::new(),
+            }
+        }
     }
 
     #[glib::object_subclass]
@@ -107,7 +122,19 @@ mod imp {
                 obj.update_style_scheme();
             }));
 
-            buffer.set_text(SAMPLE_ENTRY);
+            // TODO Use placeholder-text see
+            // https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
+            let instructions = gettext("Insert here a BibTeX citation");
+            buffer.set_text(&format!("{instructions}\n\n{SAMPLE_ENTRY}"));
+
+            let controller = gtk::EventControllerFocus::new();
+            controller.connect_enter(glib::clone!(@weak obj => move |_| {
+                obj.imp().remove_text.call_once(glib::clone!(@weak obj => move || {
+                    let buffer = obj.imp().source_view.buffer();
+                    buffer.set_text("");
+                }));
+            }));
+            self.source_view.get().add_controller(&controller);
         }
     }
 
