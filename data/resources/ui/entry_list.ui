@@ -20,6 +20,8 @@
                     <property name="margin-end">6</property>
                     <property name="margin-top">6</property>
                     <property name="margin-bottom">6</property>
+                    <property name="single-click-activate">True</property>
+                    <signal name="activate" handler="on_list_activate" swapped="yes"/>
                     <style>
                       <class name="navigation-sidebar"/>
                     </style>

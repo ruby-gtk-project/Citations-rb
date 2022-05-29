@@ -149,6 +149,7 @@
             </child>
             <child>
               <object class="AdwLeaflet" id="main_leaflet">
+                <signal name="notify::folded" handler="on_leaflet_folded_notify" swapped="yes"/>
                 <child>
                   <object class="GtkBox">
                     <property name="orientation">vertical</property>

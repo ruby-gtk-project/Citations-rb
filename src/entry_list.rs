@@ -23,7 +23,7 @@ mod imp {
         #[template_child]
         pub scrolled_window: TemplateChild<gtk::ScrolledWindow>,
 
-        pub selection_model: RefCell<gtk::SingleSelection>,
+        pub selection_model: RefCell<crate::Selection>,
         pub filter_model: gtk::FilterListModel,
         pub filter: gtk::StringFilter,
         pub id: RefCell<Option<glib::SignalHandlerId>>,
@@ -37,10 +37,25 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
+            Self::bind_template_callbacks(klass);
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
             obj.init_template();
+        }
+    }
+
+    #[gtk::template_callbacks]
+    impl EntryList {
+        #[template_callback]
+        fn on_list_activate(&self, pos: u32) {
+            self.selection_model.borrow().set_selected_position(pos);
+            if let Some(item) = self.selection_model.borrow().selected_item() {
+                let entry = item.downcast_ref::<cratebibtex::Entry>().unwrap();
+                self.instance().entry_selected(Some(entry));
+            } else {
+                self.instance().entry_selected(None);
+            }
         }
     }
 
@@ -61,20 +76,8 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            let selection = gtk::SingleSelection::new(Some(&self.filter_model));
-            selection.set_can_unselect(true);
-            selection.set_autoselect(false);
-            selection.connect_selected_notify(glib::clone!(@weak obj => move |model| {
-                let pos = model.selected();
-                if let Some(entry) = model.item(pos) {
-                    let entry = entry
-                        .downcast::<cratebibtex::Entry>()
-                        .unwrap();
-                    obj.entry_selected(Some(&entry));
-                } else {
-                    obj.entry_selected(None);
-                }
-            }));
+            let selection = crate::Selection::default();
+            selection.set_model(Some(self.filter_model.upcast_ref()));
 
             let factory = gtk::SignalListItemFactory::new();
 
@@ -164,15 +167,32 @@ impl EntryList {
     }
 
     pub fn set_selected(&self, pos: u32) {
-        self.imp().selection_model.borrow().set_selected(pos);
+        self.imp()
+            .selection_model
+            .borrow()
+            .set_hide_selection(false);
+        self.imp()
+            .selection_model
+            .borrow()
+            .set_selected_position(pos);
         self.imp()
             .list_view
             .activate_action("list.scroll-to-item", Some(&pos.to_variant()))
             .unwrap();
     }
 
+    pub fn hide_selection(&self) {
+        self.imp().selection_model.borrow().set_hide_selection(true);
+    }
+
+    pub fn show_selection(&self) {
+        self.imp()
+            .selection_model
+            .borrow()
+            .set_hide_selection(false);
+    }
+
     pub fn unselect(&self) {
-        let selection_model = self.imp().selection_model.borrow();
-        selection_model.unselect_item(selection_model.selected());
+        self.imp().selection_model.borrow().set_selected_item(None);
     }
 }

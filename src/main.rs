@@ -7,6 +7,7 @@ mod entry_list;
 mod entry_list_row;
 mod entry_page;
 mod new_entry_dialog;
+mod selection;
 mod utils;
 mod window;
 
@@ -18,6 +19,7 @@ pub use entry_list::EntryList;
 pub use entry_list_row::EntryListRow;
 pub use entry_page::EntryPage;
 pub use new_entry_dialog::NewEntryDialog;
+use selection::Selection;
 pub use window::Window;
 
 use self::application::Application;
@@ -48,6 +50,7 @@ fn main() {
     CitationPreview::static_type();
     Window::static_type();
     NewEntryDialog::static_type();
+    Selection::static_type();
 
     app.run();
 }

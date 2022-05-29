@@ -154,6 +154,13 @@ mod imp {
         }
 
         #[template_callback]
+        fn on_leaflet_folded_notify(&self, _pspec: glib::ParamSpec, leaflet: &adw::Leaflet) {
+            if !leaflet.is_folded() {
+                self.entry_list.show_selection();
+            }
+        }
+
+        #[template_callback]
         fn on_changed(&self, search_entry: &gtk::SearchEntry) {
             let query = search_entry.text();
             self.entry_list.filter(&query);
@@ -169,7 +176,7 @@ mod imp {
 
         #[template_callback]
         fn on_back_button_clicked(&self) {
-            self.entry_list.unselect();
+            self.entry_list.hide_selection();
             self.main_leaflet.navigate(adw::NavigationDirection::Back);
         }
     }
@@ -558,7 +565,7 @@ impl Window {
     fn start_search_action(&self) {
         let imp = self.imp();
         if imp.main_leaflet.is_folded() {
-            imp.entry_list.unselect();
+            imp.entry_list.hide_selection();
             imp.main_leaflet.navigate(adw::NavigationDirection::Back);
         }
         let search_mode = imp.search_bar.is_search_mode();
