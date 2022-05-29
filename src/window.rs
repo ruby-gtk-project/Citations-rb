@@ -551,10 +551,10 @@ impl Window {
                 {
                     toast.dismiss();
                 };
+                self.imp().entry_list.unselect();
                 self.bib().remove_pos(pos);
 
                 self.imp().toast_overlay.add_toast(&toast);
-                self.imp().entry_list.unselect();
                 self.imp()
                     .main_leaflet
                     .navigate(adw::NavigationDirection::Back);

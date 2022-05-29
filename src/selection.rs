@@ -256,16 +256,14 @@ impl Selection {
     }
 
     pub(crate) fn set_selected_item(&self, selected_item: Option<glib::Object>) {
-        if self.selected_item() == selected_item {
-            return;
+        if selected_item.as_ref() != self.imp().item.borrow().as_ref() {
+            let position = selected_item
+                .as_ref()
+                .map(|i| self.find_item_position(i, 0, self.n_items()))
+                .unwrap_or(gtk::INVALID_LIST_POSITION);
+
+            self.set_selected_item_internal(selected_item, position);
         }
-
-        let position = selected_item
-            .as_ref()
-            .map(|i| self.find_item_position(i, 0, self.n_items()))
-            .unwrap_or(gtk::INVALID_LIST_POSITION);
-
-        self.set_selected_item_internal(selected_item, position);
     }
 
     pub(crate) fn set_selected_position(&self, position: u32) {

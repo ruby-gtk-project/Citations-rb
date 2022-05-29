@@ -194,5 +194,6 @@ impl EntryList {
 
     pub fn unselect(&self) {
         self.imp().selection_model.borrow().set_selected_item(None);
+        self.emit_by_name::<()>("entry-selected", &[&None::<cratebibtex::Entry>]);
     }
 }
