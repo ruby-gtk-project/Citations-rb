@@ -50,12 +50,6 @@ mod imp {
         #[template_callback]
         fn on_list_activate(&self, pos: u32) {
             self.selection_model.borrow().set_selected_position(pos);
-            if let Some(item) = self.selection_model.borrow().selected_item() {
-                let entry = item.downcast_ref::<cratebibtex::Entry>().unwrap();
-                self.instance().entry_selected(Some(entry));
-            } else {
-                self.instance().entry_selected(None);
-            }
         }
     }
 
@@ -78,6 +72,15 @@ mod imp {
 
             let selection = crate::Selection::default();
             selection.set_model(Some(self.filter_model.upcast_ref()));
+            selection.connect_notify_local(
+                Some("selected-item"),
+                glib::clone!(@weak obj => move |model, _| {
+                    let entry = model
+                        .selected_item()
+                        .map(|obj| obj.downcast::<cratebibtex::Entry>().unwrap());
+                    obj.emit_by_name::<()>("entry-selected", &[&entry]);
+                }),
+            );
 
             let factory = gtk::SignalListItemFactory::new();
 
@@ -162,10 +165,6 @@ impl EntryList {
         }
     }
 
-    fn entry_selected(&self, entry: Option<&cratebibtex::Entry>) {
-        self.emit_by_name::<()>("entry-selected", &[&entry]);
-    }
-
     pub fn set_selected(&self, pos: u32) {
         self.imp()
             .selection_model
@@ -194,6 +193,5 @@ impl EntryList {
 
     pub fn unselect(&self) {
         self.imp().selection_model.borrow().set_selected_item(None);
-        self.emit_by_name::<()>("entry-selected", &[&None::<cratebibtex::Entry>]);
     }
 }
