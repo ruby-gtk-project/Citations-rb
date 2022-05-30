@@ -190,8 +190,8 @@ impl Selection {
     }
 
     fn disconnect_model_signal(&self) {
-        if let Some(model) = self.model() {
-            if let Some(handler) = self.imp().signal_handler.take() {
+        if let Some(handler) = self.imp().signal_handler.take() {
+            if let Some(model) = &*self.imp().model.borrow() {
                 model.disconnect(handler);
             }
         }
