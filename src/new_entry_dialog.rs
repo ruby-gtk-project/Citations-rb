@@ -69,7 +69,7 @@ mod imp {
     impl NewEntryDialog {
         #[template_callback]
         fn entry_type_name(item: &adw::EnumListItem) -> String {
-            let type_ = cratebibtex::EntryType::from(item.value() as u32);
+            let type_ = cratebibtex::EntryType::from(item.value());
             type_.to_translatable_string()
         }
 
@@ -88,7 +88,7 @@ mod imp {
                 Some("new") => {
                     let citation_key = self.entry_row.text().to_string();
                     let type_ =
-                        cratebibtex::EntryType::from(self.combo_row.selected() as u32).to_string();
+                        cratebibtex::EntryType::from(self.combo_row.selected() as i32).to_string();
                     format!("@{type_}{{{citation_key},}}")
                 }
                 Some("from_bibtex") => {

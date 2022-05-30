@@ -113,7 +113,7 @@ mod imp {
             _pspec: &glib::ParamSpec,
             combo_row: &adw::ComboRow,
         ) {
-            let type_ = cratebibtex::EntryType::from(combo_row.selected());
+            let type_ = cratebibtex::EntryType::from(combo_row.selected() as i32);
             if let Some(entry) = self.entry.borrow().as_ref() {
                 entry.set_entry_type(type_);
                 self.instance().bind_extras_list_model(entry);
@@ -137,7 +137,7 @@ mod imp {
 
         #[template_callback]
         fn drop_down_entry_type_name(item: &adw::EnumListItem) -> String {
-            let type_ = cratebibtex::EntryType::from(item.value() as u32);
+            let type_ = cratebibtex::EntryType::from(item.value());
             if type_ == cratebibtex::EntryType::Other {
                 gettext("Other…")
             } else {

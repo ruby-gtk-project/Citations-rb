@@ -5,7 +5,7 @@ use std::fmt;
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
 #[enum_type(name = "Format")]
-#[repr(u32)]
+#[repr(i32)]
 pub enum Format {
     Plain = 0,
     Markdown = 1,
@@ -18,9 +18,9 @@ impl Default for Format {
     }
 }
 
-impl From<u32> for Format {
-    fn from(u: u32) -> Self {
-        match u {
+impl From<i32> for Format {
+    fn from(i: i32) -> Self {
+        match i {
             1 => Self::Markdown,
             2 => Self::LaTeX,
             _ => Self::Plain,

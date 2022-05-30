@@ -28,7 +28,7 @@ const HARVAR_BOOK_TEMPLATE: &str = r#"%AUTHOR%, %YEAR%. *%TITLE%* (Vol. %VOLUME%
 const VANCOUVER_BOOK_TEMPLATE: &str = r#"%AUTHOR%: %TITLE%. %PUBLISHER%; %YEAR% %MONTH% %DAY%."#;
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
-#[repr(u32)]
+#[repr(i32)]
 #[enum_type(name = "Template")]
 pub enum Template {
     Mla,
@@ -62,9 +62,9 @@ impl Template {
     }
 }
 
-impl From<u32> for Template {
-    fn from(u: u32) -> Self {
-        match u {
+impl From<i32> for Template {
+    fn from(i: i32) -> Self {
+        match i {
             0 => Self::Mla,
             1 => Self::Ams,
             2 => Self::Apa,
@@ -162,7 +162,7 @@ mod imp {
 
         #[template_callback]
         fn template_type_name(item: &adw::EnumListItem) -> String {
-            let type_ = Template::from(item.value() as u32);
+            let type_ = Template::from(item.value());
             if type_ == Template::Custom {
                 gettext("Custom…")
             } else {
@@ -172,14 +172,14 @@ mod imp {
 
         #[template_callback]
         fn format_type_name(item: &adw::EnumListItem) -> String {
-            let type_ = Format::from(item.value() as u32);
+            let type_ = Format::from(item.value());
             type_.to_translatable_string()
         }
 
         #[template_callback]
         fn on_template_notify(&self) {
             let template = self.instance().template();
-            let selected: cratebibtex::Format = self.drop_down.selected().into();
+            let selected = cratebibtex::Format::from(self.drop_down.selected() as i32);
             if let Some(entry) = &*self.entry.borrow() {
                 let citation = entry.format_citation(&template, selected);
                 self.source_view.buffer().set_text(&citation);

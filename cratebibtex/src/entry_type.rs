@@ -3,7 +3,7 @@ use std::fmt;
 
 // TODO Implement more types
 #[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
-#[repr(u32)]
+#[repr(i32)]
 #[enum_type(name = "EntryType")]
 pub enum EntryType {
     Other = 0,
@@ -30,9 +30,9 @@ impl Default for EntryType {
     }
 }
 
-impl From<u32> for EntryType {
-    fn from(u: u32) -> Self {
-        match u {
+impl From<i32> for EntryType {
+    fn from(i: i32) -> Self {
+        match i {
             1 => Self::Article,
             2 => Self::Book,
             3 => Self::Misc,
