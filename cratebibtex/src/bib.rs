@@ -180,14 +180,11 @@ impl Bib {
 
     pub fn remove_entry(&self, citation_key: &str) {
         let mut entries = self.imp().entries.borrow_mut();
-        let mut index = None;
-        for (idx, entry) in entries.iter().enumerate() {
-            if entry.citation_key() == citation_key {
-                index = Some(idx);
-                break;
-            }
-        }
-        if let Some(idx) = index {
+        if let Some((idx, _)) = entries
+            .iter()
+            .enumerate()
+            .find(|(_, entry)| entry.citation_key() == citation_key)
+        {
             entries.remove(idx);
             self.imp().n_items.set(self.imp().n_items.get() - 1);
             self.items_changed(idx as u32, 1, 0);
