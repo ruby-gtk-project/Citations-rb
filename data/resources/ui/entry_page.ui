@@ -192,7 +192,7 @@
                             <signal name="row_activated" handler="on_pdf_row_activated" swapped="true"/>
                             <child>
                               <object class="AdwExpanderRow" id="set_pdf_expander_row">
-                                <property name="title" translatable="yes">Set PDF</property>
+                                <property name="title" translatable="yes" comments="Translators: Selects a PDF file for the citation">Set PDF</property>
                                 <property name="subtitle" translatable="yes">Copy file to bibliography folder</property>
                                 <child>
                                   <object class="AdwActionRow">
