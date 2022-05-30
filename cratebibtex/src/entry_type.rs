@@ -108,7 +108,7 @@ impl EntryType {
             Self::Article => gettext("Article"),
             Self::Book => gettext("Book"),
             Self::Misc => gettext("Misc"),
-            // NOTE As in conference proceedings
+            // NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
             Self::InProceedings => gettext("In Proceedings"),
             Self::Unpublished => gettext("Unpublished"),
             Self::Online => gettext("Online"),
@@ -121,7 +121,7 @@ impl EntryType {
             Self::Manual => gettext("Manual"),
             Self::MasterThesis => gettext("Master Thesis"),
             Self::PhdThesis => gettext("PhD. Thesis"),
-            // NOTE As in conference proceedings
+            // NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
             Self::Proceedings => gettext("Proceedings"),
             Self::TechReport => gettext("Tech Report"),
         }

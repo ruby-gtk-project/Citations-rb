@@ -26,15 +26,20 @@ pub fn translated_key(key: &str) -> String {
         "publisher" => gettext("Publisher"),
         "journal" => gettext("Journal"),
         "address" => gettext("Address"),
+        // TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
         "howpublished" => gettext("How Published"),
         "note" => gettext("Note"),
         "booktitle" => gettext("Book Title"),
         "series" => gettext("Series"),
         "archiveprefix" => gettext("Archive Prefix"),
+        // TRANSLATORS As in digital print
         "eprint" => gettext("ePrint"),
+        // TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
         "primaryclass" => gettext("Primary Class"),
         "month" => gettext("Month"),
+        // TRANSLATORS As in chief editor
         "editor" => gettext("Editor"),
+        // TRANSLATORS As in association
         "organization" => gettext("Organization"),
         "school" => gettext("School"),
         "institution" => gettext("Institution"),
