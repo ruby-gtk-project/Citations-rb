@@ -200,6 +200,7 @@ mod imp {
                 }
             } else {
                 entry_row.add_css_class("error");
+                // TRANSLATORS Every citation has an identifier called key
                 window.send_toast(&gettext("Citation Key already exists"));
             }
         }

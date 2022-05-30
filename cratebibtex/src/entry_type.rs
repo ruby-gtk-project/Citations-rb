@@ -111,7 +111,9 @@ impl EntryType {
             // NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
             Self::InProceedings => gettext("In Proceedings"),
             Self::Unpublished => gettext("Unpublished"),
+            // NOTE As in online source
             Self::Online => gettext("Online"),
+            // NOTE As in other kind of source
             Self::Other => gettext("Other"),
             Self::Booklet => gettext("Booklet"),
             Self::Conference => gettext("Conference"),
