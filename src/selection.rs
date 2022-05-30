@@ -191,8 +191,9 @@ impl Selection {
 
     fn disconnect_model_signal(&self) {
         if let Some(model) = self.model() {
-            let handler = self.imp().signal_handler.take().unwrap();
-            model.disconnect(handler);
+            if let Some(handler) = self.imp().signal_handler.take() {
+                model.disconnect(handler);
+            }
         }
     }
 
