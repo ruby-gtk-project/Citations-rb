@@ -1,0 +1,580 @@
+# Indonesian translation for citations.
+# Copyright (C) 2022 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+# Andika Triwidada <andika@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
+"POT-Creation-Date: 2022-05-30 20:32+0000\n"
+"PO-Revision-Date: 2022-05-31 12:21+0700\n"
+"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"X-Generator: Poedit 3.0\n"
+
+#: cratebibtex/src/entry_type.rs:108
+msgid "Article"
+msgstr "Artikel"
+
+#: cratebibtex/src/entry_type.rs:109
+msgid "Book"
+msgstr "Buku"
+
+#: cratebibtex/src/entry_type.rs:110
+msgid "Misc"
+msgstr "Lain-lain"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:112
+msgid "In Proceedings"
+msgstr "Dalam Prosiding"
+
+#: cratebibtex/src/entry_type.rs:113
+msgid "Unpublished"
+msgstr "Tidak Dipublikasikan"
+
+#. NOTE As in online source
+#: cratebibtex/src/entry_type.rs:115
+msgid "Online"
+msgstr "Daring"
+
+#. NOTE As in other kind of source
+#: cratebibtex/src/entry_type.rs:117
+msgid "Other"
+msgstr "Lainnya"
+
+#: cratebibtex/src/entry_type.rs:118
+msgid "Booklet"
+msgstr "Buklet"
+
+#: cratebibtex/src/entry_type.rs:119
+msgid "Conference"
+msgstr "Konferensi"
+
+#: cratebibtex/src/entry_type.rs:120
+msgid "In Book"
+msgstr "Dalam Buku"
+
+#: cratebibtex/src/entry_type.rs:121
+msgid "In Collection"
+msgstr "Dalam Koleksi"
+
+#. NOTE As in instruction manual
+#: cratebibtex/src/entry_type.rs:123
+msgid "Manual"
+msgstr "Manual"
+
+#: cratebibtex/src/entry_type.rs:124
+msgid "Master Thesis"
+msgstr "Tesis Magister"
+
+#: cratebibtex/src/entry_type.rs:125
+msgid "PhD. Thesis"
+msgstr "Tesis Doktor"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:127
+msgid "Proceedings"
+msgstr "Prosiding"
+
+#: cratebibtex/src/entry_type.rs:128
+msgid "Tech Report"
+msgstr "Laporan Teknologi"
+
+#. NOTE Plain as in Plain Text
+#: cratebibtex/src/format.rs:51
+msgid "Plain"
+msgstr "Polos"
+
+#. NOTE: This is the app name
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:39
+msgid "Citations"
+msgstr "Sitasi"
+
+#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:579
+msgid "Manage your bibliography"
+msgstr "Mengelola bibliografi Anda"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.World.Citations.desktop.in.in:10
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "bibliografi;daftar pustaka;mengutip;literatur;BibTeX;LaTeX;Tex;"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "Lebar jendela"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "Tinggi jendela"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Keadaan jendela termaksimalkan"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
+msgid "List of paths of recent files"
+msgstr "Daftar path berkas terkini"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
+msgid "Default template for book citation"
+msgstr "Templat baku untuk kutipan buku"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:30
+msgid "Default template kind for citations"
+msgstr "Jenis templat baku untuk sitasi"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:34
+msgid "Default template format for citations"
+msgstr "Format templat baku untuk sitasi"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "Mengelola bibliografi Anda menggunakan format BibTeX."
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:15
+msgid "Main window"
+msgstr "Jendela utama"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:52
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
+#: data/resources/ui/citation_preview.ui:25
+msgid "Custom Citation Format"
+msgstr "Format Sitasi Ubahan"
+
+#: data/resources/ui/citation_preview.ui:70
+msgid "Citation"
+msgstr "Sitasi"
+
+#: data/resources/ui/citation_preview.ui:116
+#: data/resources/ui/entry_page.ui:110
+msgid "Copy"
+msgstr "Salin"
+
+#: data/resources/ui/citation_preview.ui:151
+msgid "Custom Template"
+msgstr "Templat Ubahan"
+
+#: data/resources/ui/citation_preview.ui:167
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported.\n"
+"            "
+msgstr ""
+"Tulis format ubahan untuk sitasi Anda, untuk menyisipkan konten tag "
+"<tt>sesuatu</tt> tuliskan <tt>%SESUATU%</tt>. Sintaks markdown dasar "
+"untuk huruf tebal dan miring didukung.\n"
+"            "
+
+#: data/resources/ui/citation_preview.ui:173
+msgid "Example:"
+msgstr "Contoh:"
+
+#. Empty state widget
+#: data/resources/ui/entry_list.ui:9
+msgid "No Citations"
+msgstr "Tidak Ada Sitasi"
+
+#: data/resources/ui/entry_list.ui:10
+msgid "Create a new citation"
+msgstr "Membuat sitasi baru"
+
+#: data/resources/ui/entry_page.ui:10
+msgid "No Citation Selected"
+msgstr "Tidak Ada Sitasi yang Dipilih"
+
+#: data/resources/ui/entry_page.ui:79
+msgid "Citation _Type"
+msgstr "_Tipe Sitasi"
+
+#: data/resources/ui/entry_page.ui:95
+msgid "_Other Citation Type"
+msgstr "Jenis Sitasi _Lain"
+
+#: data/resources/ui/entry_page.ui:102
+msgid "_Citation Key"
+msgstr "Kun_ci Sitasi"
+
+#: data/resources/ui/entry_page.ui:121
+msgid "_Author"
+msgstr "Peng_arang"
+
+#: data/resources/ui/entry_page.ui:127
+msgid "_Title"
+msgstr "_Judul"
+
+#: data/resources/ui/entry_page.ui:133
+msgid "_Year"
+msgstr "_Tahun"
+
+#: data/resources/ui/entry_page.ui:145 src/entry_page.rs:417
+msgid "Open in Browser"
+msgstr "Buka di Peramban"
+
+#: data/resources/ui/entry_page.ui:165
+msgid "Other Properties"
+msgstr "Properti Lain"
+
+#. Translators: Selects a PDF file for the citation
+#: data/resources/ui/entry_page.ui:195
+msgid "Select PDF"
+msgstr "Pilih PDF"
+
+#: data/resources/ui/entry_page.ui:196
+msgid "Copy file to bibliography folder"
+msgstr "Salin berkas ke folder bibliografi"
+
+#: data/resources/ui/entry_page.ui:200
+msgid "From file"
+msgstr "Dari berkas"
+
+#: data/resources/ui/entry_page.ui:217
+msgid "From URL"
+msgstr "Dari URL"
+
+#: data/resources/ui/entry_page.ui:236
+msgid "Open PDF"
+msgstr "Buka PDF"
+
+#: data/resources/ui/entry_page.ui:241
+msgid "Delete PDF"
+msgstr "Hapus PDF"
+
+#: data/resources/ui/entry_page.ui:264
+msgid "PDF Preview"
+msgstr "Pratinjau PDF"
+
+#: data/resources/ui/new_entry_dialog.ui:27
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: data/resources/ui/new_entry_dialog.ui:34
+msgid "C_reate"
+msgstr "_Buat"
+
+#: data/resources/ui/new_entry_dialog.ui:49
+msgid "New"
+msgstr "Baru"
+
+#: data/resources/ui/new_entry_dialog.ui:68
+msgid "Citation Key"
+msgstr "Kunci Sitasi"
+
+#: data/resources/ui/new_entry_dialog.ui:73
+msgid "Citation Type"
+msgstr "Jenis Kutipan"
+
+#. BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:93
+msgid "From BibTeX"
+msgstr "Dari BibTeX"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Umum"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Tampilkan Pintasan"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Keluar"
+
+#: data/resources/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Bibliografi"
+
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Buka"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Simpan"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Cari"
+
+#: data/resources/ui/window.ui:6
+msgid "_Create New Bibliography"
+msgstr "_Buat Bibliografi Baru"
+
+#: data/resources/ui/window.ui:10 data/resources/ui/window.ui:33
+msgid "_Open"
+msgstr "_Buka"
+
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan _Ketik"
+
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+msgid "_About Citations"
+msgstr "Tent_ang Sitasi"
+
+#: data/resources/ui/window.ui:29
+msgid "_Save"
+msgstr "_Simpan"
+
+#: data/resources/ui/window.ui:52
+msgid "_Search in Google Scholar"
+msgstr "Cari di Google _Scholar"
+
+#. arXiv is a proper name
+#: data/resources/ui/window.ui:56
+msgid "_Search in arXiv"
+msgstr "Car_i di arXiv"
+
+#: data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "Ha_pus"
+
+#: data/resources/ui/window.ui:81 data/resources/ui/window.ui:106
+#: data/resources/ui/window.ui:173
+msgid "Main Menu"
+msgstr "Menu Utama"
+
+#. BibTeX is a proper name
+#: data/resources/ui/window.ui:90
+msgid "Open a BibTeX File"
+msgstr "Buka Berkas BibTeX"
+
+#: data/resources/ui/window.ui:126
+msgid "Recent Files"
+msgstr "Berkas Terkini"
+
+#: data/resources/ui/window.ui:166
+msgid "Add New Citation"
+msgstr "Tambahkan Sitasi Baru"
+
+#: data/resources/ui/window.ui:179
+msgid "Search"
+msgstr "Cari"
+
+#: data/resources/ui/window.ui:230
+msgid "Back"
+msgstr "Mundur"
+
+#: data/resources/ui/window.ui:239
+msgid "Secondary Menu"
+msgstr "Menu Sekunder"
+
+#. TODO Should this be translatable?
+#: src/citation_preview.rs:56
+msgid "Chicago"
+msgstr "Chicago"
+
+#: src/citation_preview.rs:57
+msgid "Harvard"
+msgstr "Harvard"
+
+#: src/citation_preview.rs:58
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#. NOTE: Custom as in Custom Template.
+#: src/citation_preview.rs:60
+msgid "Custom"
+msgstr "Ubahan"
+
+#: src/citation_preview.rs:160 src/entry_page.rs:181
+msgid "Copied"
+msgstr "Tersalin"
+
+#: src/citation_preview.rs:167
+msgid "Custom…"
+msgstr "Ubahan…"
+
+#: src/entry_page.rs:105
+msgid "PDF Downloaded"
+msgstr "PDF Diunduh"
+
+#: src/entry_page.rs:142
+msgid "Other…"
+msgstr "Lainnya…"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: src/entry_page.rs:204
+msgid "Citation Key already exists"
+msgstr "Kunci Sitasi sudah ada"
+
+#: src/entry_page.rs:472
+msgid "Bibliography folder not set"
+msgstr "Folder bibliografi tidak diatur"
+
+#. NOTE Do not translate the path.
+#: src/entry_page.rs:476
+msgid "Make sure ~/Documents/Bibliography exists"
+msgstr "Pastikan ~/Documents/Bibliografi ada"
+
+#: src/entry_page.rs:538
+msgid "PDF Files"
+msgstr "Berkas PDF"
+
+#. TODO Use placeholder-text see
+#. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
+#: src/new_entry_dialog.rs:127
+msgid "Insert a BibTeX citation here"
+msgstr "Sisipkan kutipan BibTeX di sini"
+
+#: src/utils.rs:20
+msgid "Author"
+msgstr "Pengarang"
+
+#: src/utils.rs:21
+msgid "Year"
+msgstr "Tahun"
+
+#: src/utils.rs:22
+msgid "Title"
+msgstr "Judul"
+
+#: src/utils.rs:23
+msgid "Volume"
+msgstr "Volume"
+
+#: src/utils.rs:24
+msgid "Number"
+msgstr "Nomor"
+
+#: src/utils.rs:25
+msgid "Pages"
+msgstr "Halaman"
+
+#: src/utils.rs:26
+msgid "Publisher"
+msgstr "Penerbit"
+
+#: src/utils.rs:27
+msgid "Journal"
+msgstr "Jurnal"
+
+#: src/utils.rs:28
+msgid "Address"
+msgstr "Alamat"
+
+#. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
+#: src/utils.rs:30
+msgid "How Published"
+msgstr "Bagaimana Dipublikasikan"
+
+#: src/utils.rs:31
+msgid "Note"
+msgstr "Catatan"
+
+#: src/utils.rs:32
+msgid "Book Title"
+msgstr "Judul Buku"
+
+#: src/utils.rs:33
+msgid "Series"
+msgstr "Seri"
+
+#: src/utils.rs:34
+msgid "Archive Prefix"
+msgstr "Awalan Arsip"
+
+#. TRANSLATORS As in digital print
+#: src/utils.rs:36
+msgid "ePrint"
+msgstr "ePrint"
+
+#. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
+#: src/utils.rs:38
+msgid "Primary Class"
+msgstr "Kelas Primer"
+
+#: src/utils.rs:39
+msgid "Month"
+msgstr "Bulan"
+
+#. TRANSLATORS As in chief editor
+#: src/utils.rs:41
+msgid "Editor"
+msgstr "Penyunting"
+
+#. TRANSLATORS As in association
+#: src/utils.rs:43
+msgid "Organization"
+msgstr "Organisasi"
+
+#: src/utils.rs:44
+msgid "School"
+msgstr "Sekolah"
+
+#: src/utils.rs:45
+msgid "Institution"
+msgstr "Institusi"
+
+#: src/window.rs:312 src/window.rs:341
+msgid "Bibtex Files"
+msgstr "Berkas Bibtex"
+
+#: src/window.rs:333
+msgid "Create New Bibliography"
+msgstr "Buat Bibliografi Baru"
+
+#: src/window.rs:336
+msgid "Create"
+msgstr "Buat"
+
+#: src/window.rs:485
+msgid "An entry with the given citation key already exists"
+msgstr "Entri dengan kunci sitasi yang diberikan sudah ada"
+
+#: src/window.rs:500
+msgid "Bibliography saved"
+msgstr "Bibliografi disimpan"
+
+#: src/window.rs:540
+msgid "Citation Deleted"
+msgstr "Sitasi Dihapus"
+
+#: src/window.rs:542
+msgid "Undo"
+msgstr "Tak Jadi"
+
+#: src/window.rs:583
+msgid "translator-credits"
+msgstr "Andika Triwidada <andika@gmail.com>, 2022"
+
+#. NOTE Dialog title which informs the user about unsaved changes.
+#: src/window.rs:600
+msgid "Unsaved Changes"
+msgstr "Perubahan Belum Tersimpan"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:604
+msgid "Do you want to write all changes to the safe?"
+msgstr "Apakah Anda ingin menulis semua perubahan ke brankas?"
+
+#: src/window.rs:607
+msgid "_Quit Without Saving"
+msgstr "_Keluar Tanpa Menyimpan"
+
+#: src/window.rs:613
+msgid "_Don't Quit"
+msgstr "Ja_ngan Keluar"
+
+#: src/window.rs:618
+msgid "_Save and Quit"
+msgstr "_Simpan dan Keluar"
