@@ -385,6 +385,9 @@ impl Window {
         let settings = &self.imp().settings;
         let bib = cratebibtex::Bib::default();
         bib.parse(&data)?;
+        if bib.n_items() != 0 {
+            self.imp().entry_page.set_empty_status_page();
+        }
 
         self.imp().entry_list.populate(&bib);
         self.imp().bib.set(bib).unwrap();
@@ -562,6 +565,10 @@ impl Window {
                 self.imp()
                     .main_leaflet
                     .navigate(adw::NavigationDirection::Back);
+
+                if self.imp().bib.get().unwrap().n_items() == 0 {
+                    self.imp().entry_page.set_no_items_placeholder_view();
+                }
             };
         };
     }

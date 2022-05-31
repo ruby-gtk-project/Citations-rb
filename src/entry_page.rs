@@ -17,6 +17,8 @@ mod imp {
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
         #[template_child]
+        pub empty_bin: TemplateChild<gtk::Widget>,
+        #[template_child]
         pub pdf_picture: TemplateChild<gtk::Picture>,
         #[template_child]
         pub pdf_url_entry_row: TemplateChild<adw::EntryRow>,
@@ -618,5 +620,20 @@ impl EntryPage {
         }
 
         Ok(())
+    }
+
+    /// Used so that both views in the leaflet don't show a status page
+    /// simultaneosly. Shows a status page with some text.
+    pub fn set_empty_status_page(&self) {
+        self.imp()
+            .stack
+            .set_visible_child(&self.imp().empty_page.get());
+    }
+
+    /// Shows an empty bin
+    pub fn set_no_items_placeholder_view(&self) {
+        self.imp()
+            .stack
+            .set_visible_child(&self.imp().empty_bin.get());
     }
 }
