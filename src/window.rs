@@ -25,7 +25,9 @@ mod imp {
         pub undo_entry: RefCell<Option<(cratebibtex::Entry, u32, adw::Toast)>>,
 
         #[template_child]
-        pub empty_state_stack: TemplateChild<gtk::Stack>,
+        pub main_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub recent_files_stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub recent_files_stack_page: TemplateChild<gtk::Widget>,
         #[template_child]
@@ -58,7 +60,8 @@ mod imp {
                 file: Default::default(),
                 undo_entry: Default::default(),
                 entry_list: TemplateChild::default(),
-                empty_state_stack: TemplateChild::default(),
+                recent_files_stack: TemplateChild::default(),
+                main_stack: TemplateChild::default(),
                 entry_page: TemplateChild::default(),
                 search_bar: TemplateChild::default(),
                 search_button: TemplateChild::default(),
@@ -357,6 +360,7 @@ impl Window {
     }
 
     async fn open_wrapper(&self, file: &gio::File) -> anyhow::Result<()> {
+        // TODO Maybe it makes more sense to open in the same window.
         if self.imp().bib.get().is_some() {
             let app = self
                 .application()
@@ -387,7 +391,7 @@ impl Window {
         self.imp().file.replace(Some(file.clone()));
         self.imp().search_bar.set_key_capture_widget(Some(self));
         self.imp()
-            .empty_state_stack
+            .main_stack
             .set_visible_child(&*self.imp().main_leaflet);
 
         self.action_set_enabled("win.new_entry", true);
@@ -446,10 +450,10 @@ impl Window {
         });
 
         if recent_files.is_empty() {
-            imp.empty_state_stack
+            imp.recent_files_stack
                 .set_visible_child(&imp.empty_state_stack_page.get());
         } else {
-            imp.empty_state_stack
+            imp.recent_files_stack
                 .set_visible_child(&imp.recent_files_stack_page.get());
         }
     }

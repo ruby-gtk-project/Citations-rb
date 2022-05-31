@@ -68,74 +68,78 @@
     <child>
       <object class="AdwToastOverlay" id="toast_overlay">
         <child>
-          <object class="GtkStack" id="empty_state_stack">
+          <object class="GtkStack" id="main_stack">
             <child>
-              <object class="GtkBox" id="empty_state_stack_page">
-                <property name="orientation">vertical</property>
+              <object class="GtkStack" id="recent_files_stack">
                 <child>
-                  <object class="AdwHeaderBar">
-                    <child type="end">
-                      <object class="GtkMenuButton">
-                        <property name="icon-name">open-menu-symbolic</property>
-                        <property name="menu-model">primary_menu_empty</property>
-                        <property name="tooltip-text" translatable="yes">Main Menu</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="AdwStatusPage">
-                    <property name="vexpand">True</property>
-                    <property name="icon-name">document-open-symbolic</property>
-                    <property name="title" translatable="yes" comments="BibTeX is a proper name">Open a BibTeX File</property>
-                    <!-- TODO Add back when Nautilus uses GTK 4 -->
-                    <!-- <property name="description" translatable="yes">Or drag-and-drop a file</property> -->
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkBox" id="recent_files_stack_page">
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="AdwHeaderBar">
-                    <child type="end">
-                      <object class="GtkMenuButton">
-                        <property name="icon-name">open-menu-symbolic</property>
-                        <property name="menu-model">primary_menu_empty</property>
-                        <property name="tooltip-text" translatable="yes">Main Menu</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkScrolledWindow">
-                    <property name="vexpand">True</property>
+                  <object class="GtkBox" id="empty_state_stack_page">
+                    <property name="orientation">vertical</property>
                     <child>
-                      <object class="AdwClamp">
-                        <property name="margin-start">12</property>
-                        <property name="margin-end">12</property>
-                        <property name="margin-top">42</property>
-                        <property name="margin-bottom">42</property>
+                      <object class="AdwHeaderBar">
+                        <child type="end">
+                          <object class="GtkMenuButton">
+                            <property name="icon-name">open-menu-symbolic</property>
+                            <property name="menu-model">primary_menu_empty</property>
+                            <property name="tooltip-text" translatable="yes">Main Menu</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwStatusPage">
+                        <property name="vexpand">True</property>
+                        <property name="icon-name">document-open-symbolic</property>
+                        <property name="title" translatable="yes" comments="BibTeX is a proper name">Open a BibTeX File</property>
+                        <!-- TODO Add back when Nautilus uses GTK 4 -->
+                        <!-- <property name="description" translatable="yes">Or drag-and-drop a file</property> -->
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox" id="recent_files_stack_page">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="AdwHeaderBar">
+                        <child type="end">
+                          <object class="GtkMenuButton">
+                            <property name="icon-name">open-menu-symbolic</property>
+                            <property name="menu-model">primary_menu_empty</property>
+                            <property name="tooltip-text" translatable="yes">Main Menu</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <property name="vexpand">True</property>
                         <child>
-                          <object class="GtkBox">
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">12</property>
+                          <object class="AdwClamp">
+                            <property name="margin-start">12</property>
+                            <property name="margin-end">12</property>
+                            <property name="margin-top">42</property>
+                            <property name="margin-bottom">42</property>
                             <child>
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">Recent Files</property>
-                                <property name="xalign">0</property>
-                                <style>
-                                  <class name="heading"/>
-                                </style>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkListBox" id="recent_files_list">
-                                <property name="selection-mode">none</property>
-                                <style>
-                                  <class name="boxed-list"/>
-                                </style>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">12</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">Recent Files</property>
+                                    <property name="xalign">0</property>
+                                    <style>
+                                      <class name="heading"/>
+                                    </style>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkListBox" id="recent_files_list">
+                                    <property name="selection-mode">none</property>
+                                    <style>
+                                      <class name="boxed-list"/>
+                                    </style>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                           </object>
