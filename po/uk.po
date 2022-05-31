@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-28 16:55+0000\n"
-"PO-Revision-Date: 2022-05-28 22:06+0300\n"
+"POT-Creation-Date: 2022-05-30 14:47+0000\n"
+"PO-Revision-Date: 2022-05-31 09:04+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -31,55 +31,58 @@ msgstr "Книга"
 msgid "Misc"
 msgstr "Інше"
 
-#: cratebibtex/src/entry_type.rs:111
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:112
 msgid "In Proceedings"
 msgstr "У працях"
 
-#: cratebibtex/src/entry_type.rs:112
+#: cratebibtex/src/entry_type.rs:113
 msgid "Unpublished"
 msgstr "Неоприлюднений"
 
-#: cratebibtex/src/entry_type.rs:113
+#: cratebibtex/src/entry_type.rs:114
 msgid "Online"
 msgstr "У мережі"
 
-#: cratebibtex/src/entry_type.rs:114
+#: cratebibtex/src/entry_type.rs:115
 msgid "Other"
 msgstr "Інше"
 
-#: cratebibtex/src/entry_type.rs:115
+#: cratebibtex/src/entry_type.rs:116
 msgid "Booklet"
 msgstr "Брошура"
 
-#: cratebibtex/src/entry_type.rs:116
+#: cratebibtex/src/entry_type.rs:117
 msgid "Conference"
 msgstr "Конференція"
 
-#: cratebibtex/src/entry_type.rs:117
+#: cratebibtex/src/entry_type.rs:118
 msgid "In Book"
 msgstr "У книзі"
 
-#: cratebibtex/src/entry_type.rs:118
+#: cratebibtex/src/entry_type.rs:119
 msgid "In Collection"
 msgstr "У збірці"
 
-#: cratebibtex/src/entry_type.rs:119
+#. NOTE As in instruction manual
+#: cratebibtex/src/entry_type.rs:121
 msgid "Manual"
 msgstr "Підручник"
 
-#: cratebibtex/src/entry_type.rs:120
+#: cratebibtex/src/entry_type.rs:122
 msgid "Master Thesis"
 msgstr "Магістерська дисертація"
 
-#: cratebibtex/src/entry_type.rs:121
+#: cratebibtex/src/entry_type.rs:123
 msgid "PhD. Thesis"
 msgstr "Кандидатська дисертація"
 
-#: cratebibtex/src/entry_type.rs:122
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:125
 msgid "Proceedings"
 msgstr "Доповіді"
 
-#: cratebibtex/src/entry_type.rs:123
+#: cratebibtex/src/entry_type.rs:126
 msgid "Tech Report"
 msgstr "Технічний звіт"
 
@@ -90,12 +93,12 @@ msgstr "Простий"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:37
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:39
 msgid "Citations"
 msgstr "Цитати"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:572
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:579
 msgid "Manage your bibliography"
 msgstr "Керування вашою бібліографією"
 
@@ -224,9 +227,11 @@ msgstr "Відкрити у переглядачі"
 msgid "Other Properties"
 msgstr "Інші властивості"
 
+#. Translators: Selects a PDF file for the citation
 #: data/resources/ui/entry_page.ui:195
-msgid "Set PDF"
-msgstr "Встановити PDF"
+#| msgid "Set PDF"
+msgid "Select PDF"
+msgstr "Вибрати PDF"
 
 #: data/resources/ui/entry_page.ui:196
 msgid "Copy file to bibliography folder"
@@ -355,7 +360,7 @@ msgstr "Головне меню"
 msgid "Open a BibTeX File"
 msgstr "Відкрийте файл BibTeX"
 
-#: data/resources/ui/window.ui:127
+#: data/resources/ui/window.ui:126
 msgid "Recent Files"
 msgstr "Нещодавні файли"
 
@@ -429,7 +434,6 @@ msgstr "файли PDF"
 #. TODO Use placeholder-text see
 #. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
 #: src/new_entry_dialog.rs:127
-#| msgid "Create a new citation"
 msgid "Insert a BibTeX citation here"
 msgstr "Вставте сюди посилання BibTeX"
 
@@ -469,105 +473,110 @@ msgstr "Журнал"
 msgid "Address"
 msgstr "Адреса"
 
-#: src/utils.rs:29
+#. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
+#: src/utils.rs:30
 msgid "How Published"
 msgstr "Як видавалася"
 
-#: src/utils.rs:30
+#: src/utils.rs:31
 msgid "Note"
 msgstr "Нотатка"
 
-#: src/utils.rs:31
+#: src/utils.rs:32
 msgid "Book Title"
 msgstr "Назва книги"
 
-#: src/utils.rs:32
+#: src/utils.rs:33
 msgid "Series"
 msgstr "Цикл"
 
-#: src/utils.rs:33
+#: src/utils.rs:34
 msgid "Archive Prefix"
 msgstr "Префікс архівів"
 
-#: src/utils.rs:34
+#. TRANSLATORS As in digital print
+#: src/utils.rs:36
 msgid "ePrint"
 msgstr "Електронний відбиток"
 
-#: src/utils.rs:35
+#. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
+#: src/utils.rs:38
 msgid "Primary Class"
 msgstr "Основний клас"
 
-#: src/utils.rs:36
+#: src/utils.rs:39
 msgid "Month"
 msgstr "Місяць"
 
-#: src/utils.rs:37
+#. TRANSLATORS As in chief editor
+#: src/utils.rs:41
 msgid "Editor"
 msgstr "Редактор"
 
-#: src/utils.rs:38
+#. TRANSLATORS As in association
+#: src/utils.rs:43
 msgid "Organization"
 msgstr "Організація"
 
-#: src/utils.rs:39
+#: src/utils.rs:44
 msgid "School"
 msgstr "Школа"
 
-#: src/utils.rs:40
+#: src/utils.rs:45
 msgid "Institution"
 msgstr "Установа"
 
-#: src/window.rs:305 src/window.rs:334
+#: src/window.rs:312 src/window.rs:341
 msgid "Bibtex Files"
 msgstr "файли BibTeX"
 
-#: src/window.rs:326
+#: src/window.rs:333
 msgid "Create New Bibliography"
 msgstr "Створити бібліографію"
 
-#: src/window.rs:329
+#: src/window.rs:336
 msgid "Create"
 msgstr "Створити"
 
-#: src/window.rs:478
+#: src/window.rs:485
 msgid "An entry with the given citation key already exists"
 msgstr "Запис із вказаним ключем цитування вже існує"
 
-#: src/window.rs:493
+#: src/window.rs:500
 msgid "Bibliography saved"
 msgstr "Бібліографію збережено"
 
-#: src/window.rs:533
+#: src/window.rs:540
 msgid "Citation Deleted"
 msgstr "Посилання вилучено"
 
-#: src/window.rs:535
+#: src/window.rs:542
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:576
+#: src/window.rs:583
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:593
+#: src/window.rs:600
 msgid "Unsaved Changes"
 msgstr "Незбережені зміни"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:597
+#: src/window.rs:604
 msgid "Do you want to write all changes to the safe?"
 msgstr "Хочете записати усі зміни до сейфа?"
 
-#: src/window.rs:600
+#: src/window.rs:607
 msgid "_Quit Without Saving"
 msgstr "В_ийти без збереження"
 
-#: src/window.rs:606
+#: src/window.rs:613
 msgid "_Don't Quit"
 msgstr "_Не виходити"
 
-#: src/window.rs:611
+#: src/window.rs:618
 msgid "_Save and Quit"
 msgstr "З_берегти та вийти"
 
