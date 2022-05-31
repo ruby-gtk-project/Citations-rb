@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
 "POT-Creation-Date: 2022-05-30 17:45+0000\n"
-"PO-Revision-Date: 2022-05-30 22:02+0200\n"
+"PO-Revision-Date: 2022-05-31 16:03+0200\n"
 "Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups."
 "com>\n"
@@ -49,7 +49,7 @@ msgstr "Spletno"
 
 #: cratebibtex/src/entry_type.rs:115
 msgid "Other"
-msgstr "Drugo"
+msgstr "Drugi vir"
 
 #: cratebibtex/src/entry_type.rs:116
 msgid "Booklet"
@@ -187,15 +187,15 @@ msgstr "Primer:"
 
 #: data/resources/ui/entry_list.ui:9
 msgid "No Citations"
-msgstr "Ni citiranj"
+msgstr "Ni vpisanih virov"
 
 #: data/resources/ui/entry_list.ui:10
 msgid "Create a new citation"
-msgstr "Ustvari novo navedbo"
+msgstr "Ustvari nov vir"
 
 #: data/resources/ui/entry_page.ui:10
 msgid "No Citation Selected"
-msgstr "Ni izbranih navedb"
+msgstr "Ni izbranega vira"
 
 #: data/resources/ui/entry_page.ui:79
 msgid "Citation _Type"
@@ -207,7 +207,7 @@ msgstr "_Druga vrsta navedbe"
 
 #: data/resources/ui/entry_page.ui:102
 msgid "_Citation Key"
-msgstr "_Ključ citata"
+msgstr "_Določilo navedbe"
 
 #: data/resources/ui/entry_page.ui:121
 msgid "_Author"
@@ -272,7 +272,7 @@ msgstr "Novo"
 
 #: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Key"
-msgstr "Ključ navedbe"
+msgstr "Določilo navedbe"
 
 #: data/resources/ui/new_entry_dialog.ui:73
 msgid "Citation Type"
@@ -417,7 +417,7 @@ msgstr "Drugo …"
 
 #: src/entry_page.rs:203
 msgid "Citation Key already exists"
-msgstr "Ključ citiranja že obstaja"
+msgstr "Določilo navedbe že obstaja"
 
 #: src/entry_page.rs:471
 msgid "Bibliography folder not set"
@@ -541,7 +541,7 @@ msgstr "Ustvari"
 
 #: src/window.rs:485
 msgid "An entry with the given citation key already exists"
-msgstr "Vnos s podanim ključem citiranja že obstaja"
+msgstr "Vnos s podanim določilom navedbe že obstaja"
 
 #: src/window.rs:500
 msgid "Bibliography saved"
