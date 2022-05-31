@@ -41,7 +41,7 @@
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes" comment="About dialog">_About Citations</attribute>
+        <attribute name="label" translatable="yes" comments="About dialog">_About Citations</attribute>
         <attribute name="action">win.about</attribute>
       </item>
     </section>
