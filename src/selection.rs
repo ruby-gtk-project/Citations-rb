@@ -202,31 +202,32 @@ impl Selection {
     }
 
     pub(crate) fn set_model(&self, model: Option<&gio::ListModel>) {
-        if self.model().as_ref() == model {
-            return;
-        }
-
-        let n_items_before = self.n_items();
-        self.disconnect_model_signal();
-
         let imp = self.imp();
-        let n_items = if let Some(model) = model {
-            let handler =
-                model.connect_items_changed(clone!(@weak self as obj => move |_, p, r, a| {
-                    obj.model_items_changed(p, r, a);
-                }));
-            imp.signal_handler.replace(Some(handler));
 
-            model.n_items()
-        } else {
-            0
-        };
+        let old_model = imp.model.replace(model.cloned());
+        if model != old_model.as_ref() {
+            let n_items_before = old_model.as_ref().map_or(0, |model| model.n_items());
 
-        imp.model.replace(model.cloned());
+            let n_items = if let Some(model) = model {
+                let handler =
+                    model.connect_items_changed(clone!(@weak self as obj => move |_, p, r, a| {
+                        obj.model_items_changed(p, r, a);
+                    }));
+                if let Some(id) = imp.signal_handler.replace(Some(handler)) {
+                    if let Some(old_model) = old_model {
+                        old_model.disconnect(id);
+                    }
+                }
 
-        self.items_changed(0, n_items_before, n_items);
+                model.n_items()
+            } else {
+                0
+            };
 
-        self.notify("model");
+            self.items_changed(0, n_items_before, n_items);
+
+            self.notify("model");
+        }
     }
 
     pub(crate) fn selected_item(&self) -> Option<glib::Object> {
