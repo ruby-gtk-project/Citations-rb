@@ -75,14 +75,14 @@ mod imp {
 
         #[template_callback]
         fn on_cancel_clicked(&self) {
-            let sender = self.sender.replace(None).unwrap();
+            let sender = self.sender.take().unwrap();
             sender.send(None).unwrap();
             self.instance().destroy();
         }
 
         #[template_callback]
         fn on_create_clicked(&self) {
-            let sender = self.sender.replace(None).unwrap();
+            let sender = self.sender.take().unwrap();
 
             let data = match &self.view_stack.visible_child_name().as_deref() {
                 Some("new") => {

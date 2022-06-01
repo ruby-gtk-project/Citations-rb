@@ -125,7 +125,7 @@ mod imp {
                 }
             });
             klass.install_action("win.undo_delete", None, move |obj, _, _| {
-                if let Some((entry, pos, _toast)) = obj.imp().undo_entry.replace(None) {
+                if let Some((entry, pos, _toast)) = obj.imp().undo_entry.take() {
                     obj.imp().bib.get().unwrap().add_entry_at_pos(entry, pos);
                 }
             });
@@ -548,7 +548,7 @@ impl Window {
                 toast.set_action_name(Some("win.undo_delete"));
                 toast.set_button_label(Some(&gettext("Undo")));
                 toast.connect_dismissed(glib::clone!(@weak self as obj => move |_| {
-                    obj.imp().undo_entry.replace(None);
+                    obj.imp().undo_entry.take();
                 }));
 
                 if let Some((_, _, toast)) =
