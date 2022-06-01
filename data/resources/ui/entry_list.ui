@@ -20,6 +20,7 @@
                     <signal name="activate" handler="on_list_activate" swapped="yes"/>
                     <style>
                       <class name="navigation-sidebar"/>
+                      <class name="padded-sidebar"/>
                     </style>
                   </object>
                 </child>

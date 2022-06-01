@@ -23,3 +23,8 @@ textview {
 .pdfpreview {
   border-radius: 12px;
 }
+
+/* NOTE It is not possible to do this with margins on a listview */
+.padded-sidebar {
+  padding: 6px;
+}
