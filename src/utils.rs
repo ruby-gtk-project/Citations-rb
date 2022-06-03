@@ -89,6 +89,16 @@ pub fn bibliography_path() -> Option<PathBuf> {
     glib::user_special_dir(glib::UserDirectory::Documents).map(|path| path.join("Bibliography"))
 }
 
+pub fn bibliography_path_string() -> String {
+    bibliography_path()
+        .map(|path| {
+            path.to_str()
+                .unwrap()
+                .replace(glib::home_dir().to_str().unwrap(), "~")
+        })
+        .unwrap_or_else(|| "~/Documents/Bibliography".to_string())
+}
+
 pub fn pdf_filename(citation_key: &str) -> String {
     sanitize_filename::sanitize(&format!("{citation_key}.pdf"))
 }

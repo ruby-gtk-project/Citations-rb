@@ -4,6 +4,7 @@ use gettextrs::gettext;
 use gtk::subclass::prelude::*;
 use gtk::{cairo, gdk, gio, glib, CompositeTemplate};
 
+use crate::i18n::gettext_f;
 use crate::utils;
 
 mod imp {
@@ -444,10 +445,14 @@ impl EntryPage {
             self.imp()
                 .set_pdf_expander_row
                 .set_title(&gettext("Bibliography folder not set"));
+            let bibliography_path = crate::utils::bibliography_path_string();
             self.imp()
                 .set_pdf_expander_row
-                // NOTE Do not translate the path.
-                .set_subtitle(&gettext("Make sure ~/Documents/Bibliography exists"));
+                // TRANSLATORS Do NOT translate {path}, it is a variable name
+                .set_subtitle(&gettext_f(
+                    "Make sure that {path} exists",
+                    &[("path", &bibliography_path)],
+                ));
             self.imp().set_pdf_expander_row.set_enable_expansion(false);
             // TODO
             // self.imp().pdf_action_row.set_subtitle("Open settings");
