@@ -45,7 +45,7 @@ mod imp {
             if author.is_empty() {
                 "<i>Author not set</i>".to_string()
             } else {
-                author
+                author.into_owned()
             }
         }
 
@@ -55,7 +55,7 @@ mod imp {
             if title.is_empty() {
                 "<i>Title not set</i>".to_string()
             } else {
-                title
+                title.into_owned()
             }
         }
     }

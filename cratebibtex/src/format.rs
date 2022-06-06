@@ -1,6 +1,7 @@
 use gettextrs::gettext;
 use once_cell::sync::Lazy;
 use regex::Regex;
+use std::borrow::Cow;
 use std::fmt;
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
@@ -178,8 +179,12 @@ pub fn push_math<T: Iterator<Item = char>>(chars: &mut T, output: &mut String) {
     }
 }
 
-pub fn texer(input: &str) -> String {
-    let mut output = String::new();
+pub fn texer(input: &str) -> Cow<str> {
+    let mut output = Lazy::new(|| {
+        let n = input.len();
+
+        String::with_capacity(n)
+    });
     let mut chars = input.chars();
     while let Some(c) = chars.next() {
         match c {
@@ -253,7 +258,11 @@ pub fn texer(input: &str) -> String {
             c => push_non_space(&mut output, c),
         }
     }
-    output
+    if let Ok(string) = Lazy::into_value(output) {
+        Cow::Owned(string)
+    } else {
+        Cow::Borrowed(input)
+    }
 }
 
 fn push_non_space(output: &mut String, c: char) {

@@ -7,6 +7,7 @@ use gtk::{gdk, gio, glib};
 use crate::application::Application;
 use crate::config::{APP_ID, PROFILE, VERSION};
 use crate::utils;
+use cratebibtex::format;
 
 mod imp {
     use super::*;
@@ -514,10 +515,12 @@ impl Window {
 
         let entry = self.imp().entry_page.entry().context("No entry selected")?;
 
-        let author = entry.find_tag_pretty("author").unwrap_or_else(|| "".into());
-        let title = entry.find_tag_pretty("title").unwrap_or_else(|| "".into());
+        let author = entry.find_tag("author").unwrap_or_else(|| "".into());
+        let title = entry.find_tag("title").unwrap_or_else(|| "".into());
+        let p_author = format::texer(&author);
+        let p_title = format::texer(&title);
 
-        let uri = utils::build_google_schoolar_url(&author, &title)?;
+        let uri = utils::build_google_schoolar_url(&p_author, &p_title)?;
         log::debug!("Trying to open {uri}");
 
         gtk::show_uri(Some(self), &uri, gdk::CURRENT_TIME);
@@ -530,10 +533,12 @@ impl Window {
 
         let entry = self.imp().entry_page.entry().context("No entry selected")?;
 
-        let author = entry.find_tag_pretty("author").unwrap_or_else(|| "".into());
-        let title = entry.find_tag_pretty("title").unwrap_or_else(|| "".into());
+        let author = entry.find_tag("author").unwrap_or_default();
+        let title = entry.find_tag("title").unwrap_or_default();
+        let p_author = format::texer(&author);
+        let p_title = format::texer(&title);
 
-        let uri = utils::build_arxiv_url(&author, &title)?;
+        let uri = utils::build_arxiv_url(&p_author, &p_title)?;
         log::debug!("Trying to open {uri}");
 
         gtk::show_uri(Some(self), &uri, gdk::CURRENT_TIME);

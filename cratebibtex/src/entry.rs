@@ -3,6 +3,7 @@ use glib::prelude::*;
 use glib::subclass::prelude::*;
 use once_cell::sync::Lazy;
 use regex::Regex;
+use std::borrow::Cow;
 use std::collections::HashMap;
 
 use crate::Format;
@@ -69,10 +70,7 @@ mod imp {
             match pspec_name {
                 "citation-key" => obj.citation_key().to_value(),
                 "entry-type" => obj.entry_type().to_value(),
-                _ => obj
-                    .find_tag(pspec_name)
-                    .unwrap_or_else(|| "".into())
-                    .to_value(),
+                _ => obj.find_tag(pspec_name).unwrap_or_default().to_value(),
             }
         }
 
@@ -208,12 +206,6 @@ impl Entry {
         entry
     }
 
-    pub fn find_tag_pretty(&self, tag: &str) -> Option<String> {
-        let value = self.find_tag(tag)?;
-
-        Some(format::texer(&value))
-    }
-
     pub fn fields(&self) -> Vec<String> {
         self.entry_type().fields()
     }
@@ -233,32 +225,31 @@ impl Entry {
             }
         }
 
-        let name_prop = match format {
-            Format::LaTeX => self.find_tag("author"),
-            _ => self.find_tag_pretty("author"),
+        let name_prop = self.find_tag("author").unwrap_or_default();
+        let p_name = match format {
+            Format::LaTeX => Cow::Owned(name_prop),
+            _ => format::texer(&name_prop),
         };
-        formated = formated.replace(
-            "%AUTHOR%",
-            &format::format_authors(name_prop.unwrap_or_else(|| "".into()).as_str()),
-        );
+        formated = formated.replace("%AUTHOR%", &format::format_authors(&p_name));
 
         formated = RE
             .replace_all(&formated, |capture: &regex::Captures| {
                 let tag = capture["tag"].to_lowercase();
-                let opt_prop = match format {
-                    Format::LaTeX => self.find_tag(&tag),
+                let opt_prop = self.find_tag(&tag).unwrap_or_default();
+                let p_opt_prop = match format {
+                    Format::LaTeX => Cow::Owned(opt_prop),
                     _ => {
                         if tag == "title" {
-                            self.find_tag_pretty(&tag)
+                            format::texer(&opt_prop)
                         } else {
-                            self.find_tag(&tag)
+                            Cow::Owned(opt_prop)
                         }
                     }
                 };
 
-                opt_prop.unwrap_or_else(|| "".to_string())
+                p_opt_prop.into_owned()
             })
-            .to_string();
+            .into_owned();
 
         match format {
             Format::Markdown => format::clear_citation(&format::clear_markdown(&formated)),
