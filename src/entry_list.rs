@@ -104,9 +104,9 @@ mod imp {
             let search_expression = gtk::ClosureExpression::new::<String, &[gtk::Expression], _>(
                 &[],
                 glib::closure!(|entry: cratebibtex::Entry| {
-                    let author = entry.find_tag("author").unwrap_or_else(|| "".into());
-                    let title = entry.find_tag("title").unwrap_or_else(|| "".into());
-                    let year = entry.find_tag("year").unwrap_or_else(|| "".into());
+                    let author = entry.find_tag("author").unwrap_or_default();
+                    let title = entry.find_tag("title").unwrap_or_default();
+                    let year = entry.find_tag("year").unwrap_or_default();
 
                     format!("{author} {title} {year}")
                 }),

@@ -84,12 +84,12 @@ mod imp {
             let pspec_name = pspec.name();
             match pspec_name {
                 "citation-key" => {
-                    let value = value.get::<String>().unwrap_or_else(|_| "".into());
+                    let value = value.get::<String>().unwrap_or_default();
                     obj.set_citation_key(&value)
                 }
                 "entry-type" => obj.set_entry_type(value.get::<crate::EntryType>().unwrap()),
                 _ => {
-                    let value = value.get::<String>().unwrap_or_else(|_| "".into());
+                    let value = value.get::<String>().unwrap_or_default();
                     obj.set_prop(pspec_name, &value)
                 }
             }

@@ -515,8 +515,8 @@ impl Window {
 
         let entry = self.imp().entry_page.entry().context("No entry selected")?;
 
-        let author = entry.find_tag("author").unwrap_or_else(|| "".into());
-        let title = entry.find_tag("title").unwrap_or_else(|| "".into());
+        let author = entry.find_tag("author").unwrap_or_default();
+        let title = entry.find_tag("title").unwrap_or_default();
         let p_author = format::texer(&author);
         let p_title = format::texer(&title);
 
