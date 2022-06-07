@@ -17,6 +17,8 @@ mod imp {
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
         #[template_child]
+        pub set_pdf_expander_row: TemplateChild<adw::ExpanderRow>,
+        #[template_child]
         pub empty_bin: TemplateChild<gtk::Widget>,
         #[template_child]
         pub pdf_picture: TemplateChild<gtk::Picture>,
@@ -64,6 +66,20 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
             Self::bind_template_callbacks(klass);
+
+            klass.install_action("entry-page.open-pdf", None, move |obj, _, _| {
+                obj.open_pdf_action();
+            });
+
+            klass.install_action("entry-page.set-pdf", None, move |obj, _, _| {
+                crate::spawn!(glib::clone!(@weak obj => async move {
+                    if let Err(err) = obj.set_pdf_action().await {
+                        log::error!("Could not set PDF: {err}");
+                    } else {
+                        obj.setup_pdf();
+                    }
+                }));
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -204,52 +220,6 @@ mod imp {
                 entry_row.add_css_class("error");
                 // TRANSLATORS Every citation has an identifier called key
                 window.send_toast(&gettext("Citation Key already exists"));
-            }
-        }
-
-        #[template_callback]
-        fn on_set_pdf_button_clicked(&self) {
-            if let Some(_path) = crate::utils::bibliography_path() {
-                let obj = self.instance();
-                crate::spawn!(glib::clone!(@weak obj => async move {
-                    if let Err(err) = obj.set_pdf_for_entry().await {
-                        log::error!("Could not set pdf: {err}");
-                    } else {
-                        obj.setup_pdf();
-                    }
-                }));
-            }
-        }
-
-        #[template_callback]
-        fn on_pdf_row_activated(&self, row: &adw::ActionRow) {
-            if row != &self.pdf_action_row.get() {
-                return;
-            }
-            let entry = self.entry.borrow().clone().unwrap();
-            let window = self
-                .instance()
-                .root()
-                .unwrap()
-                .downcast::<crate::Window>()
-                .unwrap();
-
-            if let Some(path) = crate::utils::bibliography_path() {
-                let folder = gio::File::for_path(&path);
-                // TODO Add djvu support, is it needed?
-                let pdf = folder.child(&utils::pdf_filename(&entry.citation_key()));
-                if pdf.query_exists(gio::Cancellable::NONE) {
-                    gtk::show_uri(Some(&window), &pdf.uri(), gdk::CURRENT_TIME);
-                } else {
-                    let obj = self.instance();
-                    crate::spawn!(glib::clone!(@weak obj => async move {
-                        if let Err(err) = obj.set_pdf_for_entry().await {
-                            log::error!("Could not set pdf: {err}");
-                        } else {
-                            obj.setup_pdf();
-                        }
-                    }));
-                }
             }
         }
     }
@@ -450,32 +420,35 @@ impl EntryPage {
     }
 
     fn setup_pdf(&self) {
-        let entry = self.imp().entry.borrow().clone();
+        let entry = self.imp().entry.borrow();
         if entry.is_none() {
             return;
         }
-        let entry = entry.unwrap();
+        let filename = utils::pdf_filename(&entry.as_ref().unwrap().citation_key());
 
         let pdf = if let Some(path) = crate::utils::bibliography_path() {
             let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&utils::pdf_filename(&entry.citation_key()));
+            let pdf = folder.child(&filename);
             if pdf.query_exists(gio::Cancellable::NONE) {
                 self.imp().pdf_action_row.show();
+                self.imp().pdf_action_row.set_subtitle(&filename);
 
                 Some(pdf)
             } else {
                 self.imp().pdf_action_row.hide();
+                self.imp().pdf_action_row.set_subtitle("");
 
                 None
             }
         } else {
             self.imp()
-                .pdf_action_row
+                .set_pdf_expander_row
                 .set_title(&gettext("Bibliography folder not set"));
             self.imp()
-                .pdf_action_row
+                .set_pdf_expander_row
                 // NOTE Do not translate the path.
                 .set_subtitle(&gettext("Make sure ~/Documents/Bibliography exists"));
+            self.imp().set_pdf_expander_row.set_enable_expansion(false);
             // TODO
             // self.imp().pdf_action_row.set_subtitle("Open settings");
             // window.show_preferences_window();
@@ -517,44 +490,6 @@ impl EntryPage {
             self.imp().pdf_picture.set_paintable(Some(&texture));
         } else {
             self.imp().pdf_picture.set_paintable(gdk::Texture::NONE);
-        }
-
-        Ok(())
-    }
-
-    async fn set_pdf_for_entry(&self) -> anyhow::Result<()> {
-        let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
-        if let Some(path) = crate::utils::bibliography_path() {
-            let folder = gio::File::for_path(&path);
-            let entry = self.imp().entry.borrow().clone().unwrap();
-
-            let dialog = gtk::FileChooserNative::new(
-                None,
-                Some(&window),
-                gtk::FileChooserAction::Open,
-                None,
-                None,
-            );
-
-            let pdf_filter = gtk::FileFilter::new();
-            pdf_filter.set_name(Some(&gettext("PDF Files")));
-            pdf_filter.add_mime_type("application/pdf");
-            dialog.add_filter(&pdf_filter);
-
-            if dialog.run_future().await == gtk::ResponseType::Accept {
-                let file = dialog.file().unwrap();
-                let filename = utils::pdf_filename(&entry.citation_key());
-                let dest = folder.child(&filename);
-
-                if let Err(err) = async_std::fs::create_dir_all(&path).await {
-                    log::error!("Could not create bibliography directory: {err}");
-                }
-
-                file.copy_future(&dest, gio::FileCopyFlags::NONE, glib::Priority::default())
-                    .0
-                    .await?;
-                log::debug!("Copied {filename} to {}", path.to_str().unwrap());
-            }
         }
 
         Ok(())
@@ -635,5 +570,62 @@ impl EntryPage {
         self.imp()
             .stack
             .set_visible_child(&self.imp().empty_bin.get());
+    }
+
+    fn open_pdf_action(&self) {
+        let entry = self.imp().entry.borrow();
+        let citation_key = entry.as_ref().unwrap().citation_key();
+        let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
+
+        if let Some(path) = crate::utils::bibliography_path() {
+            let folder = gio::File::for_path(&path);
+            // TODO Add djvu support, is it needed?
+            let pdf = folder.child(&utils::pdf_filename(&citation_key));
+            if pdf.query_exists(gio::Cancellable::NONE) {
+                gtk::show_uri(Some(&window), &pdf.uri(), gdk::CURRENT_TIME);
+            }
+        } else {
+            log::error!("Could not open PDF");
+        }
+    }
+
+    async fn set_pdf_action(&self) -> anyhow::Result<()> {
+        let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
+        let citation_key = self.imp().entry.borrow().as_ref().unwrap().citation_key();
+
+        if let Some(path) = crate::utils::bibliography_path() {
+            // TODO Add djvu support, is it needed?
+            let folder = gio::File::for_path(&path);
+
+            let dialog = gtk::FileChooserNative::new(
+                None,
+                Some(&window),
+                gtk::FileChooserAction::Open,
+                None,
+                None,
+            );
+
+            let pdf_filter = gtk::FileFilter::new();
+            pdf_filter.set_name(Some(&gettext("PDF Files")));
+            pdf_filter.add_mime_type("application/pdf");
+            dialog.add_filter(&pdf_filter);
+
+            if dialog.run_future().await == gtk::ResponseType::Accept {
+                let file = dialog.file().unwrap();
+                let filename = utils::pdf_filename(&citation_key);
+                let dest = folder.child(&filename);
+
+                if let Err(err) = async_std::fs::create_dir_all(&path).await {
+                    log::error!("Could not create bibliography directory: {err}");
+                }
+
+                file.copy_future(&dest, gio::FileCopyFlags::NONE, glib::Priority::default())
+                    .0
+                    .await?;
+                log::debug!("Copied {filename} to {}", path.to_str().unwrap());
+            }
+        }
+
+        Ok(())
     }
 }
