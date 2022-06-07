@@ -92,6 +92,19 @@
                         <property name="title" translatable="yes" comments="BibTeX is a proper name">Open a BibTeX File</property>
                         <!-- TODO Add back when Nautilus uses GTK 4 -->
                         <!-- <property name="description" translatable="yes">Or drag-and-drop a file</property> -->
+                        <child>
+                          <object class="GtkButton">
+                            <property name="label" translatable="yes">_Open</property>
+                            <property name="use-underline">True</property>
+                            <property name="halign">center</property>
+                            <property name="action-name">win.open</property>
+                            <property name="action-target">''</property>
+                            <style>
+                              <class name="pill"/>
+                              <class name="suggested-action"/>
+                            </style>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -120,18 +133,24 @@
                             <property name="margin-top">42</property>
                             <property name="margin-bottom">42</property>
                             <child>
-                              <object class="GtkBox">
-                                <property name="orientation">vertical</property>
-                                <property name="spacing">12</property>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Recent Files</property>
-                                    <property name="xalign">0</property>
+                              <object class="AdwPreferencesGroup">
+                                <property name="title" translatable="yes">Recent Files</property>
+                                <property name="header-suffix">
+                                  <object class="GtkButton">
+                                    <property name="action-name">win.open</property>
+                                    <property name="action-target">''</property>
+                                    <property name="child">
+                                      <object class="AdwButtonContent">
+                                        <property name="icon-name">document-open-symbolic</property>
+                                        <property name="label" translatable="yes">_Open</property>
+                                        <property name="use-underline">True</property>
+                                      </object>
+                                    </property>
                                     <style>
-                                      <class name="heading"/>
+                                      <class name="flat"/>
                                     </style>
                                   </object>
-                                </child>
+                                </property>
                                 <child>
                                   <object class="GtkListBox" id="recent_files_list">
                                     <property name="selection-mode">none</property>
