@@ -159,19 +159,9 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkBox" id="extras_box">
+                          <object class="AdwPreferencesGroup" id="extras_box">
                             <property name="visible">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">12</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">Other Properties</property>
-                                <property name="xalign">0</property>
-                                <style>
-                                  <class name="heading"/>
-                                </style>
-                              </object>
-                            </child>
+                            <property name="title" translatable="yes">Other Properties</property>
                             <child>
                               <object class="GtkListBox" id="extras_list_box">
                                 <property name="selection-mode">none</property>
@@ -256,21 +246,11 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkBox">
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">12</property>
+                          <object class="AdwPreferencesGroup">
+                            <property name="title" translatable="yes">PDF Preview</property>
                             <binding name="visible">
                               <lookup name="visible">pdf_action_row</lookup>
                             </binding>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">PDF Preview</property>
-                                <property name="xalign">0</property>
-                                <style>
-                                  <class name="heading"/>
-                                </style>
-                              </object>
-                            </child>
                             <child>
                               <object class="GtkPicture" id="pdf_picture">
                                 <property name="keep-aspect-ratio">True</property>

@@ -47,7 +47,7 @@ mod imp {
         #[template_child]
         pub doi_entry: TemplateChild<adw::EntryRow>,
         #[template_child]
-        pub extras_box: TemplateChild<gtk::Box>,
+        pub extras_box: TemplateChild<gtk::Widget>,
         #[template_child]
         pub extras_list_box: TemplateChild<gtk::ListBox>,
 
