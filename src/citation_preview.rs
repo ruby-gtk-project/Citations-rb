@@ -348,9 +348,9 @@ impl CitationPreview {
     fn update_style_scheme(&self) {
         let manager = adw::StyleManager::default();
         let scheme_name = if manager.is_dark() {
-            "solarized-dark"
+            "Adwaita-dark"
         } else {
-            "solarized-light"
+            "Adwaita"
         };
         let scheme = gsv::StyleSchemeManager::default()
             .scheme(scheme_name)
