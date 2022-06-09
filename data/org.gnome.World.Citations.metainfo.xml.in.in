@@ -19,6 +19,16 @@
   <url type="bugtracker">https://gitlab.gnome.org/World/citations/issues</url>
   <content_rating type="oars-1.0" />
   <releases>
+    <release version="0.4.0" date="2022-06-09">
+      <description>
+        <p>Added some new features:</p>
+        <ul>
+          <li>New translations</li>
+          <li>PDF Preview</li>
+          <li>New citation from BibTeX</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.0" date="2022-05-19">
       <description>
         <p>Added some new features:</p>
