@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-06-07 19:28+0000\n"
-"PO-Revision-Date: 2022-06-08 08:42+0300\n"
+"POT-Creation-Date: 2022-06-10 10:48+0000\n"
+"PO-Revision-Date: 2022-06-10 18:57+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -95,7 +95,7 @@ msgstr "Простий"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:39
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:40
 msgid "Citations"
 msgstr "Цитати"
 
@@ -148,7 +148,7 @@ msgstr "Керування вашими бібліографіями з вико
 msgid "Main window"
 msgstr "Головне вікно"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:52
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:71
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -221,7 +221,7 @@ msgstr "_Назва"
 msgid "_Year"
 msgstr "Р_ік"
 
-#: data/resources/ui/entry_page.ui:148 src/entry_page.rs:389
+#: data/resources/ui/entry_page.ui:148 src/entry_page.rs:390
 msgid "Open in Browser"
 msgstr "Відкрити у переглядачі"
 
@@ -251,8 +251,6 @@ msgid "Open PDF"
 msgstr "Відкрити PDF"
 
 #: data/resources/ui/entry_page.ui:233
-#| msgctxt "shortcut window"
-#| msgid "Open"
 msgid "Open"
 msgstr "Відкрити"
 
@@ -407,7 +405,7 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:199
+#: src/citation_preview.rs:160 src/entry_page.rs:200
 msgid "Copied"
 msgstr "Скопійовано"
 
@@ -415,29 +413,29 @@ msgstr "Скопійовано"
 msgid "Custom…"
 msgstr "Нетиповий…"
 
-#: src/entry_page.rs:123
+#: src/entry_page.rs:124
 msgid "PDF Downloaded"
 msgstr "Отримано PDF"
 
-#: src/entry_page.rs:160
+#: src/entry_page.rs:161
 msgid "Other…"
 msgstr "Інше…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:222
+#: src/entry_page.rs:223
 msgid "Citation Key already exists"
 msgstr "Ключ цитування вже існує"
 
-#: src/entry_page.rs:446
+#: src/entry_page.rs:447
 msgid "Bibliography folder not set"
 msgstr "Не встановлено теки бібліографії"
 
-#. NOTE Do not translate the path.
-#: src/entry_page.rs:450
-msgid "Make sure ~/Documents/Bibliography exists"
-msgstr "Переконайтеся, що тека ~/Документи/Бібліографія існує"
+#: src/entry_page.rs:453
+#| msgid "Make sure ~/Documents/Bibliography exists"
+msgid "Make sure that {path} exists"
+msgstr "Переконайтеся, що тека {path} існує"
 
-#: src/entry_page.rs:609
+#: src/entry_page.rs:614
 msgid "PDF Files"
 msgstr "файли PDF"
 
