@@ -446,13 +446,11 @@ impl EntryPage {
                 .set_pdf_expander_row
                 .set_title(&gettext("Bibliography folder not set"));
             let bibliography_path = crate::utils::bibliography_path_string();
-            self.imp()
-                .set_pdf_expander_row
+            self.imp().set_pdf_expander_row.set_subtitle(&gettext_f(
                 // TRANSLATORS Do NOT translate {path}, it is a variable name
-                .set_subtitle(&gettext_f(
-                    "Make sure that {path} exists",
-                    &[("path", &bibliography_path)],
-                ));
+                "Make sure that {path} exists",
+                &[("path", &bibliography_path)],
+            ));
             self.imp().set_pdf_expander_row.set_enable_expansion(false);
             // TODO
             // self.imp().pdf_action_row.set_subtitle("Open settings");
