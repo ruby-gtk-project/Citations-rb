@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Maximiliano Sandoval 2019 <msandova@gnome.org> -->
+<!-- Maximiliano Sandoval 2022 <msandova@gnome.org> -->
 <component type="desktop-application">
   <id>@app-id@</id>
   <metadata_license>CC0</metadata_license>
