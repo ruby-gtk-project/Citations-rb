@@ -121,3 +121,39 @@ pub(crate) fn remove_recent_file(settings: &gio::Settings, path: &str) {
         )
         .unwrap();
 }
+
+pub(crate) fn eprint_url(url: &str) -> anyhow::Result<url::Url> {
+    if url.is_empty() {
+        anyhow::bail!("String is empty");
+    }
+
+    let uri = if url.contains("https://") || url.contains("http://") {
+        url::Url::parse(url)?
+    } else {
+        // TODO Read archive prefix to deduce if it is not an arXiv
+        let pre_validated = format!(
+            "https://arxiv.org/abs/{}",
+            url.replace("arxiv.org/abs/", "").replace("arxiv.org/", "")
+        );
+
+        url::Url::parse(&pre_validated)?
+    };
+
+    Ok(uri)
+}
+
+pub(crate) fn doi_url(url: &str) -> anyhow::Result<url::Url> {
+    if url.is_empty() {
+        anyhow::bail!("String is empty");
+    }
+
+    let uri = if url.contains("https://") || url.contains("http://") {
+        url::Url::parse(url)?
+    } else {
+        let pre_validated = format!("https://doi.org/{}", url.replace("doi.org/", ""));
+
+        url::Url::parse(&pre_validated)?
+    };
+
+    Ok(uri)
+}

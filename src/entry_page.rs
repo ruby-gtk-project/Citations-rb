@@ -18,6 +18,8 @@ mod imp {
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
         #[template_child]
+        pub doi_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub preview_error_stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub preview_error: TemplateChild<gtk::Widget>,
@@ -158,18 +160,15 @@ mod imp {
         #[template_callback]
         fn on_doi_clicked(&self) {
             let value = self.doi_entry.text();
-            let uri = if value.contains("https://") || value.contains("http://") {
-                value.to_string()
-            } else {
-                format!("https://doi.org/{}", value.replace("doi.org/", ""))
-            };
-            let window = self
-                .instance()
-                .root()
-                .unwrap()
-                .downcast::<crate::Window>()
-                .unwrap();
-            gtk::show_uri(Some(&window), &uri, gdk::CURRENT_TIME);
+            if let Ok(uri) = crate::utils::doi_url(&value) {
+                let window = self
+                    .instance()
+                    .root()
+                    .unwrap()
+                    .downcast::<crate::Window>()
+                    .unwrap();
+                gtk::show_uri(Some(&window), uri.as_str(), gdk::CURRENT_TIME);
+            }
         }
 
         #[template_callback]
@@ -218,6 +217,12 @@ mod imp {
             // FIXME See https://github.com/gtk-rs/gtk-rs-core/pull/665
             let entry = cratebibtex::Entry::default();
             self.bindings.set_source(Some(&entry));
+
+            self.doi_entry
+                .connect_changed(glib::clone!(@weak obj => move |row| {
+                    let sensitive =crate::utils::doi_url(&row.text()).is_ok();
+                    obj.imp().doi_button.set_sensitive(sensitive);
+                }));
 
             self.bindings
                 .bind("author", &*self.author_entry, "text")
@@ -373,6 +378,13 @@ impl EntryPage {
                     let button = gtk::Button::from_icon_name("external-link-symbolic");
                     button.set_valign(gtk::Align::Center);
 
+                    button.set_sensitive(false);
+                    row.connect_changed(glib::clone!(@weak button => move |row| {
+                        let text = row.text();
+                        let sensitive = crate::utils::eprint_url(&text).is_ok();
+                        button.set_sensitive(sensitive);
+                    }));
+
                     button.set_tooltip_text(Some(&gettext("Open in Browser")));
                     button.connect_clicked(glib::clone!(@weak row => move |_| {
                         let window = row
@@ -381,17 +393,9 @@ impl EntryPage {
                             .downcast::<crate::Window>()
                             .unwrap();
 
-                        let value = row.text();
-                        let uri = if value.contains("https://") || value.contains("http://") {
-                            value.to_string()
-                        } else {
-                            // TODO Read archive prefix to deduce if it is not an arXiv
-                            format!("https://arxiv.org/abs/{}", value
-                                .replace("arxiv.org/abs/", "")
-                                .replace("arxiv.org/", ""))
-                        };
-
-                        gtk::show_uri(Some(&window), &uri, gdk::CURRENT_TIME);
+                        if let Ok(uri) = crate::utils::eprint_url(&row.text()) {
+                            gtk::show_uri(Some(&window), uri.as_str(), gdk::CURRENT_TIME);
+                        }
                     }));
                     button.add_css_class("flat");
                     row.add_suffix(&button);
