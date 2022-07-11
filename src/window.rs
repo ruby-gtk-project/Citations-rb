@@ -537,9 +537,9 @@ impl Window {
         let p_title = format::texer(&title);
 
         let uri = utils::build_google_schoolar_url(&p_author, &p_title)?;
-        log::debug!("Trying to open {uri}");
+        log::debug!("Trying to open {}", uri.as_str());
 
-        gtk::show_uri(Some(self), &uri, gdk::CURRENT_TIME);
+        gtk::show_uri(Some(self), uri.as_str(), gdk::CURRENT_TIME);
 
         Ok(())
     }

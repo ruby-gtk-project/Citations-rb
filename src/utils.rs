@@ -50,21 +50,12 @@ pub fn translated_key(key: &str) -> String {
     }
 }
 
-pub fn build_google_schoolar_url(author: &str, title: &str) -> anyhow::Result<String> {
-    let mut url = "https://scholar.google.com/scholar?".to_string();
-
+pub fn build_google_schoolar_url(author: &str, title: &str) -> anyhow::Result<url::Url> {
     let authors = cratebibtex::format::format_authors(author);
-    url.push_str(&format!("q={authors} {title}"));
 
-    url.push_str("&scisbd=0");
-    url.push_str("&num=10");
-    url.push_str("&start=0");
-    url.push_str("&safe=active");
-    url.push_str("&filter=1");
-    url.push_str("&as_vis=1");
+    let url = format!("https://scholar.google.com/scholar?q={authors} {title}&scisbd=0&num=10&start=0&safe=active&filter=1&as_vis=1");
 
-    let sanitized = url::Url::parse(&url)?;
-    Ok(sanitized.to_string())
+    Ok(url::Url::parse(&url)?)
 }
 
 pub fn build_arxiv_url(author: &str, title: &str) -> anyhow::Result<url::Url> {
