@@ -124,14 +124,12 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkScrolledWindow">
+                      <object class="AdwStatusPage" id="recent_files_status_page">
                         <property name="vexpand">True</property>
+                        <property name="title" translatable="yes">Manage your Citations</property>
+                        <property name="icon-name">org.gnome.World.Citations</property>
                         <child>
                           <object class="AdwClamp">
-                            <property name="margin-start">12</property>
-                            <property name="margin-end">12</property>
-                            <property name="margin-top">42</property>
-                            <property name="margin-bottom">42</property>
                             <child>
                               <object class="AdwPreferencesGroup">
                                 <property name="title" translatable="yes">Recent Files</property>

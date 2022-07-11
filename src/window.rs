@@ -51,6 +51,8 @@ mod imp {
         pub secondary_menu_button: TemplateChild<gtk::Widget>,
         #[template_child]
         pub main_leaflet: TemplateChild<adw::Leaflet>,
+        #[template_child]
+        pub recent_files_status_page: TemplateChild<adw::StatusPage>,
     }
 
     impl Default for Window {
@@ -60,6 +62,7 @@ mod imp {
                 bib: Default::default(),
                 file: Default::default(),
                 undo_entry: Default::default(),
+                recent_files_status_page: TemplateChild::default(),
                 entry_list: TemplateChild::default(),
                 recent_files_stack: TemplateChild::default(),
                 main_stack: TemplateChild::default(),
@@ -192,6 +195,7 @@ mod imp {
             // Devel Profile
             if PROFILE == "Devel" {
                 obj.add_css_class("devel");
+                self.recent_files_status_page.set_icon_name(Some(APP_ID));
             }
 
             // Load latest window state
