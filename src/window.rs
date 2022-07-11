@@ -589,17 +589,19 @@ impl Window {
     }
 
     fn show_about_dialog(&self) {
-        let dialog = gtk::AboutDialog::builder()
-            .logo_icon_name(APP_ID)
+        let dialog = adw::AboutWindow::builder()
+            .application_icon(APP_ID)
+            .application_name(&gettext("Citations"))
             .license_type(gtk::License::Gpl30)
             .comments(&gettext("Manage your bibliography"))
             .website("https://gitlab.gnome.org/World/citations/")
+            .issue_url("https://gitlab.gnome.org/World/citations/-/issues")
             .version(VERSION)
             .transient_for(self)
             .translator_credits(&gettext("translator-credits"))
-            .modal(true)
-            .authors(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
-            .artists(vec!["Tobias Bernard <tbernard@gnome.org>".into()])
+            .developer_name("Maximiliano Sandoval")
+            .developers(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
+            .designers(vec!["Tobias Bernard <tbernard@gnome.org>".into()])
             .build();
 
         dialog.present();
