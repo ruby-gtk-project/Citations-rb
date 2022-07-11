@@ -450,7 +450,7 @@ impl Window {
             let path = file.path().unwrap().to_str().map(String::from).unwrap();
             let action = format!("win.open::{path}");
             action_row.set_title(file.basename().unwrap().to_str().unwrap());
-            action_row.set_subtitle(&path);
+            action_row.set_subtitle(&crate::utils::prettify_path(&path));
             action_row.set_detailed_action_name(&action);
             action_row.set_activatable(true);
 

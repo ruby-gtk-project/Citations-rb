@@ -2,6 +2,7 @@
 use gettextrs::gettext;
 use gio::prelude::SettingsExt;
 use gtk::glib;
+use std::borrow::Cow;
 use std::path::PathBuf;
 
 #[macro_export]
@@ -120,4 +121,15 @@ pub(crate) fn remove_recent_file(settings: &gio::Settings, path: &str) {
                 .collect::<Vec<&str>>(),
         )
         .unwrap();
+}
+
+pub(crate) fn prettify_path(path_str: &str) -> Cow<str> {
+    let path = std::path::Path::new(path_str);
+    if path.starts_with("/run/user") {
+        let file_name = path.file_name().unwrap().to_str().unwrap();
+
+        Cow::Owned(format!("Document Portal/{file_name}"))
+    } else {
+        Cow::Borrowed(path_str)
+    }
 }
