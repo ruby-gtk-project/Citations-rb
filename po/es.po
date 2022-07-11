@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
 "POT-Creation-Date: 2022-06-19 07:02+0000\n"
-"PO-Revision-Date: 2022-07-01 13:44+0200\n"
+"PO-Revision-Date: 2022-07-11 18:12+0200\n"
 "Last-Translator: Daniel Mustieles García <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -34,7 +34,7 @@ msgstr "Varios"
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:112
 msgid "In Proceedings"
-msgstr ""
+msgstr "En proceso"
 
 #: cratebibtex/src/entry_type.rs:113
 msgid "Unpublished"
@@ -82,7 +82,7 @@ msgstr "Tesis doctoral"
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:127
 msgid "Proceedings"
-msgstr ""
+msgstr "Procesos"
 
 #: cratebibtex/src/entry_type.rs:128
 msgid "Tech Report"
@@ -140,7 +140,7 @@ msgstr "Formato de plantilla predeterminada para citas"
 
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:10
 msgid "Manage your bibliographies using the BibTeX format."
-msgstr ""
+msgstr "Gestione sus bibliografías usando un formato BibTeX."
 
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:15
 msgid "Main window"
@@ -152,7 +152,7 @@ msgstr "Maximiliano Sandoval"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
-msgstr ""
+msgstr "Formato de cita personalizado"
 
 #: data/resources/ui/citation_preview.ui:47
 msgid "Citation"
@@ -173,6 +173,10 @@ msgid ""
 "and italics is supported.\n"
 "            "
 msgstr ""
+"Escriba un formato personalizado para sus citas. Para insertar el contenido "
+"de una <tt>etiqueta</tt> escriba <tt>%ETIQUETA%</tt>. Se soporta la sintaxis "
+"de marcado básico para negritas y cursivas.\n"
+"            "
 
 #: data/resources/ui/citation_preview.ui:150
 msgid "Example:"
@@ -189,7 +193,7 @@ msgstr "Crear una cita nueva"
 
 #: data/resources/ui/entry_page.ui:13
 msgid "No Citation Selected"
-msgstr ""
+msgstr "Ninguna cita seleccionada"
 
 #: data/resources/ui/entry_page.ui:82
 msgid "Citation _Type"
@@ -226,11 +230,11 @@ msgstr "Otras propiedades"
 #. Translators: Selects a PDF file for the citation
 #: data/resources/ui/entry_page.ui:187
 msgid "Select PDF"
-msgstr ""
+msgstr "Seleccionar PDF"
 
 #: data/resources/ui/entry_page.ui:188
 msgid "Copy file to bibliography folder"
-msgstr ""
+msgstr "Copiar archivo a la carpeta de bibliografía"
 
 #: data/resources/ui/entry_page.ui:192
 msgid "From file"
@@ -238,11 +242,11 @@ msgstr "Del archivo"
 
 #: data/resources/ui/entry_page.ui:209
 msgid "From URL"
-msgstr ""
+msgstr "Desde URL"
 
 #: data/resources/ui/entry_page.ui:227
 msgid "Open PDF"
-msgstr ""
+msgstr "Abrir PDF"
 
 #: data/resources/ui/entry_page.ui:233
 msgid "Open"
@@ -250,11 +254,11 @@ msgstr "Abrir"
 
 #: data/resources/ui/entry_page.ui:244
 msgid "Delete PDF"
-msgstr ""
+msgstr "Eliminar PDF"
 
 #: data/resources/ui/entry_page.ui:260
 msgid "PDF Preview"
-msgstr ""
+msgstr "Vista previa de PDF"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
@@ -270,16 +274,16 @@ msgstr "Nueva"
 
 #: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Key"
-msgstr ""
+msgstr "Clave de la cita"
 
 #: data/resources/ui/new_entry_dialog.ui:73
 msgid "Citation Type"
-msgstr ""
+msgstr "Tipo de cita"
 
 #. BibTeX is a proper name
 #: data/resources/ui/new_entry_dialog.ui:93
 msgid "From BibTeX"
-msgstr ""
+msgstr "Desde BibTeX"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -318,7 +322,7 @@ msgstr "Buscar"
 
 #: data/resources/ui/window.ui:6
 msgid "_Create New Bibliography"
-msgstr ""
+msgstr "Crear bibliografía nueva"
 
 #: data/resources/ui/window.ui:10 data/resources/ui/window.ui:33
 #: data/resources/ui/window.ui:97 data/resources/ui/window.ui:145
@@ -340,12 +344,12 @@ msgstr "_Guardar"
 
 #: data/resources/ui/window.ui:52
 msgid "_Search in Google Scholar"
-msgstr ""
+msgstr "_Buscar en Google Scholar"
 
 #. arXiv is a proper name
 #: data/resources/ui/window.ui:56
 msgid "_Search in arXiv"
-msgstr ""
+msgstr "_Buscar en arXiv"
 
 #: data/resources/ui/window.ui:62
 msgid "_Delete"
@@ -359,7 +363,7 @@ msgstr "Menú principal"
 #. BibTeX is a proper name
 #: data/resources/ui/window.ui:92
 msgid "Open a BibTeX File"
-msgstr ""
+msgstr "Abrir un archivo BibTeX"
 
 #: data/resources/ui/window.ui:137
 msgid "Recent Files"
@@ -367,7 +371,7 @@ msgstr "Archivos recientes"
 
 #: data/resources/ui/window.ui:189
 msgid "Add New Citation"
-msgstr ""
+msgstr "Añadir una cita nueva"
 
 #: data/resources/ui/window.ui:202
 msgid "Search"
@@ -379,7 +383,7 @@ msgstr "Atrás"
 
 #: data/resources/ui/window.ui:262
 msgid "Secondary Menu"
-msgstr ""
+msgstr "Menú secundario"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -409,7 +413,7 @@ msgstr "Personalizada…"
 
 #: src/entry_page.rs:124
 msgid "PDF Downloaded"
-msgstr ""
+msgstr "PDF descargado"
 
 #: src/entry_page.rs:161
 msgid "Other…"
@@ -418,26 +422,26 @@ msgstr "Otra…"
 #. TRANSLATORS Every citation has an identifier called key
 #: src/entry_page.rs:223
 msgid "Citation Key already exists"
-msgstr ""
+msgstr "La clave de la cita ya existe"
 
 #: src/entry_page.rs:447
 msgid "Bibliography folder not set"
-msgstr ""
+msgstr "Carpeta de bibliografía no establecida"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
 #: src/entry_page.rs:451
 msgid "Make sure that {path} exists"
-msgstr ""
+msgstr "Asegúrese de que la {path} existe"
 
 #: src/entry_page.rs:612
 msgid "PDF Files"
-msgstr ""
+msgstr "Archivos PDF"
 
 #. TODO Use placeholder-text see
 #. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
 #: src/new_entry_dialog.rs:127
 msgid "Insert a BibTeX citation here"
-msgstr ""
+msgstr "Insertar una cita BibTeX aquí"
 
 #: src/utils.rs:20
 msgid "Author"
@@ -478,7 +482,7 @@ msgstr "Dirección"
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
 #: src/utils.rs:30
 msgid "How Published"
-msgstr ""
+msgstr "Medio de publicación"
 
 #: src/utils.rs:31
 msgid "Note"
@@ -494,7 +498,7 @@ msgstr "Serie"
 
 #: src/utils.rs:34
 msgid "Archive Prefix"
-msgstr ""
+msgstr "Prefijo del archivo"
 
 #. TRANSLATORS As in digital print
 #: src/utils.rs:36
@@ -504,7 +508,7 @@ msgstr "ePrint"
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
 #: src/utils.rs:38
 msgid "Primary Class"
-msgstr ""
+msgstr "Clase primaria"
 
 #: src/utils.rs:39
 msgid "Month"
@@ -530,11 +534,11 @@ msgstr "Institución"
 
 #: src/window.rs:316 src/window.rs:345
 msgid "Bibtex Files"
-msgstr ""
+msgstr "Archivos BibTeX"
 
 #: src/window.rs:337
 msgid "Create New Bibliography"
-msgstr ""
+msgstr "Crear bibliografía nueva"
 
 #: src/window.rs:340
 msgid "Create"
@@ -542,11 +546,11 @@ msgstr "Crear"
 
 #: src/window.rs:493
 msgid "An entry with the given citation key already exists"
-msgstr ""
+msgstr "Ya existe una entrada con la clave de la cita dada"
 
 #: src/window.rs:508
 msgid "Bibliography saved"
-msgstr ""
+msgstr "Bibliografía guardada"
 
 #: src/window.rs:552
 msgid "Citation Deleted"
@@ -568,7 +572,7 @@ msgstr "Cambios sin guardar"
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
 #: src/window.rs:620
 msgid "Do you want to write all changes to the safe?"
-msgstr ""
+msgstr "¿Quiere guardar todos los cambios en el depósito seguro?"
 
 #: src/window.rs:623
 msgid "_Quit Without Saving"
