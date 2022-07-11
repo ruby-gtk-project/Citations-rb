@@ -155,7 +155,7 @@ impl AddPdfDialog {
             let citation_key = self.imp().citation_key.get().unwrap();
 
             let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&utils::pdf_filename(&citation_key));
+            let pdf = folder.child(&utils::pdf_filename(citation_key));
 
             pdf.replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
                 .await
@@ -190,7 +190,7 @@ impl AddPdfDialog {
 
             if dialog.run_future().await == gtk::ResponseType::Accept {
                 let file = dialog.file().unwrap();
-                let filename = utils::pdf_filename(&citation_key);
+                let filename = utils::pdf_filename(citation_key);
                 let dest = folder.child(&filename);
 
                 if let Err(err) = async_std::fs::create_dir_all(&path).await {

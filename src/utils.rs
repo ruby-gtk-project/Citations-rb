@@ -67,21 +67,13 @@ pub fn build_google_schoolar_url(author: &str, title: &str) -> anyhow::Result<St
     Ok(sanitized.to_string())
 }
 
-pub fn build_arxiv_url(author: &str, title: &str) -> anyhow::Result<String> {
+pub fn build_arxiv_url(author: &str, title: &str) -> anyhow::Result<url::Url> {
     let authors = cratebibtex::format::format_authors(author);
-    let mut url = "https://arxiv.org/search/advanced?advanced=".to_string();
+    let url = format!(
+        "https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term={title}&terms-0-field=title&terms-1-operator=OR&terms-1-term={authors}&terms-1-field=author&date-filter_by=all_dates&date-year=&date-from_date=&date-to_date=&date-date_type=submitted_date&classification-physics_archives=all&classification-include_cross_list=include&abstracts=show&size=25&order=-announced_date_first",
+    );
 
-    url.push_str(&format!(
-        "&terms-0-operator=AND&terms-0-term={title}&terms-0-field=title"
-    ));
-    url.push_str(&format!(
-        "&terms-1-operator=OR&terms-1-term={authors}&terms-1-field=author"
-    ));
-    url.push_str("&date-filter_by=all_dates&date-year=&date-from_date=&date-to_date=&date-date_type=submitted_date");
-    url.push_str("&classification-physics_archives=all&classification-include_cross_list=include&abstracts=show&size=25&order=-announced_date_first");
-
-    let sanitized = url::Url::parse(&url)?;
-    Ok(sanitized.to_string())
+    Ok(url::Url::parse(&url)?)
 }
 
 pub fn bibliography_path() -> Option<PathBuf> {

@@ -557,7 +557,7 @@ impl Window {
         let uri = utils::build_arxiv_url(&p_author, &p_title)?;
         log::debug!("Trying to open {uri}");
 
-        gtk::show_uri(Some(self), &uri, gdk::CURRENT_TIME);
+        gtk::show_uri(Some(self), uri.as_str(), gdk::CURRENT_TIME);
 
         Ok(())
     }
