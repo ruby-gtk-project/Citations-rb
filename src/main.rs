@@ -2,6 +2,7 @@
 mod application;
 #[rustfmt::skip]
 mod citation_preview;
+mod add_pdf_dialog;
 mod config;
 mod entry_list;
 mod entry_list_row;
@@ -15,6 +16,7 @@ mod window;
 use gettextrs::{gettext, LocaleCategory};
 use gtk::{gio, glib, prelude::*};
 
+pub use add_pdf_dialog::AddPdfDialog;
 pub use citation_preview::CitationPreview;
 pub use entry_list::EntryList;
 pub use entry_list_row::EntryListRow;

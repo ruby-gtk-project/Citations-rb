@@ -4,8 +4,8 @@ use gettextrs::gettext;
 use gtk::subclass::prelude::*;
 use gtk::{cairo, gdk, gio, glib, CompositeTemplate};
 
-use crate::i18n::gettext_f;
 use crate::utils;
+use crate::AddPdfDialog;
 
 mod imp {
     use super::*;
@@ -20,13 +20,9 @@ mod imp {
         #[template_child]
         pub pdf_preview: TemplateChild<adw::PreferencesGroup>,
         #[template_child]
-        pub set_pdf_expander_row: TemplateChild<adw::ExpanderRow>,
-        #[template_child]
         pub empty_bin: TemplateChild<gtk::Widget>,
         #[template_child]
         pub pdf_picture: TemplateChild<gtk::Picture>,
-        #[template_child]
-        pub pdf_url_entry_row: TemplateChild<adw::EntryRow>,
         #[template_child]
         pub other_entry_type_row: TemplateChild<adw::EntryRow>,
         #[template_child]
@@ -105,24 +101,6 @@ mod imp {
                 } else {
                     self.instance().setup_pdf();
                 }
-            }
-        }
-
-        #[template_callback]
-        async fn on_download_pdf_button_clicked(&self) {
-            if let Err(err) = self.instance().download_pdf_for_entry().await {
-                log::error!("Could not download pdf: {err}");
-                self.pdf_url_entry_row.add_css_class("error");
-            } else {
-                self.pdf_url_entry_row.remove_css_class("error");
-                let window = self
-                    .instance()
-                    .root()
-                    .unwrap()
-                    .downcast::<crate::Window>()
-                    .unwrap();
-                window.send_toast(&gettext("PDF Downloaded"));
-                self.instance().setup_pdf();
             }
         }
 
@@ -442,20 +420,6 @@ impl EntryPage {
                 None
             }
         } else {
-            self.imp()
-                .set_pdf_expander_row
-                .set_title(&gettext("Bibliography folder not set"));
-            let bibliography_path = crate::utils::bibliography_path_string();
-            self.imp().set_pdf_expander_row.set_subtitle(&gettext_f(
-                // TRANSLATORS Do NOT translate {path}, it is a variable name
-                "Make sure that {path} exists",
-                &[("path", &bibliography_path)],
-            ));
-            self.imp().set_pdf_expander_row.set_enable_expansion(false);
-            // TODO
-            // self.imp().pdf_action_row.set_subtitle("Open settings");
-            // window.show_preferences_window();
-
             None
         };
 
@@ -525,41 +489,6 @@ impl EntryPage {
         Ok(())
     }
 
-    async fn download_pdf_for_entry(&self) -> anyhow::Result<()> {
-        let url_text = self.imp().pdf_url_entry_row.text();
-        let url = url::Url::parse(&url_text)?;
-
-        if let Some(path) = crate::utils::bibliography_path() {
-            let mut res = match surf::get(&url).await {
-                Ok(res) => res,
-                Err(err) => anyhow::bail!("{err}"),
-            };
-            let bytes = match res.body_bytes().await {
-                Ok(bytes) => bytes,
-                Err(err) => anyhow::bail!("{err}"),
-            };
-            let bytes = glib::Bytes::from_owned(bytes);
-
-            // Validate the document
-            poppler::Document::from_bytes(&bytes, None)?;
-
-            let citation_key = {
-                let entry = self.imp().entry.borrow();
-
-                entry.as_ref().unwrap().citation_key()
-            };
-
-            let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&utils::pdf_filename(&citation_key));
-
-            pdf.replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
-                .await
-                .map_err(|err| err.1)?;
-        }
-
-        Ok(())
-    }
-
     /// Used so that both views in the leaflet don't show a status page
     /// simultaneosly. Shows a status page with some text.
     pub fn set_empty_status_page(&self) {
@@ -596,38 +525,18 @@ impl EntryPage {
         let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
         let citation_key = self.imp().entry.borrow().as_ref().unwrap().citation_key();
 
-        if let Some(path) = crate::utils::bibliography_path() {
-            // TODO Add djvu support, is it needed?
-            let folder = gio::File::for_path(&path);
+        let dialog = AddPdfDialog::new(&window, citation_key);
+        dialog.connect_local(
+            "pdf-set",
+            false,
+            glib::clone!(@weak self as obj, @weak window => @default-return None, move |_| {
+                obj.setup_pdf();
+                window.send_toast(&gettext("PDF Set"));
 
-            let dialog = gtk::FileChooserNative::new(
-                None,
-                Some(&window),
-                gtk::FileChooserAction::Open,
-                None,
-                None,
-            );
-
-            let pdf_filter = gtk::FileFilter::new();
-            pdf_filter.set_name(Some(&gettext("PDF Files")));
-            pdf_filter.add_mime_type("application/pdf");
-            dialog.add_filter(&pdf_filter);
-
-            if dialog.run_future().await == gtk::ResponseType::Accept {
-                let file = dialog.file().unwrap();
-                let filename = utils::pdf_filename(&citation_key);
-                let dest = folder.child(&filename);
-
-                if let Err(err) = async_std::fs::create_dir_all(&path).await {
-                    log::error!("Could not create bibliography directory: {err}");
-                }
-
-                file.copy_future(&dest, gio::FileCopyFlags::NONE, glib::Priority::default())
-                    .0
-                    .await?;
-                log::debug!("Copied {filename} to {}", path.to_str().unwrap());
-            }
-        }
+                None
+            }),
+        );
+        dialog.present();
 
         Ok(())
     }

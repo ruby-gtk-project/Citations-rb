@@ -3,12 +3,14 @@ cratebibtex/src/format.rs
 data/org.gnome.World.Citations.desktop.in.in
 data/org.gnome.World.Citations.gschema.xml.in
 data/org.gnome.World.Citations.metainfo.xml.in.in
+data/resources/ui/add_pdf_dialog.ui
 data/resources/ui/citation_preview.ui
 data/resources/ui/entry_list.ui
 data/resources/ui/entry_page.ui
 data/resources/ui/new_entry_dialog.ui
 data/resources/ui/shortcuts.ui
 data/resources/ui/window.ui
+src/add_pdf_dialog.rs
 src/citation_preview.rs
 src/entry_page.rs
 src/main.rs

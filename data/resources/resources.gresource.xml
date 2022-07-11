@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/gnome/World/Citations/">
+    <file compressed="true" preprocess="xml-stripblanks">ui/add_pdf_dialog.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/citation_preview.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/entry_list.ui</file>
     <file preprocess="xml-stripblanks">ui/entry_list_row.ui</file>

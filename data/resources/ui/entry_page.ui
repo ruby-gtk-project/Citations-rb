@@ -183,42 +183,11 @@
                           <object class="GtkListBox">
                             <property name="selection-mode">none</property>
                             <child>
-                              <object class="AdwExpanderRow" id="set_pdf_expander_row">
+                              <object class="AdwActionRow" id="set_pdf_expander_row">
                                 <property name="title" translatable="yes" comments="Translators: Selects a PDF file for the citation">Select PDF</property>
                                 <property name="subtitle" translatable="yes">Copy file to bibliography folder</property>
-                                <child>
-                                  <object class="AdwActionRow">
-                                    <property name="activatable">True</property>
-                                    <property name="title" translatable="yes">From file</property>
-                                    <property name="activatable-widget">from-file-button</property>
-                                    <child>
-                                      <object class="GtkButton" id="from-file-button">
-                                        <property name="valign">center</property>
-                                        <property name="icon-name">document-open-symbolic</property>
-                                        <property name="action-name">entry-page.set-pdf</property>
-                                        <style>
-                                          <class name="flat"/>
-                                        </style>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="AdwEntryRow" id="pdf_url_entry_row">
-                                    <property name="activatable">True</property>
-                                    <property name="title" translatable="yes">From URL</property>
-                                    <child>
-                                      <object class="GtkButton">
-                                        <property name="valign">center</property>
-                                        <property name="icon-name">go-next-symbolic</property>
-                                        <signal name="clicked" handler="on_download_pdf_button_clicked" swapped="true"/>
-                                        <style>
-                                          <class name="flat"/>
-                                        </style>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
+                                <property name="activatable">True</property>
+                                <property name="action-name">entry-page.set-pdf</property>
                               </object>
                             </child>
                             <style>

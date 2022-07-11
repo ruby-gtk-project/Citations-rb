@@ -19,6 +19,7 @@ pub fn gettext_f(msgid: &str, args: &[(&str, &str)]) -> String {
     freplace(s, args)
 }
 
+#[allow(unused)]
 /// Like `ngettext`, but replaces named variables with the given dictionary.
 ///
 /// The expected format to replace is `{name}`, where `name` is the first string
