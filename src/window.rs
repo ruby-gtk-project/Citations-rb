@@ -608,40 +608,25 @@ impl Window {
     }
 
     async fn show_save_dialog(&self) {
-        let flags = gtk::DialogFlags::MODAL | gtk::DialogFlags::DESTROY_WITH_PARENT;
-        let dialog = gtk::MessageDialog::new(
+        let dialog = adw::MessageDialog::new(
             Some(self),
-            flags,
-            gtk::MessageType::Question,
-            gtk::ButtonsType::None,
             // NOTE Dialog title which informs the user about unsaved changes.
-            &gettext("Unsaved Changes"),
+            Some(&gettext("Unsaved Changes")),
+            Some(&gettext(
+                // NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+                "Do you want to write all changes to the safe?",
+            )),
         );
-        dialog.set_secondary_text(Some(&gettext(
-            // NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-            "Do you want to write all changes to the safe?",
-        )));
 
-        let btn = dialog.add_button(&gettext("_Quit Without Saving"), gtk::ResponseType::No);
-        btn.add_css_class("destructive-action");
-        btn.downcast::<gtk::Button>()
-            .unwrap()
-            .set_use_underline(true);
-        dialog
-            .add_button(&gettext("_Don't Quit"), gtk::ResponseType::Cancel)
-            .downcast::<gtk::Button>()
-            .unwrap()
-            .set_use_underline(true);
-        dialog
-            .add_button(&gettext("_Save and Quit"), gtk::ResponseType::Yes)
-            .downcast::<gtk::Button>()
-            .unwrap()
-            .set_use_underline(true);
-        dialog.set_default_response(gtk::ResponseType::Yes);
+        dialog.add_response("discard", &gettext("_Quit Without Saving"));
+        dialog.add_response("cancel", &gettext("_Don't Quit"));
+        dialog.add_response("save", &gettext("_Save and Quit"));
+        dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
+        dialog.set_default_response(Some("save"));
 
-        match dialog.run_future().await {
-            gtk::ResponseType::No => self.destroy(),
-            gtk::ResponseType::Yes => {
+        match dialog.run_future(None).await.as_str() {
+            "discard" => self.destroy(),
+            "save" => {
                 if let Err(err) = self.save().await {
                     log::error!("Could not save bib file: {err}");
                 } else {
@@ -652,6 +637,5 @@ impl Window {
             // interactions.
             _ => (),
         }
-        dialog.close();
     }
 }
