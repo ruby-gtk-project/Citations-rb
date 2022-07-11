@@ -19,6 +19,8 @@ mod imp {
         pub citation_key: OnceCell<String>,
 
         #[template_child]
+        pub download_button: TemplateChild<gtk::Widget>,
+        #[template_child]
         pub pdf_url_entry_row: TemplateChild<adw::EntryRow>,
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
@@ -62,11 +64,13 @@ mod imp {
 
         #[template_callback]
         async fn on_download_pdf_button_clicked(&self) {
+            self.download_button.set_sensitive(false);
             if let Err(err) = self.instance().download_pdf_for_entry().await {
                 log::error!("Could not download pdf: {err}");
                 self.pdf_url_entry_row.add_css_class("error");
                 let toast = adw::Toast::new(&gettext("Could not download PDF"));
                 self.toast_overlay.add_toast(&toast);
+                self.download_button.set_sensitive(true);
             } else {
                 self.pdf_url_entry_row.remove_css_class("error");
                 self.instance().emit_by_name::<()>("pdf-set", &[]);

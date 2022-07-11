@@ -97,7 +97,7 @@
                                 <property name="activatable">True</property>
                                 <property name="title" translatable="yes">From URL</property>
                                 <child>
-                                  <object class="GtkButton">
+                                  <object class="GtkButton" id="download_button">
                                     <property name="valign">center</property>
                                     <property name="icon-name">go-next-symbolic</property>
                                     <signal name="clicked" handler="on_download_pdf_button_clicked" swapped="true"/>
