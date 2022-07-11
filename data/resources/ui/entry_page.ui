@@ -221,17 +221,28 @@
                                 </child>
                               </object>
                             </child>
-                            <child>
-                              <object class="AdwActionRow" id="pdf_action_row">
-                                <property name="visible">False</property>
-                                <property name="title" translatable="yes">Open PDF</property>
-                                <property name="activatable-widget">open_pdf_button</property>
+                            <style>
+                              <class name="boxed-list"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup" id="pdf_preview">
+                            <property name="title" translatable="yes">PDF</property>
+                            <property name="header-suffix">
+                              <object class="GtkBox">
+                                <property name="spacing">6</property>
                                 <child>
-                                  <object class="GtkButton" id="open_pdf_button">
+                                  <object class="GtkButton">
                                     <property name="valign">center</property>
-                                    <property name="icon-name">emblem-documents-symbolic</property>
-                                    <property name="tooltip-text" translatable="yes">Open</property>
                                     <property name="action-name">entry-page.open-pdf</property>
+                                    <child>
+                                      <object class="AdwButtonContent">
+                                        <property name="icon-name">external-link-symbolic</property>
+                                        <property name="label" translatable="yes">_Open</property>
+                                        <property name="use-underline">True</property>
+                                      </object>
+                                    </child>
                                     <style>
                                       <class name="flat"/>
                                     </style>
@@ -249,18 +260,7 @@
                                   </object>
                                 </child>
                               </object>
-                            </child>
-                            <style>
-                              <class name="boxed-list"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="AdwPreferencesGroup">
-                            <property name="title" translatable="yes">PDF Preview</property>
-                            <binding name="visible">
-                              <lookup name="visible">pdf_action_row</lookup>
-                            </binding>
+                            </property>
                             <child>
                               <object class="GtkPicture" id="pdf_picture">
                                 <property name="keep-aspect-ratio">True</property>

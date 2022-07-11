@@ -18,6 +18,8 @@ mod imp {
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
         #[template_child]
+        pub pdf_preview: TemplateChild<adw::PreferencesGroup>,
+        #[template_child]
         pub set_pdf_expander_row: TemplateChild<adw::ExpanderRow>,
         #[template_child]
         pub empty_bin: TemplateChild<gtk::Widget>,
@@ -25,8 +27,6 @@ mod imp {
         pub pdf_picture: TemplateChild<gtk::Picture>,
         #[template_child]
         pub pdf_url_entry_row: TemplateChild<adw::EntryRow>,
-        #[template_child]
-        pub pdf_action_row: TemplateChild<adw::ActionRow>,
         #[template_child]
         pub other_entry_type_row: TemplateChild<adw::EntryRow>,
         #[template_child]
@@ -431,13 +431,13 @@ impl EntryPage {
             let folder = gio::File::for_path(&path);
             let pdf = folder.child(&filename);
             if pdf.query_exists(gio::Cancellable::NONE) {
-                self.imp().pdf_action_row.show();
-                self.imp().pdf_action_row.set_subtitle(&filename);
+                self.imp().pdf_preview.show();
+                self.imp().pdf_preview.set_description(Some(&filename));
 
                 Some(pdf)
             } else {
-                self.imp().pdf_action_row.hide();
-                self.imp().pdf_action_row.set_subtitle("");
+                self.imp().pdf_preview.hide();
+                self.imp().pdf_preview.set_description(None);
 
                 None
             }
