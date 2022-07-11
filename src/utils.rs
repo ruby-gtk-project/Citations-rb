@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use gettextrs::gettext;
+use gio::prelude::SettingsExt;
 use gtk::glib;
 use std::path::PathBuf;
 
@@ -101,4 +102,22 @@ pub fn bibliography_path_string() -> String {
 
 pub fn pdf_filename(citation_key: &str) -> String {
     sanitize_filename::sanitize(&format!("{citation_key}.pdf"))
+}
+
+pub(crate) fn remove_recent_file(settings: &gio::Settings, path: &str) {
+    let recent_files = settings
+        .strv("recent-files")
+        .iter()
+        .filter(|x| x.as_str() != path)
+        .map(glib::GString::to_string)
+        .collect::<Vec<String>>();
+    settings
+        .set_strv(
+            "recent-files",
+            &recent_files
+                .iter()
+                .map(String::as_str)
+                .collect::<Vec<&str>>(),
+        )
+        .unwrap();
 }

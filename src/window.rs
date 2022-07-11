@@ -454,6 +454,16 @@ impl Window {
             action_row.set_detailed_action_name(&action);
             action_row.set_activatable(true);
 
+            let clear_button = gtk::Button::from_icon_name("edit-delete-symbolic");
+            clear_button.set_valign(gtk::Align::Center);
+            clear_button.connect_clicked(move |_button| {
+                let settings = gio::Settings::new(APP_ID);
+                crate::utils::remove_recent_file(&settings, &path);
+            });
+            clear_button.set_tooltip_text(Some(&gettext("Remove From Recent Files")));
+            clear_button.add_css_class("flat");
+            action_row.add_suffix(&clear_button);
+
             action_row.upcast()
         });
 
