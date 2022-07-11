@@ -18,6 +18,10 @@ mod imp {
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
         #[template_child]
+        pub preview_error_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub preview_error: TemplateChild<gtk::Widget>,
+        #[template_child]
         pub pdf_stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub pdf_add_list_box: TemplateChild<gtk::ListBox>,
@@ -434,6 +438,9 @@ impl EntryPage {
         crate::spawn!(glib::clone!(@weak self as obj => async move {
             if let Err(err) = obj.set_pdf_preview(pdf.as_ref()).await {
                 log::error!("Could not set pdf preview: {err}");
+                obj.imp().preview_error_stack.set_visible_child(&*obj.imp().preview_error);
+            } else {
+                obj.imp().preview_error_stack.set_visible_child(&*obj.imp().pdf_picture);
             }
         }));
     }
