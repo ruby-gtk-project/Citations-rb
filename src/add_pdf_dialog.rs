@@ -56,9 +56,6 @@ mod imp {
                 log::error!("could not set pdf: {err}");
                 let toast = adw::Toast::new(&gettext("Could not set PDF"));
                 self.toast_overlay.add_toast(&toast);
-            } else {
-                self.instance().emit_by_name::<()>("pdf-set", &[]);
-                self.instance().close();
             }
         }
 
@@ -204,6 +201,9 @@ impl AddPdfDialog {
                     .0
                     .await?;
                 log::debug!("Copied {filename} to {}", path.to_str().unwrap());
+
+                self.emit_by_name::<()>("pdf-set", &[]);
+                self.close();
             }
         }
 
