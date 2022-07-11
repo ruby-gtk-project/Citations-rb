@@ -130,6 +130,7 @@
                         <property name="icon-name">org.gnome.World.Citations</property>
                         <child>
                           <object class="AdwClamp">
+                            <property name="maximum-size">450</property>
                             <child>
                               <object class="AdwPreferencesGroup">
                                 <property name="title" translatable="yes">Recent Files</property>
