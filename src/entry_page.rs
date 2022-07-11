@@ -18,6 +18,10 @@ mod imp {
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
     pub struct EntryPage {
         #[template_child]
+        pub pdf_stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub pdf_add_list_box: TemplateChild<gtk::ListBox>,
+        #[template_child]
         pub pdf_preview: TemplateChild<adw::PreferencesGroup>,
         #[template_child]
         pub empty_bin: TemplateChild<gtk::Widget>,
@@ -409,12 +413,16 @@ impl EntryPage {
             let folder = gio::File::for_path(&path);
             let pdf = folder.child(&filename);
             if pdf.query_exists(gio::Cancellable::NONE) {
-                self.imp().pdf_preview.show();
+                self.imp()
+                    .pdf_stack
+                    .set_visible_child(&*self.imp().pdf_preview);
                 self.imp().pdf_preview.set_description(Some(&filename));
 
                 Some(pdf)
             } else {
-                self.imp().pdf_preview.hide();
+                self.imp()
+                    .pdf_stack
+                    .set_visible_child(&*self.imp().pdf_add_list_box);
                 self.imp().pdf_preview.set_description(None);
 
                 None

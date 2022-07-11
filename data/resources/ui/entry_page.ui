@@ -180,63 +180,68 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkListBox">
-                            <property name="selection-mode">none</property>
+                          <object class="GtkStack" id="pdf_stack">
+                            <property name="transition-type">crossfade</property>
                             <child>
-                              <object class="AdwActionRow" id="set_pdf_expander_row">
-                                <property name="title" translatable="yes" comments="Translators: Selects a PDF file for the citation">Select PDF</property>
-                                <property name="subtitle" translatable="yes">Copy file to bibliography folder</property>
-                                <property name="activatable">True</property>
-                                <property name="action-name">entry-page.set-pdf</property>
+                              <object class="GtkListBox" id="pdf_add_list_box">
+                                <property name="selection-mode">none</property>
+                                <child>
+                                  <object class="AdwActionRow" id="set_pdf_expander_row">
+                                    <property name="title" translatable="yes" comments="Translators: Selects a PDF file for the citation">Select PDF</property>
+                                    <property name="subtitle" translatable="yes">Copy file to bibliography folder</property>
+                                    <property name="activatable">True</property>
+                                    <property name="action-name">entry-page.set-pdf</property>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="boxed-list"/>
+                                </style>
                               </object>
                             </child>
-                            <style>
-                              <class name="boxed-list"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="AdwPreferencesGroup" id="pdf_preview">
-                            <property name="title" translatable="yes">PDF</property>
-                            <property name="header-suffix">
-                              <object class="GtkBox">
-                                <property name="spacing">6</property>
-                                <child>
-                                  <object class="GtkButton">
-                                    <property name="valign">center</property>
-                                    <property name="action-name">entry-page.open-pdf</property>
+                            <child>
+                              <object class="AdwPreferencesGroup" id="pdf_preview">
+                                <property name="title" translatable="yes">PDF</property>
+                                <property name="header-suffix">
+                                  <object class="GtkBox">
+                                    <property name="spacing">6</property>
                                     <child>
-                                      <object class="AdwButtonContent">
-                                        <property name="icon-name">external-link-symbolic</property>
-                                        <property name="label" translatable="yes">_Open</property>
-                                        <property name="use-underline">True</property>
+                                      <object class="GtkButton">
+                                        <property name="valign">center</property>
+                                        <property name="action-name">entry-page.open-pdf</property>
+                                        <child>
+                                          <object class="AdwButtonContent">
+                                            <property name="icon-name">external-link-symbolic</property>
+                                            <property name="label" translatable="yes">_Open</property>
+                                            <property name="use-underline">True</property>
+                                          </object>
+                                        </child>
+                                        <style>
+                                          <class name="flat"/>
+                                        </style>
                                       </object>
                                     </child>
-                                    <style>
-                                      <class name="flat"/>
-                                    </style>
+                                    <child>
+                                      <object class="GtkButton">
+                                        <property name="valign">center</property>
+                                        <property name="icon-name">user-trash-symbolic</property>
+                                        <property name="tooltip-text" translatable="yes">Delete PDF</property>
+                                        <signal name="clicked" handler="on_trash_pdf_button_clicked" swapped="yes"/>
+                                        <style>
+                                          <class name="destructive-action"/>
+                                        </style>
+                                      </object>
+                                    </child>
                                   </object>
-                                </child>
+                                </property>
                                 <child>
-                                  <object class="GtkButton">
-                                    <property name="valign">center</property>
-                                    <property name="icon-name">user-trash-symbolic</property>
-                                    <property name="tooltip-text" translatable="yes">Delete PDF</property>
-                                    <signal name="clicked" handler="on_trash_pdf_button_clicked" swapped="yes"/>
+                                  <object class="GtkPicture" id="pdf_picture">
+                                    <property name="keep-aspect-ratio">True</property>
+                                    <property name="overflow">hidden</property>
                                     <style>
-                                      <class name="destructive-action"/>
+                                      <class name="pdfpreview"/>
                                     </style>
                                   </object>
                                 </child>
-                              </object>
-                            </property>
-                            <child>
-                              <object class="GtkPicture" id="pdf_picture">
-                                <property name="keep-aspect-ratio">True</property>
-                                <property name="overflow">hidden</property>
-                                <style>
-                                  <class name="pdfpreview"/>
-                                </style>
                               </object>
                             </child>
                           </object>
