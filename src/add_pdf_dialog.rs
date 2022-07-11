@@ -26,6 +26,8 @@ mod imp {
         pub error_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub error_box: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub progress_bar: TemplateChild<gtk::ProgressBar>,
     }
 
     #[glib::object_subclass]
@@ -125,6 +127,17 @@ impl AddPdfDialog {
         let url = url::Url::parse(&url_text)?;
 
         if let Some(path) = crate::utils::bibliography_path() {
+            self.imp().progress_bar.show();
+            let duration = std::time::Duration::from_millis(100);
+            let source = glib::timeout_add_local(
+                duration,
+                glib::clone!(@weak self as obj => @default-return glib::Continue(false), move || {
+                    obj.imp().progress_bar.pulse();
+
+                    glib::Continue(true)
+                }),
+            );
+
             let mut res = match surf::get(&url).await {
                 Ok(res) => res,
                 Err(err) => anyhow::bail!("{err}"),
@@ -146,6 +159,8 @@ impl AddPdfDialog {
             pdf.replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
                 .await
                 .map_err(|err| err.1)?;
+
+            source.remove();
         }
 
         Ok(())

@@ -16,90 +16,103 @@
     <child>
       <object class="AdwToastOverlay" id="toast_overlay">
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
             <child>
-              <object class="AdwClamp">
-                <property name="vexpand">True</property>
+              <object class="GtkProgressBar" id="progress_bar">
+                <property name="visible">False</property>
+                <style>
+                  <class name="osd"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow">
                 <child>
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <property name="margin-top">24</property>
-                    <property name="margin-bottom">24</property>
-                    <property name="margin-start">12</property>
-                    <property name="margin-end">12</property>
-                    <property name="spacing">12</property>
+                  <object class="AdwClamp">
+                    <property name="vexpand">True</property>
                     <child>
-                      <object class="GtkBox" id="error_box">
-                        <property name="visible">False</property>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="margin-top">24</property>
+                        <property name="margin-bottom">24</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="spacing">12</property>
+                        <child>
+                          <object class="GtkBox" id="error_box">
+                            <property name="visible">False</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">Bibliography folder not set</property>
+                                <style>
+                                  <class name="error"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="error_label">
+                                <property name="xalign">0</property>
+                                <style>
+                                  <class name="error"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                         <child>
                           <object class="GtkLabel">
+                            <property name="label" translatable="yes">Creates a copy of the selected pdf and stores it in your Bibliography folder.</property>
+                            <property name="wrap-mode">word-char</property>
+                            <property name="wrap">True</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes">Bibliography folder not set</property>
                             <style>
-                              <class name="error"/>
+                              <class name="dim-label"/>
                             </style>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="error_label">
-                            <property name="xalign">0</property>
+                          <object class="GtkListBox">
+                            <property name="selection-mode">none</property>
+                            <child>
+                              <object class="AdwActionRow">
+                                <property name="activatable">True</property>
+                                <property name="title" translatable="yes">From file</property>
+                                <property name="activatable-widget">from-file-button</property>
+                                <child>
+                                  <object class="GtkButton" id="from-file-button">
+                                    <property name="valign">center</property>
+                                    <property name="icon-name">document-open-symbolic</property>
+                                    <signal name="clicked" handler="set_from_file_button_clicked" swapped="yes"/>
+                                    <style>
+                                      <class name="flat"/>
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwEntryRow" id="pdf_url_entry_row">
+                                <property name="activatable">True</property>
+                                <property name="title" translatable="yes">From URL</property>
+                                <child>
+                                  <object class="GtkButton">
+                                    <property name="valign">center</property>
+                                    <property name="icon-name">go-next-symbolic</property>
+                                    <signal name="clicked" handler="on_download_pdf_button_clicked" swapped="true"/>
+                                    <style>
+                                      <class name="flat"/>
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
                             <style>
-                              <class name="error"/>
+                              <class name="boxed-list"/>
                             </style>
                           </object>
                         </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Creates a copy of the selected pdf and stores it in your Bibliography folder.</property>
-                        <property name="wrap-mode">word-char</property>
-                        <property name="wrap">True</property>
-                        <property name="xalign">0</property>
-                        <style>
-                          <class name="dim-label"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkListBox">
-                        <property name="selection-mode">none</property>
-                        <child>
-                          <object class="AdwActionRow">
-                            <property name="activatable">True</property>
-                            <property name="title" translatable="yes">From file</property>
-                            <property name="activatable-widget">from-file-button</property>
-                            <child>
-                              <object class="GtkButton" id="from-file-button">
-                                <property name="valign">center</property>
-                                <property name="icon-name">document-open-symbolic</property>
-                                <signal name="clicked" handler="set_from_file_button_clicked" swapped="yes"/>
-                                <style>
-                                  <class name="flat"/>
-                                </style>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="AdwEntryRow" id="pdf_url_entry_row">
-                            <property name="activatable">True</property>
-                            <property name="title" translatable="yes">From URL</property>
-                            <child>
-                              <object class="GtkButton">
-                                <property name="valign">center</property>
-                                <property name="icon-name">go-next-symbolic</property>
-                                <signal name="clicked" handler="on_download_pdf_button_clicked" swapped="true"/>
-                                <style>
-                                  <class name="flat"/>
-                                </style>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <style>
-                          <class name="boxed-list"/>
-                        </style>
                       </object>
                     </child>
                   </object>
