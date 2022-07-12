@@ -214,10 +214,6 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            // FIXME See https://github.com/gtk-rs/gtk-rs-core/pull/665
-            let entry = cratebibtex::Entry::default();
-            self.bindings.set_source(Some(&entry));
-
             self.doi_entry
                 .connect_changed(glib::clone!(@weak obj => move |row| {
                     let sensitive =crate::utils::doi_url(&row.text()).is_ok();
