@@ -8,7 +8,7 @@
       <object class="GtkHeaderBar">
         <property name="title-widget">
           <object class="AdwWindowTitle">
-            <property name="title" translatable="yes">Set PDF</property>
+            <property name="title" translatable="yes">Add PDF</property>
           </object>
         </property>
       </object>

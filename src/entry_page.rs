@@ -550,7 +550,7 @@ impl EntryPage {
             false,
             glib::clone!(@weak self as obj, @weak window => @default-return None, move |_| {
                 obj.setup_pdf();
-                window.send_toast(&gettext("PDF Set"));
+                window.send_toast(&gettext("PDF Added"));
 
                 None
             }),
