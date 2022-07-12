@@ -11,8 +11,8 @@ gnome = import('gnome')
 
 base_id = 'org.gnome.World.Citations'
 
-dependency('glib-2.0', version: '>= 2.72')
-dependency('gio-2.0', version: '>= 2.72')
+dependency('glib-2.0', version: '>= 2.74')
+dependency('gio-2.0', version: '>= 2.74')
 dependency('gtk4', version: '>= 4.6.0')
 dependency('libadwaita-1', version: '>= 1.2.alpha')
 

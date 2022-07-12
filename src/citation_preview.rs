@@ -100,7 +100,7 @@ mod imp {
         #[template_child]
         pub help_source_view: TemplateChild<gtk::TextView>,
 
-        pub signal_handler: RefCell<Option<glib::SignalHandlerId>>,
+        pub signals: glib::SignalGroup,
         pub entry: RefCell<Option<cratebibtex::Entry>>,
         pub template_kind: Cell<Template>,
         pub format_kind: Cell<cratebibtex::Format>,
@@ -119,8 +119,8 @@ mod imp {
                 entry: RefCell::default(),
                 template_kind: Cell::default(),
                 format_kind: Cell::default(),
+                signals: glib::SignalGroup::new(),
                 settings: gio::Settings::new(crate::config::APP_ID),
-                signal_handler: RefCell::default(),
             }
         }
     }
@@ -238,10 +238,9 @@ mod imp {
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
 
-            // TODO add signal group on glib 2.74
-            // self.signals.connect_local("changed", false, glib::clone!(@weak obj => move |_value| {
-            //     obj.emit("template");
-            // }));
+            self.signals.connect_local("changed", false, glib::clone!(@weak obj => move |_value| {
+                obj.notify("template");
+            }));
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
@@ -302,15 +301,7 @@ mod imp {
             match pspec.name() {
                 "entry" => {
                     if let Ok(entry) = value.get::<cratebibtex::Entry>() {
-                        let id = entry.connect_notify_local(None, glib::clone!(@weak obj => move |_entry, _pspec| {
-                            obj.notify("template");
-                        }));
-
-                        let old_entry = self.entry.replace(Some(entry));
-                        if let (Some(old_id), Some(entry)) = (self.signal_handler.replace(Some(id)), old_entry) {
-                            entry.disconnect(old_id);
-                        }
-
+                        self.signals.set_target(Some(entry));
                         let template = if obj.use_book_format() {
                             self.settings.string("custom-book-template")
                         } else {
