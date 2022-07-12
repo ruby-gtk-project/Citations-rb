@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-06-10 10:48+0000\n"
-"PO-Revision-Date: 2022-06-10 18:57+0300\n"
+"POT-Creation-Date: 2022-07-11 15:53+0000\n"
+"PO-Revision-Date: 2022-07-12 09:50+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -95,12 +95,13 @@ msgstr "Простий"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:40
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
+#: src/window.rs:608
 msgid "Citations"
 msgstr "Цитати"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:595
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:610
 msgid "Manage your bibliography"
 msgstr "Керування вашою бібліографією"
 
@@ -151,6 +152,29 @@ msgstr "Головне вікно"
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:71
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
+
+#: data/resources/ui/add_pdf_dialog.ui:11
+#| msgid "Select PDF"
+msgid "Set PDF"
+msgstr "Встановити PDF"
+
+#: data/resources/ui/add_pdf_dialog.ui:48
+msgid "Bibliography folder not set"
+msgstr "Не встановлено теки бібліографії"
+
+#: data/resources/ui/add_pdf_dialog.ui:66
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"Створює копію позначеного PDF і зберігає її у вашій теці бібліографії."
+
+#: data/resources/ui/add_pdf_dialog.ui:81
+msgid "From file"
+msgstr "З файла"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "From URL"
+msgstr "З адреси"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -221,7 +245,7 @@ msgstr "_Назва"
 msgid "_Year"
 msgstr "Р_ік"
 
-#: data/resources/ui/entry_page.ui:148 src/entry_page.rs:390
+#: data/resources/ui/entry_page.ui:148 src/entry_page.rs:376
 msgid "Open in Browser"
 msgstr "Відкрити у переглядачі"
 
@@ -230,37 +254,32 @@ msgid "Other Properties"
 msgstr "Інші властивості"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/entry_page.ui:187
+#: data/resources/ui/entry_page.ui:191
 msgid "Select PDF"
 msgstr "Вибрати PDF"
 
-#: data/resources/ui/entry_page.ui:188
+#: data/resources/ui/entry_page.ui:192
 msgid "Copy file to bibliography folder"
 msgstr "Копіювати файл до теки бібліографії"
 
-#: data/resources/ui/entry_page.ui:192
-msgid "From file"
-msgstr "З файла"
-
 #: data/resources/ui/entry_page.ui:209
-msgid "From URL"
-msgstr "З адреси"
+msgid "PDF"
+msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:227
-msgid "Open PDF"
-msgstr "Відкрити PDF"
+#: data/resources/ui/entry_page.ui:220 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:144
+msgid "_Open"
+msgstr "_Відкрити"
 
 #: data/resources/ui/entry_page.ui:233
-msgid "Open"
-msgstr "Відкрити"
-
-#: data/resources/ui/entry_page.ui:244
 msgid "Delete PDF"
 msgstr "Вилучити PDF"
 
-#: data/resources/ui/entry_page.ui:260
-msgid "PDF Preview"
-msgstr "Попередній перегляд PDF"
+#: data/resources/ui/entry_page.ui:270
+#| msgid "PDF Preview"
+msgid "Could not set PDF Preview"
+msgstr "Не вдалося встановити попередній перегляд PDF"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
@@ -326,11 +345,6 @@ msgstr "Шукати"
 msgid "_Create New Bibliography"
 msgstr "С_творити бібліографію"
 
-#: data/resources/ui/window.ui:10 data/resources/ui/window.ui:33
-#: data/resources/ui/window.ui:97 data/resources/ui/window.ui:145
-msgid "_Open"
-msgstr "_Відкрити"
-
 #: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
@@ -358,7 +372,7 @@ msgid "_Delete"
 msgstr "В_илучити"
 
 #: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:195
 msgid "Main Menu"
 msgstr "Головне меню"
 
@@ -367,25 +381,47 @@ msgstr "Головне меню"
 msgid "Open a BibTeX File"
 msgstr "Відкрийте файл BibTeX"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:129
+#| msgid "Manage your bibliography"
+msgid "Manage your Citations"
+msgstr "Керування вашими посиланнями"
+
+#: data/resources/ui/window.ui:136
 msgid "Recent Files"
 msgstr "Нещодавні файли"
 
-#: data/resources/ui/window.ui:189
+#: data/resources/ui/window.ui:188
 msgid "Add New Citation"
 msgstr "Додати нове посилання"
 
-#: data/resources/ui/window.ui:202
+#: data/resources/ui/window.ui:201
 msgid "Search"
 msgstr "Пошук"
 
-#: data/resources/ui/window.ui:253
+#: data/resources/ui/window.ui:252
 msgid "Back"
 msgstr "Назад"
 
-#: data/resources/ui/window.ui:262
+#: data/resources/ui/window.ui:261
 msgid "Secondary Menu"
 msgstr "Вторинне меню"
+
+#: src/add_pdf_dialog.rs:57
+msgid "Could not set PDF"
+msgstr "Не вдалося встановити PDF"
+
+#: src/add_pdf_dialog.rs:68
+msgid "Could not download PDF"
+msgstr "Не вдалося отримати PDF"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: src/add_pdf_dialog.rs:97
+msgid "Make sure that {path} exists"
+msgstr "Переконайтеся, що тека {path} існує"
+
+#: src/add_pdf_dialog.rs:187
+msgid "PDF Files"
+msgstr "файли PDF"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -405,7 +441,7 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:200
+#: src/citation_preview.rs:160 src/entry_page.rs:186
 msgid "Copied"
 msgstr "Скопійовано"
 
@@ -413,31 +449,19 @@ msgstr "Скопійовано"
 msgid "Custom…"
 msgstr "Нетиповий…"
 
-#: src/entry_page.rs:124
-msgid "PDF Downloaded"
-msgstr "Отримано PDF"
-
-#: src/entry_page.rs:161
+#: src/entry_page.rs:147
 msgid "Other…"
 msgstr "Інше…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:223
+#: src/entry_page.rs:209
 msgid "Citation Key already exists"
 msgstr "Ключ цитування вже існує"
 
-#: src/entry_page.rs:447
-msgid "Bibliography folder not set"
-msgstr "Не встановлено теки бібліографії"
-
-#: src/entry_page.rs:453
-#| msgid "Make sure ~/Documents/Bibliography exists"
-msgid "Make sure that {path} exists"
-msgstr "Переконайтеся, що тека {path} існує"
-
-#: src/entry_page.rs:614
-msgid "PDF Files"
-msgstr "файли PDF"
+#: src/entry_page.rs:549
+#| msgid "PDF Files"
+msgid "PDF Set"
+msgstr "PDF встановлено"
 
 #. TODO Use placeholder-text see
 #. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
@@ -445,148 +469,162 @@ msgstr "файли PDF"
 msgid "Insert a BibTeX citation here"
 msgstr "Вставте сюди посилання BibTeX"
 
-#: src/utils.rs:20
+#: src/utils.rs:21
 msgid "Author"
 msgstr "Автор"
 
-#: src/utils.rs:21
+#: src/utils.rs:22
 msgid "Year"
 msgstr "Рік"
 
-#: src/utils.rs:22
+#: src/utils.rs:23
 msgid "Title"
 msgstr "Назва"
 
-#: src/utils.rs:23
+#: src/utils.rs:24
 msgid "Volume"
 msgstr "Том"
 
-#: src/utils.rs:24
+#: src/utils.rs:25
 msgid "Number"
 msgstr "Номер"
 
-#: src/utils.rs:25
+#: src/utils.rs:26
 msgid "Pages"
 msgstr "Сторінки"
 
-#: src/utils.rs:26
+#: src/utils.rs:27
 msgid "Publisher"
 msgstr "Видавець"
 
-#: src/utils.rs:27
+#: src/utils.rs:28
 msgid "Journal"
 msgstr "Журнал"
 
-#: src/utils.rs:28
+#: src/utils.rs:29
 msgid "Address"
 msgstr "Адреса"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:30
+#: src/utils.rs:31
 msgid "How Published"
 msgstr "Як видавалася"
 
-#: src/utils.rs:31
+#: src/utils.rs:32
 msgid "Note"
 msgstr "Нотатка"
 
-#: src/utils.rs:32
+#: src/utils.rs:33
 msgid "Book Title"
 msgstr "Назва книги"
 
-#: src/utils.rs:33
+#: src/utils.rs:34
 msgid "Series"
 msgstr "Цикл"
 
-#: src/utils.rs:34
+#: src/utils.rs:35
 msgid "Archive Prefix"
 msgstr "Префікс архівів"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:36
+#: src/utils.rs:37
 msgid "ePrint"
 msgstr "Електронний відбиток"
 
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:38
+#: src/utils.rs:39
 msgid "Primary Class"
 msgstr "Основний клас"
 
-#: src/utils.rs:39
+#: src/utils.rs:40
 msgid "Month"
 msgstr "Місяць"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:41
+#: src/utils.rs:42
 msgid "Editor"
 msgstr "Редактор"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:43
+#: src/utils.rs:44
 msgid "Organization"
 msgstr "Організація"
 
-#: src/utils.rs:44
+#: src/utils.rs:45
 msgid "School"
 msgstr "Школа"
 
-#: src/utils.rs:45
+#: src/utils.rs:46
 msgid "Institution"
 msgstr "Установа"
 
-#: src/window.rs:316 src/window.rs:345
+#: src/window.rs:320 src/window.rs:349
 msgid "Bibtex Files"
 msgstr "файли BibTeX"
 
-#: src/window.rs:337
+#: src/window.rs:341
 msgid "Create New Bibliography"
 msgstr "Створити бібліографію"
 
-#: src/window.rs:340
+#: src/window.rs:344
 msgid "Create"
 msgstr "Створити"
 
-#: src/window.rs:493
+#: src/window.rs:463
+#| msgid "Recent Files"
+msgid "Remove From Recent Files"
+msgstr "Вилучити з нещодавніх файлів"
+
+#: src/window.rs:507
 msgid "An entry with the given citation key already exists"
 msgstr "Запис із вказаним ключем цитування вже існує"
 
-#: src/window.rs:508
+#: src/window.rs:522
 msgid "Bibliography saved"
 msgstr "Бібліографію збережено"
 
-#: src/window.rs:552
+#: src/window.rs:566
 msgid "Citation Deleted"
 msgstr "Посилання вилучено"
 
-#: src/window.rs:554
+#: src/window.rs:568
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:599
+#: src/window.rs:615
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:616
+#: src/window.rs:628
 msgid "Unsaved Changes"
 msgstr "Незбережені зміни"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:620
+#: src/window.rs:631
 msgid "Do you want to write all changes to the safe?"
 msgstr "Хочете записати усі зміни до сейфа?"
 
-#: src/window.rs:623
+#: src/window.rs:635
 msgid "_Quit Without Saving"
 msgstr "В_ийти без збереження"
 
-#: src/window.rs:629
+#: src/window.rs:636
 msgid "_Don't Quit"
 msgstr "_Не виходити"
 
-#: src/window.rs:634
+#: src/window.rs:637
 msgid "_Save and Quit"
 msgstr "З_берегти та вийти"
+
+#~ msgid "Open PDF"
+#~ msgstr "Відкрити PDF"
+
+#~ msgid "Open"
+#~ msgstr "Відкрити"
+
+#~ msgid "PDF Downloaded"
+#~ msgstr "Отримано PDF"
 
 #~ msgid "Gnome;GTK;"
 #~ msgstr "Gnome;GTK;гноме;гном;жтека;гтк;"
