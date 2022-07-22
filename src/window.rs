@@ -640,7 +640,7 @@ impl Window {
         dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
         dialog.set_default_response(Some("save"));
 
-        match dialog.run_future(None).await.as_str() {
+        match dialog.run_future().await.as_str() {
             "discard" => self.destroy(),
             "save" => {
                 if let Err(err) = self.save().await {
