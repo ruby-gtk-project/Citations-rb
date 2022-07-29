@@ -611,7 +611,7 @@ impl Window {
             .license_type(gtk::License::Gpl30)
             .comments(&gettext("Manage your bibliography"))
             .website("https://gitlab.gnome.org/World/citations/")
-            .issue_url("https://gitlab.gnome.org/World/citations/-/issues")
+            .issue_url("https://gitlab.gnome.org/World/citations/-/issues/new")
             .version(VERSION)
             .transient_for(self)
             .translator_credits(&gettext("translator-credits"))
