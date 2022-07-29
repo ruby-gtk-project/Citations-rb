@@ -1,0 +1,599 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
+"POT-Creation-Date: 2022-07-29 14:24+0000\n"
+"PO-Revision-Date: 2022-07-29 21:44+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: cratebibtex/src/entry_type.rs:108
+msgid "Article"
+msgstr "Artikkeli"
+
+#: cratebibtex/src/entry_type.rs:109
+msgid "Book"
+msgstr "Kirja"
+
+#: cratebibtex/src/entry_type.rs:110
+msgid "Misc"
+msgstr "Sekalainen"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:112
+msgid "In Proceedings"
+msgstr "Pöytäkirjat"
+
+#: cratebibtex/src/entry_type.rs:113
+msgid "Unpublished"
+msgstr "Julkaisematon"
+
+#. NOTE As in online source
+#: cratebibtex/src/entry_type.rs:115
+msgid "Online"
+msgstr "Verkkolähde"
+
+#. NOTE As in other kind of source
+#: cratebibtex/src/entry_type.rs:117
+msgid "Other"
+msgstr "Muu"
+
+#: cratebibtex/src/entry_type.rs:118
+msgid "Booklet"
+msgstr "Esite"
+
+#: cratebibtex/src/entry_type.rs:119
+msgid "Conference"
+msgstr "Konfrenssi"
+
+#: cratebibtex/src/entry_type.rs:120
+msgid "In Book"
+msgstr "Kirjassa"
+
+#: cratebibtex/src/entry_type.rs:121
+msgid "In Collection"
+msgstr "Kokoelmassa"
+
+#. NOTE As in instruction manual
+#: cratebibtex/src/entry_type.rs:123
+msgid "Manual"
+msgstr "Ohjekirja"
+
+#: cratebibtex/src/entry_type.rs:124
+msgid "Master Thesis"
+msgstr "Diplomityö"
+
+#: cratebibtex/src/entry_type.rs:125
+msgid "PhD. Thesis"
+msgstr "Väitöskirja"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:127
+msgid "Proceedings"
+msgstr "Konfrenssipöytäkirjat"
+
+#: cratebibtex/src/entry_type.rs:128
+msgid "Tech Report"
+msgstr "Tekninen raportti"
+
+#. NOTE Plain as in Plain Text
+#: cratebibtex/src/format.rs:52
+msgid "Plain"
+msgstr "Raakateksti"
+
+#. NOTE: This is the app name
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
+#: src/window.rs:610
+msgid "Citations"
+msgstr "Sitaatit"
+
+#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:612
+msgid "Manage your bibliography"
+msgstr "Hallitse lähdeluetteloasi"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.World.Citations.desktop.in.in:10
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr ""
+"bibliography;citing;literature;BibTeX;LaTeX;TeX;lähdeluettelo;bibliografia;"
+"viittaus;lainaus;sitaatti;kirjallisuus;"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "Ikkunan leveys"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "Ikkunan korkeus"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Suurennetun ikkunan tila"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
+msgid "List of paths of recent files"
+msgstr ""
+
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
+msgid "Default template for book citation"
+msgstr "Oletusmalli kirjasitaatille"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:30
+msgid "Default template kind for citations"
+msgstr ""
+
+#: data/org.gnome.World.Citations.gschema.xml.in:34
+msgid "Default template format for citations"
+msgstr ""
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "Hallitse lähdeluetteloja käyttäen BibTeX-muotoa."
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:15
+msgid "Main window"
+msgstr "Pääikkuna"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:71
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
+#. Translators: Selects a PDF file for the citation
+#: data/resources/ui/add_pdf_dialog.ui:11 data/resources/ui/entry_page.ui:192
+msgid "Add PDF"
+msgstr "Lisää PDF"
+
+#: data/resources/ui/add_pdf_dialog.ui:48
+msgid "Bibliography folder not set"
+msgstr "Lähdeluettelojen kansiota ei ole asetettu"
+
+#: data/resources/ui/add_pdf_dialog.ui:66
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"Luo kopion valitusta pdf:stä ja tallettaa sen asettamaasi lähdeluettelojen "
+"kansioon."
+
+#: data/resources/ui/add_pdf_dialog.ui:81
+msgid "From file"
+msgstr "Tiedostosta"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "From URL"
+msgstr "Verkko-osoitteesta"
+
+#: data/resources/ui/citation_preview.ui:15
+msgid "Custom Citation Format"
+msgstr "Mukautettu sitaatin muoto"
+
+#: data/resources/ui/citation_preview.ui:47
+msgid "Citation"
+msgstr "Sitaatti"
+
+#: data/resources/ui/citation_preview.ui:91 data/resources/ui/entry_page.ui:113
+msgid "Copy"
+msgstr "Kopioi"
+
+#: data/resources/ui/citation_preview.ui:128
+msgid "Custom Template"
+msgstr "Mukautettu malli"
+
+#: data/resources/ui/citation_preview.ui:144
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported.\n"
+"            "
+msgstr ""
+
+#: data/resources/ui/citation_preview.ui:150
+msgid "Example:"
+msgstr "Esimerkki:"
+
+#. Empty state widget
+#: data/resources/ui/entry_list.ui:9
+msgid "No Citations"
+msgstr "Ei sitaatteja"
+
+#: data/resources/ui/entry_list.ui:10
+msgid "Create a new citation"
+msgstr "Luo uusi sitaatti"
+
+#: data/resources/ui/entry_page.ui:13
+msgid "No Citation Selected"
+msgstr "Sitaattia ei ole valittu"
+
+#: data/resources/ui/entry_page.ui:82
+msgid "Citation _Type"
+msgstr "Sitaatin _tyyppi"
+
+#: data/resources/ui/entry_page.ui:98
+msgid "_Other Citation Type"
+msgstr "_Muu sitaatin tyyppi"
+
+#: data/resources/ui/entry_page.ui:105
+msgid "_Citation Key"
+msgstr "_Sitaatin avain"
+
+#: data/resources/ui/entry_page.ui:124
+msgid "_Author"
+msgstr "_Tekijä"
+
+#: data/resources/ui/entry_page.ui:130
+msgid "_Title"
+msgstr "_Otsikko"
+
+#: data/resources/ui/entry_page.ui:136
+msgid "_Year"
+msgstr "_Vuosi"
+
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:384
+msgid "Open in Browser"
+msgstr "Avaa selaimessa"
+
+#: data/resources/ui/entry_page.ui:165
+msgid "Other Properties"
+msgstr "Muut ominaisuudet"
+
+#: data/resources/ui/entry_page.ui:209
+msgid "PDF"
+msgstr "PDF"
+
+#: data/resources/ui/entry_page.ui:220 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:144
+msgid "_Open"
+msgstr "_Avaa"
+
+#: data/resources/ui/entry_page.ui:233
+msgid "Delete PDF"
+msgstr "Poista PDF"
+
+#: data/resources/ui/entry_page.ui:270
+msgid "Could not set PDF Preview"
+msgstr "PDF-esikatselua ei voitu asettaa"
+
+#: data/resources/ui/new_entry_dialog.ui:27
+msgid "_Cancel"
+msgstr "_Peru"
+
+#: data/resources/ui/new_entry_dialog.ui:34
+msgid "C_reate"
+msgstr "_Luo"
+
+#: data/resources/ui/new_entry_dialog.ui:49
+msgid "New"
+msgstr "Uusi"
+
+#: data/resources/ui/new_entry_dialog.ui:68
+msgid "Citation Key"
+msgstr "Sitaatin avain"
+
+#: data/resources/ui/new_entry_dialog.ui:73
+msgid "Citation Type"
+msgstr "Sitaatin tyyppi"
+
+#. BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:93
+msgid "From BibTeX"
+msgstr "BibTeXistä"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Yleiset"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Näytä pikanäppäimet"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Lopeta"
+
+#: data/resources/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Lähdeluettelo"
+
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Avaa"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Tallenna"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Etsi"
+
+#: data/resources/ui/window.ui:6
+msgid "_Create New Bibliography"
+msgstr "_Luo uusi lähdeluettelo"
+
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#. About dialog
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+msgid "_About Citations"
+msgstr "_Tietoja - Sitaatit"
+
+#: data/resources/ui/window.ui:29
+msgid "_Save"
+msgstr "_Tallenna"
+
+#: data/resources/ui/window.ui:52
+msgid "_Search in Google Scholar"
+msgstr "_Etsi Google Scholarista"
+
+#. arXiv is a proper name
+#: data/resources/ui/window.ui:56
+msgid "_Search in arXiv"
+msgstr "_Etsi arXivista"
+
+#: data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "_Poista"
+
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:195
+msgid "Main Menu"
+msgstr "Päävalikko"
+
+#. BibTeX is a proper name
+#: data/resources/ui/window.ui:92
+msgid "Open a BibTeX File"
+msgstr "Avaa BibTeX-tiedosto"
+
+#: data/resources/ui/window.ui:129
+msgid "Manage your Citations"
+msgstr "Hallitse sitaatteja"
+
+#: data/resources/ui/window.ui:136
+msgid "Recent Files"
+msgstr "Viimeisimmät tiedostot"
+
+#: data/resources/ui/window.ui:188
+msgid "Add New Citation"
+msgstr "Lisää uusi sitaatti"
+
+#: data/resources/ui/window.ui:201
+msgid "Search"
+msgstr "Etsi"
+
+#: data/resources/ui/window.ui:252
+msgid "Back"
+msgstr "Takaisin"
+
+#: data/resources/ui/window.ui:261
+msgid "Secondary Menu"
+msgstr "Toissijainen valikko"
+
+#: src/add_pdf_dialog.rs:57
+msgid "Could not set PDF"
+msgstr "PDF:ää ei voitu asettaa"
+
+#: src/add_pdf_dialog.rs:68
+msgid "Could not download PDF"
+msgstr "PDF:ää ei voitu ladata"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: src/add_pdf_dialog.rs:97
+msgid "Make sure that {path} exists"
+msgstr "Varmista että {path} on olemassa"
+
+#: src/add_pdf_dialog.rs:187
+msgid "PDF Files"
+msgstr "PDF-tiedostot"
+
+#. TODO Should this be translatable?
+#: src/citation_preview.rs:56
+msgid "Chicago"
+msgstr "Chicago"
+
+#: src/citation_preview.rs:57
+msgid "Harvard"
+msgstr "Harvard"
+
+#: src/citation_preview.rs:58
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#. NOTE: Custom as in Custom Template.
+#: src/citation_preview.rs:60
+msgid "Custom"
+msgstr "Mukautettu"
+
+#: src/citation_preview.rs:160 src/entry_page.rs:185
+msgid "Copied"
+msgstr "Kopioitu"
+
+#: src/citation_preview.rs:167
+msgid "Custom…"
+msgstr "Mukautettu…"
+
+#: src/entry_page.rs:149
+msgid "Other…"
+msgstr "Muu…"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: src/entry_page.rs:208
+msgid "Citation Key already exists"
+msgstr "Sitaatin avain on jo olemassa"
+
+#: src/entry_page.rs:549
+msgid "PDF added"
+msgstr "PDF lisätty"
+
+#: src/new_entry_dialog.rs:124
+msgid "Insert a BibTeX citation here"
+msgstr "Syötä BibTeX-sitaatti tähän"
+
+#: src/utils.rs:21
+msgid "Author"
+msgstr "Tekijä"
+
+#: src/utils.rs:22
+msgid "Year"
+msgstr "Vuosi"
+
+#: src/utils.rs:23
+msgid "Title"
+msgstr "Otsikko"
+
+#: src/utils.rs:24
+msgid "Volume"
+msgstr "Nidos"
+
+#: src/utils.rs:25
+msgid "Number"
+msgstr "Numero"
+
+#: src/utils.rs:26
+msgid "Pages"
+msgstr "Sivut"
+
+#: src/utils.rs:27
+msgid "Publisher"
+msgstr "Julkaisija"
+
+#: src/utils.rs:28
+msgid "Journal"
+msgstr ""
+
+#: src/utils.rs:29
+msgid "Address"
+msgstr "Osoite"
+
+#. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
+#: src/utils.rs:31
+msgid "How Published"
+msgstr "Miten julkaistu"
+
+#: src/utils.rs:32
+msgid "Note"
+msgstr "Huomio"
+
+#: src/utils.rs:33
+msgid "Book Title"
+msgstr "Kirjan otsikko"
+
+#: src/utils.rs:34
+msgid "Series"
+msgstr ""
+
+#: src/utils.rs:35
+msgid "Archive Prefix"
+msgstr ""
+
+#. TRANSLATORS As in digital print
+#: src/utils.rs:37
+msgid "ePrint"
+msgstr ""
+
+#. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
+#: src/utils.rs:39
+msgid "Primary Class"
+msgstr "Ensisijainen luokka"
+
+#: src/utils.rs:40
+msgid "Month"
+msgstr "Kuukausi"
+
+#. TRANSLATORS As in chief editor
+#: src/utils.rs:42
+msgid "Editor"
+msgstr "Editori"
+
+#. TRANSLATORS As in association
+#: src/utils.rs:44
+msgid "Organization"
+msgstr "Organisaatio"
+
+#: src/utils.rs:45
+msgid "School"
+msgstr "Koulu"
+
+#: src/utils.rs:46
+msgid "Institution"
+msgstr "Instituutio"
+
+#: src/window.rs:320 src/window.rs:349
+msgid "Bibtex Files"
+msgstr "Bibtex-tiedostot"
+
+#: src/window.rs:341
+msgid "Create New Bibliography"
+msgstr "Luo uusi lähdeluettelo"
+
+#: src/window.rs:344
+msgid "Create"
+msgstr "Luo"
+
+#: src/window.rs:465
+msgid "Remove From Recent Files"
+msgstr "Poista viimeisimmistä tiedostoista"
+
+#: src/window.rs:509
+msgid "An entry with the given citation key already exists"
+msgstr "Samalla sitaattiavaimella on jo olemassa tietue"
+
+#: src/window.rs:524
+msgid "Bibliography saved"
+msgstr "Lähdeluettelo tallennettu"
+
+#: src/window.rs:568
+msgid "Citation Deleted"
+msgstr "Sitaatti poistettu"
+
+#: src/window.rs:570
+msgid "Undo"
+msgstr "Kumoa"
+
+#: src/window.rs:617
+msgid "translator-credits"
+msgstr "Jiri Grönroos"
+
+#. NOTE Dialog title which informs the user about unsaved changes.
+#: src/window.rs:630
+msgid "Unsaved Changes"
+msgstr "Tallentamattomia muutoksia"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:633
+msgid "Do you want to write all changes to the safe?"
+msgstr "Haluatko kirjoittaa kaikki muutokset säilöön?"
+
+#: src/window.rs:637
+msgid "_Quit Without Saving"
+msgstr "_Lopeta tallentamatta"
+
+#: src/window.rs:638
+msgid "_Don't Quit"
+msgstr "_Älä lopeta"
+
+#: src/window.rs:639
+msgid "_Save and Quit"
+msgstr "_Tallenna ja lopeta"
