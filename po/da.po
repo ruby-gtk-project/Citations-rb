@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-14 07:19+0000\n"
-"PO-Revision-Date: 2022-06-04 23:38+0200\n"
+"POT-Creation-Date: 2022-07-12 07:42+0000\n"
+"PO-Revision-Date: 2022-07-29 12:29+0200\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -87,18 +87,19 @@ msgid "Tech Report"
 msgstr "Teknisk rapport"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:51
+#: cratebibtex/src/format.rs:52
 msgid "Plain"
 msgstr "Almindelig tekst"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:39
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
+#: src/window.rs:610
 msgid "Citations"
 msgstr "Citations"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:590
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:612
 msgid "Manage your bibliography"
 msgstr "Håndtér din bibliografi"
 
@@ -145,39 +146,63 @@ msgstr "Håndtér dine bibliografier i BibTeX-formatet."
 msgid "Main window"
 msgstr "Hovedvindue"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:52
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:71
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
-#: data/resources/ui/citation_preview.ui:25
+#. Translators: Selects a PDF file for the citation
+#: data/resources/ui/add_pdf_dialog.ui:11 data/resources/ui/entry_page.ui:192
+msgid "Add PDF"
+msgstr "Tilføj PDF"
+
+#: data/resources/ui/add_pdf_dialog.ui:48
+msgid "Bibliography folder not set"
+msgstr "Bibliografimappe er ikke angivet"
+
+# pænest og sikrest med lile b
+#: data/resources/ui/add_pdf_dialog.ui:66
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr "Opretter en kopi af den valgte pdf og gemmer den i din bibliografimappe."
+
+#: data/resources/ui/add_pdf_dialog.ui:81
+msgid "From file"
+msgstr "Fra fil"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "From URL"
+msgstr "Fra URL"
+
+#: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
 msgstr "Brugertilpasset referenceformat"
 
-#: data/resources/ui/citation_preview.ui:70
+#: data/resources/ui/citation_preview.ui:47
 msgid "Citation"
 msgstr "Reference"
 
 # Skal det være kopi?  Jeg kan ikke se det fra kildekoden.
-#: data/resources/ui/citation_preview.ui:116
-#: data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:91 data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "Kopiér"
 
-#: data/resources/ui/citation_preview.ui:151
+#: data/resources/ui/citation_preview.ui:128
 msgid "Custom Template"
 msgstr "Brugertilpasset skabelon"
 
-#: data/resources/ui/citation_preview.ui:167
+#: data/resources/ui/citation_preview.ui:144
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
 "and italics is supported.\n"
 "            "
 msgstr ""
-"Skriv et brugertilpasset format til dine referencer. Brug <tt>%MÆRKE%</tt> til at indsætte mærket <tt>mærke</tt>. Fed og kursiv understøttes med markdownsyntaks.\n"
+"Skriv et brugertilpasset format til dine referencer. Brug <tt>%MÆRKE%</tt> "
+"til at indsætte mærket <tt>mærke</tt>. Fed og kursiv understøttes med "
+"markdownsyntaks.\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:173
+#: data/resources/ui/citation_preview.ui:150
 msgid "Example:"
 msgstr "Eksempel:"
 
@@ -218,42 +243,31 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "_År"
 
-#: data/resources/ui/entry_page.ui:148 src/entry_page.rs:419
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:388
 msgid "Open in Browser"
 msgstr "Åbn i browser"
 
-#: data/resources/ui/entry_page.ui:168
+#: data/resources/ui/entry_page.ui:165
 msgid "Other Properties"
 msgstr "Andre egenskaber"
 
-#. Translators: Selects a PDF file for the citation
-#: data/resources/ui/entry_page.ui:198
-msgid "Select PDF"
-msgstr "Vælg PDF"
+#: data/resources/ui/entry_page.ui:209
+msgid "PDF"
+msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:199
-msgid "Copy file to bibliography folder"
-msgstr "Kopiér fil til bibliografimappe"
+#: data/resources/ui/entry_page.ui:220 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:144
+msgid "_Open"
+msgstr "_Åbn"
 
-#: data/resources/ui/entry_page.ui:203
-msgid "From file"
-msgstr "Fra fil"
-
-#: data/resources/ui/entry_page.ui:220
-msgid "From URL"
-msgstr "Fra URL"
-
-#: data/resources/ui/entry_page.ui:239
-msgid "Open PDF"
-msgstr "Åbn PDF"
-
-#: data/resources/ui/entry_page.ui:244
+#: data/resources/ui/entry_page.ui:233
 msgid "Delete PDF"
 msgstr "Slet PDF"
 
-#: data/resources/ui/entry_page.ui:267
-msgid "PDF Preview"
-msgstr "Forhåndsvisning af PDF"
+#: data/resources/ui/entry_page.ui:270
+msgid "Could not set PDF Preview"
+msgstr "Kunne ikke angive forhåndsvisning af PDF"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
@@ -319,10 +333,6 @@ msgstr "Søg"
 msgid "_Create New Bibliography"
 msgstr "_Opret ny bibliografi"
 
-#: data/resources/ui/window.ui:10 data/resources/ui/window.ui:33
-msgid "_Open"
-msgstr "_Åbn"
-
 #: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturgenveje"
@@ -349,8 +359,8 @@ msgstr "_Søg i arXiv"
 msgid "_Delete"
 msgstr "_Slet"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:108
-#: data/resources/ui/window.ui:177
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:195
 msgid "Main Menu"
 msgstr "Hovedmenu"
 
@@ -359,25 +369,46 @@ msgstr "Hovedmenu"
 msgid "Open a BibTeX File"
 msgstr "Åbn en BibTeX-fil"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:129
+msgid "Manage your Citations"
+msgstr "Håndtér dine referencer"
+
+#: data/resources/ui/window.ui:136
 msgid "Recent Files"
 msgstr "Seneste filer"
 
-#: data/resources/ui/window.ui:170
+#: data/resources/ui/window.ui:188
 msgid "Add New Citation"
 msgstr "Tilføj ny reference"
 
-#: data/resources/ui/window.ui:183
+#: data/resources/ui/window.ui:201
 msgid "Search"
 msgstr "Søg"
 
-#: data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:252
 msgid "Back"
 msgstr "Tilbage"
 
-#: data/resources/ui/window.ui:243
+#: data/resources/ui/window.ui:261
 msgid "Secondary Menu"
 msgstr "Sekundær menu"
+
+#: src/add_pdf_dialog.rs:57
+msgid "Could not set PDF"
+msgstr "Kunne ikke angive PDF"
+
+#: src/add_pdf_dialog.rs:68
+msgid "Could not download PDF"
+msgstr "Kunne ikke hente PDF"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: src/add_pdf_dialog.rs:97
+msgid "Make sure that {path} exists"
+msgstr "Sørg for, at {path} findes"
+
+#: src/add_pdf_dialog.rs:187
+msgid "PDF Files"
+msgstr "PDF-filer"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -397,7 +428,7 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Brugertilpasset"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:183
+#: src/citation_preview.rs:160 src/entry_page.rs:185
 msgid "Copied"
 msgstr "Kopieret"
 
@@ -405,32 +436,19 @@ msgstr "Kopieret"
 msgid "Custom…"
 msgstr "Brugertilpasset …"
 
-#: src/entry_page.rs:107
-msgid "PDF Downloaded"
-msgstr "PDF hentet"
-
 # Anden type af indgang iflg. kildekoden
-#: src/entry_page.rs:144
+#: src/entry_page.rs:149
 msgid "Other…"
 msgstr "Anden …"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:206
+#: src/entry_page.rs:208
 msgid "Citation Key already exists"
 msgstr "Referencenøgle findes allerede"
 
-#: src/entry_page.rs:474
-msgid "Bibliography folder not set"
-msgstr "Bibliografimappe er ikke angivet"
-
-#. NOTE Do not translate the path.
-#: src/entry_page.rs:478
-msgid "Make sure ~/Documents/Bibliography exists"
-msgstr "Sørg for at ~/Documents/Bibliography findes"
-
-#: src/entry_page.rs:540
-msgid "PDF Files"
-msgstr "PDF-filer"
+#: src/entry_page.rs:553
+msgid "PDF added"
+msgstr "PDF tilføjet"
 
 #. TODO Use placeholder-text see
 #. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
@@ -438,125 +456,129 @@ msgstr "PDF-filer"
 msgid "Insert a BibTeX citation here"
 msgstr "Indsæt en BibTeX-reference her"
 
-#: src/utils.rs:20
+#: src/utils.rs:21
 msgid "Author"
 msgstr "Forfatter"
 
-#: src/utils.rs:21
+#: src/utils.rs:22
 msgid "Year"
 msgstr "År"
 
-#: src/utils.rs:22
+#: src/utils.rs:23
 msgid "Title"
 msgstr "Titel"
 
-#: src/utils.rs:23
+#: src/utils.rs:24
 msgid "Volume"
 msgstr "Bind"
 
-#: src/utils.rs:24
+#: src/utils.rs:25
 msgid "Number"
 msgstr "Nummer"
 
-#: src/utils.rs:25
+#: src/utils.rs:26
 msgid "Pages"
 msgstr "Sider"
 
-#: src/utils.rs:26
+#: src/utils.rs:27
 msgid "Publisher"
 msgstr "Forlag"
 
-#: src/utils.rs:27
+#: src/utils.rs:28
 msgid "Journal"
 msgstr "Tidsskrift"
 
-#: src/utils.rs:28
+#: src/utils.rs:29
 msgid "Address"
 msgstr "Adresse"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:30
+#: src/utils.rs:31
 msgid "How Published"
 msgstr "Udgivelsesmetode"
 
-#: src/utils.rs:31
+#: src/utils.rs:32
 msgid "Note"
 msgstr "Note"
 
-#: src/utils.rs:32
+#: src/utils.rs:33
 msgid "Book Title"
 msgstr "Bogtitel"
 
-#: src/utils.rs:33
+#: src/utils.rs:34
 msgid "Series"
 msgstr "Serie"
 
-#: src/utils.rs:34
+#: src/utils.rs:35
 msgid "Archive Prefix"
 msgstr "Arkivpræfiks"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:36
+#: src/utils.rs:37
 msgid "ePrint"
 msgstr "ePrint"
 
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:38
+#: src/utils.rs:39
 msgid "Primary Class"
 msgstr "Primær klasse"
 
-#: src/utils.rs:39
+#: src/utils.rs:40
 msgid "Month"
 msgstr "Måned"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:41
+#: src/utils.rs:42
 msgid "Editor"
 msgstr "Redaktør"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:43
+#: src/utils.rs:44
 msgid "Organization"
 msgstr "Organisation"
 
-#: src/utils.rs:44
+#: src/utils.rs:45
 msgid "School"
 msgstr "Skole"
 
-#: src/utils.rs:45
+#: src/utils.rs:46
 msgid "Institution"
 msgstr "Institution"
 
 # BibTeX for konsistens med andre
-#: src/window.rs:315 src/window.rs:344
+#: src/window.rs:320 src/window.rs:349
 msgid "Bibtex Files"
 msgstr "BibTeX-filer"
 
-#: src/window.rs:336
+#: src/window.rs:341
 msgid "Create New Bibliography"
 msgstr "Opret ny bibliografi"
 
-#: src/window.rs:339
+#: src/window.rs:344
 msgid "Create"
 msgstr "Opret"
 
-#: src/window.rs:492
+#: src/window.rs:465
+msgid "Remove From Recent Files"
+msgstr "Fjern fra seneste filer"
+
+#: src/window.rs:509
 msgid "An entry with the given citation key already exists"
 msgstr "Der findes allerede en indgang med den givne referencenøgle"
 
-#: src/window.rs:507
+#: src/window.rs:524
 msgid "Bibliography saved"
 msgstr "Bibliografi gemt"
 
-#: src/window.rs:547
+#: src/window.rs:568
 msgid "Citation Deleted"
 msgstr "Reference slettet"
 
-#: src/window.rs:549
+#: src/window.rs:570
 msgid "Undo"
 msgstr "Fortryd"
 
-#: src/window.rs:594
+#: src/window.rs:617
 msgid "translator-credits"
 msgstr ""
 "Ask Hjorth Larsen\n"
@@ -566,25 +588,33 @@ msgstr ""
 "E-mail <dansk@dansk-gruppen.dk>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:611
+#: src/window.rs:630
 msgid "Unsaved Changes"
 msgstr "Ændringer ikke gemt"
 
 # Er ikke sikker på hvad 'safe' dækker over
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:615
+#: src/window.rs:633
 msgid "Do you want to write all changes to the safe?"
 msgstr "Vil du skrive alle ændringer til lageret?"
 
-#: src/window.rs:618
+#: src/window.rs:637
 msgid "_Quit Without Saving"
 msgstr "_Afslut uden at gemme"
 
-#: src/window.rs:624
+#: src/window.rs:638
 msgid "_Don't Quit"
 msgstr "Afslut _ikke"
 
-#: src/window.rs:629
+#: src/window.rs:639
 msgid "_Save and Quit"
 msgstr "_Gem og afslut"
 
+#~ msgid "Select PDF"
+#~ msgstr "Vælg PDF"
+
+#~ msgid "Copy file to bibliography folder"
+#~ msgstr "Kopiér fil til bibliografimappe"
+
+#~ msgid "Open PDF"
+#~ msgstr "Åbn PDF"
