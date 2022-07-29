@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
 "POT-Creation-Date: 2022-07-27 13:06+0000\n"
-"PO-Revision-Date: 2022-07-27 19:32+0100\n"
+"PO-Revision-Date: 2022-07-29 15:23+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
@@ -32,9 +32,8 @@ msgstr "Diversos"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:112
-#, fuzzy
 msgid "In Proceedings"
-msgstr "Em Processos"
+msgstr "Em Atas"
 
 #: cratebibtex/src/entry_type.rs:113
 msgid "Unpublished"
@@ -51,24 +50,20 @@ msgid "Other"
 msgstr "Outros"
 
 #: cratebibtex/src/entry_type.rs:118
-#, fuzzy
 msgid "Booklet"
-msgstr "Livreto"
+msgstr "Folheto"
 
 #: cratebibtex/src/entry_type.rs:119
-#, fuzzy
 msgid "Conference"
-msgstr "Palestra"
+msgstr "Conferência"
 
 #: cratebibtex/src/entry_type.rs:120
-#, fuzzy
 msgid "In Book"
-msgstr "Em Livro"
+msgstr "Em livro"
 
 #: cratebibtex/src/entry_type.rs:121
-#, fuzzy
 msgid "In Collection"
-msgstr "Na Coleção"
+msgstr "Em coleção"
 
 #. NOTE As in instruction manual
 #: cratebibtex/src/entry_type.rs:123
@@ -76,25 +71,21 @@ msgid "Manual"
 msgstr "Manual"
 
 #: cratebibtex/src/entry_type.rs:124
-#, fuzzy
 msgid "Master Thesis"
-msgstr "Tese-mestre"
+msgstr "Tese de mestrado"
 
 #: cratebibtex/src/entry_type.rs:125
-#, fuzzy
 msgid "PhD. Thesis"
-msgstr "Tese de Doutorado"
+msgstr "Tese de doutoramento"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:127
-#, fuzzy
 msgid "Proceedings"
-msgstr "Procedimento"
+msgstr "Atas"
 
 #: cratebibtex/src/entry_type.rs:128
-#, fuzzy
 msgid "Tech Report"
-msgstr "Relatório Técnico"
+msgstr "Relatório tecnológico"
 
 #. NOTE Plain as in Plain Text
 #: cratebibtex/src/format.rs:52
@@ -110,15 +101,13 @@ msgstr "Citações"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:612
-#, fuzzy
 msgid "Manage your bibliography"
-msgstr "Gerencie sua bibliografia"
+msgstr "Gerir a sua bibliografia"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.World.Citations.desktop.in.in:10
-#, fuzzy
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
-msgstr "bibliografia;citando;literatura; BibTeX; LaTex; TeX;"
+msgstr "bibliografia;citando;literatura;BibTeX;LaTex;TeX;"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -129,42 +118,35 @@ msgid "Window height"
 msgstr "Altura da janela"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:14
-#, fuzzy
 msgid "Window maximized state"
 msgstr "Estado de janela maximizada"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:18
-#, fuzzy
 msgid "List of paths of recent files"
-msgstr "Lista de caminhos de arquivos recentes"
+msgstr "Lista de caminhos de ficheiros recentes"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:22
 #: data/org.gnome.World.Citations.gschema.xml.in:26
-#, fuzzy
 msgid "Default template for book citation"
 msgstr "Modelo padrão para citação de livro"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:30
-#, fuzzy
 msgid "Default template kind for citations"
 msgstr "Tipo de modelo padrão para citações"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:34
-#, fuzzy
 msgid "Default template format for citations"
 msgstr "Formato de modelo padrão para citações"
 
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:10
-#, fuzzy
 msgid "Manage your bibliographies using the BibTeX format."
-msgstr "Gerencie suas bibliografias usando o formato BibTeX."
+msgstr "Gerir as suas bibliografias usando o formato BibTeX."
 
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:15
 msgid "Main window"
 msgstr "Janela principal"
 
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:71
-#, fuzzy
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -174,16 +156,14 @@ msgid "Add PDF"
 msgstr "Adicionar PDF"
 
 #: data/resources/ui/add_pdf_dialog.ui:48
-#, fuzzy
 msgid "Bibliography folder not set"
-msgstr "Pasta bibliografia não definida"
+msgstr "Pasta de bibliografia não definida"
 
 #: data/resources/ui/add_pdf_dialog.ui:66
-#, fuzzy
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
-"Cria uma cópia do pdf selecionado e armazena-o em sua pasta bibliografia."
+"Cria uma cópia do pdf selecionado e armazena-o na sua pasta Bibliografia."
 
 #: data/resources/ui/add_pdf_dialog.ui:81
 msgid "From file"
@@ -194,7 +174,6 @@ msgid "From URL"
 msgstr "Do URL"
 
 #: data/resources/ui/citation_preview.ui:15
-#, fuzzy
 msgid "Custom Citation Format"
 msgstr "Formato de citação personalizado"
 
@@ -217,6 +196,10 @@ msgid ""
 "and italics is supported.\n"
 "            "
 msgstr ""
+"Escreva um formato personalizado para as suas citações, para inserir o "
+"conteúdo de uma etiqueta <tt>algumaetiqueta</tt> escreva <tt>%SOMETAG%</tt>. "
+"É suportada uma sintaxe básica de marcação para negrito e itálico.\n"
+"            "
 
 #: data/resources/ui/citation_preview.ui:150
 msgid "Example:"
@@ -228,29 +211,24 @@ msgid "No Citations"
 msgstr "Sem citações"
 
 #: data/resources/ui/entry_list.ui:10
-#, fuzzy
 msgid "Create a new citation"
-msgstr "Crie uma nova citação"
+msgstr "Criar uma nova citação"
 
 #: data/resources/ui/entry_page.ui:13
-#, fuzzy
 msgid "No Citation Selected"
 msgstr "Nenhuma citação selecionada"
 
 #: data/resources/ui/entry_page.ui:82
-#, fuzzy
 msgid "Citation _Type"
-msgstr "_Type de citação"
+msgstr "_Tipo de citação"
 
 #: data/resources/ui/entry_page.ui:98
-#, fuzzy
 msgid "_Other Citation Type"
-msgstr "Tipo de citação _Other"
+msgstr "_Outro tipo de citação"
 
 #: data/resources/ui/entry_page.ui:105
-#, fuzzy
 msgid "_Citation Key"
-msgstr "Chave _Citation"
+msgstr "Chave de _citação"
 
 #: data/resources/ui/entry_page.ui:124
 msgid "_Author"
@@ -287,9 +265,8 @@ msgid "Delete PDF"
 msgstr "Eliminar PDF"
 
 #: data/resources/ui/entry_page.ui:270
-#, fuzzy
 msgid "Could not set PDF Preview"
-msgstr "Não foi possível definir a visualização de PDF"
+msgstr "Não foi possível definir a pré-visualização PDF"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
@@ -304,12 +281,10 @@ msgid "New"
 msgstr "Novo"
 
 #: data/resources/ui/new_entry_dialog.ui:68
-#, fuzzy
 msgid "Citation Key"
 msgstr "Chave de citação"
 
 #: data/resources/ui/new_entry_dialog.ui:73
-#, fuzzy
 msgid "Citation Type"
 msgstr "Tipo de citação"
 
@@ -354,9 +329,8 @@ msgid "Search"
 msgstr "Pesquisar"
 
 #: data/resources/ui/window.ui:6
-#, fuzzy
 msgid "_Create New Bibliography"
-msgstr "_Create Nova Bibliografia"
+msgstr "_Criar nova bibliografia"
 
 #: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
 msgid "_Keyboard Shortcuts"
@@ -372,15 +346,13 @@ msgid "_Save"
 msgstr "_Guardar"
 
 #: data/resources/ui/window.ui:52
-#, fuzzy
 msgid "_Search in Google Scholar"
-msgstr "_Search no Google Scholar"
+msgstr "_Procurar no Google Scholar"
 
 #. arXiv is a proper name
 #: data/resources/ui/window.ui:56
-#, fuzzy
 msgid "_Search in arXiv"
-msgstr "_Search em arXiv"
+msgstr "_Procurar no arXiv"
 
 #: data/resources/ui/window.ui:62
 msgid "_Delete"
@@ -421,17 +393,15 @@ msgid "Secondary Menu"
 msgstr "Menu secundário"
 
 #: src/add_pdf_dialog.rs:57
-#, fuzzy
 msgid "Could not set PDF"
 msgstr "Não foi possível definir PDF"
 
 #: src/add_pdf_dialog.rs:68
 msgid "Could not download PDF"
-msgstr ""
+msgstr "Não foi possível transferir PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
 #: src/add_pdf_dialog.rs:97
-#, fuzzy
 msgid "Make sure that {path} exists"
 msgstr "Certifique-se de que {path} existe"
 
@@ -466,13 +436,11 @@ msgid "Custom…"
 msgstr "Personalizado…"
 
 #: src/entry_page.rs:149
-#, fuzzy
 msgid "Other…"
-msgstr "Outra…"
+msgstr "Outros…"
 
 #. TRANSLATORS Every citation has an identifier called key
 #: src/entry_page.rs:208
-#, fuzzy
 msgid "Citation Key already exists"
 msgstr "A chave de citação já existe"
 
@@ -481,9 +449,8 @@ msgid "PDF added"
 msgstr "PDF adicionado"
 
 #: src/new_entry_dialog.rs:124
-#, fuzzy
 msgid "Insert a BibTeX citation here"
-msgstr "Insira uma citação bibtex aqui"
+msgstr "Insira uma citação BibTeX aqui"
 
 #: src/utils.rs:21
 msgid "Author"
@@ -523,7 +490,6 @@ msgstr "Endereço"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
 #: src/utils.rs:31
-#, fuzzy
 msgid "How Published"
 msgstr "Como publicado"
 
@@ -576,12 +542,10 @@ msgid "Institution"
 msgstr "Instituição"
 
 #: src/window.rs:320 src/window.rs:349
-#, fuzzy
 msgid "Bibtex Files"
-msgstr "Arquivos Bibtex"
+msgstr "Ficheiros Bibtex"
 
 #: src/window.rs:341
-#, fuzzy
 msgid "Create New Bibliography"
 msgstr "Criar nova bibliografia"
 
@@ -590,14 +554,12 @@ msgid "Create"
 msgstr "Criar"
 
 #: src/window.rs:465
-#, fuzzy
 msgid "Remove From Recent Files"
-msgstr "Remover de arquivos recentes"
+msgstr "Remover de ficheiros recentes"
 
 #: src/window.rs:509
-#, fuzzy
 msgid "An entry with the given citation key already exists"
-msgstr "Uma entrada com a chave de citação dada já existe"
+msgstr "Já existe uma entrada com a chave de citação dada"
 
 #: src/window.rs:524
 msgid "Bibliography saved"
