@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-06-04 21:39+0000\n"
-"PO-Revision-Date: 2022-06-05 10:49+0200\n"
+"POT-Creation-Date: 2022-07-25 22:07+0000\n"
+"PO-Revision-Date: 2022-07-26 17:14+0200\n"
 "Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
 "Language-Team: Italian <gnome-it-list@gnome.org>\n"
 "Language: it\n"
@@ -93,18 +93,19 @@ msgid "Tech Report"
 msgstr "Relazione tecnica"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:51
+#: cratebibtex/src/format.rs:52
 msgid "Plain"
 msgstr "Semplice"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:39
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
+#: src/window.rs:610
 msgid "Citations"
 msgstr "Citazioni"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:590
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:612
 msgid "Manage your bibliography"
 msgstr "Gestore di bibliografie"
 
@@ -150,28 +151,49 @@ msgstr "Gestisce le bibliografie usando il formato BibTeX."
 msgid "Main window"
 msgstr "Finestra principale"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:52
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:71
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
-#: data/resources/ui/citation_preview.ui:25
+#. Translators: Selects a PDF file for the citation
+#: data/resources/ui/add_pdf_dialog.ui:11 data/resources/ui/entry_page.ui:192
+msgid "Add PDF"
+msgstr "Aggiungi PDF"
+
+#: data/resources/ui/add_pdf_dialog.ui:48
+msgid "Bibliography folder not set"
+msgstr "Cartella della bibliografia non impostata"
+
+#: data/resources/ui/add_pdf_dialog.ui:66
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr "Crea una copia del PDF selezionato e la salva nella propria cartella della bibliografia"
+
+#: data/resources/ui/add_pdf_dialog.ui:81
+msgid "From file"
+msgstr "Da file"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "From URL"
+msgstr "Da URL"
+
+#: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
 msgstr "Formato di citazione personalizzato"
 
-#: data/resources/ui/citation_preview.ui:70
+#: data/resources/ui/citation_preview.ui:47
 msgid "Citation"
 msgstr "Citazione"
 
-#: data/resources/ui/citation_preview.ui:116
-#: data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:91 data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "Copia"
 
-#: data/resources/ui/citation_preview.ui:151
+#: data/resources/ui/citation_preview.ui:128
 msgid "Custom Template"
 msgstr "Modello personalizzato"
 
-#: data/resources/ui/citation_preview.ui:167
+#: data/resources/ui/citation_preview.ui:144
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -183,7 +205,7 @@ msgstr ""
 "supportata una sintassi Markdown di base per il grassetto e il corsivo.\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:173
+#: data/resources/ui/citation_preview.ui:150
 msgid "Example:"
 msgstr "Esempio:"
 
@@ -224,42 +246,31 @@ msgstr "_Titolo"
 msgid "_Year"
 msgstr "A_nno"
 
-#: data/resources/ui/entry_page.ui:148 src/entry_page.rs:419
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:384
 msgid "Open in Browser"
 msgstr "Apri nel browser"
 
-#: data/resources/ui/entry_page.ui:168
+#: data/resources/ui/entry_page.ui:165
 msgid "Other Properties"
 msgstr "Altre proprietà"
 
-#. Translators: Selects a PDF file for the citation
-#: data/resources/ui/entry_page.ui:198
-msgid "Select PDF"
-msgstr "Seleziona PDF"
+#: data/resources/ui/entry_page.ui:209
+msgid "PDF"
+msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:199
-msgid "Copy file to bibliography folder"
-msgstr "Copia file nella cartella della bibliografia"
+#: data/resources/ui/entry_page.ui:220 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:144
+msgid "_Open"
+msgstr "_Apri"
 
-#: data/resources/ui/entry_page.ui:203
-msgid "From file"
-msgstr "Da file"
-
-#: data/resources/ui/entry_page.ui:220
-msgid "From URL"
-msgstr "Da URL"
-
-#: data/resources/ui/entry_page.ui:239
-msgid "Open PDF"
-msgstr "Apri il PDF"
-
-#: data/resources/ui/entry_page.ui:244
+#: data/resources/ui/entry_page.ui:233
 msgid "Delete PDF"
 msgstr "Elimina PDF"
 
-#: data/resources/ui/entry_page.ui:267
-msgid "PDF Preview"
-msgstr "Anteprima del PDF"
+#: data/resources/ui/entry_page.ui:270
+msgid "Could not set PDF Preview"
+msgstr "Impostazione dell'anteprima del PDF non riuscita"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
@@ -325,10 +336,6 @@ msgstr "Cerca"
 msgid "_Create New Bibliography"
 msgstr "_Crea nuova bibliografia"
 
-#: data/resources/ui/window.ui:10 data/resources/ui/window.ui:33
-msgid "_Open"
-msgstr "_Apri"
-
 #: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
 msgid "_Keyboard Shortcuts"
 msgstr "Scorciatoie da _tastiera"
@@ -355,8 +362,8 @@ msgstr "Cerca in ar_Xiv"
 msgid "_Delete"
 msgstr "_Elimina"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:108
-#: data/resources/ui/window.ui:177
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:195
 msgid "Main Menu"
 msgstr "Menù principale"
 
@@ -365,25 +372,46 @@ msgstr "Menù principale"
 msgid "Open a BibTeX File"
 msgstr "Aprire un file BibTeX"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:129
+msgid "Manage your Citations"
+msgstr "Gestore di citazioni"
+
+#: data/resources/ui/window.ui:136
 msgid "Recent Files"
 msgstr "File recenti"
 
-#: data/resources/ui/window.ui:170
+#: data/resources/ui/window.ui:188
 msgid "Add New Citation"
 msgstr "Aggiungi una nuova citazione"
 
-#: data/resources/ui/window.ui:183
+#: data/resources/ui/window.ui:201
 msgid "Search"
 msgstr "Cerca"
 
-#: data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:252
 msgid "Back"
 msgstr "Indietro"
 
-#: data/resources/ui/window.ui:243
+#: data/resources/ui/window.ui:261
 msgid "Secondary Menu"
 msgstr "Menù secondario"
+
+#: src/add_pdf_dialog.rs:57
+msgid "Could not set PDF"
+msgstr "Impostazione del PDF non riuscita"
+
+#: src/add_pdf_dialog.rs:68
+msgid "Could not download PDF"
+msgstr "Scaricamento del PDF non riuscito"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: src/add_pdf_dialog.rs:97
+msgid "Make sure that {path} exists"
+msgstr "Assicurarsi che {path} esista"
+
+#: src/add_pdf_dialog.rs:187
+msgid "PDF Files"
+msgstr "File PDF"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -403,7 +431,7 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Personalizzato"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:183
+#: src/citation_preview.rs:160 src/entry_page.rs:185
 msgid "Copied"
 msgstr "Copiato"
 
@@ -411,187 +439,185 @@ msgstr "Copiato"
 msgid "Custom…"
 msgstr "Personalizzato…"
 
-#: src/entry_page.rs:107
-msgid "PDF Downloaded"
-msgstr "PDF scaricato"
-
-#: src/entry_page.rs:144
+#: src/entry_page.rs:149
 msgid "Other…"
 msgstr "Altro…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:206
+#: src/entry_page.rs:208
 msgid "Citation Key already exists"
 msgstr "Il riferimento della citazione esiste già"
 
-#: src/entry_page.rs:474
-msgid "Bibliography folder not set"
-msgstr "Cartella della bibliografia non impostata"
+#: src/entry_page.rs:549
+msgid "PDF added"
+msgstr "PDF aggiunto"
 
-#. NOTE Do not translate the path.
-#: src/entry_page.rs:478
-msgid "Make sure ~/Documents/Bibliography exists"
-msgstr "Assicurarsi che ~/Documents/Bibliography esista"
-
-#: src/entry_page.rs:540
-msgid "PDF Files"
-msgstr "File PDF"
-
-#. TODO Use placeholder-text see
-#. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
-#: src/new_entry_dialog.rs:127
+#: src/new_entry_dialog.rs:124
 msgid "Insert a BibTeX citation here"
 msgstr "Inserire qui una citazione di BibTeX"
 
-#: src/utils.rs:20
+#: src/utils.rs:21
 msgid "Author"
 msgstr "Autore"
 
-#: src/utils.rs:21
+#: src/utils.rs:22
 msgid "Year"
 msgstr "Anno"
 
-#: src/utils.rs:22
+#: src/utils.rs:23
 msgid "Title"
 msgstr "Titolo"
 
-#: src/utils.rs:23
+#: src/utils.rs:24
 msgid "Volume"
 msgstr "Volume"
 
-#: src/utils.rs:24
+#: src/utils.rs:25
 msgid "Number"
 msgstr "Numero"
 
-#: src/utils.rs:25
+#: src/utils.rs:26
 msgid "Pages"
 msgstr "Numeri di pagina"
 
-#: src/utils.rs:26
+#: src/utils.rs:27
 msgid "Publisher"
 msgstr "Editore"
 
-#: src/utils.rs:27
+#: src/utils.rs:28
 msgid "Journal"
 msgstr "Rivista"
 
-#: src/utils.rs:28
+#: src/utils.rs:29
 msgid "Address"
 msgstr "Indirizzo"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:30
+#: src/utils.rs:31
 msgid "How Published"
 msgstr "Genere della pubblicazione"
 
-#: src/utils.rs:31
+#: src/utils.rs:32
 msgid "Note"
 msgstr "Note"
 
-#: src/utils.rs:32
+#: src/utils.rs:33
 msgid "Book Title"
 msgstr "Titolo del libro"
 
-#: src/utils.rs:33
+#: src/utils.rs:34
 msgid "Series"
 msgstr "Collezione"
 
 # [NdT] Cos'è? Non ho trovato nessuna chiave di BibTeX che mi ricordasse
 # un "Archive Prefix", quindi ho tradotto senza sapere di cosa si tratti.
-#: src/utils.rs:34
+#: src/utils.rs:35
 msgid "Archive Prefix"
 msgstr "Prefisso dell'archivio"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:36
+#: src/utils.rs:37
 msgid "ePrint"
 msgstr "Identificativo ePrint"
 
 # [NdT] Cos'è? Non ho trovato nessuna chiave di BibTeX che mi ricordasse
 # una "Primary Class", quindi ho tradotto senza sapere di cosa si tratti.
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:38
+#: src/utils.rs:39
 msgid "Primary Class"
 msgstr "Classe primaria"
 
-#: src/utils.rs:39
+#: src/utils.rs:40
 msgid "Month"
 msgstr "Mese"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:41
+#: src/utils.rs:42
 msgid "Editor"
 msgstr "Curatore"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:43
+#: src/utils.rs:44
 msgid "Organization"
 msgstr "Organizzazione"
 
-#: src/utils.rs:44
+#: src/utils.rs:45
 msgid "School"
 msgstr "Scuola"
 
-#: src/utils.rs:45
+#: src/utils.rs:46
 msgid "Institution"
 msgstr "Istituzione"
 
-#: src/window.rs:315 src/window.rs:344
+#: src/window.rs:320 src/window.rs:349
 msgid "Bibtex Files"
 msgstr "File BibTeX"
 
-#: src/window.rs:336
+#: src/window.rs:341
 msgid "Create New Bibliography"
 msgstr "Crea nuova bibliografia"
 
-#: src/window.rs:339
+#: src/window.rs:344
 msgid "Create"
 msgstr "Crea"
 
+#: src/window.rs:465
+msgid "Remove From Recent Files"
+msgstr "Riumovi dai file recenti"
+
 # [NdT] Qui non capisco se {citation_key} vada tradotto...
 # forse manca qualcosa nella stringa originale.
-#: src/window.rs:492
+#: src/window.rs:509
 msgid "An entry with the given citation key already exists"
 msgstr "Una voce con il riferimento indicato esiste già"
 
-#: src/window.rs:507
+#: src/window.rs:524
 msgid "Bibliography saved"
 msgstr "Bibliografia salvata"
 
-#: src/window.rs:547
+#: src/window.rs:568
 msgid "Citation Deleted"
 msgstr "Citazione eliminata"
 
-#: src/window.rs:549
+#: src/window.rs:570
 msgid "Undo"
 msgstr "Annulla"
 
-#: src/window.rs:594
+#: src/window.rs:617
 msgid "translator-credits"
 msgstr "Davide Ferracin <davide.ferracin@protonmail.com>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:611
+#: src/window.rs:630
 msgid "Unsaved Changes"
 msgstr "Modifiche non salvate"
 
 # [NdT] Non so cosa sia questa "safe"... lo rendo in italiano con "file".
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:615
+#: src/window.rs:633
 msgid "Do you want to write all changes to the safe?"
 msgstr "Salvare tutte le modifiche ai file?"
 
-#: src/window.rs:618
+#: src/window.rs:637
 msgid "_Quit Without Saving"
 msgstr "_Esci senza salvare"
 
-#: src/window.rs:624
+#: src/window.rs:638
 msgid "_Don't Quit"
 msgstr "_Non uscire"
 
-#: src/window.rs:629
+#: src/window.rs:639
 msgid "_Save and Quit"
 msgstr "_Salva ed esci"
+
+#~ msgid "Select PDF"
+#~ msgstr "Seleziona PDF"
+
+#~ msgid "Copy file to bibliography folder"
+#~ msgstr "Copia file nella cartella della bibliografia"
+
+#~ msgid "Open PDF"
+#~ msgstr "Apri il PDF"
 
 # [NdT] Scriverei GNOME e non Gnome, ma così è la stringa originale...
 #~ msgid "Gnome;GTK;"
