@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
 "POT-Creation-Date: 2022-08-09 23:10+0000\n"
-"PO-Revision-Date: 2022-08-14 22:30+0200\n"
+"PO-Revision-Date: 2022-08-14 22:36+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -108,7 +108,7 @@ msgstr "Upravljajte svojom bibliografijom"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.World.Citations.desktop.in.in:10
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
-msgstr "bibliografija;citati;literatura;BibTeX;LaTeX;TeX;"
+msgstr "bibliografija;citiranje;literatura;BibTeX;LaTeX;TeX;"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -137,7 +137,7 @@ msgstr "Zadana vrsta predloška za citate"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:34
 msgid "Default template format for citations"
-msgstr "Zadana vrsta formata za citate"
+msgstr "Zadani format predloška za citate"
 
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:10
 msgid "Manage your bibliographies using the BibTeX format."
@@ -367,7 +367,7 @@ msgstr "Glavni izbornik"
 #. BibTeX is a proper name
 #: data/resources/ui/window.ui:92
 msgid "Open a BibTeX File"
-msgstr "Otvori a BibTeX datoteku"
+msgstr "Otvori BibTeX datoteku"
 
 #: data/resources/ui/window.ui:129
 msgid "Manage your Citations"
@@ -383,7 +383,7 @@ msgstr "Dodaj novi citat"
 
 #: data/resources/ui/window.ui:201
 msgid "Search"
-msgstr "Pretraži"
+msgstr "Pretraga"
 
 #: data/resources/ui/window.ui:252
 msgid "Back"
