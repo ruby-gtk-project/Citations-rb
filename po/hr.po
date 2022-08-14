@@ -1,23 +1,23 @@
 # Croatian translation for citations.
 # Copyright (C) 2022 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
-# Milo Ivir <mail@milotype.de>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-07-22 07:47+0000\n"
-"PO-Revision-Date: 2022-07-22 18:22+0200\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"POT-Creation-Date: 2022-08-09 23:10+0000\n"
+"PO-Revision-Date: 2022-08-14 22:30+0200\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: cratebibtex/src/entry_type.rs:108
 msgid "Article"
@@ -29,12 +29,12 @@ msgstr "Knjiga"
 
 #: cratebibtex/src/entry_type.rs:110
 msgid "Misc"
-msgstr "Razno"
+msgstr "Ostalo"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:112
 msgid "In Proceedings"
-msgstr "U protokolima"
+msgstr "U zborniku radova"
 
 #: cratebibtex/src/entry_type.rs:113
 msgid "Unpublished"
@@ -43,12 +43,12 @@ msgstr "Neobjavljeno"
 #. NOTE As in online source
 #: cratebibtex/src/entry_type.rs:115
 msgid "Online"
-msgstr "Internet"
+msgstr "S interneta"
 
 #. NOTE As in other kind of source
 #: cratebibtex/src/entry_type.rs:117
 msgid "Other"
-msgstr "Drugo"
+msgstr "Ostalo"
 
 #: cratebibtex/src/entry_type.rs:118
 msgid "Booklet"
@@ -64,7 +64,7 @@ msgstr "U knjizi"
 
 #: cratebibtex/src/entry_type.rs:121
 msgid "In Collection"
-msgstr "U zbirci"
+msgstr "U kolekciji"
 
 #. NOTE As in instruction manual
 #: cratebibtex/src/entry_type.rs:123
@@ -73,16 +73,16 @@ msgstr "Priručnik"
 
 #: cratebibtex/src/entry_type.rs:124
 msgid "Master Thesis"
-msgstr "Diplomski rad"
+msgstr "Magisterij"
 
 #: cratebibtex/src/entry_type.rs:125
 msgid "PhD. Thesis"
-msgstr "Disertacija"
+msgstr "Doktorat"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:127
 msgid "Proceedings"
-msgstr "Protokoli"
+msgstr "Zbornici radova"
 
 #: cratebibtex/src/entry_type.rs:128
 msgid "Tech Report"
@@ -91,7 +91,7 @@ msgstr "Tehnički izvještaj"
 #. NOTE Plain as in Plain Text
 #: cratebibtex/src/format.rs:52
 msgid "Plain"
-msgstr "Obični"
+msgstr "Običan"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
@@ -103,12 +103,12 @@ msgstr "Citati"
 #: data/org.gnome.World.Citations.desktop.in.in:4
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:612
 msgid "Manage your bibliography"
-msgstr "Upravljajte vašom bibliografijom"
+msgstr "Upravljajte svojom bibliografijom"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.World.Citations.desktop.in.in:10
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
-msgstr "bibliografija;citiranje;literatura;BibTeX;LaTeX;TeX;"
+msgstr "bibliografija;citati;literatura;BibTeX;LaTeX;TeX;"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -120,16 +120,16 @@ msgstr "Visina prozora"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:14
 msgid "Window maximized state"
-msgstr "Stanje maksimalno povećanog prozora"
+msgstr "Stanje uvećanog prozora"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:18
 msgid "List of paths of recent files"
-msgstr "Popis staza nedavnih datoteka"
+msgstr "Popis putanja nedavnih datoteka"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:22
 #: data/org.gnome.World.Citations.gschema.xml.in:26
 msgid "Default template for book citation"
-msgstr "Zadani predložak za citiranje knjige"
+msgstr "Zadani predložak za citat knjige"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:30
 msgid "Default template kind for citations"
@@ -137,17 +137,17 @@ msgstr "Zadana vrsta predloška za citate"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:34
 msgid "Default template format for citations"
-msgstr "Zadani format predloška za citate"
+msgstr "Zadana vrsta formata za citate"
 
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:10
 msgid "Manage your bibliographies using the BibTeX format."
-msgstr "Upravljajte vašim bibliografijama koristeći BibTeX format."
+msgstr "Upravljajte svojim bibliografijama koristeći BibTeX format."
 
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:15
 msgid "Main window"
 msgstr "Glavni prozor"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:71
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:77
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -158,12 +158,13 @@ msgstr "Dodaj PDF"
 
 #: data/resources/ui/add_pdf_dialog.ui:48
 msgid "Bibliography folder not set"
-msgstr "Mapa bibliografija nije postavljena"
+msgstr "Bibliografska mapa nije postavljena"
 
 #: data/resources/ui/add_pdf_dialog.ui:66
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
-msgstr "Stvara kopiju odabranog pdf-a i sprema je u vašu mapu Bibliografija."
+msgstr ""
+"Stvara kopiju odabrane pdf datoteke i sprema ju u vašu mapu Bibliografija."
 
 #: data/resources/ui/add_pdf_dialog.ui:81
 msgid "From file"
@@ -197,8 +198,8 @@ msgid ""
 "            "
 msgstr ""
 "Napišite prilagođeni format za vaše citate, za umetanje sadržaja oznake "
-"<tt>sometag</tt> napišite <tt>%SOMETAG%</tt>. Podržane su osnovne markdown "
-"oznake za podebljano i kurziv.\n"
+"<tt>sometag</tt> napišite <tt>%SOMETAG%</tt>. Osnovna markdown sintaksa za "
+"podebljano i ukošeno je podržana.\n"
 "            "
 
 #: data/resources/ui/citation_preview.ui:150
@@ -216,11 +217,11 @@ msgstr "Stvori novi citat"
 
 #: data/resources/ui/entry_page.ui:13
 msgid "No Citation Selected"
-msgstr "Nijedan citat nije odabran"
+msgstr "Nema odabranih citata"
 
 #: data/resources/ui/entry_page.ui:82
 msgid "Citation _Type"
-msgstr "_Vrsta citata"
+msgstr "Vrsta _citata"
 
 #: data/resources/ui/entry_page.ui:98
 msgid "_Other Citation Type"
@@ -248,7 +249,7 @@ msgstr "Otvori u pregledniku"
 
 #: data/resources/ui/entry_page.ui:165
 msgid "Other Properties"
-msgstr "Druga svojstva"
+msgstr "Ostala svojstva"
 
 #: data/resources/ui/entry_page.ui:209
 msgid "PDF"
@@ -262,23 +263,23 @@ msgstr "_Otvori"
 
 #: data/resources/ui/entry_page.ui:233
 msgid "Delete PDF"
-msgstr "Izbriši PDF"
+msgstr "Obriši PDF"
 
 #: data/resources/ui/entry_page.ui:270
 msgid "Could not set PDF Preview"
-msgstr "Neuspjelo postavljanje pregleda PDF-a"
+msgstr "Nemoguće postavljanje PDF pregleda"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
-msgstr "O_dustani"
+msgstr "_Odustani"
 
 #: data/resources/ui/new_entry_dialog.ui:34
 msgid "C_reate"
-msgstr "Stvo_ri"
+msgstr "S_tvori"
 
 #: data/resources/ui/new_entry_dialog.ui:49
 msgid "New"
-msgstr "Novo"
+msgstr "Novi"
 
 #: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Key"
@@ -291,7 +292,7 @@ msgstr "Vrsta citata"
 #. BibTeX is a proper name
 #: data/resources/ui/new_entry_dialog.ui:93
 msgid "From BibTeX"
-msgstr "Iz BibTeX-a"
+msgstr "Iz BibTeXa"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -301,12 +302,12 @@ msgstr "Općenito"
 #: data/resources/ui/shortcuts.ui:14
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Pokaži prečace"
+msgstr "Prikaži prečace tipkovnice"
 
 #: data/resources/ui/shortcuts.ui:20
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Prekini"
+msgstr "Zatvori"
 
 #: data/resources/ui/shortcuts.ui:28
 msgctxt "shortcut window"
@@ -326,20 +327,20 @@ msgstr "Spremi"
 #: data/resources/ui/shortcuts.ui:43
 msgctxt "shortcut window"
 msgid "Search"
-msgstr "Pretraga"
+msgstr "Pretraži"
 
 #: data/resources/ui/window.ui:6
 msgid "_Create New Bibliography"
-msgstr "Stvori _novu bibliografiju"
+msgstr "_Stvori novu bibliografiju"
 
 #: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
 msgid "_Keyboard Shortcuts"
-msgstr "_Tipkovnički prečaci"
+msgstr "_Prečaci tipkovnice"
 
 #. About dialog
 #: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
 msgid "_About Citations"
-msgstr "O _aplikaciji Citati"
+msgstr "_O Citatima"
 
 #: data/resources/ui/window.ui:29
 msgid "_Save"
@@ -347,16 +348,16 @@ msgstr "_Spremi"
 
 #: data/resources/ui/window.ui:52
 msgid "_Search in Google Scholar"
-msgstr "_Traži u Google Scholar"
+msgstr "_Pretraži u Google Scholaru"
 
 #. arXiv is a proper name
 #: data/resources/ui/window.ui:56
 msgid "_Search in arXiv"
-msgstr "_Traži u arXiv"
+msgstr "_Pretraži u arXivu"
 
 #: data/resources/ui/window.ui:62
 msgid "_Delete"
-msgstr "_Izbriši"
+msgstr "_Obriši"
 
 #: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
 #: data/resources/ui/window.ui:195
@@ -366,11 +367,11 @@ msgstr "Glavni izbornik"
 #. BibTeX is a proper name
 #: data/resources/ui/window.ui:92
 msgid "Open a BibTeX File"
-msgstr "Otvorite jednu BibTeX datoteku"
+msgstr "Otvori a BibTeX datoteku"
 
 #: data/resources/ui/window.ui:129
 msgid "Manage your Citations"
-msgstr "Upravljajte vašim citatima"
+msgstr "Upravljajte svojim citatima"
 
 #: data/resources/ui/window.ui:136
 msgid "Recent Files"
@@ -382,7 +383,7 @@ msgstr "Dodaj novi citat"
 
 #: data/resources/ui/window.ui:201
 msgid "Search"
-msgstr "Pretraga"
+msgstr "Pretraži"
 
 #: data/resources/ui/window.ui:252
 msgid "Back"
@@ -390,20 +391,20 @@ msgstr "Natrag"
 
 #: data/resources/ui/window.ui:261
 msgid "Secondary Menu"
-msgstr "Sekundarni izbornik"
+msgstr "Pomoćni izbornik"
 
 #: src/add_pdf_dialog.rs:57
 msgid "Could not set PDF"
-msgstr "Neuspjelo postavljanje PDF-a"
+msgstr "Nemoguće PDF postavljanje"
 
 #: src/add_pdf_dialog.rs:68
 msgid "Could not download PDF"
-msgstr "Neuspjelo preuzimanje PDF-a"
+msgstr "Nemoguće PDF preuzimanje"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
 #: src/add_pdf_dialog.rs:97
 msgid "Make sure that {path} exists"
-msgstr "Osigurajte da postoji {path}"
+msgstr "Osigurajte da {path} postoji"
 
 #: src/add_pdf_dialog.rs:187
 msgid "PDF Files"
@@ -433,11 +434,11 @@ msgstr "Kopirano"
 
 #: src/citation_preview.rs:167
 msgid "Custom…"
-msgstr "Prilagođeno …"
+msgstr "Prilagođeno…"
 
 #: src/entry_page.rs:149
 msgid "Other…"
-msgstr "Drugo …"
+msgstr "Ostalo…"
 
 #. TRANSLATORS Every citation has an identifier called key
 #: src/entry_page.rs:208
@@ -450,7 +451,7 @@ msgstr "PDF dodan"
 
 #: src/new_entry_dialog.rs:124
 msgid "Insert a BibTeX citation here"
-msgstr "Ovdje umetni BibTeX citat"
+msgstr "Umetni BibTeX citat ovdje"
 
 #: src/utils.rs:21
 msgid "Author"
@@ -462,7 +463,7 @@ msgstr "Godina"
 
 #: src/utils.rs:23
 msgid "Title"
-msgstr "Naslov"
+msgstr "Zvanje"
 
 #: src/utils.rs:24
 msgid "Volume"
@@ -474,7 +475,7 @@ msgstr "Broj"
 
 #: src/utils.rs:26
 msgid "Pages"
-msgstr "Stranice"
+msgstr "Stranica"
 
 #: src/utils.rs:27
 msgid "Publisher"
@@ -503,7 +504,7 @@ msgstr "Naslov knjige"
 
 #: src/utils.rs:34
 msgid "Series"
-msgstr "Serije"
+msgstr "Serija"
 
 #: src/utils.rs:35
 msgid "Archive Prefix"
@@ -517,7 +518,7 @@ msgstr "ePrint"
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
 #: src/utils.rs:39
 msgid "Primary Class"
-msgstr "Primarna klasa"
+msgstr "Glavna klasa"
 
 #: src/utils.rs:40
 msgid "Month"
@@ -543,7 +544,7 @@ msgstr "Institucija"
 
 #: src/window.rs:320 src/window.rs:349
 msgid "Bibtex Files"
-msgstr "Bibtex datoteke"
+msgstr "Bibtex datoteka"
 
 #: src/window.rs:341
 msgid "Create New Bibliography"
@@ -559,7 +560,7 @@ msgstr "Ukloni iz nedavnih datoteka"
 
 #: src/window.rs:509
 msgid "An entry with the given citation key already exists"
-msgstr "Zapis sa zadanim ključem citata već postoji"
+msgstr "Unos s danim ključem citata već postoji"
 
 #: src/window.rs:524
 msgid "Bibliography saved"
@@ -567,7 +568,7 @@ msgstr "Bibliografija je spremljena"
 
 #: src/window.rs:568
 msgid "Citation Deleted"
-msgstr "Citat je izbrisan"
+msgstr "Citat je obrisan"
 
 #: src/window.rs:570
 msgid "Undo"
@@ -575,7 +576,11 @@ msgstr "Poništi"
 
 #: src/window.rs:617
 msgid "translator-credits"
-msgstr "Milo Ivir <mail@milotype.de>"
+msgstr ""
+"Launchpad Contributions:\n"
+"  gogo https://launchpad.net/~trebelnik-stefina\n"
+"\n"
+"Milo Ivir <mail@milotype.de>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
 #: src/window.rs:630
@@ -589,12 +594,12 @@ msgstr "Želite li zapisati sve promjene u trezor?"
 
 #: src/window.rs:637
 msgid "_Quit Without Saving"
-msgstr "_Zatvori aplikaciju bez spremanja"
+msgstr "_Zatvori bez spremanja"
 
 #: src/window.rs:638
 msgid "_Don't Quit"
-msgstr "_Nemoj zatvoriti aplikaciju"
+msgstr "_Nemoj zatvoriti"
 
 #: src/window.rs:639
 msgid "_Save and Quit"
-msgstr "_Spremi i zatvori aplikaciju"
+msgstr "_Spremi i zatvori"
