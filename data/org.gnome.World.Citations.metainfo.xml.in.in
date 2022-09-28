@@ -19,6 +19,7 @@
   <url type="bugtracker">https://gitlab.gnome.org/World/citations/issues</url>
   <content_rating type="oars-1.0" />
   <releases>
+    <release version="0.5.1" date="2022-09-28"/>
     <release version="0.5.0" date="2022-08-04">
       <description>
         Minor release with some design improvements and newer widgets from
