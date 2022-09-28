@@ -366,9 +366,6 @@ impl EntryPage {
 
                 let row = adw::EntryRow::new();
                 row.set_title(&utils::translated_key(&key));
-                entry.bind_property(&key, &row, "text")
-                     .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
-                     .build();
 
                 if key.to_lowercase() == "eprint" {
                     let button = gtk::Button::from_icon_name("external-link-symbolic");
@@ -396,6 +393,10 @@ impl EntryPage {
                     button.add_css_class("flat");
                     row.add_suffix(&button);
                 }
+
+                entry.bind_property(&key, &row, "text")
+                     .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+                     .build();
 
                 row.upcast()
             }),
