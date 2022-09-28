@@ -168,7 +168,6 @@ impl AddPdfDialog {
     }
 
     async fn set_pdf_from_file(&self) -> anyhow::Result<()> {
-        let window = self.transient_for().unwrap();
         let citation_key = self.imp().citation_key.get().unwrap();
 
         if let Some(path) = crate::utils::bibliography_path() {
@@ -177,7 +176,7 @@ impl AddPdfDialog {
 
             let dialog = gtk::FileChooserNative::new(
                 None,
-                Some(&window),
+                Some(self),
                 gtk::FileChooserAction::Open,
                 None,
                 None,
