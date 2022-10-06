@@ -26,10 +26,10 @@
     <child>
       <object class="AdwToastOverlay" id="toast_overlay">
         <child>
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <child>
+          <object class="GtkOverlay">
+            <child type="overlay">
               <object class="GtkProgressBar" id="progress_bar">
+                <property name="valign">start</property>
                 <property name="visible">False</property>
                 <style>
                   <class name="osd"/>
