@@ -116,7 +116,9 @@ mod imp {
                 }));
             });
             klass.install_action("win.delete_entry", None, move |obj, _, _| {
-                obj.delete_entry();
+                if let Some(entry) = obj.imp().entry_page.entry() {
+                    obj.delete_entry(&entry);
+                }
             });
             klass.install_action("win.search-google-scholar", None, move |obj, _, _| {
                 if let Err(err) = obj.search_google_schoolar_entry() {
@@ -562,35 +564,33 @@ impl Window {
         Ok(())
     }
 
-    fn delete_entry(&self) {
-        if let Some(entry) = self.imp().entry_page.entry() {
-            if let Some(pos) = self.bib().find_pos(&entry) {
-                let toast = adw::Toast::new(&gettext("Citation Deleted"));
-                toast.set_action_name(Some("win.undo_delete"));
-                toast.set_button_label(Some(&gettext("Undo")));
-                toast.connect_dismissed(glib::clone!(@weak self as obj => move |_| {
-                    obj.imp().undo_entry.take();
-                }));
+    pub fn delete_entry(&self, entry: &cratebibtex::Entry) {
+        if let Some(pos) = self.bib().find_pos(&entry) {
+            let toast = adw::Toast::new(&gettext("Citation Deleted"));
+            toast.set_action_name(Some("win.undo_delete"));
+            toast.set_button_label(Some(&gettext("Undo")));
+            toast.connect_dismissed(glib::clone!(@weak self as obj => move |_| {
+                obj.imp().undo_entry.take();
+            }));
 
-                if let Some((_, _, toast)) =
-                    self.imp()
-                        .undo_entry
-                        .replace(Some((entry, pos, toast.clone())))
-                {
-                    toast.dismiss();
-                };
-                self.imp().entry_list.unselect();
-                self.bib().remove_pos(pos);
-
-                self.imp().toast_overlay.add_toast(&toast);
+            if let Some((_, _, toast)) =
                 self.imp()
-                    .main_leaflet
-                    .navigate(adw::NavigationDirection::Back);
-
-                if self.imp().bib.get().unwrap().n_items() == 0 {
-                    self.imp().entry_page.set_no_items_placeholder_view();
-                }
+                    .undo_entry
+                    .replace(Some((entry.clone(), pos, toast.clone())))
+            {
+                toast.dismiss();
             };
+            self.imp().entry_list.unselect();
+            self.bib().remove_pos(pos);
+
+            self.imp().toast_overlay.add_toast(&toast);
+            self.imp()
+                .main_leaflet
+                .navigate(adw::NavigationDirection::Back);
+
+            if self.imp().bib.get().unwrap().n_items() == 0 {
+                self.imp().entry_page.set_no_items_placeholder_view();
+            }
         };
     }
 

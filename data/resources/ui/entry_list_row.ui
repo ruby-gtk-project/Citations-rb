@@ -2,6 +2,17 @@
 <interface>
   <template class="EntryListRow">
     <child>
+      <object class="GtkGestureClick" id="menu_gesture">
+        <property name="button">3</property>
+        <signal name="pressed" handler="menu_gesture_clicked" swapped="yes"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkPopoverMenu" id="popover">
+        <property name="menu-model">row_menu</property>
+      </object>
+    </child>
+    <child>
       <object class="GtkBox" id="child">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
@@ -71,4 +82,22 @@
       </object>
     </child>
   </template>
+  <menu id="row_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Open PDF</attribute>
+        <attribute name="action">entry-row.open-pdf</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Copy Key</attribute>
+        <attribute name="action">entry-row.copy-key</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Delete</attribute>
+        <attribute name="action">entry-row.delete</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>

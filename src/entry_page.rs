@@ -525,16 +525,7 @@ impl EntryPage {
         let citation_key = entry.as_ref().unwrap().citation_key();
         let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
 
-        if let Some(path) = crate::utils::bibliography_path() {
-            let folder = gio::File::for_path(&path);
-            // TODO Add djvu support, is it needed?
-            let pdf = folder.child(&utils::pdf_filename(&citation_key));
-            if pdf.query_exists(gio::Cancellable::NONE) {
-                gtk::show_uri(Some(&window), &pdf.uri(), gdk::CURRENT_TIME);
-            }
-        } else {
-            log::error!("Could not open PDF");
-        }
+        crate::utils::open_pdf(&citation_key, &window);
     }
 
     async fn set_pdf_action(&self) -> anyhow::Result<()> {

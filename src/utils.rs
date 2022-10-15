@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use gettextrs::gettext;
-use gio::prelude::SettingsExt;
-use gtk::glib;
+use gio::prelude::*;
+use gtk::{gdk, glib};
 use std::path::PathBuf;
 
 #[macro_export]
@@ -139,4 +139,27 @@ pub(crate) fn doi_url(url: &str) -> anyhow::Result<url::Url> {
     };
 
     Ok(uri)
+}
+
+pub(crate) fn has_pdf(citation_key: &str) -> bool {
+    if let Some(path) = crate::utils::bibliography_path() {
+        let folder = gio::File::for_path(&path);
+        let pdf = folder.child(&crate::utils::pdf_filename(&citation_key));
+
+        pdf.query_exists(gio::Cancellable::NONE)
+    } else {
+        false
+    }
+}
+
+pub(crate) fn open_pdf<W: glib::IsA<gtk::Window>>(citation_key: &str, window: &W) {
+    if let Some(path) = crate::utils::bibliography_path() {
+        let folder = gio::File::for_path(&path);
+        let pdf = folder.child(&crate::utils::pdf_filename(&citation_key));
+        if pdf.query_exists(gio::Cancellable::NONE) {
+            gtk::show_uri(Some(window), &pdf.uri(), gdk::CURRENT_TIME);
+        }
+    } else {
+        log::error!("Could not open PDF");
+    }
 }
