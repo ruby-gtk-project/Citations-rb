@@ -107,8 +107,9 @@ mod imp {
                     let author = entry.find_tag("author").unwrap_or_default();
                     let title = entry.find_tag("title").unwrap_or_default();
                     let year = entry.find_tag("year").unwrap_or_default();
+                    let citation_key = entry.citation_key();
 
-                    format!("{author} {title} {year}")
+                    format!("{author} {title} {year} {citation_key}")
                 }),
             );
             self.filter.set_expression(Some(&search_expression));
