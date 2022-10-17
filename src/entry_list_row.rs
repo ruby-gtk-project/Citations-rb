@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-use gtk::glib;
+use gettextrs::gettext;
 use gtk::subclass::prelude::*;
+use gtk::{gdk, glib};
 use gtk::{prelude::*, CompositeTemplate};
 use once_cell::sync::Lazy;
 
@@ -16,6 +17,8 @@ mod imp {
         pub child: TemplateChild<gtk::Widget>,
         #[template_child]
         pub author: TemplateChild<gtk::Label>,
+        #[template_child]
+        pub popover: TemplateChild<gtk::PopoverMenu>,
 
         pub entry: RefCell<Option<cratebibtex::Entry>>,
     }
@@ -30,6 +33,27 @@ mod imp {
             Self::bind_template(klass);
             Self::bind_template_callbacks(klass);
             klass.set_layout_manager_type::<gtk::BinLayout>();
+
+            // Action used only for the extra menu
+            klass.install_action("entry-row.open-pdf", None, move |row, _, _| {
+                let citation_key = row.entry().citation_key();
+                let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
+
+                crate::utils::open_pdf(&citation_key, &window);
+            });
+
+            klass.install_action("entry-row.delete", None, move |row, _, _| {
+                let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
+                window.delete_entry(&row.entry());
+            });
+
+            klass.install_action("entry-row.copy-key", None, move |row, _, _| {
+                let citation_key = row.entry().citation_key();
+                row.clipboard().set_text(&citation_key);
+
+                let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
+                window.send_toast(&gettext("Copied"));
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -58,11 +82,26 @@ mod imp {
                 title.into_owned()
             }
         }
+
+        #[template_callback]
+        fn menu_gesture_clicked(obj: &super::EntryListRow, _n_press: i32, x: f64, y: f64) {
+            let has_pdf = crate::utils::has_pdf(&obj.entry().citation_key());
+            obj.action_set_enabled("entry-row.open-pdf", has_pdf);
+
+            if x > -1.0 && y > -1.0 {
+                let rectangle = gdk::Rectangle::new(x as i32, y as i32, 1, 1);
+                obj.imp().popover.set_pointing_to(Some(&rectangle));
+            } else {
+                obj.imp().popover.set_pointing_to(None);
+            }
+            obj.imp().popover.popup();
+        }
     }
 
     impl ObjectImpl for EntryListRow {
         fn dispose(&self, _obj: &Self::Type) {
             self.child.unparent();
+            self.popover.unparent();
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
