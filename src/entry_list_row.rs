@@ -99,7 +99,7 @@ mod imp {
     }
 
     impl ObjectImpl for EntryListRow {
-        fn dispose(&self, _obj: &Self::Type) {
+        fn dispose(&self) {
             self.child.unparent();
             self.popover.unparent();
         }
@@ -117,22 +117,16 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
                 "entry" => self.entry.borrow().to_value(),
                 _ => unimplemented!(),
             }
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
             match pspec.name() {
-                "entry" => obj.set_entry(value.get().unwrap()),
+                "entry" => self.instance().set_entry(value.get().unwrap()),
                 _ => unimplemented!(),
             };
         }
@@ -147,7 +141,7 @@ glib::wrapper! {
 
 impl Default for EntryListRow {
     fn default() -> Self {
-        glib::Object::new(&[]).unwrap()
+        glib::Object::new(&[])
     }
 }
 

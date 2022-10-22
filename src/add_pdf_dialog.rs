@@ -78,16 +78,13 @@ mod imp {
 
     impl ObjectImpl for AddPdfDialog {
         fn signals() -> &'static [Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![Signal::builder("pdf-set", &[], <()>::static_type().into())
-                    .run_last()
-                    .build()]
-            });
+            static SIGNALS: Lazy<Vec<Signal>> =
+                Lazy::new(|| vec![Signal::builder("pdf-set").run_last().build()]);
             SIGNALS.as_ref()
         }
 
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
 
             if crate::utils::bibliography_path().is_none() {
                 let bibliography_path = crate::utils::bibliography_path_string();
@@ -111,13 +108,13 @@ glib::wrapper! {
 
 impl Default for AddPdfDialog {
     fn default() -> Self {
-        glib::Object::new(&[]).unwrap()
+        glib::Object::new(&[])
     }
 }
 
 impl AddPdfDialog {
     pub fn new<W: glib::IsA<gtk::Window>>(window: &W, citation_key: String) -> Self {
-        let dialog: Self = glib::Object::new(&[("transient-for", window)]).unwrap();
+        let dialog: Self = glib::Object::new(&[("transient-for", window)]);
         dialog.imp().citation_key.set(citation_key).unwrap();
 
         dialog

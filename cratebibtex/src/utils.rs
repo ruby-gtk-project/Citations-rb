@@ -5,7 +5,7 @@ pub(crate) fn new_props(names: &[&str]) -> Vec<glib::ParamSpec> {
         .iter()
         .map(|name| {
             let flags = glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY;
-            glib::ParamSpecString::new(name, name, name, "".into(), flags)
+            glib::ParamSpecString::new(*name, *name, *name, "".into(), flags)
         })
         .collect::<Vec<glib::ParamSpec>>();
     let citation_key_prop = glib::ParamSpecString::new(
