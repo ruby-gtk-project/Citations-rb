@@ -27,20 +27,21 @@ mod imp {
     impl ObjectImpl for Application {}
 
     impl ApplicationImpl for Application {
-        fn activate(&self, app: &Self::Type) {
+        fn activate(&self) {
             debug!("Application::activate");
-            self.parent_activate(app);
+            self.parent_activate();
 
-            let window = Window::new(app);
+            let window = Window::new(&self.instance());
             let group = gtk::WindowGroup::new();
             group.add_window(&window);
 
             window.present();
         }
 
-        fn startup(&self, app: &Self::Type) {
+        fn startup(&self) {
             debug!("Application::startup");
-            self.parent_startup(app);
+            self.parent_startup();
+            let app = self.instance();
 
             gsv::init();
 
@@ -70,7 +71,6 @@ impl Default for Application {
             ("flags", &gio::ApplicationFlags::empty()),
             ("resource-base-path", &Some("/org/gnome/World/Citations/")),
         ])
-        .expect("Application initialization failed...")
     }
 }
 

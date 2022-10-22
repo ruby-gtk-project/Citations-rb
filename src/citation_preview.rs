@@ -188,8 +188,9 @@ mod imp {
     }
 
     impl ObjectImpl for CitationPreview {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+            let obj = self.instance();
 
             obj.update_style_scheme();
             let manager = adw::StyleManager::default();
@@ -230,11 +231,11 @@ mod imp {
                 .build();
 
             self.template_drop_down
-                .bind_property("selected", obj, "template-kind")
+                .bind_property("selected", obj.as_ref(), "template-kind")
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
             self.drop_down
-                .bind_property("selected", obj, "format-kind")
+                .bind_property("selected", obj.as_ref(), "format-kind")
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
 
@@ -245,6 +246,7 @@ mod imp {
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
+            use glib::types::StaticType;
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
                     glib::ParamSpecObject::new(
@@ -282,7 +284,8 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            let obj = self.instance();
             match pspec.name() {
                 "entry" => self.entry.borrow().to_value(),
                 "template" => obj.template().to_value(),
@@ -294,11 +297,11 @@ mod imp {
 
         fn set_property(
             &self,
-            obj: &Self::Type,
             _id: usize,
             value: &glib::Value,
             pspec: &glib::ParamSpec,
         ) {
+            let obj = self.instance();
             match pspec.name() {
                 "entry" => {
                     if let Ok(entry) = value.get::<cratebibtex::Entry>() {
@@ -340,7 +343,7 @@ glib::wrapper! {
 
 impl Default for CitationPreview {
     fn default() -> Self {
-        glib::Object::new(&[]).unwrap()
+        glib::Object::new(&[])
     }
 }
 

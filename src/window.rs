@@ -191,8 +191,9 @@ mod imp {
     }
 
     impl ObjectImpl for Window {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+            let obj = self.instance();
 
             // Devel Profile
             if PROFILE == "Devel" {
@@ -244,7 +245,8 @@ mod imp {
     impl WidgetImpl for Window {}
     impl WindowImpl for Window {
         // Save window state on delete event
-        fn close_request(&self, window: &Self::Type) -> gtk::Inhibit {
+        fn close_request(&self) -> gtk::Inhibit {
+            let window = self.instance();
             if let Err(err) = window.save_window_size() {
                 log::warn!("Failed to save window state, {}", &err);
             }
@@ -257,10 +259,10 @@ mod imp {
 
                     gtk::Inhibit(true)
                 } else {
-                    self.parent_close_request(window)
+                    self.parent_close_request()
                 }
             } else {
-                self.parent_close_request(window)
+                self.parent_close_request()
             }
         }
     }
@@ -277,7 +279,7 @@ glib::wrapper! {
 
 impl Window {
     pub fn new(app: &Application) -> Self {
-        glib::Object::new(&[("application", app)]).expect("Failed to create Window")
+        glib::Object::new(&[("application", app)])
     }
 
     fn save_window_size(&self) -> Result<(), glib::BoolError> {

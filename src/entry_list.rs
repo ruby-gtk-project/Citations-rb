@@ -56,19 +56,17 @@ mod imp {
     impl ObjectImpl for EntryList {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![Signal::builder(
-                    "entry-selected",
-                    &[Option::<cratebibtex::Entry>::static_type().into()],
-                    <()>::static_type().into(),
-                )
-                .run_last()
-                .build()]
+                vec![Signal::builder("entry-selected")
+                    .param_types([Option::<cratebibtex::Entry>::static_type()])
+                    .run_last()
+                    .build()]
             });
             SIGNALS.as_ref()
         }
 
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            let obj = self.instance();
+            self.parent_constructed();
 
             let selection = crate::Selection::default();
             selection.set_model(Some(self.filter_model.upcast_ref()));
@@ -101,8 +99,8 @@ mod imp {
 
             self.selection_model.replace(selection);
 
-            let search_expression = gtk::ClosureExpression::new::<String, &[gtk::Expression], _>(
-                &[],
+            let search_expression = gtk::ClosureExpression::new::<String>(
+                &[] as &[gtk::Expression],
                 glib::closure!(|entry: cratebibtex::Entry| {
                     let author = entry.find_tag("author").unwrap_or_default();
                     let title = entry.find_tag("title").unwrap_or_default();
@@ -131,7 +129,7 @@ glib::wrapper! {
 
 impl Default for EntryList {
     fn default() -> Self {
-        glib::Object::new(&[]).unwrap()
+        glib::Object::new(&[])
     }
 }
 

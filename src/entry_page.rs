@@ -211,8 +211,9 @@ mod imp {
     }
 
     impl ObjectImpl for EntryPage {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+            let obj = self.instance();
 
             self.doi_entry
                 .connect_changed(glib::clone!(@weak obj => move |row| {
@@ -277,22 +278,16 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
                 "entry" => self.entry.borrow().to_value(),
                 _ => unimplemented!(),
             }
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
             match pspec.name() {
-                "entry" => obj.set_entry(value.get().ok()),
+                "entry" => self.instance().set_entry(value.get().ok()),
                 _ => unimplemented!(),
             };
         }
@@ -308,7 +303,7 @@ glib::wrapper! {
 
 impl Default for EntryPage {
     fn default() -> Self {
-        glib::Object::new(&[]).unwrap()
+        glib::Object::new(&[])
     }
 }
 

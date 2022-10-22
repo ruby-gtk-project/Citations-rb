@@ -65,7 +65,8 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            let obj = self.instance();
             let pspec_name = pspec.name();
             match pspec_name {
                 "citation-key" => obj.citation_key().to_value(),
@@ -74,13 +75,8 @@ mod imp {
             }
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            let obj = self.instance();
             let pspec_name = pspec.name();
             match pspec_name {
                 "citation-key" => {
@@ -103,7 +99,7 @@ glib::wrapper! {
 
 impl Default for Entry {
     fn default() -> Self {
-        glib::Object::new(&[]).unwrap()
+        glib::Object::new(&[])
     }
 }
 

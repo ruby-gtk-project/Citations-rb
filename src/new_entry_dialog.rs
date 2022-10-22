@@ -104,8 +104,9 @@ mod imp {
     }
 
     impl ObjectImpl for NewEntryDialog {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+            let obj = self.instance();
 
             let language_manager = gsv::LanguageManager::default();
             let lang = language_manager.language("bibtex").unwrap();
@@ -147,13 +148,13 @@ glib::wrapper! {
 
 impl Default for NewEntryDialog {
     fn default() -> Self {
-        glib::Object::new(&[]).unwrap()
+        glib::Object::new(&[])
     }
 }
 
 impl NewEntryDialog {
     pub fn new<T: glib::IsA<gtk::Window>>(window: &T) -> Self {
-        glib::Object::new(&[("modal", &true), ("transient-for", &window)]).unwrap()
+        glib::Object::new(&[("modal", &true), ("transient-for", &window)])
     }
 
     pub async fn run(&self) -> Option<String> {
