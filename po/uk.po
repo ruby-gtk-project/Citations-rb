@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-07-12 07:42+0000\n"
-"PO-Revision-Date: 2022-07-12 19:27+0300\n"
+"POT-Creation-Date: 2022-10-24 06:59+0000\n"
+"PO-Revision-Date: 2022-10-24 23:45+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -96,12 +96,12 @@ msgstr "Простий"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:610
+#: src/window.rs:612
 msgid "Citations"
 msgstr "Цитати"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:612
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:614
 msgid "Manage your bibliography"
 msgstr "Керування вашою бібліографією"
 
@@ -149,7 +149,7 @@ msgstr "Керування вашими бібліографіями з вико
 msgid "Main window"
 msgstr "Головне вікно"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:71
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:78
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -158,20 +158,21 @@ msgstr "Maximiliano Sandoval"
 msgid "Add PDF"
 msgstr "Додати PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:48
+#: data/resources/ui/add_pdf_dialog.ui:58
 msgid "Bibliography folder not set"
 msgstr "Не встановлено теки бібліографії"
 
-#: data/resources/ui/add_pdf_dialog.ui:66
+#: data/resources/ui/add_pdf_dialog.ui:76
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
-msgstr "Створює копію позначеного PDF і зберігає її у вашій теці бібліографії."
+msgstr ""
+"Створює копію позначеного PDF і зберігає її у вашій теці бібліографії."
 
-#: data/resources/ui/add_pdf_dialog.ui:81
+#: data/resources/ui/add_pdf_dialog.ui:91
 msgid "From file"
 msgstr "З файла"
 
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:108
 msgid "From URL"
 msgstr "З адреси"
 
@@ -216,6 +217,20 @@ msgstr "Немає посилань"
 msgid "Create a new citation"
 msgstr "Створити посилання"
 
+#: data/resources/ui/entry_list_row.ui:88
+#| msgid "Open PDF"
+msgid "_Open PDF"
+msgstr "_Відкрити PDF"
+
+#: data/resources/ui/entry_list_row.ui:92
+#| msgid "_Citation Key"
+msgid "_Copy Key"
+msgstr "_Копіювати ключ"
+
+#: data/resources/ui/entry_list_row.ui:98 data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "В_илучити"
+
 #: data/resources/ui/entry_page.ui:13
 msgid "No Citation Selected"
 msgstr "Не позначено жодного посилання"
@@ -244,7 +259,7 @@ msgstr "_Назва"
 msgid "_Year"
 msgstr "Р_ік"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:388
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:376
 msgid "Open in Browser"
 msgstr "Відкрити у переглядачі"
 
@@ -356,10 +371,6 @@ msgstr "_Шукати у Google Академія"
 msgid "_Search in arXiv"
 msgstr "_Шукати в arXiv"
 
-#: data/resources/ui/window.ui:62
-msgid "_Delete"
-msgstr "В_илучити"
-
 #: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
 #: data/resources/ui/window.ui:195
 msgid "Main Menu"
@@ -403,11 +414,11 @@ msgid "Could not download PDF"
 msgstr "Не вдалося отримати PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:97
+#: src/add_pdf_dialog.rs:94
 msgid "Make sure that {path} exists"
 msgstr "Переконайтеся, що тека {path} існує"
 
-#: src/add_pdf_dialog.rs:187
+#: src/add_pdf_dialog.rs:183
 msgid "PDF Files"
 msgstr "файли PDF"
 
@@ -429,7 +440,7 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:185
+#: src/citation_preview.rs:160 src/entry_list_row.rs:55 src/entry_page.rs:185
 msgid "Copied"
 msgstr "Скопійовано"
 
@@ -446,14 +457,11 @@ msgstr "Інше…"
 msgid "Citation Key already exists"
 msgstr "Ключ цитування вже існує"
 
-#: src/entry_page.rs:553
-#| msgid "PDF Downloaded"
+#: src/entry_page.rs:536
 msgid "PDF added"
 msgstr "Додано PDF"
 
-#. TODO Use placeholder-text see
-#. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
-#: src/new_entry_dialog.rs:127
+#: src/new_entry_dialog.rs:125
 msgid "Insert a BibTeX citation here"
 msgstr "Вставте сюди посилання BibTeX"
 
@@ -546,61 +554,61 @@ msgstr "Школа"
 msgid "Institution"
 msgstr "Установа"
 
-#: src/window.rs:320 src/window.rs:349
+#: src/window.rs:324 src/window.rs:353
 msgid "Bibtex Files"
 msgstr "файли BibTeX"
 
-#: src/window.rs:341
+#: src/window.rs:345
 msgid "Create New Bibliography"
 msgstr "Створити бібліографію"
 
-#: src/window.rs:344
+#: src/window.rs:348
 msgid "Create"
 msgstr "Створити"
 
-#: src/window.rs:465
+#: src/window.rs:469
 msgid "Remove From Recent Files"
 msgstr "Вилучити з нещодавніх файлів"
 
-#: src/window.rs:509
+#: src/window.rs:513
 msgid "An entry with the given citation key already exists"
 msgstr "Запис із вказаним ключем цитування вже існує"
 
-#: src/window.rs:524
+#: src/window.rs:528
 msgid "Bibliography saved"
 msgstr "Бібліографію збережено"
 
-#: src/window.rs:568
+#: src/window.rs:571
 msgid "Citation Deleted"
 msgstr "Посилання вилучено"
 
-#: src/window.rs:570
+#: src/window.rs:573
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:617
+#: src/window.rs:619
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:630
+#: src/window.rs:632
 msgid "Unsaved Changes"
 msgstr "Незбережені зміни"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:633
+#: src/window.rs:635
 msgid "Do you want to write all changes to the safe?"
 msgstr "Хочете записати усі зміни до сейфа?"
 
-#: src/window.rs:637
+#: src/window.rs:639
 msgid "_Quit Without Saving"
 msgstr "В_ийти без збереження"
 
-#: src/window.rs:638
+#: src/window.rs:640
 msgid "_Don't Quit"
 msgstr "_Не виходити"
 
-#: src/window.rs:639
+#: src/window.rs:641
 msgid "_Save and Quit"
 msgstr "З_берегти та вийти"
 
@@ -617,9 +625,6 @@ msgstr "З_берегти та вийти"
 #~| msgid "PDF Files"
 #~ msgid "PDF Set"
 #~ msgstr "PDF встановлено"
-
-#~ msgid "Open PDF"
-#~ msgstr "Відкрити PDF"
 
 #~ msgid "Open"
 #~ msgstr "Відкрити"
