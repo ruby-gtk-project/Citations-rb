@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-05-31 08:18+0000\n"
-"PO-Revision-Date: 2022-06-03 11:12+0200\n"
+"POT-Creation-Date: 2022-10-24 06:59+0000\n"
+"PO-Revision-Date: 2022-11-02 18:59+0100\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: cratebibtex/src/entry_type.rs:108
 msgid "Article"
@@ -91,18 +91,19 @@ msgid "Tech Report"
 msgstr "Technisch verslag"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:51
+#: cratebibtex/src/format.rs:52
 msgid "Plain"
 msgstr "Platte tekst"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:39
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
+#: src/window.rs:612
 msgid "Citations"
 msgstr "Citaties"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:590
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:614
 msgid "Manage your bibliography"
 msgstr "Beheer uw bibliografie"
 
@@ -150,28 +151,51 @@ msgstr "Beheer uw bibliografieën met het BibTeX-formaat."
 msgid "Main window"
 msgstr "Hoofdvenster"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:52
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:78
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
-#: data/resources/ui/citation_preview.ui:25
+#. Translators: Selects a PDF file for the citation
+#: data/resources/ui/add_pdf_dialog.ui:11 data/resources/ui/entry_page.ui:192
+msgid "Add PDF"
+msgstr "PDF toevoegen"
+
+#: data/resources/ui/add_pdf_dialog.ui:58
+msgid "Bibliography folder not set"
+msgstr "Bibliografiemap niet ingesteld"
+
+#: data/resources/ui/add_pdf_dialog.ui:76
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"Maakt een kopie van het geselecteerde PDF-bestand en slaat het op in uw "
+"bibliografiemap."
+
+#: data/resources/ui/add_pdf_dialog.ui:91
+msgid "From file"
+msgstr "Van bestand"
+
+#: data/resources/ui/add_pdf_dialog.ui:108
+msgid "From URL"
+msgstr "Van URL"
+
+#: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
 msgstr "Aangepast citatieformaat"
 
-#: data/resources/ui/citation_preview.ui:70
+#: data/resources/ui/citation_preview.ui:47
 msgid "Citation"
 msgstr "Citatie"
 
-#: data/resources/ui/citation_preview.ui:116
-#: data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:91 data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "Kopiëren"
 
-#: data/resources/ui/citation_preview.ui:151
+#: data/resources/ui/citation_preview.ui:128
 msgid "Custom Template"
 msgstr "Aangepast sjabloon"
 
-#: data/resources/ui/citation_preview.ui:167
+#: data/resources/ui/citation_preview.ui:144
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -183,7 +207,7 @@ msgstr ""
 "voor dik- en schuingedrukte tekst wordt ondersteund.\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:173
+#: data/resources/ui/citation_preview.ui:150
 msgid "Example:"
 msgstr "Voorbeeld:"
 
@@ -195,6 +219,18 @@ msgstr "Geen citaties"
 #: data/resources/ui/entry_list.ui:10
 msgid "Create a new citation"
 msgstr "Maak een nieuwe citatie aan"
+
+#: data/resources/ui/entry_list_row.ui:88
+msgid "_Open PDF"
+msgstr "PDF _openen"
+
+#: data/resources/ui/entry_list_row.ui:92
+msgid "_Copy Key"
+msgstr "Sleutel _kopiëren"
+
+#: data/resources/ui/entry_list_row.ui:98 data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "_Verwijderen"
 
 #: data/resources/ui/entry_page.ui:13
 msgid "No Citation Selected"
@@ -224,42 +260,31 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "_Jaar"
 
-#: data/resources/ui/entry_page.ui:148 src/entry_page.rs:419
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:376
 msgid "Open in Browser"
 msgstr "Openen in browser"
 
-#: data/resources/ui/entry_page.ui:168
+#: data/resources/ui/entry_page.ui:165
 msgid "Other Properties"
 msgstr "Andere eigenschappen"
 
-#. Translators: Selects a PDF file for the citation
-#: data/resources/ui/entry_page.ui:198
-msgid "Select PDF"
-msgstr "PDF selecteren"
+#: data/resources/ui/entry_page.ui:209
+msgid "PDF"
+msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:199
-msgid "Copy file to bibliography folder"
-msgstr "Kopiëer bestand naar de bibliografiemap"
+#: data/resources/ui/entry_page.ui:220 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:144
+msgid "_Open"
+msgstr "_Openen"
 
-#: data/resources/ui/entry_page.ui:203
-msgid "From file"
-msgstr "Van bestand"
-
-#: data/resources/ui/entry_page.ui:220
-msgid "From URL"
-msgstr "Van URL"
-
-#: data/resources/ui/entry_page.ui:239
-msgid "Open PDF"
-msgstr "PDF openen"
-
-#: data/resources/ui/entry_page.ui:244
+#: data/resources/ui/entry_page.ui:233
 msgid "Delete PDF"
 msgstr "PDF verwijderen"
 
-#: data/resources/ui/entry_page.ui:267
-msgid "PDF Preview"
-msgstr "PDF-voorbeeld"
+#: data/resources/ui/entry_page.ui:270
+msgid "Could not set PDF Preview"
+msgstr "Kon PDF-voorbeeld niet instellen"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
@@ -325,10 +350,6 @@ msgstr "Zoeken"
 msgid "_Create New Bibliography"
 msgstr "Nieuwe bibliografie aan_maken"
 
-#: data/resources/ui/window.ui:10 data/resources/ui/window.ui:33
-msgid "_Open"
-msgstr "_Openen"
-
 #: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
 msgid "_Keyboard Shortcuts"
 msgstr "Snel_toetsen"
@@ -351,12 +372,8 @@ msgstr "_Zoeken in Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Zoeken in arXiv"
 
-#: data/resources/ui/window.ui:62
-msgid "_Delete"
-msgstr "_Verwijderen"
-
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:108
-#: data/resources/ui/window.ui:177
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:195
 msgid "Main Menu"
 msgstr "Hoofdmenu"
 
@@ -365,25 +382,48 @@ msgstr "Hoofdmenu"
 msgid "Open a BibTeX File"
 msgstr "Open een BibTeX-bestand"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:129
+msgid "Manage your Citations"
+msgstr "Beheer uw citaties"
+
+#: data/resources/ui/window.ui:136
 msgid "Recent Files"
 msgstr "Recente bestanden"
 
-#: data/resources/ui/window.ui:170
+#: data/resources/ui/window.ui:188
 msgid "Add New Citation"
 msgstr "Nieuwe citatie toevoegen"
 
-#: data/resources/ui/window.ui:183
+#: data/resources/ui/window.ui:201
 msgid "Search"
 msgstr "Zoeken"
 
-#: data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:252
 msgid "Back"
 msgstr "Terug"
 
-#: data/resources/ui/window.ui:243
+#: data/resources/ui/window.ui:261
 msgid "Secondary Menu"
 msgstr "Secundair menu"
+
+#: src/add_pdf_dialog.rs:57
+msgid "Could not set PDF"
+msgstr "Kon PDF niet instellen"
+
+#: src/add_pdf_dialog.rs:68
+msgid "Could not download PDF"
+msgstr "Kon PDF niet downloaden"
+
+# Moet ~/Documenten hier wel vertaald worden? - Philip
+# Ik heb het getest, ~/Documenten mag vertaald worden, maar /Bibliography niet. - Nathan
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: src/add_pdf_dialog.rs:94
+msgid "Make sure that {path} exists"
+msgstr "Zorg ervoor dat {path} bestaat"
+
+#: src/add_pdf_dialog.rs:183
+msgid "PDF Files"
+msgstr "PDF-bestanden"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -403,7 +443,7 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Aangepast"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:183
+#: src/citation_preview.rs:160 src/entry_list_row.rs:55 src/entry_page.rs:185
 msgid "Copied"
 msgstr "Gekopieerd"
 
@@ -411,189 +451,179 @@ msgstr "Gekopieerd"
 msgid "Custom…"
 msgstr "Aangepast…"
 
-#: src/entry_page.rs:107
-msgid "PDF Downloaded"
-msgstr "PDF gedownload"
-
-#: src/entry_page.rs:144
+#: src/entry_page.rs:149
 msgid "Other…"
 msgstr "Andere…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:206
+#: src/entry_page.rs:208
 msgid "Citation Key already exists"
 msgstr "Citatiesleutel bestaat al"
 
-#: src/entry_page.rs:474
-msgid "Bibliography folder not set"
-msgstr "Bibliografiemap niet ingesteld"
+#: src/entry_page.rs:536
+msgid "PDF added"
+msgstr "PDF toegevoegd"
 
-# Moet ~/Documenten hier wel vertaald worden? - Philip
-# Ik heb het getest, ~/Documenten mag vertaald worden, maar /Bibliography niet. - Nathan
-#. NOTE Do not translate the path.
-#: src/entry_page.rs:478
-msgid "Make sure ~/Documents/Bibliography exists"
-msgstr "Zorg ervoor dat ~/Documenten/Bibliography bestaat"
-
-#: src/entry_page.rs:540
-msgid "PDF Files"
-msgstr "PDF-bestanden"
-
-#. TODO Use placeholder-text see
-#. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
-#: src/new_entry_dialog.rs:127
+#: src/new_entry_dialog.rs:125
 msgid "Insert a BibTeX citation here"
 msgstr "Voeg hier een BibTeX-citatie in"
 
-#: src/utils.rs:20
+#: src/utils.rs:21
 msgid "Author"
 msgstr "Auteur"
 
-#: src/utils.rs:21
+#: src/utils.rs:22
 msgid "Year"
 msgstr "Jaar"
 
-#: src/utils.rs:22
+#: src/utils.rs:23
 msgid "Title"
 msgstr "Titel"
 
-#: src/utils.rs:23
+#: src/utils.rs:24
 msgid "Volume"
 msgstr "Deel"
 
-#: src/utils.rs:24
+#: src/utils.rs:25
 msgid "Number"
 msgstr "Nummer"
 
-#: src/utils.rs:25
+#: src/utils.rs:26
 msgid "Pages"
 msgstr "Pagina’s"
 
-#: src/utils.rs:26
+#: src/utils.rs:27
 msgid "Publisher"
 msgstr "Uitgever"
 
-#: src/utils.rs:27
+#: src/utils.rs:28
 msgid "Journal"
 msgstr "Tijdschrift"
 
-#: src/utils.rs:28
+#: src/utils.rs:29
 msgid "Address"
 msgstr "Adres"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:30
+#: src/utils.rs:31
 msgid "How Published"
 msgstr "Hoe gepubliceerd"
 
-#: src/utils.rs:31
+#: src/utils.rs:32
 msgid "Note"
 msgstr "Aantekening"
 
-#: src/utils.rs:32
+#: src/utils.rs:33
 msgid "Book Title"
 msgstr "Boektitel"
 
-#: src/utils.rs:33
+#: src/utils.rs:34
 msgid "Series"
 msgstr "Serie"
 
-#: src/utils.rs:34
+#: src/utils.rs:35
 msgid "Archive Prefix"
 msgstr "Archiefvoorvoegsel"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:36
+#: src/utils.rs:37
 msgid "ePrint"
 msgstr "ePrint"
 
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:38
-#, fuzzy
-msgid "Primary Class"
-msgstr "Primair type"
-
 #: src/utils.rs:39
+msgid "Primary Class"
+msgstr "Primaire klasse"
+
+#: src/utils.rs:40
 msgid "Month"
 msgstr "Maand"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:41
+#: src/utils.rs:42
 msgid "Editor"
 msgstr "Bewerker"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:43
+#: src/utils.rs:44
 msgid "Organization"
 msgstr "Organisatie"
 
-#: src/utils.rs:44
+#: src/utils.rs:45
 msgid "School"
 msgstr "School"
 
-#: src/utils.rs:45
+#: src/utils.rs:46
 msgid "Institution"
 msgstr "Institutie"
 
-#: src/window.rs:315 src/window.rs:344
+#: src/window.rs:324 src/window.rs:353
 msgid "Bibtex Files"
 msgstr "BibTeX-bestanden"
 
-#: src/window.rs:336
+#: src/window.rs:345
 msgid "Create New Bibliography"
 msgstr "Nieuwe bibliografie aanmaken"
 
-#: src/window.rs:339
+#: src/window.rs:348
 msgid "Create"
 msgstr "Aanmaken"
 
-#: src/window.rs:492
+#: src/window.rs:469
+msgid "Remove From Recent Files"
+msgstr "Verwijderen uit recente bestanden"
+
+#: src/window.rs:513
 msgid "An entry with the given citation key already exists"
 msgstr "Er bestaat al een item met de gegeven citatiesleutel"
 
-#: src/window.rs:507
+#: src/window.rs:528
 msgid "Bibliography saved"
 msgstr "Bibliografie opgeslagen"
 
-#: src/window.rs:547
+#: src/window.rs:571
 msgid "Citation Deleted"
 msgstr "Citatie verwijderd"
 
-#: src/window.rs:549
+#: src/window.rs:573
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: src/window.rs:594
+#: src/window.rs:619
 msgid "translator-credits"
 msgstr ""
 "Philip Goto\n"
 "Nathan Follens <nfollens@gnome.org>\n"
-"\n"
 "Meer info over Gnome-NL https://nl.gnome.org"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:611
+#: src/window.rs:632
 msgid "Unsaved Changes"
 msgstr "Niet-opgeslagen wijzigingen"
 
 # Wat wordt er hier met "safe" bedoeld? - Philip
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:615
-#, fuzzy
+#: src/window.rs:635
 msgid "Do you want to write all changes to the safe?"
-msgstr "Wilt u alle wijzigingen opslaan?"
+msgstr "Wilt u alle wijzigingen opslaan in de kluis?"
 
-#: src/window.rs:618
+#: src/window.rs:639
 msgid "_Quit Without Saving"
 msgstr "_Sluiten zonder opslaan"
 
-#: src/window.rs:624
+#: src/window.rs:640
 msgid "_Don't Quit"
 msgstr "_Niet sluiten"
 
-#: src/window.rs:629
+#: src/window.rs:641
 msgid "_Save and Quit"
 msgstr "_Opslaan en sluiten"
+
+#~ msgid "Select PDF"
+#~ msgstr "PDF selecteren"
+
+#~ msgid "Copy file to bibliography folder"
+#~ msgstr "Kopiëer bestand naar de bibliografiemap"
 
 #~ msgid "Gnome;GTK;"
 #~ msgstr "bibliography;bibliografie;BibTeX;LaTeX;TeX;"
