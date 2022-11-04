@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-07-12 07:42+0000\n"
-"PO-Revision-Date: 2022-07-24 11:50+0700\n"
+"POT-Creation-Date: 2022-10-24 06:59+0000\n"
+"PO-Revision-Date: 2022-11-04 09:45+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.1\n"
 
 #: cratebibtex/src/entry_type.rs:108
 msgid "Article"
@@ -94,12 +94,12 @@ msgstr "Polos"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:610
+#: src/window.rs:612
 msgid "Citations"
 msgstr "Sitasi"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:612
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:614
 msgid "Manage your bibliography"
 msgstr "Mengelola bibliografi Anda"
 
@@ -145,7 +145,7 @@ msgstr "Mengelola bibliografi Anda menggunakan format BibTeX."
 msgid "Main window"
 msgstr "Jendela utama"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:71
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:78
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -154,21 +154,21 @@ msgstr "Maximiliano Sandoval"
 msgid "Add PDF"
 msgstr "Tambah PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:48
+#: data/resources/ui/add_pdf_dialog.ui:58
 msgid "Bibliography folder not set"
 msgstr "Folder bibliografi tidak diatur"
 
-#: data/resources/ui/add_pdf_dialog.ui:66
+#: data/resources/ui/add_pdf_dialog.ui:76
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Membuat salinan pdf yang dipilih dan menyimpannya di folder Bibliografi Anda."
 
-#: data/resources/ui/add_pdf_dialog.ui:81
+#: data/resources/ui/add_pdf_dialog.ui:91
 msgid "From file"
 msgstr "Dari berkas"
 
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:108
 msgid "From URL"
 msgstr "Dari URL"
 
@@ -213,6 +213,18 @@ msgstr "Tidak Ada Sitasi"
 msgid "Create a new citation"
 msgstr "Membuat sitasi baru"
 
+#: data/resources/ui/entry_list_row.ui:88
+msgid "_Open PDF"
+msgstr "B_uka PDF"
+
+#: data/resources/ui/entry_list_row.ui:92
+msgid "_Copy Key"
+msgstr "Salin _Kunci"
+
+#: data/resources/ui/entry_list_row.ui:98 data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "Ha_pus"
+
 #: data/resources/ui/entry_page.ui:13
 msgid "No Citation Selected"
 msgstr "Tidak Ada Sitasi yang Dipilih"
@@ -241,7 +253,7 @@ msgstr "_Judul"
 msgid "_Year"
 msgstr "_Tahun"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:388
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:376
 msgid "Open in Browser"
 msgstr "Buka di Peramban"
 
@@ -353,10 +365,6 @@ msgstr "Cari di Google _Scholar"
 msgid "_Search in arXiv"
 msgstr "Car_i di arXiv"
 
-#: data/resources/ui/window.ui:62
-msgid "_Delete"
-msgstr "Ha_pus"
-
 #: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
 #: data/resources/ui/window.ui:195
 msgid "Main Menu"
@@ -400,11 +408,11 @@ msgid "Could not download PDF"
 msgstr "Tidak dapat mengunduh PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:97
+#: src/add_pdf_dialog.rs:94
 msgid "Make sure that {path} exists"
 msgstr "Pastikan {path} ada"
 
-#: src/add_pdf_dialog.rs:187
+#: src/add_pdf_dialog.rs:183
 msgid "PDF Files"
 msgstr "Berkas PDF"
 
@@ -426,7 +434,7 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Ubahan"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:185
+#: src/citation_preview.rs:160 src/entry_list_row.rs:55 src/entry_page.rs:185
 msgid "Copied"
 msgstr "Tersalin"
 
@@ -443,13 +451,11 @@ msgstr "Lainnya…"
 msgid "Citation Key already exists"
 msgstr "Kunci Sitasi sudah ada"
 
-#: src/entry_page.rs:553
+#: src/entry_page.rs:536
 msgid "PDF added"
 msgstr "PDF ditambahkan"
 
-#. TODO Use placeholder-text see
-#. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
-#: src/new_entry_dialog.rs:127
+#: src/new_entry_dialog.rs:125
 msgid "Insert a BibTeX citation here"
 msgstr "Sisipkan kutipan BibTeX di sini"
 
@@ -542,61 +548,63 @@ msgstr "Sekolah"
 msgid "Institution"
 msgstr "Institusi"
 
-#: src/window.rs:320 src/window.rs:349
+#: src/window.rs:324 src/window.rs:353
 msgid "Bibtex Files"
 msgstr "Berkas Bibtex"
 
-#: src/window.rs:341
+#: src/window.rs:345
 msgid "Create New Bibliography"
 msgstr "Buat Bibliografi Baru"
 
-#: src/window.rs:344
+#: src/window.rs:348
 msgid "Create"
 msgstr "Buat"
 
-#: src/window.rs:465
+#: src/window.rs:469
 msgid "Remove From Recent Files"
 msgstr "Hapus dari Berkas Terkini"
 
-#: src/window.rs:509
+#: src/window.rs:513
 msgid "An entry with the given citation key already exists"
 msgstr "Entri dengan kunci sitasi yang diberikan sudah ada"
 
-#: src/window.rs:524
+#: src/window.rs:528
 msgid "Bibliography saved"
 msgstr "Bibliografi disimpan"
 
-#: src/window.rs:568
+#: src/window.rs:571
 msgid "Citation Deleted"
 msgstr "Sitasi Dihapus"
 
-#: src/window.rs:570
+#: src/window.rs:573
 msgid "Undo"
 msgstr "Tak Jadi"
 
-#: src/window.rs:617
+#: src/window.rs:619
 msgid "translator-credits"
-msgstr "Andika Triwidada <andika@gmail.com>, 2022"
+msgstr ""
+"Andika Triwidada <andika@gmail.com>, 2022.\n"
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022."
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:630
+#: src/window.rs:632
 msgid "Unsaved Changes"
 msgstr "Perubahan Belum Tersimpan"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:633
+#: src/window.rs:635
 msgid "Do you want to write all changes to the safe?"
 msgstr "Apakah Anda ingin menulis semua perubahan ke brankas?"
 
-#: src/window.rs:637
+#: src/window.rs:639
 msgid "_Quit Without Saving"
 msgstr "_Keluar Tanpa Menyimpan"
 
-#: src/window.rs:638
+#: src/window.rs:640
 msgid "_Don't Quit"
 msgstr "Ja_ngan Keluar"
 
-#: src/window.rs:639
+#: src/window.rs:641
 msgid "_Save and Quit"
 msgstr "_Simpan dan Keluar"
 
@@ -605,6 +613,3 @@ msgstr "_Simpan dan Keluar"
 
 #~ msgid "Copy file to bibliography folder"
 #~ msgstr "Salin berkas ke folder bibliografi"
-
-#~ msgid "Open PDF"
-#~ msgstr "Buka PDF"
