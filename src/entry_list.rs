@@ -65,7 +65,7 @@ mod imp {
         }
 
         fn constructed(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
             self.parent_constructed();
 
             let selection = crate::Selection::default();
@@ -83,11 +83,13 @@ mod imp {
             let factory = gtk::SignalListItemFactory::new();
 
             factory.connect_setup(|_, item| {
+                let item = item.downcast_ref::<gtk::ListItem>().unwrap();
                 let row = crate::EntryListRow::default();
                 item.set_child(Some(&row));
             });
 
             factory.connect_bind(|_, item| {
+                let item = item.downcast_ref::<gtk::ListItem>().unwrap();
                 let child = item.child().unwrap();
                 let row = child.downcast_ref::<crate::EntryListRow>().unwrap();
 

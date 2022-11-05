@@ -55,7 +55,7 @@ mod imp {
         }
 
         fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            let obj = self.instance();
+            let obj = self.obj();
             match pspec.name() {
                 "model" => obj.set_model(value.get().unwrap()),
                 "selected-item" => obj.set_selected_item(value.get().unwrap()),
@@ -65,7 +65,7 @@ mod imp {
         }
 
         fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.instance();
+            let obj = self.obj();
             match pspec.name() {
                 "model" => obj.model().to_value(),
                 "selected-item" => obj.selected_item().to_value(),
@@ -80,7 +80,7 @@ mod imp {
         }
 
         fn dispose(&self) {
-            self.instance().disconnect_model_signal();
+            self.obj().disconnect_model_signal();
         }
     }
 
@@ -105,7 +105,7 @@ mod imp {
     impl SelectionModelImpl for Selection {
         fn is_selected(&self, position: u32) -> bool {
             let item_position = self.item_position.get();
-            if self.instance().hide_selection() || item_position == gtk::INVALID_LIST_POSITION {
+            if self.obj().hide_selection() || item_position == gtk::INVALID_LIST_POSITION {
                 return false;
             }
 
@@ -115,7 +115,7 @@ mod imp {
         fn selection_in_range(&self, _position: u32, _n_items: u32) -> gtk::Bitset {
             let result = gtk::Bitset::new_empty();
             let item_position = self.item_position.get();
-            if !self.instance().hide_selection() && item_position != gtk::INVALID_LIST_POSITION {
+            if !self.obj().hide_selection() && item_position != gtk::INVALID_LIST_POSITION {
                 result.add(item_position);
             }
 

@@ -66,7 +66,7 @@ mod imp {
         }
 
         fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.instance();
+            let obj = self.obj();
             let pspec_name = pspec.name();
             match pspec_name {
                 "citation-key" => obj.citation_key().to_value(),
@@ -76,7 +76,7 @@ mod imp {
         }
 
         fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            let obj = self.instance();
+            let obj = self.obj();
             let pspec_name = pspec.name();
             match pspec_name {
                 "citation-key" => {

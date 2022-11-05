@@ -52,7 +52,7 @@ mod imp {
     impl AddPdfDialog {
         #[template_callback]
         async fn set_from_file_button_clicked(&self) {
-            if let Err(err) = self.instance().set_pdf_from_file().await {
+            if let Err(err) = self.obj().set_pdf_from_file().await {
                 log::error!("could not set pdf: {err}");
                 let toast = adw::Toast::new(&gettext("Could not set PDF"));
                 self.toast_overlay.add_toast(&toast);
@@ -62,7 +62,7 @@ mod imp {
         #[template_callback]
         async fn on_download_pdf_button_clicked(&self) {
             self.download_button.set_sensitive(false);
-            if let Err(err) = self.instance().download_pdf_for_entry().await {
+            if let Err(err) = self.obj().download_pdf_for_entry().await {
                 log::error!("Could not download pdf: {err}");
                 self.pdf_url_entry_row.add_css_class("error");
                 let toast = adw::Toast::new(&gettext("Could not download PDF"));
@@ -70,8 +70,8 @@ mod imp {
                 self.download_button.set_sensitive(true);
             } else {
                 self.pdf_url_entry_row.remove_css_class("error");
-                self.instance().emit_by_name::<()>("pdf-set", &[]);
-                self.instance().close();
+                self.obj().emit_by_name::<()>("pdf-set", &[]);
+                self.obj().close();
             }
         }
     }

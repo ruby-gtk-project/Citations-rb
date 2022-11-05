@@ -149,10 +149,10 @@ mod imp {
             let (start, end) = buffer.bounds();
             let text = buffer.text(&start, &end, true);
 
-            self.instance().clipboard().set_text(&text);
+            self.obj().clipboard().set_text(&text);
 
             let window = self
-                .instance()
+                .obj()
                 .root()
                 .unwrap()
                 .downcast::<crate::Window>()
@@ -178,7 +178,7 @@ mod imp {
 
         #[template_callback]
         fn on_template_notify(&self) {
-            let template = self.instance().template();
+            let template = self.obj().template();
             let selected = cratebibtex::Format::from(self.drop_down.selected() as i32);
             if let Some(entry) = &*self.entry.borrow() {
                 let citation = entry.format_citation(&template, selected);
@@ -190,7 +190,7 @@ mod imp {
     impl ObjectImpl for CitationPreview {
         fn constructed(&self) {
             self.parent_constructed();
-            let obj = self.instance();
+            let obj = self.obj();
 
             obj.update_style_scheme();
             let manager = adw::StyleManager::default();
@@ -285,7 +285,7 @@ mod imp {
         }
 
         fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.instance();
+            let obj = self.obj();
             match pspec.name() {
                 "entry" => self.entry.borrow().to_value(),
                 "template" => obj.template().to_value(),
@@ -301,7 +301,7 @@ mod imp {
             value: &glib::Value,
             pspec: &glib::ParamSpec,
         ) {
-            let obj = self.instance();
+            let obj = self.obj();
             match pspec.name() {
                 "entry" => {
                     if let Ok(entry) = value.get::<cratebibtex::Entry>() {

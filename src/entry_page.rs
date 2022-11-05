@@ -109,7 +109,7 @@ mod imp {
                 if let Err(err) = pdf.trash_future(glib::Priority::default()).await {
                     log::error!("Could not trash pdf: {err}");
                 } else {
-                    self.instance().setup_pdf();
+                    self.obj().setup_pdf();
                 }
             }
         }
@@ -123,8 +123,8 @@ mod imp {
             let type_ = cratebibtex::EntryType::from(combo_row.selected() as i32);
             if let Some(entry) = self.entry.borrow().as_ref() {
                 entry.set_entry_type(type_);
-                self.instance().bind_extras_list_model(entry);
-                self.instance().setup_other_entry_row();
+                self.obj().bind_extras_list_model(entry);
+                self.obj().setup_other_entry_row();
             }
         }
 
@@ -162,7 +162,7 @@ mod imp {
             let value = self.doi_entry.text();
             if let Ok(uri) = crate::utils::doi_url(&value) {
                 let window = self
-                    .instance()
+                    .obj()
                     .root()
                     .unwrap()
                     .downcast::<crate::Window>()
@@ -174,10 +174,10 @@ mod imp {
         #[template_callback]
         fn on_copy_key_clicked(&self) {
             let key = self.entry.borrow().as_ref().unwrap().citation_key();
-            self.instance().clipboard().set_text(&key);
+            self.obj().clipboard().set_text(&key);
 
             let window = self
-                .instance()
+                .obj()
                 .root()
                 .unwrap()
                 .downcast::<crate::Window>()
@@ -213,7 +213,7 @@ mod imp {
     impl ObjectImpl for EntryPage {
         fn constructed(&self) {
             self.parent_constructed();
-            let obj = self.instance();
+            let obj = self.obj();
 
             self.doi_entry
                 .connect_changed(glib::clone!(@weak obj => move |row| {
@@ -287,7 +287,7 @@ mod imp {
 
         fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
             match pspec.name() {
-                "entry" => self.instance().set_entry(value.get().ok()),
+                "entry" => self.obj().set_entry(value.get().ok()),
                 _ => unimplemented!(),
             };
         }

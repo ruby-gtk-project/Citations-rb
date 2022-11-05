@@ -76,7 +76,7 @@ mod imp {
         fn on_cancel_clicked(&self) {
             let sender = self.sender.take().unwrap();
             sender.send(None).unwrap();
-            self.instance().destroy();
+            self.obj().destroy();
         }
 
         #[template_callback]
@@ -99,14 +99,14 @@ mod imp {
             };
             sender.send(Some(data)).unwrap();
 
-            self.instance().destroy();
+            self.obj().destroy();
         }
     }
 
     impl ObjectImpl for NewEntryDialog {
         fn constructed(&self) {
             self.parent_constructed();
-            let obj = self.instance();
+            let obj = self.obj();
 
             let language_manager = gsv::LanguageManager::default();
             let lang = language_manager.language("bibtex").unwrap();
