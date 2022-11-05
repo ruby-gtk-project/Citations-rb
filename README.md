@@ -30,3 +30,7 @@ spaces.
 
 Helping to translate Citations or add support to a new language is very welcome.
 You can find everything you need at: [l10n.gnome.org/module/citations/](https://l10n.gnome.org/module/citations/)
+
+## Code Of Conduct
+
+This project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
