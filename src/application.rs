@@ -31,7 +31,7 @@ mod imp {
             debug!("Application::activate");
             self.parent_activate();
 
-            let window = Window::new(&self.instance());
+            let window = Window::new(&self.obj());
             let group = gtk::WindowGroup::new();
             group.add_window(&window);
 
@@ -41,14 +41,13 @@ mod imp {
         fn startup(&self) {
             debug!("Application::startup");
             self.parent_startup();
-            let app = self.instance();
+            let app = self.obj();
 
             gsv::init();
 
             // Set icons for shell
             gtk::Window::set_default_icon_name(APP_ID);
 
-            app.setup_css();
             app.setup_gactions();
             app.setup_accels();
         }
@@ -95,18 +94,6 @@ impl Application {
         self.set_accels_for_action("win.save", &["<Control>s"]);
         self.set_accels_for_action("win.search", &["<Control>f"]);
         self.set_accels_for_action("window.close", &["<Control>w"]);
-    }
-
-    fn setup_css(&self) {
-        let provider = gtk::CssProvider::new();
-        provider.load_from_resource("/org/gnome/World/Citations/style.css");
-        if let Some(display) = gdk::Display::default() {
-            gtk::StyleContext::add_provider_for_display(
-                &display,
-                &provider,
-                gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-            );
-        }
     }
 
     pub fn run(&self) {

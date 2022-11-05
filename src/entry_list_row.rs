@@ -126,7 +126,7 @@ mod imp {
 
         fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
             match pspec.name() {
-                "entry" => self.instance().set_entry(value.get().unwrap()),
+                "entry" => self.obj().set_entry(value.get().unwrap()),
                 _ => unimplemented!(),
             };
         }

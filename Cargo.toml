@@ -15,7 +15,7 @@ gettext-rs = { version = "0.7", features = ["gettext-system"] }
 gio = { version = "0.16", features = ["v2_72"] }
 glib = { version = "0.16", features = ["v2_72"] }
 gsv = { package = "sourceview5", version = "0.5" }
-gtk = { version = "0.5", package = "gtk4", features = ["v4_6"] }
+gtk = { version = "0.5.1", package = "gtk4", features = ["v4_8"] }
 log = "0.4"
 once_cell = "1.12"
 poppler-rs = { version = "0.20", features = ["v0_82"] }
