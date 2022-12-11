@@ -1,6 +1,6 @@
 use gettextrs::gettext;
-use gtk::glib;
 use gtk::subclass::prelude::*;
+use gtk::{gio, glib};
 use gtk::{prelude::*, CompositeTemplate};
 use once_cell::sync::Lazy;
 use once_cell::sync::OnceCell;

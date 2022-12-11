@@ -4,7 +4,7 @@ use log::{debug, info};
 use glib::clone;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::{gdk, gio, glib};
+use gtk::{gio, glib};
 
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::window::Window;
