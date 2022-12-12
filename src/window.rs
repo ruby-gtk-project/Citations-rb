@@ -87,8 +87,8 @@ mod imp {
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template();
+            klass.bind_template_callbacks();
 
             klass.install_action("win.open", Some("s"), move |window, _, param| {
                 let path = param.unwrap().get::<String>().unwrap();
@@ -312,26 +312,20 @@ impl Window {
 
     async fn open_action(&self, path: String) -> anyhow::Result<()> {
         if path.is_empty() {
-            let dialog = gtk::FileChooserNative::new(
-                None,
-                Some(self),
-                gtk::FileChooserAction::Open,
-                None,
-                None,
-            );
-
             let bib_filter = gtk::FileFilter::new();
             bib_filter.set_name(Some(&gettext("Bibtex Files")));
             bib_filter.add_mime_type("text/plain");
             bib_filter.add_mime_type("text/x-bibtex");
             bib_filter.add_pattern("*.bib");
-            dialog.add_filter(&bib_filter);
 
-            let response = dialog.run_future().await;
-            if response == gtk::ResponseType::Accept {
-                let file = dialog.file().unwrap();
-                self.open_wrapper(&file).await?;
-            }
+            let filters = gio::ListStore::new(gtk::FileFilter::static_type());
+            filters.append(&bib_filter);
+
+            let dialog = gtk::FileDialog::new();
+            dialog.set_filters(&filters);
+
+            let file = dialog.open_future(Some(self)).await?;
+            self.open_wrapper(&file).await?;
         } else {
             let file = gio::File::for_path(&path);
             self.open_wrapper(&file).await?;
@@ -341,29 +335,28 @@ impl Window {
     }
 
     async fn new_biblio_action(&self) -> anyhow::Result<()> {
-        let dialog = gtk::FileChooserNative::new(
-            Some(&gettext("Create New Bibliography")),
-            Some(self),
-            gtk::FileChooserAction::Save,
-            Some(&gettext("Create")),
-            None,
-        );
-
         let bib_filter = gtk::FileFilter::new();
         bib_filter.set_name(Some(&gettext("Bibtex Files")));
         bib_filter.add_mime_type("text/plain");
         bib_filter.add_mime_type("text/x-bibtex");
         bib_filter.add_pattern("*.bib");
-        dialog.add_filter(&bib_filter);
 
-        if gtk::ResponseType::Accept == dialog.run_future().await {
-            let file = dialog.file().unwrap();
-            let stream = file
-                .create_future(gio::FileCreateFlags::NONE, glib::Priority::default())
-                .await?;
-            stream.close_future(glib::Priority::default()).await?;
-            self.open_wrapper(&file).await?;
-        }
+        let filters = gio::ListStore::new(gtk::FileFilter::static_type());
+        filters.append(&bib_filter);
+
+        let dialog = gtk::FileDialog::new();
+        dialog.set_filters(&filters);
+        dialog.set_title(&gettext("Create New Bibliography"));
+        dialog.set_accept_label(Some(&gettext("_Create")));
+        // TRANSLATORS This a file name, do not translate the file format (.bib)
+        dialog.set_initial_name(Some(&gettext("bibliography.bib")));
+
+        let file = dialog.save_future(Some(self)).await?;
+        let stream = file
+            .create_future(gio::FileCreateFlags::NONE, glib::Priority::default())
+            .await?;
+        stream.close_future(glib::Priority::default()).await?;
+        self.open_wrapper(&file).await?;
 
         Ok(())
     }

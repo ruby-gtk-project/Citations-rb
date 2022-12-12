@@ -171,36 +171,32 @@ impl AddPdfDialog {
             // TODO Add djvu support, is it needed?
             let folder = gio::File::for_path(&path);
 
-            let dialog = gtk::FileChooserNative::new(
-                None,
-                Some(self),
-                gtk::FileChooserAction::Open,
-                None,
-                None,
-            );
-
             let pdf_filter = gtk::FileFilter::new();
             pdf_filter.set_name(Some(&gettext("PDF Files")));
             pdf_filter.add_mime_type("application/pdf");
-            dialog.add_filter(&pdf_filter);
 
-            if dialog.run_future().await == gtk::ResponseType::Accept {
-                let file = dialog.file().unwrap();
-                let filename = utils::pdf_filename(citation_key);
-                let dest = folder.child(&filename);
+            let filters = gio::ListStore::new(gtk::FileFilter::static_type());
+            filters.append(&pdf_filter);
 
-                if let Err(err) = async_std::fs::create_dir_all(&path).await {
-                    log::error!("Could not create bibliography directory: {err}");
-                }
+            let dialog = gtk::FileDialog::new();
+            dialog.set_filters(&filters);
+            dialog.set_title(&gettext("Select a PDF"));
 
-                file.copy_future(&dest, gio::FileCopyFlags::NONE, glib::Priority::default())
-                    .0
-                    .await?;
-                log::debug!("Copied {filename} to {}", path.to_str().unwrap());
+            let file = dialog.open_future(Some(self)).await?;
+            let filename = utils::pdf_filename(citation_key);
+            let dest = folder.child(&filename);
 
-                self.emit_by_name::<()>("pdf-set", &[]);
-                self.close();
+            if let Err(err) = async_std::fs::create_dir_all(&path).await {
+                log::error!("Could not create bibliography directory: {err}");
             }
+
+            file.copy_future(&dest, gio::FileCopyFlags::NONE, glib::Priority::default())
+                .0
+                .await?;
+            log::debug!("Copied {filename} to {}", path.to_str().unwrap());
+
+            self.emit_by_name::<()>("pdf-set", &[]);
+            self.close();
         }
 
         Ok(())
