@@ -35,15 +35,13 @@ mod imp {
             klass.set_layout_manager_type::<gtk::BinLayout>();
 
             // Action used only for the extra menu
-            klass.install_action("entry-row.open-pdf", None, move |row, _, _| {
+            klass.install_action_async("entry-row.open-pdf", None, |row, _, _| async move {
                 let citation_key = row.entry().citation_key();
                 let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
 
-                crate::spawn!(glib::clone!(@weak window => async move {
-                    if let Err(err) = crate::utils::open_pdf(&citation_key, &window).await {
-                        log::error!("Could not open pdf: {err}");
-                    }
-                }));
+                if let Err(err) = crate::utils::open_pdf(&citation_key, &window).await {
+                    log::error!("Could not open pdf: {err}");
+                }
             });
 
             klass.install_action("entry-row.delete", None, move |row, _, _| {

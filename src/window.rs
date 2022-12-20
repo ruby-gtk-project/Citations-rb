@@ -90,30 +90,29 @@ mod imp {
             klass.bind_template();
             klass.bind_template_callbacks();
 
-            klass.install_action("win.open", Some("s"), move |window, _, param| {
-                let path = param.unwrap().get::<String>().unwrap();
-                crate::spawn!(glib::clone!(@weak window => async move {
+            klass.install_action_async("win.open", Some("s"), |window, _, param| {
+                // FIXME This clone is needed as long as the API requires a Option<&Value>.
+                let path: String = param.unwrap().get::<String>().unwrap().clone();
+                async move {
                     if let Err(err) = window.open_action(path).await {
                         log::error!("Could not open file: {err}");
                     }
-                }));
+                }
             });
-            klass.install_action("win.new_biblio", None, move |window, _, _| {
-                crate::spawn!(glib::clone!(@weak window => async move {
-                    if let Err(err) = window.new_biblio_action().await {
-                        log::error!("Could not create file: {err}");
-                    }
-                }));
+            klass.install_action_async("win.new_biblio", None, |window, _, _| async move {
+                if let Err(err) = window.new_biblio_action().await {
+                    log::error!("Could not create file: {err}");
+                }
             });
-            klass.install_action("win.new_entry", None, move |window, _, _| {
-                window.new_entry_dialog();
+            klass.install_action_async("win.new_entry", None, |window, _, _| async move {
+                if let Err(err) = window.new_entry_dialog().await {
+                    log::error!("Could not spawn dialog: {err}");
+                }
             });
-            klass.install_action("win.save", None, move |window, _, _| {
-                crate::spawn!(glib::clone!(@weak window = > async move {
-                    if let Err(err) = window.save().await {
-                        log::error!("Could not save bibliography: {err}");
-                    }
-                }));
+            klass.install_action_async("win.save", None, |window, _, _| async move {
+                if let Err(err) = window.save().await {
+                    log::error!("Could not save bibliography: {err}");
+                }
             });
             klass.install_action("win.delete_entry", None, move |obj, _, _| {
                 if let Some(entry) = obj.imp().entry_page.entry() {
@@ -484,18 +483,14 @@ impl Window {
         self.imp().toast_overlay.add_toast(&toast);
     }
 
-    pub fn new_entry_dialog(&self) {
+    pub async fn new_entry_dialog(&self) -> anyhow::Result<()> {
         let dialog = crate::NewEntryDialog::new(self);
 
-        crate::spawn!(
-            glib::clone!(@weak self as window, @weak dialog => async move {
-                if let Some(data) = dialog.run().await {
-                    if let Err(err) = window.new_entry(data) {
-                        log::error!("Could not add entry: {err}");
-                    }
-                }
-            })
-        );
+        if let Some(data) = dialog.run().await {
+            self.new_entry(data)
+        } else {
+            anyhow::bail!("Dialog error")
+        }
     }
 
     pub fn new_entry(&self, data: String) -> anyhow::Result<()> {

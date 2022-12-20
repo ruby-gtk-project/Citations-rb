@@ -74,18 +74,18 @@ mod imp {
             Self::bind_template(klass);
             Self::bind_template_callbacks(klass);
 
-            klass.install_action("entry-page.open-pdf", None, move |obj, _, _| {
-                obj.open_pdf_action();
+            klass.install_action_async("entry-page.open-pdf", None, |obj, _, _| async move {
+                if let Err(err) = obj.open_pdf_action().await {
+                    log::error!("Could not set PDF: {err}");
+                }
             });
 
-            klass.install_action("entry-page.set-pdf", None, move |obj, _, _| {
-                crate::spawn!(glib::clone!(@weak obj => async move {
-                    if let Err(err) = obj.set_pdf_action().await {
-                        log::error!("Could not set PDF: {err}");
-                    } else {
-                        obj.setup_pdf();
-                    }
-                }));
+            klass.install_action_async("entry-page.set-pdf", None, |obj, _, _| async move {
+                if let Err(err) = obj.set_pdf_action().await {
+                    log::error!("Could not set PDF: {err}");
+                } else {
+                    obj.setup_pdf();
+                }
             });
         }
 
@@ -515,16 +515,12 @@ impl EntryPage {
             .set_visible_child(&self.imp().empty_bin.get());
     }
 
-    fn open_pdf_action(&self) {
+    async fn open_pdf_action(&self) -> anyhow::Result<()> {
         let entry = self.imp().entry.borrow();
         let citation_key = entry.as_ref().unwrap().citation_key();
         let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
 
-        crate::spawn!(glib::clone!(@weak window => async move {
-            if let Err(err) = crate::utils::open_pdf(&citation_key, &window).await {
-                log::error!("Could not open pdf: {err}");
-            }
-        }));
+        crate::utils::open_pdf(&citation_key, &window).await
     }
 
     async fn set_pdf_action(&self) -> anyhow::Result<()> {
