@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use gettextrs::gettext;
 use gio::prelude::*;
-use gtk::{gdk, gio, glib};
+use gtk::{gio, glib};
 use std::path::PathBuf;
 
 #[macro_export]
@@ -152,14 +152,19 @@ pub(crate) fn has_pdf(citation_key: &str) -> bool {
     }
 }
 
-pub(crate) fn open_pdf<W: glib::IsA<gtk::Window>>(citation_key: &str, window: &W) {
+pub(crate) async fn open_pdf<W: glib::IsA<gtk::Window>>(
+    citation_key: &str,
+    window: &W,
+) -> anyhow::Result<()> {
     if let Some(path) = crate::utils::bibliography_path() {
         let folder = gio::File::for_path(&path);
         let pdf = folder.child(&crate::utils::pdf_filename(&citation_key));
-        if pdf.query_exists(gio::Cancellable::NONE) {
-            gtk::show_uri(Some(window), &pdf.uri(), gdk::CURRENT_TIME);
-        }
+        let launcher = gtk::FileLauncher::new(Some(&pdf));
+
+        launcher.launch_future(Some(window)).await?;
+
+        Ok(())
     } else {
-        log::error!("Could not open PDF");
+        anyhow::bail!("There is not bibliography path");
     }
 }

@@ -520,7 +520,11 @@ impl EntryPage {
         let citation_key = entry.as_ref().unwrap().citation_key();
         let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
 
-        crate::utils::open_pdf(&citation_key, &window);
+        crate::spawn!(glib::clone!(@weak window => async move {
+            if let Err(err) = crate::utils::open_pdf(&citation_key, &window).await {
+                log::error!("Could not open pdf: {err}");
+            }
+        }));
     }
 
     async fn set_pdf_action(&self) -> anyhow::Result<()> {

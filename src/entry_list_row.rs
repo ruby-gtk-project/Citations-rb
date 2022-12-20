@@ -39,7 +39,11 @@ mod imp {
                 let citation_key = row.entry().citation_key();
                 let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
 
-                crate::utils::open_pdf(&citation_key, &window);
+                crate::spawn!(glib::clone!(@weak window => async move {
+                    if let Err(err) = crate::utils::open_pdf(&citation_key, &window).await {
+                        log::error!("Could not open pdf: {err}");
+                    }
+                }));
             });
 
             klass.install_action("entry-row.delete", None, move |row, _, _| {
