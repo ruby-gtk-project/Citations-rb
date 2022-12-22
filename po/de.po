@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-07-12 07:42+0000\n"
-"PO-Revision-Date: 2022-07-16 09:14+0200\n"
+"POT-Creation-Date: 2022-10-24 06:59+0000\n"
+"PO-Revision-Date: 2022-12-22 17:36+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: cratebibtex/src/entry_type.rs:108
 msgid "Article"
@@ -103,12 +103,12 @@ msgstr "Text"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:610
+#: src/window.rs:612
 msgid "Citations"
 msgstr "Zitate"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:612
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:614
 msgid "Manage your bibliography"
 msgstr "Verwalten Sie Ihre Bibliografie"
 
@@ -156,7 +156,7 @@ msgstr "Verwalten Sie Ihre Bibliografien im BibTeX-Format."
 msgid "Main window"
 msgstr "Hauptfenster"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:71
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:78
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -165,22 +165,22 @@ msgstr "Maximiliano Sandoval"
 msgid "Add PDF"
 msgstr "PDF hinzufügen"
 
-#: data/resources/ui/add_pdf_dialog.ui:48
+#: data/resources/ui/add_pdf_dialog.ui:58
 msgid "Bibliography folder not set"
 msgstr "Bibliografieordner nicht gesetzt"
 
-#: data/resources/ui/add_pdf_dialog.ui:66
+#: data/resources/ui/add_pdf_dialog.ui:76
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Erzeugt eine Kopie des ausgewählten PDFs und speichert sie in Ihrem "
 "Bibliografieordner."
 
-#: data/resources/ui/add_pdf_dialog.ui:81
+#: data/resources/ui/add_pdf_dialog.ui:91
 msgid "From file"
 msgstr "Aus Datei"
 
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:108
 msgid "From URL"
 msgstr "Aus Adresse"
 
@@ -225,6 +225,18 @@ msgstr "Keine Zitate"
 msgid "Create a new citation"
 msgstr "Neues Zitat erstellen"
 
+#: data/resources/ui/entry_list_row.ui:88
+msgid "_Open PDF"
+msgstr "PDF ö_ffnen"
+
+#: data/resources/ui/entry_list_row.ui:92
+msgid "_Copy Key"
+msgstr "Schlüssel _kopieren"
+
+#: data/resources/ui/entry_list_row.ui:98 data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "_Löschen"
+
 #: data/resources/ui/entry_page.ui:13
 msgid "No Citation Selected"
 msgstr "Kein Zitat ausgewählt"
@@ -253,7 +265,7 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "_Jahr"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:388
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:376
 msgid "Open in Browser"
 msgstr "In Browser öffnen"
 
@@ -365,10 +377,6 @@ msgstr "In Google Scholar _suchen"
 msgid "_Search in arXiv"
 msgstr "In arXiv _suchen"
 
-#: data/resources/ui/window.ui:62
-msgid "_Delete"
-msgstr "_Löschen"
-
 #: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
 #: data/resources/ui/window.ui:195
 msgid "Main Menu"
@@ -412,11 +420,11 @@ msgid "Could not download PDF"
 msgstr "PDF konnte nicht heruntergeladen werden"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:97
+#: src/add_pdf_dialog.rs:94
 msgid "Make sure that {path} exists"
 msgstr "Stellen Sie sicher, dass {path} existiert"
 
-#: src/add_pdf_dialog.rs:187
+#: src/add_pdf_dialog.rs:183
 msgid "PDF Files"
 msgstr "PDF-Dateien"
 
@@ -438,7 +446,7 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:185
+#: src/citation_preview.rs:160 src/entry_list_row.rs:55 src/entry_page.rs:185
 msgid "Copied"
 msgstr "Kopiert"
 
@@ -455,13 +463,11 @@ msgstr "Andere …"
 msgid "Citation Key already exists"
 msgstr "Zitatschlüssel existiert bereits"
 
-#: src/entry_page.rs:553
+#: src/entry_page.rs:536
 msgid "PDF added"
 msgstr "PDF hinzugefügt"
 
-#. TODO Use placeholder-text see
-#. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
-#: src/new_entry_dialog.rs:127
+#: src/new_entry_dialog.rs:125
 msgid "Insert a BibTeX citation here"
 msgstr "BibTeX-Zitat hier einfügen"
 
@@ -554,63 +560,63 @@ msgstr "Schule"
 msgid "Institution"
 msgstr "Institution"
 
-#: src/window.rs:320 src/window.rs:349
+#: src/window.rs:324 src/window.rs:353
 msgid "Bibtex Files"
 msgstr "BibTeX-Dateien"
 
-#: src/window.rs:341
+#: src/window.rs:345
 msgid "Create New Bibliography"
 msgstr "Neue Bibliografie erstellen"
 
-#: src/window.rs:344
+#: src/window.rs:348
 msgid "Create"
 msgstr "Erstellen"
 
-#: src/window.rs:465
+#: src/window.rs:469
 msgid "Remove From Recent Files"
 msgstr "Aus den kürzlich verwendeten Dateien entfernen"
 
-#: src/window.rs:509
+#: src/window.rs:513
 msgid "An entry with the given citation key already exists"
 msgstr "Es existiert bereits ein Eintrag mit diesem Zitatschlüssel"
 
-#: src/window.rs:524
+#: src/window.rs:528
 msgid "Bibliography saved"
 msgstr "Bibliografie gespeichert"
 
-#: src/window.rs:568
+#: src/window.rs:571
 msgid "Citation Deleted"
 msgstr "Zitat gelöscht"
 
-#: src/window.rs:570
+#: src/window.rs:573
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/window.rs:617
+#: src/window.rs:619
 msgid "translator-credits"
 msgstr ""
 "Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Jürgen Benvenuti <gastornis@posteo.org>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:630
+#: src/window.rs:632
 msgid "Unsaved Changes"
 msgstr "Ungespeicherte Änderungen"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:633
+#: src/window.rs:635
 msgid "Do you want to write all changes to the safe?"
 msgstr "Möchten Sie alle Änderungen in den Safe speichern?"
 
-#: src/window.rs:637
+#: src/window.rs:639
 msgid "_Quit Without Saving"
 msgstr "_Beenden ohne zu speichern"
 
-#: src/window.rs:638
+#: src/window.rs:640
 msgid "_Don't Quit"
 msgstr "_Nicht beenden"
 
-#: src/window.rs:639
+#: src/window.rs:641
 msgid "_Save and Quit"
 msgstr "_Speichern und beenden"
 
@@ -619,9 +625,6 @@ msgstr "_Speichern und beenden"
 
 #~ msgid "Copy file to bibliography folder"
 #~ msgstr "Datei in den Bibliografieordner kopieren"
-
-#~ msgid "Open PDF"
-#~ msgstr "PDF öffnen"
 
 #~ msgid "Open"
 #~ msgstr "Öffnen"
