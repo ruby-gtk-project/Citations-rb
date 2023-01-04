@@ -1,14 +1,14 @@
 # Danish translation for citations.
-# Copyright (C) 2022 citations's COPYRIGHT HOLDER
+# Copyright (C) 2022-2023 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2022.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2022-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-07-12 07:42+0000\n"
-"PO-Revision-Date: 2022-07-29 12:29+0200\n"
+"POT-Creation-Date: 2022-10-24 06:59+0000\n"
+"PO-Revision-Date: 2023-01-01 18:39+0100\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -94,12 +94,12 @@ msgstr "Almindelig tekst"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:610
+#: src/window.rs:612
 msgid "Citations"
 msgstr "Citations"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:612
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:614
 msgid "Manage your bibliography"
 msgstr "Håndtér din bibliografi"
 
@@ -146,7 +146,7 @@ msgstr "Håndtér dine bibliografier i BibTeX-formatet."
 msgid "Main window"
 msgstr "Hovedvindue"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:71
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:78
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -155,21 +155,22 @@ msgstr "Maximiliano Sandoval"
 msgid "Add PDF"
 msgstr "Tilføj PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:48
+#: data/resources/ui/add_pdf_dialog.ui:58
 msgid "Bibliography folder not set"
 msgstr "Bibliografimappe er ikke angivet"
 
 # pænest og sikrest med lile b
-#: data/resources/ui/add_pdf_dialog.ui:66
+#: data/resources/ui/add_pdf_dialog.ui:76
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
-msgstr "Opretter en kopi af den valgte pdf og gemmer den i din bibliografimappe."
+msgstr ""
+"Opretter en kopi af den valgte pdf og gemmer den i din bibliografimappe."
 
-#: data/resources/ui/add_pdf_dialog.ui:81
+#: data/resources/ui/add_pdf_dialog.ui:91
 msgid "From file"
 msgstr "Fra fil"
 
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:108
 msgid "From URL"
 msgstr "Fra URL"
 
@@ -215,6 +216,18 @@ msgstr "Ingen referencer"
 msgid "Create a new citation"
 msgstr "Opret en ny reference"
 
+#: data/resources/ui/entry_list_row.ui:88
+msgid "_Open PDF"
+msgstr "_Åbn PDF"
+
+#: data/resources/ui/entry_list_row.ui:92
+msgid "_Copy Key"
+msgstr "_Kopiér nøgle"
+
+#: data/resources/ui/entry_list_row.ui:98 data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "_Slet"
+
 #: data/resources/ui/entry_page.ui:13
 msgid "No Citation Selected"
 msgstr "Ingen reference valgt"
@@ -243,7 +256,7 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "_År"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:388
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:376
 msgid "Open in Browser"
 msgstr "Åbn i browser"
 
@@ -355,10 +368,6 @@ msgstr "_Søg i Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Søg i arXiv"
 
-#: data/resources/ui/window.ui:62
-msgid "_Delete"
-msgstr "_Slet"
-
 #: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
 #: data/resources/ui/window.ui:195
 msgid "Main Menu"
@@ -402,11 +411,11 @@ msgid "Could not download PDF"
 msgstr "Kunne ikke hente PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:97
+#: src/add_pdf_dialog.rs:94
 msgid "Make sure that {path} exists"
 msgstr "Sørg for, at {path} findes"
 
-#: src/add_pdf_dialog.rs:187
+#: src/add_pdf_dialog.rs:183
 msgid "PDF Files"
 msgstr "PDF-filer"
 
@@ -428,7 +437,7 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Brugertilpasset"
 
-#: src/citation_preview.rs:160 src/entry_page.rs:185
+#: src/citation_preview.rs:160 src/entry_list_row.rs:55 src/entry_page.rs:185
 msgid "Copied"
 msgstr "Kopieret"
 
@@ -446,13 +455,11 @@ msgstr "Anden …"
 msgid "Citation Key already exists"
 msgstr "Referencenøgle findes allerede"
 
-#: src/entry_page.rs:553
+#: src/entry_page.rs:536
 msgid "PDF added"
 msgstr "PDF tilføjet"
 
-#. TODO Use placeholder-text see
-#. https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4771
-#: src/new_entry_dialog.rs:127
+#: src/new_entry_dialog.rs:125
 msgid "Insert a BibTeX citation here"
 msgstr "Indsæt en BibTeX-reference her"
 
@@ -546,39 +553,39 @@ msgid "Institution"
 msgstr "Institution"
 
 # BibTeX for konsistens med andre
-#: src/window.rs:320 src/window.rs:349
+#: src/window.rs:324 src/window.rs:353
 msgid "Bibtex Files"
 msgstr "BibTeX-filer"
 
-#: src/window.rs:341
+#: src/window.rs:345
 msgid "Create New Bibliography"
 msgstr "Opret ny bibliografi"
 
-#: src/window.rs:344
+#: src/window.rs:348
 msgid "Create"
 msgstr "Opret"
 
-#: src/window.rs:465
+#: src/window.rs:469
 msgid "Remove From Recent Files"
 msgstr "Fjern fra seneste filer"
 
-#: src/window.rs:509
+#: src/window.rs:513
 msgid "An entry with the given citation key already exists"
 msgstr "Der findes allerede en indgang med den givne referencenøgle"
 
-#: src/window.rs:524
+#: src/window.rs:528
 msgid "Bibliography saved"
 msgstr "Bibliografi gemt"
 
-#: src/window.rs:568
+#: src/window.rs:571
 msgid "Citation Deleted"
 msgstr "Reference slettet"
 
-#: src/window.rs:570
+#: src/window.rs:573
 msgid "Undo"
 msgstr "Fortryd"
 
-#: src/window.rs:617
+#: src/window.rs:619
 msgid "translator-credits"
 msgstr ""
 "Ask Hjorth Larsen\n"
@@ -588,25 +595,25 @@ msgstr ""
 "E-mail <dansk@dansk-gruppen.dk>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:630
+#: src/window.rs:632
 msgid "Unsaved Changes"
 msgstr "Ændringer ikke gemt"
 
 # Er ikke sikker på hvad 'safe' dækker over
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:633
+#: src/window.rs:635
 msgid "Do you want to write all changes to the safe?"
 msgstr "Vil du skrive alle ændringer til lageret?"
 
-#: src/window.rs:637
+#: src/window.rs:639
 msgid "_Quit Without Saving"
 msgstr "_Afslut uden at gemme"
 
-#: src/window.rs:638
+#: src/window.rs:640
 msgid "_Don't Quit"
 msgstr "Afslut _ikke"
 
-#: src/window.rs:639
+#: src/window.rs:641
 msgid "_Save and Quit"
 msgstr "_Gem og afslut"
 
@@ -615,6 +622,3 @@ msgstr "_Gem og afslut"
 
 #~ msgid "Copy file to bibliography folder"
 #~ msgstr "Kopiér fil til bibliografimappe"
-
-#~ msgid "Open PDF"
-#~ msgstr "Åbn PDF"
