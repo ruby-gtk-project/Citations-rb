@@ -30,8 +30,8 @@ mod imp {
         type ParentType = gtk::Widget;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template();
+            klass.bind_template_callbacks();
             klass.set_layout_manager_type::<gtk::BinLayout>();
 
             // Action used only for the extra menu

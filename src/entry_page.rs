@@ -71,8 +71,8 @@ mod imp {
         type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template();
+            klass.bind_template_callbacks();
 
             klass.install_action_async("entry-page.open-pdf", None, |obj, _, _| async move {
                 if let Err(err) = obj.open_pdf_action().await {
