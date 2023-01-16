@@ -88,7 +88,7 @@ mod imp {
 
             if crate::utils::bibliography_path().is_none() {
                 let bibliography_path = crate::utils::bibliography_path_string();
-                self.error_box.show();
+                self.error_box.set_visible(true);
                 self.error_label.set_label(&gettext_f(
                     // TRANSLATORS Do NOT translate {path}, it is a variable name
                     "Make sure that {path} exists",
@@ -125,7 +125,7 @@ impl AddPdfDialog {
         let url = url::Url::parse(&url_text)?;
 
         if let Some(path) = crate::utils::bibliography_path() {
-            self.imp().progress_bar.show();
+            self.imp().progress_bar.set_visible(true);
             let duration = std::time::Duration::from_millis(100);
             let source = glib::timeout_add_local(
                 duration,
