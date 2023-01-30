@@ -531,7 +531,13 @@ impl Window {
         let uri = utils::build_google_schoolar_url(&p_author, &p_title)?;
         log::debug!("Trying to open {}", uri.as_str());
 
-        gtk::show_uri(Some(self), uri.as_str(), gdk::CURRENT_TIME);
+        let uri = uri.as_str();
+        let launcher = gtk::UriLauncher::new(uri);
+        launcher.launch(Some(self), move |_, res| {
+            if let Err(err) = res {
+                log::error!("Failed to launch uri {uri}: {err}");
+            }
+        });
 
         Ok(())
     }
@@ -546,10 +552,15 @@ impl Window {
         let p_author = format::texer(&author);
         let p_title = format::texer(&title);
 
-        let uri = utils::build_arxiv_url(&p_author, &p_title)?;
+        let uri = utils::build_arxiv_url(&p_author, &p_title)?.as_str();
         log::debug!("Trying to open {uri}");
 
-        gtk::show_uri(Some(self), uri.as_str(), gdk::CURRENT_TIME);
+        let launcher = gtk::UriLauncher::new(uri);
+        launcher.launch(Some(self), move |_, res| {
+            if let Err(err) = res {
+                log::error!("Failed to launch uri {uri}: {err}");
+            }
+        });
 
         Ok(())
     }

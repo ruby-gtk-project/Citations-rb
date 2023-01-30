@@ -158,7 +158,7 @@ mod imp {
         }
 
         #[template_callback]
-        fn on_doi_clicked(&self) {
+        async fn on_doi_clicked(&self) {
             let value = self.doi_entry.text();
             if let Ok(uri) = crate::utils::doi_url(&value) {
                 let window = self
@@ -167,7 +167,10 @@ mod imp {
                     .unwrap()
                     .downcast::<crate::Window>()
                     .unwrap();
-                gtk::show_uri(Some(&window), uri.as_str(), gdk::CURRENT_TIME);
+                let launcher = gtk::UriLauncher::new(uri);
+                if let Err(err) = launcher.launch_future(Some(&window)).await {
+                    log::error!("Failed to launch uri {uri}: {err}");
+                }
             }
         }
 
@@ -382,7 +385,13 @@ impl EntryPage {
                             .unwrap();
 
                         if let Ok(uri) = crate::utils::eprint_url(&row.text()) {
-                            gtk::show_uri(Some(&window), uri.as_str(), gdk::CURRENT_TIME);
+                            let uri = uri.as_str();
+                            let launcher = gtk::UriLauncher::new(uri);
+                            launcher.launch(Some(&window), move |_, res| {
+                                if let Err(err) = res {
+                                    log::error!("Failed to launch uri {uri}: {err}");
+                                }
+                            });
                         }
                     }));
                     button.add_css_class("flat");
