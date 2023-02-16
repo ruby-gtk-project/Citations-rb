@@ -1,28 +1,121 @@
+use std::borrow::Cow;
+use std::collections::HashMap;
+use std::marker::PhantomData;
+
 use gio::prelude::ListModelExt;
 use glib::prelude::*;
 use glib::subclass::prelude::*;
 use once_cell::sync::Lazy;
 use regex::Regex;
-use std::borrow::Cow;
-use std::collections::HashMap;
 
+use crate::format;
 use crate::Format;
-use crate::{format, utils};
 
 // TODO Make a better and more efficient parser
 mod imp {
     use super::*;
 
-    use once_cell::sync::Lazy;
+    use glib::Properties;
     use std::cell::Cell;
     use std::cell::RefCell;
 
-    #[derive(Debug, Default)]
+    #[derive(Debug, Default, Properties)]
+    #[properties(wrapper_type = super::Entry)]
     pub struct Entry {
         pub tags: RefCell<HashMap<String, String>>,
-        pub entry_type: Cell<crate::EntryType>,
+
+        #[property(get, set = Self::set_other_entry_type, explicit_notify)]
         pub other_entry_type: RefCell<Option<String>>,
+        #[property(type = String, get, set = Self::set_citation_key, explicit_notify)]
         pub citation_key: RefCell<Option<String>>,
+        #[property(get, set = Self::set_entry_type, explicit_notify, builder(Default::default()))]
+        pub entry_type: Cell<crate::EntryType>,
+
+        #[property(get = |o: &Self| o.get("author").unwrap_or_default(), set = |o: &Self, val| o.set("author", val), explicit_notify)]
+        author: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("year").unwrap_or_default(), set = |o: &Self, val| o.set("year", val), explicit_notify)]
+        year: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("title").unwrap_or_default(), set = |o: &Self, val| o.set("title", val), explicit_notify)]
+        title: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("volume").unwrap_or_default(), set = |o: &Self, val| o.set("volume", val), explicit_notify)]
+        volume: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("number").unwrap_or_default(), set = |o: &Self, val| o.set("number", val), explicit_notify)]
+        number: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("pages").unwrap_or_default(), set = |o: &Self, val| o.set("pages", val), explicit_notify)]
+        pages: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("publisher").unwrap_or_default(), set = |o: &Self, val| o.set("publisher", val), explicit_notify)]
+        publisher: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("journal").unwrap_or_default(), set = |o: &Self, val| o.set("journal", val), explicit_notify)]
+        journal: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("address").unwrap_or_default(), set = |o: &Self, val| o.set("address", val), explicit_notify)]
+        address: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("howpublished").unwrap_or_default(), set = |o: &Self, val| o.set("howpublished", val), explicit_notify)]
+        howpublished: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("note").unwrap_or_default(), set = |o: &Self, val| o.set("note", val), explicit_notify)]
+        note: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("booktitle").unwrap_or_default(), set = |o: &Self, val| o.set("booktitle", val), explicit_notify)]
+        booktitle: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("series").unwrap_or_default(), set = |o: &Self, val| o.set("series", val), explicit_notify)]
+        series: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("archiveprefix").unwrap_or_default(), set = |o: &Self, val| o.set("archiveprefix", val), explicit_notify)]
+        archiveprefix: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("eprint").unwrap_or_default(), set = |o: &Self, val| o.set("eprint", val), explicit_notify)]
+        eprint: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("primaryclass").unwrap_or_default(), set = |o: &Self, val| o.set("primaryclass", val), explicit_notify)]
+        primaryclass: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("month").unwrap_or_default(), set = |o: &Self, val| o.set("month", val), explicit_notify)]
+        month: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("editor").unwrap_or_default(), set = |o: &Self, val| o.set("editor", val), explicit_notify)]
+        editor: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("organization").unwrap_or_default(), set = |o: &Self, val| o.set("organization", val), explicit_notify)]
+        organization: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("school").unwrap_or_default(), set = |o: &Self, val| o.set("school", val), explicit_notify)]
+        school: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("insitution").unwrap_or_default(), set = |o: &Self, val| o.set("insitution", val), explicit_notify)]
+        insitution: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("doi").unwrap_or_default(), set = |o: &Self, val| o.set("doi", val), explicit_notify)]
+        doi: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("url").unwrap_or_default(), set = |o: &Self, val| o.set("url", val), explicit_notify)]
+        url: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("issn").unwrap_or_default(), set = |o: &Self, val| o.set("issn", val), explicit_notify)]
+        issn: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("isbn").unwrap_or_default(), set = |o: &Self, val| o.set("isbn", val), explicit_notify)]
+        isbn: PhantomData<String>,
+    }
+
+    impl Entry {
+        fn get(&self, tag: &str) -> Option<String> {
+            self.tags.borrow().get(tag).cloned()
+        }
+
+        fn set(&self, tag: &str, value: &str) {
+            let old_value = self.obj().insert_tag(tag, value);
+            if old_value != Some(value.into()) {
+                self.obj().notify(tag);
+            }
+        }
+
+        fn set_entry_type(&self, entry_type: crate::EntryType) {
+            if entry_type != self.entry_type.replace(entry_type) {
+                self.obj().notify("entry-type");
+            }
+        }
+
+        fn set_citation_key(&self, citation_key: &str) {
+            let owned_citation_key = citation_key.to_string();
+            if Some(citation_key)
+                != self
+                    .citation_key
+                    .replace(Some(owned_citation_key))
+                    .as_deref()
+            {
+                self.obj().notify("citation-key");
+            }
+        }
+
+        fn set_other_entry_type(&self, other_type: &str) {
+            self.other_entry_type.replace(Some(other_type.to_string()));
+        }
     }
 
     #[glib::object_subclass]
@@ -33,62 +126,15 @@ mod imp {
 
     impl ObjectImpl for Entry {
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                utils::new_props(&[
-                    "author",
-                    "year",
-                    "title",
-                    "volume",
-                    "number",
-                    "pages",
-                    "publisher",
-                    "journal",
-                    "address",
-                    "howpublished",
-                    "note",
-                    "booktitle",
-                    "series",
-                    "archiveprefix",
-                    "eprint",
-                    "primaryclass",
-                    "month",
-                    "editor",
-                    "organization",
-                    "school",
-                    "institution",
-                    "doi",
-                    "url",
-                    "issn",
-                    "isbn",
-                ])
-            });
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.obj();
-            let pspec_name = pspec.name();
-            match pspec_name {
-                "citation-key" => obj.citation_key().to_value(),
-                "entry-type" => obj.entry_type().to_value(),
-                _ => obj.find_tag(pspec_name).unwrap_or_default().to_value(),
-            }
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            Self::derived_property(self, id, pspec)
         }
 
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            let obj = self.obj();
-            let pspec_name = pspec.name();
-            match pspec_name {
-                "citation-key" => {
-                    let value = value.get::<String>().unwrap_or_default();
-                    obj.set_citation_key(&value)
-                }
-                "entry-type" => obj.set_entry_type(value.get::<crate::EntryType>().unwrap()),
-                _ => {
-                    let value = value.get::<String>().unwrap_or_default();
-                    obj.set_prop(pspec_name, &value)
-                }
-            }
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            Self::derived_set_property(self, id, value, pspec)
         }
     }
 }
@@ -99,7 +145,7 @@ glib::wrapper! {
 
 impl Default for Entry {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
@@ -149,44 +195,6 @@ impl Entry {
         hashmap.insert(tag.to_string(), value.into())
     }
 
-    fn set_prop(&self, tag: &str, value: &str) {
-        let old_value = self.insert_tag(tag, value);
-        if old_value != Some(value.into()) {
-            self.notify(tag);
-        }
-    }
-
-    pub fn entry_type(&self) -> crate::EntryType {
-        self.imp().entry_type.get()
-    }
-
-    pub fn other_entry_type(&self) -> Option<String> {
-        self.imp().other_entry_type.borrow().clone()
-    }
-
-    pub fn set_other_entry_type(&self, other_type: &str) {
-        self.imp()
-            .other_entry_type
-            .replace(Some(other_type.to_string()));
-    }
-
-    pub fn set_entry_type(&self, entry_type: crate::EntryType) {
-        if entry_type != self.imp().entry_type.replace(entry_type) {
-            self.notify("entry-type");
-        }
-    }
-
-    pub fn citation_key(&self) -> String {
-        self.imp().citation_key.borrow().clone().unwrap()
-    }
-
-    pub fn set_citation_key(&self, citation_key: &str) {
-        let citation_key = citation_key.to_string();
-        if Some(citation_key.clone()) != self.imp().citation_key.replace(Some(citation_key)) {
-            self.notify("citation-key");
-        }
-    }
-
     pub fn tags(&self) -> HashMap<String, String> {
         self.imp().tags.borrow().clone()
     }
@@ -221,7 +229,7 @@ impl Entry {
             }
         }
 
-        let name_prop = self.find_tag("author").unwrap_or_default();
+        let name_prop = self.author();
         let p_name = match format {
             Format::LaTeX => Cow::Owned(name_prop),
             _ => format::texer(&name_prop),

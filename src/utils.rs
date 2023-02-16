@@ -88,18 +88,14 @@ pub fn pdf_filename(citation_key: &str) -> String {
 }
 
 pub(crate) fn remove_recent_file(settings: &gio::Settings, path: &str) {
-    let recent_files = settings
-        .strv("recent-files")
-        .iter()
-        .filter(|x| x.as_str() != path)
-        .map(glib::GString::to_string)
-        .collect::<Vec<String>>();
     settings
         .set_strv(
             "recent-files",
-            &recent_files
+            settings
+                .strv("recent-files")
                 .iter()
-                .map(String::as_str)
+                .map(glib::GStringPtr::to_str)
+                .filter(|x| x != &path)
                 .collect::<Vec<&str>>(),
         )
         .unwrap();

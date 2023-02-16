@@ -104,9 +104,9 @@ mod imp {
             let search_expression = gtk::ClosureExpression::new::<String>(
                 &[] as &[gtk::Expression],
                 glib::closure!(|entry: cratebibtex::Entry| {
-                    let author = entry.find_tag("author").unwrap_or_default();
-                    let title = entry.find_tag("title").unwrap_or_default();
-                    let year = entry.find_tag("year").unwrap_or_default();
+                    let author = entry.author();
+                    let title = entry.title();
+                    let year = entry.year();
                     let citation_key = entry.citation_key();
 
                     format!("{author} {title} {year} {citation_key}")
@@ -131,7 +131,7 @@ glib::wrapper! {
 
 impl Default for EntryList {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 

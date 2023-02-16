@@ -139,7 +139,7 @@ mod imp {
                 .borrow()
                 .as_ref()
                 .unwrap()
-                .set_other_entry_type(&text);
+                .set_other_entry_type(text);
         }
 
         #[template_callback]
@@ -167,7 +167,7 @@ mod imp {
                     .unwrap()
                     .downcast::<crate::Window>()
                     .unwrap();
-                let launcher = gtk::UriLauncher::new(uri);
+                let launcher = gtk::UriLauncher::new(uri.as_str());
                 if let Err(err) = launcher.launch_future(Some(&window)).await {
                     log::error!("Failed to launch uri {uri}: {err}");
                 }
@@ -201,7 +201,7 @@ mod imp {
 
             if !window.bib().key_exists(&new_key) || old_key == new_key {
                 entry_row.remove_css_class("error");
-                entry.set_citation_key(&new_key);
+                entry.set_citation_key(new_key);
                 if let Err(err) = entry_page.move_pdf_for_entry(&old_key).await {
                     log::error!("Could not move pdf: {err}");
                 }
@@ -270,13 +270,12 @@ mod imp {
 
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecObject::new(
-                    "entry",
-                    "entry",
-                    "entry",
-                    cratebibtex::Entry::static_type(),
-                    glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                )]
+                vec![
+                    glib::ParamSpecObject::builder::<cratebibtex::Entry>("entry")
+                        .readwrite()
+                        .explicit_notify()
+                        .build(),
+                ]
             });
             PROPERTIES.as_ref()
         }
@@ -306,7 +305,7 @@ glib::wrapper! {
 
 impl Default for EntryPage {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
@@ -385,9 +384,8 @@ impl EntryPage {
                             .unwrap();
 
                         if let Ok(uri) = crate::utils::eprint_url(&row.text()) {
-                            let uri = uri.as_str();
-                            let launcher = gtk::UriLauncher::new(uri);
-                            launcher.launch(Some(&window), move |_, res| {
+                            let launcher = gtk::UriLauncher::new(uri.as_str());
+                            launcher.launch(Some(&window), gio::Cancellable::NONE, move |res| {
                                 if let Err(err) = res {
                                     log::error!("Failed to launch uri {uri}: {err}");
                                 }

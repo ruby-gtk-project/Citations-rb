@@ -108,13 +108,12 @@ mod imp {
 
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecObject::new(
-                    "entry",
-                    "entry",
-                    "entry",
-                    cratebibtex::Entry::static_type(),
-                    glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                )]
+                vec![
+                    glib::ParamSpecObject::builder::<cratebibtex::Entry>("entry")
+                        .readwrite()
+                        .explicit_notify()
+                        .build(),
+                ]
             });
             PROPERTIES.as_ref()
         }
@@ -143,7 +142,7 @@ glib::wrapper! {
 
 impl Default for EntryListRow {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 

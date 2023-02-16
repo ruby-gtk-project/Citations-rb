@@ -246,39 +246,22 @@ mod imp {
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
-            use glib::types::StaticType;
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecObject::new(
-                        "entry",
-                        "entry",
-                        "entry",
-                        cratebibtex::Entry::static_type(),
-                        glib::ParamFlags::READWRITE,
-                    ),
-                    glib::ParamSpecString::new(
-                        "template",
-                        "template",
-                        "template",
-                        "".into(),
-                        glib::ParamFlags::READABLE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
-                    glib::ParamSpecEnum::new(
-                        "template-kind",
-                        "template-kind",
-                        "template-kind",
-                        Template::static_type(),
-                        Template::default() as i32,
-                        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
-                    glib::ParamSpecEnum::new(
-                        "format-kind",
-                        "format-kind",
-                        "format-kind",
-                        cratebibtex::Format::static_type(),
-                        cratebibtex::Format::default() as i32,
-                        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
+                    glib::ParamSpecObject::builder::<cratebibtex::Entry>("entry")
+                        .readwrite()
+                        .build(),
+                    glib::ParamSpecString::builder("template")
+                        .explicit_notify()
+                        .build(),
+                    glib::ParamSpecEnum::builder::<Template>("template-kind")
+                        .readwrite()
+                        .explicit_notify()
+                        .build(),
+                    glib::ParamSpecEnum::builder::<cratebibtex::Format>("format-kind")
+                        .readwrite()
+                        .explicit_notify()
+                        .build()
                 ]
             });
             PROPERTIES.as_ref()
@@ -343,7 +326,7 @@ glib::wrapper! {
 
 impl Default for CitationPreview {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 

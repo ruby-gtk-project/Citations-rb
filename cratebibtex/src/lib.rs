@@ -5,7 +5,6 @@ pub mod format;
 mod bib;
 mod entry;
 mod entry_type;
-mod utils;
 
 pub use bib::Bib;
 pub use entry::Entry;
@@ -55,6 +54,6 @@ mod tests {
         bib.parse(BIBFILE_DATA).unwrap();
 
         let entry = bib.item(0).unwrap().downcast::<Entry>().unwrap();
-        assert_eq!(entry.find_tag("author").unwrap(), "Charles Vandevoorde");
+        assert_eq!(entry.author().unwrap(), "Charles Vandevoorde");
     }
 }

@@ -2,10 +2,11 @@ use gettextrs::gettext;
 use std::fmt;
 
 // TODO Implement more types
-#[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, glib::Enum)]
 #[repr(i32)]
 #[enum_type(name = "EntryType")]
 pub enum EntryType {
+    #[default]
     Other = 0,
     Article = 1,
     Book = 2,
@@ -22,12 +23,6 @@ pub enum EntryType {
     PhdThesis = 13,
     Proceedings = 14,
     TechReport = 15,
-}
-
-impl Default for EntryType {
-    fn default() -> Self {
-        Self::Other
-    }
 }
 
 impl From<i32> for EntryType {

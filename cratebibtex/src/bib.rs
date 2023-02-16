@@ -8,15 +8,26 @@ use crate::Entry;
 mod imp {
     use super::*;
 
-    use once_cell::sync::Lazy;
+    use glib::Properties;
     use std::cell::Cell;
 
-    #[derive(Debug, Default)]
+    #[derive(Debug, Default, Properties)]
+    #[properties(wrapper_type = super::Bib)]
     pub struct Bib {
         pub inner: RefCell<nom_bibtex::Bibtex>,
         pub entries: RefCell<Vec<Entry>>,
         pub n_items: Cell<u32>,
+
+        #[property(get, set = Self::set_modified, explicit_notify)]
         pub modified: Cell<bool>,
+    }
+
+    impl Bib {
+        pub fn set_modified(&self, modified: bool) {
+            if modified != self.modified.replace(modified) {
+                self.obj().notify("modified");
+            }
+        }
     }
 
     #[glib::object_subclass]
@@ -28,30 +39,15 @@ mod imp {
 
     impl ObjectImpl for Bib {
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecBoolean::new(
-                    "modified",
-                    "modified",
-                    "modified",
-                    false,
-                    glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                )]
-            });
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            match pspec.name() {
-                "modified" => self.obj().modified().to_value(),
-                _ => unimplemented!(),
-            }
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            Self::derived_property(self, id, pspec)
         }
 
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            match pspec.name() {
-                "modified" => self.obj().set_modified(value.get().unwrap()),
-                _ => unimplemented!(),
-            };
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            Self::derived_set_property(self, id, value, pspec)
         }
     }
 
@@ -79,7 +75,7 @@ glib::wrapper! {
 
 impl Default for Bib {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
@@ -208,16 +204,6 @@ impl Bib {
             .borrow()
             .iter()
             .any(|entry| entry.citation_key() == citation_key)
-    }
-
-    pub fn modified(&self) -> bool {
-        self.imp().modified.get()
-    }
-
-    pub fn set_modified(&self, modified: bool) {
-        if modified != self.imp().modified.replace(modified) {
-            self.notify("modified");
-        }
     }
 
     pub async fn save_to_file(&self, file: &gio::File) -> anyhow::Result<()> {

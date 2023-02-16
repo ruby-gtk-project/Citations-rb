@@ -55,7 +55,7 @@ mod imp {
             if let Err(err) = self.obj().set_pdf_from_file().await {
                 log::error!("could not set pdf: {err}");
                 let toast = adw::Toast::new(&gettext("Could not set PDF"));
-                self.toast_overlay.add_toast(&toast);
+                self.toast_overlay.add_toast(toast);
             }
         }
 
@@ -66,7 +66,7 @@ mod imp {
                 log::error!("Could not download pdf: {err}");
                 self.pdf_url_entry_row.add_css_class("error");
                 let toast = adw::Toast::new(&gettext("Could not download PDF"));
-                self.toast_overlay.add_toast(&toast);
+                self.toast_overlay.add_toast(toast);
                 self.download_button.set_sensitive(true);
             } else {
                 self.pdf_url_entry_row.remove_css_class("error");
@@ -108,13 +108,15 @@ glib::wrapper! {
 
 impl Default for AddPdfDialog {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
 impl AddPdfDialog {
     pub fn new<W: glib::IsA<gtk::Window>>(window: &W, citation_key: String) -> Self {
-        let dialog: Self = glib::Object::new(&[("transient-for", window)]);
+        let dialog: Self = glib::Object::builder()
+            .property("transient-for", window)
+            .build();
         dialog.imp().citation_key.set(citation_key).unwrap();
 
         dialog

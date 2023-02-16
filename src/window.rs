@@ -237,7 +237,7 @@ mod imp {
                 }),
             );
 
-            obj.add_controller(&target);
+            obj.add_controller(target);
         }
     }
 
@@ -278,7 +278,7 @@ glib::wrapper! {
 
 impl Window {
     pub fn new(app: &Application) -> Self {
-        glib::Object::new(&[("application", app)])
+        glib::Object::builder().property("application", app).build()
     }
 
     fn save_window_size(&self) -> Result<(), glib::BoolError> {
@@ -402,24 +402,19 @@ impl Window {
         self.action_set_enabled("win.save", true);
         self.action_set_enabled("win.delete_entry", true);
 
-        let mut recent_files = settings.strv("recent-files");
-        let path = file
-            .path()
-            .unwrap()
-            .to_str()
-            .map(glib::GString::from)
-            .unwrap();
-        if !recent_files.contains(&path) {
-            recent_files.push(path);
-            settings
-                .set_strv(
-                    "recent-files",
-                    &recent_files
-                        .iter()
-                        .map(glib::GString::as_str)
-                        .collect::<Vec<&str>>(),
-                )
-                .unwrap();
+        let recent_files = settings.strv("recent-files");
+        let mut recent_files = recent_files
+            .iter()
+            .map(glib::GStringPtr::to_str)
+            .collect::<Vec<&str>>();
+
+        if let Some(path) = file.path() {
+            if let Some(path) = path.to_str() {
+                if !recent_files.contains(&path) {
+                    recent_files.push(path);
+                    settings.set_strv("recent-files", recent_files).unwrap();
+                }
+            }
         }
 
         Ok(())
@@ -434,7 +429,7 @@ impl Window {
             .strv("recent-files")
             .iter()
             .rev()
-            .map(glib::GString::to_string)
+            .map(glib::GStringPtr::to_gstr)
             .map(gio::File::for_path)
             .filter(|file| file.query_exists(gio::Cancellable::NONE))
             .collect::<Vec<gio::File>>();
@@ -480,7 +475,7 @@ impl Window {
 
     pub fn send_toast(&self, text: &str) {
         let toast = adw::Toast::new(text);
-        self.imp().toast_overlay.add_toast(&toast);
+        self.imp().toast_overlay.add_toast(toast);
     }
 
     pub async fn new_entry_dialog(&self) -> anyhow::Result<()> {
@@ -523,17 +518,16 @@ impl Window {
 
         let entry = self.imp().entry_page.entry().context("No entry selected")?;
 
-        let author = entry.find_tag("author").unwrap_or_default();
-        let title = entry.find_tag("title").unwrap_or_default();
+        let author = entry.author();
+        let title = entry.title();
         let p_author = format::texer(&author);
         let p_title = format::texer(&title);
 
         let uri = utils::build_google_schoolar_url(&p_author, &p_title)?;
         log::debug!("Trying to open {}", uri.as_str());
 
-        let uri = uri.as_str();
-        let launcher = gtk::UriLauncher::new(uri);
-        launcher.launch(Some(self), move |_, res| {
+        let launcher = gtk::UriLauncher::new(uri.as_str());
+        launcher.launch(Some(self), gio::Cancellable::NONE, move |res| {
             if let Err(err) = res {
                 log::error!("Failed to launch uri {uri}: {err}");
             }
@@ -547,16 +541,16 @@ impl Window {
 
         let entry = self.imp().entry_page.entry().context("No entry selected")?;
 
-        let author = entry.find_tag("author").unwrap_or_default();
-        let title = entry.find_tag("title").unwrap_or_default();
+        let author = entry.author();
+        let title = entry.title();
         let p_author = format::texer(&author);
         let p_title = format::texer(&title);
 
-        let uri = utils::build_arxiv_url(&p_author, &p_title)?.as_str();
+        let uri = utils::build_arxiv_url(&p_author, &p_title)?;
         log::debug!("Trying to open {uri}");
 
-        let launcher = gtk::UriLauncher::new(uri);
-        launcher.launch(Some(self), move |_, res| {
+        let launcher = gtk::UriLauncher::new(uri.as_str());
+        launcher.launch(Some(self), gio::Cancellable::NONE, move |res| {
             if let Err(err) = res {
                 log::error!("Failed to launch uri {uri}: {err}");
             }
@@ -584,7 +578,7 @@ impl Window {
             self.imp().entry_list.unselect();
             self.bib().remove_pos(pos);
 
-            self.imp().toast_overlay.add_toast(&toast);
+            self.imp().toast_overlay.add_toast(toast);
             self.imp()
                 .main_leaflet
                 .navigate(adw::NavigationDirection::Back);
@@ -608,17 +602,17 @@ impl Window {
     fn show_about_dialog(&self) {
         let dialog = adw::AboutWindow::builder()
             .application_icon(APP_ID)
-            .application_name(&gettext("Citations"))
+            .application_name(gettext("Citations"))
             .license_type(gtk::License::Gpl30)
-            .comments(&gettext("Manage your bibliography"))
+            .comments(gettext("Manage your bibliography"))
             .website("https://gitlab.gnome.org/World/citations/")
             .issue_url("https://gitlab.gnome.org/World/citations/-/issues/new")
             .version(VERSION)
             .transient_for(self)
-            .translator_credits(&gettext("translator-credits"))
+            .translator_credits(gettext("translator-credits"))
             .developer_name("Maximiliano Sandoval")
-            .developers(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
-            .designers(vec!["Tobias Bernard <tbernard@gnome.org>".into()])
+            .developers(vec!["Maximiliano Sandoval <msandova@gnome.org>"])
+            .designers(vec!["Tobias Bernard <tbernard@gnome.org>"])
             .build();
 
         dialog.present();
@@ -641,7 +635,7 @@ impl Window {
         dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
         dialog.set_default_response(Some("save"));
 
-        match dialog.run_future().await.as_str() {
+        match dialog.choose_future().await.as_str() {
             "discard" => self.destroy(),
             "save" => {
                 if let Err(err) = self.save().await {
