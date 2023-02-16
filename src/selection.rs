@@ -164,13 +164,11 @@ impl Selection {
                     position,
                     position + added,
                 ));
+            } else if item_position + added >= removed {
+                imp.item_position.set(item_position + added - removed);
             } else {
-                if item_position + added >= removed {
-                    imp.item_position.set(item_position + added - removed);
-                } else {
-                    // This should never happen.
-                    imp.item_position.set(0);
-                }
+                // This should never happen.
+                imp.item_position.set(0);
             }
         }
 

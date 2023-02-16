@@ -154,7 +154,7 @@ impl AddPdfDialog {
             let citation_key = self.imp().citation_key.get().unwrap();
 
             let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&utils::pdf_filename(citation_key));
+            let pdf = folder.child(utils::pdf_filename(citation_key));
 
             pdf.replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
                 .await

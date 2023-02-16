@@ -105,7 +105,7 @@ mod imp {
             };
             if let Some(path) = crate::utils::bibliography_path() {
                 let folder = gio::File::for_path(&path);
-                let pdf = folder.child(&utils::pdf_filename(&citation_key));
+                let pdf = folder.child(utils::pdf_filename(&citation_key));
                 if let Err(err) = pdf.trash_future(glib::Priority::default()).await {
                     log::error!("Could not trash pdf: {err}");
                 } else {
@@ -417,7 +417,7 @@ impl EntryPage {
         let filename = utils::pdf_filename(&entry.as_ref().unwrap().citation_key());
 
         let pdf = if let Some(path) = crate::utils::bibliography_path() {
-            let folder = gio::File::for_path(&path);
+            let folder = gio::File::for_path(path);
             let pdf = folder.child(&filename);
             if pdf.query_exists(gio::Cancellable::NONE) {
                 self.imp()
@@ -486,9 +486,9 @@ impl EntryPage {
 
         if let Some(path) = crate::utils::bibliography_path() {
             let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&utils::pdf_filename(old_citation_key));
+            let pdf = folder.child(utils::pdf_filename(old_citation_key));
             if pdf.query_exists(gio::Cancellable::NONE) {
-                let new_pdf = folder.child(&utils::pdf_filename(&new_citation_key));
+                let new_pdf = folder.child(utils::pdf_filename(&new_citation_key));
                 pdf.move_future(
                     &new_pdf,
                     gio::FileCopyFlags::NONE,
@@ -523,8 +523,7 @@ impl EntryPage {
     }
 
     async fn open_pdf_action(&self) -> anyhow::Result<()> {
-        let entry = self.imp().entry.borrow();
-        let citation_key = entry.as_ref().unwrap().citation_key();
+        let citation_key = self.imp().entry.borrow().as_ref().unwrap().citation_key();
         let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
 
         crate::utils::open_pdf(&citation_key, &window).await

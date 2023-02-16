@@ -84,7 +84,7 @@ pub fn bibliography_path_string() -> String {
 }
 
 pub fn pdf_filename(citation_key: &str) -> String {
-    sanitize_filename::sanitize(&format!("{citation_key}.pdf"))
+    sanitize_filename::sanitize(format!("{citation_key}.pdf"))
 }
 
 pub(crate) fn remove_recent_file(settings: &gio::Settings, path: &str) {
@@ -139,8 +139,8 @@ pub(crate) fn doi_url(url: &str) -> anyhow::Result<url::Url> {
 
 pub(crate) fn has_pdf(citation_key: &str) -> bool {
     if let Some(path) = crate::utils::bibliography_path() {
-        let folder = gio::File::for_path(&path);
-        let pdf = folder.child(&crate::utils::pdf_filename(&citation_key));
+        let folder = gio::File::for_path(path);
+        let pdf = folder.child(crate::utils::pdf_filename(citation_key));
 
         pdf.query_exists(gio::Cancellable::NONE)
     } else {
@@ -154,7 +154,7 @@ pub(crate) async fn open_pdf<W: glib::IsA<gtk::Window>>(
 ) -> anyhow::Result<()> {
     if let Some(path) = crate::utils::bibliography_path() {
         let folder = gio::File::for_path(&path);
-        let pdf = folder.child(&crate::utils::pdf_filename(&citation_key));
+        let pdf = folder.child(crate::utils::pdf_filename(citation_key));
         let launcher = gtk::FileLauncher::new(Some(&pdf));
 
         launcher.launch_future(Some(window)).await?;

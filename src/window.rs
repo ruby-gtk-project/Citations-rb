@@ -92,7 +92,7 @@ mod imp {
 
             klass.install_action_async("win.open", Some("s"), |window, _, param| {
                 // FIXME This clone is needed as long as the API requires a Option<&Value>.
-                let path: String = param.unwrap().get::<String>().unwrap().clone();
+                let path: String = param.unwrap().get::<String>().unwrap();
                 async move {
                     if let Err(err) = window.open_action(path).await {
                         log::error!("Could not open file: {err}");
@@ -560,7 +560,7 @@ impl Window {
     }
 
     pub fn delete_entry(&self, entry: &cratebibtex::Entry) {
-        if let Some(pos) = self.bib().find_pos(&entry) {
+        if let Some(pos) = self.bib().find_pos(entry) {
             let toast = adw::Toast::new(&gettext("Citation Deleted"));
             toast.set_action_name(Some("win.undo_delete"));
             toast.set_button_label(Some(&gettext("Undo")));
