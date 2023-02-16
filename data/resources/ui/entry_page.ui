@@ -174,6 +174,66 @@
                           </object>
                         </child>
                         <child>
+                          <object class="AdwPreferencesGroup" id="abstract_preferences_group">
+                            <property name="visible">False</property>
+                            <property name="title" translatable="yes">Abstract</property>
+                            <property name="header-suffix">
+                              <object class="GtkButton">
+                                <property name="icon-name">edit-copy-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Copy Abstract</property>
+                                <signal name="clicked" handler="on_copy_abstract_clicked" swapped="yes"/>
+                                <style>
+                                  <class name="flat"/>
+                                </style>
+                              </object>
+                            </property>
+                            <child>
+                              <object class="GtkScrolledWindow">
+                                <property name="height_request">180</property>
+                                <child>
+                                  <object class="GtkTextView" id="abstract_text_view">
+                                    <property name="hexpand">True</property>
+                                    <property name="wrap_mode">word</property>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="entry"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup" id="notes_preferences_group">
+                            <property name="visible">False</property>
+                            <property name="title" translatable="yes">Notes</property>
+                            <property name="header-suffix">
+                              <object class="GtkButton">
+                                <property name="icon-name">edit-copy-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Copy Notes</property>
+                                <signal name="clicked" handler="on_copy_notes_clicked" swapped="yes"/>
+                                <style>
+                                  <class name="flat"/>
+                                </style>
+                              </object>
+                            </property>
+                            <child>
+                              <object class="GtkScrolledWindow">
+                                <property name="height_request">180</property>
+                                <child>
+                                  <object class="GtkTextView" id="notes_text_view">
+                                    <property name="hexpand">True</property>
+                                    <property name="wrap_mode">word</property>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="entry"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
                           <object class="CitationPreview">
                             <binding name="entry">
                               <lookup name="entry">EntryPage</lookup>

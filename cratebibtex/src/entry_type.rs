@@ -98,6 +98,20 @@ impl fmt::Display for EntryType {
 }
 
 impl EntryType {
+    pub fn uses_abstract(&self) -> bool {
+        matches!(
+            self,
+            Self::Article
+                | Self::InProceedings
+                | Self::Unpublished
+                | Self::Online
+                | Self::InCollection
+                | Self::MasterThesis
+                | Self::PhdThesis
+                | Self::Proceedings
+        )
+    }
+
     pub fn to_translatable_string(self) -> String {
         match self {
             Self::Article => gettext("Article"),

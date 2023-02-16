@@ -31,6 +31,12 @@ mod imp {
         #[property(get, set = Self::set_entry_type, explicit_notify, builder(Default::default()))]
         pub entry_type: Cell<crate::EntryType>,
 
+        // Custom properties
+        #[property(get = |o: &Self| o.get("notes").unwrap_or_default(), set = |o: &Self, val| o.set("notes", val), explicit_notify)]
+        notes: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("abstract").unwrap_or_default(), set = |o: &Self, val| o.set_abstract(val), explicit_notify)]
+        x_abstract: PhantomData<String>,
+
         #[property(get = |o: &Self| o.get("author").unwrap_or_default(), set = |o: &Self, val| o.set("author", val), explicit_notify)]
         author: PhantomData<String>,
         #[property(get = |o: &Self| o.get("year").unwrap_or_default(), set = |o: &Self, val| o.set("year", val), explicit_notify)]
@@ -90,8 +96,15 @@ mod imp {
 
         fn set(&self, tag: &str, value: &str) {
             let old_value = self.obj().insert_tag(tag, value);
-            if old_value != Some(value.into()) {
+            if old_value.as_deref() != Some(value) {
                 self.obj().notify(tag);
+            }
+        }
+
+        fn set_abstract(&self, value: &str) {
+            let old_value = self.obj().insert_tag("abstract", value);
+            if old_value.as_deref() != Some(value) {
+                self.obj().notify("x-abstract");
             }
         }
 

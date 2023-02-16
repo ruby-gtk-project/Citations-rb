@@ -59,6 +59,14 @@ mod imp {
         pub extras_box: TemplateChild<gtk::Widget>,
         #[template_child]
         pub extras_list_box: TemplateChild<gtk::ListBox>,
+        #[template_child]
+        pub abstract_text_view: TemplateChild<gtk::TextView>,
+        #[template_child]
+        pub abstract_preferences_group: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub notes_text_view: TemplateChild<gtk::TextView>,
+        #[template_child]
+        pub notes_preferences_group: TemplateChild<gtk::Widget>,
 
         pub entry: RefCell<Option<cratebibtex::Entry>>,
         pub bindings: glib::BindingGroup,
@@ -125,6 +133,28 @@ mod imp {
                 entry.set_entry_type(type_);
                 self.obj().bind_extras_list_model(entry);
                 self.obj().setup_other_entry_row();
+            }
+        }
+
+        #[template_callback]
+        fn on_copy_abstract_clicked(&self) {
+            if let Some((start, end)) = self.abstract_text_view.buffer().selection_bounds() {
+                let text = self.abstract_text_view.buffer().text(&start, &end, true);
+                self.obj().clipboard().set_text(&text);
+            } else {
+                let abs = self.entry.borrow().as_ref().unwrap().x_abstract();
+                self.obj().clipboard().set_text(&abs);
+            }
+        }
+
+        #[template_callback]
+        fn on_copy_notes_clicked(&self) {
+            if let Some((start, end)) = self.notes_text_view.buffer().selection_bounds() {
+                let text = self.notes_text_view.buffer().text(&start, &end, true);
+                self.obj().clipboard().set_text(&text);
+            } else {
+                let notes = self.entry.borrow().as_ref().unwrap().notes();
+                self.obj().clipboard().set_text(&notes);
             }
         }
 
@@ -266,6 +296,20 @@ mod imp {
                 .bind("entry-type", &*self.entry_type_combo_row, "selected")
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
+
+            let abstract_buffer = self.abstract_text_view.buffer();
+            self.bindings
+                .bind("x-abstract", &abstract_buffer, "text")
+                .sync_create()
+                .bidirectional()
+                .build();
+
+            let notes_buffer = self.notes_text_view.buffer();
+            self.bindings
+                .bind("notes", &notes_buffer, "text")
+                .sync_create()
+                .bidirectional()
+                .build();
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
@@ -339,6 +383,7 @@ impl EntryPage {
                     .citation_key_entry
                     .set_text(&entry.citation_key());
                 self.bind_extras_list_model(entry);
+                self.setup_abstract_and_notes();
                 self.setup_pdf();
             } else {
                 self.imp()
@@ -403,6 +448,23 @@ impl EntryPage {
                 row.upcast()
             }),
         );
+    }
+
+    fn setup_abstract_and_notes(&self) {
+        let uses_abstract = self
+            .imp()
+            .entry
+            .borrow()
+            .as_ref()
+            .unwrap()
+            .entry_type()
+            .uses_abstract();
+        self.imp()
+            .abstract_preferences_group
+            .set_visible(uses_abstract);
+        self.imp()
+            .notes_preferences_group
+            .set_visible(!uses_abstract);
     }
 
     pub fn entry(&self) -> Option<cratebibtex::Entry> {
