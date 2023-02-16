@@ -11,6 +11,7 @@
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=citations,cratebibtex=debug",
         "--filesystem=xdg-documents/Bibliography",
+        "--share=ipc",
         "--share=network",
         "--socket=fallback-x11",
         "--socket=wayland"
