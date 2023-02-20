@@ -596,14 +596,12 @@ impl EntryPage {
         let citation_key = self.imp().entry.borrow().as_ref().unwrap().citation_key();
 
         let dialog = AddPdfDialog::new(&window, citation_key);
-        dialog.connect_local(
+        dialog.connect_closure(
             "pdf-set",
             false,
-            glib::clone!(@weak self as obj, @weak window => @default-return None, move |_| {
+            glib::closure_local!(@watch self as obj, @weak-allow-none window => move |_obj: &AddPdfDialog| {
                 obj.setup_pdf();
-                window.send_toast(&gettext("PDF added"));
-
-                None
+                window.unwrap().send_toast(&gettext("PDF added"));
             }),
         );
         dialog.present();
