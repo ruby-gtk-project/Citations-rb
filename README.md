@@ -23,9 +23,6 @@ To build the development version of Citations and hack on the code
 see the [general guide](https://wiki.gnome.org/Newcomers/BuildProject)
 for building GNOME apps with Flatpak and GNOME Builder.
 
-You are expected to follow our [Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct) when participating in project
-spaces.
-
 ## Translations
 
 Helping to translate Citations or add support to a new language is very welcome.
