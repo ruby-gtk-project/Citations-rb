@@ -39,8 +39,8 @@ mod imp {
         type ParentType = gtk::Window;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template();
+            klass.bind_template_callbacks();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -55,7 +55,7 @@ mod imp {
             if let Err(err) = self.obj().set_pdf_from_file().await {
                 log::error!("could not set pdf: {err}");
                 let toast = adw::Toast::new(&gettext("Could not set PDF"));
-                self.toast_overlay.add_toast(&toast);
+                self.toast_overlay.add_toast(toast);
             }
         }
 
@@ -66,7 +66,7 @@ mod imp {
                 log::error!("Could not download pdf: {err}");
                 self.pdf_url_entry_row.add_css_class("error");
                 let toast = adw::Toast::new(&gettext("Could not download PDF"));
-                self.toast_overlay.add_toast(&toast);
+                self.toast_overlay.add_toast(toast);
                 self.download_button.set_sensitive(true);
             } else {
                 self.pdf_url_entry_row.remove_css_class("error");
@@ -88,7 +88,7 @@ mod imp {
 
             if crate::utils::bibliography_path().is_none() {
                 let bibliography_path = crate::utils::bibliography_path_string();
-                self.error_box.show();
+                self.error_box.set_visible(true);
                 self.error_label.set_label(&gettext_f(
                     // TRANSLATORS Do NOT translate {path}, it is a variable name
                     "Make sure that {path} exists",
@@ -108,13 +108,15 @@ glib::wrapper! {
 
 impl Default for AddPdfDialog {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
 impl AddPdfDialog {
     pub fn new<W: glib::IsA<gtk::Window>>(window: &W, citation_key: String) -> Self {
-        let dialog: Self = glib::Object::new(&[("transient-for", window)]);
+        let dialog: Self = glib::Object::builder()
+            .property("transient-for", window)
+            .build();
         dialog.imp().citation_key.set(citation_key).unwrap();
 
         dialog
@@ -125,7 +127,7 @@ impl AddPdfDialog {
         let url = url::Url::parse(&url_text)?;
 
         if let Some(path) = crate::utils::bibliography_path() {
-            self.imp().progress_bar.show();
+            self.imp().progress_bar.set_visible(true);
             let duration = std::time::Duration::from_millis(100);
             let source = glib::timeout_add_local(
                 duration,
@@ -152,7 +154,7 @@ impl AddPdfDialog {
             let citation_key = self.imp().citation_key.get().unwrap();
 
             let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&utils::pdf_filename(citation_key));
+            let pdf = folder.child(utils::pdf_filename(citation_key));
 
             pdf.replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
                 .await
@@ -171,36 +173,32 @@ impl AddPdfDialog {
             // TODO Add djvu support, is it needed?
             let folder = gio::File::for_path(&path);
 
-            let dialog = gtk::FileChooserNative::new(
-                None,
-                Some(self),
-                gtk::FileChooserAction::Open,
-                None,
-                None,
-            );
-
             let pdf_filter = gtk::FileFilter::new();
             pdf_filter.set_name(Some(&gettext("PDF Files")));
             pdf_filter.add_mime_type("application/pdf");
-            dialog.add_filter(&pdf_filter);
 
-            if dialog.run_future().await == gtk::ResponseType::Accept {
-                let file = dialog.file().unwrap();
-                let filename = utils::pdf_filename(citation_key);
-                let dest = folder.child(&filename);
+            let filters = gio::ListStore::new(gtk::FileFilter::static_type());
+            filters.append(&pdf_filter);
 
-                if let Err(err) = async_std::fs::create_dir_all(&path).await {
-                    log::error!("Could not create bibliography directory: {err}");
-                }
+            let dialog = gtk::FileDialog::new();
+            dialog.set_filters(&filters);
+            dialog.set_title(&gettext("Select a PDF"));
 
-                file.copy_future(&dest, gio::FileCopyFlags::NONE, glib::Priority::default())
-                    .0
-                    .await?;
-                log::debug!("Copied {filename} to {}", path.to_str().unwrap());
+            let file = dialog.open_future(Some(self)).await?;
+            let filename = utils::pdf_filename(citation_key);
+            let dest = folder.child(&filename);
 
-                self.emit_by_name::<()>("pdf-set", &[]);
-                self.close();
+            if let Err(err) = async_std::fs::create_dir_all(&path).await {
+                log::error!("Could not create bibliography directory: {err}");
             }
+
+            file.copy_future(&dest, gio::FileCopyFlags::NONE, glib::Priority::default())
+                .0
+                .await?;
+            log::debug!("Copied {filename} to {}", path.to_str().unwrap());
+
+            self.emit_by_name::<()>("pdf-set", &[]);
+            self.close();
         }
 
         Ok(())

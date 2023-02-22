@@ -87,33 +87,32 @@ mod imp {
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template();
+            klass.bind_template_callbacks();
 
-            klass.install_action("win.open", Some("s"), move |window, _, param| {
-                let path = param.unwrap().get::<String>().unwrap();
-                crate::spawn!(glib::clone!(@weak window => async move {
+            klass.install_action_async("win.open", Some("s"), |window, _, param| {
+                // FIXME This clone is needed as long as the API requires a Option<&Value>.
+                let path: String = param.unwrap().get::<String>().unwrap();
+                async move {
                     if let Err(err) = window.open_action(path).await {
                         log::error!("Could not open file: {err}");
                     }
-                }));
+                }
             });
-            klass.install_action("win.new_biblio", None, move |window, _, _| {
-                crate::spawn!(glib::clone!(@weak window => async move {
-                    if let Err(err) = window.new_biblio_action().await {
-                        log::error!("Could not create file: {err}");
-                    }
-                }));
+            klass.install_action_async("win.new_biblio", None, |window, _, _| async move {
+                if let Err(err) = window.new_biblio_action().await {
+                    log::error!("Could not create file: {err}");
+                }
             });
-            klass.install_action("win.new_entry", None, move |window, _, _| {
-                window.new_entry_dialog();
+            klass.install_action_async("win.new_entry", None, |window, _, _| async move {
+                if let Err(err) = window.new_entry_dialog().await {
+                    log::error!("Could not spawn dialog: {err}");
+                }
             });
-            klass.install_action("win.save", None, move |window, _, _| {
-                crate::spawn!(glib::clone!(@weak window = > async move {
-                    if let Err(err) = window.save().await {
-                        log::error!("Could not save bibliography: {err}");
-                    }
-                }));
+            klass.install_action_async("win.save", None, |window, _, _| async move {
+                if let Err(err) = window.save().await {
+                    log::error!("Could not save bibliography: {err}");
+                }
             });
             klass.install_action("win.delete_entry", None, move |obj, _, _| {
                 if let Some(entry) = obj.imp().entry_page.entry() {
@@ -238,7 +237,7 @@ mod imp {
                 }),
             );
 
-            obj.add_controller(&target);
+            obj.add_controller(target);
         }
     }
 
@@ -279,7 +278,7 @@ glib::wrapper! {
 
 impl Window {
     pub fn new(app: &Application) -> Self {
-        glib::Object::new(&[("application", app)])
+        glib::Object::builder().property("application", app).build()
     }
 
     fn save_window_size(&self) -> Result<(), glib::BoolError> {
@@ -312,26 +311,20 @@ impl Window {
 
     async fn open_action(&self, path: String) -> anyhow::Result<()> {
         if path.is_empty() {
-            let dialog = gtk::FileChooserNative::new(
-                None,
-                Some(self),
-                gtk::FileChooserAction::Open,
-                None,
-                None,
-            );
-
             let bib_filter = gtk::FileFilter::new();
             bib_filter.set_name(Some(&gettext("Bibtex Files")));
             bib_filter.add_mime_type("text/plain");
             bib_filter.add_mime_type("text/x-bibtex");
             bib_filter.add_pattern("*.bib");
-            dialog.add_filter(&bib_filter);
 
-            let response = dialog.run_future().await;
-            if response == gtk::ResponseType::Accept {
-                let file = dialog.file().unwrap();
-                self.open_wrapper(&file).await?;
-            }
+            let filters = gio::ListStore::new(gtk::FileFilter::static_type());
+            filters.append(&bib_filter);
+
+            let dialog = gtk::FileDialog::new();
+            dialog.set_filters(&filters);
+
+            let file = dialog.open_future(Some(self)).await?;
+            self.open_wrapper(&file).await?;
         } else {
             let file = gio::File::for_path(&path);
             self.open_wrapper(&file).await?;
@@ -341,29 +334,28 @@ impl Window {
     }
 
     async fn new_biblio_action(&self) -> anyhow::Result<()> {
-        let dialog = gtk::FileChooserNative::new(
-            Some(&gettext("Create New Bibliography")),
-            Some(self),
-            gtk::FileChooserAction::Save,
-            Some(&gettext("Create")),
-            None,
-        );
-
         let bib_filter = gtk::FileFilter::new();
         bib_filter.set_name(Some(&gettext("Bibtex Files")));
         bib_filter.add_mime_type("text/plain");
         bib_filter.add_mime_type("text/x-bibtex");
         bib_filter.add_pattern("*.bib");
-        dialog.add_filter(&bib_filter);
 
-        if gtk::ResponseType::Accept == dialog.run_future().await {
-            let file = dialog.file().unwrap();
-            let stream = file
-                .create_future(gio::FileCreateFlags::NONE, glib::Priority::default())
-                .await?;
-            stream.close_future(glib::Priority::default()).await?;
-            self.open_wrapper(&file).await?;
-        }
+        let filters = gio::ListStore::new(gtk::FileFilter::static_type());
+        filters.append(&bib_filter);
+
+        let dialog = gtk::FileDialog::new();
+        dialog.set_filters(&filters);
+        dialog.set_title(&gettext("Create New Bibliography"));
+        dialog.set_accept_label(Some(&gettext("_Create")));
+        // TRANSLATORS This a file name, do not translate the file format (.bib)
+        dialog.set_initial_name(Some(&gettext("bibliography.bib")));
+
+        let file = dialog.save_future(Some(self)).await?;
+        let stream = file
+            .create_future(gio::FileCreateFlags::NONE, glib::Priority::default())
+            .await?;
+        stream.close_future(glib::Priority::default()).await?;
+        self.open_wrapper(&file).await?;
 
         Ok(())
     }
@@ -410,24 +402,19 @@ impl Window {
         self.action_set_enabled("win.save", true);
         self.action_set_enabled("win.delete_entry", true);
 
-        let mut recent_files = settings.strv("recent-files");
-        let path = file
-            .path()
-            .unwrap()
-            .to_str()
-            .map(glib::GString::from)
-            .unwrap();
-        if !recent_files.contains(&path) {
-            recent_files.push(path);
-            settings
-                .set_strv(
-                    "recent-files",
-                    &recent_files
-                        .iter()
-                        .map(glib::GString::as_str)
-                        .collect::<Vec<&str>>(),
-                )
-                .unwrap();
+        let recent_files = settings.strv("recent-files");
+        let mut recent_files = recent_files
+            .iter()
+            .map(glib::GStringPtr::to_str)
+            .collect::<Vec<&str>>();
+
+        if let Some(path) = file.path() {
+            if let Some(path) = path.to_str() {
+                if !recent_files.contains(&path) {
+                    recent_files.push(path);
+                    settings.set_strv("recent-files", recent_files).unwrap();
+                }
+            }
         }
 
         Ok(())
@@ -442,7 +429,7 @@ impl Window {
             .strv("recent-files")
             .iter()
             .rev()
-            .map(glib::GString::to_string)
+            .map(glib::GStringPtr::to_gstr)
             .map(gio::File::for_path)
             .filter(|file| file.query_exists(gio::Cancellable::NONE))
             .collect::<Vec<gio::File>>();
@@ -488,21 +475,17 @@ impl Window {
 
     pub fn send_toast(&self, text: &str) {
         let toast = adw::Toast::new(text);
-        self.imp().toast_overlay.add_toast(&toast);
+        self.imp().toast_overlay.add_toast(toast);
     }
 
-    pub fn new_entry_dialog(&self) {
+    pub async fn new_entry_dialog(&self) -> anyhow::Result<()> {
         let dialog = crate::NewEntryDialog::new(self);
 
-        crate::spawn!(
-            glib::clone!(@weak self as window, @weak dialog => async move {
-                if let Some(data) = dialog.run().await {
-                    if let Err(err) = window.new_entry(data) {
-                        log::error!("Could not add entry: {err}");
-                    }
-                }
-            })
-        );
+        if let Some(data) = dialog.run().await {
+            self.new_entry(data)
+        } else {
+            anyhow::bail!("Dialog error")
+        }
     }
 
     pub fn new_entry(&self, data: String) -> anyhow::Result<()> {
@@ -535,15 +518,20 @@ impl Window {
 
         let entry = self.imp().entry_page.entry().context("No entry selected")?;
 
-        let author = entry.find_tag("author").unwrap_or_default();
-        let title = entry.find_tag("title").unwrap_or_default();
+        let author = entry.author();
+        let title = entry.title();
         let p_author = format::texer(&author);
         let p_title = format::texer(&title);
 
         let uri = utils::build_google_schoolar_url(&p_author, &p_title)?;
         log::debug!("Trying to open {}", uri.as_str());
 
-        gtk::show_uri(Some(self), uri.as_str(), gdk::CURRENT_TIME);
+        let launcher = gtk::UriLauncher::new(uri.as_str());
+        launcher.launch(Some(self), gio::Cancellable::NONE, move |res| {
+            if let Err(err) = res {
+                log::error!("Failed to launch uri {uri}: {err}");
+            }
+        });
 
         Ok(())
     }
@@ -553,21 +541,26 @@ impl Window {
 
         let entry = self.imp().entry_page.entry().context("No entry selected")?;
 
-        let author = entry.find_tag("author").unwrap_or_default();
-        let title = entry.find_tag("title").unwrap_or_default();
+        let author = entry.author();
+        let title = entry.title();
         let p_author = format::texer(&author);
         let p_title = format::texer(&title);
 
         let uri = utils::build_arxiv_url(&p_author, &p_title)?;
         log::debug!("Trying to open {uri}");
 
-        gtk::show_uri(Some(self), uri.as_str(), gdk::CURRENT_TIME);
+        let launcher = gtk::UriLauncher::new(uri.as_str());
+        launcher.launch(Some(self), gio::Cancellable::NONE, move |res| {
+            if let Err(err) = res {
+                log::error!("Failed to launch uri {uri}: {err}");
+            }
+        });
 
         Ok(())
     }
 
     pub fn delete_entry(&self, entry: &cratebibtex::Entry) {
-        if let Some(pos) = self.bib().find_pos(&entry) {
+        if let Some(pos) = self.bib().find_pos(entry) {
             let toast = adw::Toast::new(&gettext("Citation Deleted"));
             toast.set_action_name(Some("win.undo_delete"));
             toast.set_button_label(Some(&gettext("Undo")));
@@ -585,7 +578,7 @@ impl Window {
             self.imp().entry_list.unselect();
             self.bib().remove_pos(pos);
 
-            self.imp().toast_overlay.add_toast(&toast);
+            self.imp().toast_overlay.add_toast(toast);
             self.imp()
                 .main_leaflet
                 .navigate(adw::NavigationDirection::Back);
@@ -609,17 +602,17 @@ impl Window {
     fn show_about_dialog(&self) {
         let dialog = adw::AboutWindow::builder()
             .application_icon(APP_ID)
-            .application_name(&gettext("Citations"))
+            .application_name(gettext("Citations"))
             .license_type(gtk::License::Gpl30)
-            .comments(&gettext("Manage your bibliography"))
+            .comments(gettext("Manage your bibliography"))
             .website("https://gitlab.gnome.org/World/citations/")
             .issue_url("https://gitlab.gnome.org/World/citations/-/issues/new")
             .version(VERSION)
             .transient_for(self)
-            .translator_credits(&gettext("translator-credits"))
+            .translator_credits(gettext("translator-credits"))
             .developer_name("Maximiliano Sandoval")
-            .developers(vec!["Maximiliano Sandoval <msandova@gnome.org>".into()])
-            .designers(vec!["Tobias Bernard <tbernard@gnome.org>".into()])
+            .developers(vec!["Maximiliano Sandoval <msandova@gnome.org>"])
+            .designers(vec!["Tobias Bernard <tbernard@gnome.org>"])
             .build();
 
         dialog.present();
@@ -642,7 +635,7 @@ impl Window {
         dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
         dialog.set_default_response(Some("save"));
 
-        match dialog.run_future().await.as_str() {
+        match dialog.choose_future().await.as_str() {
             "discard" => self.destroy(),
             "save" => {
                 if let Err(err) = self.save().await {

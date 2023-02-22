@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use gettextrs::gettext;
 use gio::prelude::*;
-use gtk::{gdk, gio, glib};
+use gtk::{gio, glib};
 use std::path::PathBuf;
 
 #[macro_export]
@@ -84,22 +84,18 @@ pub fn bibliography_path_string() -> String {
 }
 
 pub fn pdf_filename(citation_key: &str) -> String {
-    sanitize_filename::sanitize(&format!("{citation_key}.pdf"))
+    sanitize_filename::sanitize(format!("{citation_key}.pdf"))
 }
 
 pub(crate) fn remove_recent_file(settings: &gio::Settings, path: &str) {
-    let recent_files = settings
-        .strv("recent-files")
-        .iter()
-        .filter(|x| x.as_str() != path)
-        .map(glib::GString::to_string)
-        .collect::<Vec<String>>();
     settings
         .set_strv(
             "recent-files",
-            &recent_files
+            settings
+                .strv("recent-files")
                 .iter()
-                .map(String::as_str)
+                .map(glib::GStringPtr::to_str)
+                .filter(|x| x != &path)
                 .collect::<Vec<&str>>(),
         )
         .unwrap();
@@ -143,8 +139,8 @@ pub(crate) fn doi_url(url: &str) -> anyhow::Result<url::Url> {
 
 pub(crate) fn has_pdf(citation_key: &str) -> bool {
     if let Some(path) = crate::utils::bibliography_path() {
-        let folder = gio::File::for_path(&path);
-        let pdf = folder.child(&crate::utils::pdf_filename(&citation_key));
+        let folder = gio::File::for_path(path);
+        let pdf = folder.child(crate::utils::pdf_filename(citation_key));
 
         pdf.query_exists(gio::Cancellable::NONE)
     } else {
@@ -152,14 +148,19 @@ pub(crate) fn has_pdf(citation_key: &str) -> bool {
     }
 }
 
-pub(crate) fn open_pdf<W: glib::IsA<gtk::Window>>(citation_key: &str, window: &W) {
+pub(crate) async fn open_pdf<W: glib::IsA<gtk::Window>>(
+    citation_key: &str,
+    window: &W,
+) -> anyhow::Result<()> {
     if let Some(path) = crate::utils::bibliography_path() {
         let folder = gio::File::for_path(&path);
-        let pdf = folder.child(&crate::utils::pdf_filename(&citation_key));
-        if pdf.query_exists(gio::Cancellable::NONE) {
-            gtk::show_uri(Some(window), &pdf.uri(), gdk::CURRENT_TIME);
-        }
+        let pdf = folder.child(crate::utils::pdf_filename(citation_key));
+        let launcher = gtk::FileLauncher::new(Some(&pdf));
+
+        launcher.launch_future(Some(window)).await?;
+
+        Ok(())
     } else {
-        log::error!("Could not open PDF");
+        anyhow::bail!("There is not bibliography path");
     }
 }

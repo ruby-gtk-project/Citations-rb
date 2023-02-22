@@ -59,6 +59,14 @@ mod imp {
         pub extras_box: TemplateChild<gtk::Widget>,
         #[template_child]
         pub extras_list_box: TemplateChild<gtk::ListBox>,
+        #[template_child]
+        pub abstract_text_view: TemplateChild<gtk::TextView>,
+        #[template_child]
+        pub abstract_preferences_group: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub notes_text_view: TemplateChild<gtk::TextView>,
+        #[template_child]
+        pub notes_preferences_group: TemplateChild<gtk::Widget>,
 
         pub entry: RefCell<Option<cratebibtex::Entry>>,
         pub bindings: glib::BindingGroup,
@@ -71,21 +79,21 @@ mod imp {
         type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template();
+            klass.bind_template_callbacks();
 
-            klass.install_action("entry-page.open-pdf", None, move |obj, _, _| {
-                obj.open_pdf_action();
+            klass.install_action_async("entry-page.open-pdf", None, |obj, _, _| async move {
+                if let Err(err) = obj.open_pdf_action().await {
+                    log::error!("Could not set PDF: {err}");
+                }
             });
 
-            klass.install_action("entry-page.set-pdf", None, move |obj, _, _| {
-                crate::spawn!(glib::clone!(@weak obj => async move {
-                    if let Err(err) = obj.set_pdf_action().await {
-                        log::error!("Could not set PDF: {err}");
-                    } else {
-                        obj.setup_pdf();
-                    }
-                }));
+            klass.install_action_async("entry-page.set-pdf", None, |obj, _, _| async move {
+                if let Err(err) = obj.set_pdf_action().await {
+                    log::error!("Could not set PDF: {err}");
+                } else {
+                    obj.setup_pdf();
+                }
             });
         }
 
@@ -105,7 +113,7 @@ mod imp {
             };
             if let Some(path) = crate::utils::bibliography_path() {
                 let folder = gio::File::for_path(&path);
-                let pdf = folder.child(&utils::pdf_filename(&citation_key));
+                let pdf = folder.child(utils::pdf_filename(&citation_key));
                 if let Err(err) = pdf.trash_future(glib::Priority::default()).await {
                     log::error!("Could not trash pdf: {err}");
                 } else {
@@ -129,6 +137,28 @@ mod imp {
         }
 
         #[template_callback]
+        fn on_copy_abstract_clicked(&self) {
+            if let Some((start, end)) = self.abstract_text_view.buffer().selection_bounds() {
+                let text = self.abstract_text_view.buffer().text(&start, &end, true);
+                self.obj().clipboard().set_text(&text);
+            } else {
+                let abs = self.entry.borrow().as_ref().unwrap().x_abstract();
+                self.obj().clipboard().set_text(&abs);
+            }
+        }
+
+        #[template_callback]
+        fn on_copy_notes_clicked(&self) {
+            if let Some((start, end)) = self.notes_text_view.buffer().selection_bounds() {
+                let text = self.notes_text_view.buffer().text(&start, &end, true);
+                self.obj().clipboard().set_text(&text);
+            } else {
+                let notes = self.entry.borrow().as_ref().unwrap().notes();
+                self.obj().clipboard().set_text(&notes);
+            }
+        }
+
+        #[template_callback]
         fn on_entry_type_entry_row_changed(&self, entry_row: &adw::EntryRow) {
             let text = entry_row.text();
             if text.is_empty() {
@@ -139,7 +169,7 @@ mod imp {
                 .borrow()
                 .as_ref()
                 .unwrap()
-                .set_other_entry_type(&text);
+                .set_other_entry_type(text);
         }
 
         #[template_callback]
@@ -158,7 +188,7 @@ mod imp {
         }
 
         #[template_callback]
-        fn on_doi_clicked(&self) {
+        async fn on_doi_clicked(&self) {
             let value = self.doi_entry.text();
             if let Ok(uri) = crate::utils::doi_url(&value) {
                 let window = self
@@ -167,7 +197,10 @@ mod imp {
                     .unwrap()
                     .downcast::<crate::Window>()
                     .unwrap();
-                gtk::show_uri(Some(&window), uri.as_str(), gdk::CURRENT_TIME);
+                let launcher = gtk::UriLauncher::new(uri.as_str());
+                if let Err(err) = launcher.launch_future(Some(&window)).await {
+                    log::error!("Failed to launch uri {uri}: {err}");
+                }
             }
         }
 
@@ -198,7 +231,7 @@ mod imp {
 
             if !window.bib().key_exists(&new_key) || old_key == new_key {
                 entry_row.remove_css_class("error");
-                entry.set_citation_key(&new_key);
+                entry.set_citation_key(new_key);
                 if let Err(err) = entry_page.move_pdf_for_entry(&old_key).await {
                     log::error!("Could not move pdf: {err}");
                 }
@@ -263,17 +296,30 @@ mod imp {
                 .bind("entry-type", &*self.entry_type_combo_row, "selected")
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
+
+            let abstract_buffer = self.abstract_text_view.buffer();
+            self.bindings
+                .bind("x-abstract", &abstract_buffer, "text")
+                .sync_create()
+                .bidirectional()
+                .build();
+
+            let notes_buffer = self.notes_text_view.buffer();
+            self.bindings
+                .bind("notes", &notes_buffer, "text")
+                .sync_create()
+                .bidirectional()
+                .build();
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecObject::new(
-                    "entry",
-                    "entry",
-                    "entry",
-                    cratebibtex::Entry::static_type(),
-                    glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                )]
+                vec![
+                    glib::ParamSpecObject::builder::<cratebibtex::Entry>("entry")
+                        .readwrite()
+                        .explicit_notify()
+                        .build(),
+                ]
             });
             PROPERTIES.as_ref()
         }
@@ -303,7 +349,7 @@ glib::wrapper! {
 
 impl Default for EntryPage {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
@@ -337,6 +383,7 @@ impl EntryPage {
                     .citation_key_entry
                     .set_text(&entry.citation_key());
                 self.bind_extras_list_model(entry);
+                self.setup_abstract_and_notes();
                 self.setup_pdf();
             } else {
                 self.imp()
@@ -382,7 +429,12 @@ impl EntryPage {
                             .unwrap();
 
                         if let Ok(uri) = crate::utils::eprint_url(&row.text()) {
-                            gtk::show_uri(Some(&window), uri.as_str(), gdk::CURRENT_TIME);
+                            let launcher = gtk::UriLauncher::new(uri.as_str());
+                            launcher.launch(Some(&window), gio::Cancellable::NONE, move |res| {
+                                if let Err(err) = res {
+                                    log::error!("Failed to launch uri {uri}: {err}");
+                                }
+                            });
                         }
                     }));
                     button.add_css_class("flat");
@@ -398,6 +450,23 @@ impl EntryPage {
         );
     }
 
+    fn setup_abstract_and_notes(&self) {
+        let uses_abstract = self
+            .imp()
+            .entry
+            .borrow()
+            .as_ref()
+            .unwrap()
+            .entry_type()
+            .uses_abstract();
+        self.imp()
+            .abstract_preferences_group
+            .set_visible(uses_abstract);
+        self.imp()
+            .notes_preferences_group
+            .set_visible(!uses_abstract);
+    }
+
     pub fn entry(&self) -> Option<cratebibtex::Entry> {
         self.imp().entry.borrow().clone()
     }
@@ -410,7 +479,7 @@ impl EntryPage {
         let filename = utils::pdf_filename(&entry.as_ref().unwrap().citation_key());
 
         let pdf = if let Some(path) = crate::utils::bibliography_path() {
-            let folder = gio::File::for_path(&path);
+            let folder = gio::File::for_path(path);
             let pdf = folder.child(&filename);
             if pdf.query_exists(gio::Cancellable::NONE) {
                 self.imp()
@@ -479,9 +548,9 @@ impl EntryPage {
 
         if let Some(path) = crate::utils::bibliography_path() {
             let folder = gio::File::for_path(&path);
-            let pdf = folder.child(&utils::pdf_filename(old_citation_key));
+            let pdf = folder.child(utils::pdf_filename(old_citation_key));
             if pdf.query_exists(gio::Cancellable::NONE) {
-                let new_pdf = folder.child(&utils::pdf_filename(&new_citation_key));
+                let new_pdf = folder.child(utils::pdf_filename(&new_citation_key));
                 pdf.move_future(
                     &new_pdf,
                     gio::FileCopyFlags::NONE,
@@ -515,12 +584,11 @@ impl EntryPage {
             .set_visible_child(&self.imp().empty_bin.get());
     }
 
-    fn open_pdf_action(&self) {
-        let entry = self.imp().entry.borrow();
-        let citation_key = entry.as_ref().unwrap().citation_key();
+    async fn open_pdf_action(&self) -> anyhow::Result<()> {
+        let citation_key = self.imp().entry.borrow().as_ref().unwrap().citation_key();
         let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
 
-        crate::utils::open_pdf(&citation_key, &window);
+        crate::utils::open_pdf(&citation_key, &window).await
     }
 
     async fn set_pdf_action(&self) -> anyhow::Result<()> {
@@ -528,14 +596,12 @@ impl EntryPage {
         let citation_key = self.imp().entry.borrow().as_ref().unwrap().citation_key();
 
         let dialog = AddPdfDialog::new(&window, citation_key);
-        dialog.connect_local(
+        dialog.connect_closure(
             "pdf-set",
             false,
-            glib::clone!(@weak self as obj, @weak window => @default-return None, move |_| {
+            glib::closure_local!(@watch self as obj, @weak-allow-none window => move |_obj: &AddPdfDialog| {
                 obj.setup_pdf();
-                window.send_toast(&gettext("PDF added"));
-
-                None
+                window.unwrap().send_toast(&gettext("PDF added"));
             }),
         );
         dialog.present();

@@ -28,27 +28,19 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecObject::new(
-                        "model",
-                        "Model",
-                        "The model being wrapped",
-                        gio::ListModel::static_type(),
-                        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
-                    glib::ParamSpecObject::new(
-                        "selected-item",
-                        "Selected item",
-                        "The selected item",
-                        glib::Object::static_type(),
-                        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
-                    glib::ParamSpecBoolean::new(
-                        "hide-selection",
-                        "Hide selection",
-                        "Whether to hide the selection or not",
-                        false,
-                        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
+                    glib::ParamSpecObject::builder::<gio::ListModel>("model")
+                        .readwrite()
+                        .explicit_notify()
+                        .build(),
+                    glib::ParamSpecObject::builder::<glib::Object>("selected-item")
+                        .readwrite()
+                        .explicit_notify()
+                        .build(),
+                    glib::ParamSpecBoolean::builder("hide-selection")
+                        .default_value(false)
+                        .readwrite()
+                        .explicit_notify()
+                        .build(),
                 ]
             });
             PROPERTIES.as_ref()
@@ -133,7 +125,7 @@ glib::wrapper! {
 
 impl Default for Selection {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
@@ -172,13 +164,11 @@ impl Selection {
                     position,
                     position + added,
                 ));
+            } else if item_position + added >= removed {
+                imp.item_position.set(item_position + added - removed);
             } else {
-                if item_position + added >= removed {
-                    imp.item_position.set(item_position + added - removed);
-                } else {
-                    // This should never happen.
-                    imp.item_position.set(0);
-                }
+                // This should never happen.
+                imp.item_position.set(0);
             }
         }
 

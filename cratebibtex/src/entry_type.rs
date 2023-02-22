@@ -2,10 +2,11 @@ use gettextrs::gettext;
 use std::fmt;
 
 // TODO Implement more types
-#[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, glib::Enum)]
 #[repr(i32)]
 #[enum_type(name = "EntryType")]
 pub enum EntryType {
+    #[default]
     Other = 0,
     Article = 1,
     Book = 2,
@@ -22,12 +23,6 @@ pub enum EntryType {
     PhdThesis = 13,
     Proceedings = 14,
     TechReport = 15,
-}
-
-impl Default for EntryType {
-    fn default() -> Self {
-        Self::Other
-    }
 }
 
 impl From<i32> for EntryType {
@@ -103,6 +98,20 @@ impl fmt::Display for EntryType {
 }
 
 impl EntryType {
+    pub fn uses_abstract(&self) -> bool {
+        matches!(
+            self,
+            Self::Article
+                | Self::InProceedings
+                | Self::Unpublished
+                | Self::Online
+                | Self::InCollection
+                | Self::MasterThesis
+                | Self::PhdThesis
+                | Self::Proceedings
+        )
+    }
+
     pub fn to_translatable_string(self) -> String {
         match self {
             Self::Article => gettext("Article"),

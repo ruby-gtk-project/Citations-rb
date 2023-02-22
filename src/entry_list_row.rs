@@ -30,16 +30,18 @@ mod imp {
         type ParentType = gtk::Widget;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template();
+            klass.bind_template_callbacks();
             klass.set_layout_manager_type::<gtk::BinLayout>();
 
             // Action used only for the extra menu
-            klass.install_action("entry-row.open-pdf", None, move |row, _, _| {
+            klass.install_action_async("entry-row.open-pdf", None, |row, _, _| async move {
                 let citation_key = row.entry().citation_key();
                 let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
 
-                crate::utils::open_pdf(&citation_key, &window);
+                if let Err(err) = crate::utils::open_pdf(&citation_key, &window).await {
+                    log::error!("Could not open pdf: {err}");
+                }
             });
 
             klass.install_action("entry-row.delete", None, move |row, _, _| {
@@ -106,13 +108,12 @@ mod imp {
 
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecObject::new(
-                    "entry",
-                    "entry",
-                    "entry",
-                    cratebibtex::Entry::static_type(),
-                    glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                )]
+                vec![
+                    glib::ParamSpecObject::builder::<cratebibtex::Entry>("entry")
+                        .readwrite()
+                        .explicit_notify()
+                        .build(),
+                ]
             });
             PROPERTIES.as_ref()
         }
@@ -141,7 +142,7 @@ glib::wrapper! {
 
 impl Default for EntryListRow {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 

@@ -11,10 +11,10 @@ gnome = import('gnome')
 
 base_id = 'org.gnome.World.Citations'
 
-dependency('glib-2.0', version: '>= 2.72')
-dependency('gio-2.0', version: '>= 2.72')
-dependency('gtk4', version: '>= 4.6.0')
-dependency('libadwaita-1', version: '>= 1.2.alpha')
+dependency('glib-2.0', version: '>= 2.74')
+dependency('gio-2.0', version: '>= 2.74')
+dependency('gtk4', version: '>= 4.9')
+dependency('libadwaita-1', version: '>= 1.3.alpha')
 
 glib_compile_resources = find_program('glib-compile-resources', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)
@@ -36,7 +36,7 @@ gettext_package = meson.project_name()
 
 if get_option('profile') == 'development'
   profile = 'Devel'
-  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD', check: false).stdout().strip()
   if vcs_tag == ''
     version_suffix = '-devel'
   else
@@ -58,7 +58,7 @@ meson.add_dist_script(
 if get_option('profile') == 'development'
   # Setup pre-commit hook for ensuring coding style is always consistent
   message('Setting up git pre-commit hook..')
-  run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit')
+  run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit', check: false)
 endif
 
 subdir('data')

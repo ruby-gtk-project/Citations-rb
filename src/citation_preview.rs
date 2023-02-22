@@ -83,6 +83,7 @@ mod imp {
     use adw::subclass::prelude::*;
     use once_cell::sync::Lazy;
     use std::cell::{Cell, RefCell};
+    use once_cell::unsync::OnceCell;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/citation_preview.ui")]
@@ -100,7 +101,7 @@ mod imp {
         #[template_child]
         pub help_source_view: TemplateChild<gtk::TextView>,
 
-        pub signal_handler: RefCell<Option<glib::SignalHandlerId>>,
+        pub signals: OnceCell<glib::SignalGroup>,
         pub entry: RefCell<Option<cratebibtex::Entry>>,
         pub template_kind: Cell<Template>,
         pub format_kind: Cell<cratebibtex::Format>,
@@ -120,7 +121,7 @@ mod imp {
                 template_kind: Cell::default(),
                 format_kind: Cell::default(),
                 settings: gio::Settings::new(crate::config::APP_ID),
-                signal_handler: RefCell::default(),
+                signals: Default::default(),
             }
         }
     }
@@ -132,8 +133,8 @@ mod imp {
         type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template();
+            klass.bind_template_callbacks();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -192,6 +193,9 @@ mod imp {
             self.parent_constructed();
             let obj = self.obj();
 
+            let signals = glib::SignalGroup::new(cratebibtex::Entry::static_type());
+            self.signals.set(signals).unwrap();
+
             obj.update_style_scheme();
             let manager = adw::StyleManager::default();
             manager.connect_dark_notify(glib::clone!(@weak obj => move |_| {
@@ -239,46 +243,31 @@ mod imp {
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
 
-            // TODO add signal group on glib 2.74
-            // self.signals.connect_local("changed", false, glib::clone!(@weak obj => move |_value| {
-            //     obj.emit("template");
-            // }));
+            let signals = self.signals.get().unwrap();
+            signals.connect_local("notify", false, glib::clone!(@weak obj => @default-return None, move |_value| {
+                obj.notify("template");
+
+                None
+            }));
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
-            use glib::types::StaticType;
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecObject::new(
-                        "entry",
-                        "entry",
-                        "entry",
-                        cratebibtex::Entry::static_type(),
-                        glib::ParamFlags::READWRITE,
-                    ),
-                    glib::ParamSpecString::new(
-                        "template",
-                        "template",
-                        "template",
-                        "".into(),
-                        glib::ParamFlags::READABLE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
-                    glib::ParamSpecEnum::new(
-                        "template-kind",
-                        "template-kind",
-                        "template-kind",
-                        Template::static_type(),
-                        Template::default() as i32,
-                        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
-                    glib::ParamSpecEnum::new(
-                        "format-kind",
-                        "format-kind",
-                        "format-kind",
-                        cratebibtex::Format::static_type(),
-                        cratebibtex::Format::default() as i32,
-                        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
+                    glib::ParamSpecObject::builder::<cratebibtex::Entry>("entry")
+                        .readwrite()
+                        .build(),
+                    glib::ParamSpecString::builder("template")
+                        .explicit_notify()
+                        .build(),
+                    glib::ParamSpecEnum::builder::<Template>("template-kind")
+                        .readwrite()
+                        .explicit_notify()
+                        .build(),
+                    glib::ParamSpecEnum::builder::<cratebibtex::Format>("format-kind")
+                        .readwrite()
+                        .explicit_notify()
+                        .build()
                 ]
             });
             PROPERTIES.as_ref()
@@ -305,14 +294,11 @@ mod imp {
             match pspec.name() {
                 "entry" => {
                     if let Ok(entry) = value.get::<cratebibtex::Entry>() {
-                        let id = entry.connect_notify_local(None, glib::clone!(@weak obj => move |_entry, _pspec| {
-                            obj.notify("template");
-                        }));
 
-                        let old_entry = self.entry.replace(Some(entry));
-                        if let (Some(old_id), Some(entry)) = (self.signal_handler.replace(Some(id)), old_entry) {
-                            entry.disconnect(old_id);
-                        }
+                        let signals = self.signals.get().unwrap();
+                        signals.set_target(Some(&entry));
+
+                        self.entry.replace(Some(entry));
 
                         let template = if obj.use_book_format() {
                             self.settings.string("custom-book-template")
@@ -343,7 +329,7 @@ glib::wrapper! {
 
 impl Default for CitationPreview {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 

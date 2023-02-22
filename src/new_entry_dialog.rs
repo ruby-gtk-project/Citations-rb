@@ -55,8 +55,8 @@ mod imp {
         type ParentType = adw::Window;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template();
+            klass.bind_template_callbacks();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -132,7 +132,7 @@ mod imp {
                     buffer.set_text("");
                 }));
             }));
-            self.source_view.get().add_controller(&controller);
+            self.source_view.get().add_controller(controller);
         }
     }
 
@@ -148,13 +148,16 @@ glib::wrapper! {
 
 impl Default for NewEntryDialog {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
 impl NewEntryDialog {
     pub fn new<T: glib::IsA<gtk::Window>>(window: &T) -> Self {
-        glib::Object::new(&[("modal", &true), ("transient-for", &window)])
+        glib::Object::builder()
+            .property("modal", true)
+            .property("transient-for", window)
+            .build()
     }
 
     pub async fn run(&self) -> Option<String> {
