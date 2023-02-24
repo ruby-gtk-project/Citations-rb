@@ -2,13 +2,13 @@
 # Copyright (C) 2022 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-10-24 06:59+0000\n"
-"PO-Revision-Date: 2022-10-24 23:45+0300\n"
+"POT-Creation-Date: 2023-02-22 23:11+0000\n"
+"PO-Revision-Date: 2023-02-24 20:43+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -19,72 +19,72 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#: cratebibtex/src/entry_type.rs:108
+#: cratebibtex/src/entry_type.rs:117
 msgid "Article"
 msgstr "Стаття"
 
-#: cratebibtex/src/entry_type.rs:109
+#: cratebibtex/src/entry_type.rs:118
 msgid "Book"
 msgstr "Книга"
 
-#: cratebibtex/src/entry_type.rs:110
+#: cratebibtex/src/entry_type.rs:119
 msgid "Misc"
 msgstr "Інше"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
-#: cratebibtex/src/entry_type.rs:112
+#: cratebibtex/src/entry_type.rs:121
 msgid "In Proceedings"
 msgstr "У працях"
 
-#: cratebibtex/src/entry_type.rs:113
+#: cratebibtex/src/entry_type.rs:122
 msgid "Unpublished"
 msgstr "Неоприлюднений"
 
 #. NOTE As in online source
-#: cratebibtex/src/entry_type.rs:115
+#: cratebibtex/src/entry_type.rs:124
 msgid "Online"
 msgstr "У мережі"
 
 #. NOTE As in other kind of source
-#: cratebibtex/src/entry_type.rs:117
+#: cratebibtex/src/entry_type.rs:126
 msgid "Other"
 msgstr "Інше"
 
-#: cratebibtex/src/entry_type.rs:118
+#: cratebibtex/src/entry_type.rs:127
 msgid "Booklet"
 msgstr "Брошура"
 
-#: cratebibtex/src/entry_type.rs:119
+#: cratebibtex/src/entry_type.rs:128
 msgid "Conference"
 msgstr "Конференція"
 
-#: cratebibtex/src/entry_type.rs:120
+#: cratebibtex/src/entry_type.rs:129
 msgid "In Book"
 msgstr "У книзі"
 
-#: cratebibtex/src/entry_type.rs:121
+#: cratebibtex/src/entry_type.rs:130
 msgid "In Collection"
 msgstr "У збірці"
 
 #. NOTE As in instruction manual
-#: cratebibtex/src/entry_type.rs:123
+#: cratebibtex/src/entry_type.rs:132
 msgid "Manual"
 msgstr "Підручник"
 
-#: cratebibtex/src/entry_type.rs:124
+#: cratebibtex/src/entry_type.rs:133
 msgid "Master Thesis"
 msgstr "Магістерська дисертація"
 
-#: cratebibtex/src/entry_type.rs:125
+#: cratebibtex/src/entry_type.rs:134
 msgid "PhD. Thesis"
 msgstr "Кандидатська дисертація"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
-#: cratebibtex/src/entry_type.rs:127
+#: cratebibtex/src/entry_type.rs:136
 msgid "Proceedings"
 msgstr "Доповіді"
 
-#: cratebibtex/src/entry_type.rs:128
+#: cratebibtex/src/entry_type.rs:137
 msgid "Tech Report"
 msgstr "Технічний звіт"
 
@@ -96,12 +96,12 @@ msgstr "Простий"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:612
+#: src/window.rs:605
 msgid "Citations"
 msgstr "Цитати"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:614
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
 msgid "Manage your bibliography"
 msgstr "Керування вашою бібліографією"
 
@@ -149,12 +149,12 @@ msgstr "Керування вашими бібліографіями з вико
 msgid "Main window"
 msgstr "Головне вікно"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:78
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:79
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:11 data/resources/ui/entry_page.ui:192
+#: data/resources/ui/add_pdf_dialog.ui:11 data/resources/ui/entry_page.ui:252
 msgid "Add PDF"
 msgstr "Додати PDF"
 
@@ -218,12 +218,10 @@ msgid "Create a new citation"
 msgstr "Створити посилання"
 
 #: data/resources/ui/entry_list_row.ui:88
-#| msgid "Open PDF"
 msgid "_Open PDF"
 msgstr "_Відкрити PDF"
 
 #: data/resources/ui/entry_list_row.ui:92
-#| msgid "_Citation Key"
 msgid "_Copy Key"
 msgstr "_Копіювати ключ"
 
@@ -259,7 +257,7 @@ msgstr "_Назва"
 msgid "_Year"
 msgstr "Р_ік"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:376
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:423
 msgid "Open in Browser"
 msgstr "Відкрити у переглядачі"
 
@@ -267,21 +265,39 @@ msgstr "Відкрити у переглядачі"
 msgid "Other Properties"
 msgstr "Інші властивості"
 
+#: data/resources/ui/entry_page.ui:179
+msgid "Abstract"
+msgstr "Резюме"
+
+#: data/resources/ui/entry_page.ui:183
+msgid "Copy Abstract"
+msgstr "Копіювати резюме"
+
 #: data/resources/ui/entry_page.ui:209
+#| msgid "Note"
+msgid "Notes"
+msgstr "Нотатки"
+
+#: data/resources/ui/entry_page.ui:213
+#| msgid "_Copy Key"
+msgid "Copy Notes"
+msgstr "Копіювати нотатки"
+
+#: data/resources/ui/entry_page.ui:269
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:220 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
-#: data/resources/ui/window.ui:144
+#: data/resources/ui/entry_page.ui:280 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:98
+#: data/resources/ui/window.ui:146
 msgid "_Open"
 msgstr "_Відкрити"
 
-#: data/resources/ui/entry_page.ui:233
+#: data/resources/ui/entry_page.ui:293
 msgid "Delete PDF"
 msgstr "Вилучити PDF"
 
-#: data/resources/ui/entry_page.ui:270
+#: data/resources/ui/entry_page.ui:330
 msgid "Could not set PDF Preview"
 msgstr "Не вдалося встановити попередній перегляд PDF"
 
@@ -371,37 +387,37 @@ msgstr "_Шукати у Google Академія"
 msgid "_Search in arXiv"
 msgstr "_Шукати в arXiv"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
-#: data/resources/ui/window.ui:195
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:122
+#: data/resources/ui/window.ui:197
 msgid "Main Menu"
 msgstr "Головне меню"
 
 #. BibTeX is a proper name
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:93
 msgid "Open a BibTeX File"
 msgstr "Відкрийте файл BibTeX"
 
-#: data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:131
 msgid "Manage your Citations"
 msgstr "Керування вашими посиланнями"
 
-#: data/resources/ui/window.ui:136
+#: data/resources/ui/window.ui:138
 msgid "Recent Files"
 msgstr "Нещодавні файли"
 
-#: data/resources/ui/window.ui:188
+#: data/resources/ui/window.ui:190
 msgid "Add New Citation"
 msgstr "Додати нове посилання"
 
-#: data/resources/ui/window.ui:201
+#: data/resources/ui/window.ui:204
 msgid "Search"
 msgstr "Пошук"
 
-#: data/resources/ui/window.ui:252
+#: data/resources/ui/window.ui:255
 msgid "Back"
 msgstr "Назад"
 
-#: data/resources/ui/window.ui:261
+#: data/resources/ui/window.ui:264
 msgid "Secondary Menu"
 msgstr "Вторинне меню"
 
@@ -418,9 +434,14 @@ msgstr "Не вдалося отримати PDF"
 msgid "Make sure that {path} exists"
 msgstr "Переконайтеся, що тека {path} існує"
 
-#: src/add_pdf_dialog.rs:183
+#: src/add_pdf_dialog.rs:177
 msgid "PDF Files"
 msgstr "файли PDF"
+
+#: src/add_pdf_dialog.rs:185
+#| msgid "Select PDF"
+msgid "Select a PDF"
+msgstr "Вибір PDF"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -440,24 +461,24 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/citation_preview.rs:160 src/entry_list_row.rs:55 src/entry_page.rs:185
+#: src/citation_preview.rs:161 src/entry_list_row.rs:57 src/entry_page.rs:218
 msgid "Copied"
 msgstr "Скопійовано"
 
-#: src/citation_preview.rs:167
+#: src/citation_preview.rs:168
 msgid "Custom…"
 msgstr "Нетиповий…"
 
-#: src/entry_page.rs:149
+#: src/entry_page.rs:179
 msgid "Other…"
 msgstr "Інше…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:208
+#: src/entry_page.rs:241
 msgid "Citation Key already exists"
 msgstr "Ключ цитування вже існує"
 
-#: src/entry_page.rs:536
+#: src/entry_page.rs:604
 msgid "PDF added"
 msgstr "Додано PDF"
 
@@ -554,70 +575,75 @@ msgstr "Школа"
 msgid "Institution"
 msgstr "Установа"
 
-#: src/window.rs:324 src/window.rs:353
+#: src/window.rs:315 src/window.rs:338
 msgid "Bibtex Files"
 msgstr "файли BibTeX"
 
-#: src/window.rs:345
+#: src/window.rs:348
 msgid "Create New Bibliography"
 msgstr "Створити бібліографію"
 
-#: src/window.rs:348
-msgid "Create"
-msgstr "Створити"
+#: src/window.rs:349
+#| msgid "Create"
+msgid "_Create"
+msgstr "С_творити"
 
-#: src/window.rs:469
+#. TRANSLATORS This a file name, do not translate the file format (.bib)
+#: src/window.rs:351
+#| msgctxt "shortcut window"
+#| msgid "Bibliography"
+msgid "bibliography.bib"
+msgstr "бібліографія.bib"
+
+#: src/window.rs:456
 msgid "Remove From Recent Files"
 msgstr "Вилучити з нещодавніх файлів"
 
-#: src/window.rs:513
+#: src/window.rs:496
 msgid "An entry with the given citation key already exists"
 msgstr "Запис із вказаним ключем цитування вже існує"
 
-#: src/window.rs:528
+#: src/window.rs:511
 msgid "Bibliography saved"
 msgstr "Бібліографію збережено"
 
-#: src/window.rs:571
+#: src/window.rs:564
 msgid "Citation Deleted"
 msgstr "Посилання вилучено"
 
-#: src/window.rs:573
+#: src/window.rs:566
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:619
+#: src/window.rs:612
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:632
+#: src/window.rs:625
 msgid "Unsaved Changes"
 msgstr "Незбережені зміни"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:635
+#: src/window.rs:628
 msgid "Do you want to write all changes to the safe?"
 msgstr "Хочете записати усі зміни до сейфа?"
 
-#: src/window.rs:639
+#: src/window.rs:632
 msgid "_Quit Without Saving"
 msgstr "В_ийти без збереження"
 
-#: src/window.rs:640
+#: src/window.rs:633
 msgid "_Don't Quit"
 msgstr "_Не виходити"
 
-#: src/window.rs:641
+#: src/window.rs:634
 msgid "_Save and Quit"
 msgstr "З_берегти та вийти"
 
 #~| msgid "Select PDF"
 #~ msgid "Set PDF"
 #~ msgstr "Встановити PDF"
-
-#~ msgid "Select PDF"
-#~ msgstr "Вибрати PDF"
 
 #~ msgid "Copy file to bibliography folder"
 #~ msgstr "Копіювати файл до теки бібліографії"
