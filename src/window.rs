@@ -347,8 +347,9 @@ impl Window {
         dialog.set_filters(&filters);
         dialog.set_title(&gettext("Create New Bibliography"));
         dialog.set_accept_label(Some(&gettext("_Create")));
-        // TRANSLATORS This a file name, do not translate the file format (.bib)
-        dialog.set_initial_name(Some(&gettext("bibliography.bib")));
+        // TRANSLATORS This a file name, .bib will be appended e.g.
+        // bibliography.bib, please only use alphabetic characters.
+        dialog.set_initial_name(Some(&gettext("bibliography") + ".bib"));
 
         let file = dialog.save_future(Some(self)).await?;
         let stream = file
