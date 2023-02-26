@@ -81,12 +81,14 @@ mod imp {
     use super::*;
 
     use adw::subclass::prelude::*;
-    use once_cell::sync::Lazy;
     use std::cell::{Cell, RefCell};
     use once_cell::unsync::OnceCell;
+    use glib::Properties;
+    use std::marker::PhantomData;
 
-    #[derive(Debug, CompositeTemplate)]
+    #[derive(Debug, CompositeTemplate, Properties)]
     #[template(resource = "/org/gnome/World/Citations/ui/citation_preview.ui")]
+    #[properties(wrapper_type = super::CitationPreview)]
     pub struct CitationPreview {
         #[template_child]
         pub source_view: TemplateChild<gsv::View>,
@@ -101,11 +103,18 @@ mod imp {
         #[template_child]
         pub help_source_view: TemplateChild<gtk::TextView>,
 
+        #[property(get, set = Self::set_entry, explicit_notify)]
+        entry: RefCell<Option<cratebibtex::Entry>>,
+        #[property(get, set = Self::set_template_kind, explicit_notify, builder(Default::default()))]
+        template_kind: Cell<Template>,
+        #[property(get, set = Self::set_format_kind, explicit_notify, builder(Default::default()))]
+        format_kind: Cell<cratebibtex::Format>,
+        #[property(get = Self::template, explicit_notify)]
+        template: PhantomData<String>,
+
         pub signals: OnceCell<glib::SignalGroup>,
-        pub entry: RefCell<Option<cratebibtex::Entry>>,
-        pub template_kind: Cell<Template>,
-        pub format_kind: Cell<cratebibtex::Format>,
         pub settings: gio::Settings,
+
     }
 
     impl Default for CitationPreview {
@@ -122,6 +131,7 @@ mod imp {
                 format_kind: Cell::default(),
                 settings: gio::Settings::new(crate::config::APP_ID),
                 signals: Default::default(),
+                template: Default::default(),
             }
         }
     }
@@ -144,6 +154,102 @@ mod imp {
 
     #[gtk::template_callbacks]
     impl CitationPreview {
+        fn set_entry(&self, entry: Option<&cratebibtex::Entry>) {
+            let obj = self.obj();
+
+            if entry == self.entry.replace(entry.cloned()).as_ref(){
+             return;
+            }
+
+            let signals = self.signals.get().unwrap();
+            signals.set_target(entry);
+
+            if entry.is_some() {
+             let template = if obj.use_book_format() {
+             self.settings.string("custom-book-template")
+                } else {
+             self.settings.string("custom-article-template")
+                };
+
+             let buffer = self.text_view.buffer();
+             buffer.set_text(&template);
+            }
+
+            obj.notify("template");
+        }
+
+        fn set_template_kind(&self, kind: Template) {
+            if kind != self.template_kind.replace(kind) {
+             self.obj().notify("template-kind");
+             self.obj().notify("template");
+
+             self.template_revealer
+                    .set_reveal_child(kind == Template::Custom);
+            }
+        }
+
+        fn set_format_kind(&self, kind: cratebibtex::Format) {
+            if kind != self.format_kind.replace(kind) {
+             let content = self.obj().template();
+             self.obj().set_buffer(&content);
+             self.obj().notify("format-kind");
+             self.obj().notify("template");
+            }
+        }
+
+        fn template(&self) -> String {
+            let obj = self.obj();
+            match obj.template_kind() {
+                Template::Custom => {
+                    let buffer = self.text_view.buffer();
+                    let (start, end) = buffer.bounds();
+                    buffer.text(&start, &end, true).into()
+                }
+                Template::Ams => {
+                    if obj.use_book_format() {
+                        AMS_BOOK_TEMPLATE.into()
+                    } else {
+                        AMS_ARTICLE_TEMPLATE.into()
+                    }
+                }
+                Template::Mla => {
+                    if obj.use_book_format() {
+                        MLA_BOOK_TEMPLATE.into()
+                    } else {
+                        MLA_ARTICLE_TEMPLATE.into()
+                    }
+                }
+                Template::Apa => {
+                    if obj.use_book_format() {
+                        APA_BOOK_TEMPLATE.into()
+                    } else {
+                        APA_ARTICLE_TEMPLATE.into()
+                    }
+                }
+                Template::Chicago => {
+                    if obj.use_book_format() {
+                        CHICAGO_BOOK_TEMPLATE.into()
+                    } else {
+                        CHICAGO_ARTICLE_TEMPLATE.into()
+                    }
+                }
+                Template::Harvard => {
+                    if obj.use_book_format() {
+                        HARVAR_BOOK_TEMPLATE.into()
+                    } else {
+                        HARVAR_ARTICLE_TEMPLATE.into()
+                    }
+                }
+                Template::Vancouver => {
+                    if obj.use_book_format() {
+                        VANCOUVER_BOOK_TEMPLATE.into()
+                    } else {
+                        VANCOUVER_ARTICLE_TEMPLATE.into()
+                    }
+                }
+            }
+        }
+
         #[template_callback]
         fn on_clicked(&self) {
             let buffer = self.source_view.buffer();
@@ -252,70 +358,15 @@ mod imp {
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecObject::builder::<cratebibtex::Entry>("entry")
-                        .readwrite()
-                        .build(),
-                    glib::ParamSpecString::builder("template")
-                        .explicit_notify()
-                        .build(),
-                    glib::ParamSpecEnum::builder::<Template>("template-kind")
-                        .readwrite()
-                        .explicit_notify()
-                        .build(),
-                    glib::ParamSpecEnum::builder::<cratebibtex::Format>("format-kind")
-                        .readwrite()
-                        .explicit_notify()
-                        .build()
-                ]
-            });
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.obj();
-            match pspec.name() {
-                "entry" => self.entry.borrow().to_value(),
-                "template" => obj.template().to_value(),
-                "template-kind" => obj.template_kind().to_value(),
-                "format-kind" => obj.format_kind().to_value(),
-                _ => unimplemented!(),
-            }
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            Self::derived_property(self, id, pspec)
         }
 
-        fn set_property(
-            &self,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
-            let obj = self.obj();
-            match pspec.name() {
-                "entry" => {
-                    if let Ok(entry) = value.get::<cratebibtex::Entry>() {
-
-                        let signals = self.signals.get().unwrap();
-                        signals.set_target(Some(&entry));
-
-                        self.entry.replace(Some(entry));
-
-                        let template = if obj.use_book_format() {
-                            self.settings.string("custom-book-template")
-                        } else {
-                            self.settings.string("custom-article-template")
-                        };
-
-                        let buffer = self.text_view.buffer();
-                        buffer.set_text(&template);
-
-                        obj.notify("template");
-                    }
-                }
-                "template-kind" => obj.set_template_kind(value.get().unwrap()),
-                "format-kind" => obj.set_format_kind(value.get().unwrap()),
-                _ => unimplemented!(),
-            };
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            Self::derived_set_property(self, id, value, pspec)
         }
     }
     impl WidgetImpl for CitationPreview {}
@@ -378,7 +429,7 @@ impl CitationPreview {
 
     fn use_book_format(&self) -> bool {
         // TODO revisit this.
-        if let Some(entry) = &*self.imp().entry.borrow() {
+        if let Some(entry) = self.entry() {
             match entry.entry_type() {
                 cratebibtex::EntryType::Other => false,
                 cratebibtex::EntryType::Article => false,
@@ -399,86 +450,6 @@ impl CitationPreview {
             }
         } else {
             false
-        }
-    }
-
-    fn template(&self) -> String {
-        match self.template_kind() {
-            Template::Custom => {
-                let buffer = self.imp().text_view.buffer();
-                let (start, end) = buffer.bounds();
-                buffer.text(&start, &end, true).into()
-            }
-            Template::Ams => {
-                if self.use_book_format() {
-                    AMS_BOOK_TEMPLATE.into()
-                } else {
-                    AMS_ARTICLE_TEMPLATE.into()
-                }
-            }
-            Template::Mla => {
-                if self.use_book_format() {
-                    MLA_BOOK_TEMPLATE.into()
-                } else {
-                    MLA_ARTICLE_TEMPLATE.into()
-                }
-            }
-            Template::Apa => {
-                if self.use_book_format() {
-                    APA_BOOK_TEMPLATE.into()
-                } else {
-                    APA_ARTICLE_TEMPLATE.into()
-                }
-            }
-            Template::Chicago => {
-                if self.use_book_format() {
-                    CHICAGO_BOOK_TEMPLATE.into()
-                } else {
-                    CHICAGO_ARTICLE_TEMPLATE.into()
-                }
-            }
-            Template::Harvard => {
-                if self.use_book_format() {
-                    HARVAR_BOOK_TEMPLATE.into()
-                } else {
-                    HARVAR_ARTICLE_TEMPLATE.into()
-                }
-            }
-            Template::Vancouver => {
-                if self.use_book_format() {
-                    VANCOUVER_BOOK_TEMPLATE.into()
-                } else {
-                    VANCOUVER_ARTICLE_TEMPLATE.into()
-                }
-            }
-        }
-    }
-
-    fn template_kind(&self) -> Template {
-        self.imp().template_kind.get()
-    }
-
-    fn set_template_kind(&self, kind: Template) {
-        if kind != self.imp().template_kind.replace(kind) {
-            self.notify("template-kind");
-            self.notify("template");
-
-            self.imp()
-                .template_revealer
-                .set_reveal_child(kind == Template::Custom);
-        }
-    }
-
-    fn format_kind(&self) -> cratebibtex::Format {
-        self.imp().format_kind.get()
-    }
-
-    fn set_format_kind(&self, kind: cratebibtex::Format) {
-        if kind != self.imp().format_kind.replace(kind) {
-            let content = self.template();
-            self.set_buffer(&content);
-            self.notify("format-kind");
-            self.notify("template");
         }
     }
 }

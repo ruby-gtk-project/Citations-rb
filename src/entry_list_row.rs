@@ -3,15 +3,16 @@ use gettextrs::gettext;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, glib};
 use gtk::{prelude::*, CompositeTemplate};
-use once_cell::sync::Lazy;
 
 mod imp {
     use super::*;
 
+    use glib::Properties;
     use std::cell::RefCell;
 
-    #[derive(Debug, Default, CompositeTemplate)]
+    #[derive(Debug, Default, CompositeTemplate, Properties)]
     #[template(resource = "/org/gnome/World/Citations/ui/entry_list_row.ui")]
+    #[properties(wrapper_type = super::EntryListRow)]
     pub struct EntryListRow {
         #[template_child]
         pub child: TemplateChild<gtk::Widget>,
@@ -20,7 +21,8 @@ mod imp {
         #[template_child]
         pub popover: TemplateChild<gtk::PopoverMenu>,
 
-        pub entry: RefCell<Option<cratebibtex::Entry>>,
+        #[property(get, set)]
+        entry: RefCell<Option<cratebibtex::Entry>>,
     }
 
     #[glib::object_subclass]
@@ -36,7 +38,7 @@ mod imp {
 
             // Action used only for the extra menu
             klass.install_action_async("entry-row.open-pdf", None, |row, _, _| async move {
-                let citation_key = row.entry().citation_key();
+                let citation_key = row.entry().unwrap().citation_key();
                 let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
 
                 if let Err(err) = crate::utils::open_pdf(&citation_key, &window).await {
@@ -46,11 +48,11 @@ mod imp {
 
             klass.install_action("entry-row.delete", None, move |row, _, _| {
                 let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
-                window.delete_entry(&row.entry());
+                window.delete_entry(&row.entry().unwrap());
             });
 
             klass.install_action("entry-row.copy-key", None, move |row, _, _| {
-                let citation_key = row.entry().citation_key();
+                let citation_key = row.entry().unwrap().citation_key();
                 row.clipboard().set_text(&citation_key);
 
                 let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
@@ -87,7 +89,7 @@ mod imp {
 
         #[template_callback]
         fn menu_gesture_clicked(obj: &super::EntryListRow, _n_press: i32, x: f64, y: f64) {
-            let has_pdf = crate::utils::has_pdf(&obj.entry().citation_key());
+            let has_pdf = crate::utils::has_pdf(&obj.entry().unwrap().citation_key());
             obj.action_set_enabled("entry-row.open-pdf", has_pdf);
 
             if x > -1.0 && y > -1.0 {
@@ -107,29 +109,15 @@ mod imp {
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecObject::builder::<cratebibtex::Entry>("entry")
-                        .readwrite()
-                        .explicit_notify()
-                        .build(),
-                ]
-            });
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            match pspec.name() {
-                "entry" => self.entry.borrow().to_value(),
-                _ => unimplemented!(),
-            }
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            Self::derived_property(self, id, pspec)
         }
 
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            match pspec.name() {
-                "entry" => self.obj().set_entry(value.get().unwrap()),
-                _ => unimplemented!(),
-            };
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            Self::derived_set_property(self, id, value, pspec)
         }
     }
     impl WidgetImpl for EntryListRow {}
@@ -143,17 +131,5 @@ glib::wrapper! {
 impl Default for EntryListRow {
     fn default() -> Self {
         glib::Object::new()
-    }
-}
-
-impl EntryListRow {
-    pub fn set_entry(&self, entry: &cratebibtex::Entry) {
-        if Some(entry) != self.imp().entry.replace(Some(entry.clone())).as_ref() {
-            self.notify("entry");
-        }
-    }
-
-    pub fn entry(&self) -> cratebibtex::Entry {
-        self.imp().entry.borrow().clone().unwrap()
     }
 }
