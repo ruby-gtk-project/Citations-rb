@@ -68,6 +68,8 @@ mod imp {
         #[template_child]
         pub notes_preferences_group: TemplateChild<gtk::Widget>,
 
+        // TODO use properties macro after
+        // https://github.com/gtk-rs/gtk-rs-core/issues/990 is merged.
         pub entry: RefCell<Option<cratebibtex::Entry>>,
         pub bindings: glib::BindingGroup,
     }

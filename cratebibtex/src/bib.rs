@@ -19,7 +19,7 @@ mod imp {
         pub n_items: Cell<u32>,
 
         #[property(get, set = Self::set_modified, explicit_notify)]
-        pub modified: Cell<bool>,
+        modified: Cell<bool>,
     }
 
     impl Bib {
