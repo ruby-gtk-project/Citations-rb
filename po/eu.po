@@ -6,8 +6,8 @@
 msgid ""
 msgstr "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-02-22 23:11+0000\n"
-"PO-Revision-Date: 2023-02-26 10:00+0000\n"
+"POT-Creation-Date: 2023-02-26 13:17+0000\n"
+"PO-Revision-Date: 2023-03-04 10:00+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -92,12 +92,12 @@ msgstr "Arrunta"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:605
+#: src/window.rs:606
 msgid "Citations"
 msgstr "Aipamenak"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:608
 msgid "Manage your bibliography"
 msgstr "Kudeatu zure bibliografia"
 
@@ -247,7 +247,7 @@ msgstr "_Titulua"
 msgid "_Year"
 msgstr "U_rtea"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:423
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:425
 msgid "Open in Browser"
 msgstr "Ireki nabigatzailean"
 
@@ -448,24 +448,24 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Pertsonalizatua"
 
-#: src/citation_preview.rs:161 src/entry_list_row.rs:57 src/entry_page.rs:218
+#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:220
 msgid "Copied"
 msgstr "Kopiatua"
 
-#: src/citation_preview.rs:168
+#: src/citation_preview.rs:274
 msgid "Custom…"
 msgstr "Pertsonalizatua…"
 
-#: src/entry_page.rs:179
+#: src/entry_page.rs:181
 msgid "Other…"
 msgstr "Bestelakoa…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:241
+#: src/entry_page.rs:243
 msgid "Citation Key already exists"
 msgstr "Aipamenaren gako hori badago lehendik"
 
-#: src/entry_page.rs:604
+#: src/entry_page.rs:606
 msgid "PDF added"
 msgstr "PDFa gehitu da"
 
@@ -574,56 +574,60 @@ msgstr "Sortu bibliografia berria"
 msgid "_Create"
 msgstr "_Sortu"
 
-#. TRANSLATORS This a file name, do not translate the file format (.bib)
-#: src/window.rs:351
-msgid "bibliography.bib"
-msgstr "bibliografia.bib"
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: src/window.rs:352
+msgid "bibliography"
+msgstr "bibliografia"
 
-#: src/window.rs:456
+#: src/window.rs:457
 msgid "Remove From Recent Files"
 msgstr "Kendu azken aldiko fitxategietatik"
 
-#: src/window.rs:496
+#: src/window.rs:497
 msgid "An entry with the given citation key already exists"
 msgstr "Badago emandako aipamena duen sarrera bat"
 
-#: src/window.rs:511
+#: src/window.rs:512
 msgid "Bibliography saved"
 msgstr "Bibliografia gorde da"
 
-#: src/window.rs:564
+#: src/window.rs:565
 msgid "Citation Deleted"
 msgstr "Aipamena ezabatu da"
 
-#: src/window.rs:566
+#: src/window.rs:567
 msgid "Undo"
 msgstr "Desegin"
 
-#: src/window.rs:612
+#: src/window.rs:613
 msgid "translator-credits"
 msgstr "translator-credits"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:625
+#: src/window.rs:626
 msgid "Unsaved Changes"
 msgstr "Gorde gabeko aldaketak"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:628
+#: src/window.rs:629
 msgid "Do you want to write all changes to the safe?"
 msgstr "Aldaketak guztiak kutxa gotorrean idatzi nahi dituzu?"
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "_Quit Without Saving"
 msgstr "_Irten gorde gabe"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "_Don't Quit"
 msgstr "_Ez irten"
 
-#: src/window.rs:634
+#: src/window.rs:635
 msgid "_Save and Quit"
 msgstr "_Gorde eta irten"
+
+#~ msgid "bibliography.bib"
+#~ msgstr "bibliografia.bib"
 
 #~ msgid "Copy file to bibliography folder"
 #~ msgstr "Kopiatu fitxategia bibliografiako karpetara"
