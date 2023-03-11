@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-02-22 23:11+0000\n"
-"PO-Revision-Date: 2023-02-23 10:27+0100\n"
+"POT-Creation-Date: 2023-02-26 13:17+0000\n"
+"PO-Revision-Date: 2023-03-11 09:00+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -103,12 +103,12 @@ msgstr "Text"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:605
+#: src/window.rs:606
 msgid "Citations"
 msgstr "Zitate"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:608
 msgid "Manage your bibliography"
 msgstr "Verwalten Sie Ihre Bibliografie"
 
@@ -265,7 +265,7 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "_Jahr"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:423
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:425
 msgid "Open in Browser"
 msgstr "In Browser öffnen"
 
@@ -466,24 +466,24 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
-#: src/citation_preview.rs:161 src/entry_list_row.rs:57 src/entry_page.rs:218
+#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:220
 msgid "Copied"
 msgstr "Kopiert"
 
-#: src/citation_preview.rs:168
+#: src/citation_preview.rs:274
 msgid "Custom…"
 msgstr "Benutzerdefiniert …"
 
-#: src/entry_page.rs:179
+#: src/entry_page.rs:181
 msgid "Other…"
 msgstr "Andere …"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:241
+#: src/entry_page.rs:243
 msgid "Citation Key already exists"
 msgstr "Zitatschlüssel existiert bereits"
 
-#: src/entry_page.rs:604
+#: src/entry_page.rs:606
 msgid "PDF added"
 msgstr "PDF hinzugefügt"
 
@@ -592,58 +592,62 @@ msgstr "Neue Bibliografie erstellen"
 msgid "_Create"
 msgstr "_Erstellen"
 
-#. TRANSLATORS This a file name, do not translate the file format (.bib)
-#: src/window.rs:351
-msgid "bibliography.bib"
-msgstr "Bibliografie.bib"
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: src/window.rs:352
+msgid "bibliography"
+msgstr "Bibliografie"
 
-#: src/window.rs:456
+#: src/window.rs:457
 msgid "Remove From Recent Files"
 msgstr "Aus den kürzlich verwendeten Dateien entfernen"
 
-#: src/window.rs:496
+#: src/window.rs:497
 msgid "An entry with the given citation key already exists"
 msgstr "Es existiert bereits ein Eintrag mit diesem Zitatschlüssel"
 
-#: src/window.rs:511
+#: src/window.rs:512
 msgid "Bibliography saved"
 msgstr "Bibliografie gespeichert"
 
-#: src/window.rs:564
+#: src/window.rs:565
 msgid "Citation Deleted"
 msgstr "Zitat gelöscht"
 
-#: src/window.rs:566
+#: src/window.rs:567
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/window.rs:612
+#: src/window.rs:613
 msgid "translator-credits"
 msgstr ""
 "Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Jürgen Benvenuti <gastornis@posteo.org>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:625
+#: src/window.rs:626
 msgid "Unsaved Changes"
 msgstr "Ungespeicherte Änderungen"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:628
+#: src/window.rs:629
 msgid "Do you want to write all changes to the safe?"
 msgstr "Möchten Sie alle Änderungen in den Safe speichern?"
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "_Quit Without Saving"
 msgstr "_Beenden ohne zu speichern"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "_Don't Quit"
 msgstr "_Nicht beenden"
 
-#: src/window.rs:634
+#: src/window.rs:635
 msgid "_Save and Quit"
 msgstr "_Speichern und beenden"
+
+#~ msgid "bibliography.bib"
+#~ msgstr "Bibliografie.bib"
 
 #~ msgid "Copy file to bibliography folder"
 #~ msgstr "Datei in den Bibliografieordner kopieren"
