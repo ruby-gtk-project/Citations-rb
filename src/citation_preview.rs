@@ -175,13 +175,13 @@ mod imp {
              buffer.set_text(&template);
             }
 
-            obj.notify("template");
+            obj.notify_template();
         }
 
         fn set_template_kind(&self, kind: Template) {
             if kind != self.template_kind.replace(kind) {
-             self.obj().notify("template-kind");
-             self.obj().notify("template");
+             self.obj().notify_template_kind();
+             self.obj().notify_template();
 
              self.template_revealer
                     .set_reveal_child(kind == Template::Custom);
@@ -192,8 +192,8 @@ mod imp {
             if kind != self.format_kind.replace(kind) {
              let content = self.obj().template();
              self.obj().set_buffer(&content);
-             self.obj().notify("format-kind");
-             self.obj().notify("template");
+             self.obj().notify_format_kind();
+             self.obj().notify_template();
             }
         }
 
@@ -330,7 +330,7 @@ mod imp {
                         obj.imp().settings.set_string("custom-article-template", &template).unwrap();
                     }
 
-                    obj.notify("template");
+                    obj.notify_template();
                 }));
 
             self.settings
@@ -350,10 +350,8 @@ mod imp {
                 .build();
 
             let signals = self.signals.get().unwrap();
-            signals.connect_local("notify", false, glib::clone!(@weak obj => @default-return None, move |_value| {
-                obj.notify("template");
-
-                None
+            signals.connect_notify_local(None, glib::clone!(@weak obj => move |_signal, _pspec| {
+                obj.notify_template();
             }));
         }
 

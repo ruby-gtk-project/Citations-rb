@@ -11,11 +11,11 @@ mod imp {
     use super::*;
 
     use adw::subclass::prelude::*;
-    use once_cell::sync::Lazy;
     use std::cell::RefCell;
 
-    #[derive(Debug, Default, CompositeTemplate)]
+    #[derive(Debug, Default, CompositeTemplate, glib::Properties)]
     #[template(resource = "/org/gnome/World/Citations/ui/entry_page.ui")]
+    #[properties(wrapper_type = super::EntryPage)]
     pub struct EntryPage {
         #[template_child]
         pub doi_button: TemplateChild<gtk::Button>,
@@ -68,10 +68,33 @@ mod imp {
         #[template_child]
         pub notes_preferences_group: TemplateChild<gtk::Widget>,
 
-        // TODO use properties macro after
-        // https://github.com/gtk-rs/gtk-rs-core/issues/990 is merged.
+        #[property(get, set = Self::set_entry, nullable, explicit_notify)]
         pub entry: RefCell<Option<cratebibtex::Entry>>,
+
         pub bindings: glib::BindingGroup,
+    }
+
+    impl EntryPage {
+        fn set_entry(&self, entry: Option<&cratebibtex::Entry>) {
+            if entry != self.entry.replace(entry.cloned()).as_ref() {
+                self.obj().notify_entry();
+                self.bindings.set_source(entry);
+
+                if let Some(entry) = entry {
+                    self.obj().setup_other_entry_row();
+                    self.stack.set_visible_child(&self.non_empty_page.get());
+                    self.citation_key_entry.set_text(&entry.citation_key());
+                    self.obj().bind_extras_list_model(entry);
+                    self.obj().setup_abstract_and_notes();
+                    self.obj().setup_pdf();
+                } else {
+                    self.stack.set_visible_child(&self.empty_page.get());
+
+                    self.extras_list_box
+                        .bind_model(gio::ListModel::NONE, move |_| adw::Bin::new().upcast());
+                }
+            }
+        }
     }
 
     #[glib::object_subclass]
@@ -315,29 +338,15 @@ mod imp {
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecObject::builder::<cratebibtex::Entry>("entry")
-                        .readwrite()
-                        .explicit_notify()
-                        .build(),
-                ]
-            });
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            match pspec.name() {
-                "entry" => self.entry.borrow().to_value(),
-                _ => unimplemented!(),
-            }
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            Self::derived_property(self, id, pspec)
         }
 
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            match pspec.name() {
-                "entry" => self.obj().set_entry(value.get().ok()),
-                _ => unimplemented!(),
-            };
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            Self::derived_set_property(self, id, value, pspec)
         }
     }
     impl WidgetImpl for EntryPage {}
@@ -369,34 +378,6 @@ impl EntryPage {
                 .unwrap_or_else(|| "other".to_string())
         };
         self.imp().other_entry_type_row.set_text(&editable_text);
-    }
-
-    pub fn set_entry(&self, entry: Option<&cratebibtex::Entry>) {
-        if entry != self.imp().entry.replace(entry.cloned()).as_ref() {
-            self.notify("entry");
-            self.imp().bindings.set_source(entry);
-
-            if let Some(entry) = entry {
-                self.setup_other_entry_row();
-                self.imp()
-                    .stack
-                    .set_visible_child(&self.imp().non_empty_page.get());
-                self.imp()
-                    .citation_key_entry
-                    .set_text(&entry.citation_key());
-                self.bind_extras_list_model(entry);
-                self.setup_abstract_and_notes();
-                self.setup_pdf();
-            } else {
-                self.imp()
-                    .stack
-                    .set_visible_child(&self.imp().empty_page.get());
-
-                self.imp()
-                    .extras_list_box
-                    .bind_model(gio::ListModel::NONE, move |_| adw::Bin::new().upcast());
-            }
-        }
     }
 
     pub fn bind_extras_list_model(&self, entry: &cratebibtex::Entry) {
@@ -467,10 +448,6 @@ impl EntryPage {
         self.imp()
             .notes_preferences_group
             .set_visible(!uses_abstract);
-    }
-
-    pub fn entry(&self) -> Option<cratebibtex::Entry> {
-        self.imp().entry.borrow().clone()
     }
 
     fn setup_pdf(&self) {
