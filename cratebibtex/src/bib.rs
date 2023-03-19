@@ -25,7 +25,7 @@ mod imp {
     impl Bib {
         pub fn set_modified(&self, modified: bool) {
             if modified != self.modified.replace(modified) {
-                self.obj().notify("modified");
+                self.obj().notify_modified();
             }
         }
     }

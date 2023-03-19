@@ -104,13 +104,13 @@ mod imp {
         fn set_abstract(&self, value: &str) {
             let old_value = self.obj().insert_tag("abstract", value);
             if old_value.as_deref() != Some(value) {
-                self.obj().notify("x-abstract");
+                self.obj().notify_x_abstract();
             }
         }
 
         fn set_entry_type(&self, entry_type: crate::EntryType) {
             if entry_type != self.entry_type.replace(entry_type) {
-                self.obj().notify("entry-type");
+                self.obj().notify_entry_type();
             }
         }
 
@@ -122,7 +122,7 @@ mod imp {
                     .replace(Some(owned_citation_key))
                     .as_deref()
             {
-                self.obj().notify("citation-key");
+                self.obj().notify_citation_key();
             }
         }
 
