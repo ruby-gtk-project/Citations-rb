@@ -1,5 +1,5 @@
 {
-    "app-id": "org.gnome.World.Citations.Devel",
+    "id": "org.gnome.World.Citations.Devel",
     "runtime": "org.gnome.Platform",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
