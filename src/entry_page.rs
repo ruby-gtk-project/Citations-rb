@@ -498,8 +498,13 @@ impl EntryPage {
                 None => anyhow::bail!("Document does not have any pages"),
             };
             let (width, height) = page.size();
-            let surface =
-                cairo::ImageSurface::create(cairo::Format::Rgb24, width as i32, height as i32)?;
+            let scale = self.scale_factor();
+            let surface = cairo::ImageSurface::create(
+                cairo::Format::Rgb24,
+                width as i32 * scale,
+                height as i32 * scale,
+            )?;
+            surface.set_device_scale(scale as f64, scale as f64);
             let ctxt = cairo::Context::new(&surface)?;
             ctxt.set_source_rgb(1.0, 1.0, 1.0);
             ctxt.paint()?;
