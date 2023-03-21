@@ -192,6 +192,7 @@ mod imp {
             if kind != self.format_kind.replace(kind) {
              let content = self.obj().template();
              self.obj().set_buffer(&content);
+             self.obj().update_style_scheme();
              self.obj().notify_format_kind();
              self.obj().notify_template();
             }
