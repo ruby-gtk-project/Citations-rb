@@ -8,6 +8,7 @@
     "finish-args" : [
         "--device=dri",
         "--env=G_MESSAGES_DEBUG=none",
+        "--env=CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=citations,cratebibtex=debug",
         "--filesystem=xdg-documents/Bibliography:create",
