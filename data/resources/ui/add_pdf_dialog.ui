@@ -4,6 +4,7 @@
     <property name="width-request">450</property>
     <property name="height-request">250</property>
     <property name="modal">True</property>
+    <property name="destroy-with-parent">True</property>
     <property name="titlebar">
       <object class="GtkHeaderBar">
         <property name="title-widget">
