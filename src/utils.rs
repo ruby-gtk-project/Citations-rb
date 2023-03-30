@@ -93,10 +93,9 @@ pub(crate) fn remove_recent_file(settings: &gio::Settings, path: &str) {
             "recent-files",
             settings
                 .strv("recent-files")
-                .iter()
-                .map(glib::GStringPtr::to_str)
-                .filter(|x| x != &path)
-                .collect::<Vec<&str>>(),
+                .into_iter()
+                .filter(|x| x != path)
+                .collect::<glib::StrV>(),
         )
         .unwrap();
 }
