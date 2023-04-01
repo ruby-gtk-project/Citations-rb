@@ -116,6 +116,7 @@ impl AddPdfDialog {
     pub fn new<W: glib::IsA<gtk::Window>>(window: &W, citation_key: String) -> Self {
         let dialog: Self = glib::Object::builder()
             .property("transient-for", window)
+            .property("application", window.application())
             .build();
         dialog.imp().citation_key.set(citation_key).unwrap();
 
