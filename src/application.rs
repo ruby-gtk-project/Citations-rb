@@ -95,11 +95,11 @@ impl Application {
         self.set_accels_for_action("window.close", &["<Control>w"]);
     }
 
-    pub fn run(&self) {
+    pub fn run(&self) -> glib::ExitCode {
         info!("Citations ({})", APP_ID);
         info!("Version: {} ({})", VERSION, PROFILE);
         info!("Datadir: {}", PKGDATADIR);
 
-        ApplicationExtManual::run(self);
+        ApplicationExtManual::run(self)
     }
 }

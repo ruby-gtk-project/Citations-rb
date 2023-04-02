@@ -28,7 +28,7 @@ pub use window::Window;
 use self::application::Application;
 use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
 
-fn main() {
+fn main() -> glib::ExitCode {
     // Initialize logger
     tracing_subscriber::fmt::init();
 
@@ -55,5 +55,5 @@ fn main() {
     NewEntryDialog::static_type();
     Selection::static_type();
 
-    app.run();
+    app.run()
 }
