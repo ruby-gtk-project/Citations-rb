@@ -313,7 +313,7 @@
                                         <property name="keep-aspect-ratio">True</property>
                                         <property name="overflow">hidden</property>
                                         <style>
-                                          <class name="pdfpreview"/>
+                                          <class name="card"/>
                                         </style>
                                       </object>
                                     </child>
