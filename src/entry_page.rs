@@ -335,6 +335,10 @@ mod imp {
                 .sync_create()
                 .bidirectional()
                 .build();
+
+            obj.connect_scale_factor_notify(|obj| {
+                obj.setup_pdf();
+            });
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
