@@ -403,16 +403,12 @@ impl Window {
         self.action_set_enabled("win.save", true);
         self.action_set_enabled("win.delete_entry", true);
 
-        let recent_files = settings.strv("recent-files");
-        let mut recent_files = recent_files
-            .iter()
-            .map(glib::GStringPtr::to_str)
-            .collect::<Vec<&str>>();
-
         if let Some(path) = file.path() {
             if let Some(path) = path.to_str() {
-                if !recent_files.contains(&path) {
-                    recent_files.push(path);
+                let mut recent_files = settings.strv("recent-files");
+
+                if !recent_files.contains(path) {
+                    recent_files.push(path.into());
                     settings.set_strv("recent-files", recent_files).unwrap();
                 }
             }
@@ -428,9 +424,8 @@ impl Window {
         let recent_files = imp
             .settings
             .strv("recent-files")
-            .iter()
+            .into_iter()
             .rev()
-            .map(glib::GStringPtr::to_gstr)
             .map(gio::File::for_path)
             .filter(|file| file.query_exists(gio::Cancellable::NONE))
             .collect::<Vec<gio::File>>();

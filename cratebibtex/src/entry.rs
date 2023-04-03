@@ -164,7 +164,11 @@ impl Default for Entry {
 
 impl From<&nom_bibtex::Bibliography> for Entry {
     fn from(bib: &nom_bibtex::Bibliography) -> Self {
-        let tags = bib.tags();
+        let tags: HashMap<String, String> = bib
+            .tags()
+            .iter()
+            .map(|(k, v)| (k.to_lowercase(), v.clone()))
+            .collect();
         let entry = Self::default();
         entry.imp().tags.replace(tags);
         entry

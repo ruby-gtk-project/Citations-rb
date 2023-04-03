@@ -3,6 +3,7 @@
   <template class="NewEntryDialog" parent="AdwWindow">
     <property name="width-request">360</property>
     <property name="height-request">400</property>
+    <property name="destroy-with-parent">True</property>
     <child>
       <object class="GtkShortcutController">
         <child>

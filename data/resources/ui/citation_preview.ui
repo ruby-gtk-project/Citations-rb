@@ -31,10 +31,13 @@
                         <property name="hexpand">True</property>
                         <property name="monospace">True</property>
                         <property name="wrap_mode">word</property>
+                        <style>
+                          <class name="inline"/>
+                        </style>
                       </object>
                     </child>
                     <style>
-                      <class name="entry"/>
+                      <class name="card"/>
                     </style>
                   </object>
                 </child>
@@ -100,12 +103,15 @@
                         <property name="hexpand">True</property>
                         <property name="wrap_mode">word</property>
                         <property name="editable">False</property>
+                        <style>
+                          <class name="inline"/>
+                        </style>
                       </object>
                     </child>
                   </object>
                 </child>
                 <style>
-                  <class name="entry"/>
+                  <class name="card"/>
                 </style>
               </object>
             </child>
@@ -166,10 +172,13 @@
                 <property name="wrap_mode">word</property>
                 <property name="editable">False</property>
                 <property name="monospace">True</property>
+                <style>
+                  <class name="inline"/>
+                </style>
               </object>
             </child>
             <style>
-              <class name="entry"/>
+              <class name="card"/>
             </style>
           </object>
         </child>

@@ -194,10 +194,13 @@
                                   <object class="GtkTextView" id="abstract_text_view">
                                     <property name="hexpand">True</property>
                                     <property name="wrap_mode">word</property>
+                                    <style>
+                                      <class name="inline"/>
+                                    </style>
                                   </object>
                                 </child>
                                 <style>
-                                  <class name="entry"/>
+                                  <class name="card"/>
                                 </style>
                               </object>
                             </child>
@@ -224,10 +227,13 @@
                                   <object class="GtkTextView" id="notes_text_view">
                                     <property name="hexpand">True</property>
                                     <property name="wrap_mode">word</property>
+                                    <style>
+                                      <class name="inline"/>
+                                    </style>
                                   </object>
                                 </child>
                                 <style>
-                                  <class name="entry"/>
+                                  <class name="card"/>
                                 </style>
                               </object>
                             </child>
@@ -307,7 +313,7 @@
                                         <property name="keep-aspect-ratio">True</property>
                                         <property name="overflow">hidden</property>
                                         <style>
-                                          <class name="pdfpreview"/>
+                                          <class name="card"/>
                                         </style>
                                       </object>
                                     </child>

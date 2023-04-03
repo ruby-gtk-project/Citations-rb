@@ -8,6 +8,9 @@
             <property name="icon-name">emblem-documents-symbolic</property>
             <property name="title" translatable="yes" comments="Empty state widget">No Citations</property>
             <property name="description" translatable="yes">Create a new citation</property>
+            <style>
+              <class name="compact"/>
+            </style>
           </object>
         </child>
         <child>

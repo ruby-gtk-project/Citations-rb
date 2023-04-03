@@ -157,6 +157,7 @@ impl NewEntryDialog {
         glib::Object::builder()
             .property("modal", true)
             .property("transient-for", window)
+            .property("application", window.application())
             .build()
     }
 
