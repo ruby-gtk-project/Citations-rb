@@ -130,8 +130,8 @@ impl EntryType {
             Self::InCollection => gettext("In Collection"),
             // NOTE As in instruction manual
             Self::Manual => gettext("Manual"),
-            Self::MasterThesis => gettext("Master Thesis"),
-            Self::PhdThesis => gettext("PhD. Thesis"),
+            Self::MasterThesis => gettext("Master's Thesis"),
+            Self::PhdThesis => gettext("PhD Thesis"),
             // NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
             Self::Proceedings => gettext("Proceedings"),
             Self::TechReport => gettext("Tech Report"),
