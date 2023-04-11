@@ -87,12 +87,11 @@
                       </object>
                     </child>
                     <child>
-                      <object class="AdwStatusPage">
+                      <object class="AdwStatusPage" id="no_recent_files_status_page">
                         <property name="vexpand">True</property>
                         <property name="icon-name">document-open-symbolic</property>
                         <property name="title" translatable="yes" comments="BibTeX is a proper name">Open a BibTeX File</property>
-                        <!-- TODO Add back when Nautilus uses GTK 4 -->
-                        <!-- <property name="description" translatable="yes">Or drag-and-drop a file</property> -->
+                        <property name="description" translatable="yes">Or drag-and-drop a file</property>
                         <child>
                           <object class="GtkButton">
                             <property name="label" translatable="yes">_Open</property>
