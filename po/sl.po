@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-04-04 12:39+0000\n"
-"PO-Revision-Date: 2023-04-07 23:25+0200\n"
+"POT-Creation-Date: 2023-04-11 10:37+0000\n"
+"PO-Revision-Date: 2023-04-12 21:12+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -99,12 +99,12 @@ msgstr "Običajno"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:601
+#: src/window.rs:605
 msgid "Citations"
 msgstr "Citati"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:603
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
 msgid "Manage your bibliography"
 msgstr "Upravljanje z bibliografijo"
 
@@ -287,8 +287,8 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:286 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:98
-#: data/resources/ui/window.ui:146
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:145
 msgid "_Open"
 msgstr "_Odpri"
 
@@ -386,8 +386,8 @@ msgstr "_Poišči z Google Učenjak"
 msgid "_Search in arXiv"
 msgstr "_Poišči v arXiv"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:122
-#: data/resources/ui/window.ui:197
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:196
 msgid "Main Menu"
 msgstr "Glavni meni"
 
@@ -396,27 +396,31 @@ msgstr "Glavni meni"
 msgid "Open a BibTeX File"
 msgstr "Odpri datoteko BibTeX"
 
-#: data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:94
+msgid "Or drag-and-drop a file"
+msgstr "Ali povlecite in spustite datoteko"
+
+#: data/resources/ui/window.ui:130
 msgid "Manage your Citations"
 msgstr "Upravljajte s svojimi citati"
 
-#: data/resources/ui/window.ui:138
+#: data/resources/ui/window.ui:137
 msgid "Recent Files"
 msgstr "Nedavne datoteke"
 
-#: data/resources/ui/window.ui:190
+#: data/resources/ui/window.ui:189
 msgid "Add New Citation"
 msgstr "Dodaj novo navedbo"
 
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:203
 msgid "Search"
 msgstr "Poišči"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:254
 msgid "Back"
 msgstr "Nazaj"
 
-#: data/resources/ui/window.ui:264
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "Drugotni meni"
 
@@ -573,67 +577,67 @@ msgstr "Šola"
 msgid "Institution"
 msgstr "Ustanova"
 
-#: src/window.rs:315 src/window.rs:338
+#: src/window.rs:319 src/window.rs:342
 msgid "Bibtex Files"
 msgstr "Datoteke Bibtex"
 
-#: src/window.rs:348
+#: src/window.rs:352
 msgid "Create New Bibliography"
 msgstr "Ustvari nov bibliografski vnos"
 
-#: src/window.rs:349
+#: src/window.rs:353
 msgid "_Create"
 msgstr "_Ustvari"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:352
+#: src/window.rs:356
 msgid "bibliography"
 msgstr "bibliografija"
 
-#: src/window.rs:452
+#: src/window.rs:456
 msgid "Remove From Recent Files"
 msgstr "Odstrani iz seznama Nedavne datoteke"
 
-#: src/window.rs:492
+#: src/window.rs:496
 msgid "An entry with the given citation key already exists"
 msgstr "Vnos s podanim določilom navedbe že obstaja"
 
-#: src/window.rs:507
+#: src/window.rs:511
 msgid "Bibliography saved"
 msgstr "Bibliografija je shranjena"
 
-#: src/window.rs:560
+#: src/window.rs:564
 msgid "Citation Deleted"
 msgstr "Navedba je izbrisana"
 
-#: src/window.rs:562
+#: src/window.rs:566
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.rs:608
+#: src/window.rs:612
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>,Martin Srebotnjak <miles@filmsi.net>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:621
+#: src/window.rs:625
 msgid "Unsaved Changes"
 msgstr "Neshranjene spremembe"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:624
+#: src/window.rs:628
 msgid "Do you want to write all changes to the safe?"
 msgstr "Ali želite zapisati vse spremembe v sef?"
 
-#: src/window.rs:628
+#: src/window.rs:632
 msgid "_Quit Without Saving"
 msgstr "_Končaj brez shranjevanja"
 
-#: src/window.rs:629
+#: src/window.rs:633
 msgid "_Don't Quit"
 msgstr "_Ne končaj"
 
-#: src/window.rs:630
+#: src/window.rs:634
 msgid "_Save and Quit"
 msgstr "_Shrani in končaj"
