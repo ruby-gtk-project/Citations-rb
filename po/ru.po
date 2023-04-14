@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-04-04 12:39+0000\n"
-"PO-Revision-Date: 2023-04-04 16:01+0300\n"
+"POT-Creation-Date: 2023-04-11 10:37+0000\n"
+"PO-Revision-Date: 2023-04-12 16:23+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -96,12 +96,12 @@ msgstr "Простой текст"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:601
+#: src/window.rs:605
 msgid "Citations"
 msgstr "Цитаты"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:603
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
 msgid "Manage your bibliography"
 msgstr "Управляйте своей библиографией"
 
@@ -285,8 +285,8 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:286 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:98
-#: data/resources/ui/window.ui:146
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:145
 msgid "_Open"
 msgstr "_Открыть"
 
@@ -384,8 +384,8 @@ msgstr "_Искать в Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Искать в arXiv"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:122
-#: data/resources/ui/window.ui:197
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:196
 msgid "Main Menu"
 msgstr "Главное меню"
 
@@ -394,27 +394,31 @@ msgstr "Главное меню"
 msgid "Open a BibTeX File"
 msgstr "Открыть файл BibTeX"
 
-#: data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:94
+msgid "Or drag-and-drop a file"
+msgstr "Или перетащите файл"
+
+#: data/resources/ui/window.ui:130
 msgid "Manage your Citations"
 msgstr "Управляйте своими цитатами"
 
-#: data/resources/ui/window.ui:138
+#: data/resources/ui/window.ui:137
 msgid "Recent Files"
 msgstr "Недавние файлы"
 
-#: data/resources/ui/window.ui:190
+#: data/resources/ui/window.ui:189
 msgid "Add New Citation"
 msgstr "Добавить новую цитату"
 
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:203
 msgid "Search"
 msgstr "Поиск"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:254
 msgid "Back"
 msgstr "Назад"
 
-#: data/resources/ui/window.ui:264
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "Дополнительное меню"
 
@@ -571,67 +575,67 @@ msgstr "Школа"
 msgid "Institution"
 msgstr "Инструкция"
 
-#: src/window.rs:315 src/window.rs:338
+#: src/window.rs:319 src/window.rs:342
 msgid "Bibtex Files"
 msgstr "Файлы Bibtex"
 
-#: src/window.rs:348
+#: src/window.rs:352
 msgid "Create New Bibliography"
 msgstr "Создать новую библиографию"
 
-#: src/window.rs:349
+#: src/window.rs:353
 msgid "_Create"
 msgstr "_Создать"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:352
+#: src/window.rs:356
 msgid "bibliography"
 msgstr "библиография"
 
-#: src/window.rs:452
+#: src/window.rs:456
 msgid "Remove From Recent Files"
 msgstr "Удалить из недавних файлов"
 
-#: src/window.rs:492
+#: src/window.rs:496
 msgid "An entry with the given citation key already exists"
 msgstr "Запись с данным ключом цитирования уже существует"
 
-#: src/window.rs:507
+#: src/window.rs:511
 msgid "Bibliography saved"
 msgstr "Библиография сохранена"
 
-#: src/window.rs:560
+#: src/window.rs:564
 msgid "Citation Deleted"
 msgstr "Цитирование удалено"
 
-#: src/window.rs:562
+#: src/window.rs:566
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:608
+#: src/window.rs:612
 msgid "translator-credits"
 msgstr "Ser82-png <asvmail.as@gmail.com>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:621
+#: src/window.rs:625
 msgid "Unsaved Changes"
 msgstr "Несохранённые изменения"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:624
+#: src/window.rs:628
 msgid "Do you want to write all changes to the safe?"
 msgstr "Хотите записать все изменения в сейф?"
 
-#: src/window.rs:628
+#: src/window.rs:632
 msgid "_Quit Without Saving"
 msgstr "_Закрыть без сохранения"
 
-#: src/window.rs:629
+#: src/window.rs:633
 msgid "_Don't Quit"
 msgstr "_Не закрывать"
 
-#: src/window.rs:630
+#: src/window.rs:634
 msgid "_Save and Quit"
 msgstr "_Сохранить и закрыть"
 
