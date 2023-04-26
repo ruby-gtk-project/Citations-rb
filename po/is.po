@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
 "POT-Creation-Date: 2023-04-26 06:26+0000\n"
-"PO-Revision-Date: 2023-04-26 15:29+0000\n"
+"PO-Revision-Date: 2023-04-26 16:00+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -159,6 +159,7 @@ msgid "Add PDF"
 msgstr "Bæta við PDF"
 
 #: data/resources/ui/add_pdf_dialog.ui:59
+#, fuzzy
 msgid "Bibliography folder not set"
 msgstr ""
 "Mappa fyrir heimildaskrá ekki valin Ekki búið að velja möppu fyrir "
@@ -196,6 +197,7 @@ msgid "Custom Template"
 msgstr "Sérsniðin sniðmáti"
 
 #: data/resources/ui/citation_preview.ui:150
+#, fuzzy
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -225,6 +227,7 @@ msgid "_Open PDF"
 msgstr "_Opna PDF"
 
 #: data/resources/ui/entry_list_row.ui:92
+#, fuzzy
 msgid "_Copy Key"
 msgstr "_Afrita merki"
 
@@ -245,6 +248,7 @@ msgid "_Other Citation Type"
 msgstr "Önnur _tegund tilvitnunar"
 
 #: data/resources/ui/entry_page.ui:105
+#, fuzzy
 msgid "_Citation Key"
 msgstr "_Tilvitnunarmerki"
 
@@ -315,6 +319,7 @@ msgid "New"
 msgstr "Nýtt"
 
 #: data/resources/ui/new_entry_dialog.ui:69
+#, fuzzy
 msgid "Citation Key"
 msgstr "Tilvitnunarmerki."
 
@@ -396,7 +401,7 @@ msgstr "Aðalvalmynd"
 #. BibTeX is a proper name
 #: data/resources/ui/window.ui:93
 msgid "Open a BibTeX File"
-msgstr "Opna BibTex skjal"
+msgstr "Opna BibTex-skrá"
 
 #: data/resources/ui/window.ui:94
 msgid "Or drag-and-drop a file"
@@ -408,7 +413,7 @@ msgstr "Haltu tilvitnunum þínum til haga"
 
 #: data/resources/ui/window.ui:137
 msgid "Recent Files"
-msgstr "Nýleg skjöl"
+msgstr "Nýlegar skrár"
 
 #: data/resources/ui/window.ui:189
 msgid "Add New Citation"
@@ -441,7 +446,7 @@ msgstr "Gakktu úr skugga um að {path} sé til"
 
 #: src/add_pdf_dialog.rs:178
 msgid "PDF Files"
-msgstr "PDF skjöl"
+msgstr "PDF-skrár"
 
 #: src/add_pdf_dialog.rs:186
 msgid "Select a PDF"
@@ -471,7 +476,7 @@ msgstr "Afritað"
 
 #: src/citation_preview.rs:275
 msgid "Custom…"
-msgstr "Sérsniðip..."
+msgstr "Sérsniðið..."
 
 #: src/entry_page.rs:204
 msgid "Other…"
@@ -488,7 +493,7 @@ msgstr "PDF bætt við"
 
 #: src/new_entry_dialog.rs:125
 msgid "Insert a BibTeX citation here"
-msgstr "Bætið við  BibTex tilvísun hérna"
+msgstr "Bætið við  BibTex-tilvísun hérna"
 
 #: src/utils.rs:21
 msgid "Author"
@@ -529,7 +534,7 @@ msgstr "Heimilisfang"
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
 #: src/utils.rs:31
 msgid "How Published"
-msgstr "How Published"
+msgstr "Hvernig gefið út"
 
 #: src/utils.rs:32
 msgid "Note"
@@ -545,7 +550,7 @@ msgstr "Ritraðir"
 
 #: src/utils.rs:35
 msgid "Archive Prefix"
-msgstr "forskeyti"
+msgstr "Forskeyti safnskrár"
 
 #. TRANSLATORS As in digital print
 #: src/utils.rs:37
