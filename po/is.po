@@ -1,0 +1,644 @@
+# Icelandic translation for citations.
+# Copyright (C) 2023 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+#
+# Ingirafn <ingirafn@this.is>, 2023.
+# Sveinn í Felli <sv1@fellsnet.is>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
+"POT-Creation-Date: 2023-04-26 06:26+0000\n"
+"PO-Revision-Date: 2023-04-26 15:29+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.12.3\n"
+
+#: cratebibtex/src/entry_type.rs:117
+msgid "Article"
+msgstr "Grein"
+
+#: cratebibtex/src/entry_type.rs:118
+msgid "Book"
+msgstr "Bók"
+
+#: cratebibtex/src/entry_type.rs:119
+msgid "Misc"
+msgstr "Ýmislegt"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:121
+msgid "In Proceedings"
+msgstr "Ráðstefnurit Í ferli"
+
+#: cratebibtex/src/entry_type.rs:122
+msgid "Unpublished"
+msgstr "Óútgefið"
+
+#. NOTE As in online source
+#: cratebibtex/src/entry_type.rs:124
+msgid "Online"
+msgstr "Á netinu"
+
+#. NOTE As in other kind of source
+#: cratebibtex/src/entry_type.rs:126
+msgid "Other"
+msgstr "Annað"
+
+#: cratebibtex/src/entry_type.rs:127
+msgid "Booklet"
+msgstr "Bæklingur"
+
+#: cratebibtex/src/entry_type.rs:128
+msgid "Conference"
+msgstr "Ráðstefna"
+
+#: cratebibtex/src/entry_type.rs:129
+msgid "In Book"
+msgstr "Í bók"
+
+#: cratebibtex/src/entry_type.rs:130
+msgid "In Collection"
+msgstr "Í safneign"
+
+#. NOTE As in instruction manual
+#: cratebibtex/src/entry_type.rs:132
+msgid "Manual"
+msgstr "Leiðbeiningar"
+
+#: cratebibtex/src/entry_type.rs:133
+#| msgid "Master Thesis"
+msgid "Master's Thesis"
+msgstr "Meistararitgerð"
+
+#: cratebibtex/src/entry_type.rs:134
+#| msgid "PhD. Thesis"
+msgid "PhD Thesis"
+msgstr "Doktorsritgerð"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:136
+msgid "Proceedings"
+msgstr "Ráðstefnurit"
+
+#: cratebibtex/src/entry_type.rs:137
+msgid "Tech Report"
+msgstr "Tækni skýrsla"
+
+#. NOTE Plain as in Plain Text
+#: cratebibtex/src/format.rs:52
+msgid "Plain"
+msgstr "Einfalt"
+
+#. NOTE: This is the app name
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
+#: src/window.rs:605
+msgid "Citations"
+msgstr "Citations"
+
+#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
+msgid "Manage your bibliography"
+msgstr "Haltu heimildaskránni þinni til haga"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.World.Citations.desktop.in.in:10
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "Heimildaskrár;tilvitnanir;bókmenntir;BibTeX;LaTeX;TeX;"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "Breidd glugga"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "Hæð glugga"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Hámörkunargildi glugga"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
+msgid "List of paths of recent files"
+msgstr "Slóð að nýlegum skjölum"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
+msgid "Default template for book citation"
+msgstr "Sjálfgefið sniðmát fyrir tilvitnanir í bækur."
+
+#: data/org.gnome.World.Citations.gschema.xml.in:30
+msgid "Default template kind for citations"
+msgstr "Sjálfgefnir sniðmátar fyrir tilvitnanir"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:34
+msgid "Default template format for citations"
+msgstr "Sjálfgefið sniðmáts-form fyrir tilvitnanir"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "Haltu heimilsaskránni þinn til haga í BibTex sniðinu."
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:15
+msgid "Main window"
+msgstr "Aðalgluggi"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:80
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
+#. Translators: Selects a PDF file for the citation
+#: data/resources/ui/add_pdf_dialog.ui:12 data/resources/ui/entry_page.ui:258
+msgid "Add PDF"
+msgstr "Bæta við PDF"
+
+#: data/resources/ui/add_pdf_dialog.ui:59
+msgid "Bibliography folder not set"
+msgstr ""
+"Mappa fyrir heimildaskrá ekki valin Ekki búið að velja möppu fyrir "
+"heimilsaskrá "
+
+#: data/resources/ui/add_pdf_dialog.ui:77
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"Býr til afrit af pdf-skjalinu og geymir það í möppunni fyrir "
+"heimildaskrárnar."
+
+#: data/resources/ui/add_pdf_dialog.ui:92
+msgid "From file"
+msgstr "Úr skjali"
+
+#: data/resources/ui/add_pdf_dialog.ui:109
+msgid "From URL"
+msgstr "Af URL"
+
+#: data/resources/ui/citation_preview.ui:15
+msgid "Custom Citation Format"
+msgstr "Sérsniðin tilvísun"
+
+#: data/resources/ui/citation_preview.ui:50
+msgid "Citation"
+msgstr "Tilvitnun"
+
+#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
+msgid "Copy"
+msgstr "Afrita"
+
+#: data/resources/ui/citation_preview.ui:134
+msgid "Custom Template"
+msgstr "Sérsniðin sniðmáti"
+
+#: data/resources/ui/citation_preview.ui:150
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported.\n"
+"            "
+msgstr ""
+"Búið til sérsnið fyrir tilvitnanir þínar, til að setja upplýsingar á "
+"merkingu <tt>sometag</tt> skrifið <tt>%SOMETAG%</tt>Einföld markdown "
+"málskipan fyrir feit- og skáletrun er til staðar.\n"
+"ath"
+
+#: data/resources/ui/citation_preview.ui:156
+msgid "Example:"
+msgstr "Dæmi:"
+
+#. Empty state widget
+#: data/resources/ui/entry_list.ui:9
+msgid "No Citations"
+msgstr "Engar tilvitnanir"
+
+#: data/resources/ui/entry_list.ui:10
+msgid "Create a new citation"
+msgstr "Búa til nýja tilvitnun"
+
+#: data/resources/ui/entry_list_row.ui:88
+msgid "_Open PDF"
+msgstr "_Opna PDF"
+
+#: data/resources/ui/entry_list_row.ui:92
+msgid "_Copy Key"
+msgstr "_Afrita merki"
+
+#: data/resources/ui/entry_list_row.ui:98 data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "_Eyða"
+
+#: data/resources/ui/entry_page.ui:13
+msgid "No Citation Selected"
+msgstr "Engin tilvitnun valin"
+
+#: data/resources/ui/entry_page.ui:82
+msgid "Citation _Type"
+msgstr "_Tegund tilvitnunar"
+
+#: data/resources/ui/entry_page.ui:98
+msgid "_Other Citation Type"
+msgstr "Önnur _tegund tilvitnunar"
+
+#: data/resources/ui/entry_page.ui:105
+msgid "_Citation Key"
+msgstr "_Tilvitnunarmerki"
+
+#: data/resources/ui/entry_page.ui:124
+msgid "_Author"
+msgstr "Hö_fundur"
+
+#: data/resources/ui/entry_page.ui:130
+msgid "_Title"
+msgstr "_Titill"
+
+#: data/resources/ui/entry_page.ui:136
+msgid "_Year"
+msgstr "Á_rtal"
+
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:410
+msgid "Open in Browser"
+msgstr "Opna í vafra"
+
+#: data/resources/ui/entry_page.ui:165
+msgid "Other Properties"
+msgstr "Aðrar upplýsingar"
+
+#: data/resources/ui/entry_page.ui:179
+msgid "Abstract"
+msgstr "Efnisútdráttur"
+
+#: data/resources/ui/entry_page.ui:183
+msgid "Copy Abstract"
+msgstr "Afrita efnisútdráttinn"
+
+#: data/resources/ui/entry_page.ui:212
+msgid "Notes"
+msgstr "Glósur"
+
+#: data/resources/ui/entry_page.ui:216
+msgid "Copy Notes"
+msgstr "Afrita glósur"
+
+#: data/resources/ui/entry_page.ui:275
+msgid "PDF"
+msgstr "PDF"
+
+#: data/resources/ui/entry_page.ui:286 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:145
+msgid "_Open"
+msgstr "_Opna"
+
+#: data/resources/ui/entry_page.ui:299
+msgid "Delete PDF"
+msgstr "Eyða PDF"
+
+#: data/resources/ui/entry_page.ui:336
+msgid "Could not set PDF Preview"
+msgstr "Gat ekki stillt PDF forskoðun"
+
+#: data/resources/ui/new_entry_dialog.ui:28
+msgid "_Cancel"
+msgstr "_Hætta við"
+
+#: data/resources/ui/new_entry_dialog.ui:35
+msgid "C_reate"
+msgstr "_Búa til"
+
+#: data/resources/ui/new_entry_dialog.ui:50
+msgid "New"
+msgstr "Nýtt"
+
+#: data/resources/ui/new_entry_dialog.ui:69
+msgid "Citation Key"
+msgstr "Tilvitnunarmerki."
+
+#: data/resources/ui/new_entry_dialog.ui:74
+msgid "Citation Type"
+msgstr "Tegund tilvitnunar"
+
+#. BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:94
+msgid "From BibTeX"
+msgstr "Úr Bibtex"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Almennt "
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Sýna flýtilykla"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Hætta"
+
+#: data/resources/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Heimildaskrá"
+
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Opna"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Vista"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Leita"
+
+#: data/resources/ui/window.ui:6
+msgid "_Create New Bibliography"
+msgstr "_Búa til nýja heimildaskrá"
+
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+msgid "_Keyboard Shortcuts"
+msgstr "_Flýtil lyklar"
+
+#. About dialog
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+msgid "_About Citations"
+msgstr "_Um Citations"
+
+#: data/resources/ui/window.ui:29
+msgid "_Save"
+msgstr "_Vista"
+
+#: data/resources/ui/window.ui:52
+msgid "_Search in Google Scholar"
+msgstr "_Leita í Google Scholar"
+
+#. arXiv is a proper name
+#: data/resources/ui/window.ui:56
+msgid "_Search in arXiv"
+msgstr "_Leita í arXiv"
+
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:196
+msgid "Main Menu"
+msgstr "Aðalvalmynd"
+
+#. BibTeX is a proper name
+#: data/resources/ui/window.ui:93
+msgid "Open a BibTeX File"
+msgstr "Opna BibTex skjal"
+
+#: data/resources/ui/window.ui:94
+msgid "Or drag-and-drop a file"
+msgstr "Eða dragðu og slepptu skrá"
+
+#: data/resources/ui/window.ui:130
+msgid "Manage your Citations"
+msgstr "Haltu tilvitnunum þínum til haga"
+
+#: data/resources/ui/window.ui:137
+msgid "Recent Files"
+msgstr "Nýleg skjöl"
+
+#: data/resources/ui/window.ui:189
+msgid "Add New Citation"
+msgstr "Búa til nýja tilvitnun"
+
+#: data/resources/ui/window.ui:203
+msgid "Search"
+msgstr "Leita"
+
+#: data/resources/ui/window.ui:254
+msgid "Back"
+msgstr "Til baka"
+
+#: data/resources/ui/window.ui:263
+msgid "Secondary Menu"
+msgstr "Önnur valmynd"
+
+#: src/add_pdf_dialog.rs:57
+msgid "Could not set PDF"
+msgstr "Gat ekki stillt  PDF"
+
+#: src/add_pdf_dialog.rs:68
+msgid "Could not download PDF"
+msgstr "Gat ekki sótt PDF"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: src/add_pdf_dialog.rs:94
+msgid "Make sure that {path} exists"
+msgstr "Gakktu úr skugga um að {path} sé til"
+
+#: src/add_pdf_dialog.rs:178
+msgid "PDF Files"
+msgstr "PDF skjöl"
+
+#: src/add_pdf_dialog.rs:186
+msgid "Select a PDF"
+msgstr "Veldu PDF"
+
+#. TODO Should this be translatable?
+#: src/citation_preview.rs:56
+msgid "Chicago"
+msgstr "Chicago"
+
+#: src/citation_preview.rs:57
+msgid "Harvard"
+msgstr "Harvard"
+
+#: src/citation_preview.rs:58
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#. NOTE: Custom as in Custom Template.
+#: src/citation_preview.rs:60
+msgid "Custom"
+msgstr "Sérsniðið"
+
+#: src/citation_preview.rs:268 src/entry_list_row.rs:59 src/entry_page.rs:243
+msgid "Copied"
+msgstr "Afritað"
+
+#: src/citation_preview.rs:275
+msgid "Custom…"
+msgstr "Sérsniðip..."
+
+#: src/entry_page.rs:204
+msgid "Other…"
+msgstr "Annað…"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: src/entry_page.rs:266
+msgid "Citation Key already exists"
+msgstr "Tilvitnunarmerki er þegar til"
+
+#: src/entry_page.rs:592
+msgid "PDF added"
+msgstr "PDF bætt við"
+
+#: src/new_entry_dialog.rs:125
+msgid "Insert a BibTeX citation here"
+msgstr "Bætið við  BibTex tilvísun hérna"
+
+#: src/utils.rs:21
+msgid "Author"
+msgstr "Höfundur"
+
+#: src/utils.rs:22
+msgid "Year"
+msgstr "Ár"
+
+#: src/utils.rs:23
+msgid "Title"
+msgstr "Titill"
+
+#: src/utils.rs:24
+msgid "Volume"
+msgstr "Bindi"
+
+#: src/utils.rs:25
+msgid "Number"
+msgstr "Númer"
+
+#: src/utils.rs:26
+msgid "Pages"
+msgstr "Blaðsíður"
+
+#: src/utils.rs:27
+msgid "Publisher"
+msgstr "Útgefandi"
+
+#: src/utils.rs:28
+msgid "Journal"
+msgstr "Tímarit"
+
+#: src/utils.rs:29
+msgid "Address"
+msgstr "Heimilisfang"
+
+#. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
+#: src/utils.rs:31
+msgid "How Published"
+msgstr "How Published"
+
+#: src/utils.rs:32
+msgid "Note"
+msgstr "Athugasemd"
+
+#: src/utils.rs:33
+msgid "Book Title"
+msgstr "Titill bókar"
+
+#: src/utils.rs:34
+msgid "Series"
+msgstr "Ritraðir"
+
+#: src/utils.rs:35
+msgid "Archive Prefix"
+msgstr "forskeyti"
+
+#. TRANSLATORS As in digital print
+#: src/utils.rs:37
+msgid "ePrint"
+msgstr "ePrent"
+
+#. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
+#: src/utils.rs:39
+msgid "Primary Class"
+msgstr "Primary Class"
+
+#: src/utils.rs:40
+msgid "Month"
+msgstr "Mánuður"
+
+#. TRANSLATORS As in chief editor
+#: src/utils.rs:42
+msgid "Editor"
+msgstr "Ritstjóri"
+
+#. TRANSLATORS As in association
+#: src/utils.rs:44
+msgid "Organization"
+msgstr "Stofnun"
+
+#: src/utils.rs:45
+msgid "School"
+msgstr "Skóli"
+
+#: src/utils.rs:46
+msgid "Institution"
+msgstr "Stofnun"
+
+#: src/window.rs:319 src/window.rs:342
+msgid "Bibtex Files"
+msgstr "Bibtex skjöl"
+
+#: src/window.rs:352
+msgid "Create New Bibliography"
+msgstr "Búa til nýja heimildaskrá"
+
+#: src/window.rs:353
+msgid "_Create"
+msgstr "_Búa til"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: src/window.rs:356
+msgid "bibliography"
+msgstr "heimildaskrá"
+
+#: src/window.rs:456
+msgid "Remove From Recent Files"
+msgstr "Fjarlæga úr nýlegum skjölum"
+
+#: src/window.rs:496
+msgid "An entry with the given citation key already exists"
+msgstr "Færsla með tilgreindu tilvitnunarmerki er þegar til"
+
+#: src/window.rs:511
+msgid "Bibliography saved"
+msgstr "Heimildaskrá vistuð"
+
+#: src/window.rs:564
+msgid "Citation Deleted"
+msgstr "Tilvitnun eytt"
+
+#: src/window.rs:566
+msgid "Undo"
+msgstr "Afturkalla"
+
+#: src/window.rs:612
+msgid "translator-credits"
+msgstr "Ingirafn, ingirafn at this dot is ,2023"
+
+#. NOTE Dialog title which informs the user about unsaved changes.
+#: src/window.rs:625
+msgid "Unsaved Changes"
+msgstr "Óvistaðar breytingar"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:628
+msgid "Do you want to write all changes to the safe?"
+msgstr "Viltu skrifa allar breytingar í vistun? ath"
+
+#: src/window.rs:632
+msgid "_Quit Without Saving"
+msgstr "_Hætta án þess að vista"
+
+#: src/window.rs:633
+msgid "_Don't Quit"
+msgstr "_Ekki hætta"
+
+#: src/window.rs:634
+msgid "_Save and Quit"
+msgstr "_Vista og hætta"
