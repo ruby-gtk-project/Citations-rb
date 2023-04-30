@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
 "POT-Creation-Date: 2023-04-11 10:37+0000\n"
-"PO-Revision-Date: 2023-04-29 21:59+0300\n"
+"PO-Revision-Date: 2023-04-30 17:03+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -367,7 +367,7 @@ msgstr "_קיצורי מקלדת"
 #. About dialog
 #: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
 msgid "_About Citations"
-msgstr "_על אודות מקורות"
+msgstr "_על אודות ציטטות"
 
 #: data/resources/ui/window.ui:29
 msgid "_Save"
