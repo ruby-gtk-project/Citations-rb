@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-02-26 20:34+0000\n"
-"PO-Revision-Date: 2023-02-27 19:23+0100\n"
+"POT-Creation-Date: 2023-04-11 10:37+0000\n"
+"PO-Revision-Date: 2023-04-11 21:03+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -72,11 +72,11 @@ msgid "Manual"
 msgstr "Manuell"
 
 #: cratebibtex/src/entry_type.rs:133
-msgid "Master Thesis"
+msgid "Master's Thesis"
 msgstr "Masters-uppsats"
 
 #: cratebibtex/src/entry_type.rs:134
-msgid "PhD. Thesis"
+msgid "PhD Thesis"
 msgstr "Doktorsavhandling"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
@@ -96,12 +96,12 @@ msgstr "Vanlig"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:606
+#: src/window.rs:605
 msgid "Citations"
 msgstr "Citations"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:608
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
 msgid "Manage your bibliography"
 msgstr "Hantera din bibliografi"
 
@@ -147,30 +147,30 @@ msgstr "Hantera dina bibliografier med BibTeX-formatet."
 msgid "Main window"
 msgstr "Huvudfönster"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:79
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:80
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:11 data/resources/ui/entry_page.ui:252
+#: data/resources/ui/add_pdf_dialog.ui:12 data/resources/ui/entry_page.ui:258
 msgid "Add PDF"
 msgstr "Lägg till PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:58
+#: data/resources/ui/add_pdf_dialog.ui:59
 msgid "Bibliography folder not set"
 msgstr "Bibliografimapp inte inställd"
 
-#: data/resources/ui/add_pdf_dialog.ui:76
+#: data/resources/ui/add_pdf_dialog.ui:77
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Skapar en kopia av den valda pdf-filen och lagrar den i din bibliografimapp."
 
-#: data/resources/ui/add_pdf_dialog.ui:91
+#: data/resources/ui/add_pdf_dialog.ui:92
 msgid "From file"
 msgstr "Från fil"
 
-#: data/resources/ui/add_pdf_dialog.ui:108
+#: data/resources/ui/add_pdf_dialog.ui:109
 msgid "From URL"
 msgstr "Från URL"
 
@@ -178,19 +178,19 @@ msgstr "Från URL"
 msgid "Custom Citation Format"
 msgstr "Anpassat citeringsformat"
 
-#: data/resources/ui/citation_preview.ui:47
+#: data/resources/ui/citation_preview.ui:50
 msgid "Citation"
 msgstr "Citering"
 
-#: data/resources/ui/citation_preview.ui:91 data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "Kopiera"
 
-#: data/resources/ui/citation_preview.ui:128
+#: data/resources/ui/citation_preview.ui:134
 msgid "Custom Template"
 msgstr "Anpassad mall"
 
-#: data/resources/ui/citation_preview.ui:144
+#: data/resources/ui/citation_preview.ui:150
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -202,7 +202,7 @@ msgstr ""
 "markdown-syntax för fetstil och kursiv stil stöds.\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:150
+#: data/resources/ui/citation_preview.ui:156
 msgid "Example:"
 msgstr "Exempel:"
 
@@ -255,7 +255,7 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "Å_r"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:425
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:410
 msgid "Open in Browser"
 msgstr "Öppna i webbläsare"
 
@@ -271,54 +271,54 @@ msgstr "Sammanfattning"
 msgid "Copy Abstract"
 msgstr "Kopiera sammanfattning"
 
-#: data/resources/ui/entry_page.ui:209
+#: data/resources/ui/entry_page.ui:212
 msgid "Notes"
 msgstr "Anteckningar"
 
-#: data/resources/ui/entry_page.ui:213
+#: data/resources/ui/entry_page.ui:216
 msgid "Copy Notes"
 msgstr "Kopiera anteckningar"
 
-#: data/resources/ui/entry_page.ui:269
+#: data/resources/ui/entry_page.ui:275
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:280 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:98
-#: data/resources/ui/window.ui:146
+#: data/resources/ui/entry_page.ui:286 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:145
 msgid "_Open"
 msgstr "Ö_ppna"
 
-#: data/resources/ui/entry_page.ui:293
+#: data/resources/ui/entry_page.ui:299
 msgid "Delete PDF"
 msgstr "Ta bort PDF"
 
-#: data/resources/ui/entry_page.ui:330
+#: data/resources/ui/entry_page.ui:336
 msgid "Could not set PDF Preview"
 msgstr "Kunde inte ställa in PDF-förhandsgranskning"
 
-#: data/resources/ui/new_entry_dialog.ui:27
+#: data/resources/ui/new_entry_dialog.ui:28
 msgid "_Cancel"
 msgstr "A_vbryt"
 
-#: data/resources/ui/new_entry_dialog.ui:34
+#: data/resources/ui/new_entry_dialog.ui:35
 msgid "C_reate"
 msgstr "S_kapa"
 
-#: data/resources/ui/new_entry_dialog.ui:49
+#: data/resources/ui/new_entry_dialog.ui:50
 msgid "New"
 msgstr "Ny"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:69
 msgid "Citation Key"
 msgstr "Citeringsnyckel"
 
-#: data/resources/ui/new_entry_dialog.ui:73
+#: data/resources/ui/new_entry_dialog.ui:74
 msgid "Citation Type"
 msgstr "Citeringstyp"
 
 #. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:93
+#: data/resources/ui/new_entry_dialog.ui:94
 msgid "From BibTeX"
 msgstr "Från BibTeX"
 
@@ -383,8 +383,8 @@ msgstr "_Sök i Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Sök i arXiv"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:122
-#: data/resources/ui/window.ui:197
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:196
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
@@ -393,27 +393,31 @@ msgstr "Huvudmeny"
 msgid "Open a BibTeX File"
 msgstr "Öppna en BibTeX-fil"
 
-#: data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:94
+msgid "Or drag-and-drop a file"
+msgstr "Eller dra och släpp en fil"
+
+#: data/resources/ui/window.ui:130
 msgid "Manage your Citations"
 msgstr "Hantera dina citeringar"
 
-#: data/resources/ui/window.ui:138
+#: data/resources/ui/window.ui:137
 msgid "Recent Files"
 msgstr "Senaste filer"
 
-#: data/resources/ui/window.ui:190
+#: data/resources/ui/window.ui:189
 msgid "Add New Citation"
 msgstr "Lägg till ny citering"
 
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:203
 msgid "Search"
 msgstr "Sök"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:254
 msgid "Back"
 msgstr "Tillbaka"
 
-#: data/resources/ui/window.ui:264
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "Sekundärmeny"
 
@@ -430,11 +434,11 @@ msgstr "Kunde inte hämta PDF"
 msgid "Make sure that {path} exists"
 msgstr "Se till att {path} existerar"
 
-#: src/add_pdf_dialog.rs:177
+#: src/add_pdf_dialog.rs:178
 msgid "PDF Files"
 msgstr "PDF-filer"
 
-#: src/add_pdf_dialog.rs:185
+#: src/add_pdf_dialog.rs:186
 msgid "Select a PDF"
 msgstr "Välj en PDF"
 
@@ -456,24 +460,24 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Anpassad"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:220
+#: src/citation_preview.rs:268 src/entry_list_row.rs:59 src/entry_page.rs:243
 msgid "Copied"
 msgstr "Kopierad"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:275
 msgid "Custom…"
 msgstr "Anpassad…"
 
-#: src/entry_page.rs:181
+#: src/entry_page.rs:204
 msgid "Other…"
 msgstr "Annan…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:243
+#: src/entry_page.rs:266
 msgid "Citation Key already exists"
 msgstr "Citeringsnyckel finns redan"
 
-#: src/entry_page.rs:606
+#: src/entry_page.rs:592
 msgid "PDF added"
 msgstr "PDF tillagd"
 
@@ -570,45 +574,45 @@ msgstr "Skola"
 msgid "Institution"
 msgstr "Institution"
 
-#: src/window.rs:315 src/window.rs:338
+#: src/window.rs:319 src/window.rs:342
 msgid "Bibtex Files"
 msgstr "BibTeX-filer"
 
-#: src/window.rs:348
+#: src/window.rs:352
 msgid "Create New Bibliography"
 msgstr "Skapa ny bibliografi"
 
-#: src/window.rs:349
+#: src/window.rs:353
 msgid "_Create"
 msgstr "S_kapa"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:352
+#: src/window.rs:356
 msgid "bibliography"
 msgstr "bibliografi"
 
-#: src/window.rs:457
+#: src/window.rs:456
 msgid "Remove From Recent Files"
 msgstr "Ta bort från senaste filer"
 
-#: src/window.rs:497
+#: src/window.rs:496
 msgid "An entry with the given citation key already exists"
 msgstr "Det finns redan en post med angiven citeringsnyckel"
 
-#: src/window.rs:512
+#: src/window.rs:511
 msgid "Bibliography saved"
 msgstr "Bibliografi sparad"
 
-#: src/window.rs:565
+#: src/window.rs:564
 msgid "Citation Deleted"
 msgstr "Citering borttagen"
 
-#: src/window.rs:567
+#: src/window.rs:566
 msgid "Undo"
 msgstr "Ångra"
 
-#: src/window.rs:613
+#: src/window.rs:612
 msgid "translator-credits"
 msgstr ""
 "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
@@ -618,23 +622,23 @@ msgstr ""
 "<tp-sv@listor.tp-sv.se>."
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:626
+#: src/window.rs:625
 msgid "Unsaved Changes"
 msgstr "Osparade ändringar"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:629
+#: src/window.rs:628
 msgid "Do you want to write all changes to the safe?"
 msgstr "Vill du skriva alla ändringar till kassaskåpet?"
 
-#: src/window.rs:633
+#: src/window.rs:632
 msgid "_Quit Without Saving"
 msgstr "A_vsluta utan att spara"
 
-#: src/window.rs:634
+#: src/window.rs:633
 msgid "_Don't Quit"
 msgstr "Avsluta _inte"
 
-#: src/window.rs:635
+#: src/window.rs:634
 msgid "_Save and Quit"
 msgstr "_Spara och avsluta"
