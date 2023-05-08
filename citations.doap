@@ -9,7 +9,13 @@
   <shortdesc xml:lang="en">
     Manage your bibliography
   </shortdesc>
-  <bug-database rdf:resource="https://gitlab.gnome.org/World/citations/" />
+  <description xml:lang="en">
+      Manage your bibliographies using the BibTeX format.
+  </description>
+
+  <homepage rdf:resource="https://gitlab.gnome.org/World/citations" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/World/citations/-/issues" />
+  <download-page rdf:resource="https://gitlab.gnome.org/World/citations" />
 
   <programming-language>Rust</programming-language>
 
