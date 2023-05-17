@@ -1,5 +1,5 @@
+use adw::subclass::prelude::*;
 use gettextrs::gettext;
-use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 use gtk::{prelude::*, CompositeTemplate};
 use once_cell::sync::Lazy;
@@ -36,7 +36,7 @@ mod imp {
     impl ObjectSubclass for AddPdfDialog {
         const NAME: &'static str = "AddPdfDialog";
         type Type = super::AddPdfDialog;
-        type ParentType = gtk::Window;
+        type ParentType = adw::Window;
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -99,11 +99,12 @@ mod imp {
     }
     impl WidgetImpl for AddPdfDialog {}
     impl WindowImpl for AddPdfDialog {}
+    impl AdwWindowImpl for AddPdfDialog {}
 }
 
 glib::wrapper! {
     pub struct AddPdfDialog(ObjectSubclass<imp::AddPdfDialog>)
-        @extends gtk::Widget, gtk::Window;
+        @extends gtk::Widget, gtk::Window, adw::Window;
 }
 
 impl Default for AddPdfDialog {

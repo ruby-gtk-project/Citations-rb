@@ -72,9 +72,8 @@
             <child>
               <object class="GtkStack" id="recent_files_stack">
                 <child>
-                  <object class="GtkBox" id="empty_state_stack_page">
-                    <property name="orientation">vertical</property>
-                    <child>
+                  <object class="AdwToolbarView" id="empty_state_stack_page">
+                    <child type="top">
                       <object class="AdwHeaderBar">
                         <child type="end">
                           <object class="GtkMenuButton">
@@ -110,9 +109,8 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkBox" id="recent_files_stack_page">
-                    <property name="orientation">vertical</property>
-                    <child>
+                  <object class="AdwToolbarView" id="recent_files_stack_page">
+                    <child type="top">
                       <object class="AdwHeaderBar">
                         <child type="end">
                           <object class="GtkMenuButton">
