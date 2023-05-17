@@ -98,6 +98,9 @@
                   <object class="GtkSourceView" id="source_view">
                     <property name="hexpand">True</property>
                     <property name="wrap_mode">word</property>
+                    <style>
+                      <class name="newentrydialog"/>
+                    </style>
                   </object>
                 </property>
               </object>
