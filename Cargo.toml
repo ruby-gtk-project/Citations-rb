@@ -4,6 +4,9 @@ version = "0.5.2"
 authors = ["Maximiliano Sandoval <msandova@gnome.org>"]
 edition = "2021"
 
+[profile.release]
+lto = true
+
 [dependencies]
 adw = {package = "libadwaita", version = "0.3.0", features = ["v1_3"] }
 anyhow = "1.0"
