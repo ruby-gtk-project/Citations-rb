@@ -104,8 +104,7 @@ mod imp {
 
     impl ObjectImpl for EntryListRow {
         fn dispose(&self) {
-            self.child.unparent();
-            self.popover.unparent();
+            self.dispose_template();
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
