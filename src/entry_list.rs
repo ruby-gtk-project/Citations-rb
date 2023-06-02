@@ -75,7 +75,7 @@ mod imp {
                 glib::clone!(@weak obj => move |model, _| {
                     let entry = model
                         .selected_item()
-                        .map(|obj| obj.downcast::<cratebibtex::Entry>().unwrap());
+                        .and_downcast::<cratebibtex::Entry>();
                     obj.emit_by_name::<()>("entry-selected", &[&entry]);
                 }),
             );

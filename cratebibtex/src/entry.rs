@@ -327,7 +327,7 @@ mod tests {
         let bib = Bib::default();
         bib.parse(BIBFILE_DATA).unwrap();
 
-        let entry = bib.item(0).unwrap().downcast::<Entry>().unwrap();
+        let entry = bib.item(0).and_downcast::<Entry>().unwrap();
 
         let format = r#"%AUTHOR%: "%TITLE%" (%YEAR%)"#;
         let expected = r#"Some Author: "Some Title" (2020)"#;

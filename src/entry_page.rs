@@ -574,13 +574,13 @@ impl EntryPage {
 
     async fn open_pdf_action(&self) -> anyhow::Result<()> {
         let citation_key = self.imp().entry.borrow().as_ref().unwrap().citation_key();
-        let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
+        let window = self.root().and_downcast::<crate::Window>().unwrap();
 
         crate::utils::open_pdf(&citation_key, &window).await
     }
 
     async fn set_pdf_action(&self) -> anyhow::Result<()> {
-        let window = self.root().unwrap().downcast::<crate::Window>().unwrap();
+        let window = self.root().and_downcast::<crate::Window>().unwrap();
         let citation_key = self.imp().entry.borrow().as_ref().unwrap().citation_key();
 
         let dialog = AddPdfDialog::new(&window, citation_key);
