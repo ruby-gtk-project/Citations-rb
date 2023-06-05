@@ -73,10 +73,6 @@
     <control>pointing</control>
     <control>touch</control>
   </recommends>
-  <custom>
-    <value key="Purism::form_factor">workstation</value>
-    <value key="Purism::form_factor">mobile</value>
-  </custom>
   <developer_name>Maximiliano Sandoval</developer_name>
   <update_contact>msandova@gnome.org</update_contact>
   <translation type="gettext">@gettext-package@</translation>
