@@ -20,9 +20,7 @@
         <child type="top">
           <object class="AdwHeaderBar">
             <property name="show-end-title-buttons">False</property>
-            <property name="title-widget">
-              <object class="AdwWindowTitle"/>
-            </property>
+            <property name="show-title">false</property>
             <child>
               <object class="GtkButton">
                 <property name="label" translatable="yes">_Cancel</property>
