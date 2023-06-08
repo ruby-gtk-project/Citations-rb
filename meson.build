@@ -14,7 +14,7 @@ base_id = 'org.gnome.World.Citations'
 dependency('glib-2.0', version: '>= 2.76')
 dependency('gio-2.0', version: '>= 2.76')
 dependency('gtk4', version: '>= 4.10')
-dependency('libadwaita-1', version: '>= 1.3')
+dependency('libadwaita-1', version: '>= 1.4')
 
 glib_compile_resources = find_program('glib-compile-resources', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)

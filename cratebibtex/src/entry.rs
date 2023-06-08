@@ -164,11 +164,7 @@ impl Default for Entry {
 
 impl From<&nom_bibtex::Bibliography> for Entry {
     fn from(bib: &nom_bibtex::Bibliography) -> Self {
-        let tags: HashMap<String, String> = bib
-            .tags()
-            .iter()
-            .map(|(k, v)| (k.to_lowercase(), v.clone()))
-            .collect();
+        let tags: HashMap<String, String> = bib.tags().clone();
         let entry = Self::default();
         entry.imp().tags.replace(tags);
         entry
@@ -327,7 +323,7 @@ mod tests {
         let bib = Bib::default();
         bib.parse(BIBFILE_DATA).unwrap();
 
-        let entry = bib.item(0).unwrap().downcast::<Entry>().unwrap();
+        let entry = bib.item(0).and_downcast::<Entry>().unwrap();
 
         let format = r#"%AUTHOR%: "%TITLE%" (%YEAR%)"#;
         let expected = r#"Some Author: "Some Title" (2020)"#;

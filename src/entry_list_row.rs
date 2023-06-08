@@ -39,7 +39,7 @@ mod imp {
             // Action used only for the extra menu
             klass.install_action_async("entry-row.open-pdf", None, |row, _, _| async move {
                 let citation_key = row.entry().unwrap().citation_key();
-                let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
+                let window = row.root().and_downcast::<crate::Window>().unwrap();
 
                 if let Err(err) = crate::utils::open_pdf(&citation_key, &window).await {
                     log::error!("Could not open pdf: {err}");
@@ -47,7 +47,7 @@ mod imp {
             });
 
             klass.install_action("entry-row.delete", None, move |row, _, _| {
-                let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
+                let window = row.root().and_downcast::<crate::Window>().unwrap();
                 window.delete_entry(&row.entry().unwrap());
             });
 
@@ -55,7 +55,7 @@ mod imp {
                 let citation_key = row.entry().unwrap().citation_key();
                 row.clipboard().set_text(&citation_key);
 
-                let window = row.root().unwrap().downcast::<crate::Window>().unwrap();
+                let window = row.root().and_downcast::<crate::Window>().unwrap();
                 window.send_toast(&gettext("Copied"));
             });
         }
@@ -104,8 +104,7 @@ mod imp {
 
     impl ObjectImpl for EntryListRow {
         fn dispose(&self) {
-            self.child.unparent();
-            self.popover.unparent();
+            self.dispose_template();
         }
 
         fn properties() -> &'static [glib::ParamSpec] {

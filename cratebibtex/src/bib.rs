@@ -64,7 +64,8 @@ mod imp {
             self.entries
                 .borrow()
                 .get(position as usize)
-                .map(|o| o.clone().upcast::<glib::Object>())
+                .cloned()
+                .and_upcast()
         }
     }
 }

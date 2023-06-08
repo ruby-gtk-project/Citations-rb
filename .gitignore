@@ -10,3 +10,4 @@ src/config.rs
 .flatpak/
 vendor
 .flatpak-builder/
+cratebibtex/Cargo.lock

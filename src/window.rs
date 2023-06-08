@@ -50,7 +50,7 @@ mod imp {
         #[template_child]
         pub secondary_menu_button: TemplateChild<gtk::Widget>,
         #[template_child]
-        pub main_leaflet: TemplateChild<adw::Leaflet>,
+        pub nav_split_view: TemplateChild<adw::NavigationSplitView>,
         #[template_child]
         pub recent_files_status_page: TemplateChild<adw::StatusPage>,
         #[template_child]
@@ -75,7 +75,7 @@ mod imp {
                 search_entry: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
                 secondary_menu_button: TemplateChild::default(),
-                main_leaflet: TemplateChild::default(),
+                nav_split_view: TemplateChild::default(),
                 recent_files_stack_page: TemplateChild::default(),
                 empty_state_stack_page: TemplateChild::default(),
                 recent_files_list: TemplateChild::default(),
@@ -165,9 +165,16 @@ mod imp {
         }
 
         #[template_callback]
-        fn on_leaflet_folded_notify(&self, _pspec: glib::ParamSpec, leaflet: &adw::Leaflet) {
-            if !leaflet.is_folded() {
+        fn on_collapsed_notify(
+            &self,
+            _pspec: glib::ParamSpec,
+            nav_split_view: &adw::NavigationSplitView,
+        ) {
+            if nav_split_view.is_collapsed() {
+                self.entry_list.hide_selection();
+            } else {
                 self.entry_list.show_selection();
+                self.nav_split_view.set_show_content(true);
             }
         }
 
@@ -181,14 +188,7 @@ mod imp {
         fn on_entry_selected(&self, entry: Option<&cratebibtex::Entry>) {
             self.entry_page.set_entry(entry);
             self.secondary_menu_button.set_visible(entry.is_some());
-            self.main_leaflet
-                .navigate(adw::NavigationDirection::Forward);
-        }
-
-        #[template_callback]
-        fn on_back_button_clicked(&self) {
-            self.entry_list.hide_selection();
-            self.main_leaflet.navigate(adw::NavigationDirection::Back);
+            self.nav_split_view.set_show_content(true);
         }
     }
 
@@ -401,7 +401,7 @@ impl Window {
         self.imp().search_bar.set_key_capture_widget(Some(self));
         self.imp()
             .main_stack
-            .set_visible_child(&*self.imp().main_leaflet);
+            .set_visible_child(&*self.imp().nav_split_view);
 
         self.action_set_enabled("win.new_entry", true);
         self.action_set_enabled("win.save", true);
@@ -579,9 +579,7 @@ impl Window {
             self.bib().remove_pos(pos);
 
             self.imp().toast_overlay.add_toast(toast);
-            self.imp()
-                .main_leaflet
-                .navigate(adw::NavigationDirection::Back);
+            self.imp().nav_split_view.set_show_content(false);
 
             if self.imp().bib.get().unwrap().n_items() == 0 {
                 self.imp().entry_page.set_no_items_placeholder_view();
@@ -591,9 +589,9 @@ impl Window {
 
     fn start_search_action(&self) {
         let imp = self.imp();
-        if imp.main_leaflet.is_folded() {
+        if imp.nav_split_view.is_collapsed() {
             imp.entry_list.hide_selection();
-            imp.main_leaflet.navigate(adw::NavigationDirection::Back);
+            imp.nav_split_view.set_show_content(false);
         }
         let search_mode = imp.search_bar.is_search_mode();
         imp.search_bar.set_search_mode(!search_mode);
