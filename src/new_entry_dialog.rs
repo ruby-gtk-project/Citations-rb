@@ -76,7 +76,7 @@ mod imp {
         fn on_cancel_clicked(&self) {
             let sender = self.sender.take().unwrap();
             sender.send(None).unwrap();
-            self.obj().destroy();
+            self.obj().close();
         }
 
         #[template_callback]
@@ -99,7 +99,7 @@ mod imp {
             };
             sender.send(Some(data)).unwrap();
 
-            self.obj().destroy();
+            self.obj().close();
         }
     }
 

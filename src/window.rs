@@ -634,7 +634,7 @@ impl Window {
         dialog.set_default_response(Some("save"));
 
         match dialog.choose_future().await.as_str() {
-            "discard" => self.destroy(),
+            "discard" => self.close(),
             "save" => {
                 if let Err(err) = self.save().await {
                     log::error!("Could not save bib file: {err}");
