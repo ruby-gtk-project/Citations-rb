@@ -183,6 +183,7 @@
                 <property name="sidebar-width-fraction">0.35</property>
                 <property name="sidebar">
                   <object class="AdwNavigationPage">
+                    <property name="title" translatable="yes">Sidebar</property>
                     <child>
                       <object class="AdwToolbarView">
                         <child type="top">
@@ -234,6 +235,7 @@
                 </property>
                 <property name="content">
                   <object class="AdwNavigationPage">
+                    <property name="title" translatable="yes">Content</property>
                     <child>
                       <object class="AdwToolbarView">
                         <child type="top">
