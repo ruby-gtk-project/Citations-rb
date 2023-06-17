@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-04-04 12:39+0000\n"
-"PO-Revision-Date: 2023-04-05 06:35+0200\n"
+"POT-Creation-Date: 2023-04-11 10:37+0000\n"
+"PO-Revision-Date: 2023-06-17 06:08+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -94,12 +94,12 @@ msgstr "სუფთა"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:601
+#: src/window.rs:605
 msgid "Citations"
 msgstr "ციტატები"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:603
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
 msgid "Manage your bibliography"
 msgstr "მართეთ თქვენი ბიბლიოგრაფია"
 
@@ -284,8 +284,8 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:286 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:98
-#: data/resources/ui/window.ui:146
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:145
 msgid "_Open"
 msgstr "_გახსნა"
 
@@ -383,8 +383,8 @@ msgstr "Google Scholar-ში _ძებნა"
 msgid "_Search in arXiv"
 msgstr "arXiv-ში _ძებნა"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:122
-#: data/resources/ui/window.ui:197
+#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:196
 msgid "Main Menu"
 msgstr "მთავარი მენიუ"
 
@@ -393,27 +393,31 @@ msgstr "მთავარი მენიუ"
 msgid "Open a BibTeX File"
 msgstr "BibTeX ფაილის გახსნა"
 
-#: data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:94
+msgid "Or drag-and-drop a file"
+msgstr "ან გადაათრიეთ და დააგდეთ ფაილი"
+
+#: data/resources/ui/window.ui:130
 msgid "Manage your Citations"
 msgstr "მართეთ თქვენი ციტატები"
 
-#: data/resources/ui/window.ui:138
+#: data/resources/ui/window.ui:137
 msgid "Recent Files"
 msgstr "ბოლო ფაილები"
 
-#: data/resources/ui/window.ui:190
+#: data/resources/ui/window.ui:189
 msgid "Add New Citation"
 msgstr "ახალი ციტატის დამატება"
 
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:203
 msgid "Search"
 msgstr "ძებნა"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:254
 msgid "Back"
 msgstr "უკან"
 
-#: data/resources/ui/window.ui:264
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "მეორადი მენიუ"
 
@@ -570,66 +574,66 @@ msgstr "სკოლა"
 msgid "Institution"
 msgstr "ორგანიზაცია"
 
-#: src/window.rs:315 src/window.rs:338
+#: src/window.rs:319 src/window.rs:342
 msgid "Bibtex Files"
 msgstr "Bibtex ფაილები"
 
-#: src/window.rs:348
+#: src/window.rs:352
 msgid "Create New Bibliography"
 msgstr "ახალი ბიბლიოგრაფიის შექმნა"
 
-#: src/window.rs:349
+#: src/window.rs:353
 msgid "_Create"
 msgstr "_შექმნა"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:352
+#: src/window.rs:356
 msgid "bibliography"
 msgstr "ბიბლიოგრაფია"
 
-#: src/window.rs:452
+#: src/window.rs:456
 msgid "Remove From Recent Files"
 msgstr "უახლესი ფალებიდან წაშლა"
 
-#: src/window.rs:492
+#: src/window.rs:496
 msgid "An entry with the given citation key already exists"
 msgstr "ჩანაწერი ციტატის მითითებული გასაღებით უკვე არსებობს"
 
-#: src/window.rs:507
+#: src/window.rs:511
 msgid "Bibliography saved"
 msgstr "ბიბლიოგრაფია შენახულია"
 
-#: src/window.rs:560
+#: src/window.rs:564
 msgid "Citation Deleted"
 msgstr "ციტატა წაიშალა"
 
-#: src/window.rs:562
+#: src/window.rs:566
 msgid "Undo"
 msgstr "დაბრუნება"
 
-#: src/window.rs:608
+#: src/window.rs:612
 msgid "translator-credits"
 msgstr "თარგმანი-შესრულებულია"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:621
+#: src/window.rs:625
 msgid "Unsaved Changes"
 msgstr "შეუნახავი ცვლილებები"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:624
+#: src/window.rs:628
 msgid "Do you want to write all changes to the safe?"
 msgstr "გნებავთ ყველა ცვლილების სეიფში ჩაწერა?"
 
-#: src/window.rs:628
+#: src/window.rs:632
 msgid "_Quit Without Saving"
 msgstr "_დახურვა შენახვის გარეშე"
 
-#: src/window.rs:629
+#: src/window.rs:633
 msgid "_Don't Quit"
 msgstr "_არ გახვიდე"
 
-#: src/window.rs:630
+#: src/window.rs:634
 msgid "_Save and Quit"
 msgstr "_შენახვა და გასვლა"
