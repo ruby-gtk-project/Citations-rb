@@ -249,6 +249,7 @@
                         <child>
                           <object class="GtkStack" id="pdf_stack">
                             <property name="transition-type">crossfade</property>
+                            <property name="vhomogeneous">False</property>
                             <child>
                               <object class="GtkListBox" id="pdf_add_list_box">
                                 <property name="selection-mode">none</property>
