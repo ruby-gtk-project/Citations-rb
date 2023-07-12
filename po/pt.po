@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-04-11 10:37+0000\n"
-"PO-Revision-Date: 2023-04-15 18:32+0100\n"
+"POT-Creation-Date: 2023-07-01 07:52+0000\n"
+"PO-Revision-Date: 2023-07-12 15:24+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -94,13 +94,13 @@ msgstr "Simples"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:605
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:603
 msgid "Citations"
 msgstr "Citações"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:605
 msgid "Manage your bibliography"
 msgstr "Gerir a sua bibliografia"
 
@@ -146,30 +146,30 @@ msgstr "Gerir as suas bibliografias usando o formato BibTeX."
 msgid "Main window"
 msgstr "Janela principal"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:80
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:12 data/resources/ui/entry_page.ui:258
+#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:259
 msgid "Add PDF"
 msgstr "Adicionar PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:59
+#: data/resources/ui/add_pdf_dialog.ui:58
 msgid "Bibliography folder not set"
 msgstr "Pasta de bibliografia não definida"
 
-#: data/resources/ui/add_pdf_dialog.ui:77
+#: data/resources/ui/add_pdf_dialog.ui:76
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Cria uma cópia do pdf selecionado e armazena-o na sua pasta Bibliografia."
 
-#: data/resources/ui/add_pdf_dialog.ui:92
+#: data/resources/ui/add_pdf_dialog.ui:91
 msgid "From file"
 msgstr "Do ficheiro"
 
-#: data/resources/ui/add_pdf_dialog.ui:109
+#: data/resources/ui/add_pdf_dialog.ui:108
 msgid "From URL"
 msgstr "Do URL"
 
@@ -278,46 +278,46 @@ msgstr "Notas"
 msgid "Copy Notes"
 msgstr "Copiar notas"
 
-#: data/resources/ui/entry_page.ui:275
+#: data/resources/ui/entry_page.ui:276
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:286 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
-#: data/resources/ui/window.ui:145
+#: data/resources/ui/entry_page.ui:287 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:152
 msgid "_Open"
 msgstr "Abrir"
 
-#: data/resources/ui/entry_page.ui:299
+#: data/resources/ui/entry_page.ui:300
 msgid "Delete PDF"
 msgstr "Eliminar PDF"
 
-#: data/resources/ui/entry_page.ui:336
+#: data/resources/ui/entry_page.ui:337
 msgid "Could not set PDF Preview"
 msgstr "Não foi possível definir a pré-visualização PDF"
 
-#: data/resources/ui/new_entry_dialog.ui:28
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: data/resources/ui/new_entry_dialog.ui:35
+#: data/resources/ui/new_entry_dialog.ui:33
 msgid "C_reate"
 msgstr "C_riar"
 
-#: data/resources/ui/new_entry_dialog.ui:50
+#: data/resources/ui/new_entry_dialog.ui:48
 msgid "New"
 msgstr "Novo"
 
-#: data/resources/ui/new_entry_dialog.ui:69
+#: data/resources/ui/new_entry_dialog.ui:67
 msgid "Citation Key"
 msgstr "Chave de citação"
 
-#: data/resources/ui/new_entry_dialog.ui:74
+#: data/resources/ui/new_entry_dialog.ui:72
 msgid "Citation Type"
 msgstr "Tipo de citação"
 
 #. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:94
+#: data/resources/ui/new_entry_dialog.ui:92
 msgid "From BibTeX"
 msgstr "De BibTex"
 
@@ -382,41 +382,45 @@ msgstr "_Procurar no Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Procurar no arXiv"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:205
 msgid "Main Menu"
 msgstr "Menu principal"
 
 #. BibTeX is a proper name
-#: data/resources/ui/window.ui:93
+#: data/resources/ui/window.ui:101
 msgid "Open a BibTeX File"
 msgstr "Abrir um ficheiro BibTeX"
 
-#: data/resources/ui/window.ui:94
+#: data/resources/ui/window.ui:102
 msgid "Or drag-and-drop a file"
 msgstr "Ou arrastar e largar um ficheiro"
 
-#: data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "Gerir as suas citações"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:144
 msgid "Recent Files"
 msgstr "Ficheiros recentes"
 
-#: data/resources/ui/window.ui:189
+#: data/resources/ui/window.ui:187
+msgid "Sidebar"
+msgstr "Barra lateral"
+
+#: data/resources/ui/window.ui:198
 msgid "Add New Citation"
 msgstr "Adicionar nova citação"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:212
 msgid "Search"
 msgstr "Pesquisar"
 
-#: data/resources/ui/window.ui:254
-msgid "Back"
-msgstr "Voltar"
+#: data/resources/ui/window.ui:239
+msgid "Content"
+msgstr "Conteúdo"
 
-#: data/resources/ui/window.ui:263
+#: data/resources/ui/window.ui:248
 msgid "Secondary Menu"
 msgstr "Menu secundário"
 
@@ -433,11 +437,11 @@ msgstr "Não foi possível transferir PDF"
 msgid "Make sure that {path} exists"
 msgstr "Certifique-se de que {path} existe"
 
-#: src/add_pdf_dialog.rs:178
+#: src/add_pdf_dialog.rs:179
 msgid "PDF Files"
 msgstr "Ficheiros PDF"
 
-#: src/add_pdf_dialog.rs:186
+#: src/add_pdf_dialog.rs:187
 msgid "Select a PDF"
 msgstr "Selecione um PDF"
 
@@ -611,28 +615,31 @@ msgstr "Citação eliminada"
 msgid "Undo"
 msgstr "Anular"
 
-#: src/window.rs:612
+#: src/window.rs:610
 msgid "translator-credits"
 msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:625
+#: src/window.rs:623
 msgid "Unsaved Changes"
 msgstr "Alterações não guardadas"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:628
+#: src/window.rs:626
 msgid "Do you want to write all changes to the safe?"
 msgstr "Quer guardar todas as alterações no cofre?"
 
-#: src/window.rs:632
+#: src/window.rs:630
 msgid "_Quit Without Saving"
 msgstr "_Sair sem guardar"
 
-#: src/window.rs:633
+#: src/window.rs:631
 msgid "_Don't Quit"
 msgstr "_Não sair"
 
-#: src/window.rs:634
+#: src/window.rs:632
 msgid "_Save and Quit"
 msgstr "_Guardar e sair"
+
+#~ msgid "Back"
+#~ msgstr "Voltar"
