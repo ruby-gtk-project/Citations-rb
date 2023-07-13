@@ -1,6 +1,7 @@
 stages:
   - check
   - test
+  - deploy
 
 include:
   - project: "GNOME/citemplates"
@@ -15,6 +16,10 @@ variables:
 
 flatpak:
   extends: ".flatpak@x86_64"
+
+publish-nightly:
+  extends: '.publish_nightly'
+  needs: ['flatpak']
 
 # Configure and run rustfmt
 # Exits and builds fails if on bad format
