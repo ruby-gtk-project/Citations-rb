@@ -10,6 +10,7 @@
     <child>
       <object class="GtkPopoverMenu" id="popover">
         <property name="menu-model">row_menu</property>
+        <property name="has-arrow">False</property>
       </object>
     </child>
     <child>

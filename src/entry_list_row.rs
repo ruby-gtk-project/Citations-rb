@@ -107,6 +107,18 @@ mod imp {
             self.dispose_template();
         }
 
+        fn constructed(&self) {
+            self.parent_constructed();
+
+            let obj = self.obj();
+
+            if obj.direction() == gtk::TextDirection::Rtl {
+                self.popover.set_halign(gtk::Align::End);
+            } else {
+                self.popover.set_halign(gtk::Align::Start);
+            }
+        }
+
         fn properties() -> &'static [glib::ParamSpec] {
             Self::derived_properties()
         }
