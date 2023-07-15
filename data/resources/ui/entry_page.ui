@@ -308,6 +308,7 @@
                                 </property>
                                 <child>
                                   <object class="GtkStack" id="preview_error_stack">
+                                    <property name="hhomogeneous">False</property>
                                     <property name="transition-type">crossfade</property>
                                     <child>
                                       <object class="GtkPicture" id="pdf_picture">
@@ -336,6 +337,8 @@
                                           <object class="GtkLabel">
                                             <property name="label" translatable="yes">Could not set PDF Preview</property>
                                             <property name="wrap">True</property>
+                                            <property name="wrap-mode">word-char</property>
+                                            <property name="justify">center</property>
                                             <style>
                                               <class name="title-1"/>
                                             </style>
