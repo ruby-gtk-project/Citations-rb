@@ -137,19 +137,8 @@ mod imp {
         type Type = super::Entry;
     }
 
-    impl ObjectImpl for Entry {
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            Self::derived_property(self, id, pspec)
-        }
-
-        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            Self::derived_set_property(self, id, value, pspec)
-        }
-    }
+    #[glib::derived_properties]
+    impl ObjectImpl for Entry {}
 }
 
 glib::wrapper! {

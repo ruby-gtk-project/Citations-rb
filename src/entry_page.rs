@@ -268,6 +268,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for EntryPage {
         fn constructed(&self) {
             self.parent_constructed();
@@ -281,7 +282,8 @@ mod imp {
 
             self.bindings
                 .bind("author", &*self.author_entry, "text")
-                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+                .sync_create()
+                .bidirectional()
                 .transform_to(|_binding, value| {
                     value
                         .get::<String>()
@@ -296,7 +298,8 @@ mod imp {
                 .build();
             self.bindings
                 .bind("title", &*self.title_entry, "text")
-                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+                .sync_create()
+                .bidirectional()
                 .transform_to(|_binding, value| {
                     value
                         .get::<String>()
@@ -311,15 +314,17 @@ mod imp {
                 .build();
             self.bindings
                 .bind("year", &*self.year_entry, "text")
-                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+                .sync_create()
+                .bidirectional()
                 .build();
             self.bindings
                 .bind("doi", &*self.doi_entry, "text")
-                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+                .sync_create()
+                .bidirectional()
                 .build();
             self.bindings
                 .bind("entry-type", &*self.entry_type_combo_row, "selected")
-                .flags(glib::BindingFlags::SYNC_CREATE)
+                .sync_create()
                 .build();
 
             let abstract_buffer = self.abstract_text_view.buffer();
@@ -339,18 +344,6 @@ mod imp {
             obj.connect_scale_factor_notify(|obj| {
                 obj.setup_pdf();
             });
-        }
-
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            Self::derived_property(self, id, pspec)
-        }
-
-        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            Self::derived_set_property(self, id, value, pspec)
         }
     }
     impl WidgetImpl for EntryPage {}
@@ -429,7 +422,8 @@ impl EntryPage {
                 }
 
                 entry.bind_property(&key, &row, "text")
-                     .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+                     .sync_create()
+                     .bidirectional()
                      .build();
 
                 row.upcast()

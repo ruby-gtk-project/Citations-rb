@@ -3,7 +3,7 @@ use gettextrs::gettext;
 use gtk::{gio, glib};
 use gtk::{prelude::*, CompositeTemplate};
 use once_cell::sync::Lazy;
-use once_cell::sync::OnceCell;
+use std::cell::OnceCell;
 
 use crate::i18n::gettext_f;
 use crate::utils;
@@ -133,10 +133,10 @@ impl AddPdfDialog {
             let duration = std::time::Duration::from_millis(100);
             let source = glib::timeout_add_local(
                 duration,
-                glib::clone!(@weak self as obj => @default-return glib::Continue(false), move || {
+                glib::clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move || {
                     obj.imp().progress_bar.pulse();
 
-                    glib::Continue(true)
+                    glib::ControlFlow::Continue
                 }),
             );
 
@@ -179,11 +179,11 @@ impl AddPdfDialog {
             pdf_filter.set_name(Some(&gettext("PDF Files")));
             pdf_filter.add_mime_type("application/pdf");
 
-            let filters = gio::ListStore::new(gtk::FileFilter::static_type());
+            let filters = gio::ListStore::new::<gtk::FileFilter>();
             filters.append(&pdf_filter);
 
             let dialog = gtk::FileDialog::new();
-            dialog.set_filters(&filters);
+            dialog.set_filters(Some(&filters));
             dialog.set_title(&gettext("Select a PDF"));
 
             let file = dialog.open_future(Some(self)).await?;

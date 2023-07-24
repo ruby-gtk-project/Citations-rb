@@ -81,8 +81,7 @@ mod imp {
     use super::*;
 
     use adw::subclass::prelude::*;
-    use std::cell::{Cell, RefCell};
-    use once_cell::unsync::OnceCell;
+    use std::cell::{Cell, OnceCell, RefCell};
     use glib::Properties;
     use std::marker::PhantomData;
 
@@ -295,12 +294,13 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for CitationPreview {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
 
-            let signals = glib::SignalGroup::new(cratebibtex::Entry::static_type());
+            let signals = glib::SignalGroup::new::<cratebibtex::Entry>();
             self.signals.set(signals).unwrap();
 
             obj.update_style_scheme();
@@ -343,29 +343,17 @@ mod imp {
 
             self.template_drop_down
                 .bind_property("selected", obj.as_ref(), "template-kind")
-                .flags(glib::BindingFlags::SYNC_CREATE)
+                .sync_create()
                 .build();
             self.drop_down
                 .bind_property("selected", obj.as_ref(), "format-kind")
-                .flags(glib::BindingFlags::SYNC_CREATE)
+                .sync_create()
                 .build();
 
             let signals = self.signals.get().unwrap();
             signals.connect_notify_local(None, glib::clone!(@weak obj => move |_signal, _pspec| {
                 obj.notify_template();
             }));
-        }
-
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            Self::derived_property(self, id, pspec)
-        }
-
-        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            Self::derived_set_property(self, id, value, pspec)
         }
     }
     impl WidgetImpl for CitationPreview {}

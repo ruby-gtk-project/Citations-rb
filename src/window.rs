@@ -14,8 +14,7 @@ mod imp {
 
     use adw::subclass::prelude::*;
     use gtk::CompositeTemplate;
-    use once_cell::sync::OnceCell;
-    use std::cell::RefCell;
+    use std::cell::{Cell, OnceCell, RefCell};
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/window.ui")]
@@ -24,6 +23,7 @@ mod imp {
         pub settings: gio::Settings,
         pub file: RefCell<Option<gio::File>>,
         pub undo_entry: RefCell<Option<(cratebibtex::Entry, u32, adw::Toast)>>,
+        pub force_close: Cell<bool>,
 
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
@@ -63,6 +63,7 @@ mod imp {
                 settings: gio::Settings::new(APP_ID),
                 bib: Default::default(),
                 file: Default::default(),
+                force_close: Default::default(),
                 undo_entry: Default::default(),
                 recent_files_status_page: TemplateChild::default(),
                 no_recent_files_status_page: TemplateChild::default(),
@@ -248,19 +249,19 @@ mod imp {
     impl WidgetImpl for Window {}
     impl WindowImpl for Window {
         // Save window state on delete event
-        fn close_request(&self) -> gtk::Inhibit {
+        fn close_request(&self) -> glib::Propagation {
             let window = self.obj();
             if let Err(err) = window.save_window_size() {
                 log::warn!("Failed to save window state, {}", &err);
             }
 
             if let Some(bib) = self.bib.get() {
-                if bib.modified() {
+                if bib.modified() && !self.force_close.get() {
                     crate::spawn!(glib::clone!(@weak window => async move {
                         window.show_save_dialog().await;
                     }));
 
-                    gtk::Inhibit(true)
+                    glib::Propagation::Stop
                 } else {
                     self.parent_close_request()
                 }
@@ -321,11 +322,11 @@ impl Window {
             bib_filter.add_mime_type("text/x-bibtex");
             bib_filter.add_pattern("*.bib");
 
-            let filters = gio::ListStore::new(gtk::FileFilter::static_type());
+            let filters = gio::ListStore::new::<gtk::FileFilter>();
             filters.append(&bib_filter);
 
             let dialog = gtk::FileDialog::new();
-            dialog.set_filters(&filters);
+            dialog.set_filters(Some(&filters));
 
             let file = dialog.open_future(Some(self)).await?;
             self.open_wrapper(&file).await?;
@@ -344,11 +345,11 @@ impl Window {
         bib_filter.add_mime_type("text/x-bibtex");
         bib_filter.add_pattern("*.bib");
 
-        let filters = gio::ListStore::new(gtk::FileFilter::static_type());
+        let filters = gio::ListStore::new::<gtk::FileFilter>();
         filters.append(&bib_filter);
 
         let dialog = gtk::FileDialog::new();
-        dialog.set_filters(&filters);
+        dialog.set_filters(Some(&filters));
         dialog.set_title(&gettext("Create New Bibliography"));
         dialog.set_accept_label(Some(&gettext("_Create")));
         // TRANSLATORS This a file name, .bib will be appended e.g.
@@ -423,7 +424,7 @@ impl Window {
 
     fn populate_recent_files(&self) {
         let imp = self.imp();
-        let model = gio::ListStore::new(gio::File::static_type());
+        let model = gio::ListStore::new::<gio::File>();
 
         let recent_files = imp
             .settings
@@ -634,7 +635,7 @@ impl Window {
         dialog.set_default_response(Some("save"));
 
         match dialog.choose_future().await.as_str() {
-            "discard" => self.close(),
+            "discard" => self.force_close(),
             "save" => {
                 if let Err(err) = self.save().await {
                     log::error!("Could not save bib file: {err}");
@@ -646,5 +647,10 @@ impl Window {
             // interactions.
             _ => (),
         }
+    }
+
+    fn force_close(&self) {
+        self.imp().force_close.set(true);
+        self.close();
     }
 }
