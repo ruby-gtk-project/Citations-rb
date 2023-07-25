@@ -2,21 +2,22 @@
 # Copyright (C) 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the citations package.
 #
+# Balázs Meskó <mesko.balazs at fsf dot hu>, 2023.
 # Balázs Úr <ur.balazs at fsf dot hu>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-02-26 13:17+0000\n"
-"PO-Revision-Date: 2023-02-28 01:58+0100\n"
+"POT-Creation-Date: 2023-07-01 07:52+0000\n"
+"PO-Revision-Date: 2023-07-25 23:44+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -71,11 +72,13 @@ msgid "Manual"
 msgstr "Kézi"
 
 #: cratebibtex/src/entry_type.rs:133
-msgid "Master Thesis"
+#| msgid "Master Thesis"
+msgid "Master's Thesis"
 msgstr "Diplomamunka"
 
 #: cratebibtex/src/entry_type.rs:134
-msgid "PhD. Thesis"
+#| msgid "PhD. Thesis"
+msgid "PhD Thesis"
 msgstr "Doktori értekezés"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
@@ -94,13 +97,13 @@ msgstr "Egyszerű"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:606
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:603
 msgid "Citations"
 msgstr "Idézetek"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:608
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:605
 msgid "Manage your bibliography"
 msgstr "A bibliográfia kezelése"
 
@@ -146,12 +149,12 @@ msgstr "Kezelje a bibliográfiáit BibTeX formátum használatával."
 msgid "Main window"
 msgstr "Főablak"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:79
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:11 data/resources/ui/entry_page.ui:252
+#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:259
 msgid "Add PDF"
 msgstr "PDF hozzáadása"
 
@@ -177,19 +180,19 @@ msgstr "URL-ről"
 msgid "Custom Citation Format"
 msgstr "Egyéni idézetformátum"
 
-#: data/resources/ui/citation_preview.ui:47
+#: data/resources/ui/citation_preview.ui:50
 msgid "Citation"
 msgstr "Idézet"
 
-#: data/resources/ui/citation_preview.ui:91 data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "Másolás"
 
-#: data/resources/ui/citation_preview.ui:128
+#: data/resources/ui/citation_preview.ui:134
 msgid "Custom Template"
 msgstr "Egyéni sablon"
 
-#: data/resources/ui/citation_preview.ui:144
+#: data/resources/ui/citation_preview.ui:150
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -201,7 +204,7 @@ msgstr ""
 "szintaxis a félkövér és dőlt betűkhöz támogatott.\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:150
+#: data/resources/ui/citation_preview.ui:156
 msgid "Example:"
 msgstr "Példa:"
 
@@ -254,7 +257,7 @@ msgstr "_Cím"
 msgid "_Year"
 msgstr "É_v"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:425
+#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:410
 msgid "Open in Browser"
 msgstr "Megnyitás a böngészőben"
 
@@ -270,56 +273,54 @@ msgstr "Kivonat"
 msgid "Copy Abstract"
 msgstr "Kivonat másolása"
 
-#: data/resources/ui/entry_page.ui:209
-#| msgid "Note"
+#: data/resources/ui/entry_page.ui:212
 msgid "Notes"
 msgstr "Jegyzetek"
 
-#: data/resources/ui/entry_page.ui:213
-#| msgid "_Copy Key"
+#: data/resources/ui/entry_page.ui:216
 msgid "Copy Notes"
 msgstr "Jegyzetek másolása"
 
-#: data/resources/ui/entry_page.ui:269
+#: data/resources/ui/entry_page.ui:276
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:280 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:98
-#: data/resources/ui/window.ui:146
+#: data/resources/ui/entry_page.ui:287 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:152
 msgid "_Open"
 msgstr "_Megnyitás"
 
-#: data/resources/ui/entry_page.ui:293
+#: data/resources/ui/entry_page.ui:300
 msgid "Delete PDF"
 msgstr "PDF törlése"
 
-#: data/resources/ui/entry_page.ui:330
+#: data/resources/ui/entry_page.ui:337
 msgid "Could not set PDF Preview"
 msgstr "Nem sikerült beállítani a PDF előnézetét"
 
-#: data/resources/ui/new_entry_dialog.ui:27
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "_Cancel"
 msgstr "_Mégse"
 
-#: data/resources/ui/new_entry_dialog.ui:34
+#: data/resources/ui/new_entry_dialog.ui:33
 msgid "C_reate"
 msgstr "_Létrehozás"
 
-#: data/resources/ui/new_entry_dialog.ui:49
+#: data/resources/ui/new_entry_dialog.ui:48
 msgid "New"
 msgstr "Új"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:67
 msgid "Citation Key"
 msgstr "Idézet kulcsa"
 
-#: data/resources/ui/new_entry_dialog.ui:73
+#: data/resources/ui/new_entry_dialog.ui:72
 msgid "Citation Type"
 msgstr "Idézet típusa"
 
 #. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:93
+#: data/resources/ui/new_entry_dialog.ui:92
 msgid "From BibTeX"
 msgstr "BibTeX-ből"
 
@@ -384,37 +385,45 @@ msgstr "_Keresés a Google Tudósban"
 msgid "_Search in arXiv"
 msgstr "_Keresés az arXivban"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:122
-#: data/resources/ui/window.ui:197
+#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:205
 msgid "Main Menu"
 msgstr "Főmenü"
 
 #. BibTeX is a proper name
-#: data/resources/ui/window.ui:93
+#: data/resources/ui/window.ui:101
 msgid "Open a BibTeX File"
 msgstr "BibTeX-fájl megnyitása"
 
-#: data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:102
+msgid "Or drag-and-drop a file"
+msgstr "Vagy fogjon meg és ejtsen ide egy fájlt"
+
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "Idézetek kezelése"
 
-#: data/resources/ui/window.ui:138
+#: data/resources/ui/window.ui:144
 msgid "Recent Files"
 msgstr "Legutóbbi fájlok"
 
-#: data/resources/ui/window.ui:190
+#: data/resources/ui/window.ui:187
+msgid "Sidebar"
+msgstr "Oldalsáv"
+
+#: data/resources/ui/window.ui:198
 msgid "Add New Citation"
 msgstr "Új idézet hozzáadása"
 
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:212
 msgid "Search"
 msgstr "Keresés"
 
-#: data/resources/ui/window.ui:255
-msgid "Back"
-msgstr "Vissza"
+#: data/resources/ui/window.ui:239
+msgid "Content"
+msgstr "Tartalom"
 
-#: data/resources/ui/window.ui:264
+#: data/resources/ui/window.ui:248
 msgid "Secondary Menu"
 msgstr "Másodlagos menü"
 
@@ -431,12 +440,11 @@ msgstr "Nem sikerült letölteni a PDF-et"
 msgid "Make sure that {path} exists"
 msgstr "Győződjön meg arról, hogy a(z) {path} létezik"
 
-#: src/add_pdf_dialog.rs:177
+#: src/add_pdf_dialog.rs:179
 msgid "PDF Files"
 msgstr "PDF-fájlok"
 
-#: src/add_pdf_dialog.rs:185
-#| msgid "Delete PDF"
+#: src/add_pdf_dialog.rs:187
 msgid "Select a PDF"
 msgstr "PDF kiválasztása"
 
@@ -458,24 +466,24 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Egyéni"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:220
+#: src/citation_preview.rs:268 src/entry_list_row.rs:59 src/entry_page.rs:243
 msgid "Copied"
 msgstr "Lemásolva"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:275
 msgid "Custom…"
 msgstr "Egyéni…"
 
-#: src/entry_page.rs:181
+#: src/entry_page.rs:204
 msgid "Other…"
 msgstr "Egyéb…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:243
+#: src/entry_page.rs:266
 msgid "Citation Key already exists"
 msgstr "Az idézetkulcs már létezik"
 
-#: src/entry_page.rs:606
+#: src/entry_page.rs:592
 msgid "PDF added"
 msgstr "PDF hozzáadva"
 
@@ -572,69 +580,66 @@ msgstr "Iskola"
 msgid "Institution"
 msgstr "Intézmény"
 
-#: src/window.rs:315 src/window.rs:338
+#: src/window.rs:319 src/window.rs:342
 msgid "Bibtex Files"
 msgstr "BibTeX-fájlok"
 
-#: src/window.rs:348
+#: src/window.rs:352
 msgid "Create New Bibliography"
 msgstr "Új bibliográfia létrehozása"
 
-#: src/window.rs:349
-#| msgid "Create"
+#: src/window.rs:353
 msgid "_Create"
 msgstr "_Létrehozás"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:352
-#| msgctxt "shortcut window"
-#| msgid "Bibliography"
+#: src/window.rs:356
 msgid "bibliography"
 msgstr "bibliográfia"
 
-#: src/window.rs:457
+#: src/window.rs:456
 msgid "Remove From Recent Files"
 msgstr "Eltávolítás a legutóbbi fájlok közül"
 
-#: src/window.rs:497
+#: src/window.rs:496
 msgid "An entry with the given citation key already exists"
 msgstr "A megadott idézetkulccsal már létezik egy bejegyzés"
 
-#: src/window.rs:512
+#: src/window.rs:511
 msgid "Bibliography saved"
 msgstr "Bibliográfia elmentve"
 
-#: src/window.rs:565
+#: src/window.rs:564
 msgid "Citation Deleted"
 msgstr "Idézet törölve"
 
-#: src/window.rs:567
+#: src/window.rs:566
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: src/window.rs:613
+#: src/window.rs:610
 msgid "translator-credits"
 msgstr "Úr Balázs <ur dot balazs at fsf dot hu>, 2022."
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:626
+#: src/window.rs:623
 msgid "Unsaved Changes"
 msgstr "Mentetlen változtatások"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:629
+#: src/window.rs:626
 msgid "Do you want to write all changes to the safe?"
 msgstr "Szeretné az összes változtatást a széfbe írni?"
 
-#: src/window.rs:633
+#: src/window.rs:630
 msgid "_Quit Without Saving"
 msgstr "_Kilépés mentés nélkül"
 
-#: src/window.rs:634
+#: src/window.rs:631
 msgid "_Don't Quit"
 msgstr "_Ne lépjen ki"
 
-#: src/window.rs:635
+#: src/window.rs:632
 msgid "_Save and Quit"
 msgstr "_Mentés és kilépés"
