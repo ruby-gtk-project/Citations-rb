@@ -55,6 +55,7 @@
                 </binding>
                 <style>
                   <class name="dim-label"/>
+                  <class name="numeric"/>
                 </style>
               </object>
             </child>

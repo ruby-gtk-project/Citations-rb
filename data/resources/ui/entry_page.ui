@@ -135,6 +135,9 @@
                                   <object class="AdwEntryRow" id="year_entry">
                                     <property name="title" translatable="yes">_Year</property>
                                     <property name="use-underline">True</property>
+                                    <style>
+                                      <class name="numeric"/>
+                                    </style>
                                   </object>
                                 </child>
                                 <child>
