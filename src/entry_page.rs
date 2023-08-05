@@ -512,7 +512,7 @@ impl EntryPage {
             let mut write_stream = stream.into_write();
             surface.write_to_png(&mut write_stream)?;
             let stream = write_stream.output_stream();
-            stream.close(gio::Cancellable::NONE)?;
+            stream.close_future(glib::Priority::default()).await?;
             let bytes = stream.steal_as_bytes();
             let texture = gdk::Texture::from_bytes(&bytes)?;
 
