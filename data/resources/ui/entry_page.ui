@@ -200,6 +200,9 @@
                                     <style>
                                       <class name="inline"/>
                                     </style>
+                                    <accessibility>
+                                      <relation name="labelled-by">abstract_preferences_group</relation>
+                                    </accessibility>
                                   </object>
                                 </child>
                                 <style>
@@ -233,6 +236,9 @@
                                     <style>
                                       <class name="inline"/>
                                     </style>
+                                    <accessibility>
+                                      <relation name="labelled-by">notes_preferences_group</relation>
+                                    </accessibility>
                                   </object>
                                 </child>
                                 <style>
@@ -265,6 +271,7 @@
                                     <child>
                                       <object class="GtkImage">
                                         <property name="icon-name">go-next-symbolic</property>
+                                        <property name="accessible-role">presentation</property>
                                       </object>
                                     </child>
                                   </object>
@@ -320,6 +327,9 @@
                                         <style>
                                           <class name="card"/>
                                         </style>
+                                        <accessibility>
+                                          <relation name="labelled-by">pdf_preview</relation>
+                                        </accessibility>
                                       </object>
                                     </child>
                                     <child>

@@ -51,7 +51,7 @@ mod imp {
     #[gtk::template_callbacks]
     impl AddPdfDialog {
         #[template_callback]
-        async fn set_from_file_button_clicked(&self) {
+        async fn set_from_file_row_activated(&self) {
             if let Err(err) = self.obj().set_pdf_from_file().await {
                 log::error!("could not set pdf: {err}");
                 let toast = adw::Toast::new(&gettext("Could not set PDF"));
