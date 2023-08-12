@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-04-17 15:13+0000\n"
-"PO-Revision-Date: 2023-04-26 00:00+0300\n"
+"POT-Creation-Date: 2023-07-01 07:52+0000\n"
+"PO-Revision-Date: 2023-07-17 03:41+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -96,13 +96,13 @@ msgstr "Düz"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:605
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:603
 msgid "Citations"
 msgstr "Alıntılar"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:607
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:605
 msgid "Manage your bibliography"
 msgstr "Kaynakçanızı yönetin"
 
@@ -149,29 +149,29 @@ msgstr "BibTeX biçimini kullanarak kaynakçanızı yönetin."
 msgid "Main window"
 msgstr "Ana pencere"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:80
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:12 data/resources/ui/entry_page.ui:258
+#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:259
 msgid "Add PDF"
 msgstr "PDF Ekle"
 
-#: data/resources/ui/add_pdf_dialog.ui:59
+#: data/resources/ui/add_pdf_dialog.ui:58
 msgid "Bibliography folder not set"
 msgstr "Kaynakça klasörü ayarlanmadı"
 
-#: data/resources/ui/add_pdf_dialog.ui:77
+#: data/resources/ui/add_pdf_dialog.ui:76
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr "Seçilen pdf’nin kopyasını oluşturur ve Kaynakça klasöründe saklar."
 
-#: data/resources/ui/add_pdf_dialog.ui:92
+#: data/resources/ui/add_pdf_dialog.ui:91
 msgid "From file"
 msgstr "Dosyadan"
 
-#: data/resources/ui/add_pdf_dialog.ui:109
+#: data/resources/ui/add_pdf_dialog.ui:108
 msgid "From URL"
 msgstr "URL’den"
 
@@ -280,46 +280,46 @@ msgstr "Notlar"
 msgid "Copy Notes"
 msgstr "Notları Kopyala"
 
-#: data/resources/ui/entry_page.ui:275
+#: data/resources/ui/entry_page.ui:276
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:286 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
-#: data/resources/ui/window.ui:145
+#: data/resources/ui/entry_page.ui:287 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:152
 msgid "_Open"
 msgstr "_Aç"
 
-#: data/resources/ui/entry_page.ui:299
+#: data/resources/ui/entry_page.ui:300
 msgid "Delete PDF"
 msgstr "PDF Sil"
 
-#: data/resources/ui/entry_page.ui:336
+#: data/resources/ui/entry_page.ui:337
 msgid "Could not set PDF Preview"
 msgstr "PDF Ön İzle ayarlanamadı"
 
-#: data/resources/ui/new_entry_dialog.ui:28
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "_Cancel"
 msgstr "İptal _Et"
 
-#: data/resources/ui/new_entry_dialog.ui:35
+#: data/resources/ui/new_entry_dialog.ui:33
 msgid "C_reate"
 msgstr "_Oluştur"
 
-#: data/resources/ui/new_entry_dialog.ui:50
+#: data/resources/ui/new_entry_dialog.ui:48
 msgid "New"
 msgstr "Yeni"
 
-#: data/resources/ui/new_entry_dialog.ui:69
+#: data/resources/ui/new_entry_dialog.ui:67
 msgid "Citation Key"
 msgstr "Alıntı Anahtarı"
 
-#: data/resources/ui/new_entry_dialog.ui:74
+#: data/resources/ui/new_entry_dialog.ui:72
 msgid "Citation Type"
 msgstr "Alıntı Türü"
 
 #. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:94
+#: data/resources/ui/new_entry_dialog.ui:92
 msgid "From BibTeX"
 msgstr "BibTeX’den"
 
@@ -384,41 +384,45 @@ msgstr "_Google Scholar’da Ara"
 msgid "_Search in arXiv"
 msgstr "arXiv’de Ara"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:205
 msgid "Main Menu"
 msgstr "Ana Menü"
 
 #. BibTeX is a proper name
-#: data/resources/ui/window.ui:93
+#: data/resources/ui/window.ui:101
 msgid "Open a BibTeX File"
 msgstr "BibTeX Dosyası Aç"
 
-#: data/resources/ui/window.ui:94
+#: data/resources/ui/window.ui:102
 msgid "Or drag-and-drop a file"
 msgstr "Ya da bir dosya sürükleyip bırak"
 
-#: data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "Kaynakçanızı Yönetin"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:144
 msgid "Recent Files"
 msgstr "Son Kullanılan Dosyalar"
 
-#: data/resources/ui/window.ui:189
+#: data/resources/ui/window.ui:187
+msgid "Sidebar"
+msgstr "Kenar Çubuğu"
+
+#: data/resources/ui/window.ui:198
 msgid "Add New Citation"
 msgstr "Yeni Alıntı Ekle"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:212
 msgid "Search"
 msgstr "Ara"
 
-#: data/resources/ui/window.ui:254
-msgid "Back"
-msgstr "Geri"
+#: data/resources/ui/window.ui:239
+msgid "Content"
+msgstr "İçindekiler"
 
-#: data/resources/ui/window.ui:263
+#: data/resources/ui/window.ui:248
 msgid "Secondary Menu"
 msgstr "İkincil Menü"
 
@@ -435,11 +439,11 @@ msgstr "PDF indirilemedi"
 msgid "Make sure that {path} exists"
 msgstr "{path} yolunun var olduğuna emin olun"
 
-#: src/add_pdf_dialog.rs:178
+#: src/add_pdf_dialog.rs:179
 msgid "PDF Files"
 msgstr "PDF Dosyaları"
 
-#: src/add_pdf_dialog.rs:186
+#: src/add_pdf_dialog.rs:187
 msgid "Select a PDF"
 msgstr "PDF Seç"
 
@@ -613,30 +617,33 @@ msgstr "Alıntı Silindi"
 msgid "Undo"
 msgstr "Geri Al"
 
-#: src/window.rs:612
+#: src/window.rs:610
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:625
+#: src/window.rs:623
 msgid "Unsaved Changes"
 msgstr "Kaydedilmemiş Değişiklikler"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:628
+#: src/window.rs:626
 msgid "Do you want to write all changes to the safe?"
 msgstr "Tüm değişiklikleri kasaya yazmak ister misiniz?"
 
-#: src/window.rs:632
+#: src/window.rs:630
 msgid "_Quit Without Saving"
 msgstr "Kaydetmeden Ç_ık"
 
-#: src/window.rs:633
+#: src/window.rs:631
 msgid "_Don't Quit"
 msgstr "Çık_ma"
 
-#: src/window.rs:634
+#: src/window.rs:632
 msgid "_Save and Quit"
 msgstr "_Kaydet ve Çık"
+
+#~ msgid "Back"
+#~ msgstr "Geri"
