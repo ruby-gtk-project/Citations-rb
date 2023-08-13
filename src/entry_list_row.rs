@@ -102,6 +102,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for EntryListRow {
         fn dispose(&self) {
             self.dispose_template();
@@ -117,18 +118,6 @@ mod imp {
             } else {
                 self.popover.set_halign(gtk::Align::Start);
             }
-        }
-
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            Self::derived_property(self, id, pspec)
-        }
-
-        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            Self::derived_set_property(self, id, value, pspec)
         }
     }
     impl WidgetImpl for EntryListRow {}

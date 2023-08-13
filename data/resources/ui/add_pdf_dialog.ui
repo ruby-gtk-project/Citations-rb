@@ -88,16 +88,12 @@
                                 <child>
                                   <object class="AdwActionRow">
                                     <property name="activatable">True</property>
-                                    <property name="title" translatable="yes">From file</property>
-                                    <property name="activatable-widget">from-file-button</property>
+                                    <property name="title" translatable="yes">From File</property>
+                                    <signal name="activated" handler="set_from_file_row_activated" swapped="yes"/>
                                     <child>
-                                      <object class="GtkButton" id="from-file-button">
-                                        <property name="valign">center</property>
+                                      <object class="GtkImage">
                                         <property name="icon-name">document-open-symbolic</property>
-                                        <signal name="clicked" handler="set_from_file_button_clicked" swapped="yes"/>
-                                        <style>
-                                          <class name="flat"/>
-                                        </style>
+                                        <property name="accessible-role">presentation</property>
                                       </object>
                                     </child>
                                   </object>
@@ -110,6 +106,7 @@
                                       <object class="GtkButton" id="download_button">
                                         <property name="valign">center</property>
                                         <property name="icon-name">go-next-symbolic</property>
+                                        <property name="tooltip-text" translatable="yes">Download…</property>
                                         <signal name="clicked" handler="on_download_pdf_button_clicked" swapped="true"/>
                                         <style>
                                           <class name="flat"/>

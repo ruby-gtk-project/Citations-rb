@@ -46,7 +46,7 @@
           </object>
         </child>
         <child>
-          <object class="AdwPreferencesGroup">
+          <object class="AdwPreferencesGroup" id="citation_group">
             <property name="title" translatable="yes">Citation</property>
             <property name="header-suffix">
               <object class="GtkBox">
@@ -106,6 +106,9 @@
                         <style>
                           <class name="inline"/>
                         </style>
+                        <accessibility>
+                          <relation name="labelled-by">citation_group</relation>
+                        </accessibility>
                       </object>
                     </child>
                   </object>

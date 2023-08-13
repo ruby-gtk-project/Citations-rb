@@ -37,19 +37,8 @@ mod imp {
         type Interfaces = (gio::ListModel,);
     }
 
-    impl ObjectImpl for Bib {
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            Self::derived_property(self, id, pspec)
-        }
-
-        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            Self::derived_set_property(self, id, value, pspec)
-        }
-    }
+    #[glib::derived_properties]
+    impl ObjectImpl for Bib {}
 
     impl ListModelImpl for Bib {
         fn item_type(&self) -> glib::Type {
