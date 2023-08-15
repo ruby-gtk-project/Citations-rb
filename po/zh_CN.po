@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-07-01 07:52+0000\n"
-"PO-Revision-Date: 2023-07-21 14:41+0800\n"
+"POT-Creation-Date: 2023-08-13 19:05+0000\n"
+"PO-Revision-Date: 2023-08-15 15:40+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -96,12 +96,12 @@ msgstr "纯文本"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:603
+#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:604
 msgid "Citations"
 msgstr "引文"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:605
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:606
 msgid "Manage your bibliography"
 msgstr "管理您的参考书目"
 
@@ -153,7 +153,7 @@ msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:259
+#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
 msgstr "添加 PDF"
 
@@ -167,12 +167,16 @@ msgid ""
 msgstr "创建选中 pdf 的副本并将其存储在您的参考文献文件夹。"
 
 #: data/resources/ui/add_pdf_dialog.ui:91
-msgid "From file"
+msgid "From File"
 msgstr "来自文件"
 
-#: data/resources/ui/add_pdf_dialog.ui:108
+#: data/resources/ui/add_pdf_dialog.ui:104
 msgid "From URL"
 msgstr "来自网址"
+
+#: data/resources/ui/add_pdf_dialog.ui:109
+msgid "Download…"
+msgstr "下载…"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -186,11 +190,11 @@ msgstr "引文"
 msgid "Copy"
 msgstr "复制"
 
-#: data/resources/ui/citation_preview.ui:134
+#: data/resources/ui/citation_preview.ui:137
 msgid "Custom Template"
 msgstr "自定义模板"
 
-#: data/resources/ui/citation_preview.ui:150
+#: data/resources/ui/citation_preview.ui:153
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -201,7 +205,7 @@ msgstr ""
 "tt>。支持用于粗体和斜体的基础 markdown 语法。\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:156
+#: data/resources/ui/citation_preview.ui:159
 msgid "Example:"
 msgstr "示例："
 
@@ -214,15 +218,15 @@ msgstr "无引文"
 msgid "Create a new citation"
 msgstr "创建新引文"
 
-#: data/resources/ui/entry_list_row.ui:88
+#: data/resources/ui/entry_list_row.ui:90
 msgid "_Open PDF"
 msgstr "打开 PDF(_O)"
 
-#: data/resources/ui/entry_list_row.ui:92
+#: data/resources/ui/entry_list_row.ui:94
 msgid "_Copy Key"
 msgstr "复制密钥(_C)"
 
-#: data/resources/ui/entry_list_row.ui:98 data/resources/ui/window.ui:62
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
 msgid "_Delete"
 msgstr "删除(_D)"
 
@@ -254,70 +258,74 @@ msgstr "标题(_T)"
 msgid "_Year"
 msgstr "年份(_Y)"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:410
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
 msgid "Open in Browser"
 msgstr "在浏览器中打开"
 
-#: data/resources/ui/entry_page.ui:165
+#: data/resources/ui/entry_page.ui:168
 msgid "Other Properties"
 msgstr "其他属性"
 
-#: data/resources/ui/entry_page.ui:179
+#: data/resources/ui/entry_page.ui:182
 msgid "Abstract"
 msgstr "摘要"
 
-#: data/resources/ui/entry_page.ui:183
+#: data/resources/ui/entry_page.ui:186
 msgid "Copy Abstract"
 msgstr "复制摘要"
 
-#: data/resources/ui/entry_page.ui:212
+#: data/resources/ui/entry_page.ui:218
 msgid "Notes"
 msgstr "备注"
 
-#: data/resources/ui/entry_page.ui:216
+#: data/resources/ui/entry_page.ui:222
 msgid "Copy Notes"
 msgstr "复制备注"
 
-#: data/resources/ui/entry_page.ui:276
+#: data/resources/ui/entry_page.ui:286
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:287 data/resources/ui/window.ui:10
+#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
 #: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
 #: data/resources/ui/window.ui:152
 msgid "_Open"
 msgstr "打开(_O)"
 
-#: data/resources/ui/entry_page.ui:300
+#: data/resources/ui/entry_page.ui:310
 msgid "Delete PDF"
 msgstr "删除 PDF"
 
-#: data/resources/ui/entry_page.ui:337
+#: data/resources/ui/entry_page.ui:351
 msgid "Could not set PDF Preview"
 msgstr "无法设置 PDF 预览"
 
-#: data/resources/ui/new_entry_dialog.ui:26
+#: data/resources/ui/new_entry_dialog.ui:8
+msgid "Add new Entry"
+msgstr "添加新条目"
+
+#: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: data/resources/ui/new_entry_dialog.ui:33
+#: data/resources/ui/new_entry_dialog.ui:34
 msgid "C_reate"
 msgstr "创建(_R)"
 
-#: data/resources/ui/new_entry_dialog.ui:48
+#: data/resources/ui/new_entry_dialog.ui:49
 msgid "New"
 msgstr "新建"
 
-#: data/resources/ui/new_entry_dialog.ui:67
+#: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Key"
 msgstr "引文密钥"
 
-#: data/resources/ui/new_entry_dialog.ui:72
+#: data/resources/ui/new_entry_dialog.ui:73
 msgid "Citation Type"
 msgstr "引文类型"
 
 #. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:92
+#: data/resources/ui/new_entry_dialog.ui:93
 msgid "From BibTeX"
 msgstr "来自 BibTeX"
 
@@ -416,11 +424,15 @@ msgstr "添加新引文"
 msgid "Search"
 msgstr "搜索"
 
-#: data/resources/ui/window.ui:239
+#: data/resources/ui/window.ui:226
+msgid "Search…"
+msgstr "搜索…"
+
+#: data/resources/ui/window.ui:246
 msgid "Content"
 msgstr "目录"
 
-#: data/resources/ui/window.ui:248
+#: data/resources/ui/window.ui:255
 msgid "Secondary Menu"
 msgstr "次级菜单"
 
@@ -463,11 +475,11 @@ msgstr "温哥华"
 msgid "Custom"
 msgstr "自定义"
 
-#: src/citation_preview.rs:268 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
 msgid "Copied"
 msgstr "已复制"
 
-#: src/citation_preview.rs:275
+#: src/citation_preview.rs:274
 msgid "Custom…"
 msgstr "自定义…"
 
@@ -480,7 +492,7 @@ msgstr "其他…"
 msgid "Citation Key already exists"
 msgstr "引文密钥已存在"
 
-#: src/entry_page.rs:592
+#: src/entry_page.rs:586
 msgid "PDF added"
 msgstr "PDF 已添加"
 
@@ -577,69 +589,69 @@ msgstr "学校"
 msgid "Institution"
 msgstr "机构"
 
-#: src/window.rs:319 src/window.rs:342
+#: src/window.rs:320 src/window.rs:343
 msgid "Bibtex Files"
 msgstr "Bibtex 文件"
 
-#: src/window.rs:352
+#: src/window.rs:353
 msgid "Create New Bibliography"
 msgstr "创建新参考文献"
 
-#: src/window.rs:353
+#: src/window.rs:354
 msgid "_Create"
 msgstr "创建(_C)"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:356
+#: src/window.rs:357
 msgid "bibliography"
 msgstr "参考文献"
 
-#: src/window.rs:456
+#: src/window.rs:457
 msgid "Remove From Recent Files"
 msgstr "从最近文件中移除"
 
-#: src/window.rs:496
+#: src/window.rs:497
 msgid "An entry with the given citation key already exists"
 msgstr "带有指定引文密钥的条目已存在"
 
-#: src/window.rs:511
+#: src/window.rs:512
 msgid "Bibliography saved"
 msgstr "参考文献已保存"
 
-#: src/window.rs:564
+#: src/window.rs:565
 msgid "Citation Deleted"
 msgstr "引文已删除"
 
-#: src/window.rs:566
+#: src/window.rs:567
 msgid "Undo"
 msgstr "撤消"
 
-#: src/window.rs:610
+#: src/window.rs:611
 msgid "translator-credits"
 msgstr ""
 "杨博远 <byang@debian.org>, 2022.\n"
 "lumingzh <lumingzh@qq.com>, 2022-2023."
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:623
+#: src/window.rs:624
 msgid "Unsaved Changes"
 msgstr "未保存的更改"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:626
+#: src/window.rs:627
 msgid "Do you want to write all changes to the safe?"
 msgstr "您想要写入所有更改吗？"
 
-#: src/window.rs:630
+#: src/window.rs:631
 msgid "_Quit Without Saving"
 msgstr "不保存并退出(_Q)"
 
-#: src/window.rs:631
+#: src/window.rs:632
 msgid "_Don't Quit"
 msgstr "不退出(_D)"
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "_Save and Quit"
 msgstr "保存并退出(_S)"
 
