@@ -1,0 +1,652 @@
+# Persian translation for citations.
+# Copyright (C) 2023 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+# سید حسین موسوی فرد <hajmousa1385@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
+"POT-Creation-Date: 2023-08-15 11:56+0000\n"
+"PO-Revision-Date: 2023-08-17 12:47+0330\n"
+"Last-Translator: سید حسین موسوی فرد <hajmousa1385@gmail.com>\n"
+"Language-Team: Persian <fa@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#: cratebibtex/src/entry_type.rs:117
+msgid "Article"
+msgstr "مقاله"
+
+#: cratebibtex/src/entry_type.rs:118
+msgid "Book"
+msgstr "کتاب"
+
+#: cratebibtex/src/entry_type.rs:119
+msgid "Misc"
+msgstr "دیگر"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:121
+msgid "In Proceedings"
+msgstr "در مجموعهٔ مقاله‌ها"
+
+#: cratebibtex/src/entry_type.rs:122
+msgid "Unpublished"
+msgstr "منتشر نشده"
+
+#. NOTE As in online source
+#: cratebibtex/src/entry_type.rs:124
+msgid "Online"
+msgstr "برخط"
+
+#. NOTE As in other kind of source
+#: cratebibtex/src/entry_type.rs:126
+msgid "Other"
+msgstr "دیگر"
+
+#: cratebibtex/src/entry_type.rs:127
+msgid "Booklet"
+msgstr "جزوه"
+
+#: cratebibtex/src/entry_type.rs:128
+msgid "Conference"
+msgstr "همایش"
+
+#: cratebibtex/src/entry_type.rs:129
+msgid "In Book"
+msgstr "در کتاب"
+
+#: cratebibtex/src/entry_type.rs:130
+msgid "In Collection"
+msgstr "در مجموعه"
+
+#. NOTE As in instruction manual
+#: cratebibtex/src/entry_type.rs:132
+msgid "Manual"
+msgstr ""
+
+#: cratebibtex/src/entry_type.rs:133
+msgid "Master's Thesis"
+msgstr ""
+
+#: cratebibtex/src/entry_type.rs:134
+msgid "PhD Thesis"
+msgstr ""
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:136
+msgid "Proceedings"
+msgstr ""
+
+#: cratebibtex/src/entry_type.rs:137
+msgid "Tech Report"
+msgstr ""
+
+#. NOTE Plain as in Plain Text
+#: cratebibtex/src/format.rs:52
+msgid "Plain"
+msgstr "ساده"
+
+#. NOTE: This is the app name
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:604
+msgid "Citations"
+msgstr "منابع"
+
+#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:606
+msgid "Manage your bibliography"
+msgstr "کتاب‌نامه‌های خود را مدیریت کنید"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.World.Citations.desktop.in.in:10
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr ""
+"bibliography;citing;literature;BibTeX;LaTeX;TeX;کتاب‌شناسی;استناد;ادبیات;"
+"بیب‌تک;لاتک;تک"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "عرض پنجره"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "ارتفاع پنجره"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "حالت بیشینهٔ پنجره"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
+msgid "List of paths of recent files"
+msgstr "سیاههٔ مسیر پرونده‌های اخیر"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
+msgid "Default template for book citation"
+msgstr "قالب پیشفرض برای منابع کتاب"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:30
+msgid "Default template kind for citations"
+msgstr ""
+
+#: data/org.gnome.World.Citations.gschema.xml.in:34
+msgid "Default template format for citations"
+msgstr ""
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "کتاب‌نامه‌های خود را با BibTeX مدیریت کنید."
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:15
+msgid "Main window"
+msgstr "پنجرهٔ اصلی"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
+#. Translators: Selects a PDF file for the citation
+#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:268
+msgid "Add PDF"
+msgstr "افزودن پی‌دی‌اف"
+
+#: data/resources/ui/add_pdf_dialog.ui:58
+msgid "Bibliography folder not set"
+msgstr "پوشهٔ کتاب‌نامه تنظیم نشده"
+
+#: data/resources/ui/add_pdf_dialog.ui:76
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"یک رونوشت از پی‌دی‌اف گزیده ایجاد می‌کند و آن را در پوشهٔ کتاب‌نامه‌های شما انبار "
+"می‌کند."
+
+#: data/resources/ui/add_pdf_dialog.ui:91
+msgid "From File"
+msgstr "از پرونده"
+
+#: data/resources/ui/add_pdf_dialog.ui:104
+msgid "From URL"
+msgstr "از URL"
+
+#: data/resources/ui/add_pdf_dialog.ui:109
+msgid "Download…"
+msgstr "بارگیری..."
+
+#: data/resources/ui/citation_preview.ui:15
+msgid "Custom Citation Format"
+msgstr "قالب منبع دلخواه"
+
+#: data/resources/ui/citation_preview.ui:50
+msgid "Citation"
+msgstr "منبع"
+
+#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
+msgid "Copy"
+msgstr "رونوشت"
+
+#: data/resources/ui/citation_preview.ui:137
+msgid "Custom Template"
+msgstr "قالب دلخواه"
+
+#: data/resources/ui/citation_preview.ui:153
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported.\n"
+"            "
+msgstr "یک قالب دلخواه برای منابعتان بنویسید، برای "
+
+#: data/resources/ui/citation_preview.ui:159
+msgid "Example:"
+msgstr "مثال:"
+
+#. Empty state widget
+#: data/resources/ui/entry_list.ui:9
+msgid "No Citations"
+msgstr "بدون منبع"
+
+#: data/resources/ui/entry_list.ui:10
+msgid "Create a new citation"
+msgstr "ایجاد منبع جدید"
+
+#: data/resources/ui/entry_list_row.ui:90
+msgid "_Open PDF"
+msgstr "_گشودن پی‌دی‌اف"
+
+#: data/resources/ui/entry_list_row.ui:94
+msgid "_Copy Key"
+msgstr "_رونوشت کلید"
+
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
+msgid "_Delete"
+msgstr "_برداشتن"
+
+#: data/resources/ui/entry_page.ui:13
+msgid "No Citation Selected"
+msgstr "منبعی گزیده نشده"
+
+#: data/resources/ui/entry_page.ui:82
+msgid "Citation _Type"
+msgstr "_گونهٔ منبع"
+
+#: data/resources/ui/entry_page.ui:98
+msgid "_Other Citation Type"
+msgstr "_دیگر گونه‌های منبع"
+
+#: data/resources/ui/entry_page.ui:105
+msgid "_Citation Key"
+msgstr "_کلید منبع"
+
+#: data/resources/ui/entry_page.ui:124
+msgid "_Author"
+msgstr "_نویسنده"
+
+#: data/resources/ui/entry_page.ui:130
+msgid "_Title"
+msgstr "_عنوان"
+
+#: data/resources/ui/entry_page.ui:136
+msgid "_Year"
+msgstr "_سال"
+
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
+msgid "Open in Browser"
+msgstr "گشودن در مرورگر"
+
+#: data/resources/ui/entry_page.ui:168
+msgid "Other Properties"
+msgstr "ویژگی‌های دیگر"
+
+#: data/resources/ui/entry_page.ui:182
+msgid "Abstract"
+msgstr "چکیده"
+
+#: data/resources/ui/entry_page.ui:186
+msgid "Copy Abstract"
+msgstr "رونوشت از چکیده"
+
+#: data/resources/ui/entry_page.ui:218
+msgid "Notes"
+msgstr "یادداشت‌ها"
+
+#: data/resources/ui/entry_page.ui:222
+msgid "Copy Notes"
+msgstr "رونوشت از یادداشت‌ها"
+
+#: data/resources/ui/entry_page.ui:286
+msgid "PDF"
+msgstr "پی‌دی‌اف"
+
+#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:152
+msgid "_Open"
+msgstr "_گشودن"
+
+#: data/resources/ui/entry_page.ui:310
+msgid "Delete PDF"
+msgstr "برداشتن پی‌دی‌اف"
+
+#: data/resources/ui/entry_page.ui:351
+msgid "Could not set PDF Preview"
+msgstr "نتوانست پیش‌نمایش پی‌دی‌اف را تنظیم کند"
+
+#: data/resources/ui/new_entry_dialog.ui:8
+msgid "Add new Entry"
+msgstr "افزودن مدخل جدید"
+
+#: data/resources/ui/new_entry_dialog.ui:27
+msgid "_Cancel"
+msgstr "_لغو"
+
+#: data/resources/ui/new_entry_dialog.ui:34
+msgid "C_reate"
+msgstr "ا_یجاد"
+
+#: data/resources/ui/new_entry_dialog.ui:49
+msgid "New"
+msgstr "جدید"
+
+#: data/resources/ui/new_entry_dialog.ui:68
+msgid "Citation Key"
+msgstr "کلید منبع"
+
+#: data/resources/ui/new_entry_dialog.ui:73
+msgid "Citation Type"
+msgstr "گونهٔ منبع"
+
+#. BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:93
+msgid "From BibTeX"
+msgstr "از BibTeX"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "کلی"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "نمایش میانبرها"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "خروج"
+
+#: data/resources/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "کتاب‌نامه"
+
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "گشودن"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "ذخیره"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "جست‌وجو"
+
+#: data/resources/ui/window.ui:6
+msgid "_Create New Bibliography"
+msgstr "_ایجاد کتاب‌نامهٔ جدید"
+
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+msgid "_Keyboard Shortcuts"
+msgstr "_میانبرهای صفحه‌کلید"
+
+#. About dialog
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+msgid "_About Citations"
+msgstr "_دربارهٔ منابع"
+
+#: data/resources/ui/window.ui:29
+msgid "_Save"
+msgstr "_ذخیره"
+
+#: data/resources/ui/window.ui:52
+msgid "_Search in Google Scholar"
+msgstr "جست‌وجو در Google Scholar"
+
+#. arXiv is a proper name
+#: data/resources/ui/window.ui:56
+msgid "_Search in arXiv"
+msgstr "_جست‌و‌جو در arXiv"
+
+#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:205
+msgid "Main Menu"
+msgstr "فهرست اصلی"
+
+#. BibTeX is a proper name
+#: data/resources/ui/window.ui:101
+msgid "Open a BibTeX File"
+msgstr "گشودن یک پروندهٔ BibTeX"
+
+#: data/resources/ui/window.ui:102
+msgid "Or drag-and-drop a file"
+msgstr "یا کشیدن و انداختن یک پرونده"
+
+#: data/resources/ui/window.ui:137
+msgid "Manage your Citations"
+msgstr "منابعتان را مدیریت کنید"
+
+#: data/resources/ui/window.ui:144
+msgid "Recent Files"
+msgstr "پرونده‌های اخیر"
+
+#: data/resources/ui/window.ui:187
+msgid "Sidebar"
+msgstr "نوار کناری"
+
+#: data/resources/ui/window.ui:198
+msgid "Add New Citation"
+msgstr "افزودن منبع جدید"
+
+#: data/resources/ui/window.ui:212
+msgid "Search"
+msgstr "جست‌وجو"
+
+#: data/resources/ui/window.ui:226
+msgid "Search…"
+msgstr "جست‌وجو..."
+
+#: data/resources/ui/window.ui:246
+msgid "Content"
+msgstr "محتوا"
+
+#: data/resources/ui/window.ui:255
+msgid "Secondary Menu"
+msgstr "فهرست دوم"
+
+#: src/add_pdf_dialog.rs:57
+msgid "Could not set PDF"
+msgstr "نتوانست پی‌دی‌اف را تنظیم کند"
+
+#: src/add_pdf_dialog.rs:68
+msgid "Could not download PDF"
+msgstr "نتوانست پی‌دی‌اف را بارگیری کند"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: src/add_pdf_dialog.rs:94
+msgid "Make sure that {path} exists"
+msgstr "مطمئن شوید که {path} وجود دارد"
+
+#: src/add_pdf_dialog.rs:179
+msgid "PDF Files"
+msgstr "پرونده‌های پی‌دی‌اف"
+
+#: src/add_pdf_dialog.rs:187
+msgid "Select a PDF"
+msgstr "یک پی‌دی‌اف را بگزینید"
+
+#. TODO Should this be translatable?
+#: src/citation_preview.rs:56
+msgid "Chicago"
+msgstr "شیکاگو"
+
+#: src/citation_preview.rs:57
+msgid "Harvard"
+msgstr "هاروارد"
+
+#: src/citation_preview.rs:58
+msgid "Vancouver"
+msgstr "ونکوور"
+
+#. NOTE: Custom as in Custom Template.
+#: src/citation_preview.rs:60
+msgid "Custom"
+msgstr "دلخواه"
+
+#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
+msgid "Copied"
+msgstr "رونوشت شد"
+
+#: src/citation_preview.rs:274
+msgid "Custom…"
+msgstr "دلخواه..."
+
+#: src/entry_page.rs:204
+msgid "Other…"
+msgstr "دیگر..."
+
+#. TRANSLATORS Every citation has an identifier called key
+#: src/entry_page.rs:266
+msgid "Citation Key already exists"
+msgstr "کلید منبع از قبل وجود دارد"
+
+#: src/entry_page.rs:586
+msgid "PDF added"
+msgstr "پی‌دی‌اف افزوده شد"
+
+#: src/new_entry_dialog.rs:125
+msgid "Insert a BibTeX citation here"
+msgstr "یک منبع BibTeX اینجا بگذارید"
+
+#: src/utils.rs:21
+msgid "Author"
+msgstr "نویسنده"
+
+#: src/utils.rs:22
+msgid "Year"
+msgstr "سال"
+
+#: src/utils.rs:23
+msgid "Title"
+msgstr "عنوان"
+
+#: src/utils.rs:24
+msgid "Volume"
+msgstr "حجم"
+
+#: src/utils.rs:25
+msgid "Number"
+msgstr "شماره"
+
+#: src/utils.rs:26
+msgid "Pages"
+msgstr "صفحه‌ها"
+
+#: src/utils.rs:27
+msgid "Publisher"
+msgstr "انتشارات"
+
+#: src/utils.rs:28
+msgid "Journal"
+msgstr "مجله"
+
+#: src/utils.rs:29
+msgid "Address"
+msgstr "نشانی"
+
+#. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
+#: src/utils.rs:31
+msgid "How Published"
+msgstr "چگونگی انتشار"
+
+#: src/utils.rs:32
+msgid "Note"
+msgstr "یادداشت"
+
+#: src/utils.rs:33
+msgid "Book Title"
+msgstr "عنوان کتاب"
+
+#: src/utils.rs:34
+msgid "Series"
+msgstr ""
+
+#: src/utils.rs:35
+msgid "Archive Prefix"
+msgstr "بایگانی پیشوند"
+
+#. TRANSLATORS As in digital print
+#: src/utils.rs:37
+msgid "ePrint"
+msgstr "چاپ دیجیتال"
+
+#. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
+#: src/utils.rs:39
+msgid "Primary Class"
+msgstr ""
+
+#: src/utils.rs:40
+msgid "Month"
+msgstr "ماه"
+
+#. TRANSLATORS As in chief editor
+#: src/utils.rs:42
+msgid "Editor"
+msgstr "ویراستار"
+
+#. TRANSLATORS As in association
+#: src/utils.rs:44
+msgid "Organization"
+msgstr "اتحادیه"
+
+#: src/utils.rs:45
+msgid "School"
+msgstr "مدرسه"
+
+#: src/utils.rs:46
+msgid "Institution"
+msgstr "نهاد"
+
+#: src/window.rs:320 src/window.rs:343
+msgid "Bibtex Files"
+msgstr "پرونده‌های BibTeX"
+
+#: src/window.rs:353
+msgid "Create New Bibliography"
+msgstr "ایجاد کتاب‌نامهٔ جدید"
+
+#: src/window.rs:354
+msgid "_Create"
+msgstr "_ایجاد"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: src/window.rs:357
+msgid "bibliography"
+msgstr "کتاب‌نامه"
+
+#: src/window.rs:457
+msgid "Remove From Recent Files"
+msgstr "حذف کردن از پرونده‌های اخیر"
+
+#: src/window.rs:497
+msgid "An entry with the given citation key already exists"
+msgstr "یک مدخل با کلید منبع داده شده وجود دارد"
+
+#: src/window.rs:512
+msgid "Bibliography saved"
+msgstr "کتاب‌نامه ذخیره شد"
+
+#: src/window.rs:565
+msgid "Citation Deleted"
+msgstr "منبع حذف شد"
+
+#: src/window.rs:567
+msgid "Undo"
+msgstr "برگردان"
+
+#: src/window.rs:611
+msgid "translator-credits"
+msgstr "سید حسین موسوی فرد <hajmousa1385@gmail.com>"
+
+#. NOTE Dialog title which informs the user about unsaved changes.
+#: src/window.rs:624
+msgid "Unsaved Changes"
+msgstr "تغییرات ذخیره نشده"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:627
+msgid "Do you want to write all changes to the safe?"
+msgstr ""
+
+#: src/window.rs:631
+msgid "_Quit Without Saving"
+msgstr "_خروج بدون ذخیره"
+
+#: src/window.rs:632
+msgid "_Don't Quit"
+msgstr "_خارج نشو"
+
+#: src/window.rs:633
+msgid "_Save and Quit"
+msgstr "_ذخیره و خروج"
