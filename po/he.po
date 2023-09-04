@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-08-13 19:05+0000\n"
-"PO-Revision-Date: 2023-08-18 09:59+0300\n"
+"POT-Creation-Date: 2023-08-18 07:00+0000\n"
+"PO-Revision-Date: 2023-09-04 15:38+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 42.0\n"
+"2 : 3);\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -203,7 +203,8 @@ msgid ""
 msgstr ""
 "כתיבת תבנית מותאמת אישית למראי המקום שלך, להכנסת התוכן של תג <tt>תגכלשהו</"
 "tt> יש לכתוב <tt>%תגכלשהו%</tt>. יש תמיכה בתחביר Markdown בסיסי להדגשת טקסט "
-"ולטקסט נטוי."
+"ולטקסט נטוי.\n"
+"            "
 
 #: data/resources/ui/citation_preview.ui:159
 msgid "Example:"
@@ -268,11 +269,11 @@ msgstr "פתיחת מאפיינים"
 
 #: data/resources/ui/entry_page.ui:182
 msgid "Abstract"
-msgstr "מופשט"
+msgstr "תמצית"
 
 #: data/resources/ui/entry_page.ui:186
 msgid "Copy Abstract"
-msgstr ""
+msgstr "העתקת תמצית"
 
 #: data/resources/ui/entry_page.ui:218
 msgid "Notes"
