@@ -244,6 +244,7 @@
                 <property name="content">
                   <object class="AdwNavigationPage">
                     <property name="title" translatable="yes">Content</property>
+                    <signal name="hidden" handler="on_content_hidden" swapped="true"/>
                     <child>
                       <object class="AdwToolbarView">
                         <child type="top">
