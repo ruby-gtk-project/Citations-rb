@@ -14,12 +14,20 @@ variables:
   APP_ID: "org.gnome.World.Citations.Devel"
   RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
 
-flatpak:
+flatpak@x86_64:
   extends: ".flatpak@x86_64"
 
-publish-nightly:
-  extends: '.publish_nightly'
-  needs: ['flatpak']
+flatpak@aarch64:
+  extends: ".flatpak@aarch64"
+
+nightly@x86_64:
+  extends: ".publish_nightly"
+  needs: ["flatpak@x86_64"]
+
+nightly@aarch64:
+  extends: ".publish_nightly"
+  needs: ["flatpak@aarch64"]
+
 
 # Configure and run rustfmt
 # Exits and builds fails if on bad format
