@@ -176,12 +176,8 @@ mod imp {
             _pspec: glib::ParamSpec,
             nav_split_view: &adw::NavigationSplitView,
         ) {
-            if nav_split_view.is_collapsed() {
-                self.entry_list.hide_selection();
-            } else {
-                self.entry_list.show_selection();
-                self.nav_split_view.set_show_content(true);
-            }
+            log::debug!("on_collapsed_notify");
+            self.update_selection();
         }
 
         #[template_callback]
@@ -195,6 +191,16 @@ mod imp {
             self.entry_page.set_entry(entry);
             self.secondary_menu_button.set_visible(entry.is_some());
             self.nav_split_view.set_show_content(true);
+        }
+
+        fn update_selection(&self) {
+            log::debug!("update_selection {}", self.nav_split_view.is_collapsed());
+            if self.nav_split_view.is_collapsed() {
+                self.entry_list.hide_selection();
+            } else {
+                self.entry_list.show_selection();
+                self.nav_split_view.set_show_content(true);
+            }
         }
     }
 
@@ -248,6 +254,8 @@ mod imp {
             );
 
             obj.add_controller(target);
+
+            self.update_selection();
         }
     }
 
@@ -283,7 +291,7 @@ mod imp {
 glib::wrapper! {
     pub struct Window(ObjectSubclass<imp::Window>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
-        @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
+    @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
 }
 
 impl Window {

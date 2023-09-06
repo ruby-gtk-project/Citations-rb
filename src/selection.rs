@@ -244,6 +244,7 @@ impl Selection {
     }
 
     pub(crate) fn set_selected_item(&self, selected_item: Option<glib::Object>) {
+        log::debug!("model set_selected_item {selected_item:?}");
         if selected_item.as_ref() != self.imp().item.borrow().as_ref() {
             let position = selected_item
                 .as_ref()
@@ -255,6 +256,7 @@ impl Selection {
     }
 
     pub(crate) fn set_selected_position(&self, position: u32) {
+        log::debug!("model set_selected_position {position}");
         let item = self.item(position);
         self.set_selected_item_internal(item, position);
     }
@@ -264,10 +266,12 @@ impl Selection {
     }
 
     pub(crate) fn set_hide_selection(&self, hide_selection: bool) {
+        log::debug!("model set_hide_selection: {hide_selection}");
         let imp = self.imp();
 
         if hide_selection != imp.hide_selection.replace(hide_selection) {
             let item_position = imp.item_position.get();
+            log::debug!("model position: {item_position}");
             if item_position != gtk::INVALID_LIST_POSITION {
                 self.selection_changed(item_position, 1);
             }

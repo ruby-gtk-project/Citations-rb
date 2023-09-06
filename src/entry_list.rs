@@ -167,6 +167,7 @@ impl EntryList {
     }
 
     pub fn set_selected(&self, pos: u32) {
+        log::debug!("set_selected: {pos}");
         self.imp()
             .selection_model
             .borrow()
@@ -182,10 +183,12 @@ impl EntryList {
     }
 
     pub fn hide_selection(&self) {
+        log::debug!("hide_selection");
         self.imp().selection_model.borrow().set_hide_selection(true);
     }
 
     pub fn show_selection(&self) {
+        log::debug!("show_selection");
         self.imp()
             .selection_model
             .borrow()
@@ -193,6 +196,7 @@ impl EntryList {
     }
 
     pub fn unselect(&self) {
+        log::debug!("unselect");
         self.imp().selection_model.borrow().set_selected_item(None);
     }
 }
