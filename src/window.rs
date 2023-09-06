@@ -155,6 +155,11 @@ mod imp {
     #[gtk::template_callbacks]
     impl Window {
         #[template_callback]
+        fn on_content_hidden(&self) {
+            self.entry_list.hide_selection();
+        }
+
+        #[template_callback]
         fn on_search_mode_enabled_notify(
             &self,
             _pspec: &glib::ParamSpec,
