@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2022-10-24 06:59+0000\n"
-"PO-Revision-Date: 2023-01-01 18:39+0100\n"
+"POT-Creation-Date: 2023-08-13 19:05+0000\n"
+"PO-Revision-Date: 2023-09-09 17:34+0200\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -17,72 +17,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: cratebibtex/src/entry_type.rs:108
+#: cratebibtex/src/entry_type.rs:117
 msgid "Article"
 msgstr "Artikel"
 
-#: cratebibtex/src/entry_type.rs:109
+#: cratebibtex/src/entry_type.rs:118
 msgid "Book"
 msgstr "Bog"
 
-#: cratebibtex/src/entry_type.rs:110
+#: cratebibtex/src/entry_type.rs:119
 msgid "Misc"
 msgstr "Diverse"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
-#: cratebibtex/src/entry_type.rs:112
+#: cratebibtex/src/entry_type.rs:121
 msgid "In Proceedings"
 msgstr "I proceedings"
 
-#: cratebibtex/src/entry_type.rs:113
+#: cratebibtex/src/entry_type.rs:122
 msgid "Unpublished"
 msgstr "Ikke udgivet"
 
 #. NOTE As in online source
-#: cratebibtex/src/entry_type.rs:115
+#: cratebibtex/src/entry_type.rs:124
 msgid "Online"
 msgstr "Online"
 
 #. NOTE As in other kind of source
-#: cratebibtex/src/entry_type.rs:117
+#: cratebibtex/src/entry_type.rs:126
 msgid "Other"
 msgstr "Andet"
 
-#: cratebibtex/src/entry_type.rs:118
+#: cratebibtex/src/entry_type.rs:127
 msgid "Booklet"
 msgstr "Brochure"
 
-#: cratebibtex/src/entry_type.rs:119
+#: cratebibtex/src/entry_type.rs:128
 msgid "Conference"
 msgstr "Konference"
 
-#: cratebibtex/src/entry_type.rs:120
+#: cratebibtex/src/entry_type.rs:129
 msgid "In Book"
 msgstr "I bog"
 
-#: cratebibtex/src/entry_type.rs:121
+#: cratebibtex/src/entry_type.rs:130
 msgid "In Collection"
 msgstr "I samling"
 
 #. NOTE As in instruction manual
-#: cratebibtex/src/entry_type.rs:123
+#: cratebibtex/src/entry_type.rs:132
 msgid "Manual"
 msgstr "Manual"
 
-#: cratebibtex/src/entry_type.rs:124
-msgid "Master Thesis"
+#: cratebibtex/src/entry_type.rs:133
+msgid "Master's Thesis"
 msgstr "Kandidatafhandling"
 
-#: cratebibtex/src/entry_type.rs:125
-msgid "PhD. Thesis"
+#: cratebibtex/src/entry_type.rs:134
+msgid "PhD Thesis"
 msgstr "Ph.d.-afhandling"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
-#: cratebibtex/src/entry_type.rs:127
+#: cratebibtex/src/entry_type.rs:136
 msgid "Proceedings"
 msgstr "Proceedings"
 
-#: cratebibtex/src/entry_type.rs:128
+#: cratebibtex/src/entry_type.rs:137
 msgid "Tech Report"
 msgstr "Teknisk rapport"
 
@@ -93,13 +93,13 @@ msgstr "Almindelig tekst"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 src/main.rs:42
-#: src/window.rs:612
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:604
 msgid "Citations"
 msgstr "Citations"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:614
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:606
 msgid "Manage your bibliography"
 msgstr "Håndtér din bibliografi"
 
@@ -146,12 +146,12 @@ msgstr "Håndtér dine bibliografier i BibTeX-formatet."
 msgid "Main window"
 msgstr "Hovedvindue"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:78
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:11 data/resources/ui/entry_page.ui:192
+#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
 msgstr "Tilføj PDF"
 
@@ -167,31 +167,35 @@ msgstr ""
 "Opretter en kopi af den valgte pdf og gemmer den i din bibliografimappe."
 
 #: data/resources/ui/add_pdf_dialog.ui:91
-msgid "From file"
+msgid "From File"
 msgstr "Fra fil"
 
-#: data/resources/ui/add_pdf_dialog.ui:108
+#: data/resources/ui/add_pdf_dialog.ui:104
 msgid "From URL"
 msgstr "Fra URL"
+
+#: data/resources/ui/add_pdf_dialog.ui:109
+msgid "Download…"
+msgstr "Hent …"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
 msgstr "Brugertilpasset referenceformat"
 
-#: data/resources/ui/citation_preview.ui:47
+#: data/resources/ui/citation_preview.ui:50
 msgid "Citation"
 msgstr "Reference"
 
 # Skal det være kopi?  Jeg kan ikke se det fra kildekoden.
-#: data/resources/ui/citation_preview.ui:91 data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "Kopiér"
 
-#: data/resources/ui/citation_preview.ui:128
+#: data/resources/ui/citation_preview.ui:137
 msgid "Custom Template"
 msgstr "Brugertilpasset skabelon"
 
-#: data/resources/ui/citation_preview.ui:144
+#: data/resources/ui/citation_preview.ui:153
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -203,7 +207,7 @@ msgstr ""
 "markdownsyntaks.\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:150
+#: data/resources/ui/citation_preview.ui:159
 msgid "Example:"
 msgstr "Eksempel:"
 
@@ -216,15 +220,15 @@ msgstr "Ingen referencer"
 msgid "Create a new citation"
 msgstr "Opret en ny reference"
 
-#: data/resources/ui/entry_list_row.ui:88
+#: data/resources/ui/entry_list_row.ui:90
 msgid "_Open PDF"
 msgstr "_Åbn PDF"
 
-#: data/resources/ui/entry_list_row.ui:92
+#: data/resources/ui/entry_list_row.ui:94
 msgid "_Copy Key"
 msgstr "_Kopiér nøgle"
 
-#: data/resources/ui/entry_list_row.ui:98 data/resources/ui/window.ui:62
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
 msgid "_Delete"
 msgstr "_Slet"
 
@@ -256,31 +260,51 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "_År"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:376
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
 msgid "Open in Browser"
 msgstr "Åbn i browser"
 
-#: data/resources/ui/entry_page.ui:165
+#: data/resources/ui/entry_page.ui:168
 msgid "Other Properties"
 msgstr "Andre egenskaber"
 
-#: data/resources/ui/entry_page.ui:209
+#: data/resources/ui/entry_page.ui:182
+msgid "Abstract"
+msgstr "Abstract"
+
+#: data/resources/ui/entry_page.ui:186
+msgid "Copy Abstract"
+msgstr "Kopiér abstract"
+
+#: data/resources/ui/entry_page.ui:218
+msgid "Notes"
+msgstr "Noter"
+
+#: data/resources/ui/entry_page.ui:222
+msgid "Copy Notes"
+msgstr "Kopiér noter"
+
+#: data/resources/ui/entry_page.ui:286
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:220 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:97
-#: data/resources/ui/window.ui:144
+#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:152
 msgid "_Open"
 msgstr "_Åbn"
 
-#: data/resources/ui/entry_page.ui:233
+#: data/resources/ui/entry_page.ui:310
 msgid "Delete PDF"
 msgstr "Slet PDF"
 
-#: data/resources/ui/entry_page.ui:270
+#: data/resources/ui/entry_page.ui:351
 msgid "Could not set PDF Preview"
 msgstr "Kunne ikke angive forhåndsvisning af PDF"
+
+#: data/resources/ui/new_entry_dialog.ui:8
+msgid "Add new Entry"
+msgstr "Tilføj ny indgang"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
@@ -368,37 +392,49 @@ msgstr "_Søg i Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Søg i arXiv"
 
-#: data/resources/ui/window.ui:83 data/resources/ui/window.ui:121
-#: data/resources/ui/window.ui:195
+#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:205
 msgid "Main Menu"
 msgstr "Hovedmenu"
 
 #. BibTeX is a proper name
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:101
 msgid "Open a BibTeX File"
 msgstr "Åbn en BibTeX-fil"
 
-#: data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:102
+msgid "Or drag-and-drop a file"
+msgstr "Eller træk og slip en fil"
+
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "Håndtér dine referencer"
 
-#: data/resources/ui/window.ui:136
+#: data/resources/ui/window.ui:144
 msgid "Recent Files"
 msgstr "Seneste filer"
 
-#: data/resources/ui/window.ui:188
+#: data/resources/ui/window.ui:187
+msgid "Sidebar"
+msgstr "Sidebjælke"
+
+#: data/resources/ui/window.ui:198
 msgid "Add New Citation"
 msgstr "Tilføj ny reference"
 
-#: data/resources/ui/window.ui:201
+#: data/resources/ui/window.ui:212
 msgid "Search"
 msgstr "Søg"
 
-#: data/resources/ui/window.ui:252
-msgid "Back"
-msgstr "Tilbage"
+#: data/resources/ui/window.ui:226
+msgid "Search…"
+msgstr "Søg …"
 
-#: data/resources/ui/window.ui:261
+#: data/resources/ui/window.ui:246
+msgid "Content"
+msgstr "Indhold"
+
+#: data/resources/ui/window.ui:255
 msgid "Secondary Menu"
 msgstr "Sekundær menu"
 
@@ -415,9 +451,13 @@ msgstr "Kunne ikke hente PDF"
 msgid "Make sure that {path} exists"
 msgstr "Sørg for, at {path} findes"
 
-#: src/add_pdf_dialog.rs:183
+#: src/add_pdf_dialog.rs:179
 msgid "PDF Files"
 msgstr "PDF-filer"
+
+#: src/add_pdf_dialog.rs:187
+msgid "Select a PDF"
+msgstr "Vælg en PDF"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -437,25 +477,25 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Brugertilpasset"
 
-#: src/citation_preview.rs:160 src/entry_list_row.rs:55 src/entry_page.rs:185
+#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
 msgid "Copied"
 msgstr "Kopieret"
 
-#: src/citation_preview.rs:167
+#: src/citation_preview.rs:274
 msgid "Custom…"
 msgstr "Brugertilpasset …"
 
 # Anden type af indgang iflg. kildekoden
-#: src/entry_page.rs:149
+#: src/entry_page.rs:204
 msgid "Other…"
 msgstr "Anden …"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:208
+#: src/entry_page.rs:266
 msgid "Citation Key already exists"
 msgstr "Referencenøgle findes allerede"
 
-#: src/entry_page.rs:536
+#: src/entry_page.rs:586
 msgid "PDF added"
 msgstr "PDF tilføjet"
 
@@ -553,39 +593,45 @@ msgid "Institution"
 msgstr "Institution"
 
 # BibTeX for konsistens med andre
-#: src/window.rs:324 src/window.rs:353
+#: src/window.rs:320 src/window.rs:343
 msgid "Bibtex Files"
 msgstr "BibTeX-filer"
 
-#: src/window.rs:345
+#: src/window.rs:353
 msgid "Create New Bibliography"
 msgstr "Opret ny bibliografi"
 
-#: src/window.rs:348
-msgid "Create"
-msgstr "Opret"
+#: src/window.rs:354
+msgid "_Create"
+msgstr "_Opret"
 
-#: src/window.rs:469
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: src/window.rs:357
+msgid "bibliography"
+msgstr "bibliografi"
+
+#: src/window.rs:457
 msgid "Remove From Recent Files"
 msgstr "Fjern fra seneste filer"
 
-#: src/window.rs:513
+#: src/window.rs:497
 msgid "An entry with the given citation key already exists"
 msgstr "Der findes allerede en indgang med den givne referencenøgle"
 
-#: src/window.rs:528
+#: src/window.rs:512
 msgid "Bibliography saved"
 msgstr "Bibliografi gemt"
 
-#: src/window.rs:571
+#: src/window.rs:565
 msgid "Citation Deleted"
 msgstr "Reference slettet"
 
-#: src/window.rs:573
+#: src/window.rs:567
 msgid "Undo"
 msgstr "Fortryd"
 
-#: src/window.rs:619
+#: src/window.rs:611
 msgid "translator-credits"
 msgstr ""
 "Ask Hjorth Larsen\n"
@@ -595,30 +641,30 @@ msgstr ""
 "E-mail <dansk@dansk-gruppen.dk>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:632
+#: src/window.rs:624
 msgid "Unsaved Changes"
 msgstr "Ændringer ikke gemt"
 
 # Er ikke sikker på hvad 'safe' dækker over
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:635
+#: src/window.rs:627
 msgid "Do you want to write all changes to the safe?"
 msgstr "Vil du skrive alle ændringer til lageret?"
 
-#: src/window.rs:639
+#: src/window.rs:631
 msgid "_Quit Without Saving"
 msgstr "_Afslut uden at gemme"
 
-#: src/window.rs:640
+#: src/window.rs:632
 msgid "_Don't Quit"
 msgstr "Afslut _ikke"
 
-#: src/window.rs:641
+#: src/window.rs:633
 msgid "_Save and Quit"
 msgstr "_Gem og afslut"
 
-#~ msgid "Select PDF"
-#~ msgstr "Vælg PDF"
+#~ msgid "Back"
+#~ msgstr "Tilbage"
 
 #~ msgid "Copy file to bibliography folder"
 #~ msgstr "Kopiér fil til bibliografimappe"
