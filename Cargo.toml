@@ -20,7 +20,7 @@ gtk = { version = "0.7", package = "gtk4", features = ["gnome_45"] }
 log = "0.4"
 once_cell = "1.12"
 poppler-rs = { version = "0.22", features = ["v0_82"] }
-sanitize-filename = "0.4"
+sanitize-filename = "0.5"
 surf = { version = "2.3", default-features = false, features = ["curl-client"] }
 tracing-subscriber = "0.3"
 url = "2.3"
