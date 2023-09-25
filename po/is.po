@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-07-01 07:52+0000\n"
-"PO-Revision-Date: 2023-07-03 12:08+0000\n"
+"POT-Creation-Date: 2023-09-24 19:56+0000\n"
+"PO-Revision-Date: 2023-09-25 07:26+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.04.3\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -96,12 +96,12 @@ msgstr "Einfalt"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:603
+#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:609
 msgid "Citations"
 msgstr "Tilvitnanir"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:605
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:611
 msgid "Manage your bibliography"
 msgstr "Haltu heimildaskránni þinni til haga"
 
@@ -147,12 +147,12 @@ msgstr "Haltu heimilsaskránni þinn til haga í BibTex sniðinu."
 msgid "Main window"
 msgstr "Aðalgluggi"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:85
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:259
+#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
 msgstr "Bæta við PDF"
 
@@ -168,12 +168,16 @@ msgstr ""
 "heimildaskrárnar."
 
 #: data/resources/ui/add_pdf_dialog.ui:91
-msgid "From file"
+msgid "From File"
 msgstr "Úr skjali"
 
-#: data/resources/ui/add_pdf_dialog.ui:108
+#: data/resources/ui/add_pdf_dialog.ui:104
 msgid "From URL"
 msgstr "Úr URL-slóð"
+
+#: data/resources/ui/add_pdf_dialog.ui:109
+msgid "Download…"
+msgstr "Niðurhal...."
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -187,25 +191,23 @@ msgstr "Tilvitnun"
 msgid "Copy"
 msgstr "Afrita"
 
-#: data/resources/ui/citation_preview.ui:134
+#: data/resources/ui/citation_preview.ui:137
 msgid "Custom Template"
 msgstr "Sérsniðið sniðmát"
 
-#: data/resources/ui/citation_preview.ui:150
-#| msgid ""
-#| "Write a custom format for your citations, to insert the contents of a tag "
-#| "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
-#| "and italics is supported.\n"
+#: data/resources/ui/citation_preview.ui:153
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
 "and italics is supported.\n"
+"            "
 msgstr ""
-"Búiðu til sérsnið fyrir tilvitnanir þínar; til að setja upplýsingar í"
-" merkingunni <tt>þettamerki</tt> skaltu skrifa <tt>%ÞETTAMERKI%</tt>. Einföld"
-" markdown-málskipan fyrir feit- og skáletrun er til staðar.\n"
+"Búiðu til sérsnið fyrir tilvitnanir þínar; til að setja upplýsingar í "
+"merkingunni <tt>þettamerki</tt> skaltu skrifa <tt>%ÞETTAMERKI%</tt>. Einföld "
+"markdown-málskipan fyrir feit- og skáletrun er til staðar.\n"
+"            "
 
-#: data/resources/ui/citation_preview.ui:156
+#: data/resources/ui/citation_preview.ui:159
 msgid "Example:"
 msgstr "Dæmi:"
 
@@ -218,15 +220,15 @@ msgstr "Engar tilvitnanir"
 msgid "Create a new citation"
 msgstr "Búa til nýja tilvitnun"
 
-#: data/resources/ui/entry_list_row.ui:88
+#: data/resources/ui/entry_list_row.ui:90
 msgid "_Open PDF"
 msgstr "_Opna PDF"
 
-#: data/resources/ui/entry_list_row.ui:92
+#: data/resources/ui/entry_list_row.ui:94
 msgid "_Copy Key"
-msgstr "_Afrita merki"
+msgstr "_Afrita lykil"
 
-#: data/resources/ui/entry_list_row.ui:98 data/resources/ui/window.ui:62
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
 msgid "_Delete"
 msgstr "_Eyða"
 
@@ -244,7 +246,7 @@ msgstr "Önnur _tegund tilvitnunar"
 
 #: data/resources/ui/entry_page.ui:105
 msgid "_Citation Key"
-msgstr "_Tilvitnunarmerki"
+msgstr "_Tilvitnunarlykill"
 
 #: data/resources/ui/entry_page.ui:124
 msgid "_Author"
@@ -258,70 +260,74 @@ msgstr "_Titill"
 msgid "_Year"
 msgstr "Á_rtal"
 
-#: data/resources/ui/entry_page.ui:149 src/entry_page.rs:410
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
 msgid "Open in Browser"
 msgstr "Opna í vafra"
 
-#: data/resources/ui/entry_page.ui:165
+#: data/resources/ui/entry_page.ui:168
 msgid "Other Properties"
 msgstr "Aðrar upplýsingar"
 
-#: data/resources/ui/entry_page.ui:179
+#: data/resources/ui/entry_page.ui:182
 msgid "Abstract"
 msgstr "Efnisútdráttur"
 
-#: data/resources/ui/entry_page.ui:183
+#: data/resources/ui/entry_page.ui:186
 msgid "Copy Abstract"
 msgstr "Afrita efnisútdráttinn"
 
-#: data/resources/ui/entry_page.ui:212
+#: data/resources/ui/entry_page.ui:218
 msgid "Notes"
 msgstr "Glósur"
 
-#: data/resources/ui/entry_page.ui:216
+#: data/resources/ui/entry_page.ui:222
 msgid "Copy Notes"
 msgstr "Afrita glósur"
 
-#: data/resources/ui/entry_page.ui:276
+#: data/resources/ui/entry_page.ui:286
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:287 data/resources/ui/window.ui:10
+#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
 #: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
 #: data/resources/ui/window.ui:152
 msgid "_Open"
 msgstr "_Opna"
 
-#: data/resources/ui/entry_page.ui:300
+#: data/resources/ui/entry_page.ui:310
 msgid "Delete PDF"
 msgstr "Eyða PDF"
 
-#: data/resources/ui/entry_page.ui:337
+#: data/resources/ui/entry_page.ui:351
 msgid "Could not set PDF Preview"
 msgstr "Gat ekki stillt PDF forskoðun"
 
-#: data/resources/ui/new_entry_dialog.ui:26
+#: data/resources/ui/new_entry_dialog.ui:8
+msgid "Add new Entry"
+msgstr "Bæta við nýrri færslu"
+
+#: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
 msgstr "_Hætta við"
 
-#: data/resources/ui/new_entry_dialog.ui:33
+#: data/resources/ui/new_entry_dialog.ui:34
 msgid "C_reate"
 msgstr "_Búa til"
 
-#: data/resources/ui/new_entry_dialog.ui:48
+#: data/resources/ui/new_entry_dialog.ui:49
 msgid "New"
 msgstr "Nýtt"
 
-#: data/resources/ui/new_entry_dialog.ui:67
+#: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Key"
-msgstr "Tilvitnunarmerki"
+msgstr "Tilvitnunarlykill"
 
-#: data/resources/ui/new_entry_dialog.ui:72
+#: data/resources/ui/new_entry_dialog.ui:73
 msgid "Citation Type"
 msgstr "Tegund tilvitnunar"
 
 #. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:92
+#: data/resources/ui/new_entry_dialog.ui:93
 msgid "From BibTeX"
 msgstr "Úr Bibtex"
 
@@ -366,7 +372,7 @@ msgstr "_Búa til nýja heimildaskrá"
 
 #: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
 msgid "_Keyboard Shortcuts"
-msgstr "_Flýtil lyklar"
+msgstr "_Flýtilyklar"
 
 #. About dialog
 #: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
@@ -420,11 +426,15 @@ msgstr "Búa til nýja tilvitnun"
 msgid "Search"
 msgstr "Leita"
 
-#: data/resources/ui/window.ui:239
+#: data/resources/ui/window.ui:226
+msgid "Search…"
+msgstr "Leita..."
+
+#: data/resources/ui/window.ui:246
 msgid "Content"
 msgstr "Efni"
 
-#: data/resources/ui/window.ui:248
+#: data/resources/ui/window.ui:256
 msgid "Secondary Menu"
 msgstr "Önnur valmynd"
 
@@ -467,11 +477,11 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Sérsniðið"
 
-#: src/citation_preview.rs:268 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
 msgid "Copied"
 msgstr "Afritað"
 
-#: src/citation_preview.rs:275
+#: src/citation_preview.rs:274
 msgid "Custom…"
 msgstr "Sérsniðið..."
 
@@ -482,15 +492,15 @@ msgstr "Annað…"
 #. TRANSLATORS Every citation has an identifier called key
 #: src/entry_page.rs:266
 msgid "Citation Key already exists"
-msgstr "Tilvitnunarmerki er þegar til"
+msgstr "Tilvitnunarlykill er þegar til"
 
-#: src/entry_page.rs:592
+#: src/entry_page.rs:586
 msgid "PDF added"
 msgstr "PDF bætt við"
 
 #: src/new_entry_dialog.rs:125
 msgid "Insert a BibTeX citation here"
-msgstr "Bætið við  BibTex-tilvísun hérna"
+msgstr "Bættu  BibTex-tilvísun við hérna"
 
 #: src/utils.rs:21
 msgid "Author"
@@ -581,67 +591,67 @@ msgstr "Skóli"
 msgid "Institution"
 msgstr "Stofnun"
 
-#: src/window.rs:319 src/window.rs:342
+#: src/window.rs:325 src/window.rs:348
 msgid "Bibtex Files"
 msgstr "Bibtex skjöl"
 
-#: src/window.rs:352
+#: src/window.rs:358
 msgid "Create New Bibliography"
 msgstr "Búa til nýja heimildaskrá"
 
-#: src/window.rs:353
+#: src/window.rs:359
 msgid "_Create"
 msgstr "_Búa til"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:356
+#: src/window.rs:362
 msgid "bibliography"
 msgstr "heimildaskrá"
 
-#: src/window.rs:456
+#: src/window.rs:462
 msgid "Remove From Recent Files"
 msgstr "Fjarlæga úr nýlegum skjölum"
 
-#: src/window.rs:496
+#: src/window.rs:502
 msgid "An entry with the given citation key already exists"
-msgstr "Færsla með tilgreindu tilvitnunarmerki er þegar til"
+msgstr "Færsla með tilgreindum tilvitnunarlykli er þegar til staðar"
 
-#: src/window.rs:511
+#: src/window.rs:517
 msgid "Bibliography saved"
 msgstr "Heimildaskrá vistuð"
 
-#: src/window.rs:564
+#: src/window.rs:570
 msgid "Citation Deleted"
 msgstr "Tilvitnun eytt"
 
-#: src/window.rs:566
+#: src/window.rs:572
 msgid "Undo"
 msgstr "Afturkalla"
 
-#: src/window.rs:610
+#: src/window.rs:616
 msgid "translator-credits"
 msgstr "Ingirafn, ingirafn at this dot is ,2023"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:623
+#: src/window.rs:629
 msgid "Unsaved Changes"
 msgstr "Óvistaðar breytingar"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:626
+#: src/window.rs:632
 msgid "Do you want to write all changes to the safe?"
 msgstr "Viltu skrifa allar breytingar í vistun?"
 
-#: src/window.rs:630
+#: src/window.rs:636
 msgid "_Quit Without Saving"
 msgstr "_Hætta án þess að vista"
 
-#: src/window.rs:631
+#: src/window.rs:637
 msgid "_Don't Quit"
 msgstr "_Ekki hætta"
 
-#: src/window.rs:632
+#: src/window.rs:638
 msgid "_Save and Quit"
 msgstr "_Vista og hætta"
 
