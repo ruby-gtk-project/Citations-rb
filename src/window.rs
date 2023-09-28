@@ -392,7 +392,7 @@ impl Window {
         Ok(())
     }
 
-    async fn open(&self, file: &gio::File) -> anyhow::Result<()> {
+    pub async fn open(&self, file: &gio::File) -> anyhow::Result<()> {
         let data = String::from_utf8(file.load_contents_future().await?.0)?;
         let settings = &self.imp().settings;
         let bib = cratebibtex::Bib::default();
