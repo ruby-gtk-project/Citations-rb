@@ -74,3 +74,10 @@ if glib_compile_schemas.found()
     ],
   )
 endif
+
+# Install mimetype file
+install_data(
+  '@0@.xml'.format(base_id),
+  install_dir: 'share' / 'mime' / 'application',
+  rename: '@0@.xml'.format(application_id)
+)
