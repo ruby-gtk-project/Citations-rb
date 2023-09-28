@@ -50,6 +50,31 @@ mod imp {
             app.setup_gactions();
             app.setup_accels();
         }
+
+        fn open(&self, files: &[gio::File], _hint: &str) {
+            debug!("Application::open");
+            files
+                .iter()
+                .filter(|f| {
+                    let exists = f.query_exists(gio::Cancellable::NONE);
+                    if !exists {
+                        log::error!("File {} does not exists", f.uri());
+                    }
+                    exists
+                })
+                .for_each(|f| {
+                    let window = Window::new(&self.obj());
+                    let group = gtk::WindowGroup::new();
+                    group.add_window(&window);
+
+                    crate::spawn!(glib::clone!(@weak window, @strong f => async move {
+                        match window.open(&f).await {
+                            Ok(_) => window.present(),
+                            Err(err) => log::error!("Could not open {}: {err}", f.uri()),
+                        }
+                    }));
+                });
+        }
     }
 
     impl GtkApplicationImpl for Application {}
@@ -67,6 +92,7 @@ impl Default for Application {
         glib::Object::builder()
             .property("application-id", APP_ID)
             .property("resource-base-path", "/org/gnome/World/Citations/")
+            .property("flags", gio::ApplicationFlags::HANDLES_OPEN)
             .build()
     }
 }
