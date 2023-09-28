@@ -20,6 +20,15 @@
   <url type="translate">https://l10n.gnome.org/module/citations/</url>
   <content_rating type="oars-1.0" />
   <releases>
+    <release version="0.6.1" date="2023-09-28">
+      <description>
+        <p>Minor Release.</p>
+        <ul>
+          <li>Improved handling of long titles or author names in sidebar</li>
+          <li>Open .bib files</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.6.0" date="2023-09-20">
       <description>
         <p>Use newer widgets from libadwaita.</p>
