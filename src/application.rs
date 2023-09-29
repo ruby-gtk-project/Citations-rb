@@ -53,18 +53,18 @@ mod imp {
 
         fn open(&self, files: &[gio::File], _hint: &str) {
             debug!("Application::open");
-            files.iter().for_each(|f| {
+            for file in files {
                 let window = Window::new(&self.obj());
                 let group = gtk::WindowGroup::new();
                 group.add_window(&window);
+                window.present();
 
-                crate::spawn!(glib::clone!(@weak window, @strong f => async move {
-                    match window.open(&f).await {
-                        Ok(_) => window.present(),
-                        Err(err) => log::error!("Could not open {}: {err}", f.uri()),
+                crate::spawn!(glib::clone!(@strong window, @strong file => async move {
+                    if let Err(err) = window.open(&file).await {
+                        log::error!("Could not open {}: {err}", file.uri());
                     }
                 }));
-            });
+            }
         }
     }
 
