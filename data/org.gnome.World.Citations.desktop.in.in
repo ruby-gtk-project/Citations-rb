@@ -10,6 +10,7 @@ Keywords=bibliography;citing;literature;BibTeX;LaTeX;TeX;
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 Icon=@icon@
 StartupNotify=true
+# TRANSLATORS: Do NOT translate, this is a Mime Type
 MimeType=text/x-bibtex;
 # TRANSLATORS: Do NOT translate
 SingleMainWindow=false
