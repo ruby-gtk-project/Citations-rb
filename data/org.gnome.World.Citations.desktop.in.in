@@ -11,4 +11,5 @@ Keywords=bibliography;citing;literature;BibTeX;LaTeX;TeX;
 Icon=@icon@
 StartupNotify=true
 MimeType=text/x-bibtex;
-X-GNOME-SingleWindow=false
+# TRANSLATORS: Do NOT translate
+SingleMainWindow=false
