@@ -322,8 +322,7 @@ impl Window {
     async fn open_action(&self, path: String) -> anyhow::Result<()> {
         if path.is_empty() {
             let bib_filter = gtk::FileFilter::new();
-            bib_filter.set_name(Some(&gettext("Bibtex Files")));
-            bib_filter.add_mime_type("text/plain");
+            bib_filter.set_name(Some(&gettext("BibTeX Files")));
             bib_filter.add_mime_type("text/x-bibtex");
             bib_filter.add_pattern("*.bib");
 
@@ -345,8 +344,7 @@ impl Window {
 
     async fn new_biblio_action(&self) -> anyhow::Result<()> {
         let bib_filter = gtk::FileFilter::new();
-        bib_filter.set_name(Some(&gettext("Bibtex Files")));
-        bib_filter.add_mime_type("text/plain");
+        bib_filter.set_name(Some(&gettext("BibTeX Files")));
         bib_filter.add_mime_type("text/x-bibtex");
         bib_filter.add_pattern("*.bib");
 

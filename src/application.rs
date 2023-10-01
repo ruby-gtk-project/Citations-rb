@@ -90,15 +90,25 @@ impl Default for Application {
 
 impl Application {
     fn setup_gactions(&self) {
-        let actions = [gio::ActionEntryBuilder::new("quit")
-            .activate(|app: &Self, _, _| {
-                // This is needed to trigger the delete event and saving the window state
-                if let Some(window) = app.active_window() {
-                    window.close();
-                }
-                app.quit();
-            })
-            .build()];
+        let actions = [
+            gio::ActionEntryBuilder::new("quit")
+                .activate(|app: &Self, _, _| {
+                    // This is needed to trigger the delete event and saving the window state
+                    if let Some(window) = app.active_window() {
+                        window.close();
+                    }
+                    app.quit();
+                })
+                .build(),
+            gio::ActionEntryBuilder::new("new-window")
+                .activate(|app, _, _| {
+                    let window = Window::new(&app);
+                    let group = gtk::WindowGroup::new();
+                    group.add_window(&window);
+                    window.present();
+                })
+                .build(),
+        ];
 
         self.add_action_entries(actions);
     }
@@ -106,6 +116,7 @@ impl Application {
     // Sets up keyboard shortcuts
     fn setup_accels(&self) {
         self.set_accels_for_action("app.quit", &["<Control>q"]);
+        self.set_accels_for_action("app.new-window", &["<Control>n"]);
         self.set_accels_for_action("win.open('')", &["<Control>o"]);
         self.set_accels_for_action("win.save", &["<Control>s"]);
         self.set_accels_for_action("win.search", &["<Control>f"]);

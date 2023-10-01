@@ -2,7 +2,7 @@
 Name=Citations
 Comment=Manage your bibliography
 Type=Application
-Exec=citations %U
+Exec=citations %F
 Terminal=false
 Categories=GNOME;GTK;Literature;Science;
 # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
@@ -12,5 +12,10 @@ Icon=@icon@
 StartupNotify=true
 # TRANSLATORS: Do NOT translate, this is a Mime Type
 MimeType=text/x-bibtex;
-# TRANSLATORS: Do NOT translate
-SingleMainWindow=false
+Actions=new-window;
+
+[Desktop Action new-window]
+Exec=citations
+Name=New Window
+# TRANSLATORS: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=window-new
