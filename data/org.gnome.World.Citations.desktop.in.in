@@ -14,3 +14,10 @@ StartupNotify=true
 MimeType=text/x-bibtex;
 # TRANSLATORS: Do NOT translate
 SingleMainWindow=false
+Actions=new-window;
+
+[Desktop Action new-window]
+Exec=citations
+Name=New Window
+# TRANSLATORS: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=window-new
