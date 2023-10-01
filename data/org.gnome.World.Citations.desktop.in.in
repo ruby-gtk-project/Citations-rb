@@ -12,8 +12,6 @@ Icon=@icon@
 StartupNotify=true
 # TRANSLATORS: Do NOT translate, this is a Mime Type
 MimeType=text/x-bibtex;
-# TRANSLATORS: Do NOT translate
-SingleMainWindow=false
 Actions=new-window;
 
 [Desktop Action new-window]
