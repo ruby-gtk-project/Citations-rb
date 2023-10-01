@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-08-13 19:05+0000\n"
-"PO-Revision-Date: 2023-08-14 13:17+0300\n"
+"POT-Creation-Date: 2023-10-01 08:41+0000\n"
+"PO-Revision-Date: 2023-10-01 14:11+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -96,12 +96,12 @@ msgstr "Простий"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:604
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:607
 msgid "Citations"
 msgstr "Цитати"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:606
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:609
 msgid "Manage your bibliography"
 msgstr "Керування вашою бібліографією"
 
@@ -111,6 +111,10 @@ msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
 "bibliography;citing;literature;BibTeX;LaTeX;TeX;бібліографія;цитування;"
 "посилання;література;бібтех;латех;тех;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:20
+msgid "New Window"
+msgstr "Створити вікно"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -149,7 +153,7 @@ msgstr "Керування вашими бібліографіями з вико
 msgid "Main window"
 msgstr "Головне вікно"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:95
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -169,7 +173,6 @@ msgstr ""
 "Створює копію позначеного PDF і зберігає її у вашій теці бібліографії."
 
 #: data/resources/ui/add_pdf_dialog.ui:91
-#| msgid "From file"
 msgid "From File"
 msgstr "З файла"
 
@@ -230,7 +233,7 @@ msgstr "_Відкрити PDF"
 msgid "_Copy Key"
 msgstr "_Копіювати ключ"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "В_илучити"
 
@@ -291,8 +294,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
-#: data/resources/ui/window.ui:152
+#: data/resources/ui/window.ui:104 data/resources/ui/window.ui:151
 msgid "_Open"
 msgstr "_Відкрити"
 
@@ -345,25 +347,30 @@ msgstr "Показати клавіатурні скорочення"
 
 #: data/resources/ui/shortcuts.ui:20
 msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Створити вікно"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Вийти з програми"
 
-#: data/resources/ui/shortcuts.ui:28
+#: data/resources/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "Бібліографія"
 
-#: data/resources/ui/shortcuts.ui:31
+#: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Відкрити"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:43
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Зберегти"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:49
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Шукати"
@@ -372,12 +379,12 @@ msgstr "Шукати"
 msgid "_Create New Bibliography"
 msgstr "С_творити бібліографію"
 
-#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
 #. About dialog
-#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
 msgid "_About Citations"
 msgstr "_Про «Цитати»"
 
@@ -385,55 +392,58 @@ msgstr "_Про «Цитати»"
 msgid "_Save"
 msgstr "З_берегти"
 
-#: data/resources/ui/window.ui:52
+#: data/resources/ui/window.ui:33
+msgid "New _Window"
+msgstr "Створити _вікно"
+
+#: data/resources/ui/window.ui:51
 msgid "_Search in Google Scholar"
 msgstr "_Шукати у Google Академія"
 
 #. arXiv is a proper name
-#: data/resources/ui/window.ui:56
+#: data/resources/ui/window.ui:55
 msgid "_Search in arXiv"
 msgstr "_Шукати в arXiv"
 
-#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:127
+#: data/resources/ui/window.ui:204
 msgid "Main Menu"
 msgstr "Головне меню"
 
 #. BibTeX is a proper name
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:100
 msgid "Open a BibTeX File"
 msgstr "Відкрийте файл BibTeX"
 
-#: data/resources/ui/window.ui:102
+#: data/resources/ui/window.ui:101
 msgid "Or drag-and-drop a file"
 msgstr "Або перетягніть і скиньте файл"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:136
 msgid "Manage your Citations"
 msgstr "Керування вашими посиланнями"
 
-#: data/resources/ui/window.ui:144
+#: data/resources/ui/window.ui:143
 msgid "Recent Files"
 msgstr "Нещодавні файли"
 
-#: data/resources/ui/window.ui:187
+#: data/resources/ui/window.ui:186
 msgid "Sidebar"
 msgstr "Бічна панель"
 
-#: data/resources/ui/window.ui:198
+#: data/resources/ui/window.ui:197
 msgid "Add New Citation"
 msgstr "Додати нове посилання"
 
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:211
 msgid "Search"
 msgstr "Пошук"
 
-#: data/resources/ui/window.ui:226
-#| msgid "Search"
+#: data/resources/ui/window.ui:225
 msgid "Search…"
 msgstr "Шукати…"
 
-#: data/resources/ui/window.ui:246
+#: data/resources/ui/window.ui:245
 msgid "Content"
 msgstr "Вміст"
 
@@ -594,67 +604,68 @@ msgstr "Школа"
 msgid "Institution"
 msgstr "Установа"
 
-#: src/window.rs:320 src/window.rs:343
-msgid "Bibtex Files"
+#: src/window.rs:325 src/window.rs:347
+#| msgid "Bibtex Files"
+msgid "BibTeX Files"
 msgstr "файли BibTeX"
 
-#: src/window.rs:353
+#: src/window.rs:356
 msgid "Create New Bibliography"
 msgstr "Створити бібліографію"
 
-#: src/window.rs:354
+#: src/window.rs:357
 msgid "_Create"
 msgstr "С_творити"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:357
+#: src/window.rs:360
 msgid "bibliography"
 msgstr "bibliography"
 
-#: src/window.rs:457
+#: src/window.rs:460
 msgid "Remove From Recent Files"
 msgstr "Вилучити з нещодавніх файлів"
 
-#: src/window.rs:497
+#: src/window.rs:500
 msgid "An entry with the given citation key already exists"
 msgstr "Запис із вказаним ключем цитування вже існує"
 
-#: src/window.rs:512
+#: src/window.rs:515
 msgid "Bibliography saved"
 msgstr "Бібліографію збережено"
 
-#: src/window.rs:565
+#: src/window.rs:568
 msgid "Citation Deleted"
 msgstr "Посилання вилучено"
 
-#: src/window.rs:567
+#: src/window.rs:570
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:611
+#: src/window.rs:614
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:624
+#: src/window.rs:627
 msgid "Unsaved Changes"
 msgstr "Незбережені зміни"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:627
+#: src/window.rs:630
 msgid "Do you want to write all changes to the safe?"
 msgstr "Хочете записати усі зміни до сейфа?"
 
-#: src/window.rs:631
+#: src/window.rs:634
 msgid "_Quit Without Saving"
 msgstr "В_ийти без збереження"
 
-#: src/window.rs:632
+#: src/window.rs:635
 msgid "_Don't Quit"
 msgstr "_Не виходити"
 
-#: src/window.rs:633
+#: src/window.rs:636
 msgid "_Save and Quit"
 msgstr "З_берегти та вийти"
 
