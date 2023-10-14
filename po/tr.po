@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-10-01 08:41+0000\n"
-"PO-Revision-Date: 2023-10-02 10:01+0300\n"
+"POT-Creation-Date: 2023-10-04 19:19+0000\n"
+"PO-Revision-Date: 2023-10-13 15:01+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -311,7 +311,7 @@ msgstr "Yeni Girdi Ekle"
 
 #: data/resources/ui/new_entry_dialog.ui:27
 msgid "_Cancel"
-msgstr "İptal _Et"
+msgstr "İ_ptal"
 
 #: data/resources/ui/new_entry_dialog.ui:34
 msgid "C_reate"
