@@ -96,7 +96,7 @@
                     <child>
                       <object class="AdwStatusPage" id="no_recent_files_status_page">
                         <property name="vexpand">True</property>
-                        <property name="icon-name">document-open-symbolic</property>
+                        <property name="icon-name">org.gnome.World.Citations</property>
                         <property name="title" translatable="yes" comments="BibTeX is a proper name">Open a BibTeX File</property>
                         <property name="description" translatable="yes">Or drag-and-drop a file</property>
                         <style>
