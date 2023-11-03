@@ -99,6 +99,9 @@
                         <property name="icon-name">document-open-symbolic</property>
                         <property name="title" translatable="yes" comments="BibTeX is a proper name">Open a BibTeX File</property>
                         <property name="description" translatable="yes">Or drag-and-drop a file</property>
+                        <style>
+                          <class name="icon-dropshadow"/>
+                        </style>
                         <child>
                           <object class="GtkButton">
                             <property name="label" translatable="yes">_Open</property>
@@ -135,6 +138,9 @@
                         <property name="vexpand">True</property>
                         <property name="title" translatable="yes">Manage your Citations</property>
                         <property name="icon-name">org.gnome.World.Citations</property>
+                        <style>
+                          <class name="icon-dropshadow"/>
+                        </style>
                         <child>
                           <object class="AdwClamp">
                             <property name="maximum-size">450</property>
