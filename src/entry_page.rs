@@ -477,7 +477,7 @@ impl EntryPage {
             None
         };
 
-        crate::spawn!(glib::clone!(@weak self as obj => async move {
+        glib::spawn_future_local(glib::clone!(@weak self as obj => async move {
             if let Err(err) = obj.set_pdf_preview(pdf.as_ref()).await {
                 log::error!("Could not set pdf preview: {err}");
                 obj.imp().preview_error_stack.set_visible_child(&*obj.imp().preview_error);

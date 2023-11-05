@@ -235,7 +235,7 @@ mod imp {
                 glib::clone!(@weak obj => @default-return false, move |_, value, _, _| {
                     if let Ok(file) = value.get::<gio::File>() {
                         if file.query_exists(gio::Cancellable::NONE) {
-                            crate::spawn!(glib::clone!(@weak obj => async move {
+                            glib::spawn_future_local(glib::clone!(@weak obj => async move {
                                 if let Err(err) = obj.open_wrapper(&file).await {
                                     log::error!("Could not open file: {err:?}")
                                 };
@@ -262,7 +262,7 @@ mod imp {
 
             if let Some(bib) = self.bib.get() {
                 if bib.modified() && !self.force_close.get() {
-                    crate::spawn!(glib::clone!(@weak window => async move {
+                    glib::spawn_future_local(glib::clone!(@weak window => async move {
                         window.show_save_dialog().await;
                     }));
 
