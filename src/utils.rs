@@ -4,18 +4,6 @@ use gio::prelude::*;
 use gtk::{gio, glib};
 use std::path::PathBuf;
 
-#[macro_export]
-macro_rules! spawn {
-    ($future:expr) => {
-        let ctx = glib::MainContext::default();
-        ctx.spawn_local($future);
-    };
-    ($priority:expr, $future:expr) => {
-        let ctx = glib::MainContext::default();
-        ctx.spawn_local_with_priority($priority, $future);
-    };
-}
-
 pub fn translated_key(key: &str) -> String {
     match key {
         "author" => gettext("Author"),
