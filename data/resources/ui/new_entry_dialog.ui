@@ -34,6 +34,7 @@
               <object class="GtkButton" id="create_button">
                 <property name="label" translatable="yes">C_reate</property>
                 <property name="use-underline">True</property>
+                <property name="sensitive">False</property>
                 <signal name="clicked" handler="on_create_clicked" swapped="true"/>
                 <style>
                   <class name="suggested-action"/>
@@ -68,6 +69,7 @@
                           <object class="AdwEntryRow" id="entry_row">
                             <property name="title" translatable="yes">Citation Key</property>
                             <property name="activates-default">True</property>
+                            <signal name="notify::text" handler="on_entry_notify_text" swapped="true"/>
                           </object>
                         </child>
                         <child>
