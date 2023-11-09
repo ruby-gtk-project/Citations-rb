@@ -60,7 +60,16 @@ mod imp {
         }
 
         #[template_callback]
+        async fn on_entry_activated(&self) {
+            self.download().await;
+        }
+
+        #[template_callback]
         async fn on_download_pdf_button_clicked(&self) {
+            self.download().await;
+        }
+
+        async fn download(&self) {
             self.download_button.set_sensitive(false);
             if let Err(err) = self.obj().download_pdf_for_entry().await {
                 log::error!("Could not download pdf: {err}");

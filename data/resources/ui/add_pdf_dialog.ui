@@ -102,6 +102,7 @@
                                   <object class="AdwEntryRow" id="pdf_url_entry_row">
                                     <property name="activatable">True</property>
                                     <property name="title" translatable="yes">From URL</property>
+                                    <signal name="entry-activated" handler="on_entry_activated" swapped="true"/>
                                     <child>
                                       <object class="GtkButton" id="download_button">
                                         <property name="valign">center</property>
