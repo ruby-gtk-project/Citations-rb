@@ -30,6 +30,8 @@ mod imp {
         pub source_view: TemplateChild<gsv::View>,
         #[template_child]
         pub view_stack: TemplateChild<adw::ViewStack>,
+        #[template_child]
+        pub create_button: TemplateChild<gtk::Button>,
 
         pub sender: RefCell<Option<futures_channel::oneshot::Sender<Option<String>>>>,
         pub remove_text: Once,
@@ -42,6 +44,7 @@ mod imp {
                 entry_row: TemplateChild::default(),
                 source_view: TemplateChild::default(),
                 view_stack: TemplateChild::default(),
+                create_button: TemplateChild::default(),
                 sender: RefCell::default(),
                 remove_text: Once::new(),
             }
@@ -77,6 +80,12 @@ mod imp {
             let sender = self.sender.take().unwrap();
             sender.send(None).unwrap();
             self.obj().close();
+        }
+
+        #[template_callback]
+        fn on_entry_notify_text(&self) {
+            let is_text_empty = self.entry_row.text().is_empty();
+            self.create_button.set_sensitive(!is_text_empty);
         }
 
         #[template_callback]
