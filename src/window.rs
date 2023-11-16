@@ -226,22 +226,23 @@ mod imp {
             obj.action_set_enabled("win.delete_entry", false);
 
             // Setup drag-n-drop
-            let target = gtk::DropTarget::new(
-                gio::File::static_type(),
-                gdk::DragAction::COPY | gdk::DragAction::MOVE,
-            );
+            let target = gtk::DropTarget::builder()
+                .name("file-drop-target")
+                .actions(gdk::DragAction::COPY | gdk::DragAction::MOVE)
+                .formats(&gdk::ContentFormats::for_type(gdk::FileList::static_type()))
+                .build();
 
             target.connect_drop(
                 glib::clone!(@weak obj => @default-return false, move |_, value, _, _| {
-                    if let Ok(file) = value.get::<gio::File>() {
-                        if file.query_exists(gio::Cancellable::NONE) {
+                    if let Ok(file_list) = value.get::<gdk::FileList>() {
+                        if let Some(file) = file_list.files().first().cloned() {
                             glib::spawn_future_local(glib::clone!(@weak obj => async move {
                                 if let Err(err) = obj.open_wrapper(&file).await {
                                     log::error!("Could not open file: {err:?}")
                                 };
                             }));
+                            return true;
                         }
-                        return true;
                     }
                     false
                 }),
