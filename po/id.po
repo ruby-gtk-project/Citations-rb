@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-08-13 19:05+0000\n"
-"PO-Revision-Date: 2023-08-18 21:23+0700\n"
+"POT-Creation-Date: 2023-10-01 08:41+0000\n"
+"PO-Revision-Date: 2023-11-21 14:44+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -94,12 +94,12 @@ msgstr "Polos"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:604
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:607
 msgid "Citations"
 msgstr "Sitasi"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:606
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:609
 msgid "Manage your bibliography"
 msgstr "Mengelola bibliografi Anda"
 
@@ -107,6 +107,10 @@ msgstr "Mengelola bibliografi Anda"
 #: data/org.gnome.World.Citations.desktop.in.in:10
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "bibliografi;daftar pustaka;mengutip;literatur;BibTeX;LaTeX;Tex;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:20
+msgid "New Window"
+msgstr "Jendela Baru"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -145,7 +149,7 @@ msgstr "Mengelola bibliografi Anda menggunakan format BibTeX."
 msgid "Main window"
 msgstr "Jendela utama"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:95
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -225,7 +229,7 @@ msgstr "B_uka PDF"
 msgid "_Copy Key"
 msgstr "Salin _Kunci"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "Ha_pus"
 
@@ -286,8 +290,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
-#: data/resources/ui/window.ui:152
+#: data/resources/ui/window.ui:104 data/resources/ui/window.ui:151
 msgid "_Open"
 msgstr "_Buka"
 
@@ -340,25 +343,30 @@ msgstr "Tampilkan Pintasan"
 
 #: data/resources/ui/shortcuts.ui:20
 msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Jendela Baru"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Keluar"
 
-#: data/resources/ui/shortcuts.ui:28
+#: data/resources/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "Bibliografi"
 
-#: data/resources/ui/shortcuts.ui:31
+#: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Buka"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:43
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Simpan"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:49
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Cari"
@@ -367,12 +375,12 @@ msgstr "Cari"
 msgid "_Create New Bibliography"
 msgstr "_Buat Bibliografi Baru"
 
-#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
 msgid "_Keyboard Shortcuts"
 msgstr "Pintasan Papan _Ketik"
 
 #. About dialog
-#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
 msgid "_About Citations"
 msgstr "Tent_ang Sitasi"
 
@@ -380,54 +388,58 @@ msgstr "Tent_ang Sitasi"
 msgid "_Save"
 msgstr "_Simpan"
 
-#: data/resources/ui/window.ui:52
+#: data/resources/ui/window.ui:33
+msgid "New _Window"
+msgstr "_Jendela Baru"
+
+#: data/resources/ui/window.ui:51
 msgid "_Search in Google Scholar"
 msgstr "Cari di Google _Scholar"
 
 #. arXiv is a proper name
-#: data/resources/ui/window.ui:56
+#: data/resources/ui/window.ui:55
 msgid "_Search in arXiv"
 msgstr "Car_i di arXiv"
 
-#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:127
+#: data/resources/ui/window.ui:204
 msgid "Main Menu"
 msgstr "Menu Utama"
 
 #. BibTeX is a proper name
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:100
 msgid "Open a BibTeX File"
 msgstr "Buka Berkas BibTeX"
 
-#: data/resources/ui/window.ui:102
+#: data/resources/ui/window.ui:101
 msgid "Or drag-and-drop a file"
 msgstr "Atau seret dan jatuhkan berkas"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:136
 msgid "Manage your Citations"
 msgstr "Kelola Sitasi Anda"
 
-#: data/resources/ui/window.ui:144
+#: data/resources/ui/window.ui:143
 msgid "Recent Files"
 msgstr "Berkas Terkini"
 
-#: data/resources/ui/window.ui:187
+#: data/resources/ui/window.ui:186
 msgid "Sidebar"
 msgstr "Bilah sisi"
 
-#: data/resources/ui/window.ui:198
+#: data/resources/ui/window.ui:197
 msgid "Add New Citation"
 msgstr "Tambahkan Sitasi Baru"
 
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:211
 msgid "Search"
 msgstr "Cari"
 
-#: data/resources/ui/window.ui:226
+#: data/resources/ui/window.ui:225
 msgid "Search…"
 msgstr "Cari…"
 
-#: data/resources/ui/window.ui:246
+#: data/resources/ui/window.ui:245
 msgid "Content"
 msgstr "Konten"
 
@@ -588,69 +600,69 @@ msgstr "Sekolah"
 msgid "Institution"
 msgstr "Institusi"
 
-#: src/window.rs:320 src/window.rs:343
-msgid "Bibtex Files"
-msgstr "Berkas Bibtex"
+#: src/window.rs:325 src/window.rs:347
+msgid "BibTeX Files"
+msgstr "Berkas BibTeX"
 
-#: src/window.rs:353
+#: src/window.rs:356
 msgid "Create New Bibliography"
 msgstr "Buat Bibliografi Baru"
 
-#: src/window.rs:354
+#: src/window.rs:357
 msgid "_Create"
 msgstr "_Buat"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:357
+#: src/window.rs:360
 msgid "bibliography"
 msgstr "bibliografi"
 
-#: src/window.rs:457
+#: src/window.rs:460
 msgid "Remove From Recent Files"
 msgstr "Hapus dari Berkas Terkini"
 
-#: src/window.rs:497
+#: src/window.rs:500
 msgid "An entry with the given citation key already exists"
 msgstr "Entri dengan kunci sitasi yang diberikan sudah ada"
 
-#: src/window.rs:512
+#: src/window.rs:515
 msgid "Bibliography saved"
 msgstr "Bibliografi disimpan"
 
-#: src/window.rs:565
+#: src/window.rs:568
 msgid "Citation Deleted"
 msgstr "Sitasi Dihapus"
 
-#: src/window.rs:567
+#: src/window.rs:570
 msgid "Undo"
 msgstr "Tak Jadi"
 
-#: src/window.rs:611
+#: src/window.rs:614
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2022.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022-2023."
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:624
+#: src/window.rs:627
 msgid "Unsaved Changes"
 msgstr "Perubahan Belum Tersimpan"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:627
+#: src/window.rs:630
 msgid "Do you want to write all changes to the safe?"
 msgstr "Apakah Anda ingin menulis semua perubahan ke brankas?"
 
-#: src/window.rs:631
+#: src/window.rs:634
 msgid "_Quit Without Saving"
 msgstr "_Keluar Tanpa Menyimpan"
 
-#: src/window.rs:632
+#: src/window.rs:635
 msgid "_Don't Quit"
 msgstr "Ja_ngan Keluar"
 
-#: src/window.rs:633
+#: src/window.rs:636
 msgid "_Save and Quit"
 msgstr "_Simpan dan Keluar"
 
