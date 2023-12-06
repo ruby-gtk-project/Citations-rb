@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-08-18 07:00+0000\n"
-"PO-Revision-Date: 2023-09-04 15:38+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2023-10-01 08:41+0000\n"
+"PO-Revision-Date: 2023-12-06 11:24+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -96,12 +96,12 @@ msgstr "רגיל"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:604
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:607
 msgid "Citations"
 msgstr "ציטטות"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:606
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:609
 msgid "Manage your bibliography"
 msgstr "ניהול הביבליוגרפיה שלך"
 
@@ -110,6 +110,10 @@ msgstr "ניהול הביבליוגרפיה שלך"
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
 "ביבליוגרפיה;ציטוט;מראה מקום;מראי מקום;ספרות;מקורות;BibTeX;LaTeX;TeX;לטך;לטקס;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:20
+msgid "New Window"
+msgstr "חלון חדש"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -148,7 +152,7 @@ msgstr "Manage your bibliographies using the BibTeX format."
 msgid "Main window"
 msgstr "Main window"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:95
 msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
@@ -227,7 +231,7 @@ msgstr "_פתיחת PDF"
 msgid "_Copy Key"
 msgstr "ה_עתקת מפתח"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_מחיקה"
 
@@ -288,8 +292,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
-#: data/resources/ui/window.ui:152
+#: data/resources/ui/window.ui:104 data/resources/ui/window.ui:151
 msgid "_Open"
 msgstr "_פתיחה"
 
@@ -342,25 +345,30 @@ msgstr "הצגת צירופי מקשים"
 
 #: data/resources/ui/shortcuts.ui:20
 msgctxt "shortcut window"
+msgid "New Window"
+msgstr "חלון חדש"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "יציאה"
 
-#: data/resources/ui/shortcuts.ui:28
+#: data/resources/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "ביבליוגרפיה"
 
-#: data/resources/ui/shortcuts.ui:31
+#: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "פתיחה"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:43
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "שמירה"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:49
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "חיפוש"
@@ -369,12 +377,12 @@ msgstr "חיפוש"
 msgid "_Create New Bibliography"
 msgstr "י_צירת ביבליוגרפיה חדשה"
 
-#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
 msgid "_Keyboard Shortcuts"
 msgstr "_קיצורי מקלדת"
 
 #. About dialog
-#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
 msgid "_About Citations"
 msgstr "_על אודות ציטטות"
 
@@ -382,54 +390,58 @@ msgstr "_על אודות ציטטות"
 msgid "_Save"
 msgstr "_שמירה"
 
-#: data/resources/ui/window.ui:52
+#: data/resources/ui/window.ui:33
+msgid "New _Window"
+msgstr "_חלון חד"
+
+#: data/resources/ui/window.ui:51
 msgid "_Search in Google Scholar"
 msgstr "_חיפוש בגוגל סְקוֹלַר"
 
 #. arXiv is a proper name
-#: data/resources/ui/window.ui:56
+#: data/resources/ui/window.ui:55
 msgid "_Search in arXiv"
 msgstr "_חיפוש ב־arXiv"
 
-#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:127
+#: data/resources/ui/window.ui:204
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
 #. BibTeX is a proper name
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:100
 msgid "Open a BibTeX File"
 msgstr "פתיחת קובץ BibTeX"
 
-#: data/resources/ui/window.ui:102
+#: data/resources/ui/window.ui:101
 msgid "Or drag-and-drop a file"
 msgstr "או לגרור ולשחרר קובץ"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:136
 msgid "Manage your Citations"
 msgstr "ניהול רשימת המקורות שלך"
 
-#: data/resources/ui/window.ui:144
+#: data/resources/ui/window.ui:143
 msgid "Recent Files"
 msgstr "קבצים אחרונים"
 
-#: data/resources/ui/window.ui:187
+#: data/resources/ui/window.ui:186
 msgid "Sidebar"
 msgstr "סרגל צד"
 
-#: data/resources/ui/window.ui:198
+#: data/resources/ui/window.ui:197
 msgid "Add New Citation"
 msgstr "הוספת מראה מקום חדש"
 
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:211
 msgid "Search"
 msgstr "חיפוש"
 
-#: data/resources/ui/window.ui:226
+#: data/resources/ui/window.ui:225
 msgid "Search…"
 msgstr "חיפוש…"
 
-#: data/resources/ui/window.ui:246
+#: data/resources/ui/window.ui:245
 msgid "Content"
 msgstr "תוכן"
 
@@ -590,70 +602,71 @@ msgstr "בית ספר"
 msgid "Institution"
 msgstr "מכון"
 
-#: src/window.rs:320 src/window.rs:343
-msgid "Bibtex Files"
-msgstr "קובצי Bibtex"
+#: src/window.rs:325 src/window.rs:347
+#| msgid "Bibtex Files"
+msgid "BibTeX Files"
+msgstr "קובץ BibTeX"
 
-#: src/window.rs:353
+#: src/window.rs:356
 msgid "Create New Bibliography"
 msgstr "יצירת ביבליוגרפיה חדשה"
 
-#: src/window.rs:354
+#: src/window.rs:357
 msgid "_Create"
 msgstr "_יצירה"
 
 # msgctxt "shortcut window"
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:357
+#: src/window.rs:360
 msgid "bibliography"
 msgstr "ביבליוגרפיה"
 
-#: src/window.rs:457
+#: src/window.rs:460
 msgid "Remove From Recent Files"
 msgstr "הסרה מקבצים אחרונים"
 
-#: src/window.rs:497
+#: src/window.rs:500
 msgid "An entry with the given citation key already exists"
 msgstr "כבר קיימת רשומה עם מפתח מראה המקום שהוזן"
 
-#: src/window.rs:512
+#: src/window.rs:515
 msgid "Bibliography saved"
 msgstr "ביבליוגרפיה נשמרה"
 
-#: src/window.rs:565
+#: src/window.rs:568
 msgid "Citation Deleted"
 msgstr "נמחק מראה מקום"
 
-#: src/window.rs:567
+#: src/window.rs:570
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:611
+#: src/window.rs:614
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:624
+#: src/window.rs:627
 msgid "Unsaved Changes"
 msgstr "שינויים שלא נשמרו"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:627
+#: src/window.rs:630
 msgid "Do you want to write all changes to the safe?"
 msgstr "לכתוב את כל השינויים בבטחה?"
 
-#: src/window.rs:631
+#: src/window.rs:634
 msgid "_Quit Without Saving"
 msgstr "ל_צאת מבלי לשמור"
 
-#: src/window.rs:632
+#: src/window.rs:635
 msgid "_Don't Quit"
 msgstr "_לא לצאת"
 
-#: src/window.rs:633
+#: src/window.rs:636
 msgid "_Save and Quit"
 msgstr "ל_שמור ולצאת"
 
