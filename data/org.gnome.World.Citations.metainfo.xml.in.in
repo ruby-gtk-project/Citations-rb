@@ -101,4 +101,7 @@
   <launchable type="desktop-id">@app-id@.desktop</launchable>
   <platform>GTK 4</platform>
   <platform>Libadwaita</platform>
+  <provides>
+    <mediatype>text/x-bibtex</mediatype>
+  </provides>
 </component>
