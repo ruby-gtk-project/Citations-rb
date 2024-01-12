@@ -333,7 +333,10 @@ impl Window {
             let dialog = gtk::FileDialog::new();
             dialog.set_filters(Some(&filters));
 
-            let file = dialog.open_future(Some(self)).await?;
+            let file = match dialog.open_future(Some(self)).await {
+                Err(err) if err.matches(gtk::DialogError::Dismissed) => return Ok(()),
+                res => res?,
+            };
             self.open_wrapper(&file).await?;
         } else {
             let file = gio::File::for_path(&path);
@@ -360,7 +363,10 @@ impl Window {
         // bibliography.bib, please only use alphabetic characters.
         dialog.set_initial_name(Some(&(gettext("bibliography") + ".bib")));
 
-        let file = dialog.save_future(Some(self)).await?;
+        let file = match dialog.save_future(Some(self)).await {
+            Err(err) if err.matches(gtk::DialogError::Dismissed) => return Ok(()),
+            res => res?,
+        };
         let stream = file
             .create_future(gio::FileCreateFlags::NONE, glib::Priority::default())
             .await?;

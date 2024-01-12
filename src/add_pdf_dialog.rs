@@ -195,7 +195,10 @@ impl AddPdfDialog {
             dialog.set_filters(Some(&filters));
             dialog.set_title(&gettext("Select a PDF"));
 
-            let file = dialog.open_future(Some(self)).await?;
+            let file = match dialog.open_future(Some(self)).await {
+                Err(err) if err.matches(gtk::DialogError::Dismissed) => return Ok(()),
+                res => res?,
+            };
             let filename = utils::pdf_filename(citation_key);
             let dest = folder.child(&filename);
 
