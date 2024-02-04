@@ -3,7 +3,7 @@ use cratebibtex::Format;
 use gsv::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
-use gtk::{prelude::*, CompositeTemplate};
+use gtk::CompositeTemplate;
 use gettextrs::gettext;
 
 const AMS_ARTICLE_TEMPLATE: &str =

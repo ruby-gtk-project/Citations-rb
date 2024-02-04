@@ -1,7 +1,8 @@
+use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gettextrs::gettext;
+use gtk::CompositeTemplate;
 use gtk::{gio, glib};
-use gtk::{prelude::*, CompositeTemplate};
 use once_cell::sync::Lazy;
 use std::cell::OnceCell;
 
@@ -36,7 +37,7 @@ mod imp {
     impl ObjectSubclass for AddPdfDialog {
         const NAME: &'static str = "AddPdfDialog";
         type Type = super::AddPdfDialog;
-        type ParentType = adw::Window;
+        type ParentType = adw::Dialog;
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -107,13 +108,12 @@ mod imp {
         }
     }
     impl WidgetImpl for AddPdfDialog {}
-    impl WindowImpl for AddPdfDialog {}
-    impl AdwWindowImpl for AddPdfDialog {}
+    impl AdwDialogImpl for AddPdfDialog {}
 }
 
 glib::wrapper! {
     pub struct AddPdfDialog(ObjectSubclass<imp::AddPdfDialog>)
-        @extends gtk::Widget, gtk::Window, adw::Window;
+        @extends gtk::Widget, adw::Dialog, @implements gtk::Root;
 }
 
 impl Default for AddPdfDialog {
@@ -123,11 +123,8 @@ impl Default for AddPdfDialog {
 }
 
 impl AddPdfDialog {
-    pub fn new<W: glib::IsA<gtk::Window>>(window: &W, citation_key: String) -> Self {
-        let dialog: Self = glib::Object::builder()
-            .property("transient-for", window)
-            .property("application", window.application())
-            .build();
+    pub fn new(citation_key: String) -> Self {
+        let dialog: Self = glib::Object::new();
         dialog.imp().citation_key.set(citation_key).unwrap();
 
         dialog
@@ -195,7 +192,8 @@ impl AddPdfDialog {
             dialog.set_filters(Some(&filters));
             dialog.set_title(&gettext("Select a PDF"));
 
-            let file = match dialog.open_future(Some(self)).await {
+            let window = self.root().and_downcast::<crate::Window>().unwrap();
+            let file = match dialog.open_future(Some(&window)).await {
                 Err(err) if err.matches(gtk::DialogError::Dismissed) => return Ok(()),
                 res => res?,
             };
