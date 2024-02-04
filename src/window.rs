@@ -94,15 +94,19 @@ mod imp {
             klass.bind_template();
             klass.bind_template_callbacks();
 
-            klass.install_action_async("win.open", Some("s"), |window, _, param| {
-                // FIXME This clone is needed as long as the API requires a Option<&Value>.
-                let path: String = param.unwrap().get::<String>().unwrap();
-                async move {
-                    if let Err(err) = window.open_action(path).await {
-                        log::error!("Could not open file: {err}");
+            klass.install_action_async(
+                "win.open",
+                Some(glib::VariantTy::STRING),
+                |window, _, param| {
+                    // FIXME This clone is needed as long as the API requires a Option<&Value>.
+                    let path: String = param.unwrap().get::<String>().unwrap();
+                    async move {
+                        if let Err(err) = window.open_action(path).await {
+                            log::error!("Could not open file: {err}");
+                        }
                     }
-                }
-            });
+                },
+            );
             klass.install_action_async("win.new_biblio", None, |window, _, _| async move {
                 if let Err(err) = window.new_biblio_action().await {
                     log::error!("Could not create file: {err}");
@@ -398,10 +402,11 @@ impl Window {
     }
 
     pub async fn open(&self, file: &gio::File) -> anyhow::Result<()> {
-        let data = String::from_utf8(file.load_contents_future().await?.0)?;
+        let slice = file.load_contents_future().await?.0;
+        let data = std::str::from_utf8(&slice)?;
         let settings = &self.imp().settings;
         let bib = cratebibtex::Bib::default();
-        bib.parse(&data)?;
+        bib.parse(data)?;
         if bib.n_items() != 0 {
             self.imp().entry_page.set_empty_status_page();
         }
@@ -490,9 +495,9 @@ impl Window {
     }
 
     pub async fn new_entry_dialog(&self) -> anyhow::Result<()> {
-        let dialog = crate::NewEntryDialog::new(self);
+        let dialog = crate::NewEntryDialog::new();
 
-        if let Some(data) = dialog.run().await {
+        if let Some(data) = dialog.run(self).await {
             self.new_entry(data)
         } else {
             anyhow::bail!("Dialog error")
@@ -609,7 +614,7 @@ impl Window {
     }
 
     fn show_about_dialog(&self) {
-        let dialog = adw::AboutWindow::builder()
+        let dialog = adw::AboutDialog::builder()
             .application_icon(APP_ID)
             .application_name(gettext("Citations"))
             .license_type(gtk::License::Gpl30)
@@ -617,19 +622,17 @@ impl Window {
             .website("https://gitlab.gnome.org/World/citations/")
             .issue_url("https://gitlab.gnome.org/World/citations/-/issues/new")
             .version(VERSION)
-            .transient_for(self)
             .translator_credits(gettext("translator-credits"))
             .developer_name("Maximiliano Sandoval")
             .developers(vec!["Maximiliano Sandoval <msandova@gnome.org>"])
             .designers(vec!["Tobias Bernard <tbernard@gnome.org>"])
             .build();
 
-        dialog.present();
+        dialog.present(self);
     }
 
     async fn show_save_dialog(&self) {
-        let dialog = adw::MessageDialog::new(
-            Some(self),
+        let dialog = adw::AlertDialog::new(
             // NOTE Dialog title which informs the user about unsaved changes.
             Some(&gettext("Unsaved Changes")),
             Some(&gettext(
@@ -644,7 +647,7 @@ impl Window {
         dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
         dialog.set_default_response(Some("save"));
 
-        match dialog.choose_future().await.as_str() {
+        match dialog.choose_future(self).await.as_str() {
             "discard" => self.force_close(),
             "save" => {
                 if let Err(err) = self.save().await {

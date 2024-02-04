@@ -55,7 +55,7 @@ mod imp {
     impl ObjectSubclass for NewEntryDialog {
         const NAME: &'static str = "NewEntryDialog";
         type Type = super::NewEntryDialog;
-        type ParentType = adw::Window;
+        type ParentType = adw::Dialog;
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -146,13 +146,12 @@ mod imp {
     }
 
     impl WidgetImpl for NewEntryDialog {}
-    impl WindowImpl for NewEntryDialog {}
-    impl AdwWindowImpl for NewEntryDialog {}
+    impl AdwDialogImpl for NewEntryDialog {}
 }
 
 glib::wrapper! {
     pub struct NewEntryDialog(ObjectSubclass<imp::NewEntryDialog>)
-        @extends gtk::Widget, adw::Window, gtk::Window;
+        @extends gtk::Widget, adw::Dialog;
 }
 
 impl Default for NewEntryDialog {
@@ -162,19 +161,15 @@ impl Default for NewEntryDialog {
 }
 
 impl NewEntryDialog {
-    pub fn new<T: glib::IsA<gtk::Window>>(window: &T) -> Self {
-        glib::Object::builder()
-            .property("modal", true)
-            .property("transient-for", window)
-            .property("application", window.application())
-            .build()
+    pub fn new() -> Self {
+        glib::Object::new()
     }
 
-    pub async fn run(&self) -> Option<String> {
+    pub async fn run<W: glib::object::IsA<gtk::Widget>>(&self, window: &W) -> Option<String> {
         let (sender, receiver) = futures_channel::oneshot::channel();
         self.imp().sender.replace(Some(sender));
 
-        self.present();
+        self.present(window);
 
         if let Ok(response) = receiver.await {
             response

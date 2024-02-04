@@ -135,7 +135,7 @@ pub(crate) fn has_pdf(citation_key: &str) -> bool {
     }
 }
 
-pub(crate) async fn open_pdf<W: glib::IsA<gtk::Window>>(
+pub(crate) async fn open_pdf<W: glib::object::IsA<gtk::Window>>(
     citation_key: &str,
     window: &W,
 ) -> anyhow::Result<()> {

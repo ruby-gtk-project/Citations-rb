@@ -577,7 +577,7 @@ impl EntryPage {
         let window = self.root().and_downcast::<crate::Window>().unwrap();
         let citation_key = self.imp().entry.borrow().as_ref().unwrap().citation_key();
 
-        let dialog = AddPdfDialog::new(&window, citation_key);
+        let dialog = AddPdfDialog::new(citation_key);
         dialog.connect_closure(
             "pdf-set",
             false,
@@ -586,7 +586,7 @@ impl EntryPage {
                 window.unwrap().send_toast(&gettext("PDF added"));
             }),
         );
-        dialog.present();
+        dialog.present(&window);
 
         Ok(())
     }

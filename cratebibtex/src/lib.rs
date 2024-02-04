@@ -1,4 +1,4 @@
-use glib::StaticType;
+use glib::types::StaticType;
 
 pub mod format;
 
