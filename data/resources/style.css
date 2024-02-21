@@ -15,3 +15,9 @@ scrolledwindow textview.inline text {
 textview.newentrydialog {
   background-color: @window_bg_color;
 }
+
+toolbarview scrolledwindow.card undershoot.top,
+toolbarview scrolledwindow.card undershoot.bottom {
+  box-shadow: none;
+  background: none;
+}
