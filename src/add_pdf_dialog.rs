@@ -200,7 +200,7 @@ impl AddPdfDialog {
             let filename = utils::pdf_filename(citation_key);
             let dest = folder.child(&filename);
 
-            if let Err(err) = async_std::fs::create_dir_all(&path).await {
+            if let Err(err) = std::fs::create_dir_all(&path) {
                 log::error!("Could not create bibliography directory: {err}");
             }
 
