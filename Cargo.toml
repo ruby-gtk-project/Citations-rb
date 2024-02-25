@@ -10,7 +10,6 @@ lto = true
 [dependencies]
 adw = { package = "libadwaita", version = "0.6", features = ["v1_5"] }
 anyhow = "1.0"
-async-std = "1.12"
 cairo-rs = { version = "0.19", features = ["png"] }
 cratebibtex = { path = "cratebibtex" }
 futures-channel = "0.3"
