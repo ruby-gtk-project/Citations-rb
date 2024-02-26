@@ -2,16 +2,16 @@
 # Copyright (C) 2022 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
 # Mathéo <dev.matheo@protonmail.com>, 2022.
-# Irénée THIRION <irenee.thirion@e.email>, 2023.
 # Vincent Chatelain <vinchatl_gnome@proton.me>, 2023.
+# Irénée THIRION <irenee.thirion@e.email>, 2023-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-11-21 07:45+0000\n"
-"PO-Revision-Date: 2023-12-06 22:38+0100\n"
-"Last-Translator: Vincent Chatelain <vinchatl_gnome@proton.me>\n"
+"POT-Creation-Date: 2023-12-13 09:57+0000\n"
+"PO-Revision-Date: 2024-02-21 09:18+0100\n"
+"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -156,10 +156,6 @@ msgstr "Gérez vos références bibliographiques en utilisant le format BibTeX."
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:15
 msgid "Main window"
 msgstr "Fenêtre principale"
-
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:96
-msgid "Maximiliano Sandoval"
-msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
 #: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:268
@@ -391,7 +387,7 @@ msgstr "_Raccourcis clavier"
 #. About dialog
 #: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
 msgid "_About Citations"
-msgstr "À _propos de Citations"
+msgstr "À _propos de Références"
 
 #: data/resources/ui/window.ui:29
 msgid "_Save"
@@ -675,12 +671,3 @@ msgstr "_Ne pas quitter"
 #: src/window.rs:637
 msgid "_Save and Quit"
 msgstr "_Enregistrer et quitter"
-
-#~ msgid "Back"
-#~ msgstr "Retour"
-
-#~ msgid "Copy file to bibliography folder"
-#~ msgstr "Copier le fichier vers le dossier de la bibliographie"
-
-#~ msgid "Open"
-#~ msgstr "Ouvrir"
