@@ -104,4 +104,9 @@
   <provides>
     <mediatype>text/x-bibtex</mediatype>
   </provides>
+  <branding>
+    <!-- Purple 1 and Blue 4 -->
+    <color type="primary" scheme_preference="light">#dc8add</color>
+    <color type="primary" scheme_preference="dark">#1c71d8</color>
+  </branding>
 </component>
