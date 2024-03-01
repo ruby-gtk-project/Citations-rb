@@ -3,6 +3,7 @@ use gettextrs::gettext;
 use gio::prelude::*;
 use gtk::{gio, glib};
 use std::path::PathBuf;
+use tokio;
 
 pub fn translated_key(key: &str) -> String {
     match key {
@@ -150,4 +151,26 @@ pub(crate) async fn open_pdf<W: glib::object::IsA<gtk::Window>>(
     } else {
         anyhow::bail!("There is not bibliography path");
     }
+}
+
+fn set_default_bibkey(bib: &str) -> String {
+    let entry = cratebibtex::Entry::from_bibtex(&bib).unwrap();
+    let authors = entry.author();
+    let lastname = authors.split_once(&[' ', ',']).map(|(v, _)| v).unwrap();
+    let bib_key = format!("{}{}", lastname.to_lowercase(), entry.year());
+
+    entry.set_citation_key(bib_key);
+    entry.serialize()
+}
+
+pub(crate) fn doi2bib(doi: &str) -> anyhow::Result<String> {
+    let doi2bib = doi2bib::Doi2Bib::new().unwrap();
+    let doi_str = doi
+        .replace("https://", "")
+        .replace("http://", "")
+        .replace("doi.org/", "");
+
+    let rt = tokio::runtime::Runtime::new().unwrap();
+    let bib = rt.block_on(doi2bib.resolve_doi(&doi_str))?;
+    Ok(set_default_bibkey(&bib))
 }

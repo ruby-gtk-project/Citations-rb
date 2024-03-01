@@ -6,6 +6,8 @@ use gsv::prelude::*;
 use gtk::glib;
 use gtk::CompositeTemplate;
 
+use crate::utils;
+
 const SAMPLE_ENTRY: &str = r"@book{lamport1985i1,
   title={\LaTeX: A Document Preparation System},
   author={Lamport, Leslie},
@@ -29,6 +31,8 @@ mod imp {
         #[template_child]
         pub source_view: TemplateChild<gsv::View>,
         #[template_child]
+        pub doi_row: TemplateChild<adw::EntryRow>,
+        #[template_child]
         pub view_stack: TemplateChild<adw::ViewStack>,
         #[template_child]
         pub create_button: TemplateChild<gtk::Button>,
@@ -43,6 +47,7 @@ mod imp {
                 combo_row: TemplateChild::default(),
                 entry_row: TemplateChild::default(),
                 source_view: TemplateChild::default(),
+                doi_row: TemplateChild::default(),
                 view_stack: TemplateChild::default(),
                 create_button: TemplateChild::default(),
                 sender: RefCell::default(),
@@ -89,6 +94,12 @@ mod imp {
         }
 
         #[template_callback]
+        fn on_doi_notify_text(&self) {
+            let is_doi_empty = self.doi_row.text().is_empty();
+            self.create_button.set_sensitive(!is_doi_empty);
+        }
+
+        #[template_callback]
         fn on_create_clicked(&self) {
             let sender = self.sender.take().unwrap();
 
@@ -104,6 +115,7 @@ mod imp {
                     let (start, end) = buffer.bounds();
                     buffer.text(&start, &end, true).into()
                 }
+                Some("from_doi") => utils::doi2bib(&self.doi_row.text()).unwrap(),
                 _ => unreachable!(),
             };
             sender.send(Some(data)).unwrap();
