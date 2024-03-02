@@ -83,7 +83,7 @@
             </child>
             <child>
               <object class="AdwViewStackPage" id="bibtex_page">
-                <property name="title" translatable="yes" comments="BibTeX is a proper name">From BibTeX</property>
+                <property name="title" translatable="yes" comments="TRANSLATORS BibTeX is a proper name">From BibTeX</property>
                 <property name="icon-name">document-new-symbolic</property>
                 <property name="name">from_bibtex</property>
                 <property name="child">

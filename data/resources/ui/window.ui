@@ -40,7 +40,7 @@
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes" comments="About dialog">_About Citations</attribute>
+        <attribute name="label" translatable="yes" comments="TRANSLATORS About dialog">_About Citations</attribute>
         <attribute name="action">win.about</attribute>
       </item>
     </section>
@@ -52,7 +52,7 @@
         <attribute name="action">win.search-google-scholar</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes" comments="arXiv is a proper name">_Search in arXiv</attribute>
+        <attribute name="label" translatable="yes" comments="TRANSLATORS arXiv is a proper name">_Search in arXiv</attribute>
         <attribute name="action">win.search-arxiv</attribute>
       </item>
     </section>
@@ -97,7 +97,7 @@
                       <object class="AdwStatusPage" id="no_recent_files_status_page">
                         <property name="vexpand">True</property>
                         <property name="icon-name">org.gnome.World.Citations</property>
-                        <property name="title" translatable="yes" comments="BibTeX is a proper name">Open a BibTeX File</property>
+                        <property name="title" translatable="yes" comments="TRANSLATORS BibTeX is a proper name">Open a BibTeX File</property>
                         <property name="description" translatable="yes">Or drag-and-drop a file</property>
                         <style>
                           <class name="icon-dropshadow"/>
