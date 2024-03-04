@@ -1,9 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+use std::path::PathBuf;
+
 use gettextrs::gettext;
 use gio::prelude::*;
 use gtk::{gio, glib};
-use std::path::PathBuf;
-use tokio;
+use once_cell::sync::Lazy;
+
+static RUNTIME: Lazy<tokio::runtime::Runtime> =
+    Lazy::new(|| tokio::runtime::Runtime::new().unwrap());
 
 pub fn translated_key(key: &str) -> String {
     match key {
@@ -153,24 +157,86 @@ pub(crate) async fn open_pdf<W: glib::object::IsA<gtk::Window>>(
     }
 }
 
-fn set_default_bibkey(bib: &str) -> String {
-    let entry = cratebibtex::Entry::from_bibtex(&bib).unwrap();
-    let authors = entry.author();
-    let lastname = authors.split_once(&[' ', ',']).map(|(v, _)| v).unwrap();
-    let bib_key = format!("{}{}", lastname.to_lowercase(), entry.year());
+fn generate_key(authors: &str, year: &str, title: &str) -> String {
+    const SHORT_TITLE_LEN: usize = 6;
+    let last_name = authors
+        .split_once([' ', ','])
+        .map(|(v, _)| v)
+        .unwrap_or(authors)
+        .to_lowercase();
+    let short_title: String = title.chars().take(SHORT_TITLE_LEN).collect();
 
-    entry.set_citation_key(bib_key);
-    entry.serialize()
+    format!("{last_name}{year}{short_title}")
 }
 
-pub(crate) fn doi2bib(doi: &str) -> anyhow::Result<String> {
-    let doi2bib = doi2bib::Doi2Bib::new().unwrap();
+// TODO Is there anything missing? This is based on
+// https://tex.stackexchange.com/questions/581901/what-is-the-safe-character-set-for-a-bibtex-label.
+fn sanitize_key(key: &str) -> String {
+    key.chars()
+        .map(|c| {
+            if matches!(
+                c,
+                ' ' | '{' | '}' | '(' | ')' | ',' | '"' | '\'' | '=' | '#' | '%' | '\\'
+            ) {
+                '_'
+            } else {
+                c
+            }
+        })
+        .collect()
+}
+
+pub(crate) async fn bib_from_doi(doi: &str) -> anyhow::Result<String> {
+    let doi2bib = doi2bib::Doi2Bib::new()?;
     let doi_str = doi
         .replace("https://", "")
         .replace("http://", "")
         .replace("doi.org/", "");
 
-    let rt = tokio::runtime::Runtime::new().unwrap();
-    let bib = rt.block_on(doi2bib.resolve_doi(&doi_str))?;
-    Ok(set_default_bibkey(&bib))
+    let fut = async move { doi2bib.resolve_doi(&doi_str).await };
+    let bib = spawn_tokio(fut).await?;
+
+    // We set a custom key
+    let entry = cratebibtex::Entry::from_bibtex(&bib)?;
+    let bib_key = sanitize_key(&generate_key(
+        &entry.author(),
+        &entry.year(),
+        &entry.title(),
+    ));
+    entry.set_citation_key(bib_key);
+
+    Ok(entry.serialize())
+}
+
+async fn spawn_tokio<F>(fut: F) -> F::Output
+where
+    F: std::future::Future + Send + 'static,
+    F::Output: Send + 'static,
+{
+    let (sender, receiver) = tokio::sync::oneshot::channel();
+    RUNTIME.spawn(async {
+        let response = fut.await;
+        sender.send(response)
+    });
+
+    receiver.await.unwrap()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_generate_key() {
+        assert_eq!(generate_key("a", "1", "1234567"), "a1123456");
+        assert_eq!(generate_key("a, b", "1", "12345678"), "a1123456");
+        assert_eq!(generate_key("a, b, c", "1", "1234569"), "a1123456");
+        assert_eq!(generate_key("A, b, c", "1", "1234569"), "a1123456");
+        assert_eq!(generate_key("A, b, c", "1", "z"), "a1z");
+    }
+
+    #[test]
+    fn test_sanitize_key() {
+        assert_eq!(sanitize_key("a b'"), "a_b_");
+    }
 }

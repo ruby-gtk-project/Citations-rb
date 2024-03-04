@@ -100,7 +100,7 @@ mod imp {
         }
 
         #[template_callback]
-        fn on_create_clicked(&self) {
+        async fn on_create_clicked(&self) {
             let sender = self.sender.take().unwrap();
 
             let data = match &self.view_stack.visible_child_name().as_deref() {
@@ -108,17 +108,20 @@ mod imp {
                     let citation_key = self.entry_row.text().to_string();
                     let type_ =
                         cratebibtex::EntryType::from(self.combo_row.selected() as i32).to_string();
-                    format!("@{type_}{{{citation_key},}}")
+                    Some(format!("@{type_}{{{citation_key},}}"))
                 }
                 Some("from_bibtex") => {
                     let buffer = self.source_view.buffer();
                     let (start, end) = buffer.bounds();
-                    buffer.text(&start, &end, true).into()
+                    Some(buffer.text(&start, &end, true).into())
                 }
-                Some("from_doi") => utils::doi2bib(&self.doi_row.text()).unwrap(),
+                Some("from_doi") => utils::bib_from_doi(&self.doi_row.text())
+                    .await
+                    .inspect_err(|err| log::error!("Could not get bib from doi: {err}"))
+                    .ok(),
                 _ => unreachable!(),
             };
-            sender.send(Some(data)).unwrap();
+            sender.send(data).unwrap();
 
             self.obj().close();
         }

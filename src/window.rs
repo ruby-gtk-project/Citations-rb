@@ -114,6 +114,7 @@ mod imp {
             });
             klass.install_action_async("win.new_entry", None, |window, _, _| async move {
                 if let Err(err) = window.new_entry_dialog().await {
+                    window.send_toast(&gettext("Could not add entry"));
                     log::error!("Could not spawn dialog: {err}");
                 }
             });
