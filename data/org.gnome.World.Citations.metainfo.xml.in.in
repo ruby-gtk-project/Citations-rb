@@ -19,7 +19,7 @@
   <url type="bugtracker">https://gitlab.gnome.org/World/citations/issues</url>
   <url type="translate">https://l10n.gnome.org/module/citations/</url>
   <url type="vcs-browser">https://gitlab.gnome.org/World/citations</url>
-  <content_rating type="oars-1.0" />
+  <content_rating type="oars-1.1" />
   <releases>
     <release version="0.6.2" date="2023-09-28">
       <description>
