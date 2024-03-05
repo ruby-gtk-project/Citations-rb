@@ -146,14 +146,7 @@ impl AddPdfDialog {
                 }),
             );
 
-            let mut res = match surf::get(&url).await {
-                Ok(res) => res,
-                Err(err) => anyhow::bail!("{err}"),
-            };
-            let bytes = match res.body_bytes().await {
-                Ok(bytes) => bytes,
-                Err(err) => anyhow::bail!("{err}"),
-            };
+            let bytes = utils::get(url).await?;
             let bytes = glib::Bytes::from_owned(bytes);
 
             // Validate the document
