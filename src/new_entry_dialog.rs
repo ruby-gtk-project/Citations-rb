@@ -6,6 +6,8 @@ use gsv::prelude::*;
 use gtk::glib;
 use gtk::CompositeTemplate;
 
+use crate::utils;
+
 const SAMPLE_ENTRY: &str = r"@book{lamport1985i1,
   title={\LaTeX: A Document Preparation System},
   author={Lamport, Leslie},
@@ -29,6 +31,8 @@ mod imp {
         #[template_child]
         pub source_view: TemplateChild<gsv::View>,
         #[template_child]
+        pub doi_row: TemplateChild<adw::EntryRow>,
+        #[template_child]
         pub view_stack: TemplateChild<adw::ViewStack>,
         #[template_child]
         pub create_button: TemplateChild<gtk::Button>,
@@ -43,6 +47,7 @@ mod imp {
                 combo_row: TemplateChild::default(),
                 entry_row: TemplateChild::default(),
                 source_view: TemplateChild::default(),
+                doi_row: TemplateChild::default(),
                 view_stack: TemplateChild::default(),
                 create_button: TemplateChild::default(),
                 sender: RefCell::default(),
@@ -89,7 +94,13 @@ mod imp {
         }
 
         #[template_callback]
-        fn on_create_clicked(&self) {
+        fn on_doi_notify_text(&self) {
+            let is_doi_empty = self.doi_row.text().is_empty();
+            self.create_button.set_sensitive(!is_doi_empty);
+        }
+
+        #[template_callback]
+        async fn on_create_clicked(&self) {
             let sender = self.sender.take().unwrap();
 
             let data = match &self.view_stack.visible_child_name().as_deref() {
@@ -97,16 +108,20 @@ mod imp {
                     let citation_key = self.entry_row.text().to_string();
                     let type_ =
                         cratebibtex::EntryType::from(self.combo_row.selected() as i32).to_string();
-                    format!("@{type_}{{{citation_key},}}")
+                    Some(format!("@{type_}{{{citation_key},}}"))
                 }
                 Some("from_bibtex") => {
                     let buffer = self.source_view.buffer();
                     let (start, end) = buffer.bounds();
-                    buffer.text(&start, &end, true).into()
+                    Some(buffer.text(&start, &end, true).into())
                 }
+                Some("from_doi") => utils::bib_from_doi(&self.doi_row.text())
+                    .await
+                    .inspect_err(|err| log::error!("Could not get bib from doi: {err}"))
+                    .ok(),
                 _ => unreachable!(),
             };
-            sender.send(Some(data)).unwrap();
+            sender.send(data).unwrap();
 
             self.obj().close();
         }
