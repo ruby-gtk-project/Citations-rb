@@ -102,7 +102,7 @@ impl Application {
                 .build(),
             gio::ActionEntryBuilder::new("new-window")
                 .activate(|app, _, _| {
-                    let window = Window::new(&app);
+                    let window = Window::new(app);
                     let group = gtk::WindowGroup::new();
                     group.add_window(&window);
                     window.present();
