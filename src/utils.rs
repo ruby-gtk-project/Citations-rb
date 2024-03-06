@@ -222,6 +222,15 @@ where
     receiver.await.unwrap()
 }
 
+async fn inner_get(uri: url::Url) -> anyhow::Result<Vec<u8>> {
+    let bytes = reqwest::get(uri).await?.bytes().await?;
+    Ok(bytes.to_vec())
+}
+
+pub(crate) async fn get(uri: url::Url) -> anyhow::Result<Vec<u8>> {
+    spawn_tokio(inner_get(uri)).await
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
