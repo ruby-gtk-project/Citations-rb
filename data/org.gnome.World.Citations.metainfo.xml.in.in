@@ -15,7 +15,8 @@
       <caption>Main window</caption>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://gitlab.gnome.org/World/citations</url>
+  <url type="homepage">https://apps.gnome.org/Citations/</url>
+  <url type="contribute">https://welcome.gnome.org/app/Citations/</url>
   <url type="bugtracker">https://gitlab.gnome.org/World/citations/issues</url>
   <url type="translate">https://l10n.gnome.org/module/citations/</url>
   <url type="vcs-browser">https://gitlab.gnome.org/World/citations</url>

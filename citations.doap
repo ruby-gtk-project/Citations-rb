@@ -13,7 +13,7 @@
       Manage your bibliographies using the BibTeX format.
   </description>
 
-  <homepage rdf:resource="https://gitlab.gnome.org/World/citations" />
+  <homepage rdf:resource="https://apps.gnome.org/Citations/" />
   <bug-database rdf:resource="https://gitlab.gnome.org/World/citations/-/issues" />
   <download-page rdf:resource="https://gitlab.gnome.org/World/citations" />
 
