@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-08-13 19:05+0000\n"
-"PO-Revision-Date: 2023-09-02 18:45+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
+"POT-Creation-Date: 2024-03-05 20:36+0000\n"
+"PO-Revision-Date: 2024-03-10 14:55+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -95,12 +95,12 @@ msgstr "Raakateksti"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:604
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
 msgid "Citations"
 msgstr "Sitaatit"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:606
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
 msgid "Manage your bibliography"
 msgstr "Hallitse lähdeluetteloasi"
 
@@ -110,6 +110,10 @@ msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
 "bibliography;citing;literature;BibTeX;LaTeX;TeX;lähdeluettelo;bibliografia;"
 "viittaus;lainaus;sitaatti;kirjallisuus;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:19
+msgid "New Window"
+msgstr "Uusi ikkuna"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -148,35 +152,31 @@ msgstr "Hallitse lähdeluetteloja käyttäen BibTeX-muotoa."
 msgid "Main window"
 msgstr "Pääikkuna"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
-msgid "Maximiliano Sandoval"
-msgstr "Maximiliano Sandoval"
-
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:268
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
 msgstr "Lisää PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:58
+#: data/resources/ui/add_pdf_dialog.ui:46
 msgid "Bibliography folder not set"
 msgstr "Lähdeluettelojen kansiota ei ole asetettu"
 
-#: data/resources/ui/add_pdf_dialog.ui:76
+#: data/resources/ui/add_pdf_dialog.ui:64
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Luo kopion valitusta pdf:stä ja tallettaa sen asettamaasi lähdeluettelojen "
 "kansioon."
 
-#: data/resources/ui/add_pdf_dialog.ui:91
+#: data/resources/ui/add_pdf_dialog.ui:79
 msgid "From File"
 msgstr "Tiedostosta"
 
-#: data/resources/ui/add_pdf_dialog.ui:104
+#: data/resources/ui/add_pdf_dialog.ui:92
 msgid "From URL"
 msgstr "Verkko-osoitteesta"
 
-#: data/resources/ui/add_pdf_dialog.ui:109
+#: data/resources/ui/add_pdf_dialog.ui:98
 msgid "Download…"
 msgstr "Lataa…"
 
@@ -208,7 +208,7 @@ msgstr ""
 msgid "Example:"
 msgstr "Esimerkki:"
 
-#. Empty state widget
+#. TRANSLATORS Empty state widget
 #: data/resources/ui/entry_list.ui:9
 msgid "No Citations"
 msgstr "Ei sitaatteja"
@@ -225,7 +225,7 @@ msgstr "_Avaa PDF"
 msgid "_Copy Key"
 msgstr "_Kopioi avain"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Poista"
 
@@ -286,8 +286,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
-#: data/resources/ui/window.ui:152
+#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
 msgid "_Open"
 msgstr "_Avaa"
 
@@ -299,34 +298,44 @@ msgstr "Poista PDF"
 msgid "Could not set PDF Preview"
 msgstr "PDF-esikatselua ei voitu asettaa"
 
-#: data/resources/ui/new_entry_dialog.ui:8
+#: data/resources/ui/new_entry_dialog.ui:7
 msgid "Add new Entry"
 msgstr "Lisää uusi tietue"
 
-#: data/resources/ui/new_entry_dialog.ui:27
+#: data/resources/ui/new_entry_dialog.ui:17
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: data/resources/ui/new_entry_dialog.ui:34
+#: data/resources/ui/new_entry_dialog.ui:24
 msgid "C_reate"
 msgstr "_Luo"
 
-#: data/resources/ui/new_entry_dialog.ui:49
+#: data/resources/ui/new_entry_dialog.ui:40
 msgid "New"
 msgstr "Uusi"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:59
 msgid "Citation Key"
 msgstr "Sitaatin avain"
 
-#: data/resources/ui/new_entry_dialog.ui:73
+#: data/resources/ui/new_entry_dialog.ui:66
 msgid "Citation Type"
 msgstr "Sitaatin tyyppi"
 
-#. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:93
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:86
 msgid "From BibTeX"
 msgstr "BibTeXistä"
+
+#: data/resources/ui/new_entry_dialog.ui:105
+#| msgid "From URL"
+msgid "From DOI"
+msgstr "DOI:sta"
+
+#. TRANSLATORS DOI is a proper name
+#: data/resources/ui/new_entry_dialog.ui:116
+msgid "DOI"
+msgstr "DOI"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -340,25 +349,30 @@ msgstr "Näytä pikanäppäimet"
 
 #: data/resources/ui/shortcuts.ui:20
 msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Uusi ikkuna"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Lopeta"
 
-#: data/resources/ui/shortcuts.ui:28
+#: data/resources/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "Lähdeluettelo"
 
-#: data/resources/ui/shortcuts.ui:31
+#: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Avaa"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:43
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Tallenna"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:49
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Etsi"
@@ -367,12 +381,12 @@ msgstr "Etsi"
 msgid "_Create New Bibliography"
 msgstr "_Luo uusi lähdeluettelo"
 
-#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
 msgid "_Keyboard Shortcuts"
 msgstr "_Pikanäppäimet"
 
-#. About dialog
-#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+#. TRANSLATORS About dialog
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
 msgid "_About Citations"
 msgstr "_Tietoja - Sitaatit"
 
@@ -380,79 +394,83 @@ msgstr "_Tietoja - Sitaatit"
 msgid "_Save"
 msgstr "_Tallenna"
 
-#: data/resources/ui/window.ui:52
+#: data/resources/ui/window.ui:33
+msgid "New _Window"
+msgstr "Uusi _ikkuna"
+
+#: data/resources/ui/window.ui:51
 msgid "_Search in Google Scholar"
 msgstr "_Etsi Google Scholarista"
 
-#. arXiv is a proper name
-#: data/resources/ui/window.ui:56
+#. TRANSLATORS arXiv is a proper name
+#: data/resources/ui/window.ui:55
 msgid "_Search in arXiv"
 msgstr "_Etsi arXivista"
 
-#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "Päävalikko"
 
-#. BibTeX is a proper name
-#: data/resources/ui/window.ui:101
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/window.ui:100
 msgid "Open a BibTeX File"
 msgstr "Avaa BibTeX-tiedosto"
 
-#: data/resources/ui/window.ui:102
+#: data/resources/ui/window.ui:101
 msgid "Or drag-and-drop a file"
 msgstr "tai vedä ja pudota tiedosto"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:139
 msgid "Manage your Citations"
 msgstr "Hallitse sitaatteja"
 
-#: data/resources/ui/window.ui:144
+#: data/resources/ui/window.ui:149
 msgid "Recent Files"
 msgstr "Viimeisimmät tiedostot"
 
-#: data/resources/ui/window.ui:187
+#: data/resources/ui/window.ui:192
 msgid "Sidebar"
 msgstr "Sivupalkki"
 
-#: data/resources/ui/window.ui:198
+#: data/resources/ui/window.ui:203
 msgid "Add New Citation"
 msgstr "Lisää uusi sitaatti"
 
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:217
 msgid "Search"
 msgstr "Etsi"
 
-#: data/resources/ui/window.ui:226
+#: data/resources/ui/window.ui:231
 msgid "Search…"
 msgstr "Etsi…"
 
-#: data/resources/ui/window.ui:246
+#: data/resources/ui/window.ui:251
 msgid "Content"
 msgstr "Sisältö"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:261
 msgid "Secondary Menu"
 msgstr "Toissijainen valikko"
 
-#: src/add_pdf_dialog.rs:57
+#: src/add_pdf_dialog.rs:58
 msgid "Could not set PDF"
 msgstr "PDF:ää ei voitu asettaa"
 
-#: src/add_pdf_dialog.rs:68
+#: src/add_pdf_dialog.rs:78
 msgid "Could not download PDF"
 msgstr "PDF:ää ei voitu ladata"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:94
+#: src/add_pdf_dialog.rs:104
 msgid "Make sure that {path} exists"
 msgstr "Varmista että {path} on olemassa"
 
-#: src/add_pdf_dialog.rs:179
+#: src/add_pdf_dialog.rs:185
 msgid "PDF Files"
 msgstr "PDF-tiedostot"
 
-#: src/add_pdf_dialog.rs:187
+#: src/add_pdf_dialog.rs:193
 msgid "Select a PDF"
 msgstr "Valitse PDF"
 
@@ -495,162 +513,170 @@ msgstr "Sitaatin avain on jo olemassa"
 msgid "PDF added"
 msgstr "PDF lisätty"
 
-#: src/new_entry_dialog.rs:125
+#: src/new_entry_dialog.rs:149
 msgid "Insert a BibTeX citation here"
 msgstr "Syötä BibTeX-sitaatti tähän"
 
-#: src/utils.rs:21
+#: src/utils.rs:14
 msgid "Author"
 msgstr "Tekijä"
 
-#: src/utils.rs:22
+#: src/utils.rs:15
 msgid "Year"
 msgstr "Vuosi"
 
-#: src/utils.rs:23
+#: src/utils.rs:16
 msgid "Title"
 msgstr "Otsikko"
 
-#: src/utils.rs:24
+#: src/utils.rs:17
 msgid "Volume"
 msgstr "Nidos"
 
-#: src/utils.rs:25
+#: src/utils.rs:18
 msgid "Number"
 msgstr "Numero"
 
-#: src/utils.rs:26
+#: src/utils.rs:19
 msgid "Pages"
 msgstr "Sivut"
 
-#: src/utils.rs:27
+#: src/utils.rs:20
 msgid "Publisher"
 msgstr "Julkaisija"
 
-#: src/utils.rs:28
+#: src/utils.rs:21
 msgid "Journal"
 msgstr "Päiväkirja"
 
-#: src/utils.rs:29
+#: src/utils.rs:22
 msgid "Address"
 msgstr "Osoite"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:31
+#: src/utils.rs:24
 msgid "How Published"
 msgstr "Miten julkaistu"
 
-#: src/utils.rs:32
+#: src/utils.rs:25
 msgid "Note"
 msgstr "Huomio"
 
-#: src/utils.rs:33
+#: src/utils.rs:26
 msgid "Book Title"
 msgstr "Kirjan otsikko"
 
-#: src/utils.rs:34
+#: src/utils.rs:27
 msgid "Series"
-msgstr ""
+msgstr "Sarjat"
 
-#: src/utils.rs:35
+#: src/utils.rs:28
 msgid "Archive Prefix"
 msgstr "Arkiston etuliite"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:37
+#: src/utils.rs:30
 msgid "ePrint"
 msgstr "Digitaalinen tuloste"
 
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:39
+#: src/utils.rs:32
 msgid "Primary Class"
 msgstr "Ensisijainen luokka"
 
-#: src/utils.rs:40
+#: src/utils.rs:33
 msgid "Month"
 msgstr "Kuukausi"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:42
+#: src/utils.rs:35
 msgid "Editor"
 msgstr "Editori"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:44
+#: src/utils.rs:37
 msgid "Organization"
 msgstr "Organisaatio"
 
-#: src/utils.rs:45
+#: src/utils.rs:38
 msgid "School"
 msgstr "Koulu"
 
-#: src/utils.rs:46
+#: src/utils.rs:39
 msgid "Institution"
 msgstr "Instituutio"
 
-#: src/window.rs:320 src/window.rs:343
-msgid "Bibtex Files"
-msgstr "Bibtex-tiedostot"
+#: src/window.rs:117
+msgid "Could not add entry"
+msgstr "Tietuetta ei voitu lisätä"
 
-#: src/window.rs:353
+#: src/window.rs:331 src/window.rs:356
+#| msgid "Bibtex Files"
+msgid "BibTeX Files"
+msgstr "BibTeX-tiedostot"
+
+#: src/window.rs:365
 msgid "Create New Bibliography"
 msgstr "Luo uusi lähdeluettelo"
 
-#: src/window.rs:354
+#: src/window.rs:366
 msgid "_Create"
 msgstr "_Luo"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:357
+#: src/window.rs:369
 msgid "bibliography"
 msgstr "lähdeluettelo"
 
-#: src/window.rs:457
+#: src/window.rs:473
 msgid "Remove From Recent Files"
 msgstr "Poista viimeisimmistä tiedostoista"
 
-#: src/window.rs:497
+#: src/window.rs:513
 msgid "An entry with the given citation key already exists"
 msgstr "Samalla sitaattiavaimella on jo olemassa tietue"
 
-#: src/window.rs:512
+#: src/window.rs:528
 msgid "Bibliography saved"
 msgstr "Lähdeluettelo tallennettu"
 
-#: src/window.rs:565
+#: src/window.rs:581
 msgid "Citation Deleted"
 msgstr "Sitaatti poistettu"
 
-#: src/window.rs:567
+#: src/window.rs:583
 msgid "Undo"
 msgstr "Kumoa"
 
-#: src/window.rs:611
+#: src/window.rs:626
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:624
+#: src/window.rs:638
 msgid "Unsaved Changes"
 msgstr "Tallentamattomia muutoksia"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:627
+#: src/window.rs:641
 msgid "Do you want to write all changes to the safe?"
 msgstr "Haluatko kirjoittaa kaikki muutokset säilöön?"
 
-#: src/window.rs:631
+#: src/window.rs:645
 msgid "_Quit Without Saving"
 msgstr "_Lopeta tallentamatta"
 
-#: src/window.rs:632
+#: src/window.rs:646
 msgid "_Don't Quit"
 msgstr "_Älä lopeta"
 
-#: src/window.rs:633
+#: src/window.rs:647
 msgid "_Save and Quit"
 msgstr "_Tallenna ja lopeta"
+
+#~ msgid "Maximiliano Sandoval"
+#~ msgstr "Maximiliano Sandoval"
 
 #~ msgid "Back"
 #~ msgstr "Takaisin"
