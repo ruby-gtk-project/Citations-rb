@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the citations package.
 # Yosef Or Boczko <yoseforb@gmail.com>, 2023.
 #
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-10-01 08:41+0000\n"
-"PO-Revision-Date: 2023-12-06 11:24+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
+"POT-Creation-Date: 2024-03-05 20:36+0000\n"
+"PO-Revision-Date: 2024-03-14 15:34+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <yoseforb@gmail.com>\n"
+"Language-Team: GNOME\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3);\n"
-"X-Generator: Poedit 3.4.1\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 :"
+" 3);\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -96,12 +97,12 @@ msgstr "רגיל"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:607
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
 msgid "Citations"
 msgstr "ציטטות"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:609
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
 msgid "Manage your bibliography"
 msgstr "ניהול הביבליוגרפיה שלך"
 
@@ -111,7 +112,7 @@ msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
 "ביבליוגרפיה;ציטוט;מראה מקום;מראי מקום;ספרות;מקורות;BibTeX;LaTeX;TeX;לטך;לטקס;"
 
-#: data/org.gnome.World.Citations.desktop.in.in:20
+#: data/org.gnome.World.Citations.desktop.in.in:19
 msgid "New Window"
 msgstr "חלון חדש"
 
@@ -152,33 +153,29 @@ msgstr "Manage your bibliographies using the BibTeX format."
 msgid "Main window"
 msgstr "Main window"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:95
-msgid "Maximiliano Sandoval"
-msgstr "Maximiliano Sandoval"
-
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:268
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
 msgstr "הוספת PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:58
+#: data/resources/ui/add_pdf_dialog.ui:46
 msgid "Bibliography folder not set"
 msgstr "לא הוגדרה תיקיית ביבליוגרפיה"
 
-#: data/resources/ui/add_pdf_dialog.ui:76
+#: data/resources/ui/add_pdf_dialog.ui:64
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr "יצירת עותק של קובץ ה־PDF הנבחר ואחסון שלו בתיקיית הביבליוגרפיה."
 
-#: data/resources/ui/add_pdf_dialog.ui:91
+#: data/resources/ui/add_pdf_dialog.ui:79
 msgid "From File"
 msgstr "מקובץ"
 
-#: data/resources/ui/add_pdf_dialog.ui:104
+#: data/resources/ui/add_pdf_dialog.ui:92
 msgid "From URL"
 msgstr "מכתובת"
 
-#: data/resources/ui/add_pdf_dialog.ui:109
+#: data/resources/ui/add_pdf_dialog.ui:98
 msgid "Download…"
 msgstr "הורדה…"
 
@@ -214,7 +211,7 @@ msgstr ""
 msgid "Example:"
 msgstr "דוגמה:"
 
-#. Empty state widget
+#. TRANSLATORS Empty state widget
 #: data/resources/ui/entry_list.ui:9
 msgid "No Citations"
 msgstr "אין אף מראה מקום"
@@ -292,7 +289,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:104 data/resources/ui/window.ui:151
+#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
 msgid "_Open"
 msgstr "_פתיחה"
 
@@ -304,34 +301,44 @@ msgstr "מחיקת PDF"
 msgid "Could not set PDF Preview"
 msgstr "לא ניתן להגדיר תצוגה מקדימה ל־PDF"
 
-#: data/resources/ui/new_entry_dialog.ui:8
+#: data/resources/ui/new_entry_dialog.ui:7
 msgid "Add new Entry"
 msgstr "הוספת רשומה חדשה"
 
-#: data/resources/ui/new_entry_dialog.ui:27
+#: data/resources/ui/new_entry_dialog.ui:17
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: data/resources/ui/new_entry_dialog.ui:34
+#: data/resources/ui/new_entry_dialog.ui:24
 msgid "C_reate"
 msgstr "י_צירה"
 
-#: data/resources/ui/new_entry_dialog.ui:49
+#: data/resources/ui/new_entry_dialog.ui:40
 msgid "New"
 msgstr "חדש"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:59
 msgid "Citation Key"
 msgstr "מפתח מראה מקום"
 
-#: data/resources/ui/new_entry_dialog.ui:73
+#: data/resources/ui/new_entry_dialog.ui:66
 msgid "Citation Type"
 msgstr "סוג מראה מקום"
 
-#. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:93
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:86
 msgid "From BibTeX"
 msgstr "מ־BibTeX"
+
+#: data/resources/ui/new_entry_dialog.ui:105
+#| msgid "From URL"
+msgid "From DOI"
+msgstr "ממזה עצם דיגיטלי (DOI)"
+
+#. TRANSLATORS DOI is a proper name
+#: data/resources/ui/new_entry_dialog.ui:116
+msgid "DOI"
+msgstr "מזהה עצם דיגיטלי (DIO)"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -381,7 +388,7 @@ msgstr "י_צירת ביבליוגרפיה חדשה"
 msgid "_Keyboard Shortcuts"
 msgstr "_קיצורי מקלדת"
 
-#. About dialog
+#. TRANSLATORS About dialog
 #: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
 msgid "_About Citations"
 msgstr "_על אודות ציטטות"
@@ -398,17 +405,17 @@ msgstr "_חלון חד"
 msgid "_Search in Google Scholar"
 msgstr "_חיפוש בגוגל סְקוֹלַר"
 
-#. arXiv is a proper name
+#. TRANSLATORS arXiv is a proper name
 #: data/resources/ui/window.ui:55
 msgid "_Search in arXiv"
 msgstr "_חיפוש ב־arXiv"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:127
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#. BibTeX is a proper name
+#. TRANSLATORS BibTeX is a proper name
 #: data/resources/ui/window.ui:100
 msgid "Open a BibTeX File"
 msgstr "פתיחת קובץ BibTeX"
@@ -417,56 +424,56 @@ msgstr "פתיחת קובץ BibTeX"
 msgid "Or drag-and-drop a file"
 msgstr "או לגרור ולשחרר קובץ"
 
-#: data/resources/ui/window.ui:136
+#: data/resources/ui/window.ui:139
 msgid "Manage your Citations"
 msgstr "ניהול רשימת המקורות שלך"
 
-#: data/resources/ui/window.ui:143
+#: data/resources/ui/window.ui:149
 msgid "Recent Files"
 msgstr "קבצים אחרונים"
 
-#: data/resources/ui/window.ui:186
+#: data/resources/ui/window.ui:192
 msgid "Sidebar"
 msgstr "סרגל צד"
 
-#: data/resources/ui/window.ui:197
+#: data/resources/ui/window.ui:203
 msgid "Add New Citation"
 msgstr "הוספת מראה מקום חדש"
 
-#: data/resources/ui/window.ui:211
+#: data/resources/ui/window.ui:217
 msgid "Search"
 msgstr "חיפוש"
 
-#: data/resources/ui/window.ui:225
+#: data/resources/ui/window.ui:231
 msgid "Search…"
 msgstr "חיפוש…"
 
-#: data/resources/ui/window.ui:245
+#: data/resources/ui/window.ui:251
 msgid "Content"
 msgstr "תוכן"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:261
 msgid "Secondary Menu"
 msgstr "תפריט משני"
 
-#: src/add_pdf_dialog.rs:57
+#: src/add_pdf_dialog.rs:58
 msgid "Could not set PDF"
 msgstr "לא ניתן להגדיר PDF"
 
-#: src/add_pdf_dialog.rs:68
+#: src/add_pdf_dialog.rs:78
 msgid "Could not download PDF"
 msgstr "לא ניתן להוריד PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:94
+#: src/add_pdf_dialog.rs:104
 msgid "Make sure that {path} exists"
 msgstr "נא לוודא ש־‏‎{path} קיים"
 
-#: src/add_pdf_dialog.rs:179
+#: src/add_pdf_dialog.rs:185
 msgid "PDF Files"
 msgstr "קובצי PDF"
 
-#: src/add_pdf_dialog.rs:187
+#: src/add_pdf_dialog.rs:193
 msgid "Select a PDF"
 msgstr "בחירת PDF"
 
@@ -509,166 +516,173 @@ msgstr "מפתח מראה מקום כבר קיים"
 msgid "PDF added"
 msgstr "נוסף PDF"
 
-#: src/new_entry_dialog.rs:125
+#: src/new_entry_dialog.rs:149
 msgid "Insert a BibTeX citation here"
 msgstr "יש להכניס מראה מקום BibTeX כאן"
 
-#: src/utils.rs:21
+#: src/utils.rs:14
 msgid "Author"
 msgstr "מחבר"
 
-#: src/utils.rs:22
+#: src/utils.rs:15
 msgid "Year"
 msgstr "שנה"
 
-#: src/utils.rs:23
+#: src/utils.rs:16
 msgid "Title"
 msgstr "כותרת"
 
-#: src/utils.rs:24
+#: src/utils.rs:17
 msgid "Volume"
 msgstr "כרך"
 
-#: src/utils.rs:25
+#: src/utils.rs:18
 msgid "Number"
 msgstr "מספר"
 
-#: src/utils.rs:26
+#: src/utils.rs:19
 msgid "Pages"
 msgstr "דפים"
 
-#: src/utils.rs:27
+#: src/utils.rs:20
 msgid "Publisher"
 msgstr "מוציא לאור"
 
-#: src/utils.rs:28
+#: src/utils.rs:21
 msgid "Journal"
 msgstr "כתב עת"
 
-#: src/utils.rs:29
+#: src/utils.rs:22
 msgid "Address"
 msgstr "כתובת"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:31
+#: src/utils.rs:24
 msgid "How Published"
 msgstr "איך פורסם"
 
-#: src/utils.rs:32
+#: src/utils.rs:25
 msgid "Note"
 msgstr "הערה"
 
-#: src/utils.rs:33
+#: src/utils.rs:26
 msgid "Book Title"
 msgstr "כותרת ספר"
 
-#: src/utils.rs:34
+#: src/utils.rs:27
 msgid "Series"
 msgstr "סדרה"
 
-#: src/utils.rs:35
+#: src/utils.rs:28
 msgid "Archive Prefix"
 msgstr "קידומת ארכיון"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:37
+#: src/utils.rs:30
 msgid "ePrint"
 msgstr "ePrint"
 
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:39
+#: src/utils.rs:32
 msgid "Primary Class"
 msgstr "מחלקה ראשית"
 
-#: src/utils.rs:40
+#: src/utils.rs:33
 msgid "Month"
 msgstr "חודש"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:42
+#: src/utils.rs:35
 msgid "Editor"
 msgstr "עורך"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:44
+#: src/utils.rs:37
 msgid "Organization"
 msgstr "ארגון"
 
-#: src/utils.rs:45
+#: src/utils.rs:38
 msgid "School"
 msgstr "בית ספר"
 
-#: src/utils.rs:46
+#: src/utils.rs:39
 msgid "Institution"
 msgstr "מכון"
 
-#: src/window.rs:325 src/window.rs:347
-#| msgid "Bibtex Files"
+#: src/window.rs:117
+#| msgid "Could not set PDF"
+msgid "Could not add entry"
+msgstr "לא ניתן להוסיף רשומה"
+
+#: src/window.rs:331 src/window.rs:356
 msgid "BibTeX Files"
 msgstr "קובץ BibTeX"
 
-#: src/window.rs:356
+#: src/window.rs:365
 msgid "Create New Bibliography"
 msgstr "יצירת ביבליוגרפיה חדשה"
 
-#: src/window.rs:357
+#: src/window.rs:366
 msgid "_Create"
 msgstr "_יצירה"
 
 # msgctxt "shortcut window"
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:360
+#: src/window.rs:369
 msgid "bibliography"
 msgstr "ביבליוגרפיה"
 
-#: src/window.rs:460
+#: src/window.rs:473
 msgid "Remove From Recent Files"
 msgstr "הסרה מקבצים אחרונים"
 
-#: src/window.rs:500
+#: src/window.rs:513
 msgid "An entry with the given citation key already exists"
 msgstr "כבר קיימת רשומה עם מפתח מראה המקום שהוזן"
 
-#: src/window.rs:515
+#: src/window.rs:528
 msgid "Bibliography saved"
 msgstr "ביבליוגרפיה נשמרה"
 
-#: src/window.rs:568
+#: src/window.rs:581
 msgid "Citation Deleted"
 msgstr "נמחק מראה מקום"
 
-#: src/window.rs:570
+#: src/window.rs:583
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:614
+#: src/window.rs:626
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:627
+#: src/window.rs:638
 msgid "Unsaved Changes"
 msgstr "שינויים שלא נשמרו"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:630
+#: src/window.rs:641
 msgid "Do you want to write all changes to the safe?"
 msgstr "לכתוב את כל השינויים בבטחה?"
 
-#: src/window.rs:634
+#: src/window.rs:645
 msgid "_Quit Without Saving"
 msgstr "ל_צאת מבלי לשמור"
 
-#: src/window.rs:635
+#: src/window.rs:646
 msgid "_Don't Quit"
 msgstr "_לא לצאת"
 
-#: src/window.rs:636
+#: src/window.rs:647
 msgid "_Save and Quit"
 msgstr "ל_שמור ולצאת"
+
+#~ msgid "Maximiliano Sandoval"
+#~ msgstr "Maximiliano Sandoval"
 
 #~ msgid "Back"
 #~ msgstr "אחורה"
@@ -676,3 +690,4 @@ msgstr "ל_שמור ולצאת"
 # msgctxt "shortcut window"
 #~ msgid "bibliography.bib"
 #~ msgstr "ביבליוגרפיה.bib"
+
