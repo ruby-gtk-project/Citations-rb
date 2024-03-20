@@ -22,6 +22,16 @@
   <url type="vcs-browser">https://gitlab.gnome.org/World/citations</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.6.3" date="2023-03-20">
+      <description>
+        <p>Minor Release.</p>
+        <ul>
+          <li>Use newer libadwaita widgets</li>
+          <li>Add new entries from DOI</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.6.2" date="2023-09-28">
       <description>
         <p>Minor Release.</p>
