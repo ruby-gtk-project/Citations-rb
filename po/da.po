@@ -1,14 +1,14 @@
 # Danish translation for citations.
-# Copyright (C) 2022-2023 citations's COPYRIGHT HOLDER
+# Copyright (C) 2022-2024 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2022-2023.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2022-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-08-13 19:05+0000\n"
-"PO-Revision-Date: 2023-09-09 17:34+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
+"POT-Creation-Date: 2024-03-05 20:36+0000\n"
+"PO-Revision-Date: 2024-03-14 00:47+0100\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -94,12 +94,12 @@ msgstr "Almindelig tekst"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:604
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
 msgid "Citations"
 msgstr "Citations"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:606
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
 msgid "Manage your bibliography"
 msgstr "Håndtér din bibliografi"
 
@@ -107,6 +107,10 @@ msgstr "Håndtér din bibliografi"
 #: data/org.gnome.World.Citations.desktop.in.in:10
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "bibliografi;reference;citering;citere;litteratur;BibTeX;LaTeX;TeX;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:19
+msgid "New Window"
+msgstr "Nyt vindue"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -146,35 +150,31 @@ msgstr "Håndtér dine bibliografier i BibTeX-formatet."
 msgid "Main window"
 msgstr "Hovedvindue"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:76
-msgid "Maximiliano Sandoval"
-msgstr "Maximiliano Sandoval"
-
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:268
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
 msgstr "Tilføj PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:58
+#: data/resources/ui/add_pdf_dialog.ui:46
 msgid "Bibliography folder not set"
 msgstr "Bibliografimappe er ikke angivet"
 
 # pænest og sikrest med lile b
-#: data/resources/ui/add_pdf_dialog.ui:76
+#: data/resources/ui/add_pdf_dialog.ui:64
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Opretter en kopi af den valgte pdf og gemmer den i din bibliografimappe."
 
-#: data/resources/ui/add_pdf_dialog.ui:91
+#: data/resources/ui/add_pdf_dialog.ui:79
 msgid "From File"
 msgstr "Fra fil"
 
-#: data/resources/ui/add_pdf_dialog.ui:104
+#: data/resources/ui/add_pdf_dialog.ui:92
 msgid "From URL"
 msgstr "Fra URL"
 
-#: data/resources/ui/add_pdf_dialog.ui:109
+#: data/resources/ui/add_pdf_dialog.ui:98
 msgid "Download…"
 msgstr "Hent …"
 
@@ -211,7 +211,7 @@ msgstr ""
 msgid "Example:"
 msgstr "Eksempel:"
 
-#. Empty state widget
+#. TRANSLATORS Empty state widget
 #: data/resources/ui/entry_list.ui:9
 msgid "No Citations"
 msgstr "Ingen referencer"
@@ -228,7 +228,7 @@ msgstr "_Åbn PDF"
 msgid "_Copy Key"
 msgstr "_Kopiér nøgle"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Slet"
 
@@ -289,8 +289,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
-#: data/resources/ui/window.ui:152
+#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
 msgid "_Open"
 msgstr "_Åbn"
 
@@ -302,34 +301,43 @@ msgstr "Slet PDF"
 msgid "Could not set PDF Preview"
 msgstr "Kunne ikke angive forhåndsvisning af PDF"
 
-#: data/resources/ui/new_entry_dialog.ui:8
+#: data/resources/ui/new_entry_dialog.ui:7
 msgid "Add new Entry"
 msgstr "Tilføj ny indgang"
 
-#: data/resources/ui/new_entry_dialog.ui:27
+#: data/resources/ui/new_entry_dialog.ui:17
 msgid "_Cancel"
 msgstr "_Annullér"
 
-#: data/resources/ui/new_entry_dialog.ui:34
+#: data/resources/ui/new_entry_dialog.ui:24
 msgid "C_reate"
 msgstr "_Opret"
 
-#: data/resources/ui/new_entry_dialog.ui:49
+#: data/resources/ui/new_entry_dialog.ui:40
 msgid "New"
 msgstr "Ny"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:59
 msgid "Citation Key"
 msgstr "Referencenøgle"
 
-#: data/resources/ui/new_entry_dialog.ui:73
+#: data/resources/ui/new_entry_dialog.ui:66
 msgid "Citation Type"
 msgstr "Referencetype"
 
-#. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:93
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:86
 msgid "From BibTeX"
 msgstr "Fra BibTeX"
+
+#: data/resources/ui/new_entry_dialog.ui:105
+msgid "From DOI"
+msgstr "Fra DOI"
+
+#. TRANSLATORS DOI is a proper name
+#: data/resources/ui/new_entry_dialog.ui:116
+msgid "DOI"
+msgstr "DOI"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -343,25 +351,30 @@ msgstr "Vis genveje"
 
 #: data/resources/ui/shortcuts.ui:20
 msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nyt vindue"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Afslut"
 
-#: data/resources/ui/shortcuts.ui:28
+#: data/resources/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "Bibliografi"
 
-#: data/resources/ui/shortcuts.ui:31
+#: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Åbn"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:43
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Gem"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:49
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Søg"
@@ -370,12 +383,12 @@ msgstr "Søg"
 msgid "_Create New Bibliography"
 msgstr "_Opret ny bibliografi"
 
-#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturgenveje"
 
-#. About dialog
-#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+#. TRANSLATORS About dialog
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
 msgid "_About Citations"
 msgstr "_Om Citations"
 
@@ -383,79 +396,83 @@ msgstr "_Om Citations"
 msgid "_Save"
 msgstr "_Gem"
 
-#: data/resources/ui/window.ui:52
+#: data/resources/ui/window.ui:33
+msgid "New _Window"
+msgstr "Nyt _vindue"
+
+#: data/resources/ui/window.ui:51
 msgid "_Search in Google Scholar"
 msgstr "_Søg i Google Scholar"
 
-#. arXiv is a proper name
-#: data/resources/ui/window.ui:56
+#. TRANSLATORS arXiv is a proper name
+#: data/resources/ui/window.ui:55
 msgid "_Search in arXiv"
 msgstr "_Søg i arXiv"
 
-#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "Hovedmenu"
 
-#. BibTeX is a proper name
-#: data/resources/ui/window.ui:101
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/window.ui:100
 msgid "Open a BibTeX File"
 msgstr "Åbn en BibTeX-fil"
 
-#: data/resources/ui/window.ui:102
+#: data/resources/ui/window.ui:101
 msgid "Or drag-and-drop a file"
 msgstr "Eller træk og slip en fil"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:139
 msgid "Manage your Citations"
 msgstr "Håndtér dine referencer"
 
-#: data/resources/ui/window.ui:144
+#: data/resources/ui/window.ui:149
 msgid "Recent Files"
 msgstr "Seneste filer"
 
-#: data/resources/ui/window.ui:187
+#: data/resources/ui/window.ui:192
 msgid "Sidebar"
 msgstr "Sidebjælke"
 
-#: data/resources/ui/window.ui:198
+#: data/resources/ui/window.ui:203
 msgid "Add New Citation"
 msgstr "Tilføj ny reference"
 
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:217
 msgid "Search"
 msgstr "Søg"
 
-#: data/resources/ui/window.ui:226
+#: data/resources/ui/window.ui:231
 msgid "Search…"
 msgstr "Søg …"
 
-#: data/resources/ui/window.ui:246
+#: data/resources/ui/window.ui:251
 msgid "Content"
 msgstr "Indhold"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:261
 msgid "Secondary Menu"
 msgstr "Sekundær menu"
 
-#: src/add_pdf_dialog.rs:57
+#: src/add_pdf_dialog.rs:58
 msgid "Could not set PDF"
 msgstr "Kunne ikke angive PDF"
 
-#: src/add_pdf_dialog.rs:68
+#: src/add_pdf_dialog.rs:78
 msgid "Could not download PDF"
 msgstr "Kunne ikke hente PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:94
+#: src/add_pdf_dialog.rs:104
 msgid "Make sure that {path} exists"
 msgstr "Sørg for, at {path} findes"
 
-#: src/add_pdf_dialog.rs:179
+#: src/add_pdf_dialog.rs:185
 msgid "PDF Files"
 msgstr "PDF-filer"
 
-#: src/add_pdf_dialog.rs:187
+#: src/add_pdf_dialog.rs:193
 msgid "Select a PDF"
 msgstr "Vælg en PDF"
 
@@ -499,139 +516,142 @@ msgstr "Referencenøgle findes allerede"
 msgid "PDF added"
 msgstr "PDF tilføjet"
 
-#: src/new_entry_dialog.rs:125
+#: src/new_entry_dialog.rs:149
 msgid "Insert a BibTeX citation here"
 msgstr "Indsæt en BibTeX-reference her"
 
-#: src/utils.rs:21
+#: src/utils.rs:14
 msgid "Author"
 msgstr "Forfatter"
 
-#: src/utils.rs:22
+#: src/utils.rs:15
 msgid "Year"
 msgstr "År"
 
-#: src/utils.rs:23
+#: src/utils.rs:16
 msgid "Title"
 msgstr "Titel"
 
-#: src/utils.rs:24
+#: src/utils.rs:17
 msgid "Volume"
 msgstr "Bind"
 
-#: src/utils.rs:25
+#: src/utils.rs:18
 msgid "Number"
 msgstr "Nummer"
 
-#: src/utils.rs:26
+#: src/utils.rs:19
 msgid "Pages"
 msgstr "Sider"
 
-#: src/utils.rs:27
+#: src/utils.rs:20
 msgid "Publisher"
 msgstr "Forlag"
 
-#: src/utils.rs:28
+#: src/utils.rs:21
 msgid "Journal"
 msgstr "Tidsskrift"
 
-#: src/utils.rs:29
+#: src/utils.rs:22
 msgid "Address"
 msgstr "Adresse"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:31
+#: src/utils.rs:24
 msgid "How Published"
 msgstr "Udgivelsesmetode"
 
-#: src/utils.rs:32
+#: src/utils.rs:25
 msgid "Note"
 msgstr "Note"
 
-#: src/utils.rs:33
+#: src/utils.rs:26
 msgid "Book Title"
 msgstr "Bogtitel"
 
-#: src/utils.rs:34
+#: src/utils.rs:27
 msgid "Series"
 msgstr "Serie"
 
-#: src/utils.rs:35
+#: src/utils.rs:28
 msgid "Archive Prefix"
 msgstr "Arkivpræfiks"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:37
+#: src/utils.rs:30
 msgid "ePrint"
 msgstr "ePrint"
 
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:39
+#: src/utils.rs:32
 msgid "Primary Class"
 msgstr "Primær klasse"
 
-#: src/utils.rs:40
+#: src/utils.rs:33
 msgid "Month"
 msgstr "Måned"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:42
+#: src/utils.rs:35
 msgid "Editor"
 msgstr "Redaktør"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:44
+#: src/utils.rs:37
 msgid "Organization"
 msgstr "Organisation"
 
-#: src/utils.rs:45
+#: src/utils.rs:38
 msgid "School"
 msgstr "Skole"
 
-#: src/utils.rs:46
+#: src/utils.rs:39
 msgid "Institution"
 msgstr "Institution"
 
-# BibTeX for konsistens med andre
-#: src/window.rs:320 src/window.rs:343
-msgid "Bibtex Files"
+#: src/window.rs:117
+msgid "Could not add entry"
+msgstr "Kunne ikke tilføje indgang"
+
+#: src/window.rs:331 src/window.rs:356
+msgid "BibTeX Files"
 msgstr "BibTeX-filer"
 
-#: src/window.rs:353
+#: src/window.rs:365
 msgid "Create New Bibliography"
 msgstr "Opret ny bibliografi"
 
-#: src/window.rs:354
+#: src/window.rs:366
 msgid "_Create"
 msgstr "_Opret"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:357
+#: src/window.rs:369
 msgid "bibliography"
 msgstr "bibliografi"
 
-#: src/window.rs:457
+#: src/window.rs:473
 msgid "Remove From Recent Files"
 msgstr "Fjern fra seneste filer"
 
-#: src/window.rs:497
+#: src/window.rs:513
 msgid "An entry with the given citation key already exists"
 msgstr "Der findes allerede en indgang med den givne referencenøgle"
 
-#: src/window.rs:512
+#: src/window.rs:528
 msgid "Bibliography saved"
 msgstr "Bibliografi gemt"
 
-#: src/window.rs:565
+#: src/window.rs:581
 msgid "Citation Deleted"
 msgstr "Reference slettet"
 
-#: src/window.rs:567
+#: src/window.rs:583
 msgid "Undo"
 msgstr "Fortryd"
 
-#: src/window.rs:611
+#: src/window.rs:626
 msgid "translator-credits"
 msgstr ""
 "Ask Hjorth Larsen\n"
@@ -641,27 +661,30 @@ msgstr ""
 "E-mail <dansk@dansk-gruppen.dk>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:624
+#: src/window.rs:638
 msgid "Unsaved Changes"
 msgstr "Ændringer ikke gemt"
 
 # Er ikke sikker på hvad 'safe' dækker over
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:627
+#: src/window.rs:641
 msgid "Do you want to write all changes to the safe?"
 msgstr "Vil du skrive alle ændringer til lageret?"
 
-#: src/window.rs:631
+#: src/window.rs:645
 msgid "_Quit Without Saving"
 msgstr "_Afslut uden at gemme"
 
-#: src/window.rs:632
+#: src/window.rs:646
 msgid "_Don't Quit"
 msgstr "Afslut _ikke"
 
-#: src/window.rs:633
+#: src/window.rs:647
 msgid "_Save and Quit"
 msgstr "_Gem og afslut"
+
+#~ msgid "Maximiliano Sandoval"
+#~ msgstr "Maximiliano Sandoval"
 
 #~ msgid "Back"
 #~ msgstr "Tilbage"
