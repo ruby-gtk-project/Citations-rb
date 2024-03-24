@@ -35,6 +35,7 @@
         <child>
           <object class="AdwViewStack" id="view_stack">
             <property name="vexpand">True</property>
+            <signal name="notify::visible-child" handler="on_stack_visible_child_notify" swapped="true"/>
             <child>
               <object class="AdwViewStackPage">
                 <property name="title" translatable="yes">New</property>

@@ -89,14 +89,17 @@ mod imp {
 
         #[template_callback]
         fn on_entry_notify_text(&self) {
-            let is_text_empty = self.entry_row.text().is_empty();
-            self.create_button.set_sensitive(!is_text_empty);
+            self.obj().update_create_button();
         }
 
         #[template_callback]
         fn on_doi_notify_text(&self) {
-            let is_doi_empty = self.doi_row.text().is_empty();
-            self.create_button.set_sensitive(!is_doi_empty);
+            self.obj().update_create_button();
+        }
+
+        #[template_callback]
+        fn on_stack_visible_child_notify(&self) {
+            self.obj().update_create_button();
         }
 
         #[template_callback]
@@ -139,6 +142,10 @@ mod imp {
             buffer.set_highlight_syntax(true);
             buffer.set_highlight_matching_brackets(false);
             self.source_view.set_buffer(Some(&buffer));
+
+            buffer.connect_changed(glib::clone!(@weak obj => move |_buffer| {
+                obj.update_create_button()
+            }));
 
             obj.update_style_scheme();
             let manager = adw::StyleManager::default();
@@ -211,5 +218,24 @@ impl NewEntryDialog {
             .downcast::<gsv::Buffer>()
             .unwrap();
         buffer.set_style_scheme(Some(&scheme));
+    }
+
+    fn update_create_button(&self) {
+        let imp = self.imp();
+
+        let is_text_empty = match &imp.view_stack.visible_child_name().as_deref() {
+            Some("new") => imp.entry_row.text().is_empty(),
+            Some("from_bibtex") => {
+                let buffer = imp.source_view.buffer();
+                let (start, end) = buffer.bounds();
+                let text = buffer.text(&start, &end, true);
+
+                text.is_empty()
+            }
+            Some("from_doi") => imp.doi_row.text().is_empty(),
+            _ => unreachable!(),
+        };
+
+        imp.create_button.set_sensitive(!is_text_empty);
     }
 }
