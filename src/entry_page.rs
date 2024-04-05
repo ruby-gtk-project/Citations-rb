@@ -420,11 +420,14 @@ impl EntryPage {
                     button.add_css_class("flat");
                     row.add_suffix(&button);
                 }
-
-                entry.bind_property(&key, &row, "text")
-                     .sync_create()
-                     .bidirectional()
-                     .build();
+                if entry.has_property(&key, Some(String::static_type())) {
+                    entry.bind_property(&key, &row, "text")
+                         .sync_create()
+                         .bidirectional()
+                         .build();
+                } else {
+                    log::warn!("Entry {} does not have property '{key}'", entry.citation_key());
+                }
 
                 row.upcast()
             }),
