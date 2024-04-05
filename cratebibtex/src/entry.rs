@@ -77,8 +77,8 @@ mod imp {
         organization: PhantomData<String>,
         #[property(get = |o: &Self| o.get("school").unwrap_or_default(), set = |o: &Self, val| o.set("school", val), explicit_notify)]
         school: PhantomData<String>,
-        #[property(get = |o: &Self| o.get("insitution").unwrap_or_default(), set = |o: &Self, val| o.set("insitution", val), explicit_notify)]
-        insitution: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("institution").unwrap_or_default(), set = |o: &Self, val| o.set("institution", val), explicit_notify)]
+        institution: PhantomData<String>,
         #[property(get = |o: &Self| o.get("doi").unwrap_or_default(), set = |o: &Self, val| o.set("doi", val), explicit_notify)]
         doi: PhantomData<String>,
         #[property(get = |o: &Self| o.get("url").unwrap_or_default(), set = |o: &Self, val| o.set("url", val), explicit_notify)]
@@ -95,9 +95,12 @@ mod imp {
         }
 
         fn set(&self, tag: &str, value: &str) {
-            let old_value = self.obj().insert_tag(tag, value);
-            if old_value.as_deref() != Some(value) {
-                self.obj().notify(tag);
+            let obj = self.obj();
+            let old_value = obj.insert_tag(tag, value);
+            if old_value.as_deref() != Some(value)
+                && obj.has_property(tag, Some(String::static_type()))
+            {
+                obj.notify(tag);
             }
         }
 
