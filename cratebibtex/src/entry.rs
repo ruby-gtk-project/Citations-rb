@@ -77,8 +77,8 @@ mod imp {
         organization: PhantomData<String>,
         #[property(get = |o: &Self| o.get("school").unwrap_or_default(), set = |o: &Self, val| o.set("school", val), explicit_notify)]
         school: PhantomData<String>,
-        #[property(get = |o: &Self| o.get("insitution").unwrap_or_default(), set = |o: &Self, val| o.set("insitution", val), explicit_notify)]
-        insitution: PhantomData<String>,
+        #[property(get = |o: &Self| o.get("institution").unwrap_or_default(), set = |o: &Self, val| o.set("institution", val), explicit_notify)]
+        institution: PhantomData<String>,
         #[property(get = |o: &Self| o.get("doi").unwrap_or_default(), set = |o: &Self, val| o.set("doi", val), explicit_notify)]
         doi: PhantomData<String>,
         #[property(get = |o: &Self| o.get("url").unwrap_or_default(), set = |o: &Self, val| o.set("url", val), explicit_notify)]
