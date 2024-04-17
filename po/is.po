@@ -2,14 +2,14 @@
 # Copyright (C) 2023 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
 #
-# Ingirafn <ingirafn@this.is>, 2023.
-# Sveinn í Felli <sv1@fellsnet.is>, 2023.
+# Ingirafn <ingirafn@this.is>, 2023, 2024.
+# Sveinn í Felli <sv1@fellsnet.is>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/issues\n"
-"POT-Creation-Date: 2023-09-24 19:56+0000\n"
-"PO-Revision-Date: 2023-09-25 07:26+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
+"POT-Creation-Date: 2024-04-12 07:36+0000\n"
+"PO-Revision-Date: 2024-04-17 08:22+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -96,12 +96,12 @@ msgstr "Einfalt"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:70 src/main.rs:42 src/window.rs:609
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
 msgid "Citations"
 msgstr "Tilvitnanir"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:611
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
 msgid "Manage your bibliography"
 msgstr "Haltu heimildaskránni þinni til haga"
 
@@ -109,6 +109,10 @@ msgstr "Haltu heimildaskránni þinni til haga"
 #: data/org.gnome.World.Citations.desktop.in.in:10
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "Heimildaskrár;tilvitnanir;bókmenntir;BibTeX;LaTeX;TeX;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:19
+msgid "New Window"
+msgstr "Nýr gluggi"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -147,35 +151,31 @@ msgstr "Haltu heimilsaskránni þinn til haga í BibTex sniðinu."
 msgid "Main window"
 msgstr "Aðalgluggi"
 
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:85
-msgid "Maximiliano Sandoval"
-msgstr "Maximiliano Sandoval"
-
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:10 data/resources/ui/entry_page.ui:268
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
 msgstr "Bæta við PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:58
+#: data/resources/ui/add_pdf_dialog.ui:46
 msgid "Bibliography folder not set"
 msgstr "Ekki er búið að velja möppu fyrir heimildaskrá"
 
-#: data/resources/ui/add_pdf_dialog.ui:76
+#: data/resources/ui/add_pdf_dialog.ui:64
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Býr til afrit af pdf-skjalinu og geymir það í möppunni fyrir "
 "heimildaskrárnar."
 
-#: data/resources/ui/add_pdf_dialog.ui:91
+#: data/resources/ui/add_pdf_dialog.ui:79
 msgid "From File"
 msgstr "Úr skjali"
 
-#: data/resources/ui/add_pdf_dialog.ui:104
+#: data/resources/ui/add_pdf_dialog.ui:92
 msgid "From URL"
 msgstr "Úr URL-slóð"
 
-#: data/resources/ui/add_pdf_dialog.ui:109
+#: data/resources/ui/add_pdf_dialog.ui:98
 msgid "Download…"
 msgstr "Niðurhal...."
 
@@ -211,7 +211,7 @@ msgstr ""
 msgid "Example:"
 msgstr "Dæmi:"
 
-#. Empty state widget
+#. TRANSLATORS Empty state widget
 #: data/resources/ui/entry_list.ui:9
 msgid "No Citations"
 msgstr "Engar tilvitnanir"
@@ -228,7 +228,7 @@ msgstr "_Opna PDF"
 msgid "_Copy Key"
 msgstr "_Afrita lykil"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:62
+#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Eyða"
 
@@ -274,7 +274,7 @@ msgstr "Efnisútdráttur"
 
 #: data/resources/ui/entry_page.ui:186
 msgid "Copy Abstract"
-msgstr "Afrita efnisútdráttinn"
+msgstr "Afrita efnisútdrátt"
 
 #: data/resources/ui/entry_page.ui:218
 msgid "Notes"
@@ -289,8 +289,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:105
-#: data/resources/ui/window.ui:152
+#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
 msgid "_Open"
 msgstr "_Opna"
 
@@ -302,34 +301,43 @@ msgstr "Eyða PDF"
 msgid "Could not set PDF Preview"
 msgstr "Gat ekki stillt PDF forskoðun"
 
-#: data/resources/ui/new_entry_dialog.ui:8
+#: data/resources/ui/new_entry_dialog.ui:7
 msgid "Add new Entry"
 msgstr "Bæta við nýrri færslu"
 
-#: data/resources/ui/new_entry_dialog.ui:27
+#: data/resources/ui/new_entry_dialog.ui:17
 msgid "_Cancel"
 msgstr "_Hætta við"
 
-#: data/resources/ui/new_entry_dialog.ui:34
+#: data/resources/ui/new_entry_dialog.ui:24
 msgid "C_reate"
 msgstr "_Búa til"
 
-#: data/resources/ui/new_entry_dialog.ui:49
+#: data/resources/ui/new_entry_dialog.ui:41
 msgid "New"
 msgstr "Nýtt"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:60
 msgid "Citation Key"
 msgstr "Tilvitnunarlykill"
 
-#: data/resources/ui/new_entry_dialog.ui:73
+#: data/resources/ui/new_entry_dialog.ui:67
 msgid "Citation Type"
 msgstr "Tegund tilvitnunar"
 
-#. BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:93
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:87
 msgid "From BibTeX"
 msgstr "Úr Bibtex"
+
+#: data/resources/ui/new_entry_dialog.ui:106
+msgid "From DOI"
+msgstr "Úr DOI"
+
+#. TRANSLATORS DOI is a proper name
+#: data/resources/ui/new_entry_dialog.ui:117
+msgid "DOI"
+msgstr "DOI"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -343,25 +351,30 @@ msgstr "Sýna flýtilykla"
 
 #: data/resources/ui/shortcuts.ui:20
 msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nýr gluggi"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Hætta"
 
-#: data/resources/ui/shortcuts.ui:28
+#: data/resources/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "Heimildaskrá"
 
-#: data/resources/ui/shortcuts.ui:31
+#: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Opna"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:43
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Vista"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:49
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Leita"
@@ -370,12 +383,12 @@ msgstr "Leita"
 msgid "_Create New Bibliography"
 msgstr "_Búa til nýja heimildaskrá"
 
-#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:40
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
 msgid "_Keyboard Shortcuts"
 msgstr "_Flýtilyklar"
 
-#. About dialog
-#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:44
+#. TRANSLATORS About dialog
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
 msgid "_About Citations"
 msgstr "_Um Citations"
 
@@ -383,79 +396,83 @@ msgstr "_Um Citations"
 msgid "_Save"
 msgstr "_Vista"
 
-#: data/resources/ui/window.ui:52
+#: data/resources/ui/window.ui:33
+msgid "New _Window"
+msgstr "Nýr _gluggi"
+
+#: data/resources/ui/window.ui:51
 msgid "_Search in Google Scholar"
 msgstr "_Leita í Google Scholar"
 
-#. arXiv is a proper name
-#: data/resources/ui/window.ui:56
+#. TRANSLATORS arXiv is a proper name
+#: data/resources/ui/window.ui:55
 msgid "_Search in arXiv"
 msgstr "_Leita í arXiv"
 
-#: data/resources/ui/window.ui:91 data/resources/ui/window.ui:128
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "Aðalvalmynd"
 
-#. BibTeX is a proper name
-#: data/resources/ui/window.ui:101
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/window.ui:100
 msgid "Open a BibTeX File"
 msgstr "Opna BibTex-skrá"
 
-#: data/resources/ui/window.ui:102
+#: data/resources/ui/window.ui:101
 msgid "Or drag-and-drop a file"
 msgstr "Eða dragðu og slepptu skrá"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:139
 msgid "Manage your Citations"
 msgstr "Haltu tilvitnunum þínum til haga"
 
-#: data/resources/ui/window.ui:144
+#: data/resources/ui/window.ui:149
 msgid "Recent Files"
 msgstr "Nýlegar skrár"
 
-#: data/resources/ui/window.ui:187
+#: data/resources/ui/window.ui:192
 msgid "Sidebar"
 msgstr "Hliðarspjald"
 
-#: data/resources/ui/window.ui:198
+#: data/resources/ui/window.ui:203
 msgid "Add New Citation"
 msgstr "Búa til nýja tilvitnun"
 
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:217
 msgid "Search"
 msgstr "Leita"
 
-#: data/resources/ui/window.ui:226
+#: data/resources/ui/window.ui:231
 msgid "Search…"
 msgstr "Leita..."
 
-#: data/resources/ui/window.ui:246
+#: data/resources/ui/window.ui:251
 msgid "Content"
 msgstr "Efni"
 
-#: data/resources/ui/window.ui:256
+#: data/resources/ui/window.ui:261
 msgid "Secondary Menu"
 msgstr "Önnur valmynd"
 
-#: src/add_pdf_dialog.rs:57
+#: src/add_pdf_dialog.rs:58
 msgid "Could not set PDF"
 msgstr "Gat ekki stillt  PDF"
 
-#: src/add_pdf_dialog.rs:68
+#: src/add_pdf_dialog.rs:78
 msgid "Could not download PDF"
 msgstr "Gat ekki sótt PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:94
+#: src/add_pdf_dialog.rs:104
 msgid "Make sure that {path} exists"
 msgstr "Gakktu úr skugga um að {path} sé til"
 
-#: src/add_pdf_dialog.rs:179
+#: src/add_pdf_dialog.rs:178
 msgid "PDF Files"
 msgstr "PDF-skrár"
 
-#: src/add_pdf_dialog.rs:187
+#: src/add_pdf_dialog.rs:186
 msgid "Select a PDF"
 msgstr "Veldu PDF"
 
@@ -494,166 +511,173 @@ msgstr "Annað…"
 msgid "Citation Key already exists"
 msgstr "Tilvitnunarlykill er þegar til"
 
-#: src/entry_page.rs:586
+#: src/entry_page.rs:589
 msgid "PDF added"
 msgstr "PDF bætt við"
 
-#: src/new_entry_dialog.rs:125
+#: src/new_entry_dialog.rs:156
 msgid "Insert a BibTeX citation here"
 msgstr "Bættu  BibTex-tilvísun við hérna"
 
-#: src/utils.rs:21
+#: src/utils.rs:14
 msgid "Author"
 msgstr "Höfundur"
 
-#: src/utils.rs:22
+#: src/utils.rs:15
 msgid "Year"
 msgstr "Ár"
 
-#: src/utils.rs:23
+#: src/utils.rs:16
 msgid "Title"
 msgstr "Titill"
 
-#: src/utils.rs:24
+#: src/utils.rs:17
 msgid "Volume"
 msgstr "Bindi"
 
-#: src/utils.rs:25
+#: src/utils.rs:18
 msgid "Number"
 msgstr "Númer"
 
-#: src/utils.rs:26
+#: src/utils.rs:19
 msgid "Pages"
 msgstr "Blaðsíður"
 
-#: src/utils.rs:27
+#: src/utils.rs:20
 msgid "Publisher"
 msgstr "Útgefandi"
 
-#: src/utils.rs:28
+#: src/utils.rs:21
 msgid "Journal"
 msgstr "Tímarit"
 
-#: src/utils.rs:29
+#: src/utils.rs:22
 msgid "Address"
 msgstr "Heimilisfang"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:31
+#: src/utils.rs:24
 msgid "How Published"
 msgstr "Hvernig gefið út"
 
-#: src/utils.rs:32
+#: src/utils.rs:25
 msgid "Note"
 msgstr "Athugasemd"
 
-#: src/utils.rs:33
+#: src/utils.rs:26
 msgid "Book Title"
 msgstr "Titill bókar"
 
-#: src/utils.rs:34
+#: src/utils.rs:27
 msgid "Series"
 msgstr "Ritraðir"
 
-#: src/utils.rs:35
+#: src/utils.rs:28
 msgid "Archive Prefix"
 msgstr "Forskeyti safnskrár"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:37
+#: src/utils.rs:30
 msgid "ePrint"
 msgstr "ePrent"
 
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:39
+#: src/utils.rs:32
 msgid "Primary Class"
 msgstr "Primary Class"
 
-#: src/utils.rs:40
+#: src/utils.rs:33
 msgid "Month"
 msgstr "Mánuður"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:42
+#: src/utils.rs:35
 msgid "Editor"
 msgstr "Ritstjóri"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:44
+#: src/utils.rs:37
 msgid "Organization"
 msgstr "Stofnun"
 
-#: src/utils.rs:45
+#: src/utils.rs:38
 msgid "School"
 msgstr "Skóli"
 
-#: src/utils.rs:46
+#: src/utils.rs:39
 msgid "Institution"
 msgstr "Stofnun"
 
-#: src/window.rs:325 src/window.rs:348
-msgid "Bibtex Files"
-msgstr "Bibtex skjöl"
+#: src/window.rs:117
+msgid "Could not add entry"
+msgstr "Gat ekki bætt við færslu"
 
-#: src/window.rs:358
+#: src/window.rs:331 src/window.rs:356
+msgid "BibTeX Files"
+msgstr "Bibtex skrár"
+
+#: src/window.rs:365
 msgid "Create New Bibliography"
 msgstr "Búa til nýja heimildaskrá"
 
-#: src/window.rs:359
+#: src/window.rs:366
 msgid "_Create"
 msgstr "_Búa til"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:362
+#: src/window.rs:369
 msgid "bibliography"
 msgstr "heimildaskrá"
 
-#: src/window.rs:462
+#: src/window.rs:473
 msgid "Remove From Recent Files"
 msgstr "Fjarlæga úr nýlegum skjölum"
 
-#: src/window.rs:502
+#: src/window.rs:513
 msgid "An entry with the given citation key already exists"
 msgstr "Færsla með tilgreindum tilvitnunarlykli er þegar til staðar"
 
-#: src/window.rs:517
+#: src/window.rs:528
 msgid "Bibliography saved"
 msgstr "Heimildaskrá vistuð"
 
-#: src/window.rs:570
+#: src/window.rs:581
 msgid "Citation Deleted"
 msgstr "Tilvitnun eytt"
 
-#: src/window.rs:572
+#: src/window.rs:583
 msgid "Undo"
 msgstr "Afturkalla"
 
-#: src/window.rs:616
+#: src/window.rs:626
 msgid "translator-credits"
-msgstr "Ingirafn, ingirafn at this dot is ,2023"
+msgstr "Ingirafn, ingirafn at this dot is, 2023"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:629
+#: src/window.rs:638
 msgid "Unsaved Changes"
 msgstr "Óvistaðar breytingar"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:632
+#: src/window.rs:641
 msgid "Do you want to write all changes to the safe?"
 msgstr "Viltu skrifa allar breytingar í vistun?"
 
-#: src/window.rs:636
+#: src/window.rs:645
 msgid "_Quit Without Saving"
 msgstr "_Hætta án þess að vista"
 
-#: src/window.rs:637
+#: src/window.rs:646
 msgid "_Don't Quit"
 msgstr "_Ekki hætta"
 
-#: src/window.rs:638
+#: src/window.rs:647
 msgid "_Save and Quit"
 msgstr "_Vista og hætta"
+
+#~ msgid "Maximiliano Sandoval"
+#~ msgstr "Maximiliano Sandoval"
 
 #~ msgid "Back"
 #~ msgstr "Til baka"
