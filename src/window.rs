@@ -386,8 +386,7 @@ impl Window {
         if self.imp().bib.get().is_some() {
             let app = self
                 .application()
-                .unwrap()
-                .downcast::<crate::Application>()
+                .and_downcast::<crate::Application>()
                 .unwrap();
             let window = Window::new(&app);
             let group = gtk::WindowGroup::new();
@@ -454,27 +453,7 @@ impl Window {
 
         imp.recent_files_list.bind_model(Some(&model), move |item| {
             let file = item.downcast_ref::<gio::File>().unwrap();
-            let action_row = adw::ActionRow::new();
-            let path = file.path().unwrap().to_str().map(String::from).unwrap();
-            let action = format!("win.open::{path}");
-            action_row.set_title(file.basename().unwrap().to_str().unwrap());
-            if !path.starts_with("/run/user") {
-                action_row.set_subtitle(&path);
-            }
-            action_row.set_detailed_action_name(&action);
-            action_row.set_activatable(true);
-
-            let clear_button = gtk::Button::from_icon_name("edit-delete-symbolic");
-            clear_button.set_valign(gtk::Align::Center);
-            clear_button.connect_clicked(move |_button| {
-                let settings = gio::Settings::new(APP_ID);
-                crate::utils::remove_recent_file(&settings, &path);
-            });
-            clear_button.set_tooltip_text(Some(&gettext("Remove From Recent Files")));
-            clear_button.add_css_class("flat");
-            action_row.add_suffix(&clear_button);
-
-            action_row.upcast()
+            recent_row(file).upcast()
         });
 
         if recent_files.is_empty() {
@@ -667,4 +646,37 @@ impl Window {
         self.imp().force_close.set(true);
         self.close();
     }
+}
+
+fn recent_row(file: &gio::File) -> adw::ActionRow {
+    let action_row = adw::ActionRow::new();
+
+    if let Some(path) = file.path().and_then(|p| p.to_str().map(String::from)) {
+        let action = format!("win.open::{path}");
+
+        if !path.starts_with("/run/user") {
+            action_row.set_subtitle(&path);
+        }
+        action_row.set_detailed_action_name(&action);
+        action_row.set_activatable(true);
+
+        let clear_button = gtk::Button::from_icon_name("edit-delete-symbolic");
+        clear_button.set_valign(gtk::Align::Center);
+        clear_button.connect_clicked(move |_button| {
+            let settings = gio::Settings::new(APP_ID);
+            crate::utils::remove_recent_file(&settings, &path);
+        });
+        clear_button.set_tooltip_text(Some(&gettext("Remove From Recent Files")));
+        clear_button.add_css_class("flat");
+
+        action_row.add_suffix(&clear_button);
+    }
+
+    if let Some(basename) = file.basename() {
+        if let Some(basename) = basename.to_str() {
+            action_row.set_title(basename);
+        }
+    }
+
+    action_row
 }

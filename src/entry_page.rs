@@ -216,12 +216,7 @@ mod imp {
         async fn on_doi_clicked(&self) {
             let value = self.doi_entry.text();
             if let Ok(uri) = crate::utils::doi_url(&value) {
-                let window = self
-                    .obj()
-                    .root()
-                    .unwrap()
-                    .downcast::<crate::Window>()
-                    .unwrap();
+                let window = self.obj().root().and_downcast::<crate::Window>().unwrap();
                 let launcher = gtk::UriLauncher::new(uri.as_str());
                 if let Err(err) = launcher.launch_future(Some(&window)).await {
                     log::error!("Failed to launch uri {uri}: {err}");
@@ -234,12 +229,7 @@ mod imp {
             let key = self.entry.borrow().as_ref().unwrap().citation_key();
             self.obj().clipboard().set_text(&key);
 
-            let window = self
-                .obj()
-                .root()
-                .unwrap()
-                .downcast::<crate::Window>()
-                .unwrap();
+            let window = self.obj().root().and_downcast::<crate::Window>().unwrap();
             window.send_toast(&gettext("Copied"));
         }
 
@@ -248,11 +238,7 @@ mod imp {
             let new_key = entry_row.text();
             let entry = entry_page.imp().entry.borrow().clone().unwrap();
             let old_key = entry.citation_key();
-            let window = entry_page
-                .root()
-                .unwrap()
-                .downcast::<crate::Window>()
-                .unwrap();
+            let window = entry_page.root().and_downcast::<crate::Window>().unwrap();
 
             if !window.bib().key_exists(&new_key) || old_key == new_key {
                 entry_row.remove_css_class("error");
@@ -404,8 +390,7 @@ impl EntryPage {
                     button.connect_clicked(glib::clone!(@weak row => move |_| {
                         let window = row
                             .root()
-                            .unwrap()
-                            .downcast::<crate::Window>()
+                            .and_downcast::<crate::Window>()
                             .unwrap();
 
                         if let Ok(uri) = crate::utils::eprint_url(&row.text()) {
@@ -543,11 +528,7 @@ impl EntryPage {
                 )
                 .0
                 .await?;
-                log::debug!(
-                    "Moved {} to {}",
-                    pdf.path().unwrap().to_str().unwrap(),
-                    new_pdf.path().unwrap().to_str().unwrap()
-                );
+                log::debug!("Moved {:?} to {:?}", pdf.path(), new_pdf.path());
             }
         }
 
