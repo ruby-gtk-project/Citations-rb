@@ -261,8 +261,7 @@ mod imp {
             let window = self
                 .obj()
                 .root()
-                .unwrap()
-                .downcast::<crate::Window>()
+                .and_downcast::<crate::Window>()
                 .unwrap();
             window.send_toast(&gettext("Copied"));
         }

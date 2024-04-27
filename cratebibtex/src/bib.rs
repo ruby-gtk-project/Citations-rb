@@ -202,10 +202,9 @@ impl Bib {
             .await
             .map_err(|err| err.1)?;
         self.set_modified(false);
-        log::debug!(
-            "Bibliography {} was successfully saved",
-            file.path().unwrap().to_str().unwrap()
-        );
+        if let Some(path) = file.path() {
+            log::debug!("Bibliography {} was successfully saved", path.display());
+        }
 
         Ok(())
     }
