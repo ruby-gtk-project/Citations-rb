@@ -13,7 +13,7 @@ scrolledwindow textview.inline text {
 }
 
 textview.newentrydialog {
-  background-color: @window_bg_color;
+  background-color: var(--window-bg-color);
 }
 
 toolbarview scrolledwindow.card undershoot.top,
