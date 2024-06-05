@@ -78,6 +78,7 @@ mod imp {
                 let toast = adw::Toast::new(&gettext("Could not download PDF"));
                 self.toast_overlay.add_toast(toast);
                 self.download_button.set_sensitive(true);
+                self.progress_bar.set_visible(false);
             } else {
                 self.pdf_url_entry_row.remove_css_class("error");
                 self.obj().emit_by_name::<()>("pdf-set", &[]);
@@ -146,23 +147,31 @@ impl AddPdfDialog {
                 }),
             );
 
-            let bytes = utils::get(url).await?;
-            let bytes = glib::Bytes::from_owned(bytes);
-
-            // Validate the document
-            poppler::Document::from_bytes(&bytes, None)?;
-
-            let citation_key = self.imp().citation_key.get().unwrap();
-
-            let folder = gio::File::for_path(&path);
-            let pdf = folder.child(utils::pdf_filename(citation_key));
-
-            pdf.replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
-                .await
-                .map_err(|err| err.1)?;
+            let res = self.download_pdf(url, &path).await;
 
             source.remove();
+
+            res?;
         }
+
+        Ok(())
+    }
+
+    async fn download_pdf(&self, url: url::Url, path: &std::path::Path) -> anyhow::Result<()> {
+        let bytes = utils::get(url).await?;
+        let bytes = glib::Bytes::from_owned(bytes);
+
+        // Validate the document
+        poppler::Document::from_bytes(&bytes, None)?;
+
+        let citation_key = self.imp().citation_key.get().unwrap();
+
+        let folder = gio::File::for_path(&path);
+        let pdf = folder.child(utils::pdf_filename(citation_key));
+
+        pdf.replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
+            .await
+            .map_err(|err| err.1)?;
 
         Ok(())
     }
