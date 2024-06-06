@@ -6,6 +6,7 @@
     <property name="content-height">270</property>
     <property name="title" translatable="yes">Add new Entry</property>
     <property name="default-widget">create_button</property>
+    <property name="focus-widget">entry_row</property>
     <child>
       <object class="AdwToolbarView">
         <child type="top">

@@ -6,6 +6,7 @@
     <property name="content-width">450</property>
     <property name="content-height">270</property>
     <property name="title" translatable="yes">Add PDF</property>
+    <property name="focus-widget">pdf_url_entry_row</property>
     <child>
       <object class="AdwToolbarView">
         <child type="top">
