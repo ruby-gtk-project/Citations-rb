@@ -195,10 +195,13 @@ impl Selection {
             let n_items_before = old_model.as_ref().map_or(0, |model| model.n_items());
 
             let n_items = if let Some(model) = model {
-                let handler =
-                    model.connect_items_changed(clone!(@weak self as obj => move |_, p, r, a| {
+                let handler = model.connect_items_changed(clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_, p, r, a| {
                         obj.model_items_changed(p, r, a);
-                    }));
+                    }
+                ));
                 if let Some(id) = imp.signal_handler.replace(Some(handler)) {
                     if let Some(old_model) = old_model {
                         old_model.disconnect(id);

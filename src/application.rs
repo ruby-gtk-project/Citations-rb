@@ -59,11 +59,17 @@ mod imp {
                 group.add_window(&window);
                 window.present();
 
-                glib::spawn_future_local(glib::clone!(@strong window, @strong file => async move {
-                    if let Err(err) = window.open(&file).await {
-                        log::error!("Could not open {}: {err}", file.uri());
+                glib::spawn_future_local(glib::clone!(
+                    #[strong]
+                    window,
+                    #[strong]
+                    file,
+                    async move {
+                        if let Err(err) = window.open(&file).await {
+                            log::error!("Could not open {}: {err}", file.uri());
+                        }
                     }
-                }));
+                ));
             }
         }
     }

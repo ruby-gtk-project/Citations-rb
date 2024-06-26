@@ -304,7 +304,7 @@ mod imp {
 
             obj.update_style_scheme();
             let manager = adw::StyleManager::default();
-            manager.connect_dark_notify(glib::clone!(@weak obj => move |_| {
+            manager.connect_dark_notify(glib::clone!(#[weak] obj , move |_| {
                 obj.update_style_scheme();
             }));
 
@@ -320,7 +320,7 @@ mod imp {
 
             self.text_view
                 .buffer()
-                .connect_changed(glib::clone!(@weak obj => move |buffer| {
+                .connect_changed(glib::clone!(#[weak] obj , move |buffer| {
                     let (start, end) = buffer.bounds();
                     let template = buffer.text(&start, &end, true);
 
@@ -350,7 +350,7 @@ mod imp {
                 .build();
 
             let signals = self.signals.get().unwrap();
-            signals.connect_notify_local(None, glib::clone!(@weak obj => move |_signal, _pspec| {
+            signals.connect_notify_local(None, glib::clone!(#[weak] obj , move |_signal, _pspec| {
                 obj.notify_template();
             }));
         }

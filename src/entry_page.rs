@@ -260,11 +260,14 @@ mod imp {
             self.parent_constructed();
             let obj = self.obj();
 
-            self.doi_entry
-                .connect_changed(glib::clone!(@weak obj => move |row| {
-                    let sensitive =crate::utils::doi_url(&row.text()).is_ok();
+            self.doi_entry.connect_changed(glib::clone!(
+                #[weak]
+                obj,
+                move |row| {
+                    let sensitive = crate::utils::doi_url(&row.text()).is_ok();
                     obj.imp().doi_button.set_sensitive(sensitive);
-                }));
+                }
+            ));
 
             self.bindings
                 .bind("author", &*self.author_entry, "text")
@@ -369,53 +372,71 @@ impl EntryPage {
         self.imp().extras_box.set_visible(model.item(0).is_some());
         self.imp().extras_list_box.bind_model(
             Some(&model),
-            glib::clone!(@weak entry => @default-panic, move |obj| {
-                let key = obj.downcast_ref::<gtk::StringObject>().unwrap().string();
+            glib::clone!(
+                #[weak]
+                entry,
+                #[upgrade_or_panic]
+                move |obj| {
+                    let key = obj.downcast_ref::<gtk::StringObject>().unwrap().string();
 
-                let row = adw::EntryRow::new();
-                row.set_title(&utils::translated_key(&key));
+                    let row = adw::EntryRow::new();
+                    row.set_title(&utils::translated_key(&key));
 
-                if key.to_lowercase() == "eprint" {
-                    let button = gtk::Button::from_icon_name("external-link-symbolic");
-                    button.set_valign(gtk::Align::Center);
+                    if key.to_lowercase() == "eprint" {
+                        let button = gtk::Button::from_icon_name("external-link-symbolic");
+                        button.set_valign(gtk::Align::Center);
 
-                    button.set_sensitive(false);
-                    row.connect_changed(glib::clone!(@weak button => move |row| {
-                        let text = row.text();
-                        let sensitive = crate::utils::eprint_url(&text).is_ok();
-                        button.set_sensitive(sensitive);
-                    }));
+                        button.set_sensitive(false);
+                        row.connect_changed(glib::clone!(
+                            #[weak]
+                            button,
+                            move |row| {
+                                let text = row.text();
+                                let sensitive = crate::utils::eprint_url(&text).is_ok();
+                                button.set_sensitive(sensitive);
+                            }
+                        ));
 
-                    button.set_tooltip_text(Some(&gettext("Open in Browser")));
-                    button.connect_clicked(glib::clone!(@weak row => move |_| {
-                        let window = row
-                            .root()
-                            .and_downcast::<crate::Window>()
-                            .unwrap();
+                        button.set_tooltip_text(Some(&gettext("Open in Browser")));
+                        button.connect_clicked(glib::clone!(
+                            #[weak]
+                            row,
+                            move |_| {
+                                let window = row.root().and_downcast::<crate::Window>().unwrap();
 
-                        if let Ok(uri) = crate::utils::eprint_url(&row.text()) {
-                            let launcher = gtk::UriLauncher::new(uri.as_str());
-                            launcher.launch(Some(&window), gio::Cancellable::NONE, move |res| {
-                                if let Err(err) = res {
-                                    log::error!("Failed to launch uri {uri}: {err}");
+                                if let Ok(uri) = crate::utils::eprint_url(&row.text()) {
+                                    let launcher = gtk::UriLauncher::new(uri.as_str());
+                                    launcher.launch(
+                                        Some(&window),
+                                        gio::Cancellable::NONE,
+                                        move |res| {
+                                            if let Err(err) = res {
+                                                log::error!("Failed to launch uri {uri}: {err}");
+                                            }
+                                        },
+                                    );
                                 }
-                            });
-                        }
-                    }));
-                    button.add_css_class("flat");
-                    row.add_suffix(&button);
-                }
-                if entry.has_property(&key, Some(String::static_type())) {
-                    entry.bind_property(&key, &row, "text")
-                         .sync_create()
-                         .bidirectional()
-                         .build();
-                } else {
-                    log::warn!("Entry {} does not have property '{key}'", entry.citation_key());
-                }
+                            }
+                        ));
+                        button.add_css_class("flat");
+                        row.add_suffix(&button);
+                    }
+                    if entry.has_property(&key, Some(String::static_type())) {
+                        entry
+                            .bind_property(&key, &row, "text")
+                            .sync_create()
+                            .bidirectional()
+                            .build();
+                    } else {
+                        log::warn!(
+                            "Entry {} does not have property '{key}'",
+                            entry.citation_key()
+                        );
+                    }
 
-                row.upcast()
-            }),
+                    row.upcast()
+                }
+            ),
         );
     }
 
@@ -465,14 +486,22 @@ impl EntryPage {
             None
         };
 
-        glib::spawn_future_local(glib::clone!(@weak self as obj => async move {
-            if let Err(err) = obj.set_pdf_preview(pdf.as_ref()).await {
-                log::error!("Could not set pdf preview: {err}");
-                obj.imp().preview_error_stack.set_visible_child(&*obj.imp().preview_error);
-            } else {
-                obj.imp().preview_error_stack.set_visible_child(&*obj.imp().pdf_picture);
+        glib::spawn_future_local(glib::clone!(
+            #[weak(rename_to = obj)]
+            self,
+            async move {
+                if let Err(err) = obj.set_pdf_preview(pdf.as_ref()).await {
+                    log::error!("Could not set pdf preview: {err}");
+                    obj.imp()
+                        .preview_error_stack
+                        .set_visible_child(&*obj.imp().preview_error);
+                } else {
+                    obj.imp()
+                        .preview_error_stack
+                        .set_visible_child(&*obj.imp().pdf_picture);
+                }
             }
-        }));
+        ));
     }
 
     pub async fn set_pdf_preview(&self, file: Option<&gio::File>) -> anyhow::Result<()> {
