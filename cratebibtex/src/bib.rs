@@ -82,14 +82,20 @@ impl Bib {
         for entry in entries.iter() {
             entry.connect_notify_local(
                 None,
-                glib::clone!(@weak self as bib, @weak entry => move |_entry, pspec| {
-                    log::debug!(
-                        "Entry {}'s property {} was modified",
-                        entry.citation_key(),
-                        pspec.name()
-                    );
-                    bib.set_modified(true);
-                }),
+                glib::clone!(
+                    #[weak(rename_to = bib)]
+                    self,
+                    #[weak]
+                    entry,
+                    move |_entry, pspec| {
+                        log::debug!(
+                            "Entry {}'s property {} was modified",
+                            entry.citation_key(),
+                            pspec.name()
+                        );
+                        bib.set_modified(true);
+                    }
+                ),
             );
         }
 
@@ -116,14 +122,20 @@ impl Bib {
             let mut entries = self.imp().entries.borrow_mut();
             entry.connect_notify_local(
                 None,
-                glib::clone!(@weak self as bib, @weak entry => move |_entry, pspec| {
-                    log::debug!(
-                        "Entry {} property {} was modified",
-                        entry.citation_key(),
-                        pspec.name()
-                    );
-                    bib.set_modified(true);
-                }),
+                glib::clone!(
+                    #[weak(rename_to = bib)]
+                    self,
+                    #[weak]
+                    entry,
+                    move |_entry, pspec| {
+                        log::debug!(
+                            "Entry {} property {} was modified",
+                            entry.citation_key(),
+                            pspec.name()
+                        );
+                        bib.set_modified(true);
+                    }
+                ),
             );
             entries.push(entry);
         };
@@ -142,14 +154,20 @@ impl Bib {
             pos = pos.min(entries.len() as u32);
             entry.connect_notify_local(
                 None,
-                glib::clone!(@weak self as bib, @weak entry => move |_entry, pspec| {
-                    log::debug!(
-                        "Entry {} property {} was modified",
-                        entry.citation_key(),
-                        pspec.name()
-                    );
-                    bib.set_modified(true);
-                }),
+                glib::clone!(
+                    #[weak(rename_to = bib)]
+                    self,
+                    #[weak]
+                    entry,
+                    move |_entry, pspec| {
+                        log::debug!(
+                            "Entry {} property {} was modified",
+                            entry.citation_key(),
+                            pspec.name()
+                        );
+                        bib.set_modified(true);
+                    }
+                ),
             );
             entries.insert(pos as usize, entry);
         };

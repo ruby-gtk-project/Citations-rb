@@ -72,12 +72,14 @@ mod imp {
             selection.set_model(Some(self.filter_model.upcast_ref()));
             selection.connect_notify_local(
                 Some("selected-item"),
-                glib::clone!(@weak obj => move |model, _| {
-                    let entry = model
-                        .selected_item()
-                        .and_downcast::<cratebibtex::Entry>();
-                    obj.emit_by_name::<()>("entry-selected", &[&entry]);
-                }),
+                glib::clone!(
+                    #[weak]
+                    obj,
+                    move |model, _| {
+                        let entry = model.selected_item().and_downcast::<cratebibtex::Entry>();
+                        obj.emit_by_name::<()>("entry-selected", &[&entry]);
+                    }
+                ),
             );
 
             let factory = gtk::SignalListItemFactory::new();
@@ -140,10 +142,13 @@ impl EntryList {
         self.imp().filter_model.set_model(Some(bib));
         self.set_empty_view(bib.item(0).is_none());
 
-        let id =
-            bib.connect_items_changed(glib::clone!(@weak self as obj => move|model, _, _, _| {
+        let id = bib.connect_items_changed(glib::clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move |model, _, _, _| {
                 obj.set_empty_view(model.item(0).is_none());
-            }));
+            }
+        ));
 
         if let Some(old_id) = self.imp().id.replace(Some(id)) {
             bib.disconnect(old_id);

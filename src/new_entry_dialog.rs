@@ -143,26 +143,40 @@ mod imp {
             buffer.set_highlight_matching_brackets(false);
             self.source_view.set_buffer(Some(&buffer));
 
-            buffer.connect_changed(glib::clone!(@weak obj => move |_buffer| {
-                obj.update_create_button()
-            }));
+            buffer.connect_changed(glib::clone!(
+                #[weak]
+                obj,
+                move |_buffer| obj.update_create_button()
+            ));
 
             obj.update_style_scheme();
             let manager = adw::StyleManager::default();
-            manager.connect_dark_notify(glib::clone!(@weak obj => move |_| {
-                obj.update_style_scheme();
-            }));
+            manager.connect_dark_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.update_style_scheme();
+                }
+            ));
 
             let instructions = gettext("Insert a BibTeX citation here");
             buffer.set_text(&format!("{instructions}\n\n{SAMPLE_ENTRY}"));
 
             let controller = gtk::EventControllerFocus::new();
-            controller.connect_enter(glib::clone!(@weak obj => move |_| {
-                obj.imp().remove_text.call_once(glib::clone!(@weak obj => move || {
-                    let buffer = obj.imp().source_view.buffer();
-                    buffer.set_text("");
-                }));
-            }));
+            controller.connect_enter(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.imp().remove_text.call_once(glib::clone!(
+                        #[weak]
+                        obj,
+                        move || {
+                            let buffer = obj.imp().source_view.buffer();
+                            buffer.set_text("");
+                        }
+                    ));
+                }
+            ));
             self.source_view.get().add_controller(controller);
         }
     }

@@ -140,11 +140,17 @@ impl AddPdfDialog {
             let duration = std::time::Duration::from_millis(100);
             let source = glib::timeout_add_local(
                 duration,
-                glib::clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move || {
-                    obj.imp().progress_bar.pulse();
+                glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    #[upgrade_or]
+                    glib::ControlFlow::Break,
+                    move || {
+                        obj.imp().progress_bar.pulse();
 
-                    glib::ControlFlow::Continue
-                }),
+                        glib::ControlFlow::Continue
+                    }
+                ),
             );
 
             let res = self.download_pdf(url, &path).await;

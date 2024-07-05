@@ -221,9 +221,13 @@ mod imp {
             obj.populate_recent_files();
             self.settings.connect_changed(
                 Some("recent-files"),
-                glib::clone!(@weak obj => move |_,_| {
-                    obj.populate_recent_files();
-                }),
+                glib::clone!(
+                    #[weak]
+                    obj,
+                    move |_, _| {
+                        obj.populate_recent_files();
+                    }
+                ),
             );
 
             obj.action_set_enabled("win.new_entry", false);
@@ -237,21 +241,29 @@ mod imp {
                 .formats(&gdk::ContentFormats::for_type(gdk::FileList::static_type()))
                 .build();
 
-            target.connect_drop(
-                glib::clone!(@weak obj => @default-return false, move |_, value, _, _| {
+            target.connect_drop(glib::clone!(
+                #[weak]
+                obj,
+                #[upgrade_or]
+                false,
+                move |_, value, _, _| {
                     if let Ok(file_list) = value.get::<gdk::FileList>() {
                         if let Some(file) = file_list.files().first().cloned() {
-                            glib::spawn_future_local(glib::clone!(@weak obj => async move {
-                                if let Err(err) = obj.open_wrapper(&file).await {
-                                    log::error!("Could not open file: {err:?}")
-                                };
-                            }));
+                            glib::spawn_future_local(glib::clone!(
+                                #[weak]
+                                obj,
+                                async move {
+                                    if let Err(err) = obj.open_wrapper(&file).await {
+                                        log::error!("Could not open file: {err:?}")
+                                    };
+                                }
+                            ));
                             return true;
                         }
                     }
                     false
-                }),
-            );
+                }
+            ));
 
             obj.add_controller(target);
         }
@@ -268,9 +280,13 @@ mod imp {
 
             if let Some(bib) = self.bib.get() {
                 if bib.modified() && !self.force_close.get() {
-                    glib::spawn_future_local(glib::clone!(@weak window => async move {
-                        window.show_save_dialog().await;
-                    }));
+                    glib::spawn_future_local(glib::clone!(
+                        #[weak]
+                        window,
+                        async move {
+                            window.show_save_dialog().await;
+                        }
+                    ));
 
                     glib::Propagation::Stop
                 } else {
@@ -560,9 +576,13 @@ impl Window {
             let toast = adw::Toast::new(&gettext("Citation Deleted"));
             toast.set_action_name(Some("win.undo_delete"));
             toast.set_button_label(Some(&gettext("Undo")));
-            toast.connect_dismissed(glib::clone!(@weak self as obj => move |_| {
-                obj.imp().undo_entry.take();
-            }));
+            toast.connect_dismissed(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |_| {
+                    obj.imp().undo_entry.take();
+                }
+            ));
 
             if let Some((_, _, toast)) =
                 self.imp()

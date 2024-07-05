@@ -16,6 +16,7 @@ cratebibtex = { path = "cratebibtex" }
 doi2bib = "0.1.6"
 futures-channel = "0.3"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
+glib-macros = { version = "0.19.9", features = ["unstable-clone-syntax"] }
 gsv = { package = "sourceview5", version = "0.8" }
 gtk = { version = "0.8", package = "gtk4", features = ["gnome_45"] }
 log = "0.4"
