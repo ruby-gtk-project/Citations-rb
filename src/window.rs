@@ -628,7 +628,7 @@ impl Window {
             .designers(vec!["Tobias Bernard <tbernard@gnome.org>"])
             .build();
 
-        dialog.present(self);
+        dialog.present(Some(self));
     }
 
     async fn show_save_dialog(&self) {

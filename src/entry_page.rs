@@ -594,12 +594,20 @@ impl EntryPage {
         dialog.connect_closure(
             "pdf-set",
             false,
-            glib::closure_local!(@watch self as obj, @weak-allow-none window => move |_obj: &AddPdfDialog| {
-                obj.setup_pdf();
-                window.unwrap().send_toast(&gettext("PDF added"));
-            }),
+            glib::closure_local!(
+                #[watch(rename_to = obj)]
+                self,
+                #[weak_allow_none]
+                window,
+                move |_obj: &AddPdfDialog| {
+                    obj.setup_pdf();
+                    if let Some(window) = window {
+                        window.send_toast(&gettext("PDF added"));
+                    }
+                }
+            ),
         );
-        dialog.present(&window);
+        dialog.present(Some(&window));
 
         Ok(())
     }
