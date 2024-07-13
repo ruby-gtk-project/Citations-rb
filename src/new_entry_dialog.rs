@@ -205,7 +205,7 @@ impl NewEntryDialog {
         let (sender, receiver) = futures_channel::oneshot::channel();
         self.imp().sender.replace(Some(sender));
 
-        self.present(window);
+        self.present(Some(window));
 
         if let Ok(response) = receiver.await {
             response
