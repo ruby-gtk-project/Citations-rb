@@ -1,25 +1,41 @@
+[workspace]
+members = ["cratebibtex"]
+
+[workspace.package]
+edition = "2021"
+license = "GPL-3.0-or-later"
+rust-version = "1.76"
+authors = ["Maximiliano Sandoval <msandova@gnome.org>"]
+
+[workspace.dependencies]
+anyhow = "1"
+gettext-rs = { version = "0.7", features = ["gettext-system"] }
+once_cell = "1.17"
+log = "0.4"
+
 [package]
 name = "citations"
 version = "0.6.2"
-authors = ["Maximiliano Sandoval <msandova@gnome.org>"]
-edition = "2021"
-rust-version = "1.76"
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
 
 [profile.release]
 lto = true
 
 [dependencies]
 adw = { package = "libadwaita", version = "0.7", features = ["v1_6"] }
-anyhow = "1.0"
+anyhow.workspace = true
 cairo-rs = { version = "0.20", features = ["png"] }
 cratebibtex = { path = "cratebibtex" }
 doi2bib = "0.1.6"
 futures-channel = "0.3"
-gettext-rs = { version = "0.7", features = ["gettext-system"] }
+gettext-rs.workspace = true
 gsv = { package = "sourceview5", version = "0.9" }
 gtk = { version = "0.9", package = "gtk4", features = ["gnome_47"] }
-log = "0.4"
-once_cell = "1.12"
+log.workspace = true
+once_cell.workspace = true
 poppler-rs = { version = "0.24", features = ["v0_82"] }
 reqwest = "0.12"
 sanitize-filename = "0.5"
