@@ -29,7 +29,7 @@ adw = { package = "libadwaita", version = "0.7", features = ["v1_6"] }
 anyhow.workspace = true
 cairo-rs = { version = "0.20", features = ["png"] }
 cratebibtex = { path = "cratebibtex" }
-doi2bib = "0.1.6"
+doi2bib = "0.2"
 futures-channel = "0.3"
 gettext-rs.workspace = true
 gsv = { package = "sourceview5", version = "0.9" }
