@@ -565,7 +565,7 @@ impl EntryPage {
     }
 
     /// Used so that both views in the navigation view don't show a status page
-    /// simultaneosly. Shows a status page with some text.
+    /// simultaneously. Shows a status page with some text.
     pub fn set_empty_status_page(&self) {
         self.imp()
             .stack
