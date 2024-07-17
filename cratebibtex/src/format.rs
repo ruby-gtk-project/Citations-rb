@@ -73,14 +73,14 @@ pub(crate) fn format_latex(citation: &str, key: &str) -> String {
     static IT_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\*[^\*]+\*|_\S[^_]+\S_").unwrap());
     static BF_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\*{2}(?P<b>[^\*]+)\*{2}").unwrap());
 
-    let formated = BF_RE.replace_all(citation, r"\textbf{$b}").to_string();
-    let formated = IT_RE
-        .replace_all(&formated, |captures: &regex::Captures| {
+    let formatted = BF_RE.replace_all(citation, r"\textbf{$b}").to_string();
+    let formatted = IT_RE
+        .replace_all(&formatted, |captures: &regex::Captures| {
             format!(r"\emph{{{}}}", captures[0].trim_matches(MATCHES))
         })
         .to_string();
 
-    format!(r"\bibitem{{{key}}} {formated}")
+    format!(r"\bibitem{{{key}}} {formatted}")
 }
 
 pub(crate) fn clear_citation(citation: &str) -> String {
@@ -95,24 +95,24 @@ pub(crate) fn clear_citation(citation: &str) -> String {
     static EMPTY_RE: Lazy<Regex> =
         Lazy::new(|| Regex::new(r#"("\s*"\s*|'\s*'\s*|\(\s*\)\s*|`\s*`\s*|\{\s*\}\s*)"#).unwrap());
 
-    let mut formated = String::from(citation);
+    let mut formatted = String::from(citation);
 
     // Remove "no.  ," and "no,   ."
-    formated = NO_RE.replace_all(&formated, "$1 ").to_string();
+    formatted = NO_RE.replace_all(&formatted, "$1 ").to_string();
 
     // Remove empty quotes, braces, etc
-    while EMPTY_RE.is_match(&formated) {
-        formated = EMPTY_RE.replace_all(&formated, "").to_string();
+    while EMPTY_RE.is_match(&formatted) {
+        formatted = EMPTY_RE.replace_all(&formatted, "").to_string();
     }
 
     // Flatten consecutive punctuation
-    formated = CLEAR_RE.replace_all(&formated, "$1 ").to_string();
+    formatted = CLEAR_RE.replace_all(&formatted, "$1 ").to_string();
     // Turn last punctuation into a period
-    formated = CLEAR_END_RE.replace_all(&formated, ".").to_string();
+    formatted = CLEAR_END_RE.replace_all(&formatted, ".").to_string();
     // Remove punctuation at the start, e.g. " , some title" into "some title"
-    formated = CLEAR_START_RE.replace_all(&formated, "").to_string();
+    formatted = CLEAR_START_RE.replace_all(&formatted, "").to_string();
 
-    formated
+    formatted
 }
 
 pub(crate) fn clear_markdown(citation: &str) -> String {
@@ -150,7 +150,7 @@ pub fn format_authors(authors: &str) -> String {
 }
 
 static COMBINING_MAP: &[(char, char)] = &[
-    ('\'', '\u{301}'), // COMBINING ACCUTE ACCENT
+    ('\'', '\u{301}'), // COMBINING ACUTE ACCENT
     ('`', '\u{300}'),  // COMBINING GRAVE
     ('~', '\u{303}'),  // COMBINING TILDE
     ('^', '\u{302}'),  // COMBINING CIRCUMFLEX ACCENT

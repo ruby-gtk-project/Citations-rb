@@ -222,15 +222,15 @@ impl Entry {
     pub fn format_citation(&self, citation: &str, format: Format) -> String {
         static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"%(?P<tag>[A-Z]+)%").unwrap());
 
-        let mut formated = String::from(citation);
+        let mut formatted = String::from(citation);
 
         match format {
             Format::Plain => {
-                formated = format::format_plain(citation);
+                formatted = format::format_plain(citation);
             }
             Format::Markdown => (),
             Format::LaTeX => {
-                formated = format::format_latex(citation, &self.citation_key());
+                formatted = format::format_latex(citation, &self.citation_key());
             }
         }
 
@@ -239,10 +239,10 @@ impl Entry {
             Format::LaTeX => Cow::Owned(name_prop),
             _ => format::texer(&name_prop),
         };
-        formated = formated.replace("%AUTHOR%", &format::format_authors(&p_name));
+        formatted = formatted.replace("%AUTHOR%", &format::format_authors(&p_name));
 
-        formated = RE
-            .replace_all(&formated, |capture: &regex::Captures| {
+        formatted = RE
+            .replace_all(&formatted, |capture: &regex::Captures| {
                 let tag = capture["tag"].to_lowercase();
                 let opt_prop = self.find_tag(&tag).unwrap_or_default();
                 let p_opt_prop = match format {
@@ -261,11 +261,11 @@ impl Entry {
             .into_owned();
 
         match format {
-            Format::Markdown => format::clear_citation(&format::clear_markdown(&formated)),
-            Format::LaTeX => {
-                format::clear_citation(&format::clear_non_markdown(&format::clear_latex(&formated)))
-            }
-            Format::Plain => format::clear_citation(&format::clear_non_markdown(&formated)),
+            Format::Markdown => format::clear_citation(&format::clear_markdown(&formatted)),
+            Format::LaTeX => format::clear_citation(&format::clear_non_markdown(
+                &format::clear_latex(&formatted),
+            )),
+            Format::Plain => format::clear_citation(&format::clear_non_markdown(&formatted)),
         }
     }
 
