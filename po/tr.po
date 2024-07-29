@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-03-05 20:36+0000\n"
-"PO-Revision-Date: 2024-03-06 01:47+0300\n"
+"POT-Creation-Date: 2024-03-07 07:11+0000\n"
+"PO-Revision-Date: 2024-05-09 10:30+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.3\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -110,7 +110,8 @@ msgstr "Kaynakçanızı yönetin"
 #: data/org.gnome.World.Citations.desktop.in.in:10
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
-"kaynakça;kaynak dizini;alıntı;literatür;yazın;alanyazın;BibTex;LaTex;TeX;"
+"bibliography;citing;literature;BibTeX;LaTeX;TeX;kaynakça;kaynak dizini;"
+"alıntı;literatür;yazın;alanyazın;"
 
 #: data/org.gnome.World.Citations.desktop.in.in:19
 msgid "New Window"
@@ -468,11 +469,11 @@ msgstr "PDF indirilemedi"
 msgid "Make sure that {path} exists"
 msgstr "{path} yolunun var olduğuna emin olun"
 
-#: src/add_pdf_dialog.rs:185
+#: src/add_pdf_dialog.rs:178
 msgid "PDF Files"
 msgstr "PDF Dosyaları"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:186
 msgid "Select a PDF"
 msgstr "PDF Seç"
 
