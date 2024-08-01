@@ -4,10 +4,10 @@ use std::path::PathBuf;
 use gettextrs::gettext;
 use gio::prelude::*;
 use gtk::{gio, glib};
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
 
-static RUNTIME: Lazy<tokio::runtime::Runtime> =
-    Lazy::new(|| tokio::runtime::Runtime::new().unwrap());
+static RUNTIME: LazyLock<tokio::runtime::Runtime> =
+    LazyLock::new(|| tokio::runtime::Runtime::new().unwrap());
 
 pub fn translated_key(key: &str) -> String {
     match key {

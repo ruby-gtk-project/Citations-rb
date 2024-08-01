@@ -8,8 +8,8 @@ mod imp {
 
     use adw::subclass::prelude::*;
     use glib::subclass::Signal;
-    use once_cell::sync::Lazy;
     use std::cell::RefCell;
+    use std::sync::LazyLock;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/entry_list.ui")]
@@ -55,7 +55,7 @@ mod imp {
 
     impl ObjectImpl for EntryList {
         fn signals() -> &'static [Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
+            static SIGNALS: LazyLock<Vec<Signal>> = LazyLock::new(|| {
                 vec![Signal::builder("entry-selected")
                     .param_types([Option::<cratebibtex::Entry>::static_type()])
                     .run_last()

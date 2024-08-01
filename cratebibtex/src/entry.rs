@@ -1,11 +1,11 @@
 use std::borrow::Cow;
 use std::collections::HashMap;
 use std::marker::PhantomData;
+use std::sync::LazyLock;
 
 use gio::prelude::ListModelExt;
 use glib::prelude::*;
 use glib::subclass::prelude::*;
-use once_cell::sync::Lazy;
 use regex::Regex;
 
 use crate::format;
@@ -220,7 +220,7 @@ impl Entry {
     }
 
     pub fn format_citation(&self, citation: &str, format: Format) -> String {
-        static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"%(?P<tag>[A-Z]+)%").unwrap());
+        static RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"%(?P<tag>[A-Z]+)%").unwrap());
 
         let mut formatted = String::from(citation);
 
