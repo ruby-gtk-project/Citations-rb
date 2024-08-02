@@ -54,6 +54,6 @@ mod tests {
         bib.parse(BIBFILE_DATA).unwrap();
 
         let entry = bib.item(0).and_downcast::<Entry>().unwrap();
-        assert_eq!(entry.author().unwrap(), "Charles Vandevoorde");
+        assert_eq!(entry.author(), "Charles Vandevoorde");
     }
 }

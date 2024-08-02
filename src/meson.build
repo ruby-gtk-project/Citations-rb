@@ -56,7 +56,7 @@ test (
   cargo,
   args: [
     'clippy',
-    '--no-deps',
+    '--all-targets',
     cargo_options,
   ],
   env: [
@@ -70,6 +70,7 @@ test (
   cargo,
   args: [
     'test',
+    '--all-targets',
     cargo_options,
   ],
   timeout: 300, # cargo might take a bit of time sometimes
