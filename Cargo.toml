@@ -4,13 +4,12 @@ members = ["cratebibtex"]
 [workspace.package]
 edition = "2021"
 license = "GPL-3.0-or-later"
-rust-version = "1.76"
+rust-version = "1.80"
 authors = ["Maximiliano Sandoval <msandova@gnome.org>"]
 
 [workspace.dependencies]
 anyhow = "1"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
-once_cell = "1.17"
 log = "0.4"
 
 [package]
@@ -35,7 +34,6 @@ gettext-rs.workspace = true
 gsv = { package = "sourceview5", version = "0.9" }
 gtk = { version = "0.9", package = "gtk4", features = ["gnome_47"] }
 log.workspace = true
-once_cell.workspace = true
 poppler-rs = { version = "0.24", features = ["v0_82"] }
 reqwest = "0.12"
 sanitize-filename = "0.5"

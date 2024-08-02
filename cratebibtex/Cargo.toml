@@ -13,5 +13,4 @@ gio = "0.20"
 glib = { version = "0.20", features = ["v2_72"] }
 log.workspace = true
 nom-bibtex = "0.5"
-once_cell.workspace = true
 regex = "1.7"

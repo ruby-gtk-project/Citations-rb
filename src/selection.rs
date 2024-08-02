@@ -5,8 +5,8 @@ use gtk::{gio, glib};
 
 mod imp {
     use super::*;
-    use once_cell::sync::Lazy;
     use std::cell::{Cell, RefCell};
+    use std::sync::LazyLock;
 
     #[derive(Debug, Default)]
     pub struct Selection {
@@ -26,7 +26,7 @@ mod imp {
 
     impl ObjectImpl for Selection {
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
+            static PROPERTIES: LazyLock<Vec<glib::ParamSpec>> = LazyLock::new(|| {
                 vec![
                     glib::ParamSpecObject::builder::<gio::ListModel>("model")
                         .readwrite()

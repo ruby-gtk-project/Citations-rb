@@ -3,8 +3,8 @@ use adw::subclass::prelude::*;
 use gettextrs::gettext;
 use gtk::CompositeTemplate;
 use gtk::{gio, glib};
-use once_cell::sync::Lazy;
 use std::cell::OnceCell;
+use std::sync::LazyLock;
 
 use crate::i18n::gettext_f;
 use crate::utils;
@@ -89,8 +89,8 @@ mod imp {
 
     impl ObjectImpl for AddPdfDialog {
         fn signals() -> &'static [Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> =
-                Lazy::new(|| vec![Signal::builder("pdf-set").run_last().build()]);
+            static SIGNALS: LazyLock<Vec<Signal>> =
+                LazyLock::new(|| vec![Signal::builder("pdf-set").run_last().build()]);
             SIGNALS.as_ref()
         }
 

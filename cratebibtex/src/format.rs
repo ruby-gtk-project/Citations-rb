@@ -1,8 +1,8 @@
 use gettextrs::gettext;
-use once_cell::sync::Lazy;
 use regex::Regex;
 use std::borrow::Cow;
 use std::fmt;
+use std::sync::LazyLock;
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
 #[enum_type(name = "Format")]
@@ -59,8 +59,8 @@ impl Format {
 pub(crate) fn format_plain(citation: &str) -> String {
     const MATCHES: &[char] = &['*', '_'];
 
-    static RE: Lazy<Regex> =
-        Lazy::new(|| Regex::new(r"\*\S[^\*]+\S\*|\*{2}[^\*]+\*{2}|_\S[^_]+\S_").unwrap());
+    static RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"\*\S[^\*]+\S\*|\*{2}[^\*]+\*{2}|_\S[^_]+\S_").unwrap());
 
     RE.replace_all(citation, |captures: &regex::Captures| {
         captures[0].trim_matches(MATCHES).to_string()
@@ -70,8 +70,10 @@ pub(crate) fn format_plain(citation: &str) -> String {
 
 pub(crate) fn format_latex(citation: &str, key: &str) -> String {
     const MATCHES: &[char] = &['*', '_'];
-    static IT_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\*[^\*]+\*|_\S[^_]+\S_").unwrap());
-    static BF_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\*{2}(?P<b>[^\*]+)\*{2}").unwrap());
+    static IT_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"\*[^\*]+\*|_\S[^_]+\S_").unwrap());
+    static BF_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"\*{2}(?P<b>[^\*]+)\*{2}").unwrap());
 
     let formatted = BF_RE.replace_all(citation, r"\textbf{$b}").to_string();
     let formatted = IT_RE
@@ -84,16 +86,18 @@ pub(crate) fn format_latex(citation: &str, key: &str) -> String {
 }
 
 pub(crate) fn clear_citation(citation: &str) -> String {
-    static CLEAR_RE: Lazy<Regex> =
-        Lazy::new(|| Regex::new(r"\s*([,\.;:])(\s*[,\.;:]\s*)+|(\s)[\n\s]+").unwrap());
-    static CLEAR_END_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\s*[,\.;:]\s*$").unwrap());
-    static CLEAR_START_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"^(\s*[,\.]\s*)+").unwrap());
+    static CLEAR_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"\s*([,\.;:])(\s*[,\.;:]\s*)+|(\s)[\n\s]+").unwrap());
+    static CLEAR_END_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"\s*[,\.;:]\s*$").unwrap());
+    static CLEAR_START_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"^(\s*[,\.]\s*)+").unwrap());
 
-    static NO_RE: Lazy<Regex> =
-        Lazy::new(|| Regex::new(r"([\.,])\s*([Nn]o|[Vv]ol|pp)\.\s*[,\.]\s*").unwrap());
+    static NO_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"([\.,])\s*([Nn]o|[Vv]ol|pp)\.\s*[,\.]\s*").unwrap());
 
-    static EMPTY_RE: Lazy<Regex> =
-        Lazy::new(|| Regex::new(r#"("\s*"\s*|'\s*'\s*|\(\s*\)\s*|`\s*`\s*|\{\s*\}\s*)"#).unwrap());
+    static EMPTY_RE: LazyLock<Regex> = LazyLock::new(|| {
+        Regex::new(r#"("\s*"\s*|'\s*'\s*|\(\s*\)\s*|`\s*`\s*|\{\s*\}\s*)"#).unwrap()
+    });
 
     let mut formatted = String::from(citation);
 
@@ -116,20 +120,22 @@ pub(crate) fn clear_citation(citation: &str) -> String {
 }
 
 pub(crate) fn clear_markdown(citation: &str) -> String {
-    static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r#"(\*{2}\s*\*{2}|\*\s+\*|_\s*_)"#).unwrap());
+    static RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r#"(\*{2}\s*\*{2}|\*\s+\*|_\s*_)"#).unwrap());
 
     RE.replace_all(citation, "").to_string()
 }
 
 pub(crate) fn clear_non_markdown(citation: &str) -> String {
-    static RE: Lazy<Regex> =
-        Lazy::new(|| Regex::new(r#"\*\s*\*\s*|\*{2}\s*\*{2}\s*|_\s*_\s*"#).unwrap());
+    static RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r#"\*\s*\*\s*|\*{2}\s*\*{2}\s*|_\s*_\s*"#).unwrap());
 
     RE.replace_all(citation, "").to_string()
 }
 
 pub(crate) fn clear_latex(citation: &str) -> String {
-    static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"\\emph\{\s*\}|\\textbf\{\s*\}").unwrap());
+    static RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"\\emph\{\s*\}|\\textbf\{\s*\}").unwrap());
 
     RE.replace_all(citation, "").to_string()
 }
@@ -180,11 +186,7 @@ pub fn push_math<T: Iterator<Item = char>>(chars: &mut T, output: &mut String) {
 }
 
 pub fn texer(input: &str) -> Cow<str> {
-    let mut output = Lazy::new(|| {
-        let n = input.len();
-
-        String::with_capacity(n)
-    });
+    let mut output = String::new();
     let mut chars = input.chars();
     while let Some(c) = chars.next() {
         match c {
@@ -258,8 +260,8 @@ pub fn texer(input: &str) -> Cow<str> {
             c => push_non_space(&mut output, c),
         }
     }
-    if let Ok(string) = Lazy::into_value(output) {
-        Cow::Owned(string)
+    if !output.is_empty() {
+        Cow::Owned(output)
     } else {
         Cow::Borrowed(input)
     }
