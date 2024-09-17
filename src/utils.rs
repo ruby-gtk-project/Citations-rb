@@ -39,6 +39,7 @@ pub fn translated_key(key: &str) -> String {
         "institution" => gettext("Institution"),
         "issn" => "ISSN".to_string(),
         "isbn" => "ISBN".to_string(),
+        "url" => "url".to_string(),
         _ => unreachable!(),
     }
 }
