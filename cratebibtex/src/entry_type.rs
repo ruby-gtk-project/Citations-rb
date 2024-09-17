@@ -167,7 +167,7 @@ impl EntryType {
                 "isbn",
             ],
             Self::Unpublished => vec![],
-            Self::Online => vec!["archiveprefix", "eprint", "primaryclass"],
+            Self::Online => vec!["url", "archiveprefix", "eprint", "primaryclass"],
             Self::Other => vec![],
             Self::Booklet => vec!["howpublished", "month"],
             Self::Conference => vec!["booktitle", "series", "pages", "publisher", "address"],
