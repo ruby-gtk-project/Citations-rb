@@ -22,6 +22,15 @@
   <url type="vcs-browser">https://gitlab.gnome.org/World/citations</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.7.0" date="2024-09-19">
+      <description>
+        <p>Minor Release.</p>
+        <ul>
+          <li>Add url field to online entries</li>
+          <li>Update dependencies and bugfixes</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.6.4" date="2023-04-05">
       <description>
         <p>Bugfix Release.</p>
