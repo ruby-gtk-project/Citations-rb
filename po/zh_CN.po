@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-03-05 20:36+0000\n"
-"PO-Revision-Date: 2024-05-19 19:13+0800\n"
+"POT-Creation-Date: 2024-09-25 18:41+0000\n"
+"PO-Revision-Date: 2024-09-26 07:06+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -96,12 +96,12 @@ msgstr "纯文本"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:619
 msgid "Citations"
 msgstr "引文"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:621
 msgid "Manage your bibliography"
 msgstr "管理您的参考书目"
 
@@ -157,24 +157,24 @@ msgstr "主窗口"
 msgid "Add PDF"
 msgstr "添加 PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:46
+#: data/resources/ui/add_pdf_dialog.ui:47
 msgid "Bibliography folder not set"
 msgstr "未设置参考文献文件夹"
 
-#: data/resources/ui/add_pdf_dialog.ui:64
+#: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr "创建选中 pdf 的副本并将其存储在您的参考文献文件夹。"
 
-#: data/resources/ui/add_pdf_dialog.ui:79
+#: data/resources/ui/add_pdf_dialog.ui:80
 msgid "From File"
 msgstr "来自文件"
 
-#: data/resources/ui/add_pdf_dialog.ui:92
+#: data/resources/ui/add_pdf_dialog.ui:93
 msgid "From URL"
 msgstr "来自网址"
 
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:99
 msgid "Download…"
 msgstr "下载…"
 
@@ -258,7 +258,7 @@ msgstr "标题(_T)"
 msgid "_Year"
 msgstr "年份(_Y)"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
 msgid "Open in Browser"
 msgstr "在浏览器中打开"
 
@@ -303,37 +303,37 @@ msgstr "无法设置 PDF 预览"
 msgid "Add new Entry"
 msgstr "添加新条目"
 
-#: data/resources/ui/new_entry_dialog.ui:17
+#: data/resources/ui/new_entry_dialog.ui:18
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: data/resources/ui/new_entry_dialog.ui:24
+#: data/resources/ui/new_entry_dialog.ui:25
 msgid "C_reate"
 msgstr "创建(_R)"
 
-#: data/resources/ui/new_entry_dialog.ui:40
+#: data/resources/ui/new_entry_dialog.ui:42
 msgid "New"
 msgstr "新建"
 
-#: data/resources/ui/new_entry_dialog.ui:59
+#: data/resources/ui/new_entry_dialog.ui:61
 msgid "Citation Key"
 msgstr "引文密钥"
 
-#: data/resources/ui/new_entry_dialog.ui:66
+#: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Type"
 msgstr "引文类型"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:86
+#: data/resources/ui/new_entry_dialog.ui:88
 msgid "From BibTeX"
 msgstr "来自 BibTeX"
 
-#: data/resources/ui/new_entry_dialog.ui:105
+#: data/resources/ui/new_entry_dialog.ui:107
 msgid "From DOI"
 msgstr "来自 DOI"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:116
+#: data/resources/ui/new_entry_dialog.ui:118
 msgid "DOI"
 msgstr "DOI"
 
@@ -462,15 +462,15 @@ msgid "Could not download PDF"
 msgstr "无法下载 PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:104
+#: src/add_pdf_dialog.rs:105
 msgid "Make sure that {path} exists"
 msgstr "请确保 {path} 存在"
 
-#: src/add_pdf_dialog.rs:185
+#: src/add_pdf_dialog.rs:193
 msgid "PDF Files"
 msgstr "PDF 文件"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "选择 PDF"
 
@@ -492,28 +492,36 @@ msgstr "温哥华"
 msgid "Custom"
 msgstr "自定义"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
 msgid "Copied"
 msgstr "已复制"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "自定义…"
+
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "未设定作者"
+
+#: src/entry_list_row.rs:85
+msgid "Title not set"
+msgstr "未设定标题"
 
 #: src/entry_page.rs:204
 msgid "Other…"
 msgstr "其他…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:266
+#: src/entry_page.rs:252
 msgid "Citation Key already exists"
 msgstr "引文密钥已存在"
 
-#: src/entry_page.rs:586
+#: src/entry_page.rs:605
 msgid "PDF added"
 msgstr "PDF 已添加"
 
-#: src/new_entry_dialog.rs:149
+#: src/new_entry_dialog.rs:162
 msgid "Insert a BibTeX citation here"
 msgstr "在此处插入 BibTeX 引文"
 
@@ -610,71 +618,71 @@ msgstr "机构"
 msgid "Could not add entry"
 msgstr "无法添加条目"
 
-#: src/window.rs:331 src/window.rs:356
+#: src/window.rs:347 src/window.rs:372
 msgid "BibTeX Files"
 msgstr "BibTeX 文件"
 
-#: src/window.rs:365
+#: src/window.rs:381
 msgid "Create New Bibliography"
 msgstr "创建新参考文献"
 
-#: src/window.rs:366
+#: src/window.rs:382
 msgid "_Create"
 msgstr "创建(_C)"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:369
+#: src/window.rs:385
 msgid "bibliography"
 msgstr "参考文献"
 
-#: src/window.rs:473
-msgid "Remove From Recent Files"
-msgstr "从最近文件中移除"
-
-#: src/window.rs:513
+#: src/window.rs:508
 msgid "An entry with the given citation key already exists"
 msgstr "带有指定引文密钥的条目已存在"
 
-#: src/window.rs:528
+#: src/window.rs:523
 msgid "Bibliography saved"
 msgstr "参考文献已保存"
 
-#: src/window.rs:581
+#: src/window.rs:576
 msgid "Citation Deleted"
 msgstr "引文已删除"
 
-#: src/window.rs:583
+#: src/window.rs:578
 msgid "Undo"
 msgstr "撤消"
 
-#: src/window.rs:626
+#: src/window.rs:625
 msgid "translator-credits"
 msgstr ""
 "杨博远 <byang@debian.org>, 2022.\n"
 "lumingzh <lumingzh@qq.com>, 2022-2024."
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:638
+#: src/window.rs:637
 msgid "Unsaved Changes"
 msgstr "未保存的更改"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:641
+#: src/window.rs:640
 msgid "Do you want to write all changes to the safe?"
 msgstr "您想要写入所有更改吗？"
 
-#: src/window.rs:645
+#: src/window.rs:644
 msgid "_Quit Without Saving"
 msgstr "不保存并退出(_Q)"
 
-#: src/window.rs:646
+#: src/window.rs:645
 msgid "_Don't Quit"
 msgstr "不退出(_D)"
 
-#: src/window.rs:647
+#: src/window.rs:646
 msgid "_Save and Quit"
 msgstr "保存并退出(_S)"
+
+#: src/window.rs:689
+msgid "Remove From Recent Files"
+msgstr "从最近文件中移除"
 
 #~ msgid "Maximiliano Sandoval"
 #~ msgstr "Maximiliano Sandoval"
