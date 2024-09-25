@@ -71,7 +71,7 @@ mod imp {
         fn pretty_author(&self, author: &str) -> String {
             let author = cratebibtex::format::texer(author);
             if author.is_empty() {
-                "<i>Author not set</i>".to_string()
+                format!("<i>{}</i>", gettext("Author not set"))
             } else {
                 author.into_owned()
             }
@@ -81,7 +81,7 @@ mod imp {
         fn pretty_title(&self, title: &str) -> String {
             let title = cratebibtex::format::texer(title);
             if title.is_empty() {
-                "<i>Title not set</i>".to_string()
+                format!("<i>{}</i>", gettext("Title not set"))
             } else {
                 title.into_owned()
             }
