@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-03-05 20:36+0000\n"
-"PO-Revision-Date: 2024-03-06 19:09+0330\n"
+"POT-Creation-Date: 2024-09-25 18:41+0000\n"
+"PO-Revision-Date: 2024-09-26 00:17+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -95,12 +95,12 @@ msgstr "خام"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:619
 msgid "Citations"
 msgstr "ارجاع‌ها"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:621
 msgid "Manage your bibliography"
 msgstr "مدیریت کتابشناسیتان"
 
@@ -157,24 +157,24 @@ msgstr "پنجرهٔ اصلی"
 msgid "Add PDF"
 msgstr "افزودن پی‌دی‌اف"
 
-#: data/resources/ui/add_pdf_dialog.ui:46
+#: data/resources/ui/add_pdf_dialog.ui:47
 msgid "Bibliography folder not set"
 msgstr "شاخهٔ کتابشناسی تنظیم نشده"
 
-#: data/resources/ui/add_pdf_dialog.ui:64
+#: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr "ایجاد رونوشتی از پی‌دی‌اف گزیده و ذخیره‌اش در شاخهٔ کتابشناسیتان."
 
-#: data/resources/ui/add_pdf_dialog.ui:79
+#: data/resources/ui/add_pdf_dialog.ui:80
 msgid "From File"
 msgstr "از پرونده"
 
-#: data/resources/ui/add_pdf_dialog.ui:92
+#: data/resources/ui/add_pdf_dialog.ui:93
 msgid "From URL"
 msgstr "از نشانی"
 
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:99
 msgid "Download…"
 msgstr "بارگیری…"
 
@@ -259,7 +259,7 @@ msgstr "_عنوان"
 msgid "_Year"
 msgstr "_سال"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
 msgid "Open in Browser"
 msgstr "گشودن در مرورگر"
 
@@ -304,37 +304,37 @@ msgstr "نتوانست پیش‌نمایش پی‌دی‌اف را تنظیم ک
 msgid "Add new Entry"
 msgstr "افزودن مدخل جدید"
 
-#: data/resources/ui/new_entry_dialog.ui:17
+#: data/resources/ui/new_entry_dialog.ui:18
 msgid "_Cancel"
 msgstr "_لغو"
 
-#: data/resources/ui/new_entry_dialog.ui:24
+#: data/resources/ui/new_entry_dialog.ui:25
 msgid "C_reate"
 msgstr "_ایجاد"
 
-#: data/resources/ui/new_entry_dialog.ui:40
+#: data/resources/ui/new_entry_dialog.ui:42
 msgid "New"
 msgstr "جدید"
 
-#: data/resources/ui/new_entry_dialog.ui:59
+#: data/resources/ui/new_entry_dialog.ui:61
 msgid "Citation Key"
 msgstr "کلید ارجاع"
 
-#: data/resources/ui/new_entry_dialog.ui:66
+#: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Type"
 msgstr "گونهٔ ارجاع"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:86
+#: data/resources/ui/new_entry_dialog.ui:88
 msgid "From BibTeX"
 msgstr "از بیب‌تک"
 
-#: data/resources/ui/new_entry_dialog.ui:105
+#: data/resources/ui/new_entry_dialog.ui:107
 msgid "From DOI"
 msgstr "از شناساگر شی دیجیتالی"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:116
+#: data/resources/ui/new_entry_dialog.ui:118
 msgid "DOI"
 msgstr "شناساگر شی دیجیتالی"
 
@@ -463,15 +463,15 @@ msgid "Could not download PDF"
 msgstr "نتوانست پی‌دی‌اف را بارگیری کند"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:104
+#: src/add_pdf_dialog.rs:105
 msgid "Make sure that {path} exists"
 msgstr "مطمئن شوید که {path} وجود دارد"
 
-#: src/add_pdf_dialog.rs:185
+#: src/add_pdf_dialog.rs:193
 msgid "PDF Files"
 msgstr "پرونده‌های پی‌دی‌اف"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "یک پی‌دی‌اف را بگزینید"
 
@@ -493,28 +493,36 @@ msgstr "ونکوور"
 msgid "Custom"
 msgstr "سفارشی"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
 msgid "Copied"
 msgstr "رونوشت شد"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "سفارشی…"
+
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "نگارنده تنظیم نشده"
+
+#: src/entry_list_row.rs:85
+msgid "Title not set"
+msgstr "عنوان تنظیم نشده"
 
 #: src/entry_page.rs:204
 msgid "Other…"
 msgstr "دیگر…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:266
+#: src/entry_page.rs:252
 msgid "Citation Key already exists"
 msgstr "کلید ارجاع از قبل وجود دارد"
 
-#: src/entry_page.rs:586
+#: src/entry_page.rs:605
 msgid "PDF added"
 msgstr "پی‌دی‌اف افزوده شد"
 
-#: src/new_entry_dialog.rs:149
+#: src/new_entry_dialog.rs:162
 msgid "Insert a BibTeX citation here"
 msgstr "گذاشتن ارجاع بیب‌تکی در این‌جا"
 
@@ -611,71 +619,71 @@ msgstr "موسسه"
 msgid "Could not add entry"
 msgstr "نتوانست ورودی بیفزاید"
 
-#: src/window.rs:331 src/window.rs:356
+#: src/window.rs:347 src/window.rs:372
 msgid "BibTeX Files"
 msgstr "پرونده‌های بیب‌تک"
 
-#: src/window.rs:365
+#: src/window.rs:381
 msgid "Create New Bibliography"
 msgstr "ایجاد کتابشناسی جدید"
 
-#: src/window.rs:366
+#: src/window.rs:382
 msgid "_Create"
 msgstr "_ایجاد"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:369
+#: src/window.rs:385
 msgid "bibliography"
 msgstr "کتابشناسی"
 
-#: src/window.rs:473
-msgid "Remove From Recent Files"
-msgstr "حذف کردن از پرونده‌های اخیر"
-
-#: src/window.rs:513
+#: src/window.rs:508
 msgid "An entry with the given citation key already exists"
 msgstr "یک مدخل با کلید ارجاع داده شده وجود دارد"
 
-#: src/window.rs:528
+#: src/window.rs:523
 msgid "Bibliography saved"
 msgstr "کتابشناسی ذخیره شد"
 
-#: src/window.rs:581
+#: src/window.rs:576
 msgid "Citation Deleted"
 msgstr "ارجاع حذف شد"
 
-#: src/window.rs:583
+#: src/window.rs:578
 msgid "Undo"
 msgstr "برگردان"
 
-#: src/window.rs:626
+#: src/window.rs:625
 msgid "translator-credits"
 msgstr ""
 "سید حسین موسوی فرد <hajmousa1385@gmail.com>\n"
 "دانیال بهزادی <dani.behzi@ubuntu.com>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:638
+#: src/window.rs:637
 msgid "Unsaved Changes"
 msgstr "تغییرات ذخیره نشده"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:641
+#: src/window.rs:640
 msgid "Do you want to write all changes to the safe?"
 msgstr "می‌خواهید همهٔ تغییرات را در گنجه بنویسید؟"
 
-#: src/window.rs:645
+#: src/window.rs:644
 msgid "_Quit Without Saving"
 msgstr "_خروج بدون ذخیره"
 
-#: src/window.rs:646
+#: src/window.rs:645
 msgid "_Don't Quit"
 msgstr "_خارج نشدن"
 
-#: src/window.rs:647
+#: src/window.rs:646
 msgid "_Save and Quit"
 msgstr "_ذخیره و خروج"
+
+#: src/window.rs:689
+msgid "Remove From Recent Files"
+msgstr "حذف کردن از پرونده‌های اخیر"
 
 #~ msgid "Maximiliano Sandoval"
 #~ msgstr "مکسی‌میلیانو سندووال"
