@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-03-05 20:36+0000\n"
-"PO-Revision-Date: 2024-03-10 15:43+0100\n"
+"POT-Creation-Date: 2024-09-25 18:41+0000\n"
+"PO-Revision-Date: 2024-09-27 15:32+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -94,12 +94,12 @@ msgstr "სუფთა"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:619
 msgid "Citations"
 msgstr "ციტატები"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:621
 msgid "Manage your bibliography"
 msgstr "მართეთ თქვენი ბიბლიოგრაფია"
 
@@ -155,26 +155,26 @@ msgstr "მთავარი ფანჯარა"
 msgid "Add PDF"
 msgstr "PDF-ის დამატება"
 
-#: data/resources/ui/add_pdf_dialog.ui:46
+#: data/resources/ui/add_pdf_dialog.ui:47
 msgid "Bibliography folder not set"
 msgstr "ბიბლიოგრაფიის საქაღალდე მითითებული არაა"
 
-#: data/resources/ui/add_pdf_dialog.ui:64
+#: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "ქმნის მონიშნული PDF-ის ასლს და მას თქვენს ბიბლიოგრაფიის საქაღალდეში "
 "შეინახავს."
 
-#: data/resources/ui/add_pdf_dialog.ui:79
+#: data/resources/ui/add_pdf_dialog.ui:80
 msgid "From File"
 msgstr "ფაილიდან"
 
-#: data/resources/ui/add_pdf_dialog.ui:92
+#: data/resources/ui/add_pdf_dialog.ui:93
 msgid "From URL"
 msgstr "ბმულიდან"
 
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:99
 msgid "Download…"
 msgstr "გადმოწერა…"
 
@@ -259,7 +259,7 @@ msgstr "_სათაური"
 msgid "_Year"
 msgstr "_წელი"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
 msgid "Open in Browser"
 msgstr "ბრაუზერში გახსნა"
 
@@ -304,37 +304,37 @@ msgstr "PDF მინიატურის დაყენების შეც
 msgid "Add new Entry"
 msgstr "ახალი ელემენტის დამატება"
 
-#: data/resources/ui/new_entry_dialog.ui:17
+#: data/resources/ui/new_entry_dialog.ui:18
 msgid "_Cancel"
 msgstr "&გაუქმება"
 
-#: data/resources/ui/new_entry_dialog.ui:24
+#: data/resources/ui/new_entry_dialog.ui:25
 msgid "C_reate"
 msgstr "_შექმნა"
 
-#: data/resources/ui/new_entry_dialog.ui:40
+#: data/resources/ui/new_entry_dialog.ui:42
 msgid "New"
 msgstr "ახალი"
 
-#: data/resources/ui/new_entry_dialog.ui:59
+#: data/resources/ui/new_entry_dialog.ui:61
 msgid "Citation Key"
 msgstr "ციტატის გასაღები"
 
-#: data/resources/ui/new_entry_dialog.ui:66
+#: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Type"
 msgstr "ციტატის ტიპი"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:86
+#: data/resources/ui/new_entry_dialog.ui:88
 msgid "From BibTeX"
 msgstr "BibTeX-დან"
 
-#: data/resources/ui/new_entry_dialog.ui:105
+#: data/resources/ui/new_entry_dialog.ui:107
 msgid "From DOI"
 msgstr "DOI-დან"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:116
+#: data/resources/ui/new_entry_dialog.ui:118
 msgid "DOI"
 msgstr "DOI"
 
@@ -463,15 +463,15 @@ msgid "Could not download PDF"
 msgstr "PDF-ის გადმოწერის შეცდომა"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:104
+#: src/add_pdf_dialog.rs:105
 msgid "Make sure that {path} exists"
 msgstr "დარწმუნდით, რომ {path} არსებობს"
 
-#: src/add_pdf_dialog.rs:185
+#: src/add_pdf_dialog.rs:193
 msgid "PDF Files"
 msgstr "PDF ფაილები"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "აირჩიეთ PDF"
 
@@ -493,28 +493,36 @@ msgstr "ვანკუვერი"
 msgid "Custom"
 msgstr "ხელით მითითება"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
 msgid "Copied"
 msgstr "კოპირებულია"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "ხელით…"
+
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "ავტორი დაყენებული არაა"
+
+#: src/entry_list_row.rs:85
+msgid "Title not set"
+msgstr "სათაური დაყენებული არაა"
 
 #: src/entry_page.rs:204
 msgid "Other…"
 msgstr "სხვა…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:266
+#: src/entry_page.rs:252
 msgid "Citation Key already exists"
 msgstr "ციტატის გასაღები უკვე არსებობს"
 
-#: src/entry_page.rs:586
+#: src/entry_page.rs:605
 msgid "PDF added"
 msgstr "PDF დაემატა"
 
-#: src/new_entry_dialog.rs:149
+#: src/new_entry_dialog.rs:162
 msgid "Insert a BibTeX citation here"
 msgstr "BibTeX-ის ციტატები აქ ჩასვით"
 
@@ -611,69 +619,69 @@ msgstr "ორგანიზაცია"
 msgid "Could not add entry"
 msgstr "ჩანაწერის დამატების შეცდომა"
 
-#: src/window.rs:331 src/window.rs:356
+#: src/window.rs:347 src/window.rs:372
 msgid "BibTeX Files"
 msgstr "BibTeX ფაილები"
 
-#: src/window.rs:365
+#: src/window.rs:381
 msgid "Create New Bibliography"
 msgstr "ახალი ბიბლიოგრაფიის შექმნა"
 
-#: src/window.rs:366
+#: src/window.rs:382
 msgid "_Create"
 msgstr "_შექმნა"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:369
+#: src/window.rs:385
 msgid "bibliography"
 msgstr "ბიბლიოგრაფია"
 
-#: src/window.rs:473
-msgid "Remove From Recent Files"
-msgstr "უახლესი ფალებიდან წაშლა"
-
-#: src/window.rs:513
+#: src/window.rs:508
 msgid "An entry with the given citation key already exists"
 msgstr "ჩანაწერი ციტატის მითითებული გასაღებით უკვე არსებობს"
 
-#: src/window.rs:528
+#: src/window.rs:523
 msgid "Bibliography saved"
 msgstr "ბიბლიოგრაფია შენახულია"
 
-#: src/window.rs:581
+#: src/window.rs:576
 msgid "Citation Deleted"
 msgstr "ციტატა წაიშალა"
 
-#: src/window.rs:583
+#: src/window.rs:578
 msgid "Undo"
 msgstr "დაბრუნება"
 
-#: src/window.rs:626
+#: src/window.rs:625
 msgid "translator-credits"
 msgstr "თარგმანი-შესრულებულია"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:638
+#: src/window.rs:637
 msgid "Unsaved Changes"
 msgstr "შეუნახავი ცვლილებები"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:641
+#: src/window.rs:640
 msgid "Do you want to write all changes to the safe?"
 msgstr "გნებავთ ყველა ცვლილების სეიფში ჩაწერა?"
 
-#: src/window.rs:645
+#: src/window.rs:644
 msgid "_Quit Without Saving"
 msgstr "_დახურვა შენახვის გარეშე"
 
-#: src/window.rs:646
+#: src/window.rs:645
 msgid "_Don't Quit"
 msgstr "_არ გახვიდე"
 
-#: src/window.rs:647
+#: src/window.rs:646
 msgid "_Save and Quit"
 msgstr "_შენახვა და გასვლა"
+
+#: src/window.rs:689
+msgid "Remove From Recent Files"
+msgstr "უახლესი ფალებიდან წაშლა"
 
 #~ msgid "Maximiliano Sandoval"
 #~ msgstr "Maximiliano Sandoval"
