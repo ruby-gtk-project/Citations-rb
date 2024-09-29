@@ -4,14 +4,14 @@
 # Anomalion <to_bias@wiedewit.de>, 2022.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2022-2023.
 # Wolfgang Stöggl <c72578@yahoo.de>, 2022.
-# Jürgen Benvenuti <gastornis@posteo.org>, 2022, 2023.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2022-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-03-05 20:36+0000\n"
-"PO-Revision-Date: 2024-03-19 20:31+0100\n"
+"POT-Creation-Date: 2024-09-25 18:41+0000\n"
+"PO-Revision-Date: 2024-09-25 22:05+0200\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -103,12 +103,12 @@ msgstr "Text"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:619
 msgid "Citations"
 msgstr "Zitate"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:621
 msgid "Manage your bibliography"
 msgstr "Verwalten Sie Ihre Bibliografie"
 
@@ -165,26 +165,26 @@ msgstr "Hauptfenster"
 msgid "Add PDF"
 msgstr "PDF hinzufügen"
 
-#: data/resources/ui/add_pdf_dialog.ui:46
+#: data/resources/ui/add_pdf_dialog.ui:47
 msgid "Bibliography folder not set"
 msgstr "Bibliografieordner nicht gesetzt"
 
-#: data/resources/ui/add_pdf_dialog.ui:64
+#: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Erzeugt eine Kopie des ausgewählten PDFs und speichert sie in Ihrem "
 "Bibliografieordner."
 
-#: data/resources/ui/add_pdf_dialog.ui:79
+#: data/resources/ui/add_pdf_dialog.ui:80
 msgid "From File"
 msgstr "Aus Datei"
 
-#: data/resources/ui/add_pdf_dialog.ui:92
+#: data/resources/ui/add_pdf_dialog.ui:93
 msgid "From URL"
 msgstr "Aus Adresse"
 
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:99
 msgid "Download…"
 msgstr "Herunterladen …"
 
@@ -269,7 +269,7 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "_Jahr"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
 msgid "Open in Browser"
 msgstr "In Browser öffnen"
 
@@ -314,38 +314,38 @@ msgstr "PDF-Vorschau konnte nicht gesetzt werden"
 msgid "Add new Entry"
 msgstr "Neuen Eintrag hinzufügen"
 
-#: data/resources/ui/new_entry_dialog.ui:17
+#: data/resources/ui/new_entry_dialog.ui:18
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
-#: data/resources/ui/new_entry_dialog.ui:24
+#: data/resources/ui/new_entry_dialog.ui:25
 msgid "C_reate"
 msgstr "E_rstellen"
 
-#: data/resources/ui/new_entry_dialog.ui:40
+#: data/resources/ui/new_entry_dialog.ui:42
 msgid "New"
 msgstr "Neu"
 
-#: data/resources/ui/new_entry_dialog.ui:59
+#: data/resources/ui/new_entry_dialog.ui:61
 msgid "Citation Key"
 msgstr "Zitatschlüssel"
 
-#: data/resources/ui/new_entry_dialog.ui:66
+#: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Type"
 msgstr "Zitattyp"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:86
+#: data/resources/ui/new_entry_dialog.ui:88
 msgid "From BibTeX"
 msgstr "Aus BibTeX"
 
-#: data/resources/ui/new_entry_dialog.ui:105
+#: data/resources/ui/new_entry_dialog.ui:107
 msgid "From DOI"
 msgstr "Aus DOI"
 
 # https://de.wikipedia.org/wiki/Digital_Object_Identifier
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:116
+#: data/resources/ui/new_entry_dialog.ui:118
 msgid "DOI"
 msgstr "DOI"
 
@@ -474,15 +474,15 @@ msgid "Could not download PDF"
 msgstr "PDF konnte nicht heruntergeladen werden"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:104
+#: src/add_pdf_dialog.rs:105
 msgid "Make sure that {path} exists"
 msgstr "Stellen Sie sicher, dass {path} existiert"
 
-#: src/add_pdf_dialog.rs:185
+#: src/add_pdf_dialog.rs:193
 msgid "PDF Files"
 msgstr "PDF-Dateien"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "Ein PDF auswählen"
 
@@ -504,28 +504,36 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
 msgid "Copied"
 msgstr "Kopiert"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "Benutzerdefiniert …"
+
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "Autor nicht gesetzt"
+
+#: src/entry_list_row.rs:85
+msgid "Title not set"
+msgstr "Titel nicht gesetzt"
 
 #: src/entry_page.rs:204
 msgid "Other…"
 msgstr "Andere …"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:266
+#: src/entry_page.rs:252
 msgid "Citation Key already exists"
 msgstr "Zitatschlüssel existiert bereits"
 
-#: src/entry_page.rs:586
+#: src/entry_page.rs:605
 msgid "PDF added"
 msgstr "PDF hinzugefügt"
 
-#: src/new_entry_dialog.rs:149
+#: src/new_entry_dialog.rs:162
 msgid "Insert a BibTeX citation here"
 msgstr "BibTeX-Zitat hier einfügen"
 
@@ -622,71 +630,71 @@ msgstr "Institution"
 msgid "Could not add entry"
 msgstr "Eintrag konnte nicht hinzugefügt werden"
 
-#: src/window.rs:331 src/window.rs:356
+#: src/window.rs:347 src/window.rs:372
 msgid "BibTeX Files"
 msgstr "BibTeX-Dateien"
 
-#: src/window.rs:365
+#: src/window.rs:381
 msgid "Create New Bibliography"
 msgstr "Neue Bibliografie erstellen"
 
-#: src/window.rs:366
+#: src/window.rs:382
 msgid "_Create"
 msgstr "_Erstellen"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:369
+#: src/window.rs:385
 msgid "bibliography"
 msgstr "Bibliografie"
 
-#: src/window.rs:473
-msgid "Remove From Recent Files"
-msgstr "Aus den kürzlich verwendeten Dateien entfernen"
-
-#: src/window.rs:513
+#: src/window.rs:508
 msgid "An entry with the given citation key already exists"
 msgstr "Es existiert bereits ein Eintrag mit diesem Zitatschlüssel"
 
-#: src/window.rs:528
+#: src/window.rs:523
 msgid "Bibliography saved"
 msgstr "Bibliografie gespeichert"
 
-#: src/window.rs:581
+#: src/window.rs:576
 msgid "Citation Deleted"
 msgstr "Zitat gelöscht"
 
-#: src/window.rs:583
+#: src/window.rs:578
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/window.rs:626
+#: src/window.rs:625
 msgid "translator-credits"
 msgstr ""
 "Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Jürgen Benvenuti <gastornis@posteo.org>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:638
+#: src/window.rs:637
 msgid "Unsaved Changes"
 msgstr "Ungespeicherte Änderungen"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:641
+#: src/window.rs:640
 msgid "Do you want to write all changes to the safe?"
 msgstr "Möchten Sie alle Änderungen in den Safe speichern?"
 
-#: src/window.rs:645
+#: src/window.rs:644
 msgid "_Quit Without Saving"
 msgstr "_Beenden ohne zu speichern"
 
-#: src/window.rs:646
+#: src/window.rs:645
 msgid "_Don't Quit"
 msgstr "_Nicht beenden"
 
-#: src/window.rs:647
+#: src/window.rs:646
 msgid "_Save and Quit"
 msgstr "_Speichern und beenden"
+
+#: src/window.rs:689
+msgid "Remove From Recent Files"
+msgstr "Aus den kürzlich verwendeten Dateien entfernen"
 
 #~ msgid "Maximiliano Sandoval"
 #~ msgstr "Maximiliano Sandoval"
