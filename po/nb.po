@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-09-17 14:38+0000\n"
-"PO-Revision-Date: 2024-09-19 20:56+0200\n"
+"POT-Creation-Date: 2024-09-25 18:41+0000\n"
+"PO-Revision-Date: 2024-10-01 10:50+0200\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: \n"
 "Language: nb\n"
@@ -500,6 +500,14 @@ msgstr "Kopiert"
 #: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "Egendefinert…"
+
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "Ingen forfatter"
+
+#: src/entry_list_row.rs:85
+msgid "Title not set"
+msgstr "Ingen tittel"
 
 #: src/entry_page.rs:204
 msgid "Other…"
