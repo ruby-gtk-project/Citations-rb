@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-03-05 20:36+0000\n"
-"PO-Revision-Date: 2024-03-06 11:42+0300\n"
+"POT-Creation-Date: 2024-09-25 18:41+0000\n"
+"PO-Revision-Date: 2024-10-01 22:46+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -96,12 +96,12 @@ msgstr "Простой текст"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
+#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:619
 msgid "Citations"
 msgstr "Цитаты"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:621
 msgid "Manage your bibliography"
 msgstr "Управляйте своей библиографией"
 
@@ -158,24 +158,24 @@ msgstr "Главное окно"
 msgid "Add PDF"
 msgstr "Добавить PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:46
+#: data/resources/ui/add_pdf_dialog.ui:47
 msgid "Bibliography folder not set"
 msgstr "Папка библиографии не установлена"
 
-#: data/resources/ui/add_pdf_dialog.ui:64
+#: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr "Создает копию выбранного pdf и сохраняет ее в папке библиографии."
 
-#: data/resources/ui/add_pdf_dialog.ui:79
+#: data/resources/ui/add_pdf_dialog.ui:80
 msgid "From File"
 msgstr "Из файла"
 
-#: data/resources/ui/add_pdf_dialog.ui:92
+#: data/resources/ui/add_pdf_dialog.ui:93
 msgid "From URL"
 msgstr "Из URL"
 
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:99
 msgid "Download…"
 msgstr "Загрузить…"
 
@@ -260,7 +260,7 @@ msgstr "_Название"
 msgid "_Year"
 msgstr "_Год"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
 msgid "Open in Browser"
 msgstr "Открыть в браузере"
 
@@ -305,37 +305,37 @@ msgstr "Не удалось установить предпросмотр PDF"
 msgid "Add new Entry"
 msgstr "Добавить новую запись"
 
-#: data/resources/ui/new_entry_dialog.ui:17
+#: data/resources/ui/new_entry_dialog.ui:18
 msgid "_Cancel"
 msgstr "_Отменить"
 
-#: data/resources/ui/new_entry_dialog.ui:24
+#: data/resources/ui/new_entry_dialog.ui:25
 msgid "C_reate"
 msgstr "Со_здать"
 
-#: data/resources/ui/new_entry_dialog.ui:40
+#: data/resources/ui/new_entry_dialog.ui:42
 msgid "New"
 msgstr "Новая"
 
-#: data/resources/ui/new_entry_dialog.ui:59
+#: data/resources/ui/new_entry_dialog.ui:61
 msgid "Citation Key"
 msgstr "Ключ цитирования"
 
-#: data/resources/ui/new_entry_dialog.ui:66
+#: data/resources/ui/new_entry_dialog.ui:68
 msgid "Citation Type"
 msgstr "Тип цитирования"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:86
+#: data/resources/ui/new_entry_dialog.ui:88
 msgid "From BibTeX"
 msgstr "Из BibTeX"
 
-#: data/resources/ui/new_entry_dialog.ui:105
+#: data/resources/ui/new_entry_dialog.ui:107
 msgid "From DOI"
 msgstr "Из DOI"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:116
+#: data/resources/ui/new_entry_dialog.ui:118
 msgid "DOI"
 msgstr "DOI"
 
@@ -464,15 +464,15 @@ msgid "Could not download PDF"
 msgstr "Не удалось загрузить PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:104
+#: src/add_pdf_dialog.rs:105
 msgid "Make sure that {path} exists"
 msgstr "Убедитесь, что {path} существует"
 
-#: src/add_pdf_dialog.rs:185
+#: src/add_pdf_dialog.rs:193
 msgid "PDF Files"
 msgstr "Файлы PDF"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "Выберите PDF"
 
@@ -494,28 +494,36 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Пользовательский"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
 msgid "Copied"
 msgstr "Скопировано"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "Пользовательский…"
+
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "Автор не задан"
+
+#: src/entry_list_row.rs:85
+msgid "Title not set"
+msgstr "Название не задано"
 
 #: src/entry_page.rs:204
 msgid "Other…"
 msgstr "Другое…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:266
+#: src/entry_page.rs:252
 msgid "Citation Key already exists"
 msgstr "Ключ цитирования уже существует"
 
-#: src/entry_page.rs:586
+#: src/entry_page.rs:605
 msgid "PDF added"
 msgstr "PDF добавлен"
 
-#: src/new_entry_dialog.rs:149
+#: src/new_entry_dialog.rs:162
 msgid "Insert a BibTeX citation here"
 msgstr "Создать цитату BibTeX"
 
@@ -612,69 +620,69 @@ msgstr "Институт"
 msgid "Could not add entry"
 msgstr "Не удалось добавить запись"
 
-#: src/window.rs:331 src/window.rs:356
+#: src/window.rs:347 src/window.rs:372
 msgid "BibTeX Files"
 msgstr "Файлы BibTeX"
 
-#: src/window.rs:365
+#: src/window.rs:381
 msgid "Create New Bibliography"
 msgstr "Создать новую библиографию"
 
-#: src/window.rs:366
+#: src/window.rs:382
 msgid "_Create"
 msgstr "_Создать"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:369
+#: src/window.rs:385
 msgid "bibliography"
 msgstr "библиография"
 
-#: src/window.rs:473
-msgid "Remove From Recent Files"
-msgstr "Удалить из недавних файлов"
-
-#: src/window.rs:513
+#: src/window.rs:508
 msgid "An entry with the given citation key already exists"
 msgstr "Запись с данным ключом цитирования уже существует"
 
-#: src/window.rs:528
+#: src/window.rs:523
 msgid "Bibliography saved"
 msgstr "Библиография сохранена"
 
-#: src/window.rs:581
+#: src/window.rs:576
 msgid "Citation Deleted"
 msgstr "Цитирование удалено"
 
-#: src/window.rs:583
+#: src/window.rs:578
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:626
+#: src/window.rs:625
 msgid "translator-credits"
 msgstr "Ser82-png <asvmail.as@gmail.com>, 2022-2023"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:638
+#: src/window.rs:637
 msgid "Unsaved Changes"
 msgstr "Несохранённые изменения"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:641
+#: src/window.rs:640
 msgid "Do you want to write all changes to the safe?"
 msgstr "Хотите записать все изменения в сейф?"
 
-#: src/window.rs:645
+#: src/window.rs:644
 msgid "_Quit Without Saving"
 msgstr "_Закрыть без сохранения"
 
-#: src/window.rs:646
+#: src/window.rs:645
 msgid "_Don't Quit"
 msgstr "_Не закрывать"
 
-#: src/window.rs:647
+#: src/window.rs:646
 msgid "_Save and Quit"
 msgstr "_Сохранить и закрыть"
+
+#: src/window.rs:689
+msgid "Remove From Recent Files"
+msgstr "Удалить из недавних файлов"
 
 #~ msgid "Maximiliano Sandoval"
 #~ msgstr "Maximiliano Sandoval"
