@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-09-25 18:41+0000\n"
-"PO-Revision-Date: 2024-09-26 11:38+0200\n"
+"POT-Creation-Date: 2024-10-16 18:07+0000\n"
+"PO-Revision-Date: 2024-10-16 23:35+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -171,14 +171,14 @@ msgid ""
 msgstr "Ustvari kopijo izbranega PDF in ga shrani v mapo Bibliografija."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
-msgid "From File"
-msgstr "Iz datoteke"
+msgid "Add From File…"
+msgstr "Dodaj iz datoteke ..."
 
-#: data/resources/ui/add_pdf_dialog.ui:93
-msgid "From URL"
-msgstr "Na naslovu"
+#: data/resources/ui/add_pdf_dialog.ui:88
+msgid "Add From URL"
+msgstr "Dodaj iz URL-ja"
 
-#: data/resources/ui/add_pdf_dialog.ui:99
+#: data/resources/ui/add_pdf_dialog.ui:94
 msgid "Download…"
 msgstr "Prejmi …"
 
