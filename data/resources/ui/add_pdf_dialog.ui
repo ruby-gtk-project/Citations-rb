@@ -75,22 +75,17 @@
                               <object class="GtkListBox">
                                 <property name="selection-mode">none</property>
                                 <child>
-                                  <object class="AdwActionRow">
+                                  <object class="AdwButtonRow">
                                     <property name="activatable">True</property>
-                                    <property name="title" translatable="yes">From File</property>
+                                    <property name="title" translatable="yes">Add From File…</property>
+                                    <property name="start-icon-name">document-open-symbolic</property>
                                     <signal name="activated" handler="set_from_file_row_activated" swapped="yes"/>
-                                    <child>
-                                      <object class="GtkImage">
-                                        <property name="icon-name">document-open-symbolic</property>
-                                        <property name="accessible-role">presentation</property>
-                                      </object>
-                                    </child>
                                   </object>
                                 </child>
                                 <child>
                                   <object class="AdwEntryRow" id="pdf_url_entry_row">
                                     <property name="activatable">True</property>
-                                    <property name="title" translatable="yes">From URL</property>
+                                    <property name="title" translatable="yes">Add From URL</property>
                                     <signal name="entry-activated" handler="on_entry_activated" swapped="true"/>
                                     <child>
                                       <object class="GtkButton" id="download_button">
@@ -106,7 +101,7 @@
                                   </object>
                                 </child>
                                 <style>
-                                  <class name="boxed-list"/>
+                                  <class name="boxed-list-separate"/>
                                 </style>
                               </object>
                             </child>
