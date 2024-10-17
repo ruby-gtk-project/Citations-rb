@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-09-25 18:41+0000\n"
-"PO-Revision-Date: 2024-09-26 13:29+0300\n"
+"POT-Creation-Date: 2024-10-16 18:07+0000\n"
+"PO-Revision-Date: 2024-10-17 19:24+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -169,14 +169,16 @@ msgstr ""
 "Створює копію позначеного PDF і зберігає її у вашій теці бібліографії."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
-msgid "From File"
-msgstr "З файла"
+#| msgid "From File"
+msgid "Add From File…"
+msgstr "Додати з файла…"
 
-#: data/resources/ui/add_pdf_dialog.ui:93
-msgid "From URL"
-msgstr "З адреси"
+#: data/resources/ui/add_pdf_dialog.ui:88
+#| msgid "From URL"
+msgid "Add From URL"
+msgstr "Додати з адреси"
 
-#: data/resources/ui/add_pdf_dialog.ui:99
+#: data/resources/ui/add_pdf_dialog.ui:94
 msgid "Download…"
 msgstr "Отримати…"
 
@@ -504,12 +506,10 @@ msgid "Custom…"
 msgstr "Нетиповий…"
 
 #: src/entry_list_row.rs:74
-#| msgid "Author"
 msgid "Author not set"
 msgstr "Автора не встановлено"
 
 #: src/entry_list_row.rs:85
-#| msgid "Could not set PDF"
 msgid "Title not set"
 msgstr "Заголовок не встановлено"
 
