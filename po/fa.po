@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-09-25 18:41+0000\n"
-"PO-Revision-Date: 2024-09-26 00:17+0330\n"
+"POT-Creation-Date: 2024-10-16 18:07+0000\n"
+"PO-Revision-Date: 2024-10-19 00:48+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -167,14 +167,14 @@ msgid ""
 msgstr "ایجاد رونوشتی از پی‌دی‌اف گزیده و ذخیره‌اش در شاخهٔ کتابشناسیتان."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
-msgid "From File"
-msgstr "از پرونده"
+msgid "Add From File…"
+msgstr "افزودن از پرونده…"
 
-#: data/resources/ui/add_pdf_dialog.ui:93
-msgid "From URL"
-msgstr "از نشانی"
+#: data/resources/ui/add_pdf_dialog.ui:88
+msgid "Add From URL"
+msgstr "افزودن از نشانی"
 
-#: data/resources/ui/add_pdf_dialog.ui:99
+#: data/resources/ui/add_pdf_dialog.ui:94
 msgid "Download…"
 msgstr "بارگیری…"
 
