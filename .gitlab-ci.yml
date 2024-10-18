@@ -32,6 +32,7 @@ nightly@aarch64:
 # Configure and run rustfmt
 # Exits and builds fails if on bad format
 rustfmt:
+  stage: check
   image: "rust:slim"
   script:
     - rustup component add rustfmt
@@ -41,3 +42,9 @@ rustfmt:
     - rustc -Vv && cargo -Vv
     - cargo fmt --version
     - cargo fmt --all -- --color=always --check
+
+codespell:
+  stage: check
+  script:
+    - dnf install -y codespell
+    - codespell -L crate -S "*.po,target,_build" -f
