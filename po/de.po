@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-09-25 18:41+0000\n"
-"PO-Revision-Date: 2024-09-25 22:05+0200\n"
+"POT-Creation-Date: 2024-10-16 18:07+0000\n"
+"PO-Revision-Date: 2024-10-17 10:07+0200\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -177,14 +177,14 @@ msgstr ""
 "Bibliografieordner."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
-msgid "From File"
-msgstr "Aus Datei"
+msgid "Add From File…"
+msgstr "Aus Datei hinzufügen …"
 
-#: data/resources/ui/add_pdf_dialog.ui:93
-msgid "From URL"
-msgstr "Aus Adresse"
+#: data/resources/ui/add_pdf_dialog.ui:88
+msgid "Add From URL"
+msgstr "Aus Adresse hinzufügen"
 
-#: data/resources/ui/add_pdf_dialog.ui:99
+#: data/resources/ui/add_pdf_dialog.ui:94
 msgid "Download…"
 msgstr "Herunterladen …"
 
