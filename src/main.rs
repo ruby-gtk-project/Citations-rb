@@ -55,5 +55,9 @@ fn main() -> glib::ExitCode {
     NewEntryDialog::static_type();
     Selection::static_type();
 
-    app.run()
+    let status = app.run();
+
+    gsv::finalize();
+
+    status
 }
