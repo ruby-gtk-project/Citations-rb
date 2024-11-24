@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-07-29 20:36+0000\n"
-"PO-Revision-Date: 2024-05-09 10:30+0300\n"
+"POT-Creation-Date: 2024-10-16 18:07+0000\n"
+"PO-Revision-Date: 2024-10-20 21:02+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -169,14 +169,15 @@ msgid ""
 msgstr "Seçilen pdf’nin kopyasını oluşturur ve Kaynakça klasöründe saklar."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
-msgid "From File"
-msgstr "Dosyadan"
+#| msgid "From File"
+msgid "Add From File…"
+msgstr "Dosyadan Ekle…"
 
-#: data/resources/ui/add_pdf_dialog.ui:93
-msgid "From URL"
-msgstr "URL’den"
+#: data/resources/ui/add_pdf_dialog.ui:88
+msgid "Add From URL"
+msgstr "URL’den Ekle"
 
-#: data/resources/ui/add_pdf_dialog.ui:99
+#: data/resources/ui/add_pdf_dialog.ui:94
 msgid "Download…"
 msgstr "İndir…"
 
@@ -502,6 +503,14 @@ msgstr "Kopyalandı"
 #: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "Özel…"
+
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "Yazar ayarlanmadı"
+
+#: src/entry_list_row.rs:85
+msgid "Title not set"
+msgstr "Başlık ayarlanamadı"
 
 #: src/entry_page.rs:204
 msgid "Other…"
