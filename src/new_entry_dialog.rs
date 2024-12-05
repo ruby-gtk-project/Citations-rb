@@ -207,11 +207,7 @@ impl NewEntryDialog {
 
         self.present(Some(window));
 
-        if let Ok(response) = receiver.await {
-            response
-        } else {
-            None
-        }
+        receiver.await.unwrap_or_default()
     }
 
     fn update_style_scheme(&self) {
