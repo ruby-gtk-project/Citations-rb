@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+use gettextrs::gettext;
 use log::{debug, info};
 
 use gtk::prelude::*;
@@ -23,9 +24,38 @@ mod imp {
         type ParentType = adw::Application;
     }
 
-    impl ObjectImpl for Application {}
+    impl ObjectImpl for Application {
+        fn constructed(&self) {
+            log::debug!("Application::constructed");
+            self.parent_constructed();
+
+            self.obj().add_main_option(
+                "debug",
+                glib::Char::from(b'd'),
+                glib::OptionFlags::NONE,
+                glib::OptionArg::None,
+                &gettext("Enable debug messages"),
+                None,
+            );
+        }
+    }
 
     impl ApplicationImpl for Application {
+        fn handle_local_options(&self, options: &glib::VariantDict) -> glib::ExitCode {
+            let is_debug = options.lookup::<bool>("debug").unwrap().unwrap_or_default();
+            if is_debug {
+                tracing_subscriber::fmt()
+                    .with_max_level(tracing_subscriber::filter::LevelFilter::DEBUG)
+                    .init();
+            } else {
+                tracing_subscriber::fmt::init();
+            }
+
+            log::debug!("Application::handle_local_options");
+
+            self.parent_handle_local_options(options)
+        }
+
         fn activate(&self) {
             debug!("Application::activate");
             self.parent_activate();
