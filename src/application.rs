@@ -81,6 +81,12 @@ mod imp {
             app.setup_accels();
         }
 
+        fn shutdown(&self) {
+            self.parent_shutdown();
+
+            gsv::finalize();
+        }
+
         fn open(&self, files: &[gio::File], _hint: &str) {
             debug!("Application::open");
             for file in files {
