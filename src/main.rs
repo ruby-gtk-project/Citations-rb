@@ -29,9 +29,6 @@ use self::application::Application;
 use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
 
 fn main() -> glib::ExitCode {
-    // Initialize logger
-    tracing_subscriber::fmt::init();
-
     // Prepare i18n
     gettextrs::setlocale(LocaleCategory::LcAll, "");
     gettextrs::bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR).expect("Unable to bind the text domain");
@@ -55,9 +52,5 @@ fn main() -> glib::ExitCode {
     NewEntryDialog::static_type();
     Selection::static_type();
 
-    let status = app.run();
-
-    gsv::finalize();
-
-    status
+    app.run()
 }
