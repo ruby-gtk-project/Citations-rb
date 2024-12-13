@@ -48,3 +48,12 @@ codespell:
   script:
     - dnf install -y codespell
     - codespell -L crate -S "*.po,target,_build" -f
+
+cargo-audit:
+  stage: test
+  interruptible: true
+  image: rust
+  allow_failure: true
+  script:
+    - cargo install cargo-deny
+    - cargo deny check advisories bans sources
