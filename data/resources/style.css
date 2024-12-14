@@ -7,6 +7,11 @@ textview {
   padding: 6px;
 }
 
+scrolledwindow textview.inline,
+scrolledwindow textview.inline text {
+  background: none;
+}
+
 textview.newentrydialog {
   background-color: var(--window-bg-color);
 }

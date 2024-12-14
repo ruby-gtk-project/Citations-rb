@@ -230,6 +230,8 @@
                               <object class="GtkSearchEntry" id="search_entry">
                                 <property name="placeholder-text" translatable="yes">Search…</property>
                                 <signal name="changed" handler="on_changed" swapped="true"/>
+                                <signal name="previous-match" handler="on_previous_match" swapped="true"/>
+                                <signal name="next-match" handler="on_next_match" swapped="true"/>
                                 <accessibility>
                                   <relation name="labelled-by">search_bar</relation>
                                 </accessibility>

@@ -278,4 +278,8 @@ impl Selection {
             self.notify("hide-selection");
         }
     }
+
+    pub(crate) fn selected_item_pos(&self) -> u32 {
+        self.imp().item_position.get()
+    }
 }
