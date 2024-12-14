@@ -160,6 +160,16 @@ mod imp {
     #[gtk::template_callbacks]
     impl Window {
         #[template_callback]
+        fn on_previous_match(&self) {
+            self.entry_list.navigate_previous();
+        }
+
+        #[template_callback]
+        fn on_next_match(&self) {
+            self.entry_list.navigate_next();
+        }
+
+        #[template_callback]
         fn on_content_hidden(&self) {
             self.entry_list.hide_selection();
         }

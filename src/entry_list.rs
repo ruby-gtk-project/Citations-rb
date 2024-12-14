@@ -200,4 +200,50 @@ impl EntryList {
     pub fn unselect(&self) {
         self.imp().selection_model.borrow().set_selected_item(None);
     }
+
+    pub fn navigate_next(&self) {
+        let imp = self.imp();
+
+        let model = imp.selection_model.borrow();
+        let scroll_flags = gtk::ListScrollFlags::NONE;
+
+        let n_items = model.n_items();
+        let pos = model.selected_item_pos();
+
+        if pos == gtk::INVALID_LIST_POSITION && n_items > 0 {
+            model.set_selected_position(0);
+            imp.list_view
+                .scroll_to(0, scroll_flags, None::<gtk::ScrollInfo>);
+            return;
+        }
+
+        if pos + 1 < n_items {
+            model.set_selected_position(pos + 1);
+            imp.list_view
+                .scroll_to(pos + 1, scroll_flags, None::<gtk::ScrollInfo>);
+        }
+    }
+
+    pub fn navigate_previous(&self) {
+        let imp = self.imp();
+
+        let model = imp.selection_model.borrow();
+        let scroll_flags = gtk::ListScrollFlags::NONE;
+
+        let n_items = model.n_items();
+        let pos = model.selected_item_pos();
+
+        if pos == gtk::INVALID_LIST_POSITION && n_items > 0 {
+            model.set_selected_position(n_items - 1);
+            imp.list_view
+                .scroll_to(n_items - 1, scroll_flags, None::<gtk::ScrollInfo>);
+            return;
+        }
+
+        if pos > 0 {
+            model.set_selected_position(pos - 1);
+            imp.list_view
+                .scroll_to(pos - 1, scroll_flags, None::<gtk::ScrollInfo>);
+        }
+    }
 }
