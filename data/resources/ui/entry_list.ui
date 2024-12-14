@@ -5,7 +5,7 @@
       <object class="GtkStack" id="stack">
         <child>
           <object class="AdwStatusPage" id="empty_list">
-            <property name="icon-name">emblem-documents-symbolic</property>
+            <property name="icon-name">document-text-symbolic</property>
             <property name="title" translatable="yes" comments="TRANSLATORS Empty state widget">No Citations</property>
             <property name="description" translatable="yes">Create a new citation</property>
             <style>

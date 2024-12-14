@@ -14,5 +14,6 @@
   <gresource prefix="/org/gnome/World/Citations/icons/16x16/actions/">
     <file preprocess="xml-stripblanks" alias="external-link-symbolic.svg">icons/external-link-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="image-missing-symbolic.svg">icons/image-missing-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="document-text-symbolic.svg">icons/document-text-symbolic.svg</file>
   </gresource>
 </gresources>
