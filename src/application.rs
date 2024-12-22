@@ -42,7 +42,8 @@ mod imp {
 
     impl ApplicationImpl for Application {
         fn handle_local_options(&self, options: &glib::VariantDict) -> glib::ExitCode {
-            let is_debug = options.lookup::<bool>("debug").unwrap().unwrap_or_default();
+            let is_debug = options.lookup::<bool>("debug").unwrap().unwrap_or_default()
+                || !glib::log_writer_default_would_drop(glib::LogLevel::Debug, Some("citations"));
             if is_debug {
                 tracing_subscriber::fmt()
                     .with_max_level(tracing_subscriber::filter::LevelFilter::DEBUG)

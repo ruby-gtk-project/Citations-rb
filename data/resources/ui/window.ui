@@ -109,6 +109,7 @@
                             <property name="halign">center</property>
                             <property name="action-name">win.open</property>
                             <property name="action-target">''</property>
+                            <property name="can-shrink">True</property>
                             <style>
                               <class name="pill"/>
                               <class name="suggested-action"/>
@@ -156,6 +157,7 @@
                                         <property name="icon-name">document-open-symbolic</property>
                                         <property name="label" translatable="yes">_Open</property>
                                         <property name="use-underline">True</property>
+                                        <property name="can-shrink">True</property>
                                       </object>
                                     </property>
                                     <style>
