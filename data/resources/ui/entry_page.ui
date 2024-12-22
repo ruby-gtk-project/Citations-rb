@@ -296,6 +296,7 @@
                                             <property name="icon-name">external-link-symbolic</property>
                                             <property name="label" translatable="yes">_Open</property>
                                             <property name="use-underline">True</property>
+                                            <property name="can-shrink">True</property>
                                           </object>
                                         </child>
                                         <style>
