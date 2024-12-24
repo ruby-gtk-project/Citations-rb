@@ -182,8 +182,7 @@ impl EntryList {
             .set_selected_position(pos);
         self.imp()
             .list_view
-            .activate_action("list.scroll-to-item", Some(&pos.to_variant()))
-            .unwrap();
+            .scroll_to(pos, gtk::ListScrollFlags::NONE, None::<gtk::ScrollInfo>);
     }
 
     pub fn hide_selection(&self) {
