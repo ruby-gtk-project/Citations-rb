@@ -353,6 +353,8 @@
                                             <property name="wrap">True</property>
                                             <property name="wrap-mode">word-char</property>
                                             <property name="justify">center</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="xalign">0.0</property>
                                             <style>
                                               <class name="title-1"/>
                                             </style>
