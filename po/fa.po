@@ -2,14 +2,14 @@
 # Copyright (C) 2023 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
 # سید حسین موسوی فرد <hajmousa1385@gmail.com>, 2023.
-# Danial Behzadi<dani.behzi@ubuntu.com>, 2023-2024.
+# Danial Behzadi<dani.behzi@ubuntu.com>, 2023-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-10-16 18:07+0000\n"
-"PO-Revision-Date: 2024-10-19 00:48+0330\n"
+"POT-Creation-Date: 2025-01-10 21:19+0000\n"
+"PO-Revision-Date: 2025-01-11 13:52+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -95,21 +95,19 @@ msgstr "خام"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:619
+#: data/resources/ui/window.ui:69 src/main.rs:39 src/window.rs:629
 msgid "Citations"
 msgstr "ارجاع‌ها"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:621
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:631
 msgid "Manage your bibliography"
 msgstr "مدیریت کتابشناسیتان"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.World.Citations.desktop.in.in:10
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
-msgstr ""
-"bibliography;citing;literature;BibTeX;LaTeX;TeX;کتاب‌شناسی;استناد;ادبیات;بیب‌تک;"
-"لاتک;تک;"
+msgstr "bibliography;citing;literature;BibTeX;LaTeX;TeX;کتاب‌شناسی;استناد;ادبیات;بیب‌تک;لاتک;تک;"
 
 #: data/org.gnome.World.Citations.desktop.in.in:19
 msgid "New Window"
@@ -167,16 +165,16 @@ msgid ""
 msgstr "ایجاد رونوشتی از پی‌دی‌اف گزیده و ذخیره‌اش در شاخهٔ کتابشناسیتان."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
-msgid "Add From File…"
-msgstr "افزودن از پرونده…"
-
-#: data/resources/ui/add_pdf_dialog.ui:88
 msgid "Add From URL"
 msgstr "افزودن از نشانی"
 
-#: data/resources/ui/add_pdf_dialog.ui:94
+#: data/resources/ui/add_pdf_dialog.ui:86
 msgid "Download…"
 msgstr "بارگیری…"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "Add From File…"
+msgstr "افزودن از پرونده…"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -219,15 +217,15 @@ msgstr "بدون ارجاع"
 msgid "Create a new citation"
 msgstr "ایجاد ارجاع جدید"
 
-#: data/resources/ui/entry_list_row.ui:90
+#: data/resources/ui/entry_list_row.ui:91
 msgid "_Open PDF"
 msgstr "_گشودن پی‌دی‌اف"
 
-#: data/resources/ui/entry_list_row.ui:94
+#: data/resources/ui/entry_list_row.ui:95
 msgid "_Copy Key"
 msgstr "_رونوشت کلید"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_حذف"
 
@@ -288,15 +286,15 @@ msgid "PDF"
 msgstr "پی‌دی‌اف"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
+#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:158
 msgid "_Open"
 msgstr "_گشودن"
 
-#: data/resources/ui/entry_page.ui:310
+#: data/resources/ui/entry_page.ui:311
 msgid "Delete PDF"
 msgstr "حذف پی‌دی‌اف"
 
-#: data/resources/ui/entry_page.ui:351
+#: data/resources/ui/entry_page.ui:352
 msgid "Could not set PDF Preview"
 msgstr "نتوانست پیش‌نمایش پی‌دی‌اف را تنظیم کند"
 
@@ -308,33 +306,33 @@ msgstr "افزودن مدخل جدید"
 msgid "_Cancel"
 msgstr "_لغو"
 
-#: data/resources/ui/new_entry_dialog.ui:25
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "C_reate"
 msgstr "_ایجاد"
 
-#: data/resources/ui/new_entry_dialog.ui:42
+#: data/resources/ui/new_entry_dialog.ui:44
 msgid "New"
 msgstr "جدید"
 
-#: data/resources/ui/new_entry_dialog.ui:61
+#: data/resources/ui/new_entry_dialog.ui:63
 msgid "Citation Key"
 msgstr "کلید ارجاع"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:70
 msgid "Citation Type"
 msgstr "گونهٔ ارجاع"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:88
+#: data/resources/ui/new_entry_dialog.ui:90
 msgid "From BibTeX"
 msgstr "از بیب‌تک"
 
-#: data/resources/ui/new_entry_dialog.ui:107
+#: data/resources/ui/new_entry_dialog.ui:109
 msgid "From DOI"
 msgstr "از شناساگر شی دیجیتالی"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:118
+#: data/resources/ui/new_entry_dialog.ui:120
 msgid "DOI"
 msgstr "شناساگر شی دیجیتالی"
 
@@ -408,8 +406,8 @@ msgstr "_جست‌وجو در اسکولار گوگل"
 msgid "_Search in arXiv"
 msgstr "_جست‌و‌جو در arXiv"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
-#: data/resources/ui/window.ui:210
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:212
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
@@ -422,35 +420,35 @@ msgstr "گشودن یک پروندهٔ بیب‌تک"
 msgid "Or drag-and-drop a file"
 msgstr "یا کشیدن و انداختن یک پرونده"
 
-#: data/resources/ui/window.ui:139
+#: data/resources/ui/window.ui:140
 msgid "Manage your Citations"
 msgstr "مدیریت ارجاع‌هایتان"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:150
 msgid "Recent Files"
 msgstr "پرونده‌های اخیر"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:194
 msgid "Sidebar"
 msgstr "نوار کناری"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:205
 msgid "Add New Citation"
 msgstr "افزودن ارجاع جدید"
 
-#: data/resources/ui/window.ui:217
+#: data/resources/ui/window.ui:219
 msgid "Search"
 msgstr "جست‌وجو"
 
-#: data/resources/ui/window.ui:231
+#: data/resources/ui/window.ui:233
 msgid "Search…"
 msgstr "جست‌وجو…"
 
-#: data/resources/ui/window.ui:251
+#: data/resources/ui/window.ui:255
 msgid "Content"
 msgstr "محتوا"
 
-#: data/resources/ui/window.ui:261
+#: data/resources/ui/window.ui:265
 msgid "Secondary Menu"
 msgstr "فهرست ثانویه"
 
@@ -474,6 +472,10 @@ msgstr "پرونده‌های پی‌دی‌اف"
 #: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "یک پی‌دی‌اف را بگزینید"
+
+#: src/application.rs:37
+msgid "Enable debug messages"
+msgstr "به کار انداختن پیام‌های اشکال‌زدایی"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -619,69 +621,69 @@ msgstr "موسسه"
 msgid "Could not add entry"
 msgstr "نتوانست ورودی بیفزاید"
 
-#: src/window.rs:347 src/window.rs:372
+#: src/window.rs:357 src/window.rs:382
 msgid "BibTeX Files"
 msgstr "پرونده‌های بیب‌تک"
 
-#: src/window.rs:381
+#: src/window.rs:391
 msgid "Create New Bibliography"
 msgstr "ایجاد کتابشناسی جدید"
 
-#: src/window.rs:382
+#: src/window.rs:392
 msgid "_Create"
 msgstr "_ایجاد"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:385
+#: src/window.rs:395
 msgid "bibliography"
 msgstr "کتابشناسی"
 
-#: src/window.rs:508
+#: src/window.rs:518
 msgid "An entry with the given citation key already exists"
 msgstr "یک مدخل با کلید ارجاع داده شده وجود دارد"
 
-#: src/window.rs:523
+#: src/window.rs:533
 msgid "Bibliography saved"
 msgstr "کتابشناسی ذخیره شد"
 
-#: src/window.rs:576
+#: src/window.rs:586
 msgid "Citation Deleted"
 msgstr "ارجاع حذف شد"
 
-#: src/window.rs:578
+#: src/window.rs:588
 msgid "Undo"
 msgstr "برگردان"
 
-#: src/window.rs:625
+#: src/window.rs:635
 msgid "translator-credits"
 msgstr ""
 "سید حسین موسوی فرد <hajmousa1385@gmail.com>\n"
 "دانیال بهزادی <dani.behzi@ubuntu.com>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:637
+#: src/window.rs:647
 msgid "Unsaved Changes"
 msgstr "تغییرات ذخیره نشده"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:640
+#: src/window.rs:650
 msgid "Do you want to write all changes to the safe?"
 msgstr "می‌خواهید همهٔ تغییرات را در گنجه بنویسید؟"
 
-#: src/window.rs:644
+#: src/window.rs:654
 msgid "_Quit Without Saving"
 msgstr "_خروج بدون ذخیره"
 
-#: src/window.rs:645
+#: src/window.rs:655
 msgid "_Don't Quit"
 msgstr "_خارج نشدن"
 
-#: src/window.rs:646
+#: src/window.rs:656
 msgid "_Save and Quit"
 msgstr "_ذخیره و خروج"
 
-#: src/window.rs:689
+#: src/window.rs:699
 msgid "Remove From Recent Files"
 msgstr "حذف کردن از پرونده‌های اخیر"
 
