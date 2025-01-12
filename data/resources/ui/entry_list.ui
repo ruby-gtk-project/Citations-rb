@@ -16,17 +16,13 @@
         <child>
           <object class="GtkScrolledWindow" id="scrolled_window">
             <child>
-              <object class="AdwClampScrollable">
-                <child>
-                  <object class="GtkListView" id="list_view">
-                    <property name="single-click-activate">True</property>
-                    <signal name="activate" handler="on_list_activate" swapped="yes"/>
-                    <style>
-                      <class name="navigation-sidebar"/>
-                      <class name="padded-sidebar"/>
-                    </style>
-                  </object>
-                </child>
+              <object class="GtkListView" id="list_view">
+                <property name="single-click-activate">True</property>
+                <signal name="activate" handler="on_list_activate" swapped="yes"/>
+                <style>
+                  <class name="navigation-sidebar"/>
+                  <class name="padded-sidebar"/>
+                </style>
               </object>
             </child>
           </object>
