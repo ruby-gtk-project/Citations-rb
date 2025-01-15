@@ -1,15 +1,15 @@
 # Swedish translation for citations.
-# Copyright © 2022-2024 citations's COPYRIGHT HOLDER
+# Copyright © 2022-2025 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2022, 2023, 2024.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2022, 2023, 2024, 2025.
 # Luna Jernberg <droidbittin@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-10-16 18:07+0000\n"
-"PO-Revision-Date: 2024-10-17 00:52+0200\n"
+"POT-Creation-Date: 2025-01-10 21:19+0000\n"
+"PO-Revision-Date: 2025-01-10 22:20+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -96,12 +96,12 @@ msgstr "Vanlig"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:619
+#: data/resources/ui/window.ui:69 src/main.rs:39 src/window.rs:629
 msgid "Citations"
 msgstr "Citations"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:621
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:631
 msgid "Manage your bibliography"
 msgstr "Hantera din bibliografi"
 
@@ -167,16 +167,16 @@ msgstr ""
 "Skapar en kopia av den valda pdf-filen och lagrar den i din bibliografimapp."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
-msgid "Add From File…"
-msgstr "Lägg till från fil…"
-
-#: data/resources/ui/add_pdf_dialog.ui:88
 msgid "Add From URL"
 msgstr "Lägg till från URL"
 
-#: data/resources/ui/add_pdf_dialog.ui:94
+#: data/resources/ui/add_pdf_dialog.ui:86
 msgid "Download…"
 msgstr "Hämta…"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "Add From File…"
+msgstr "Lägg till från fil…"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -219,15 +219,15 @@ msgstr "Inga citeringar"
 msgid "Create a new citation"
 msgstr "Skapa en ny citering"
 
-#: data/resources/ui/entry_list_row.ui:90
+#: data/resources/ui/entry_list_row.ui:91
 msgid "_Open PDF"
 msgstr "_Öppna PDF"
 
-#: data/resources/ui/entry_list_row.ui:94
+#: data/resources/ui/entry_list_row.ui:95
 msgid "_Copy Key"
 msgstr "_Kopiera nyckel"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "Ta _bort"
 
@@ -288,15 +288,15 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
+#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:158
 msgid "_Open"
 msgstr "Ö_ppna"
 
-#: data/resources/ui/entry_page.ui:310
+#: data/resources/ui/entry_page.ui:311
 msgid "Delete PDF"
 msgstr "Ta bort PDF"
 
-#: data/resources/ui/entry_page.ui:351
+#: data/resources/ui/entry_page.ui:352
 msgid "Could not set PDF Preview"
 msgstr "Kunde inte ställa in PDF-förhandsgranskning"
 
@@ -308,33 +308,33 @@ msgstr "Lägg till ny post"
 msgid "_Cancel"
 msgstr "A_vbryt"
 
-#: data/resources/ui/new_entry_dialog.ui:25
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "C_reate"
 msgstr "S_kapa"
 
-#: data/resources/ui/new_entry_dialog.ui:42
+#: data/resources/ui/new_entry_dialog.ui:44
 msgid "New"
 msgstr "Ny"
 
-#: data/resources/ui/new_entry_dialog.ui:61
+#: data/resources/ui/new_entry_dialog.ui:63
 msgid "Citation Key"
 msgstr "Citeringsnyckel"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:70
 msgid "Citation Type"
 msgstr "Citeringstyp"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:88
+#: data/resources/ui/new_entry_dialog.ui:90
 msgid "From BibTeX"
 msgstr "Från BibTeX"
 
-#: data/resources/ui/new_entry_dialog.ui:107
+#: data/resources/ui/new_entry_dialog.ui:109
 msgid "From DOI"
 msgstr "Från DOI"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:118
+#: data/resources/ui/new_entry_dialog.ui:120
 msgid "DOI"
 msgstr "DOI"
 
@@ -408,8 +408,8 @@ msgstr "_Sök i Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Sök i arXiv"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
-#: data/resources/ui/window.ui:210
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:212
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
@@ -422,35 +422,35 @@ msgstr "Öppna en BibTeX-fil"
 msgid "Or drag-and-drop a file"
 msgstr "Eller dra och släpp en fil"
 
-#: data/resources/ui/window.ui:139
+#: data/resources/ui/window.ui:140
 msgid "Manage your Citations"
 msgstr "Hantera dina citeringar"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:150
 msgid "Recent Files"
 msgstr "Senaste filer"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:194
 msgid "Sidebar"
 msgstr "Sidopanel"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:205
 msgid "Add New Citation"
 msgstr "Lägg till ny citering"
 
-#: data/resources/ui/window.ui:217
+#: data/resources/ui/window.ui:219
 msgid "Search"
 msgstr "Sök"
 
-#: data/resources/ui/window.ui:231
+#: data/resources/ui/window.ui:233
 msgid "Search…"
 msgstr "Sök…"
 
-#: data/resources/ui/window.ui:251
+#: data/resources/ui/window.ui:255
 msgid "Content"
 msgstr "Innehåll"
 
-#: data/resources/ui/window.ui:261
+#: data/resources/ui/window.ui:265
 msgid "Secondary Menu"
 msgstr "Sekundärmeny"
 
@@ -474,6 +474,10 @@ msgstr "PDF-filer"
 #: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "Välj en PDF"
+
+#: src/application.rs:37
+msgid "Enable debug messages"
+msgstr "Aktivera felsökningsmeddelanden"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -619,41 +623,41 @@ msgstr "Institution"
 msgid "Could not add entry"
 msgstr "Kunde inte lägga till post"
 
-#: src/window.rs:347 src/window.rs:372
+#: src/window.rs:357 src/window.rs:382
 msgid "BibTeX Files"
 msgstr "BibTeX-filer"
 
-#: src/window.rs:381
+#: src/window.rs:391
 msgid "Create New Bibliography"
 msgstr "Skapa ny bibliografi"
 
-#: src/window.rs:382
+#: src/window.rs:392
 msgid "_Create"
 msgstr "S_kapa"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:385
+#: src/window.rs:395
 msgid "bibliography"
 msgstr "bibliografi"
 
-#: src/window.rs:508
+#: src/window.rs:518
 msgid "An entry with the given citation key already exists"
 msgstr "Det finns redan en post med angiven citeringsnyckel"
 
-#: src/window.rs:523
+#: src/window.rs:533
 msgid "Bibliography saved"
 msgstr "Bibliografi sparad"
 
-#: src/window.rs:576
+#: src/window.rs:586
 msgid "Citation Deleted"
 msgstr "Citering borttagen"
 
-#: src/window.rs:578
+#: src/window.rs:588
 msgid "Undo"
 msgstr "Ångra"
 
-#: src/window.rs:625
+#: src/window.rs:635
 msgid "translator-credits"
 msgstr ""
 "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
@@ -663,27 +667,27 @@ msgstr ""
 "<tp-sv@listor.tp-sv.se>."
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:637
+#: src/window.rs:647
 msgid "Unsaved Changes"
 msgstr "Osparade ändringar"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:640
+#: src/window.rs:650
 msgid "Do you want to write all changes to the safe?"
 msgstr "Vill du skriva alla ändringar till kassaskåpet?"
 
-#: src/window.rs:644
+#: src/window.rs:654
 msgid "_Quit Without Saving"
 msgstr "A_vsluta utan att spara"
 
-#: src/window.rs:645
+#: src/window.rs:655
 msgid "_Don't Quit"
 msgstr "Avsluta _inte"
 
-#: src/window.rs:646
+#: src/window.rs:656
 msgid "_Save and Quit"
 msgstr "_Spara och avsluta"
 
-#: src/window.rs:689
+#: src/window.rs:699
 msgid "Remove From Recent Files"
 msgstr "Ta bort från senaste filer"
