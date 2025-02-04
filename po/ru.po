@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-10-16 18:07+0000\n"
-"PO-Revision-Date: 2024-10-27 16:16+0300\n"
-"Last-Translator: Artur So <arturios2005@mail.ru>\n"
+"POT-Creation-Date: 2025-01-10 21:19+0000\n"
+"PO-Revision-Date: 2025-02-04 00:56+1000\n"
+"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -96,12 +96,12 @@ msgstr "Простой текст"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:619
+#: data/resources/ui/window.ui:69 src/main.rs:39 src/window.rs:629
 msgid "Citations"
 msgstr "Цитаты"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:621
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:631
 msgid "Manage your bibliography"
 msgstr "Управляйте своей библиографией"
 
@@ -168,16 +168,16 @@ msgid ""
 msgstr "Создает копию выбранного pdf и сохраняет ее в папке библиографии."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
-msgid "Add From File…"
-msgstr "Добавить из файла…"
-
-#: data/resources/ui/add_pdf_dialog.ui:88
 msgid "Add From URL"
 msgstr "Добавить из URL"
 
-#: data/resources/ui/add_pdf_dialog.ui:94
+#: data/resources/ui/add_pdf_dialog.ui:86
 msgid "Download…"
 msgstr "Загрузить…"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "Add From File…"
+msgstr "Добавить из файла…"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -220,15 +220,15 @@ msgstr "Нет источников цитирования"
 msgid "Create a new citation"
 msgstr "Создать новое цитирование"
 
-#: data/resources/ui/entry_list_row.ui:90
+#: data/resources/ui/entry_list_row.ui:91
 msgid "_Open PDF"
 msgstr "_Открыть PDF"
 
-#: data/resources/ui/entry_list_row.ui:94
+#: data/resources/ui/entry_list_row.ui:95
 msgid "_Copy Key"
 msgstr "_Копировать ключ"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Удалить"
 
@@ -289,15 +289,15 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
+#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:158
 msgid "_Open"
 msgstr "_Открыть"
 
-#: data/resources/ui/entry_page.ui:310
+#: data/resources/ui/entry_page.ui:311
 msgid "Delete PDF"
 msgstr "Удалить PDF"
 
-#: data/resources/ui/entry_page.ui:351
+#: data/resources/ui/entry_page.ui:352
 msgid "Could not set PDF Preview"
 msgstr "Не удалось установить предпросмотр PDF"
 
@@ -309,33 +309,33 @@ msgstr "Добавить новую запись"
 msgid "_Cancel"
 msgstr "_Отменить"
 
-#: data/resources/ui/new_entry_dialog.ui:25
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "C_reate"
 msgstr "Со_здать"
 
-#: data/resources/ui/new_entry_dialog.ui:42
+#: data/resources/ui/new_entry_dialog.ui:44
 msgid "New"
 msgstr "Новая"
 
-#: data/resources/ui/new_entry_dialog.ui:61
+#: data/resources/ui/new_entry_dialog.ui:63
 msgid "Citation Key"
 msgstr "Ключ цитирования"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:70
 msgid "Citation Type"
 msgstr "Тип цитирования"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:88
+#: data/resources/ui/new_entry_dialog.ui:90
 msgid "From BibTeX"
 msgstr "Из BibTeX"
 
-#: data/resources/ui/new_entry_dialog.ui:107
+#: data/resources/ui/new_entry_dialog.ui:109
 msgid "From DOI"
 msgstr "Из DOI"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:118
+#: data/resources/ui/new_entry_dialog.ui:120
 msgid "DOI"
 msgstr "DOI"
 
@@ -409,8 +409,8 @@ msgstr "_Искать в Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Искать в arXiv"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
-#: data/resources/ui/window.ui:210
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:212
 msgid "Main Menu"
 msgstr "Главное меню"
 
@@ -423,35 +423,35 @@ msgstr "Открыть файл BibTeX"
 msgid "Or drag-and-drop a file"
 msgstr "Или перетащите файл"
 
-#: data/resources/ui/window.ui:139
+#: data/resources/ui/window.ui:140
 msgid "Manage your Citations"
 msgstr "Управляйте своими источниками цитирования"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:150
 msgid "Recent Files"
 msgstr "Недавние файлы"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:194
 msgid "Sidebar"
 msgstr "Боковая панель"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:205
 msgid "Add New Citation"
 msgstr "Добавить новое цитирование"
 
-#: data/resources/ui/window.ui:217
+#: data/resources/ui/window.ui:219
 msgid "Search"
 msgstr "Поиск"
 
-#: data/resources/ui/window.ui:231
+#: data/resources/ui/window.ui:233
 msgid "Search…"
 msgstr "Поиск…"
 
-#: data/resources/ui/window.ui:251
+#: data/resources/ui/window.ui:255
 msgid "Content"
 msgstr "Содержимое"
 
-#: data/resources/ui/window.ui:261
+#: data/resources/ui/window.ui:265
 msgid "Secondary Menu"
 msgstr "Дополнительное меню"
 
@@ -475,6 +475,10 @@ msgstr "Файлы PDF"
 #: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "Выберите PDF"
+
+#: src/application.rs:37
+msgid "Enable debug messages"
+msgstr "Включить отладочные сообщения"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -620,67 +624,67 @@ msgstr "Институт"
 msgid "Could not add entry"
 msgstr "Не удалось добавить запись"
 
-#: src/window.rs:347 src/window.rs:372
+#: src/window.rs:357 src/window.rs:382
 msgid "BibTeX Files"
 msgstr "Файлы BibTeX"
 
-#: src/window.rs:381
+#: src/window.rs:391
 msgid "Create New Bibliography"
 msgstr "Создать новую библиографию"
 
-#: src/window.rs:382
+#: src/window.rs:392
 msgid "_Create"
 msgstr "_Создать"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:385
+#: src/window.rs:395
 msgid "bibliography"
 msgstr "библиография"
 
-#: src/window.rs:508
+#: src/window.rs:518
 msgid "An entry with the given citation key already exists"
 msgstr "Запись с данным ключом цитирования уже существует"
 
-#: src/window.rs:523
+#: src/window.rs:533
 msgid "Bibliography saved"
 msgstr "Библиография сохранена"
 
-#: src/window.rs:576
+#: src/window.rs:586
 msgid "Citation Deleted"
 msgstr "Цитирование удалено"
 
-#: src/window.rs:578
+#: src/window.rs:588
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:625
+#: src/window.rs:635
 msgid "translator-credits"
-msgstr "Ser82-png <asvmail.as@gmail.com>, 2022-2023"
+msgstr "Ser82-png <asvmail.as@gmail.com>, 2022-2025"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:637
+#: src/window.rs:647
 msgid "Unsaved Changes"
 msgstr "Несохранённые изменения"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:640
+#: src/window.rs:650
 msgid "Do you want to write all changes to the safe?"
 msgstr "Хотите записать все изменения в сейф?"
 
-#: src/window.rs:644
+#: src/window.rs:654
 msgid "_Quit Without Saving"
 msgstr "_Закрыть без сохранения"
 
-#: src/window.rs:645
+#: src/window.rs:655
 msgid "_Don't Quit"
 msgstr "_Не закрывать"
 
-#: src/window.rs:646
+#: src/window.rs:656
 msgid "_Save and Quit"
 msgstr "_Сохранить и закрыть"
 
-#: src/window.rs:689
+#: src/window.rs:699
 msgid "Remove From Recent Files"
 msgstr "Удалить из недавних файлов"
 
