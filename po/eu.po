@@ -1,12 +1,12 @@
 # Basque translation for citations.
 # Copyright (C) 2022 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2022, 2023, 2024.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2022, 2023, 2024, 2025.
 #
 msgid ""
 msgstr "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-03-05 20:36+0000\n"
+"POT-Creation-Date: 2025-01-10 21:19+0000\n"
 "PO-Revision-Date: 2024-04-06 10:00+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
@@ -25,7 +25,7 @@ msgstr "Liburua"
 
 #: cratebibtex/src/entry_type.rs:119
 msgid "Misc"
-msgstr "Askotarikoa"
+msgstr "Hainbat"
 
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:121
@@ -39,7 +39,7 @@ msgstr "Argitaratu gabea"
 #. NOTE As in online source
 #: cratebibtex/src/entry_type.rs:124
 msgid "Online"
-msgstr "Lineakoa"
+msgstr "Konektatuta"
 
 #. NOTE As in other kind of source
 #: cratebibtex/src/entry_type.rs:126
@@ -65,7 +65,7 @@ msgstr "Bildumakoa"
 #. NOTE As in instruction manual
 #: cratebibtex/src/entry_type.rs:132
 msgid "Manual"
-msgstr "Eskuliburua"
+msgstr "Eskuz"
 
 #: cratebibtex/src/entry_type.rs:133
 msgid "Master's Thesis"
@@ -87,17 +87,17 @@ msgstr "Txosten teknikoa"
 #. NOTE Plain as in Plain Text
 #: cratebibtex/src/format.rs:52
 msgid "Plain"
-msgstr "Arrunta"
+msgstr "Soila"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
+#: data/resources/ui/window.ui:69 src/main.rs:39 src/window.rs:629
 msgid "Citations"
 msgstr "Aipamenak"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:631
 msgid "Manage your bibliography"
 msgstr "Kudeatu zure bibliografia"
 
@@ -152,26 +152,26 @@ msgstr "Leiho nagusia"
 msgid "Add PDF"
 msgstr "Gehitu PDFa"
 
-#: data/resources/ui/add_pdf_dialog.ui:46
+#: data/resources/ui/add_pdf_dialog.ui:47
 msgid "Bibliography folder not set"
 msgstr "Ez da bibliografia-karpeta ezarri"
 
-#: data/resources/ui/add_pdf_dialog.ui:64
+#: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr "Hautatutako PDFaren kopia bat sortzen du eta zure bibliografia-karpetan biltegiratzen du."
 
-#: data/resources/ui/add_pdf_dialog.ui:79
-msgid "From File"
-msgstr "Fitxategitik"
+#: data/resources/ui/add_pdf_dialog.ui:80
+msgid "Add From URL"
+msgstr "Gehitu URLtik"
 
-#: data/resources/ui/add_pdf_dialog.ui:92
-msgid "From URL"
-msgstr "URLtik"
-
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:86
 msgid "Download…"
 msgstr "Deskargatu…"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "Add From File…"
+msgstr "Gehitu fitxategitik…"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -211,17 +211,17 @@ msgstr "Aipamenik ez"
 msgid "Create a new citation"
 msgstr "Sortu aipamen berria"
 
-#: data/resources/ui/entry_list_row.ui:90
+#: data/resources/ui/entry_list_row.ui:91
 msgid "_Open PDF"
 msgstr "_Ireki PDFa"
 
-#: data/resources/ui/entry_list_row.ui:94
+#: data/resources/ui/entry_list_row.ui:95
 msgid "_Copy Key"
 msgstr "_Kopiatu gakoa"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
 msgid "_Delete"
-msgstr "E_zabatu"
+msgstr "Ez_abatu"
 
 #: data/resources/ui/entry_page.ui:13
 msgid "No Citation Selected"
@@ -249,9 +249,9 @@ msgstr "_Titulua"
 
 #: data/resources/ui/entry_page.ui:136
 msgid "_Year"
-msgstr "U_rtea"
+msgstr "_Urtea"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
 msgid "Open in Browser"
 msgstr "Ireki nabigatzailean"
 
@@ -261,7 +261,7 @@ msgstr "Beste propietate batzuk"
 
 #: data/resources/ui/entry_page.ui:182
 msgid "Abstract"
-msgstr "Laburpena"
+msgstr "Abstraktua"
 
 #: data/resources/ui/entry_page.ui:186
 msgid "Copy Abstract"
@@ -280,15 +280,15 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
+#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:158
 msgid "_Open"
 msgstr "_Ireki"
 
-#: data/resources/ui/entry_page.ui:310
+#: data/resources/ui/entry_page.ui:311
 msgid "Delete PDF"
 msgstr "Ezabatu PDFa"
 
-#: data/resources/ui/entry_page.ui:351
+#: data/resources/ui/entry_page.ui:352
 msgid "Could not set PDF Preview"
 msgstr "Ezin izan da PDF aurrebista ezarri"
 
@@ -296,37 +296,37 @@ msgstr "Ezin izan da PDF aurrebista ezarri"
 msgid "Add new Entry"
 msgstr "Gehitu sarrera berria"
 
-#: data/resources/ui/new_entry_dialog.ui:17
+#: data/resources/ui/new_entry_dialog.ui:18
 msgid "_Cancel"
 msgstr "_Utzi"
 
-#: data/resources/ui/new_entry_dialog.ui:24
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "C_reate"
 msgstr "_Sortu"
 
-#: data/resources/ui/new_entry_dialog.ui:40
+#: data/resources/ui/new_entry_dialog.ui:44
 msgid "New"
 msgstr "Berria"
 
-#: data/resources/ui/new_entry_dialog.ui:59
+#: data/resources/ui/new_entry_dialog.ui:63
 msgid "Citation Key"
 msgstr "Aipamenaren gakoa"
 
-#: data/resources/ui/new_entry_dialog.ui:66
+#: data/resources/ui/new_entry_dialog.ui:70
 msgid "Citation Type"
 msgstr "Aipamen mota"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:86
+#: data/resources/ui/new_entry_dialog.ui:90
 msgid "From BibTeX"
 msgstr "BibTeX formatutik"
 
-#: data/resources/ui/new_entry_dialog.ui:105
+#: data/resources/ui/new_entry_dialog.ui:109
 msgid "From DOI"
 msgstr "DOItik"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:116
+#: data/resources/ui/new_entry_dialog.ui:120
 msgid "DOI"
 msgstr "DOIa"
 
@@ -389,7 +389,7 @@ msgstr "_Gorde"
 
 #: data/resources/ui/window.ui:33
 msgid "New _Window"
-msgstr "_Leiho berria"
+msgstr "Leiho _berria"
 
 #: data/resources/ui/window.ui:51
 msgid "_Search in Google Scholar"
@@ -400,8 +400,8 @@ msgstr "_Bilatu Google Scholar gunean"
 msgid "_Search in arXiv"
 msgstr "_Bilatu arXiv gunean"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
-#: data/resources/ui/window.ui:210
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:212
 msgid "Main Menu"
 msgstr "Menu nagusia"
 
@@ -414,35 +414,35 @@ msgstr "Ireki BibTeX fitxategi bat"
 msgid "Or drag-and-drop a file"
 msgstr "Edo arrastatu eta jaregin fitxategi bat"
 
-#: data/resources/ui/window.ui:139
+#: data/resources/ui/window.ui:140
 msgid "Manage your Citations"
 msgstr "Kudeatu zure aipamenak"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:150
 msgid "Recent Files"
 msgstr "Azken fitxategiak"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:194
 msgid "Sidebar"
 msgstr "Alboko barra"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:205
 msgid "Add New Citation"
 msgstr "Gehitu beste aipamen bat"
 
-#: data/resources/ui/window.ui:217
+#: data/resources/ui/window.ui:219
 msgid "Search"
 msgstr "Bilatu"
 
-#: data/resources/ui/window.ui:231
+#: data/resources/ui/window.ui:233
 msgid "Search…"
 msgstr "Bilatu…"
 
-#: data/resources/ui/window.ui:251
+#: data/resources/ui/window.ui:255
 msgid "Content"
 msgstr "Edukia"
 
-#: data/resources/ui/window.ui:261
+#: data/resources/ui/window.ui:265
 msgid "Secondary Menu"
 msgstr "Bigarren mailako menua"
 
@@ -455,17 +455,21 @@ msgid "Could not download PDF"
 msgstr "Ezin da PDFa deskargatu"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:104
+#: src/add_pdf_dialog.rs:105
 msgid "Make sure that {path} exists"
 msgstr "Ziurtatu {path} badagoela"
 
-#: src/add_pdf_dialog.rs:185
+#: src/add_pdf_dialog.rs:193
 msgid "PDF Files"
 msgstr "PDF fitxategiak"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "Hautatu PDF bat"
+
+#: src/application.rs:37
+msgid "Enable debug messages"
+msgstr "Gaitu mezuak araztea"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -485,28 +489,36 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Pertsonalizatua"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
 msgid "Copied"
 msgstr "Kopiatua"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "Pertsonalizatua…"
+
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "Egilea ez da ezarri"
+
+#: src/entry_list_row.rs:85
+msgid "Title not set"
+msgstr "Izenburua ez da ezarri"
 
 #: src/entry_page.rs:204
 msgid "Other…"
 msgstr "Bestelakoa…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:266
+#: src/entry_page.rs:252
 msgid "Citation Key already exists"
 msgstr "Aipamenaren gako hori badago lehendik"
 
-#: src/entry_page.rs:586
+#: src/entry_page.rs:605
 msgid "PDF added"
 msgstr "PDFa gehitu da"
 
-#: src/new_entry_dialog.rs:149
+#: src/new_entry_dialog.rs:162
 msgid "Insert a BibTeX citation here"
 msgstr "Txertatu BibTeX aipamen bat hemen"
 
@@ -532,7 +544,7 @@ msgstr "Zenbakia"
 
 #: src/utils.rs:19
 msgid "Pages"
-msgstr "Orrialdeak"
+msgstr "Orriak"
 
 #: src/utils.rs:20
 msgid "Publisher"
@@ -540,7 +552,7 @@ msgstr "Argitaratzailea"
 
 #: src/utils.rs:21
 msgid "Journal"
-msgstr "Aldizkaria"
+msgstr "Egunkaria"
 
 #: src/utils.rs:22
 msgid "Address"
@@ -579,7 +591,7 @@ msgstr "Lehen mailako klasea"
 
 #: src/utils.rs:33
 msgid "Month"
-msgstr "Hilabetea"
+msgstr "Hila"
 
 #. TRANSLATORS As in chief editor
 #: src/utils.rs:35
@@ -603,69 +615,69 @@ msgstr "Instituzioa"
 msgid "Could not add entry"
 msgstr "Ezin da sarrera gehitu"
 
-#: src/window.rs:331 src/window.rs:356
+#: src/window.rs:357 src/window.rs:382
 msgid "BibTeX Files"
 msgstr "BibTeX fitxategiak"
 
-#: src/window.rs:365
+#: src/window.rs:391
 msgid "Create New Bibliography"
 msgstr "Sortu bibliografia berria"
 
-#: src/window.rs:366
+#: src/window.rs:392
 msgid "_Create"
 msgstr "_Sortu"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:369
+#: src/window.rs:395
 msgid "bibliography"
 msgstr "bibliografia"
 
-#: src/window.rs:473
-msgid "Remove From Recent Files"
-msgstr "Kendu azken aldiko fitxategietatik"
-
-#: src/window.rs:513
+#: src/window.rs:518
 msgid "An entry with the given citation key already exists"
 msgstr "Badago emandako aipamena duen sarrera bat"
 
-#: src/window.rs:528
+#: src/window.rs:533
 msgid "Bibliography saved"
 msgstr "Bibliografia gorde da"
 
-#: src/window.rs:581
+#: src/window.rs:586
 msgid "Citation Deleted"
 msgstr "Aipamena ezabatu da"
 
-#: src/window.rs:583
+#: src/window.rs:588
 msgid "Undo"
 msgstr "Desegin"
 
-#: src/window.rs:626
+#: src/window.rs:635
 msgid "translator-credits"
-msgstr "translator-credits"
+msgstr "Asier Sarasua Garmendia <asiersarasua@ni.eus>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:638
+#: src/window.rs:647
 msgid "Unsaved Changes"
 msgstr "Gorde gabeko aldaketak"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:641
+#: src/window.rs:650
 msgid "Do you want to write all changes to the safe?"
 msgstr "Aldaketak guztiak kutxa gotorrean idatzi nahi dituzu?"
 
-#: src/window.rs:645
+#: src/window.rs:654
 msgid "_Quit Without Saving"
 msgstr "_Irten gorde gabe"
 
-#: src/window.rs:646
+#: src/window.rs:655
 msgid "_Don't Quit"
 msgstr "_Ez irten"
 
-#: src/window.rs:647
+#: src/window.rs:656
 msgid "_Save and Quit"
 msgstr "_Gorde eta irten"
+
+#: src/window.rs:699
+msgid "Remove From Recent Files"
+msgstr "Kendu azken aldiko fitxategietatik"
 
 #~ msgid "Maximiliano Sandoval"
 #~ msgstr "Maximiliano Sandoval"
