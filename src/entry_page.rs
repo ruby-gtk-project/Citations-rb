@@ -2,10 +2,10 @@
 use adw::prelude::*;
 use gettextrs::gettext;
 use gtk::subclass::prelude::*;
-use gtk::{cairo, gdk, gio, glib, CompositeTemplate};
+use gtk::{CompositeTemplate, cairo, gdk, gio, glib};
 
-use crate::utils;
 use crate::AddPdfDialog;
+use crate::utils;
 
 mod imp {
     use super::*;

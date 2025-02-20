@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use gtk::glib;
 use gtk::subclass::prelude::*;
-use gtk::{prelude::*, CompositeTemplate};
+use gtk::{CompositeTemplate, prelude::*};
 
 mod imp {
     use super::*;
@@ -56,10 +56,12 @@ mod imp {
     impl ObjectImpl for EntryList {
         fn signals() -> &'static [Signal] {
             static SIGNALS: LazyLock<Vec<Signal>> = LazyLock::new(|| {
-                vec![Signal::builder("entry-selected")
-                    .param_types([Option::<cratebibtex::Entry>::static_type()])
-                    .run_last()
-                    .build()]
+                vec![
+                    Signal::builder("entry-selected")
+                        .param_types([Option::<cratebibtex::Entry>::static_type()])
+                        .run_last()
+                        .build(),
+                ]
             });
             SIGNALS.as_ref()
         }
