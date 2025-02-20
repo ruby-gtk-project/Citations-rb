@@ -136,7 +136,6 @@
                     </child>
                     <child>
                       <object class="AdwStatusPage" id="recent_files_status_page">
-                        <property name="vexpand">True</property>
                         <property name="title" translatable="yes">Manage your Citations</property>
                         <property name="icon-name">org.gnome.World.Citations</property>
                         <style>
