@@ -131,11 +131,7 @@ mod imp {
     impl EntryPage {
         #[template_callback]
         async fn on_trash_pdf_button_clicked(&self) {
-            let citation_key = {
-                let entry = self.entry.borrow();
-
-                entry.as_ref().unwrap().citation_key()
-            };
+            let citation_key = self.entry.borrow().as_ref().unwrap().citation_key();
             if let Some(path) = crate::utils::bibliography_path() {
                 let folder = gio::File::for_path(&path);
                 let pdf = folder.child(utils::pdf_filename(&citation_key));
