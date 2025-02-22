@@ -160,6 +160,7 @@ dependencies = [
  "reqwest",
  "sanitize-filename",
  "sourceview5",
+ "texer",
  "tokio",
  "tracing-subscriber",
  "url",
@@ -192,6 +193,7 @@ dependencies = [
  "log",
  "nom-bibtex",
  "regex",
+ "texer",
 ]
 
 [[package]]
@@ -1833,6 +1835,13 @@ dependencies = [
  "once_cell",
  "rustix",
  "windows-sys 0.59.0",
+]
+
+[[package]]
+name = "texer"
+version = "0.1.0"
+dependencies = [
+ "nom",
 ]
 
 [[package]]
