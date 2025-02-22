@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 use gettextrs::gettext;
 use gtk::subclass::prelude::*;
+use gtk::{CompositeTemplate, prelude::*};
 use gtk::{gdk, glib};
-use gtk::{prelude::*, CompositeTemplate};
 
 mod imp {
     use super::*;

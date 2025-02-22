@@ -2,9 +2,9 @@
 members = ["cratebibtex"]
 
 [workspace.package]
-edition = "2021"
+edition = "2024"
 license = "GPL-3.0-or-later"
-rust-version = "1.80"
+rust-version = "1.85"
 authors = ["Maximiliano Sandoval <msandova@gnome.org>"]
 
 [workspace.dependencies]

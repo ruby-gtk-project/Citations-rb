@@ -140,6 +140,7 @@ impl Bib {
             entries.push(entry);
         };
         let n_items = self.imp().n_items.get();
+        // TODO Use Cell::update when it stabilizes
         self.imp().n_items.set(self.imp().n_items.get() + 1);
         self.items_changed(n_items, 0, 1);
         self.set_modified(true);
@@ -171,6 +172,7 @@ impl Bib {
             );
             entries.insert(pos as usize, entry);
         };
+        // TODO Use Cell::update when it stabilizes
         self.imp().n_items.set(self.imp().n_items.get() + 1);
         self.items_changed(pos, 0, 1);
         self.set_modified(true);
@@ -184,6 +186,7 @@ impl Bib {
             .find(|(_, entry)| entry.citation_key() == citation_key)
         {
             entries.remove(idx);
+            // TODO Use Cell::update when it stabilizes
             self.imp().n_items.set(self.imp().n_items.get() - 1);
             self.items_changed(idx as u32, 1, 0);
         }
@@ -192,6 +195,7 @@ impl Bib {
 
     pub fn remove_pos(&self, pos: u32) {
         self.imp().entries.borrow_mut().remove(pos as usize);
+        // TODO Use Cell::update when it stabilizes
         self.imp().n_items.set(self.imp().n_items.get() - 1);
         self.items_changed(pos, 1, 0);
         self.set_modified(true);

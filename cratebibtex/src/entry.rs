@@ -8,8 +8,8 @@ use glib::prelude::*;
 use glib::subclass::prelude::*;
 use regex::Regex;
 
-use crate::format;
 use crate::Format;
+use crate::format;
 
 // TODO Make a better and more efficient parser
 mod imp {

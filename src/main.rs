@@ -13,7 +13,7 @@ mod selection;
 mod utils;
 mod window;
 
-use gettextrs::{gettext, LocaleCategory};
+use gettextrs::{LocaleCategory, gettext};
 use gtk::{gio, glib, prelude::*};
 
 pub use add_pdf_dialog::AddPdfDialog;

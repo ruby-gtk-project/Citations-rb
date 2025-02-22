@@ -47,7 +47,9 @@ pub fn translated_key(key: &str) -> String {
 pub fn build_google_schoolar_url(author: &str, title: &str) -> anyhow::Result<url::Url> {
     let authors = cratebibtex::format::format_authors(author);
 
-    let url = format!("https://scholar.google.com/scholar?q={authors} {title}&scisbd=0&num=10&start=0&safe=active&filter=1&as_vis=1");
+    let url = format!(
+        "https://scholar.google.com/scholar?q={authors} {title}&scisbd=0&num=10&start=0&safe=active&filter=1&as_vis=1"
+    );
 
     Ok(url::Url::parse(&url)?)
 }

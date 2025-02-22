@@ -3,8 +3,8 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gettextrs::gettext;
 use gsv::prelude::*;
-use gtk::glib;
 use gtk::CompositeTemplate;
+use gtk::glib;
 
 use crate::utils;
 
