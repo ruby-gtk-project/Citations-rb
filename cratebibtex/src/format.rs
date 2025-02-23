@@ -1,6 +1,5 @@
 use gettextrs::gettext;
 use regex::Regex;
-use std::borrow::Cow;
 use std::fmt;
 use std::sync::LazyLock;
 
@@ -155,25 +154,6 @@ pub fn format_authors(authors: &str) -> String {
     vec_authors.join(", ")
 }
 
-static COMBINING_MAP: &[(char, char)] = &[
-    ('\'', '\u{301}'), // COMBINING ACUTE ACCENT
-    ('`', '\u{300}'),  // COMBINING GRAVE
-    ('~', '\u{303}'),  // COMBINING TILDE
-    ('^', '\u{302}'),  // COMBINING CIRCUMFLEX ACCENT
-    ('"', '\u{308}'),  // COMBINING DIAERESIS
-    ('=', '\u{304}'),  // COMBINING MACRON
-];
-
-static COMBINING_MAP_ALPHA: &[(char, char)] = &[
-    ('c', '\u{327}'), // COMBINING CEDILLA
-    ('u', '\u{306}'), // COMBINING BREVE
-    ('v', '\u{30C}'), // COMBINING CARON
-    ('k', '\u{328}'), // COMBINING OGONEK
-];
-
-// See https://en.m.wikibooks.org/wiki/LaTeX/Special_Characters
-static SYMBOLS_MAP: &[(char, char)] = &[('o', 'ø'), ('O', 'Ø'), ('l', 'ł'), ('L', 'Ł')];
-
 pub fn push_math<T: Iterator<Item = char>>(chars: &mut T, output: &mut String) {
     match chars.next() {
         Some('$') => (),
@@ -182,88 +162,6 @@ pub fn push_math<T: Iterator<Item = char>>(chars: &mut T, output: &mut String) {
             push_math(chars, output);
         }
         _ => (),
-    }
-}
-
-pub fn texer(input: &str) -> Cow<str> {
-    let mut output = String::new();
-    let mut chars = input.chars();
-    while let Some(c) = chars.next() {
-        match c {
-            '$' => push_math(&mut chars, &mut output),
-            '{' => {
-                if let Some(c) = chars.next() {
-                    let checkpoint = chars.clone();
-                    match c {
-                        '$' => push_math(&mut chars, &mut output),
-                        '\\' => {
-                            if let (Some(symbol), Some(paren)) = (chars.next(), chars.next()) {
-                                if paren == '}' {
-                                    if let Some((_, to)) =
-                                        SYMBOLS_MAP.iter().find(|(from, _)| symbol == *from)
-                                    {
-                                        output.push(*to);
-                                    } else {
-                                        chars = checkpoint;
-                                    }
-                                } else if let Some((_, to)) =
-                                    COMBINING_MAP.iter().find(|(from, _)| symbol == *from)
-                                {
-                                    output.push(paren);
-                                    output.push(*to);
-                                    if let Some('}') = chars.next() {
-                                        continue;
-                                    }
-                                } else {
-                                    output.push(symbol);
-                                    push_non_space(&mut output, paren);
-                                }
-                            }
-                        }
-                        c => push_non_space(&mut output, c),
-                    }
-                }
-            }
-            '\\' => {
-                if let Some(compose) = chars.next() {
-                    let checkpoint = chars.clone();
-                    if let Some((_, to)) = COMBINING_MAP_ALPHA
-                        .iter()
-                        .find(|(from, _)| compose == *from)
-                    {
-                        if let (Some('{'), Some(c), Some('}')) =
-                            (chars.next(), chars.next(), chars.next())
-                        {
-                            output.push(c);
-                            output.push(*to);
-                        } else {
-                            chars = checkpoint;
-                            output.push(compose);
-                        }
-                    } else if let Some((_, to)) =
-                        COMBINING_MAP.iter().find(|(from, _)| compose == *from)
-                    {
-                        if let Some(c) = chars.next() {
-                            output.push(c);
-                            output.push(*to);
-                        } else {
-                            output.push(compose);
-                        }
-                    } else {
-                        output.push(compose);
-                    }
-                } else {
-                    push_non_space(&mut output, c);
-                }
-            }
-            '}' => (),
-            c => push_non_space(&mut output, c),
-        }
-    }
-    if !output.is_empty() {
-        Cow::Owned(output)
-    } else {
-        Cow::Borrowed(input)
     }
 }
 
@@ -332,30 +230,5 @@ mod tests {
             clear_markdown(r"asdas asd _asd_ *asd* ** asdasd **asd** **** __"),
             "asdas asd _asd_ *asd* asdasd **asd** "
         );
-    }
-
-    #[test]
-    fn test_texer() {
-        assert_eq!(texer(r"\'u"), "u\u{301}");
-        assert_eq!(texer(r"\c{c}"), "c\u{0327}");
-        assert_eq!(texer(r"\v{c}"), "c\u{30C}");
-        assert_eq!(texer(r"{\o}a"), "øa");
-        assert_eq!(texer(r"{\o}"), "ø");
-        assert_eq!(texer(r#"{\"o}"#), "o\u{308}");
-        assert_eq!(texer(r"a {some}"), "a some");
-        assert_eq!(texer(r"a {\some}"), "a some");
-        assert_eq!(texer(r"a {$some$}"), "a some");
-        assert_eq!(texer(r"a  b"), r"a b");
-        assert_eq!(texer(r"$a  b$"), r"a b");
-        assert_eq!(
-            texer(
-                r"
-                  "
-            ),
-            " "
-        );
-        assert_eq!(texer(r"{a  b}"), r"a b");
-        assert_eq!(texer(r"a {$so\ ^\ast asda \me$}"), r"a so\ ^\ast asda \me");
-        // assert_eq!(texer(r"{\ss}"), "ß");
     }
 }

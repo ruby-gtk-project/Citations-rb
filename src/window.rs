@@ -7,7 +7,6 @@ use gtk::{gdk, gio, glib};
 use crate::application::Application;
 use crate::config::{APP_ID, PROFILE, VERSION};
 use crate::utils;
-use cratebibtex::format;
 
 mod imp {
     use super::*;
@@ -542,8 +541,8 @@ impl Window {
 
         let author = entry.author();
         let title = entry.title();
-        let p_author = format::texer(&author);
-        let p_title = format::texer(&title);
+        let p_author = texer::texer(&author);
+        let p_title = texer::texer(&title);
 
         let uri = utils::build_google_schoolar_url(&p_author, &p_title)?;
         log::debug!("Trying to open {}", uri.as_str());
@@ -565,8 +564,8 @@ impl Window {
 
         let author = entry.author();
         let title = entry.title();
-        let p_author = format::texer(&author);
-        let p_title = format::texer(&title);
+        let p_author = texer::texer(&author);
+        let p_title = texer::texer(&title);
 
         let uri = utils::build_arxiv_url(&p_author, &p_title)?;
         log::debug!("Trying to open {uri}");

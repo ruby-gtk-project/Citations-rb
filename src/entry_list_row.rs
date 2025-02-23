@@ -69,7 +69,7 @@ mod imp {
     impl EntryListRow {
         #[template_callback]
         fn pretty_author(&self, author: &str) -> String {
-            let author = cratebibtex::format::texer(author);
+            let author = texer::texer(author);
             if author.is_empty() {
                 let placeholder = gettext("Author not set");
                 format!("<i>{placeholder}</i>")
@@ -80,7 +80,7 @@ mod imp {
 
         #[template_callback]
         fn pretty_title(&self, title: &str) -> String {
-            let title = cratebibtex::format::texer(title);
+            let title = texer::texer(title);
             if title.is_empty() {
                 let placeholder = gettext("Title not set");
                 format!("<i>{placeholder}</i>")
