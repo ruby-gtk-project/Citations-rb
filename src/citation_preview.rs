@@ -9,7 +9,7 @@ use gettextrs::gettext;
 const AMS_ARTICLE_TEMPLATE: &str =
     r#"%AUTHOR%, *%TITLE%*, %JOURNAL% **%VOLUME%** (%YEAR%), no. %NUMBER%, %PAGES%."#;
 const MLA_ARTICLE_TEMPLATE: &str =
-    r#"%AUTHOR%. "%TITLE%". *%JOURNAL%* %VOLUME%.%NUMBER% (%YEAR%): %PAGES%."#;
+    r#"%AUTHOR%. “%TITLE%.” *%JOURNAL%*, vol. %VOLUME%, no. %NUMBER%, %MONTH% %YEAR%, pp. %PAGES%."#;
 const APA_ARTICLE_TEMPLATE: &str =
     r#"%AUTHOR%. (%YEAR%). %TITLE%. *%JOURNAL%*, *%VOLUME%*(%NUMBER%), %PAGES%."#;
 const CHICAGO_ARTICLE_TEMPLATE: &str =
@@ -21,7 +21,7 @@ const VANCOUVER_ARTICLE_TEMPLATE: &str =
 
 const AMS_BOOK_TEMPLATE: &str = r#"%AUTHOR%, *%TITLE%*, %PUBLISHER%, %CITY%, %YEAR%."#;
 
-const MLA_BOOK_TEMPLATE: &str = r#"%AUTHOR%. *%TITLE%*. Vol. %VOLUME%. %PUBLISHER%."#;
+const MLA_BOOK_TEMPLATE: &str = r#"%AUTHOR%. *%TITLE%*. %PUBLISHER%, %YEAR%."#;
 const APA_BOOK_TEMPLATE: &str = r#"%AUTHOR%. (%YEAR%). *%TITLE%*. (Vol. %VOLUME%). %PUBLISHER%."#;
 const CHICAGO_BOOK_TEMPLATE: &str = r#"%AUTHOR%. *%TITLE%*. Vol. %VOLUME%. %PUBLISHER%, %YEAR%."#;
 const HARVAR_BOOK_TEMPLATE: &str = r#"%AUTHOR%, %YEAR%. *%TITLE%* (Vol. %VOLUME%). %PUBLISHER%."#;
