@@ -180,10 +180,9 @@ impl Bib {
 
     pub fn remove_entry(&self, citation_key: &str) {
         let mut entries = self.imp().entries.borrow_mut();
-        if let Some((idx, _)) = entries
+        if let Some(idx) = entries
             .iter()
-            .enumerate()
-            .find(|(_, entry)| entry.citation_key() == citation_key)
+            .position(|entry| entry.citation_key() == citation_key)
         {
             entries.remove(idx);
             // TODO Use Cell::update when it stabilizes
