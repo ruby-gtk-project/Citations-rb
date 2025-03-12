@@ -208,12 +208,13 @@ impl Bib {
     }
 
     pub fn find_pos(&self, entry: &crate::Entry) -> Option<u32> {
-        for (pos, e) in self.imp().entries.borrow().iter().enumerate() {
-            if e.citation_key() == entry.citation_key() {
-                return Some(pos as u32);
-            }
-        }
-        None
+        let key = entry.citation_key();
+        self.imp()
+            .entries
+            .borrow()
+            .iter()
+            .position(|e| e.citation_key() == key)
+            .map(|pos| pos as u32)
     }
 
     pub fn key_exists(&self, citation_key: &str) -> bool {
