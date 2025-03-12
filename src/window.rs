@@ -8,6 +8,12 @@ use crate::application::Application;
 use crate::config::{APP_ID, PROFILE, VERSION};
 use crate::utils;
 
+pub struct UndoInfo {
+    entry: cratebibtex::Entry,
+    pos: u32,
+    toast: adw::Toast,
+}
+
 mod imp {
     use super::*;
 
@@ -15,13 +21,13 @@ mod imp {
     use gtk::CompositeTemplate;
     use std::cell::{Cell, OnceCell, RefCell};
 
-    #[derive(Debug, CompositeTemplate)]
+    #[derive(CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/window.ui")]
     pub struct Window {
         pub bib: OnceCell<cratebibtex::Bib>,
         pub settings: gio::Settings,
         pub file: RefCell<Option<gio::File>>,
-        pub undo_entry: RefCell<Option<(cratebibtex::Entry, u32, adw::Toast)>>,
+        pub undo_entry: RefCell<Option<UndoInfo>>,
         pub force_close: Cell<bool>,
 
         #[template_child]
@@ -138,7 +144,7 @@ mod imp {
                 }
             });
             klass.install_action("win.undo_delete", None, move |obj, _, _| {
-                if let Some((entry, pos, _toast)) = obj.imp().undo_entry.take() {
+                if let Some(UndoInfo { entry, pos, .. }) = obj.imp().undo_entry.take() {
                     obj.imp().bib.get().unwrap().add_entry_at_pos(entry, pos);
                 }
             });
@@ -593,11 +599,11 @@ impl Window {
                 }
             ));
 
-            if let Some((_, _, toast)) =
-                self.imp()
-                    .undo_entry
-                    .replace(Some((entry.clone(), pos, toast.clone())))
-            {
+            if let Some(UndoInfo { toast, .. }) = self.imp().undo_entry.replace(Some(UndoInfo {
+                entry: entry.clone(),
+                pos,
+                toast: toast.clone(),
+            })) {
                 toast.dismiss();
             };
             self.imp().entry_list.unselect();
