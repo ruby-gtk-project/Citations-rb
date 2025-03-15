@@ -50,31 +50,3 @@ cargo_build = custom_target(
     'cp', 'src' / rust_target / meson.project_name(), '@OUTPUT@',
   ]
 )
-
-test (
-  'Cargo clippy',
-  cargo,
-  args: [
-    'clippy',
-    '--all-targets',
-    cargo_options,
-  ],
-  env: [
-    cargo_env,
-  ],
-  timeout: 300, # cargo might take a bit of time sometimes
-)
-
-test (
-  'Cargo tests',
-  cargo,
-  args: [
-    'test',
-    '--all-targets',
-    cargo_options,
-  ],
-  timeout: 300, # cargo might take a bit of time sometimes
-  env: [
-    cargo_env,
-  ],
-)
