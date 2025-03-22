@@ -237,7 +237,7 @@ impl Entry {
         let name_prop = self.author();
         let p_name = match format {
             Format::LaTeX => Cow::Owned(name_prop),
-            _ => format::texer(&name_prop),
+            _ => texer::texer(&name_prop),
         };
         formatted = formatted.replace("%AUTHOR%", &format::format_authors(&p_name));
 
@@ -249,7 +249,7 @@ impl Entry {
                     Format::LaTeX => Cow::Owned(opt_prop),
                     _ => {
                         if tag == "title" {
-                            format::texer(&opt_prop)
+                            texer::texer(&opt_prop)
                         } else {
                             Cow::Owned(opt_prop)
                         }

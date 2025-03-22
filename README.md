@@ -4,13 +4,13 @@
 
 # Citations
 
-<img src="https://gitlab.gnome.org/World/citations/raw/master/data/icons/org.gnome.World.Citations.svg" width="128" height="128" />
+<img src="data/icons/org.gnome.World.Citations.svg" width="128" height="128" />
 <p>Manage your bibliographies using the BibTeX format.</p>
 
 ## Screenshots
 
 <div align="center">
-![screenshot](https://gitlab.gnome.org/World/citations/raw/master/data/screenshots/main_window.png)
+![screenshot](data/screenshots/main_window.png)
 </div>
 
 ## Warning
@@ -19,9 +19,9 @@ Citations does not support local variables nor comments, and that data might be 
 
 ## Hack on Citations
 
-To build the development version of Citations and hack on the code
-see the [general guide](https://wiki.gnome.org/Newcomers/BuildProject)
-for building GNOME apps with Flatpak and GNOME Builder.
+To build the development version of Citations and hack on the code see the
+[general guide](https://welcome.gnome.org/app/Citations/#getting-the-app-to-build) for
+building GNOME apps with Flatpak and GNOME Builder.
 
 ## Translations
 
@@ -30,4 +30,4 @@ You can find everything you need at: [l10n.gnome.org/module/citations/](https://
 
 ## Code Of Conduct
 
-This project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
+This project follows the [GNOME Code of Conduct](https://conduct.gnome.org/).

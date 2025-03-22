@@ -5,6 +5,8 @@ stages:
 
 include:
   - project: "GNOME/citemplates"
+    file: "templates/default-rules.yml"
+  - project: "GNOME/citemplates"
     file: "flatpak/flatpak_ci_initiative.yml"
   - project: 'GNOME/citemplates'
     file: 'templates/basic-release.yml'
@@ -51,6 +53,25 @@ codespell:
     - dnf install -y codespell
     - codespell -L crate -S "*.po,target,_build" -f
 
+.flatpak-command: &flatpak-command
+  image: '${RUNTIME_IMAGE}'
+  tags:
+    - flatpak
+  script:
+    - flatpak-builder --user --disable-rofiles-fuse --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
+    - flatpak build-finish --share=network flatpak_app
+    - echo "cd .. && ${COMMAND}" | flatpak-builder --user --disable-rofiles-fuse --build-shell=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
+
+cargo-clippy:
+  <<: *flatpak-command
+  variables:
+    COMMAND: "cargo clippy --all-targets --workspace --all-features -- -D warnings"
+
+cargo-test:
+  <<: *flatpak-command
+  variables:
+    COMMAND: "cargo test --workspace --all-features --all-targets"
+
 cargo-audit:
   stage: test
   interruptible: true
@@ -59,3 +80,14 @@ cargo-audit:
   script:
     - cargo install cargo-deny
     - cargo deny check advisories bans sources
+
+release_job:
+  stage: deploy
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG # Run this job when a tag is created
+  script:
+    - echo "running release_job"
+  release: # See https://docs.gitlab.com/ee/ci/yaml/#release for available properties
+    tag_name: "$CI_COMMIT_TAG"
+    description: "${CI_COMMIT_TAG_MESSAGE}"

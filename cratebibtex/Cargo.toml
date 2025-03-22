@@ -14,3 +14,4 @@ glib = { version = "0.20", features = ["v2_72"] }
 log.workspace = true
 nom-bibtex = "0.5"
 regex = "1.7"
+texer.workspace = true

@@ -179,17 +179,23 @@ impl Bib {
     }
 
     pub fn remove_entry(&self, citation_key: &str) {
-        let mut entries = self.imp().entries.borrow_mut();
-        if let Some((idx, _)) = entries
-            .iter()
-            .enumerate()
-            .find(|(_, entry)| entry.citation_key() == citation_key)
-        {
+        let idx = {
+            let mut entries = self.imp().entries.borrow_mut();
+            let Some(idx) = entries
+                .iter()
+                .position(|entry| entry.citation_key() == citation_key)
+            else {
+                log::error!("Could not remove entry {citation_key}");
+                return;
+            };
             entries.remove(idx);
-            // TODO Use Cell::update when it stabilizes
-            self.imp().n_items.set(self.imp().n_items.get() - 1);
-            self.items_changed(idx as u32, 1, 0);
-        }
+            idx // Here the RefMut gets dropped.
+        };
+
+        // TODO Use Cell::update when it stabilizes
+        self.imp().n_items.set(self.imp().n_items.get() - 1);
+        self.items_changed(idx as u32, 1, 0);
+
         self.set_modified(true);
     }
 
@@ -202,12 +208,13 @@ impl Bib {
     }
 
     pub fn find_pos(&self, entry: &crate::Entry) -> Option<u32> {
-        for (pos, e) in self.imp().entries.borrow().iter().enumerate() {
-            if e.citation_key() == entry.citation_key() {
-                return Some(pos as u32);
-            }
-        }
-        None
+        let key = entry.citation_key();
+        self.imp()
+            .entries
+            .borrow()
+            .iter()
+            .position(|e| e.citation_key() == key)
+            .map(|pos| pos as u32)
     }
 
     pub fn key_exists(&self, citation_key: &str) -> bool {
