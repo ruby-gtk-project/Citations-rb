@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-10-16 18:07+0000\n"
-"PO-Revision-Date: 2024-10-23 21:26+0300\n"
+"POT-Creation-Date: 2025-03-22 12:32+0000\n"
+"PO-Revision-Date: 2025-03-23 00:52+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -89,19 +89,19 @@ msgid "Tech Report"
 msgstr "Тэхнічная справаздача"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:52
+#: cratebibtex/src/format.rs:51
 msgid "Plain"
 msgstr "Звычайны"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:619
+#: data/resources/ui/window.ui:69 src/main.rs:39 src/window.rs:634
 msgid "Citations"
 msgstr "Цытаты"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:621
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:636
 msgid "Manage your bibliography"
 msgstr "Кіраванне бібліяграфіяй"
 
@@ -168,16 +168,16 @@ msgid ""
 msgstr "Стварае копію выбранага pdf і захоўвае яе ў папцы бібліяграфіі."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
-msgid "Add From File…"
-msgstr "Дадаць з файла…"
-
-#: data/resources/ui/add_pdf_dialog.ui:88
 msgid "Add From URL"
 msgstr "Дадаць з URL"
 
-#: data/resources/ui/add_pdf_dialog.ui:94
+#: data/resources/ui/add_pdf_dialog.ui:86
 msgid "Download…"
 msgstr "Спампаваць…"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "Add From File…"
+msgstr "Дадаць з файла…"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -189,7 +189,7 @@ msgstr "Цытата"
 
 #: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
 msgid "Copy"
-msgstr "Капіяваць"
+msgstr "Скапіяваць"
 
 #: data/resources/ui/citation_preview.ui:137
 msgid "Custom Template"
@@ -220,15 +220,15 @@ msgstr "Няма цытат"
 msgid "Create a new citation"
 msgstr "Стварыць новую цытату"
 
-#: data/resources/ui/entry_list_row.ui:90
+#: data/resources/ui/entry_list_row.ui:91
 msgid "_Open PDF"
 msgstr "_Адкрыць PDF"
 
-#: data/resources/ui/entry_list_row.ui:94
+#: data/resources/ui/entry_list_row.ui:95
 msgid "_Copy Key"
 msgstr "С_капіяваць ключ"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Выдаліць"
 
@@ -260,7 +260,7 @@ msgstr "_Загаловак"
 msgid "_Year"
 msgstr "_Год"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:396
 msgid "Open in Browser"
 msgstr "Адкрыць у браўзеры"
 
@@ -274,7 +274,7 @@ msgstr "Анатацыя"
 
 #: data/resources/ui/entry_page.ui:186
 msgid "Copy Abstract"
-msgstr "Капіяваць анатацыю"
+msgstr "Скапіяваць анатацыю"
 
 #: data/resources/ui/entry_page.ui:218
 msgid "Notes"
@@ -291,13 +291,13 @@ msgstr "PDF"
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
 #: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
 msgid "_Open"
-msgstr "Адкрыць"
+msgstr "_Адкрыць"
 
-#: data/resources/ui/entry_page.ui:310
+#: data/resources/ui/entry_page.ui:311
 msgid "Delete PDF"
 msgstr "Выдаліць PDF"
 
-#: data/resources/ui/entry_page.ui:351
+#: data/resources/ui/entry_page.ui:352
 msgid "Could not set PDF Preview"
 msgstr "Не ўдалося задаць папярэдні прагляд PDF"
 
@@ -309,33 +309,33 @@ msgstr "Дадаць новы запіс"
 msgid "_Cancel"
 msgstr "_Скасаваць"
 
-#: data/resources/ui/new_entry_dialog.ui:25
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "C_reate"
 msgstr "С_тварыць"
 
-#: data/resources/ui/new_entry_dialog.ui:42
+#: data/resources/ui/new_entry_dialog.ui:44
 msgid "New"
 msgstr "Новы"
 
-#: data/resources/ui/new_entry_dialog.ui:61
+#: data/resources/ui/new_entry_dialog.ui:63
 msgid "Citation Key"
 msgstr "Ключ цытаты"
 
-#: data/resources/ui/new_entry_dialog.ui:68
+#: data/resources/ui/new_entry_dialog.ui:70
 msgid "Citation Type"
 msgstr "Тып цытаты"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:88
+#: data/resources/ui/new_entry_dialog.ui:90
 msgid "From BibTeX"
 msgstr "З BibTeX"
 
-#: data/resources/ui/new_entry_dialog.ui:107
+#: data/resources/ui/new_entry_dialog.ui:109
 msgid "From DOI"
 msgstr "З DOI"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:118
+#: data/resources/ui/new_entry_dialog.ui:120
 msgid "DOI"
 msgstr "DOI"
 
@@ -390,7 +390,7 @@ msgstr "_Спалучэнні клавіш"
 #. TRANSLATORS About dialog
 #: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
 msgid "_About Citations"
-msgstr "Пра «Цытаты»"
+msgstr "Пр_а «Цытаты»"
 
 #: data/resources/ui/window.ui:29
 msgid "_Save"
@@ -409,8 +409,8 @@ msgstr "_Пошук у Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Пошук у arXiv"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
-#: data/resources/ui/window.ui:210
+#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:212
 msgid "Main Menu"
 msgstr "Галоўнае меню"
 
@@ -431,27 +431,27 @@ msgstr "Кіраванне цытатамі"
 msgid "Recent Files"
 msgstr "Нядаўнія файлы"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:194
 msgid "Sidebar"
 msgstr "Бакавая панэль"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:205
 msgid "Add New Citation"
 msgstr "Дадаць новую цытату"
 
-#: data/resources/ui/window.ui:217
+#: data/resources/ui/window.ui:219
 msgid "Search"
 msgstr "Пошук"
 
-#: data/resources/ui/window.ui:231
+#: data/resources/ui/window.ui:233
 msgid "Search…"
 msgstr "Пошук…"
 
-#: data/resources/ui/window.ui:251
+#: data/resources/ui/window.ui:255
 msgid "Content"
 msgstr "Змесціва"
 
-#: data/resources/ui/window.ui:261
+#: data/resources/ui/window.ui:265
 msgid "Secondary Menu"
 msgstr "Дадатковае меню"
 
@@ -476,6 +476,10 @@ msgstr "Файлы PDF"
 msgid "Select a PDF"
 msgstr "Выберыце PDF"
 
+#: src/application.rs:37
+msgid "Enable debug messages"
+msgstr "Уключыць адладачныя паведамленні"
+
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
 msgid "Chicago"
@@ -494,7 +498,7 @@ msgstr "Ванкувер"
 msgid "Custom"
 msgstr "Уласны"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "Скапіявана"
 
@@ -510,16 +514,16 @@ msgstr "Аўтар не ўказаны"
 msgid "Title not set"
 msgstr "Загаловак не ўказаны"
 
-#: src/entry_page.rs:204
+#: src/entry_page.rs:200
 msgid "Other…"
 msgstr "Іншы…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:252
+#: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "Ключ цытаты ўжо існуе"
 
-#: src/entry_page.rs:605
+#: src/entry_page.rs:601
 msgid "PDF added"
 msgstr "PDF дададзены"
 
@@ -616,71 +620,71 @@ msgstr "Школа"
 msgid "Institution"
 msgstr "Інстытут"
 
-#: src/window.rs:117
+#: src/window.rs:122
 msgid "Could not add entry"
 msgstr "Не ўдалося дадаць запіс"
 
-#: src/window.rs:347 src/window.rs:372
+#: src/window.rs:362 src/window.rs:387
 msgid "BibTeX Files"
 msgstr "Файлы BibTeX"
 
-#: src/window.rs:381
+#: src/window.rs:396
 msgid "Create New Bibliography"
 msgstr "Стварыць новую бібліяграфію"
 
-#: src/window.rs:382
+#: src/window.rs:397
 msgid "_Create"
 msgstr "_Стварыць"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:385
+#: src/window.rs:400
 msgid "bibliography"
 msgstr "бібліяграфія"
 
-#: src/window.rs:508
+#: src/window.rs:523
 msgid "An entry with the given citation key already exists"
 msgstr "Запіс з указаным ключом цытавання ўжо існуе"
 
-#: src/window.rs:523
+#: src/window.rs:538
 msgid "Bibliography saved"
 msgstr "Бібліяграфія захавана"
 
-#: src/window.rs:576
+#: src/window.rs:591
 msgid "Citation Deleted"
 msgstr "Цытата выдалена"
 
-#: src/window.rs:578
+#: src/window.rs:593
 msgid "Undo"
 msgstr "Адрабіць"
 
-#: src/window.rs:625
+#: src/window.rs:640
 msgid "translator-credits"
 msgstr "Юрась Шумовіч <shumovichy@gmail.com>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:637
+#: src/window.rs:652
 msgid "Unsaved Changes"
 msgstr "Незахаваныя змены"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:640
+#: src/window.rs:655
 msgid "Do you want to write all changes to the safe?"
 msgstr "Запісаць усе змены ў файл захавання?"
 
-#: src/window.rs:644
+#: src/window.rs:659
 msgid "_Quit Without Saving"
 msgstr "_Выйсці без захавання"
 
-#: src/window.rs:645
+#: src/window.rs:660
 msgid "_Don't Quit"
 msgstr "_Не выходзіць"
 
-#: src/window.rs:646
+#: src/window.rs:661
 msgid "_Save and Quit"
 msgstr "_Захаваць і выйсці"
 
-#: src/window.rs:689
+#: src/window.rs:704
 msgid "Remove From Recent Files"
 msgstr "Выдаліць са спіса нядаўніх файлаў"
 
