@@ -9,7 +9,7 @@
       <item>
         <attribute name="label" translatable="yes">_Open</attribute>
         <attribute name="action">win.open</attribute>
-        <attribute name="target"></attribute>
+        <attribute name="target" translatable="no"></attribute>
       </item>
     </section>
     <section>
