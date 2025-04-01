@@ -60,8 +60,14 @@ mod imp {
         fn activate(&self) {
             debug!("Application::activate");
             self.parent_activate();
+            let app = self.obj();
 
-            let window = Window::new(&self.obj());
+            if let Some(window) = app.active_window() {
+                window.present();
+                return;
+            }
+
+            let window = Window::new(&app);
             let group = gtk::WindowGroup::new();
             group.add_window(&window);
 
