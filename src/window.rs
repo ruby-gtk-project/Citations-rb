@@ -511,7 +511,7 @@ impl Window {
         if let Some(data) = dialog.run(self).await {
             self.new_entry(data)
         } else {
-            anyhow::bail!("Dialog error")
+            Ok(())
         }
     }
 
