@@ -120,7 +120,7 @@ mod imp {
             klass.install_action_async("win.new_entry", None, |window, _, _| async move {
                 if let Err(err) = window.new_entry_dialog().await {
                     window.send_toast(&gettext("Could not add entry"));
-                    log::error!("Could not spawn dialog: {err}");
+                    log::error!("Could not get valid entry from dialog: {err}");
                 }
             });
             klass.install_action_async("win.save", None, |window, _, _| async move {
@@ -508,10 +508,10 @@ impl Window {
     pub async fn new_entry_dialog(&self) -> anyhow::Result<()> {
         let dialog = crate::NewEntryDialog::new();
 
-        if let Some(data) = dialog.run(self).await {
-            self.new_entry(data)
-        } else {
-            anyhow::bail!("Dialog error")
+        match dialog.run(self).await {
+            Ok(Some(data)) => self.new_entry(data),
+            Ok(None) => Ok(()),
+            Err(err) => Err(err),
         }
     }
 
