@@ -37,7 +37,8 @@ mod imp {
         #[template_child]
         pub create_button: TemplateChild<gtk::Button>,
 
-        pub sender: RefCell<Option<futures_channel::oneshot::Sender<Option<String>>>>,
+        pub sender:
+            RefCell<Option<futures_channel::oneshot::Sender<anyhow::Result<Option<String>>>>>,
         pub remove_text: Once,
     }
 
@@ -82,8 +83,6 @@ mod imp {
 
         #[template_callback]
         fn on_cancel_clicked(&self) {
-            let sender = self.sender.take().unwrap();
-            sender.send(None).unwrap();
             self.obj().close();
         }
 
@@ -111,17 +110,16 @@ mod imp {
                     let citation_key = self.entry_row.text().to_string();
                     let type_ =
                         cratebibtex::EntryType::from(self.combo_row.selected() as i32).to_string();
-                    Some(format!("@{type_}{{{citation_key},}}"))
+                    Ok(Some(format!("@{type_}{{{citation_key},}}")))
                 }
                 Some("from_bibtex") => {
                     let buffer = self.source_view.buffer();
                     let (start, end) = buffer.bounds();
-                    Some(buffer.text(&start, &end, true).into())
+                    Ok(Some(buffer.text(&start, &end, true).into()))
                 }
                 Some("from_doi") => utils::bib_from_doi(&self.doi_row.text())
                     .await
-                    .inspect_err(|err| log::error!("Could not get bib from doi: {err}"))
-                    .ok(),
+                    .map(Option::Some),
                 _ => unreachable!(),
             };
             sender.send(data).unwrap();
@@ -182,7 +180,16 @@ mod imp {
     }
 
     impl WidgetImpl for NewEntryDialog {}
-    impl AdwDialogImpl for NewEntryDialog {}
+
+    impl AdwDialogImpl for NewEntryDialog {
+        fn closed(&self) {
+            if let Some(sender) = self.sender.take() {
+                let _ = sender.send(Ok(None));
+                log::debug!("Dialog closed");
+            }
+            self.parent_closed();
+        }
+    }
 }
 
 glib::wrapper! {
@@ -201,13 +208,18 @@ impl NewEntryDialog {
         glib::Object::new()
     }
 
-    pub async fn run<W: glib::object::IsA<gtk::Widget>>(&self, window: &W) -> Option<String> {
+    pub async fn run<W: glib::object::IsA<gtk::Widget>>(
+        &self,
+        window: &W,
+    ) -> anyhow::Result<Option<String>> {
         let (sender, receiver) = futures_channel::oneshot::channel();
         self.imp().sender.replace(Some(sender));
 
         self.present(Some(window));
 
-        receiver.await.unwrap_or_default()
+        receiver
+            .await
+            .map_err(|err| anyhow::format_err!("Failed to get await receiver: {err}"))?
     }
 
     fn update_style_scheme(&self) {
