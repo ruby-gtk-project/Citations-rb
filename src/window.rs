@@ -633,7 +633,6 @@ impl Window {
             .application_icon(APP_ID)
             .application_name(gettext("Citations"))
             .license_type(gtk::License::Gpl30)
-            .comments(gettext("Manage your bibliography"))
             .website("https://gitlab.gnome.org/World/citations/")
             .issue_url("https://gitlab.gnome.org/World/citations/-/issues/new")
             .version(VERSION)
