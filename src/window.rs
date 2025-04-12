@@ -5,7 +5,7 @@ use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
 use crate::application::Application;
-use crate::config::{APP_ID, PROFILE, VERSION};
+use crate::config::{APP_ID, IS_DEVEL, VERSION};
 use crate::utils;
 
 pub struct UndoInfo {
@@ -224,7 +224,7 @@ mod imp {
             let obj = self.obj();
 
             // Devel Profile
-            if PROFILE == "Devel" {
+            if IS_DEVEL {
                 obj.add_css_class("devel");
                 self.recent_files_status_page.set_icon_name(Some(APP_ID));
                 self.no_recent_files_status_page.set_icon_name(Some(APP_ID));
