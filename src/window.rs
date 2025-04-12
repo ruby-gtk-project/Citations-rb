@@ -629,18 +629,17 @@ impl Window {
     }
 
     fn show_about_dialog(&self) {
-        let dialog = adw::AboutDialog::builder()
-            .application_icon(APP_ID)
-            .application_name(gettext("Citations"))
-            .license_type(gtk::License::Gpl30)
-            .website("https://gitlab.gnome.org/World/citations/")
-            .issue_url("https://gitlab.gnome.org/World/citations/-/issues/new")
-            .version(VERSION)
-            .translator_credits(gettext("translator-credits"))
-            .developer_name("Maximiliano Sandoval")
-            .developers(vec!["Maximiliano Sandoval <msandova@gnome.org>"])
-            .designers(vec!["Tobias Bernard <tbernard@gnome.org>"])
-            .build();
+        let dialog = adw::AboutDialog::from_appdata(
+            &format!("/org/gnome/World/Citations/{APP_ID}.metainfo.xml"),
+            VERSION.split('-').next(),
+        );
+        dialog.set_translator_credits(&gettext("translator-credits"));
+        dialog.set_developers(&["Maximiliano Sandoval <msandova@gnome.org>"]);
+        dialog.set_designers(&["Tobias Bernard <tbernard@gnome.org>"]);
+
+        if IS_DEVEL {
+            dialog.set_version(VERSION);
+        }
 
         dialog.present(Some(self));
     }
