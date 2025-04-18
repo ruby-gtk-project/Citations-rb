@@ -2,22 +2,22 @@
 # Copyright (C) 2023 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
 #
-# Ingirafn <ingirafn@this.is>, 2023, 2024.
+# Ingirafn <ingirafn@this.is>, 2023, 2024, 2025.
 # Sveinn í Felli <sv1@fellsnet.is>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-04-12 07:36+0000\n"
-"PO-Revision-Date: 2024-04-17 08:22+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic\n"
+"POT-Creation-Date: 2025-04-02 19:43+0000\n"
+"PO-Revision-Date: 2025-04-07 09:46+0000\n"
+"Last-Translator: Ingir <ingirafn@this.is>\n"
+"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -89,19 +89,19 @@ msgid "Tech Report"
 msgstr "Tækniskýrsla"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:52
+#: cratebibtex/src/format.rs:51
 msgid "Plain"
 msgstr "Einfalt"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
+#: data/resources/ui/window.ui:67 src/main.rs:39 src/window.rs:634
 msgid "Citations"
 msgstr "Tilvitnanir"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:636
 msgid "Manage your bibliography"
 msgstr "Haltu heimildaskránni þinni til haga"
 
@@ -109,10 +109,6 @@ msgstr "Haltu heimildaskránni þinni til haga"
 #: data/org.gnome.World.Citations.desktop.in.in:10
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "Heimildaskrár;tilvitnanir;bókmenntir;BibTeX;LaTeX;TeX;"
-
-#: data/org.gnome.World.Citations.desktop.in.in:19
-msgid "New Window"
-msgstr "Nýr gluggi"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -156,28 +152,30 @@ msgstr "Aðalgluggi"
 msgid "Add PDF"
 msgstr "Bæta við PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:46
+#: data/resources/ui/add_pdf_dialog.ui:47
 msgid "Bibliography folder not set"
 msgstr "Ekki er búið að velja möppu fyrir heimildaskrá"
 
-#: data/resources/ui/add_pdf_dialog.ui:64
+#: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Býr til afrit af pdf-skjalinu og geymir það í möppunni fyrir "
 "heimildaskrárnar."
 
-#: data/resources/ui/add_pdf_dialog.ui:79
-msgid "From File"
-msgstr "Úr skjali"
+#: data/resources/ui/add_pdf_dialog.ui:80
+#| msgid "From URL"
+msgid "Add From URL"
+msgstr "Bæta við úr URL"
 
-#: data/resources/ui/add_pdf_dialog.ui:92
-msgid "From URL"
-msgstr "Úr URL-slóð"
-
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:86
 msgid "Download…"
 msgstr "Niðurhal...."
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+#| msgid "From File"
+msgid "Add From File…"
+msgstr "Bæta við út skrá..."
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -220,15 +218,15 @@ msgstr "Engar tilvitnanir"
 msgid "Create a new citation"
 msgstr "Búa til nýja tilvitnun"
 
-#: data/resources/ui/entry_list_row.ui:90
+#: data/resources/ui/entry_list_row.ui:91
 msgid "_Open PDF"
 msgstr "_Opna PDF"
 
-#: data/resources/ui/entry_list_row.ui:94
+#: data/resources/ui/entry_list_row.ui:95
 msgid "_Copy Key"
 msgstr "_Afrita lykil"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Eyða"
 
@@ -260,7 +258,7 @@ msgstr "_Titill"
 msgid "_Year"
 msgstr "Á_rtal"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:396
 msgid "Open in Browser"
 msgstr "Opna í vafra"
 
@@ -289,15 +287,15 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
+#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
 msgid "_Open"
 msgstr "_Opna"
 
-#: data/resources/ui/entry_page.ui:310
+#: data/resources/ui/entry_page.ui:311
 msgid "Delete PDF"
 msgstr "Eyða PDF"
 
-#: data/resources/ui/entry_page.ui:351
+#: data/resources/ui/entry_page.ui:352
 msgid "Could not set PDF Preview"
 msgstr "Gat ekki stillt PDF forskoðun"
 
@@ -305,37 +303,37 @@ msgstr "Gat ekki stillt PDF forskoðun"
 msgid "Add new Entry"
 msgstr "Bæta við nýrri færslu"
 
-#: data/resources/ui/new_entry_dialog.ui:17
+#: data/resources/ui/new_entry_dialog.ui:18
 msgid "_Cancel"
 msgstr "_Hætta við"
 
-#: data/resources/ui/new_entry_dialog.ui:24
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "C_reate"
 msgstr "_Búa til"
 
-#: data/resources/ui/new_entry_dialog.ui:41
+#: data/resources/ui/new_entry_dialog.ui:44
 msgid "New"
 msgstr "Nýtt"
 
-#: data/resources/ui/new_entry_dialog.ui:60
+#: data/resources/ui/new_entry_dialog.ui:63
 msgid "Citation Key"
 msgstr "Tilvitnunarlykill"
 
-#: data/resources/ui/new_entry_dialog.ui:67
+#: data/resources/ui/new_entry_dialog.ui:70
 msgid "Citation Type"
 msgstr "Tegund tilvitnunar"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:87
+#: data/resources/ui/new_entry_dialog.ui:90
 msgid "From BibTeX"
 msgstr "Úr Bibtex"
 
-#: data/resources/ui/new_entry_dialog.ui:106
+#: data/resources/ui/new_entry_dialog.ui:109
 msgid "From DOI"
 msgstr "Úr DOI"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:117
+#: data/resources/ui/new_entry_dialog.ui:120
 msgid "DOI"
 msgstr "DOI"
 
@@ -409,25 +407,25 @@ msgstr "_Leita í Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Leita í arXiv"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
 #: data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "Aðalvalmynd"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:98
 msgid "Open a BibTeX File"
 msgstr "Opna BibTex-skrá"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:99
 msgid "Or drag-and-drop a file"
 msgstr "Eða dragðu og slepptu skrá"
 
-#: data/resources/ui/window.ui:139
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "Haltu tilvitnunum þínum til haga"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:147
 msgid "Recent Files"
 msgstr "Nýlegar skrár"
 
@@ -447,11 +445,11 @@ msgstr "Leita"
 msgid "Search…"
 msgstr "Leita..."
 
-#: data/resources/ui/window.ui:251
+#: data/resources/ui/window.ui:253
 msgid "Content"
 msgstr "Efni"
 
-#: data/resources/ui/window.ui:261
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "Önnur valmynd"
 
@@ -464,17 +462,21 @@ msgid "Could not download PDF"
 msgstr "Gat ekki sótt PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:104
+#: src/add_pdf_dialog.rs:105
 msgid "Make sure that {path} exists"
 msgstr "Gakktu úr skugga um að {path} sé til"
 
-#: src/add_pdf_dialog.rs:178
+#: src/add_pdf_dialog.rs:193
 msgid "PDF Files"
 msgstr "PDF-skrár"
 
-#: src/add_pdf_dialog.rs:186
+#: src/add_pdf_dialog.rs:201
 msgid "Select a PDF"
 msgstr "Veldu PDF"
+
+#: src/application.rs:37
+msgid "Enable debug messages"
+msgstr "Virkja afslúsunarskilaboð"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -494,28 +496,38 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Sérsniðið"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "Afritað"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "Sérsniðið..."
 
-#: src/entry_page.rs:204
+#: src/entry_list_row.rs:74
+#| msgid "Author"
+msgid "Author not set"
+msgstr "Höfundur ekki nefndur"
+
+#: src/entry_list_row.rs:85
+#| msgid "Could not set PDF"
+msgid "Title not set"
+msgstr "Án titils"
+
+#: src/entry_page.rs:200
 msgid "Other…"
 msgstr "Annað…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:266
+#: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "Tilvitnunarlykill er þegar til"
 
-#: src/entry_page.rs:589
+#: src/entry_page.rs:601
 msgid "PDF added"
 msgstr "PDF bætt við"
 
-#: src/new_entry_dialog.rs:156
+#: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
 msgstr "Bættu  BibTex-tilvísun við hérna"
 
@@ -608,73 +620,76 @@ msgstr "Skóli"
 msgid "Institution"
 msgstr "Stofnun"
 
-#: src/window.rs:117
+#: src/window.rs:122
 msgid "Could not add entry"
 msgstr "Gat ekki bætt við færslu"
 
-#: src/window.rs:331 src/window.rs:356
+#: src/window.rs:362 src/window.rs:387
 msgid "BibTeX Files"
 msgstr "Bibtex skrár"
 
-#: src/window.rs:365
+#: src/window.rs:396
 msgid "Create New Bibliography"
 msgstr "Búa til nýja heimildaskrá"
 
-#: src/window.rs:366
+#: src/window.rs:397
 msgid "_Create"
 msgstr "_Búa til"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:369
+#: src/window.rs:400
 msgid "bibliography"
 msgstr "heimildaskrá"
 
-#: src/window.rs:473
-msgid "Remove From Recent Files"
-msgstr "Fjarlæga úr nýlegum skjölum"
-
-#: src/window.rs:513
+#: src/window.rs:523
 msgid "An entry with the given citation key already exists"
 msgstr "Færsla með tilgreindum tilvitnunarlykli er þegar til staðar"
 
-#: src/window.rs:528
+#: src/window.rs:538
 msgid "Bibliography saved"
 msgstr "Heimildaskrá vistuð"
 
-#: src/window.rs:581
+#: src/window.rs:591
 msgid "Citation Deleted"
 msgstr "Tilvitnun eytt"
 
-#: src/window.rs:583
+#: src/window.rs:593
 msgid "Undo"
 msgstr "Afturkalla"
 
-#: src/window.rs:626
+#: src/window.rs:640
 msgid "translator-credits"
 msgstr "Ingirafn, ingirafn at this dot is, 2023"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:638
+#: src/window.rs:652
 msgid "Unsaved Changes"
 msgstr "Óvistaðar breytingar"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:641
+#: src/window.rs:655
 msgid "Do you want to write all changes to the safe?"
 msgstr "Viltu skrifa allar breytingar í vistun?"
 
-#: src/window.rs:645
+#: src/window.rs:659
 msgid "_Quit Without Saving"
 msgstr "_Hætta án þess að vista"
 
-#: src/window.rs:646
+#: src/window.rs:660
 msgid "_Don't Quit"
 msgstr "_Ekki hætta"
 
-#: src/window.rs:647
+#: src/window.rs:661
 msgid "_Save and Quit"
 msgstr "_Vista og hætta"
+
+#: src/window.rs:704
+msgid "Remove From Recent Files"
+msgstr "Fjarlæga úr nýlegum skjölum"
+
+#~ msgid "New Window"
+#~ msgstr "Nýr gluggi"
 
 #~ msgid "Maximiliano Sandoval"
 #~ msgstr "Maximiliano Sandoval"
