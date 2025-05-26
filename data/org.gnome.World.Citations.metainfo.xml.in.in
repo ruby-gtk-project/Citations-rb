@@ -84,8 +84,8 @@
     <release version="0.5.1" date="2022-09-28"/>
     <release version="0.5.0" date="2022-08-04">
       <description>
-        Minor release with some design improvements and newer widgets from
-        libadwaita.
+        <p>Minor release with some design improvements and newer widgets from
+        libadwaita.</p>
       </description>
     </release>
     <release version="0.4.0" date="2022-06-09">
