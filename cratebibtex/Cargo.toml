@@ -12,6 +12,6 @@ gettext-rs.workspace = true
 gio.workspace = true
 glib = { workspace = true, features = ["v2_72"] }
 log.workspace = true
-nom-bibtex = "0.5"
+nom-bibtex = "0.6"
 regex = "1.7"
 texer.workspace = true
