@@ -103,8 +103,7 @@ mod imp {
                 "win.open",
                 Some(glib::VariantTy::STRING),
                 async |window, _, param| {
-                    // FIXME This clone is needed as long as the API requires a Option<&Value>.
-                    let path: String = param.unwrap().get::<String>().unwrap();
+                    let path = param.unwrap().get::<String>().unwrap();
                     if let Err(err) = window.open_action(path).await {
                         log::error!("Could not open file: {err}");
                     }
