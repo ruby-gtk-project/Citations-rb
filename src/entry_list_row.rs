@@ -37,7 +37,7 @@ mod imp {
             klass.set_layout_manager_type::<gtk::BinLayout>();
 
             // Action used only for the extra menu
-            klass.install_action_async("entry-row.open-pdf", None, |row, _, _| async move {
+            klass.install_action_async("entry-row.open-pdf", None, async |row, _, _| {
                 let citation_key = row.entry().unwrap().citation_key();
                 let window = row.root().and_downcast::<crate::Window>().unwrap();
 
@@ -46,12 +46,12 @@ mod imp {
                 }
             });
 
-            klass.install_action("entry-row.delete", None, move |row, _, _| {
+            klass.install_action("entry-row.delete", None, |row, _, _| {
                 let window = row.root().and_downcast::<crate::Window>().unwrap();
                 window.delete_entry(&row.entry().unwrap());
             });
 
-            klass.install_action("entry-row.copy-key", None, move |row, _, _| {
+            klass.install_action("entry-row.copy-key", None, |row, _, _| {
                 let citation_key = row.entry().unwrap().citation_key();
                 row.clipboard().set_text(&citation_key);
 

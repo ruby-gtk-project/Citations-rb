@@ -107,13 +107,13 @@ mod imp {
             klass.bind_template();
             klass.bind_template_callbacks();
 
-            klass.install_action_async("entry-page.open-pdf", None, |obj, _, _| async move {
+            klass.install_action_async("entry-page.open-pdf", None, async |obj, _, _| {
                 if let Err(err) = obj.open_pdf_action().await {
                     log::error!("Could not set PDF: {err}");
                 }
             });
 
-            klass.install_action_async("entry-page.set-pdf", None, |obj, _, _| async move {
+            klass.install_action_async("entry-page.set-pdf", None, async |obj, _, _| {
                 if let Err(err) = obj.set_pdf_action().await {
                     log::error!("Could not set PDF: {err}");
                 } else {
