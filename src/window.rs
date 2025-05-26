@@ -102,56 +102,54 @@ mod imp {
             klass.install_action_async(
                 "win.open",
                 Some(glib::VariantTy::STRING),
-                |window, _, param| {
+                async |window, _, param| {
                     // FIXME This clone is needed as long as the API requires a Option<&Value>.
                     let path: String = param.unwrap().get::<String>().unwrap();
-                    async move {
-                        if let Err(err) = window.open_action(path).await {
-                            log::error!("Could not open file: {err}");
-                        }
+                    if let Err(err) = window.open_action(path).await {
+                        log::error!("Could not open file: {err}");
                     }
                 },
             );
-            klass.install_action_async("win.new_biblio", None, |window, _, _| async move {
+            klass.install_action_async("win.new_biblio", None, async |window, _, _| {
                 if let Err(err) = window.new_biblio_action().await {
                     log::error!("Could not create file: {err}");
                 }
             });
-            klass.install_action_async("win.new_entry", None, |window, _, _| async move {
+            klass.install_action_async("win.new_entry", None, async |window, _, _| {
                 if let Err(err) = window.new_entry_dialog().await {
                     window.send_toast(&gettext("Could not add entry"));
                     log::error!("Could not get valid entry from dialog: {err}");
                 }
             });
-            klass.install_action_async("win.save", None, |window, _, _| async move {
+            klass.install_action_async("win.save", None, async |window, _, _| {
                 if let Err(err) = window.save().await {
                     log::error!("Could not save bibliography: {err}");
                 }
             });
-            klass.install_action("win.delete_entry", None, move |obj, _, _| {
+            klass.install_action("win.delete_entry", None, |obj, _, _| {
                 if let Some(entry) = obj.imp().entry_page.entry() {
                     obj.delete_entry(&entry);
                 }
             });
-            klass.install_action("win.search-google-scholar", None, move |obj, _, _| {
+            klass.install_action("win.search-google-scholar", None, |obj, _, _| {
                 if let Err(err) = obj.search_google_schoolar_entry() {
                     log::error!("Could not search in Google Schoolar: {err}");
                 }
             });
-            klass.install_action("win.search-arxiv", None, move |obj, _, _| {
+            klass.install_action("win.search-arxiv", None, |obj, _, _| {
                 if let Err(err) = obj.search_arxiv_entry() {
                     log::error!("Could not search in arXiv: {err}");
                 }
             });
-            klass.install_action("win.undo_delete", None, move |obj, _, _| {
+            klass.install_action("win.undo_delete", None, |obj, _, _| {
                 if let Some(UndoInfo { entry, pos, .. }) = obj.imp().undo_entry.take() {
                     obj.imp().bib.get().unwrap().add_entry_at_pos(entry, pos);
                 }
             });
-            klass.install_action("win.about", None, move |obj, _, _| {
+            klass.install_action("win.about", None, |obj, _, _| {
                 obj.show_about_dialog();
             });
-            klass.install_action("win.search", None, move |obj, _, _| {
+            klass.install_action("win.search", None, |obj, _, _| {
                 obj.start_search_action();
             });
         }
