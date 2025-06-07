@@ -1,0 +1,679 @@
+# Azerbaijani translation for citations.
+# Copyright (C) 2025 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+# Ramal Rəhimov <jhonaluman@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
+"POT-Creation-Date: 2025-05-26 19:34+0000\n"
+"PO-Revision-Date: 2025-05-26 19:34+0000\n"
+"Last-Translator: Ramal Rəhimov <jhonaluman@gmail.com>\n"
+"Language-Team: Azerbaijani <contact@azlinux.org>\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: cratebibtex/src/entry_type.rs:117
+msgid "Article"
+msgstr "Məqalə"
+
+#: cratebibtex/src/entry_type.rs:118
+msgid "Book"
+msgstr "Kitab"
+
+#: cratebibtex/src/entry_type.rs:119
+msgid "Misc"
+msgstr "Müxtəlif"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:121
+msgid "In Proceedings"
+msgstr "Konfrans materiallarında"
+
+#: cratebibtex/src/entry_type.rs:122
+msgid "Unpublished"
+msgstr "Nəşr olunmamış"
+
+#. NOTE As in online source
+#: cratebibtex/src/entry_type.rs:124
+msgid "Online"
+msgstr "Onlayn"
+
+#. NOTE As in other kind of source
+#: cratebibtex/src/entry_type.rs:126
+msgid "Other"
+msgstr "Digər"
+
+#: cratebibtex/src/entry_type.rs:127
+msgid "Booklet"
+msgstr "Buklet"
+
+#: cratebibtex/src/entry_type.rs:128
+msgid "Conference"
+msgstr "Konfrans"
+
+#: cratebibtex/src/entry_type.rs:129
+msgid "In Book"
+msgstr "Kitabda"
+
+#: cratebibtex/src/entry_type.rs:130
+msgid "In Collection"
+msgstr "Kolleksiyada"
+
+#. NOTE As in instruction manual
+#: cratebibtex/src/entry_type.rs:132
+msgid "Manual"
+msgstr "Təlimat"
+
+#: cratebibtex/src/entry_type.rs:133
+msgid "Master's Thesis"
+msgstr "Magistr dissertasiyası"
+
+#: cratebibtex/src/entry_type.rs:134
+msgid "PhD Thesis"
+msgstr "Doktorluq dissertasiyası"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:136
+msgid "Proceedings"
+msgstr "Konfrans materialları"
+
+#: cratebibtex/src/entry_type.rs:137
+msgid "Tech Report"
+msgstr "Texniki hesabat"
+
+#. NOTE Plain as in Plain Text
+#: cratebibtex/src/format.rs:51
+msgid "Plain"
+msgstr "Sadə"
+
+#. NOTE: This is the app name
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:67 src/main.rs:39
+msgid "Citations"
+msgstr "İstinadlar"
+
+#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8
+msgid "Manage your bibliography"
+msgstr "Biblioqrafiyanızı idarə edin"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.World.Citations.desktop.in.in:10
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "biblioqrafiya;istinad;ədəbiyyat;BibTeX;LaTeX;TeX;"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "Pəncərə eni"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "Pəncərə hündürlüyü"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Pəncərənin maksimum vəziyyəti"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
+msgid "List of paths of recent files"
+msgstr "Son faylların yollarının siyahısı"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
+msgid "Default template for book citation"
+msgstr "Kitab istinadı üçün standart şablon"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:30
+msgid "Default template kind for citations"
+msgstr "İstinadlar üçün standart şablon növü"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:34
+msgid "Default template format for citations"
+msgstr "İstinadlar üçün standart şablon formatı"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "BibTeX formatından istifadə edərək biblioqrafiyalarınızı idarə edin."
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:15
+msgid "Main window"
+msgstr "Əsas pəncərə"
+
+#. Translators: Selects a PDF file for the citation
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
+msgid "Add PDF"
+msgstr "PDF əlavə et"
+
+#: data/resources/ui/add_pdf_dialog.ui:47
+msgid "Bibliography folder not set"
+msgstr "Biblioqrafiya qovluğu təyin edilməyib"
+
+#: data/resources/ui/add_pdf_dialog.ui:65
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"Seçilmiş PDF-in surətini yaradır və onu Biblioqrafiya qovluğunda saxlayır."
+
+#: data/resources/ui/add_pdf_dialog.ui:80
+msgid "Add From URL"
+msgstr "URL-dən əlavə et"
+
+#: data/resources/ui/add_pdf_dialog.ui:86
+msgid "Download…"
+msgstr "Yüklə…"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "Add From File…"
+msgstr "Fayldan əlavə et…"
+
+#: data/resources/ui/citation_preview.ui:15
+msgid "Custom Citation Format"
+msgstr "Xüsusi İstinad Formatı"
+
+#: data/resources/ui/citation_preview.ui:50
+msgid "Citation"
+msgstr "İstinad"
+
+#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
+msgid "Copy"
+msgstr "Kopyala"
+
+#: data/resources/ui/citation_preview.ui:137
+msgid "Custom Template"
+msgstr "Xüsusi Şablon"
+
+#: data/resources/ui/citation_preview.ui:153
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported.\n"
+"            "
+msgstr ""
+"İstinadlarınız üçün xüsusi format yazın, <tt>sometag</tt> etiketinin məzmununu daxil etmək üçün <tt>%SOMETAG%</tt> yazın. Qalın və italik üçün əsas markdown sintaksisi dəstəklənir.\n"
+"            "
+
+#: data/resources/ui/citation_preview.ui:159
+msgid "Example:"
+msgstr "Nümunə:"
+
+#. TRANSLATORS Empty state widget
+#: data/resources/ui/entry_list.ui:9
+msgid "No Citations"
+msgstr "İstinad yoxdur"
+
+#: data/resources/ui/entry_list.ui:10
+msgid "Create a new citation"
+msgstr "Yeni istinad yaradın"
+
+#: data/resources/ui/entry_list_row.ui:91
+msgid "_Open PDF"
+msgstr "PDF-i _aç"
+
+#: data/resources/ui/entry_list_row.ui:95
+msgid "_Copy Key"
+msgstr "Açarı _kopyala"
+
+#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
+msgid "_Delete"
+msgstr "_Sil"
+
+#: data/resources/ui/entry_page.ui:13
+msgid "No Citation Selected"
+msgstr "İstinad seçilməyib"
+
+#: data/resources/ui/entry_page.ui:82
+msgid "Citation _Type"
+msgstr "İstinad _Növü"
+
+#: data/resources/ui/entry_page.ui:98
+msgid "_Other Citation Type"
+msgstr "_Digər İstinad Növü"
+
+#: data/resources/ui/entry_page.ui:105
+msgid "_Citation Key"
+msgstr "_İstinad Açarı"
+
+#: data/resources/ui/entry_page.ui:124
+msgid "_Author"
+msgstr "_Müəllif"
+
+#: data/resources/ui/entry_page.ui:130
+msgid "_Title"
+msgstr "_Başlıq"
+
+#: data/resources/ui/entry_page.ui:136
+msgid "_Year"
+msgstr "_İl"
+
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:396
+msgid "Open in Browser"
+msgstr "Brauzerdə aç"
+
+#: data/resources/ui/entry_page.ui:168
+msgid "Other Properties"
+msgstr "Digər Xüsusiyyətlər"
+
+#: data/resources/ui/entry_page.ui:182
+msgid "Abstract"
+msgstr "Annotasiya"
+
+#: data/resources/ui/entry_page.ui:186
+msgid "Copy Abstract"
+msgstr "Annotasiyanı kopyala"
+
+#: data/resources/ui/entry_page.ui:218
+msgid "Notes"
+msgstr "Qeydlər"
+
+#: data/resources/ui/entry_page.ui:222
+msgid "Copy Notes"
+msgstr "Qeydləri kopyala"
+
+#: data/resources/ui/entry_page.ui:286
+msgid "PDF"
+msgstr "PDF"
+
+#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
+msgid "_Open"
+msgstr "_Aç"
+
+#: data/resources/ui/entry_page.ui:311
+msgid "Delete PDF"
+msgstr "PDF-i sil"
+
+#: data/resources/ui/entry_page.ui:352
+msgid "Could not set PDF Preview"
+msgstr "PDF önizləməsi təyin oluna bilmədi"
+
+#: data/resources/ui/new_entry_dialog.ui:7
+msgid "Add new Entry"
+msgstr "Yeni giriş əlavə et"
+
+#: data/resources/ui/new_entry_dialog.ui:18
+msgid "_Cancel"
+msgstr "_Ləğv et"
+
+#: data/resources/ui/new_entry_dialog.ui:26
+msgid "C_reate"
+msgstr "_Yarat"
+
+#: data/resources/ui/new_entry_dialog.ui:44
+msgid "New"
+msgstr "Yeni"
+
+#: data/resources/ui/new_entry_dialog.ui:63
+msgid "Citation Key"
+msgstr "İstinad Açarı"
+
+#: data/resources/ui/new_entry_dialog.ui:70
+msgid "Citation Type"
+msgstr "İstinad Növü"
+
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:90
+msgid "From BibTeX"
+msgstr "BibTeX-dən"
+
+#: data/resources/ui/new_entry_dialog.ui:109
+msgid "From DOI"
+msgstr "DOI-dən"
+
+#. TRANSLATORS DOI is a proper name
+#: data/resources/ui/new_entry_dialog.ui:120
+msgid "DOI"
+msgstr "DOI"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ümumi"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Qısa yolları göstər"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Yeni Pəncərə"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Çıx"
+
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Biblioqrafiya"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Aç"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Saxla"
+
+#: data/resources/ui/shortcuts.ui:49
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Axtar"
+
+#: data/resources/ui/window.ui:6
+msgid "_Create New Bibliography"
+msgstr "_Yeni Biblioqrafiya Yarat"
+
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
+msgid "_Keyboard Shortcuts"
+msgstr "_Klaviatura Qısayolları"
+
+#. TRANSLATORS About dialog
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
+msgid "_About Citations"
+msgstr "_İstinadlar Haqqında"
+
+#: data/resources/ui/window.ui:29
+msgid "_Save"
+msgstr "_Saxla"
+
+#: data/resources/ui/window.ui:33
+msgid "New _Window"
+msgstr "Yeni _Pəncərə"
+
+#: data/resources/ui/window.ui:51
+msgid "_Search in Google Scholar"
+msgstr "Google Scholar-da _Axtar"
+
+#. TRANSLATORS arXiv is a proper name
+#: data/resources/ui/window.ui:55
+msgid "_Search in arXiv"
+msgstr "arXiv-də _Axtar"
+
+#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:210
+msgid "Main Menu"
+msgstr "Əsas Menyu"
+
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/window.ui:98
+msgid "Open a BibTeX File"
+msgstr "BibTeX Faylını Aç"
+
+#: data/resources/ui/window.ui:99
+msgid "Or drag-and-drop a file"
+msgstr "Və ya faylı sürükləyib buraxın"
+
+#: data/resources/ui/window.ui:137
+msgid "Manage your Citations"
+msgstr "İstinadlarınızı idarə edin"
+
+#: data/resources/ui/window.ui:147
+msgid "Recent Files"
+msgstr "Son Fayllar"
+
+#: data/resources/ui/window.ui:192
+msgid "Sidebar"
+msgstr "Yan Panel"
+
+#: data/resources/ui/window.ui:203
+msgid "Add New Citation"
+msgstr "Yeni İstinad Əlavə Et"
+
+#: data/resources/ui/window.ui:217
+msgid "Search"
+msgstr "Axtar"
+
+#: data/resources/ui/window.ui:231
+msgid "Search…"
+msgstr "Axtar…"
+
+#: data/resources/ui/window.ui:253
+msgid "Content"
+msgstr "Məzmun"
+
+#: data/resources/ui/window.ui:263
+msgid "Secondary Menu"
+msgstr "İkinci Menyu"
+
+#: src/add_pdf_dialog.rs:58
+msgid "Could not set PDF"
+msgstr "PDF təyin oluna bilmədi"
+
+#: src/add_pdf_dialog.rs:78
+msgid "Could not download PDF"
+msgstr "PDF yüklənə bilmədi"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: src/add_pdf_dialog.rs:105
+msgid "Make sure that {path} exists"
+msgstr "{path} mövcud olduğundan əmin olun"
+
+#: src/add_pdf_dialog.rs:193
+msgid "PDF Files"
+msgstr "PDF Faylları"
+
+#: src/add_pdf_dialog.rs:201
+msgid "Select a PDF"
+msgstr "PDF seçin"
+
+#: src/application.rs:37
+msgid "Enable debug messages"
+msgstr "Sazlama mesajlarını aktivləşdir"
+
+#. TODO Should this be translatable?
+#: src/citation_preview.rs:56
+msgid "Chicago"
+msgstr "Chicago"
+
+#: src/citation_preview.rs:57
+msgid "Harvard"
+msgstr "Harvard"
+
+#: src/citation_preview.rs:58
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#. NOTE: Custom as in Custom Template.
+#: src/citation_preview.rs:60
+msgid "Custom"
+msgstr "Xüsusi"
+
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
+msgid "Copied"
+msgstr "Kopyalandı"
+
+#: src/citation_preview.rs:273
+msgid "Custom…"
+msgstr "Xüsusi…"
+
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "Müəllif təyin edilməyib"
+
+#: src/entry_list_row.rs:85
+msgid "Title not set"
+msgstr "Başlıq təyin edilməyib"
+
+#: src/entry_page.rs:200
+msgid "Other…"
+msgstr "Digər…"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: src/entry_page.rs:248
+msgid "Citation Key already exists"
+msgstr "İstinad Açarı artıq mövcuddur"
+
+#: src/entry_page.rs:601
+msgid "PDF added"
+msgstr "PDF əlavə edildi"
+
+#: src/new_entry_dialog.rs:160
+msgid "Insert a BibTeX citation here"
+msgstr "Burada BibTeX istinadı daxil edin"
+
+#: src/utils.rs:14
+msgid "Author"
+msgstr "Müəllif"
+
+#: src/utils.rs:15
+msgid "Year"
+msgstr "İl"
+
+#: src/utils.rs:16
+msgid "Title"
+msgstr "Başlıq"
+
+#: src/utils.rs:17
+msgid "Volume"
+msgstr "Cild"
+
+#: src/utils.rs:18
+msgid "Number"
+msgstr "Nömrə"
+
+#: src/utils.rs:19
+msgid "Pages"
+msgstr "Səhifələr"
+
+#: src/utils.rs:20
+msgid "Publisher"
+msgstr "Nəşriyyat"
+
+#: src/utils.rs:21
+msgid "Journal"
+msgstr "Jurnal"
+
+#: src/utils.rs:22
+msgid "Address"
+msgstr "Ünvan"
+
+#. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
+#: src/utils.rs:24
+msgid "How Published"
+msgstr "Necə Nəşr Olunub"
+
+#: src/utils.rs:25
+msgid "Note"
+msgstr "Qeyd"
+
+#: src/utils.rs:26
+msgid "Book Title"
+msgstr "Kitabın Başlığı"
+
+#: src/utils.rs:27
+msgid "Series"
+msgstr "Seriya"
+
+#: src/utils.rs:28
+msgid "Archive Prefix"
+msgstr "Arxiv Prefiksi"
+
+#. TRANSLATORS As in digital print
+#: src/utils.rs:30
+msgid "ePrint"
+msgstr "Elektron nəşr"
+
+#. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
+#: src/utils.rs:32
+msgid "Primary Class"
+msgstr "Əsas Sinif"
+
+#: src/utils.rs:33
+msgid "Month"
+msgstr "Ay"
+
+#. TRANSLATORS As in chief editor
+#: src/utils.rs:35
+msgid "Editor"
+msgstr "Redaktor"
+
+#. TRANSLATORS As in association
+#: src/utils.rs:37
+msgid "Organization"
+msgstr "Təşkilat"
+
+#: src/utils.rs:38
+msgid "School"
+msgstr "Məktəb"
+
+#: src/utils.rs:39
+msgid "Institution"
+msgstr "Müəssisə"
+
+#: src/window.rs:119
+msgid "Could not add entry"
+msgstr "Giriş əlavə oluna bilmədi"
+
+#: src/window.rs:359 src/window.rs:384
+msgid "BibTeX Files"
+msgstr "BibTeX Faylları"
+
+#: src/window.rs:393
+msgid "Create New Bibliography"
+msgstr "Yeni Biblioqrafiya Yarat"
+
+#: src/window.rs:394
+msgid "_Create"
+msgstr "_Yarat"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: src/window.rs:397
+msgid "bibliography"
+msgstr "biblioqrafiya"
+
+#: src/window.rs:520
+msgid "An entry with the given citation key already exists"
+msgstr "Verilmiş istinad açarı ilə giriş artıq mövcuddur"
+
+#: src/window.rs:535
+msgid "Bibliography saved"
+msgstr "Biblioqrafiya saxlanıldı"
+
+#: src/window.rs:588
+msgid "Citation Deleted"
+msgstr "İstinad silindi"
+
+#: src/window.rs:590
+msgid "Undo"
+msgstr "Geri al"
+
+#: src/window.rs:633
+msgid "translator-credits"
+msgstr "Tərcümə: Ramal Rəhimov <jhonaluman@gmail.com>"
+
+#. NOTE Dialog title which informs the user about unsaved changes.
+#: src/window.rs:647
+msgid "Unsaved Changes"
+msgstr "Saxlanılmamış Dəyişikliklər"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:650
+msgid "Do you want to write all changes to the safe?"
+msgstr "Bütün dəyişiklikləri saxlamaq istəyirsinizmi?"
+
+#: src/window.rs:654
+msgid "_Quit Without Saving"
+msgstr "_Saxlamadan Çıx"
+
+#: src/window.rs:655
+msgid "_Don't Quit"
+msgstr "_Çıxma"
+
+#: src/window.rs:656
+msgid "_Save and Quit"
+msgstr "_Saxla və Çıx"
+
+#: src/window.rs:699
+msgid "Remove From Recent Files"
+msgstr "Son Fayllardan Sil"
