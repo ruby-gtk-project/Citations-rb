@@ -4,7 +4,7 @@ fn freplace(s: String, args: &[(&str, &str)]) -> String {
     let mut s = s;
 
     for (k, v) in args {
-        s = s.replace(&format!("{{{}}}", k), v);
+        s = s.replace(&format!("{{{k}}}"), v);
     }
 
     s

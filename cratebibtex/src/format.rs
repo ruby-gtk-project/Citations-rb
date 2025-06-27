@@ -40,7 +40,7 @@ impl From<String> for Format {
 
 impl fmt::Display for Format {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{:?}", self)
+        write!(f, "{self:?}")
     }
 }
 
@@ -145,11 +145,11 @@ pub fn format_authors(authors: &str) -> String {
         .split(" AND ")
         .map(String::from)
         .collect::<Vec<String>>();
-    if vec_authors.len() > 1 {
-        if let Some(last_author) = vec_authors.last_mut() {
-            let value = format!("and {}", last_author);
-            *last_author = value;
-        }
+    if vec_authors.len() > 1
+        && let Some(last_author) = vec_authors.last_mut()
+    {
+        let value = format!("and {last_author}");
+        *last_author = value;
     }
     vec_authors.join(", ")
 }

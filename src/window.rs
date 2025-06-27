@@ -259,19 +259,19 @@ mod imp {
                 #[upgrade_or]
                 false,
                 move |_, value, _, _| {
-                    if let Ok(file_list) = value.get::<gdk::FileList>() {
-                        if let Some(file) = file_list.files().first().cloned() {
-                            glib::spawn_future_local(glib::clone!(
-                                #[weak]
-                                obj,
-                                async move {
-                                    if let Err(err) = obj.open_wrapper(&file).await {
-                                        log::error!("Could not open file: {err:?}")
-                                    };
-                                }
-                            ));
-                            return true;
-                        }
+                    if let Ok(file_list) = value.get::<gdk::FileList>()
+                        && let Some(file) = file_list.files().first().cloned()
+                    {
+                        glib::spawn_future_local(glib::clone!(
+                            #[weak]
+                            obj,
+                            async move {
+                                if let Err(err) = obj.open_wrapper(&file).await {
+                                    log::error!("Could not open file: {err:?}")
+                                };
+                            }
+                        ));
+                        return true;
                     }
                     false
                 }
@@ -451,14 +451,14 @@ impl Window {
         self.action_set_enabled("win.save", true);
         self.action_set_enabled("win.delete_entry", true);
 
-        if let Some(path) = file.path() {
-            if let Some(path) = path.to_str() {
-                let mut recent_files = settings.strv("recent-files");
+        if let Some(path) = file.path()
+            && let Some(path) = path.to_str()
+        {
+            let mut recent_files = settings.strv("recent-files");
 
-                if !recent_files.contains(path) {
-                    recent_files.push(path.into());
-                    settings.set_strv("recent-files", recent_files).unwrap();
-                }
+            if !recent_files.contains(path) {
+                recent_files.push(path.into());
+                settings.set_strv("recent-files", recent_files).unwrap();
             }
         }
 
@@ -702,10 +702,10 @@ fn recent_row(file: &gio::File) -> adw::ActionRow {
         action_row.add_suffix(&clear_button);
     }
 
-    if let Some(basename) = file.basename() {
-        if let Some(basename) = basename.to_str() {
-            action_row.set_title(basename);
-        }
+    if let Some(basename) = file.basename()
+        && let Some(basename) = basename.to_str()
+    {
+        action_row.set_title(basename);
     }
 
     action_row

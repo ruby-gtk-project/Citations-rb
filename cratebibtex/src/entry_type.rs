@@ -93,7 +93,7 @@ impl fmt::Display for EntryType {
             Self::Proceedings => "proceedings",
             Self::TechReport => "techreport",
         };
-        write!(f, "{}", s)
+        write!(f, "{s}")
     }
 }
 
