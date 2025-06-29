@@ -176,10 +176,10 @@ impl Selection {
     }
 
     fn disconnect_model_signal(&self) {
-        if let Some(handler) = self.imp().signal_handler.take() {
-            if let Some(model) = &*self.imp().model.borrow() {
-                model.disconnect(handler);
-            }
+        if let Some(handler) = self.imp().signal_handler.take()
+            && let Some(model) = &*self.imp().model.borrow()
+        {
+            model.disconnect(handler);
         }
     }
 
@@ -202,10 +202,10 @@ impl Selection {
                         obj.model_items_changed(p, r, a);
                     }
                 ));
-                if let Some(id) = imp.signal_handler.replace(Some(handler)) {
-                    if let Some(old_model) = old_model {
-                        old_model.disconnect(id);
-                    }
+                if let Some(id) = imp.signal_handler.replace(Some(handler))
+                    && let Some(old_model) = old_model
+                {
+                    old_model.disconnect(id);
                 }
 
                 model.n_items()

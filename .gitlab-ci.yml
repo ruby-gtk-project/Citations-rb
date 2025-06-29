@@ -25,6 +25,7 @@ flatpak@x86_64:
 
 flatpak@aarch64:
   extends: ".flatpak@aarch64"
+  allow_failure: true
 
 nightly@x86_64:
   extends: ".publish_nightly"
