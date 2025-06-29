@@ -15,7 +15,7 @@
     <section>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
-        <attribute name="action">win.show-help-overlay</attribute>
+        <attribute name="action">app.shortcuts</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_About Citations</attribute>
@@ -37,7 +37,7 @@
     <section>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
-        <attribute name="action">win.show-help-overlay</attribute>
+        <attribute name="action">app.shortcuts</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes" comments="TRANSLATORS About dialog">_About Citations</attribute>
