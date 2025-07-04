@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-01-10 21:19+0000\n"
-"PO-Revision-Date: 2025-01-14 14:36+0800\n"
+"POT-Creation-Date: 2025-07-03 16:14+0000\n"
+"PO-Revision-Date: 2025-07-04 18:43+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-Generator: Gtranslator 48.0\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -89,19 +89,19 @@ msgid "Tech Report"
 msgstr "技术报告"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:52
+#: cratebibtex/src/format.rs:51
 msgid "Plain"
 msgstr "纯文本"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:39 src/window.rs:629
+#: data/resources/ui/window.ui:67 src/main.rs:39
 msgid "Citations"
 msgstr "引文"
 
 #: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:631
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "管理您的参考书目"
 
@@ -110,10 +110,6 @@ msgstr "管理您的参考书目"
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
 "bibliography;citing;literature;BibTeX;LaTeX;TeX;参考书目;引用;文献;引述;引证;"
-
-#: data/org.gnome.World.Citations.desktop.in.in:19
-msgid "New Window"
-msgstr "新建窗口"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -258,7 +254,7 @@ msgstr "标题(_T)"
 msgid "_Year"
 msgstr "年份(_Y)"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:396
 msgid "Open in Browser"
 msgstr "在浏览器中打开"
 
@@ -287,7 +283,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:158
+#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
 msgid "_Open"
 msgstr "打开(_O)"
 
@@ -337,42 +333,47 @@ msgstr "来自 DOI"
 msgid "DOI"
 msgstr "DOI"
 
-#: data/resources/ui/shortcuts.ui:11
+#: data/resources/ui/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "常规"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:9
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "显示快捷键"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "新建窗口"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "关闭窗口"
+
+#: data/resources/ui/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "退出"
 
-#: data/resources/ui/shortcuts.ui:34
+#: data/resources/ui/shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "参考文献"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:38
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "打开"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:44
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "保存"
 
-#: data/resources/ui/shortcuts.ui:49
+#: data/resources/ui/shortcuts.ui:50
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "搜索"
@@ -407,49 +408,49 @@ msgstr "在谷歌学术中搜索(_S)"
 msgid "_Search in arXiv"
 msgstr "在 arXiv 中搜索(_S)"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:131
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "主菜单"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:98
 msgid "Open a BibTeX File"
 msgstr "打开 BibTeX 文件"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:99
 msgid "Or drag-and-drop a file"
 msgstr "或拖放文件"
 
-#: data/resources/ui/window.ui:140
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "管理您的引文"
 
-#: data/resources/ui/window.ui:150
+#: data/resources/ui/window.ui:147
 msgid "Recent Files"
 msgstr "最近的文件"
 
-#: data/resources/ui/window.ui:194
+#: data/resources/ui/window.ui:192
 msgid "Sidebar"
 msgstr "侧边栏"
 
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:203
 msgid "Add New Citation"
 msgstr "添加新引文"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:217
 msgid "Search"
 msgstr "搜索"
 
-#: data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:231
 msgid "Search…"
 msgstr "搜索…"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:253
 msgid "Content"
 msgstr "目录"
 
-#: data/resources/ui/window.ui:265
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "次级菜单"
 
@@ -496,7 +497,7 @@ msgstr "温哥华"
 msgid "Custom"
 msgstr "自定义"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "已复制"
 
@@ -512,20 +513,20 @@ msgstr "未设定作者"
 msgid "Title not set"
 msgstr "未设定标题"
 
-#: src/entry_page.rs:204
+#: src/entry_page.rs:200
 msgid "Other…"
 msgstr "其他…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:252
+#: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "引文密钥已存在"
 
-#: src/entry_page.rs:605
+#: src/entry_page.rs:601
 msgid "PDF added"
 msgstr "PDF 已添加"
 
-#: src/new_entry_dialog.rs:162
+#: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
 msgstr "在此处插入 BibTeX 引文"
 
@@ -618,45 +619,45 @@ msgstr "学校"
 msgid "Institution"
 msgstr "机构"
 
-#: src/window.rs:117
+#: src/window.rs:119
 msgid "Could not add entry"
 msgstr "无法添加条目"
 
-#: src/window.rs:357 src/window.rs:382
+#: src/window.rs:359 src/window.rs:384
 msgid "BibTeX Files"
 msgstr "BibTeX 文件"
 
-#: src/window.rs:391
+#: src/window.rs:393
 msgid "Create New Bibliography"
 msgstr "创建新参考文献"
 
-#: src/window.rs:392
+#: src/window.rs:394
 msgid "_Create"
 msgstr "创建(_C)"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:395
+#: src/window.rs:397
 msgid "bibliography"
 msgstr "参考文献"
 
-#: src/window.rs:518
+#: src/window.rs:520
 msgid "An entry with the given citation key already exists"
 msgstr "带有指定引文密钥的条目已存在"
 
-#: src/window.rs:533
+#: src/window.rs:535
 msgid "Bibliography saved"
 msgstr "参考文献已保存"
 
-#: src/window.rs:586
+#: src/window.rs:588
 msgid "Citation Deleted"
 msgstr "引文已删除"
 
-#: src/window.rs:588
+#: src/window.rs:590
 msgid "Undo"
 msgstr "撤消"
 
-#: src/window.rs:635
+#: src/window.rs:633
 msgid "translator-credits"
 msgstr ""
 "杨博远 <byang@debian.org>, 2022.\n"
