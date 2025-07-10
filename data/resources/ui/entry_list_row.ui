@@ -4,7 +4,7 @@
     <child>
       <object class="GtkGestureClick" id="menu_gesture">
         <property name="button">3</property>
-        <signal name="pressed" handler="menu_gesture_clicked" swapped="yes"/>
+        <signal name="pressed" handler="menu_gesture_pressed"/>
       </object>
     </child>
     <child>

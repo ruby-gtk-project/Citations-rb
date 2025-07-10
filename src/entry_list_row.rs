@@ -90,7 +90,13 @@ mod imp {
         }
 
         #[template_callback]
-        fn menu_gesture_clicked(obj: &super::EntryListRow, _n_press: i32, x: f64, y: f64) {
+        fn menu_gesture_pressed(
+            gesture: &gtk::Gesture,
+            _n_press: i32,
+            x: f64,
+            y: f64,
+            obj: &super::EntryListRow,
+        ) {
             let has_pdf = crate::utils::has_pdf(&obj.entry().unwrap().citation_key());
             obj.action_set_enabled("entry-row.open-pdf", has_pdf);
 
@@ -100,6 +106,7 @@ mod imp {
             } else {
                 obj.imp().popover.set_pointing_to(None);
             }
+            gesture.set_state(gtk::EventSequenceState::Claimed);
             obj.imp().popover.popup();
         }
     }
