@@ -90,7 +90,7 @@ mod imp {
         }
 
         #[template_callback]
-        fn menu_gesture_pressed(
+        fn menu_gesture_released(
             gesture: &gtk::Gesture,
             _n_press: i32,
             x: f64,
