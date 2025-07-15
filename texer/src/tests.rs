@@ -304,3 +304,20 @@ fn test_tag_consecutive_spaces() {
     assert_eq!(tag_consecutive_spaces("  "), Ok(("  ", "")));
     assert_eq!(tag_consecutive_spaces(" \n "), Ok((" \n ", "")));
 }
+
+// https://gitlab.gnome.org/World/citations/-/issues/59
+#[test]
+fn test_59() {
+    // NOTE U+2009 is THIN SPACE.
+    assert_eq!(
+        tag_consecutive_spaces("s:\u{2009} E"),
+        Ok(("\u{2009} E", "s:"))
+    );
+
+    assert_eq!(multispacer("\u{2009} a"), Ok(("a", " ")));
+
+    assert_eq!(
+        till_symbols_no_ws("Models:\u{2009} Evidence"),
+        Ok(("", Cow::Owned("Models: Evidence".into())))
+    );
+}
