@@ -9,10 +9,10 @@ use nom::error::ErrorKind;
 use nom::error::ParseError;
 use nom::sequence::Tuple;
 use nom::{
-    IResult,
+    AsChar, IResult, InputTakeAtPosition,
     branch::alt,
     bytes::complete::{tag, take, take_while, take_while1},
-    character::complete::multispace1,
+    character::complete::char,
     multi::fold_many0,
     sequence::delimited,
 };
@@ -225,14 +225,27 @@ fn till_symbol1(s: &str) -> IResult<&str, &str> {
     take_while1(|c: char| c != '{' && c != '\\' && c != '$' && !c.is_whitespace())(s)
 }
 
-// Turns multiple consecutive spaces into a single space.
+// Turns multiple consecutive spaces into a single space. Taken from nom
+// https://docs.rs/nom/7.1.3/src/nom/character/complete.rs.html#695
 fn multispacer(input: &str) -> IResult<&str, &str> {
-    let (input, _) = multispace1(input)?;
+    let (input, _) = input.split_at_position1_complete(
+        |item| {
+            let c = item.as_char();
+            // The original check was: !(c == ' ' || c == '\t' || c == '\r' || c == '\n')
+            !c.is_whitespace()
+        },
+        ErrorKind::MultiSpace,
+    )?;
+    Ok((input, " "))
+}
+
+fn weird_whitespaces(input: &str) -> IResult<&str, &str> {
+    let (input, _) = char('\u{2009}')(input)?;
     Ok((input, " "))
 }
 
 fn till_symbols_no_ws_once(input: &str) -> IResult<&str, &str> {
-    alt((multispacer, till_symbol1))(input)
+    alt((multispacer, till_symbol1, weird_whitespaces))(input)
 }
 
 fn till_symbols_no_ws(input: &str) -> IResult<&str, Cow<'_, str>> {
