@@ -176,9 +176,9 @@ impl Application {
     }
 
     pub fn run(&self) -> glib::ExitCode {
-        info!("Citations ({})", APP_ID);
-        info!("Version: {} ({})", VERSION, PROFILE);
-        info!("Datadir: {}", PKGDATADIR);
+        info!("Citations ({APP_ID})");
+        info!("Version: {VERSION} ({PROFILE})");
+        info!("Datadir: {PKGDATADIR}");
 
         ApplicationExtManual::run(self)
     }
