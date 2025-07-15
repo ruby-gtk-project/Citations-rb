@@ -134,7 +134,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct EntryListRow(ObjectSubclass<imp::EntryListRow>)
-        @extends gtk::Widget;
+        @extends gtk::Widget,
+        @implements gtk::ConstraintTarget, gtk::Buildable, gtk::Accessible;
 }
 
 impl Default for EntryListRow {

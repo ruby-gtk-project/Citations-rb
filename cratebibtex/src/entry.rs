@@ -97,9 +97,7 @@ mod imp {
         fn set(&self, tag: &str, value: &str) {
             let obj = self.obj();
             let old_value = obj.insert_tag(tag, value);
-            if old_value.as_deref() != Some(value)
-                && obj.has_property(tag, Some(String::static_type()))
-            {
+            if old_value.as_deref() != Some(value) && obj.has_property(tag) {
                 obj.notify(tag);
             }
         }

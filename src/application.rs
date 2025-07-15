@@ -41,7 +41,10 @@ mod imp {
     }
 
     impl ApplicationImpl for Application {
-        fn handle_local_options(&self, options: &glib::VariantDict) -> glib::ExitCode {
+        fn handle_local_options(
+            &self,
+            options: &glib::VariantDict,
+        ) -> std::ops::ControlFlow<glib::ExitCode> {
             let is_debug = options.lookup::<bool>("debug").unwrap().unwrap_or_default()
                 || !glib::log_writer_default_would_drop(glib::LogLevel::Debug, Some("citations"));
             if is_debug {
@@ -173,9 +176,9 @@ impl Application {
     }
 
     pub fn run(&self) -> glib::ExitCode {
-        info!("Citations ({})", APP_ID);
-        info!("Version: {} ({})", VERSION, PROFILE);
-        info!("Datadir: {}", PKGDATADIR);
+        info!("Citations ({APP_ID})");
+        info!("Version: {VERSION} ({PROFILE})");
+        info!("Datadir: {PKGDATADIR}");
 
         ApplicationExtManual::run(self)
     }

@@ -337,7 +337,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct EntryPage(ObjectSubclass<imp::EntryPage>)
-        @extends gtk::Widget, adw::Bin;
+        @extends gtk::Widget, adw::Bin,
+        @implements gtk::ConstraintTarget, gtk::Buildable, gtk::Accessible;
 }
 
 impl Default for EntryPage {
@@ -417,7 +418,7 @@ impl EntryPage {
                         button.add_css_class("flat");
                         row.add_suffix(&button);
                     }
-                    if entry.has_property(&key, Some(String::static_type())) {
+                    if entry.has_property(&key) {
                         entry
                             .bind_property(&key, &row, "text")
                             .sync_create()
