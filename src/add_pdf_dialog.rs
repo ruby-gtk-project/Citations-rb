@@ -114,7 +114,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct AddPdfDialog(ObjectSubclass<imp::AddPdfDialog>)
-        @extends gtk::Widget, adw::Dialog, @implements gtk::Root;
+        @extends gtk::Widget, adw::Dialog,
+        @implements gtk::ConstraintTarget, gtk::Buildable, gtk::Accessible, gtk::Root;
 }
 
 impl Default for AddPdfDialog {
