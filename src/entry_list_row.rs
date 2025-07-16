@@ -71,8 +71,7 @@ mod imp {
         fn pretty_author(&self, author: &str) -> String {
             let author = texer::texer(author);
             if author.is_empty() {
-                let placeholder = gettext("Author not set");
-                format!("<i>{placeholder}</i>")
+                gettext("Author not set")
             } else {
                 author.into_owned()
             }
@@ -82,8 +81,7 @@ mod imp {
         fn pretty_title(&self, title: &str) -> String {
             let title = texer::texer(title);
             if title.is_empty() {
-                let placeholder = gettext("Title not set");
-                format!("<i>{placeholder}</i>")
+                gettext("Title not set")
             } else {
                 title.into_owned()
             }
