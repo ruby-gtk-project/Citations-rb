@@ -30,6 +30,15 @@ mod imp {
             self.parent_constructed();
 
             self.obj().add_main_option(
+                "new-window",
+                glib::Char::from(b'w'),
+                glib::OptionFlags::NONE,
+                glib::OptionArg::None,
+                &gettext("Open a new window"),
+                None,
+            );
+
+            self.obj().add_main_option(
                 "debug",
                 glib::Char::from(b'd'),
                 glib::OptionFlags::NONE,
@@ -45,6 +54,19 @@ mod imp {
             &self,
             options: &glib::VariantDict,
         ) -> std::ops::ControlFlow<glib::ExitCode> {
+            let app = self.obj();
+
+            if options.contains("new-window") {
+                if let Err(err) = app.register(None::<&gio::Cancellable>) {
+                    log::error!("Failed to register the application: {err}");
+                }
+
+                if app.is_remote() {
+                    app.activate_action("new-window", None);
+                    return std::ops::ControlFlow::Break(glib::ExitCode::SUCCESS);
+                }
+            }
+
             let is_debug = options.lookup::<bool>("debug").unwrap().unwrap_or_default()
                 || !glib::log_writer_default_would_drop(glib::LogLevel::Debug, Some("citations"));
             if is_debug {
