@@ -9,16 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-07-03 16:14+0000\n"
-"PO-Revision-Date: 2025-07-03 22:07+0200\n"
+"POT-Creation-Date: 2025-07-25 14:55+0000\n"
+"PO-Revision-Date: 2025-07-25 22:55+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: Poedit 2.2.1\n"
 
@@ -97,23 +96,23 @@ msgid "Plain"
 msgstr "Običajno"
 
 #. NOTE: This is the app name
-#: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
+#: data/org.gnome.World.Citations.desktop.in.in:2 data/org.gnome.World.Citations.metainfo.xml.in.in:7
 #: data/resources/ui/window.ui:67 src/main.rs:39
 msgid "Citations"
 msgstr "Citati"
 
-#: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8
+#: data/org.gnome.World.Citations.desktop.in.in:3 data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "Upravljanje z bibliografijo"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.World.Citations.desktop.in.in:10
+#: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
-msgstr ""
-"bibliografija;citiranje;navajanje;viri;literatura;biblio;citing;literature;"
-"BibTeX;LaTeX;TeX;"
+msgstr "bibliografija;citiranje;navajanje;viri;literatura;biblio;citing;literature;BibTeX;LaTeX;TeX;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:18
+msgid "New Window"
+msgstr "Novo okno"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -131,8 +130,7 @@ msgstr "Stanje razpetega okna"
 msgid "List of paths of recent files"
 msgstr "Seznam poti nedavnih datotek"
 
-#: data/org.gnome.World.Citations.gschema.xml.in:22
-#: data/org.gnome.World.Citations.gschema.xml.in:26
+#: data/org.gnome.World.Citations.gschema.xml.in:22 data/org.gnome.World.Citations.gschema.xml.in:26
 msgid "Default template for book citation"
 msgstr "Privzeta predloga citiranja knjige"
 
@@ -162,8 +160,7 @@ msgid "Bibliography folder not set"
 msgstr "Mapa bibliografskih vnosov ni določena"
 
 #: data/resources/ui/add_pdf_dialog.ui:65
-msgid ""
-"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgid "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr "Ustvari kopijo izbranega PDF in ga shrani v mapo Bibliografija."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
@@ -196,13 +193,12 @@ msgstr "Predloga po meri"
 
 #: data/resources/ui/citation_preview.ui:153
 msgid ""
-"Write a custom format for your citations, to insert the contents of a tag "
-"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
-"and italics is supported.\n"
+"Write a custom format for your citations, to insert the contents of a tag <tt>sometag</tt> write "
+"<tt>%SOMETAG%</tt>. Basic markdown syntax for bold and italics is supported.\n"
 "            "
 msgstr ""
-"Za vstavitev citiranja <tt>oznake</tt> vpišite <tt>%SOMETAG%</tt>. Podprta "
-"je možnost uporabe oblikovnega zapisa markdown\n"
+"Za vstavitev citiranja <tt>oznake</tt> vpišite <tt>%SOMETAG%</tt>. Podprta je možnost uporabe "
+"oblikovnega zapisa markdown\n"
 "."
 
 #: data/resources/ui/citation_preview.ui:159
@@ -218,15 +214,15 @@ msgstr "Ni vpisanih virov"
 msgid "Create a new citation"
 msgstr "Ustvari nov vir"
 
-#: data/resources/ui/entry_list_row.ui:91
+#: data/resources/ui/entry_list_row.ui:89
 msgid "_Open PDF"
 msgstr "_Odpri PDF"
 
-#: data/resources/ui/entry_list_row.ui:95
+#: data/resources/ui/entry_list_row.ui:93
 msgid "_Copy Key"
 msgstr "_Kopiraj ključ"
 
-#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Izbriši"
 
@@ -258,7 +254,7 @@ msgstr "_Naslov"
 msgid "_Year"
 msgstr "_Leto"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:396
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
 msgid "Open in Browser"
 msgstr "Odpri v brskalniku"
 
@@ -286,8 +282,8 @@ msgstr "Kopiraj opombe"
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
+#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10 data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:155
 msgid "_Open"
 msgstr "_Odpri"
 
@@ -412,8 +408,7 @@ msgstr "_Poišči z Google Učenjak"
 msgid "_Search in arXiv"
 msgstr "_Poišči v arXiv"
 
-#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
-#: data/resources/ui/window.ui:210
+#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129 data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "Glavni meni"
 
@@ -471,15 +466,19 @@ msgstr "PDF ni bilo mogoče prenesti"
 msgid "Make sure that {path} exists"
 msgstr "Prepričajte se, da pot {path} obstaja"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:194
 msgid "PDF Files"
 msgstr "Datoteke PDF"
 
-#: src/add_pdf_dialog.rs:201
+#: src/add_pdf_dialog.rs:202
 msgid "Select a PDF"
 msgstr "Izberite PDF"
 
 #: src/application.rs:37
+msgid "Open a new window"
+msgstr "Odprite novo okno"
+
+#: src/application.rs:46
 msgid "Enable debug messages"
 msgstr "Omogoči sporočila za odpravljanje napak"
 
@@ -513,7 +512,7 @@ msgstr "Po meri …"
 msgid "Author not set"
 msgstr "Avtor ni nastavljen"
 
-#: src/entry_list_row.rs:85
+#: src/entry_list_row.rs:84
 msgid "Title not set"
 msgstr "Naslov ni nastavljen"
 
@@ -526,7 +525,7 @@ msgstr "Drugo …"
 msgid "Citation Key already exists"
 msgstr "Določilo navedbe že obstaja"
 
-#: src/entry_page.rs:601
+#: src/entry_page.rs:602
 msgid "PDF added"
 msgstr "Dokument PDF je dodan"
 
@@ -663,8 +662,7 @@ msgstr "Razveljavi"
 
 #: src/window.rs:633
 msgid "translator-credits"
-msgstr ""
-"Matej Urbančič <mateju@src.gnome.org>,Martin Srebotnjak <miles@filmsi.net>"
+msgstr "Matej Urbančič <mateju@src.gnome.org>,Martin Srebotnjak <miles@filmsi.net>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
 #: src/window.rs:647
