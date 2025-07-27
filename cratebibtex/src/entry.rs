@@ -28,7 +28,7 @@ mod imp {
         pub other_entry_type: RefCell<Option<String>>,
         #[property(type = String, get, set = Self::set_citation_key, explicit_notify)]
         pub citation_key: RefCell<Option<String>>,
-        #[property(get, set = Self::set_entry_type, explicit_notify, builder(Default::default()))]
+        #[property(get, set = Self::set_entry_type, explicit_notify, default)]
         pub entry_type: Cell<crate::EntryType>,
 
         // Custom properties

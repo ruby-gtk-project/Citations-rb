@@ -104,9 +104,9 @@ mod imp {
 
         #[property(get, set = Self::set_entry, explicit_notify)]
         entry: RefCell<Option<cratebibtex::Entry>>,
-        #[property(get, set = Self::set_template_kind, explicit_notify, builder(Default::default()))]
+        #[property(get, set = Self::set_template_kind, explicit_notify, default)]
         template_kind: Cell<Template>,
-        #[property(get, set = Self::set_format_kind, explicit_notify, builder(Default::default()))]
+        #[property(get, set = Self::set_format_kind, explicit_notify, default)]
         format_kind: Cell<cratebibtex::Format>,
         #[property(get = Self::template, explicit_notify)]
         template: PhantomData<String>,
