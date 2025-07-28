@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-07-03 16:14+0000\n"
-"PO-Revision-Date: 2025-07-08 11:25+0300\n"
+"POT-Creation-Date: 2025-07-27 18:10+0000\n"
+"PO-Revision-Date: 2025-07-28 10:05+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -96,22 +96,26 @@ msgid "Plain"
 msgstr "רגיל"
 
 #. NOTE: This is the app name
-#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
 #: data/resources/ui/window.ui:67 src/main.rs:39
 msgid "Citations"
 msgstr "ציטטות"
 
-#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "ניהול הביבליוגרפיה שלך"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.World.Citations.desktop.in.in:10
+#: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
 "ביבליוגרפיה;ציטוט;מראה מקום;מראי מקום;ספרות;מקורות;BibTeX;LaTeX;TeX;לטך;לטקס;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:18
+msgid "New Window"
+msgstr "חלון חדש"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -217,15 +221,15 @@ msgstr "אין אף מראה מקום"
 msgid "Create a new citation"
 msgstr "יצירת מראה מקום חדש"
 
-#: data/resources/ui/entry_list_row.ui:91
+#: data/resources/ui/entry_list_row.ui:89
 msgid "_Open PDF"
 msgstr "_פתיחת PDF"
 
-#: data/resources/ui/entry_list_row.ui:95
+#: data/resources/ui/entry_list_row.ui:93
 msgid "_Copy Key"
 msgstr "ה_עתקת מפתח"
 
-#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_מחיקה"
 
@@ -257,7 +261,7 @@ msgstr "_כותרת"
 msgid "_Year"
 msgstr "_שנה"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:396
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
 msgid "Open in Browser"
 msgstr "פתיחה בדפדפן"
 
@@ -470,15 +474,19 @@ msgstr "לא ניתן להוריד PDF"
 msgid "Make sure that {path} exists"
 msgstr "נא לוודא ש־‏‎{path} קיים"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:194
 msgid "PDF Files"
 msgstr "קובצי PDF"
 
-#: src/add_pdf_dialog.rs:201
+#: src/add_pdf_dialog.rs:202
 msgid "Select a PDF"
 msgstr "בחירת PDF"
 
 #: src/application.rs:37
+msgid "Open a new window"
+msgstr "פתיחת חלון חדש"
+
+#: src/application.rs:46
 msgid "Enable debug messages"
 msgstr "הפעלת הודעות ניפוי שגיאות"
 
@@ -512,7 +520,7 @@ msgstr "התאמה אישית…"
 msgid "Author not set"
 msgstr "לא הוגדר מחבר"
 
-#: src/entry_list_row.rs:85
+#: src/entry_list_row.rs:84
 msgid "Title not set"
 msgstr "לא הוגדרה כותרת"
 
@@ -525,7 +533,7 @@ msgstr "אחר…"
 msgid "Citation Key already exists"
 msgstr "מפתח מראה מקום כבר קיים"
 
-#: src/entry_page.rs:601
+#: src/entry_page.rs:602
 msgid "PDF added"
 msgstr "נוסף PDF"
 
