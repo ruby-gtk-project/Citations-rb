@@ -53,7 +53,7 @@
                   </lookup>
                 </binding>
                 <style>
-                  <class name="dim-label"/>
+                  <class name="dimmed"/>
                   <class name="numeric"/>
                 </style>
               </object>

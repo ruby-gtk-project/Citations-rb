@@ -67,7 +67,7 @@
                                 <property name="wrap">True</property>
                                 <property name="xalign">0</property>
                                 <style>
-                                  <class name="dim-label"/>
+                                  <class name="dimmed"/>
                                 </style>
                               </object>
                             </child>
