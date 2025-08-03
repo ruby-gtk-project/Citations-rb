@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-07-03 16:14+0000\n"
-"PO-Revision-Date: 2025-07-07 08:30+0200\n"
+"POT-Creation-Date: 2025-07-31 17:58+0000\n"
+"PO-Revision-Date: 2025-08-03 03:06+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -92,21 +92,25 @@ msgid "Plain"
 msgstr "სუფთა"
 
 #. NOTE: This is the app name
-#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
 #: data/resources/ui/window.ui:67 src/main.rs:39
 msgid "Citations"
 msgstr "ციტატები"
 
-#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "მართეთ თქვენი ბიბლიოგრაფია"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.World.Citations.desktop.in.in:10
+#: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "bibliography;citing;literature;BibTeX;LaTeX;TeX;ბიბლიოგრაფია;ლიტერატურა;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:18
+msgid "New Window"
+msgstr "ახალი ფანჯარა"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -158,8 +162,7 @@ msgstr "ბიბლიოგრაფიის საქაღალდე მ�
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
-"ქმნის მონიშნული PDF-ის ასლს და მას თქვენს ბიბლიოგრაფიის საქაღალდეში "
-"შეინახავს."
+"ქმნის მონიშნული PDF-ის ასლს და მას თქვენს ბიბლიოგრაფიის საქაღალდეში შეინახავს."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
 msgid "Add From URL"
@@ -192,13 +195,13 @@ msgstr "მორგებული შაბლონი"
 #: data/resources/ui/citation_preview.ui:153
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
-"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
-"and italics is supported.\n"
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold and "
+"italics is supported.\n"
 "            "
 msgstr ""
-"დაწერეთ ციტატების თქვენი საკუთარი ფორმატი, რომ ჭდის<tt>sometag</tt> "
-"შემცველობა <tt>%SOMETAG%</tt>-ში ჩაწეროთ. მხარდაჭერილია მარკდაუნის მარტივი "
-"სინტაქსი, როგორიცაა სქელი და კურსივი.\n"
+"დაწერეთ ციტატების თქვენი საკუთარი ფორმატი, რომ ჭდის<tt>sometag</tt> შემცველობა "
+"<tt>%SOMETAG%</tt>-ში ჩაწეროთ. მხარდაჭერილია მარკდაუნის მარტივი სინტაქსი, "
+"როგორიცაა სქელი და კურსივი.\n"
 "            "
 
 #: data/resources/ui/citation_preview.ui:159
@@ -214,15 +217,15 @@ msgstr "ციტირების გარეშე"
 msgid "Create a new citation"
 msgstr "ახალი ციტატის შექმნა"
 
-#: data/resources/ui/entry_list_row.ui:91
+#: data/resources/ui/entry_list_row.ui:89
 msgid "_Open PDF"
 msgstr "_PDF-ის გახსნა"
 
-#: data/resources/ui/entry_list_row.ui:95
+#: data/resources/ui/entry_list_row.ui:93
 msgid "_Copy Key"
 msgstr "გასაღების _კოპირება"
 
-#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_წაშლა"
 
@@ -254,7 +257,7 @@ msgstr "_სათაური"
 msgid "_Year"
 msgstr "_წელი"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:396
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
 msgid "Open in Browser"
 msgstr "ბრაუზერში გახსნა"
 
@@ -467,15 +470,19 @@ msgstr "PDF-ის გადმოწერის შეცდომა"
 msgid "Make sure that {path} exists"
 msgstr "დარწმუნდით, რომ {path} არსებობს"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:194
 msgid "PDF Files"
 msgstr "PDF ფაილები"
 
-#: src/add_pdf_dialog.rs:201
+#: src/add_pdf_dialog.rs:202
 msgid "Select a PDF"
 msgstr "აირჩიეთ PDF"
 
 #: src/application.rs:37
+msgid "Open a new window"
+msgstr "ახალი ფანჯრის გახსნა"
+
+#: src/application.rs:46
 msgid "Enable debug messages"
 msgstr "გამართვის შეტყობინებების ჩართვა"
 
@@ -509,7 +516,7 @@ msgstr "ხელით…"
 msgid "Author not set"
 msgstr "ავტორი დაყენებული არაა"
 
-#: src/entry_list_row.rs:85
+#: src/entry_list_row.rs:84
 msgid "Title not set"
 msgstr "სათაური დაყენებული არაა"
 
@@ -522,7 +529,7 @@ msgstr "სხვა…"
 msgid "Citation Key already exists"
 msgstr "ციტატის გასაღები უკვე არსებობს"
 
-#: src/entry_page.rs:601
+#: src/entry_page.rs:602
 msgid "PDF added"
 msgstr "PDF დაემატა"
 
