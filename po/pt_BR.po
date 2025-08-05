@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-07-03 16:14+0000\n"
-"PO-Revision-Date: 2025-07-05 11:05-0300\n"
+"POT-Creation-Date: 2025-08-03 01:07+0000\n"
+"PO-Revision-Date: 2025-08-05 09:07-0300\n"
 "Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
@@ -102,23 +102,27 @@ msgid "Plain"
 msgstr "Simples"
 
 #. NOTE: This is the app name
-#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
 #: data/resources/ui/window.ui:67 src/main.rs:39
 msgid "Citations"
 msgstr "Citações"
 
-#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "Gerencie sua bibliografia"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.World.Citations.desktop.in.in:10
+#: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
 "bibliography;citing;literature;BibTeX;LaTeX;TeX;bibliografia;citar;"
 "literatura;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:18
+msgid "New Window"
+msgstr "Nova janela"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -225,15 +229,15 @@ msgstr "Sem citações"
 msgid "Create a new citation"
 msgstr "Criar nova citação"
 
-#: data/resources/ui/entry_list_row.ui:91
+#: data/resources/ui/entry_list_row.ui:89
 msgid "_Open PDF"
 msgstr "_Abrir PDF"
 
-#: data/resources/ui/entry_list_row.ui:95
+#: data/resources/ui/entry_list_row.ui:93
 msgid "_Copy Key"
 msgstr "_Copiar chave"
 
-#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Excluir"
 
@@ -265,7 +269,7 @@ msgstr "_Título"
 msgid "_Year"
 msgstr "A_no"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:396
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
 msgid "Open in Browser"
 msgstr "Abrir no navegador"
 
@@ -478,15 +482,19 @@ msgstr "Não foi possível baixar o PDF"
 msgid "Make sure that {path} exists"
 msgstr "Certifique-se que {path} existe"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:194
 msgid "PDF Files"
 msgstr "Arquivos PDF"
 
-#: src/add_pdf_dialog.rs:201
+#: src/add_pdf_dialog.rs:202
 msgid "Select a PDF"
 msgstr "Selecionar um PDF"
 
 #: src/application.rs:37
+msgid "Open a new window"
+msgstr "Abre uma nova janela"
+
+#: src/application.rs:46
 msgid "Enable debug messages"
 msgstr "Habilitar mensagens de depuração"
 
@@ -520,7 +528,7 @@ msgstr "Personalizado…"
 msgid "Author not set"
 msgstr "Autor não definido"
 
-#: src/entry_list_row.rs:85
+#: src/entry_list_row.rs:84
 msgid "Title not set"
 msgstr "Título não definido"
 
@@ -533,7 +541,7 @@ msgstr "Outros…"
 msgid "Citation Key already exists"
 msgstr "A chave de citação já existe"
 
-#: src/entry_page.rs:601
+#: src/entry_page.rs:602
 msgid "PDF added"
 msgstr "PDF adicionado"
 
