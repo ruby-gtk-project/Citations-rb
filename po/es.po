@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-01-10 21:19+0000\n"
-"PO-Revision-Date: 2025-01-25 23:29+0100\n"
+"POT-Creation-Date: 2025-08-09 12:32+0000\n"
+"PO-Revision-Date: 2025-08-10 13:30+0200\n"
 "Last-Translator: Julián Villodre <jvillodrede@gmail.com>\n"
 "Language-Team: es_ES\n"
 "Language: es_ES\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-Generator: Gtranslator 48.0\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -89,28 +89,28 @@ msgid "Tech Report"
 msgstr "Informe técnico"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:52
+#: cratebibtex/src/format.rs:51
 msgid "Plain"
 msgstr "Plano"
 
 #. NOTE: This is the app name
-#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:39 src/window.rs:629
+#: data/resources/ui/window.ui:67 src/main.rs:39
 msgid "Citations"
 msgstr "Citas"
 
-#: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:631
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "Gestionar su bibliografía"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.World.Citations.desktop.in.in:10
+#: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "bibliografía;citas;literatura;BibTeX;LaTeX;TeX;"
 
-#: data/org.gnome.World.Citations.desktop.in.in:19
+#: data/org.gnome.World.Citations.desktop.in.in:18
 msgid "New Window"
 msgstr "Nueva ventana"
 
@@ -220,15 +220,15 @@ msgstr "No hay citas"
 msgid "Create a new citation"
 msgstr "Crear una cita nueva"
 
-#: data/resources/ui/entry_list_row.ui:91
+#: data/resources/ui/entry_list_row.ui:89
 msgid "_Open PDF"
 msgstr "_Abrir PDF"
 
-#: data/resources/ui/entry_list_row.ui:95
+#: data/resources/ui/entry_list_row.ui:93
 msgid "_Copy Key"
 msgstr "_Copiar clave"
 
-#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Eliminar"
 
@@ -260,7 +260,7 @@ msgstr "_Título"
 msgid "_Year"
 msgstr "_Año"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
 msgid "Open in Browser"
 msgstr "Abrir enlace en el navegador"
 
@@ -289,7 +289,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:158
+#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
 msgid "_Open"
 msgstr "_Abrir"
 
@@ -339,42 +339,47 @@ msgstr "Desde DOI"
 msgid "DOI"
 msgstr "DOI"
 
-#: data/resources/ui/shortcuts.ui:11
+#: data/resources/ui/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:9
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Mostrar atajos"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nueva ventana"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Cerrar ventana"
+
+#: data/resources/ui/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Salir"
 
-#: data/resources/ui/shortcuts.ui:34
+#: data/resources/ui/shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "Bibliografía"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:38
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Abrir"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:44
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Guardar"
 
-#: data/resources/ui/shortcuts.ui:49
+#: data/resources/ui/shortcuts.ui:50
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Buscar"
@@ -409,49 +414,49 @@ msgstr "_Buscar en Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Buscar en arXiv"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:131
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "Menú principal"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:98
 msgid "Open a BibTeX File"
 msgstr "Abrir un archivo BibTeX"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:99
 msgid "Or drag-and-drop a file"
 msgstr "O arrastre y suelte un archivo"
 
-#: data/resources/ui/window.ui:140
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "Gestionar sus citas"
 
-#: data/resources/ui/window.ui:150
+#: data/resources/ui/window.ui:147
 msgid "Recent Files"
 msgstr "Archivos recientes"
 
-#: data/resources/ui/window.ui:194
+#: data/resources/ui/window.ui:192
 msgid "Sidebar"
 msgstr "Barra lateral"
 
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:203
 msgid "Add New Citation"
 msgstr "Añadir una cita nueva"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:217
 msgid "Search"
 msgstr "Buscar"
 
-#: data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:231
 msgid "Search…"
 msgstr "Buscar…"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:253
 msgid "Content"
 msgstr "Contenido"
 
-#: data/resources/ui/window.ui:265
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "Menú secundario"
 
@@ -468,15 +473,19 @@ msgstr "No se pudo descargar el PDF"
 msgid "Make sure that {path} exists"
 msgstr "Asegúrese de que la {path} existe"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:194
 msgid "PDF Files"
 msgstr "Archivos PDF"
 
-#: src/add_pdf_dialog.rs:201
+#: src/add_pdf_dialog.rs:202
 msgid "Select a PDF"
 msgstr "Seleccionar un PDF"
 
 #: src/application.rs:37
+msgid "Open a new window"
+msgstr "Abrir una nueva ventana"
+
+#: src/application.rs:46
 msgid "Enable debug messages"
 msgstr "Activar mensajes de depuración"
 
@@ -498,7 +507,7 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Personalizado"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "Copiada"
 
@@ -510,24 +519,24 @@ msgstr "Personalizada…"
 msgid "Author not set"
 msgstr "Autor no establecido"
 
-#: src/entry_list_row.rs:85
+#: src/entry_list_row.rs:84
 msgid "Title not set"
 msgstr "Título no establecido"
 
-#: src/entry_page.rs:204
+#: src/entry_page.rs:200
 msgid "Other…"
 msgstr "Otra…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:252
+#: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "La clave de la cita ya existe"
 
-#: src/entry_page.rs:605
+#: src/entry_page.rs:602
 msgid "PDF added"
 msgstr "PDF añadido"
 
-#: src/new_entry_dialog.rs:162
+#: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
 msgstr "Insertar una cita BibTeX aquí"
 
@@ -620,45 +629,45 @@ msgstr "Escuela"
 msgid "Institution"
 msgstr "Institución"
 
-#: src/window.rs:117
+#: src/window.rs:119
 msgid "Could not add entry"
 msgstr "No se pudo añadir una entrada"
 
-#: src/window.rs:357 src/window.rs:382
+#: src/window.rs:359 src/window.rs:384
 msgid "BibTeX Files"
 msgstr "Archivos BibTeX"
 
-#: src/window.rs:391
+#: src/window.rs:393
 msgid "Create New Bibliography"
 msgstr "Crear bibliografía nueva"
 
-#: src/window.rs:392
+#: src/window.rs:394
 msgid "_Create"
 msgstr "_Crear"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:395
+#: src/window.rs:397
 msgid "bibliography"
 msgstr "bibliografía"
 
-#: src/window.rs:518
+#: src/window.rs:520
 msgid "An entry with the given citation key already exists"
 msgstr "Ya existe una entrada con la clave de la cita dada"
 
-#: src/window.rs:533
+#: src/window.rs:535
 msgid "Bibliography saved"
 msgstr "Bibliografía guardada"
 
-#: src/window.rs:586
+#: src/window.rs:588
 msgid "Citation Deleted"
 msgstr "Cita eliminada"
 
-#: src/window.rs:588
+#: src/window.rs:590
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/window.rs:635
+#: src/window.rs:633
 msgid "translator-credits"
 msgstr ""
 "Julián Villodre <jvillodrede@gmail.com>, 2024\n"
