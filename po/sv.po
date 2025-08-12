@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-07-03 16:14+0000\n"
-"PO-Revision-Date: 2025-07-03 23:07+0200\n"
+"POT-Creation-Date: 2025-07-25 14:55+0000\n"
+"PO-Revision-Date: 2025-07-25 23:05+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -94,21 +94,25 @@ msgid "Plain"
 msgstr "Vanlig"
 
 #. NOTE: This is the app name
-#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
 #: data/resources/ui/window.ui:67 src/main.rs:39
 msgid "Citations"
 msgstr "Citations"
 
-#: data/org.gnome.World.Citations.desktop.in.in:4
+#: data/org.gnome.World.Citations.desktop.in.in:3
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "Hantera din bibliografi"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.World.Citations.desktop.in.in:10
+#: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "bibliografi;citering;litteratur;BibTeX;LaTeX;TeX;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:18
+msgid "New Window"
+msgstr "Nytt fönster"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
 msgid "Window width"
@@ -215,15 +219,15 @@ msgstr "Inga citeringar"
 msgid "Create a new citation"
 msgstr "Skapa en ny citering"
 
-#: data/resources/ui/entry_list_row.ui:91
+#: data/resources/ui/entry_list_row.ui:89
 msgid "_Open PDF"
 msgstr "_Öppna PDF"
 
-#: data/resources/ui/entry_list_row.ui:95
+#: data/resources/ui/entry_list_row.ui:93
 msgid "_Copy Key"
 msgstr "_Kopiera nyckel"
 
-#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "Ta _bort"
 
@@ -255,7 +259,7 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "Å_r"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:396
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
 msgid "Open in Browser"
 msgstr "Öppna i webbläsare"
 
@@ -468,15 +472,19 @@ msgstr "Kunde inte hämta PDF"
 msgid "Make sure that {path} exists"
 msgstr "Se till att {path} existerar"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:194
 msgid "PDF Files"
 msgstr "PDF-filer"
 
-#: src/add_pdf_dialog.rs:201
+#: src/add_pdf_dialog.rs:202
 msgid "Select a PDF"
 msgstr "Välj en PDF"
 
 #: src/application.rs:37
+msgid "Open a new window"
+msgstr "Öppna ett nytt fönster"
+
+#: src/application.rs:46
 msgid "Enable debug messages"
 msgstr "Aktivera felsökningsmeddelanden"
 
@@ -510,7 +518,7 @@ msgstr "Anpassad…"
 msgid "Author not set"
 msgstr "Författare är inte satt"
 
-#: src/entry_list_row.rs:85
+#: src/entry_list_row.rs:84
 msgid "Title not set"
 msgstr "Titel är inte satt"
 
@@ -523,7 +531,7 @@ msgstr "Annan…"
 msgid "Citation Key already exists"
 msgstr "Citeringsnyckel finns redan"
 
-#: src/entry_page.rs:601
+#: src/entry_page.rs:602
 msgid "PDF added"
 msgstr "PDF tillagd"
 
