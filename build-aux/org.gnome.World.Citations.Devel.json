@@ -25,6 +25,7 @@
             "--share=network"
         ],
         "env": {
+            "RUSTFLAGS": "-C force-frame-pointers=yes -C symbol-mangling-version=v0 -Zsanitizer=address",
             "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER": "clang",
             "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold",
             "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER": "clang",
@@ -67,7 +68,11 @@
             "name": "citations",
             "buildsystem": "meson",
             "run-tests": true,
-            "config-opts": ["-Dprofile=development"],
+            "config-opts": [
+                "-Db_sanitize=address",
+                "-Dbuildtype=debug",
+                "-Dprofile=development"
+            ],
             "sources": [
                 {
                     "type": "dir",

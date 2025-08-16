@@ -24,15 +24,18 @@ run_command(
   check: true
 )
 
+host_triple = run_command('sh', '-c', 'rustc -Vv | grep -Po "(?<=host: ).*"').stdout().strip()
+
 cargo_options = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
 cargo_options += [ '--target-dir', meson.project_build_root() / 'src' ]
+cargo_options += [ '-Zbuild-std', '--target=' + host_triple ]
 
 if get_option('profile') == 'default'
   cargo_options += [ '--release' ]
-  rust_target = 'release'
+  rust_target = join_paths(host_triple, 'release')
   message('Building in release mode')
 else
-  rust_target = 'debug'
+  rust_target = join_paths(host_triple, 'debug')
   message('Building in debug mode')
 endif
 
