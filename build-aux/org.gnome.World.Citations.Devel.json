@@ -4,7 +4,7 @@
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.rust-stable",
+        "org.freedesktop.Sdk.Extension.rust-nightly",
         "org.freedesktop.Sdk.Extension.llvm20"
     ],
     "command": "citations",
@@ -20,7 +20,7 @@
         "--socket=wayland"
     ],
     "build-options" : {
-        "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin",
+        "append-path": "/usr/lib/sdk/rust-nightly/bin:/usr/lib/sdk/llvm20/bin",
         "build-args" : [
             "--share=network"
         ],
