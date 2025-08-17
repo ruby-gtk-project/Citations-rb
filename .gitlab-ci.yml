@@ -54,7 +54,7 @@ rustfmt:
 codespell:
   stage: check
   script:
-    - dnf install -y codespell
+    - dnf install --quiet -y codespell
     - codespell -L crate -S "*.po,target,_build" -f
 
 .flatpak-command: &flatpak-command
