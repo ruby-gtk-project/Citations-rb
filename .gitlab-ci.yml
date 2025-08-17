@@ -1,3 +1,4 @@
+image: fedora:latest
 stages:
   - check
   - test
@@ -53,7 +54,7 @@ rustfmt:
 codespell:
   stage: check
   script:
-    - dnf install -y codespell
+    - dnf install --quiet -y codespell
     - codespell -L crate -S "*.po,target,_build" -f
 
 .flatpak-command: &flatpak-command
@@ -83,3 +84,10 @@ cargo-audit:
   script:
     - cargo install cargo-deny
     - cargo deny check advisories bans sources
+
+check-potfiles:
+  stage: check
+  script:
+    - dnf install --quiet -y gettext python3 git-core
+    - git clone --quiet --depth=1 https://gitlab.gnome.org/msandova/check-potfiles.git
+    - python3 check-potfiles/check_potfiles.py --directory src,data
