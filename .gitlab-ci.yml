@@ -88,8 +88,9 @@ cargo-audit:
 check-potfiles:
   stage: check
   script:
-    - dnf install --quiet -y gettext python3 git-core
-    - git clone --quiet --depth=1 https://gitlab.gnome.org/msandova/check-potfiles.git
-    - python3 check-potfiles/check_potfiles.py --directory src --directory data
+    - dnf install --quiet -y gettext python3
+    - curl --proto '=https' --tlsv1.2 -sSf -O
+        https://gitlab.gnome.org/msandova/check-potfiles/-/raw/master/check_potfiles.py
+    - python3 check_potfiles.py --directory src --directory data
         --keyword=gettext_f --keyword='ngettext_f:1,2'
         --exclude src/i18n.rs
