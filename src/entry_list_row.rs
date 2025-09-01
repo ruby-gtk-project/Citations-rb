@@ -88,13 +88,19 @@ mod imp {
         }
 
         #[template_callback]
-        fn menu_gesture_released(
+        fn menu_gesture_pressed(
             gesture: &gtk::Gesture,
             _n_press: i32,
             x: f64,
             y: f64,
             obj: &super::EntryListRow,
         ) {
+            if gesture
+                .current_event()
+                .is_none_or(|e| !e.triggers_context_menu())
+            {
+                return;
+            }
             let has_pdf = crate::utils::has_pdf(&obj.entry().unwrap().citation_key());
             obj.action_set_enabled("entry-row.open-pdf", has_pdf);
 
