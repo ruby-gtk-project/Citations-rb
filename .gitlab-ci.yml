@@ -79,11 +79,10 @@ cargo-test:
 cargo-audit:
   stage: test
   interruptible: true
-  image: rust
   allow_failure: true
   script:
-    - cargo install cargo-deny
-    - cargo deny check advisories bans sources
+    - dnf install --quiet -y cargo-deny cargo
+    - cargo-deny check
 
 check-potfiles:
   stage: check
