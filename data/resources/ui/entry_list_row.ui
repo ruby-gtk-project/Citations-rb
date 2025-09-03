@@ -3,8 +3,8 @@
   <template class="EntryListRow">
     <child>
       <object class="GtkGestureClick" id="menu_gesture">
-        <property name="button">3</property>
-        <signal name="released" handler="menu_gesture_released"/>
+        <property name="button">0</property>
+        <signal name="pressed" handler="menu_gesture_pressed"/>
       </object>
     </child>
     <child>
