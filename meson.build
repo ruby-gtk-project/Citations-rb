@@ -1,8 +1,8 @@
 project(
   'citations',
   'rust',
-  version: '0.8.0',
-  meson_version: '>= 0.59',
+  version: '0.9.0',
+  meson_version: '>= 1.7',
   license: 'GPL-3.0-or-later',
 )
 
