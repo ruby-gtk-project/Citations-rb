@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-08-26 22:04+0000\n"
-"PO-Revision-Date: 2025-08-28 21:56+0300\n"
+"POT-Creation-Date: 2025-09-18 20:14+0000\n"
+"PO-Revision-Date: 2025-09-20 11:37+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -110,8 +110,8 @@ msgstr "Kaynakçanızı yönetin"
 #: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
-"bibliography;citing;literature;BibTeX;LaTeX;TeX;kaynakça;kaynak dizini;"
-"alıntı;literatür;yazın;alanyazın;"
+"bibliography;citing;literature;BibTeX;LaTeX;TeX;kaynakça;kaynak "
+"dizini;alıntı;literatür;yazın;alanyazın;"
 
 #: data/org.gnome.World.Citations.desktop.in.in:19
 msgid "New Window"
@@ -413,7 +413,7 @@ msgstr "_Google Scholar’da Ara"
 #. TRANSLATORS arXiv is a proper name
 #: data/resources/ui/window.ui:55
 msgid "_Search in arXiv"
-msgstr "arXiv’de Ara"
+msgstr "arXiv’de _Ara"
 
 #: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
 #: data/resources/ui/window.ui:210
@@ -686,7 +686,7 @@ msgstr "Tüm değişiklikleri kasaya yazmak ister misiniz?"
 
 #: src/window.rs:654
 msgid "_Quit Without Saving"
-msgstr "Kaydetmeden Ç_ık"
+msgstr "K_aydetmeden Çık"
 
 #: src/window.rs:655
 msgid "_Don't Quit"
