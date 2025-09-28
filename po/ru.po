@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-07-26 08:47+0000\n"
-"PO-Revision-Date: 2025-07-27 21:26+1000\n"
+"POT-Creation-Date: 2025-09-25 23:49+0000\n"
+"PO-Revision-Date: 2025-09-26 15:11+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -108,11 +108,9 @@ msgstr "Управляйте своей библиографией"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
-msgstr ""
-"bibliography;citing;literature;BibTeX;LaTeX;TeX;библиография;цитирование;"
-"цитата;литература;"
+msgstr "bibliography;citing;literature;BibTeX;LaTeX;TeX;библиография;цитирование;цитата;литература;"
 
-#: data/org.gnome.World.Citations.desktop.in.in:18
+#: data/org.gnome.World.Citations.desktop.in.in:19
 msgid "New Window"
 msgstr "Новое окно"
 
@@ -152,6 +150,11 @@ msgstr "Управляйте своими библиографиями, испо
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:15
 msgid "Main window"
 msgstr "Главное окно"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:138
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
 #: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
@@ -696,9 +699,6 @@ msgstr "_Сохранить и закрыть"
 #: src/window.rs:699
 msgid "Remove From Recent Files"
 msgstr "Удалить из недавних файлов"
-
-#~ msgid "Maximiliano Sandoval"
-#~ msgstr "Maximiliano Sandoval"
 
 #~ msgid "Back"
 #~ msgstr "Назад"
