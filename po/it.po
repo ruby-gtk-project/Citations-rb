@@ -1,14 +1,14 @@
 # Italian translation for citations.
 # Copyright (C) 2022 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
-# Davide Ferracin <davide.ferracin@protonmail.com>, 2022-2024.
+# Davide Ferracin <davide.ferracin@protonmail.com>, 2022-2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2024-03-05 20:36+0000\n"
-"PO-Revision-Date: 2024-03-22 20:34+0200\n"
+"POT-Creation-Date: 2025-10-07 15:58+0000\n"
+"PO-Revision-Date: 2025-10-07 22:52+0200\n"
 "Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
 "Language-Team: Italian <gnome-it-list@gnome.org>\n"
 "Language: it\n"
@@ -38,11 +38,11 @@ msgstr "Vario"
 #. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:121
 msgid "In Proceedings"
-msgstr "Articolo in un verbale"
+msgstr "Parte di atti di un convegno"
 
 #: cratebibtex/src/entry_type.rs:122
 msgid "Unpublished"
-msgstr "Documento non pubblicato"
+msgstr "Non pubblicato"
 
 #. NOTE As in online source
 #: cratebibtex/src/entry_type.rs:124
@@ -93,24 +93,24 @@ msgid "Tech Report"
 msgstr "Relazione tecnica"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:52
+#: cratebibtex/src/format.rs:51
 msgid "Plain"
 msgstr "Semplice"
 
 #. NOTE: This is the app name
-#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:42 src/window.rs:620
+#: data/resources/ui/window.ui:67 src/main.rs:39
 msgid "Citations"
 msgstr "Citazioni"
 
-#: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:622
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "Gestore di bibliografie"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.World.Citations.desktop.in.in:10
+#: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "bibliografia;citazioni;letteratura;BibTeX;LaTeX;TeX;"
 
@@ -155,33 +155,38 @@ msgstr "Gestisce le bibliografie usando il formato BibTeX."
 msgid "Main window"
 msgstr "Finestra principale"
 
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:138
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
 #. Translators: Selects a PDF file for the citation
 #: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
 msgstr "Aggiungi PDF"
 
-#: data/resources/ui/add_pdf_dialog.ui:46
+#: data/resources/ui/add_pdf_dialog.ui:47
 msgid "Bibliography folder not set"
 msgstr "Cartella della bibliografia non impostata"
 
-#: data/resources/ui/add_pdf_dialog.ui:64
+#: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Crea una copia del PDF selezionato e la salva nella propria cartella della "
 "bibliografia"
 
-#: data/resources/ui/add_pdf_dialog.ui:79
-msgid "From File"
-msgstr "Da file"
+#: data/resources/ui/add_pdf_dialog.ui:80
+msgid "Add From URL"
+msgstr "Aggiungi da URL"
 
-#: data/resources/ui/add_pdf_dialog.ui:92
-msgid "From URL"
-msgstr "Da URL"
-
-#: data/resources/ui/add_pdf_dialog.ui:98
+#: data/resources/ui/add_pdf_dialog.ui:86
 msgid "Download…"
 msgstr "Scarica…"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "Add From File…"
+msgstr "Aggiungi da file"
 
 #: data/resources/ui/citation_preview.ui:15
 msgid "Custom Citation Format"
@@ -224,15 +229,15 @@ msgstr "Nessuna citazione"
 msgid "Create a new citation"
 msgstr "Creare una nuova citazione"
 
-#: data/resources/ui/entry_list_row.ui:90
+#: data/resources/ui/entry_list_row.ui:89
 msgid "_Open PDF"
 msgstr "_Apri PDF"
 
-#: data/resources/ui/entry_list_row.ui:94
+#: data/resources/ui/entry_list_row.ui:93
 msgid "_Copy Key"
 msgstr "_Copia chiave"
 
-#: data/resources/ui/entry_list_row.ui:100 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Elimina"
 
@@ -264,7 +269,7 @@ msgstr "_Titolo"
 msgid "_Year"
 msgstr "A_nno"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:403
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
 msgid "Open in Browser"
 msgstr "Apri nel browser"
 
@@ -293,15 +298,15 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:157
+#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
 msgid "_Open"
 msgstr "_Apri"
 
-#: data/resources/ui/entry_page.ui:310
+#: data/resources/ui/entry_page.ui:311
 msgid "Delete PDF"
 msgstr "Elimina PDF"
 
-#: data/resources/ui/entry_page.ui:351
+#: data/resources/ui/entry_page.ui:352
 msgid "Could not set PDF Preview"
 msgstr "Impostazione dell'anteprima del PDF non riuscita"
 
@@ -309,76 +314,81 @@ msgstr "Impostazione dell'anteprima del PDF non riuscita"
 msgid "Add new Entry"
 msgstr "Aggiungi nuova voce"
 
-#: data/resources/ui/new_entry_dialog.ui:17
+#: data/resources/ui/new_entry_dialog.ui:18
 msgid "_Cancel"
 msgstr "_Annulla"
 
-#: data/resources/ui/new_entry_dialog.ui:24
+#: data/resources/ui/new_entry_dialog.ui:26
 msgid "C_reate"
 msgstr "_Crea"
 
-#: data/resources/ui/new_entry_dialog.ui:40
+#: data/resources/ui/new_entry_dialog.ui:44
 msgid "New"
 msgstr "Nuova"
 
-#: data/resources/ui/new_entry_dialog.ui:59
+#: data/resources/ui/new_entry_dialog.ui:63
 msgid "Citation Key"
 msgstr "Riferimento della citazione"
 
-#: data/resources/ui/new_entry_dialog.ui:66
+#: data/resources/ui/new_entry_dialog.ui:70
 msgid "Citation Type"
 msgstr "Tipo di citazione"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/new_entry_dialog.ui:86
+#: data/resources/ui/new_entry_dialog.ui:90
 msgid "From BibTeX"
 msgstr "Da BibTeX"
 
-#: data/resources/ui/new_entry_dialog.ui:105
+#: data/resources/ui/new_entry_dialog.ui:109
 msgid "From DOI"
 msgstr "Da DOI"
 
 #. TRANSLATORS DOI is a proper name
-#: data/resources/ui/new_entry_dialog.ui:116
+#: data/resources/ui/new_entry_dialog.ui:120
 msgid "DOI"
 msgstr "DOI"
 
-#: data/resources/ui/shortcuts.ui:11
+#: data/resources/ui/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Generali"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:9
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Mostra scorciatoie"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nuova finestra"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Chiude la finestra"
+
+#: data/resources/ui/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Esce"
 
-#: data/resources/ui/shortcuts.ui:34
+#: data/resources/ui/shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "Bibliografia"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:38
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Apre"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:44
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Salva"
 
-#: data/resources/ui/shortcuts.ui:49
+#: data/resources/ui/shortcuts.ui:50
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Cerca"
@@ -413,25 +423,25 @@ msgstr "Cerca in _Google Scholar"
 msgid "_Search in arXiv"
 msgstr "Cerca in ar_Xiv"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
 #: data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "Menù principale"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:98
 msgid "Open a BibTeX File"
 msgstr "Aprire un file BibTeX"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:99
 msgid "Or drag-and-drop a file"
 msgstr "Oppure trascinare qui un file e rilasciarlo"
 
-#: data/resources/ui/window.ui:139
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "Gestore di citazioni"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:147
 msgid "Recent Files"
 msgstr "File recenti"
 
@@ -451,11 +461,11 @@ msgstr "Cerca"
 msgid "Search…"
 msgstr "Cerca…"
 
-#: data/resources/ui/window.ui:251
+#: data/resources/ui/window.ui:253
 msgid "Content"
 msgstr "Contenuto"
 
-#: data/resources/ui/window.ui:261
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "Menù secondario"
 
@@ -468,17 +478,25 @@ msgid "Could not download PDF"
 msgstr "Scaricamento del PDF non riuscito"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:104
+#: src/add_pdf_dialog.rs:105
 msgid "Make sure that {path} exists"
 msgstr "Assicurarsi che {path} esista"
 
-#: src/add_pdf_dialog.rs:185
+#: src/add_pdf_dialog.rs:194
 msgid "PDF Files"
 msgstr "File PDF"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:202
 msgid "Select a PDF"
 msgstr "Selezionare un PDF"
+
+#: src/application.rs:37
+msgid "Open a new window"
+msgstr "Apri una nuova finestra"
+
+#: src/application.rs:46
+msgid "Enable debug messages"
+msgstr "Attivare i messaggi di debug"
 
 #. TODO Should this be translatable?
 #: src/citation_preview.rs:56
@@ -498,28 +516,36 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Personalizzato"
 
-#: src/citation_preview.rs:267 src/entry_list_row.rs:59 src/entry_page.rs:243
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "Copiato"
 
-#: src/citation_preview.rs:274
+#: src/citation_preview.rs:273
 msgid "Custom…"
 msgstr "Personalizzato…"
 
-#: src/entry_page.rs:204
+#: src/entry_list_row.rs:74
+msgid "Author not set"
+msgstr "Autore non impostato"
+
+#: src/entry_list_row.rs:84
+msgid "Title not set"
+msgstr "Titolo non impostato"
+
+#: src/entry_page.rs:200
 msgid "Other…"
 msgstr "Altro…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:266
+#: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "Il riferimento della citazione esiste già"
 
-#: src/entry_page.rs:586
+#: src/entry_page.rs:602
 msgid "PDF added"
 msgstr "PDF aggiunto"
 
-#: src/new_entry_dialog.rs:149
+#: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
 msgstr "Inserire qui una citazione di BibTeX"
 
@@ -616,79 +642,76 @@ msgstr "Scuola"
 msgid "Institution"
 msgstr "Istituzione"
 
-#: src/window.rs:117
+#: src/window.rs:119
 msgid "Could not add entry"
 msgstr "Aggiunta della voce non riuscita"
 
-#: src/window.rs:331 src/window.rs:356
+#: src/window.rs:359 src/window.rs:384
 msgid "BibTeX Files"
 msgstr "File BibTeX"
 
-#: src/window.rs:365
+#: src/window.rs:393
 msgid "Create New Bibliography"
 msgstr "Crea nuova bibliografia"
 
-#: src/window.rs:366
+#: src/window.rs:394
 msgid "_Create"
 msgstr "_Crea"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:369
+#: src/window.rs:397
 msgid "bibliography"
 msgstr "bibliografia"
 
-#: src/window.rs:473
-msgid "Remove From Recent Files"
-msgstr "Riumovi dai file recenti"
-
 # [NdT] Qui non capisco se {citation_key} vada tradotto...
 # forse manca qualcosa nella stringa originale.
-#: src/window.rs:513
+#: src/window.rs:520
 msgid "An entry with the given citation key already exists"
 msgstr "Una voce con il riferimento indicato esiste già"
 
-#: src/window.rs:528
+#: src/window.rs:535
 msgid "Bibliography saved"
 msgstr "Bibliografia salvata"
 
-#: src/window.rs:581
+#: src/window.rs:588
 msgid "Citation Deleted"
 msgstr "Citazione eliminata"
 
-#: src/window.rs:583
+#: src/window.rs:590
 msgid "Undo"
 msgstr "Annulla"
 
-#: src/window.rs:626
+#: src/window.rs:633
 msgid "translator-credits"
 msgstr "Davide Ferracin <davide.ferracin@protonmail.com>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:638
+#: src/window.rs:647
 msgid "Unsaved Changes"
 msgstr "Modifiche non salvate"
 
 # [NdT] Non so cosa sia questa "safe"... lo rendo in italiano con "file".
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:641
+#: src/window.rs:650
 msgid "Do you want to write all changes to the safe?"
 msgstr "Salvare tutte le modifiche ai file?"
 
-#: src/window.rs:645
+#: src/window.rs:654
 msgid "_Quit Without Saving"
 msgstr "_Esci senza salvare"
 
-#: src/window.rs:646
+#: src/window.rs:655
 msgid "_Don't Quit"
 msgstr "_Non uscire"
 
-#: src/window.rs:647
+#: src/window.rs:656
 msgid "_Save and Quit"
 msgstr "_Salva ed esci"
 
-#~ msgid "Maximiliano Sandoval"
-#~ msgstr "Maximiliano Sandoval"
+#: src/window.rs:699
+msgid "Remove From Recent Files"
+msgstr "Riumovi dai file recenti"
 
 #~ msgid "Back"
 #~ msgstr "Indietro"
