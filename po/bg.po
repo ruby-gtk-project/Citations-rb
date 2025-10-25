@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-01-12 21:03+0000\n"
-"PO-Revision-Date: 2025-01-11 16:32+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2025-10-20 21:11+0000\n"
+"PO-Revision-Date: 2025-10-25 13:58+0200\n"
+"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-Generator: Poedit 3.8\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -88,24 +88,22 @@ msgid "Tech Report"
 msgstr "Технически доклад"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:52
+#: cratebibtex/src/format.rs:51
 msgid "Plain"
 msgstr "Обикновен текст"
 
 #. NOTE: This is the app name
-#: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:39 src/window.rs:629
+#: data/org.gnome.World.Citations.desktop.in.in:2 data/org.gnome.World.Citations.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:67 src/main.rs:39
 msgid "Citations"
 msgstr "Цитати"
 
-#: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:631
+#: data/org.gnome.World.Citations.desktop.in.in:3 data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "Управление на библиографията ви"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.World.Citations.desktop.in.in:10
+#: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "библиография;цитиране;литература;тех;латех;бибтех;bibliography;citing;literature;bibtex;latex;tex;"
 
@@ -129,8 +127,7 @@ msgstr "Максимизирано състояние на прозорец"
 msgid "List of paths of recent files"
 msgstr "Списък с пътища на скоро отваряни файлове"
 
-#: data/org.gnome.World.Citations.gschema.xml.in:22
-#: data/org.gnome.World.Citations.gschema.xml.in:26
+#: data/org.gnome.World.Citations.gschema.xml.in:22 data/org.gnome.World.Citations.gschema.xml.in:26
 msgid "Default template for book citation"
 msgstr "Стандартен шаблон за цитат на книга"
 
@@ -150,6 +147,11 @@ msgstr "Управление на библиографиите с помощта
 msgid "Main window"
 msgstr "Основен прозорец"
 
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:138
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
 #. Translators: Selects a PDF file for the citation
 #: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
@@ -160,10 +162,8 @@ msgid "Bibliography folder not set"
 msgstr "Папката с библиография не е зададена"
 
 #: data/resources/ui/add_pdf_dialog.ui:65
-msgid ""
-"Creates a copy of the selected pdf and stores it in your Bibliography folder."
-msgstr ""
-"Създава копие на избрания PDF и го запазва във вашата папка с библиографията."
+msgid "Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr "Създава копие на избрания PDF и го запазва във вашата папка с библиографията."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
 msgid "Add From URL"
@@ -195,14 +195,12 @@ msgstr "Собствен шаблон"
 
 #: data/resources/ui/citation_preview.ui:153
 msgid ""
-"Write a custom format for your citations, to insert the contents of a tag "
-"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
-"and italics is supported.\n"
+"Write a custom format for your citations, to insert the contents of a tag <tt>sometag</tt> write "
+"<tt>%SOMETAG%</tt>. Basic markdown syntax for bold and italics is supported.\n"
 "            "
 msgstr ""
-"Създаване на собствен формат за цитирания. За да вмъкнете съдържанието на "
-"даден етикет <tt>sometag</tt>, напишете <tt>%SOMETAG%</tt>. Поддържа се "
-"основен синтаксис на markdown за получер и курсивен шрифт.\n"
+"Създаване на собствен формат за цитирания. За да вмъкнете съдържанието на даден етикет <tt>sometag</tt>, "
+"напишете <tt>%SOMETAG%</tt>. Поддържа се основен синтаксис на markdown за получер и курсивен шрифт.\n"
 "            "
 
 #: data/resources/ui/citation_preview.ui:159
@@ -218,15 +216,15 @@ msgstr "Няма цитати"
 msgid "Create a new citation"
 msgstr "Създаване на нов цитат"
 
-#: data/resources/ui/entry_list_row.ui:91
+#: data/resources/ui/entry_list_row.ui:89
 msgid "_Open PDF"
 msgstr "_Отваряне на PDF"
 
-#: data/resources/ui/entry_list_row.ui:95
+#: data/resources/ui/entry_list_row.ui:93
 msgid "_Copy Key"
 msgstr "_Копиране на ключ"
 
-#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Премахване"
 
@@ -258,7 +256,7 @@ msgstr "_Заглавие"
 msgid "_Year"
 msgstr "_Година"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
 msgid "Open in Browser"
 msgstr "Отваряне в Интернет браузър"
 
@@ -286,8 +284,8 @@ msgstr "Копиране на бележките"
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:158
+#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10 data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:155
 msgid "_Open"
 msgstr "_Отваряне"
 
@@ -337,42 +335,47 @@ msgstr "От DOI"
 msgid "DOI"
 msgstr "DOI"
 
-#: data/resources/ui/shortcuts.ui:11
+#: data/resources/ui/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Общи"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:9
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Показване на клавишните комбинации"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Нов прозорец"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Затваряне на прозореца"
+
+#: data/resources/ui/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Спиране на програмата"
 
-#: data/resources/ui/shortcuts.ui:34
+#: data/resources/ui/shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "Библиография"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:38
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Отваряне"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:44
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Запазване"
 
-#: data/resources/ui/shortcuts.ui:49
+#: data/resources/ui/shortcuts.ui:50
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Търсене"
@@ -407,49 +410,48 @@ msgstr "_Търсене в Google Scholar"
 msgid "_Search in arXiv"
 msgstr "_Търсене в arXiv"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:131
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129 data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "Основно меню"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:98
 msgid "Open a BibTeX File"
 msgstr "Отваряне на файл на BibTeX"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:99
 msgid "Or drag-and-drop a file"
 msgstr "Или изтеглете и пуснете файл"
 
-#: data/resources/ui/window.ui:140
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "Управление на цитирания"
 
-#: data/resources/ui/window.ui:150
+#: data/resources/ui/window.ui:147
 msgid "Recent Files"
 msgstr "Скоро отваряни файлове"
 
-#: data/resources/ui/window.ui:194
+#: data/resources/ui/window.ui:192
 msgid "Sidebar"
 msgstr "Странична лента"
 
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:203
 msgid "Add New Citation"
 msgstr "Добавяне на ново цитиране"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:217
 msgid "Search"
 msgstr "Търсене"
 
-#: data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:231
 msgid "Search…"
 msgstr "Търсене…"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:253
 msgid "Content"
 msgstr "Съдържание"
 
-#: data/resources/ui/window.ui:265
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "Допълнително меню"
 
@@ -466,15 +468,19 @@ msgstr "Неуспешно изтегляне на PDF"
 msgid "Make sure that {path} exists"
 msgstr "Уверете се, че {path} съществува"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:194
 msgid "PDF Files"
 msgstr "PDF файлове"
 
-#: src/add_pdf_dialog.rs:201
+#: src/add_pdf_dialog.rs:202
 msgid "Select a PDF"
 msgstr "Избиране на PDF"
 
 #: src/application.rs:37
+msgid "Open a new window"
+msgstr "Отваряне на нов прозорец"
+
+#: src/application.rs:46
 msgid "Enable debug messages"
 msgstr "Включване на съобщенията за отстраняване на грешки"
 
@@ -496,7 +502,7 @@ msgstr "Ванкувър"
 msgid "Custom"
 msgstr "Собствен"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "Копирано"
 
@@ -508,24 +514,24 @@ msgstr "Собствен…"
 msgid "Author not set"
 msgstr "Липсва автор"
 
-#: src/entry_list_row.rs:85
+#: src/entry_list_row.rs:84
 msgid "Title not set"
 msgstr "Неуспешно задаване на заглавие"
 
-#: src/entry_page.rs:204
+#: src/entry_page.rs:200
 msgid "Other…"
 msgstr "Друг…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:252
+#: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "Ключът за цитата вече съществува"
 
-#: src/entry_page.rs:605
+#: src/entry_page.rs:602
 msgid "PDF added"
 msgstr "PDF добавен"
 
-#: src/new_entry_dialog.rs:162
+#: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
 msgstr "Вмъкване на цитиране с BibTeX"
 
@@ -618,56 +624,54 @@ msgstr "Училище"
 msgid "Institution"
 msgstr "Институция"
 
-#: src/window.rs:117
+#: src/window.rs:119
 msgid "Could not add entry"
 msgstr "Неуспешно добавяне на запис"
 
-#: src/window.rs:357 src/window.rs:382
+#: src/window.rs:359 src/window.rs:384
 msgid "BibTeX Files"
 msgstr "Файлове BibTeX"
 
-#: src/window.rs:391
+#: src/window.rs:393
 msgid "Create New Bibliography"
 msgstr "Създаване на нова библиография"
 
-#: src/window.rs:392
+#: src/window.rs:394
 msgid "_Create"
 msgstr "_Създаване"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:395
+#: src/window.rs:397
 msgid "bibliography"
 msgstr "библиография"
 
-#: src/window.rs:518
+#: src/window.rs:520
 msgid "An entry with the given citation key already exists"
 msgstr "Записът с дадения ключ за цитата вече съществува"
 
-#: src/window.rs:533
+#: src/window.rs:535
 msgid "Bibliography saved"
 msgstr "Библиографията е запазена"
 
-#: src/window.rs:586
+#: src/window.rs:588
 msgid "Citation Deleted"
 msgstr "Цитирането е премахнато"
 
-#: src/window.rs:588
+#: src/window.rs:590
 msgid "Undo"
 msgstr "Отмяна"
 
-#: src/window.rs:635
+#: src/window.rs:633
 msgid "translator-credits"
 msgstr ""
-"Twlvnn Kraftwerk &lt;<a "
-"href='mailto:kraft_werk@tutanota.com'>kraft_werk@tutanota.com</a>&gt;\n"
+"Twlvnn Kraftwerk &lt;<a href='mailto:kraft_werk@tutanota.com'>kraft_werk@tutanota.com</a>&gt;\n"
 "\n"
 "\n"
 "Проектът за превод на GNOME има нужда от подкрепа.\n"
-"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</"
-"a> ни.\n"
-"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
-"newticket'>съответния раздел</a>."
+"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</a> ни.\n"
+"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/newticket'>съответния раздел</"
+"a>."
 
 #. NOTE Dialog title which informs the user about unsaved changes.
 #: src/window.rs:647
