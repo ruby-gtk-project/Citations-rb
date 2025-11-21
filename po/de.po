@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-01-10 21:19+0000\n"
-"PO-Revision-Date: 2025-01-11 18:29+0100\n"
+"POT-Creation-Date: 2025-11-10 11:29+0000\n"
+"PO-Revision-Date: 2025-11-21 20:13+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.8\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -96,28 +96,26 @@ msgid "Tech Report"
 msgstr "Technischer Bericht"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:52
+#: cratebibtex/src/format.rs:51
 msgid "Plain"
 msgstr "Text"
 
 #. NOTE: This is the app name
-#: data/org.gnome.World.Citations.desktop.in.in:3
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:69 src/main.rs:39 src/window.rs:629
+#: data/org.gnome.World.Citations.desktop.in.in:2
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7 data/resources/ui/window.ui:67
+#: src/main.rs:39
 msgid "Citations"
 msgstr "Zitate"
 
-#: data/org.gnome.World.Citations.desktop.in.in:4
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:8 src/window.rs:631
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8
 msgid "Manage your bibliography"
 msgstr "Verwalten Sie Ihre Bibliografie"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.World.Citations.desktop.in.in:10
+#: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
-msgstr ""
-"bibliography;citing;literature;BibTeX;LaTeX;TeX;Bibliografie;zitieren;Zitat;"
-"Literatur;"
+msgstr "bibliography;citing;literature;BibTeX;LaTeX;TeX;Bibliografie;zitieren;Zitat;Literatur;"
 
 #: data/org.gnome.World.Citations.desktop.in.in:19
 msgid "New Window"
@@ -160,6 +158,11 @@ msgstr "Verwalten Sie Ihre Bibliografien im BibTeX-Format."
 msgid "Main window"
 msgstr "Hauptfenster"
 
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:138
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
 #. Translators: Selects a PDF file for the citation
 #: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
@@ -170,11 +173,9 @@ msgid "Bibliography folder not set"
 msgstr "Bibliografieordner nicht gesetzt"
 
 #: data/resources/ui/add_pdf_dialog.ui:65
-msgid ""
-"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgid "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
-"Erzeugt eine Kopie des ausgewählten PDFs und speichert sie in Ihrem "
-"Bibliografieordner."
+"Erzeugt eine Kopie des ausgewählten PDFs und speichert sie in Ihrem Bibliografieordner."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
 msgid "Add From URL"
@@ -206,14 +207,13 @@ msgstr "Benutzerdefinierte Vorlage"
 
 #: data/resources/ui/citation_preview.ui:153
 msgid ""
-"Write a custom format for your citations, to insert the contents of a tag "
-"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
-"and italics is supported.\n"
+"Write a custom format for your citations, to insert the contents of a tag <tt>sometag</tt> "
+"write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold and italics is supported.\n"
 "            "
 msgstr ""
-"Erstellen Sie ein benutzerdefiniertes Format für Ihre Zitate. Um den Inhalt "
-"eines <tt>Schlagworts</tt> einzufügen, schreiben Sie <tt>%SCHLAGWORT%</tt>. "
-"Grundlegende Markdown-Syntax für fett und kursiv wird unterstützt.\n"
+"Erstellen Sie ein benutzerdefiniertes Format für Ihre Zitate. Um den Inhalt eines "
+"<tt>Schlagworts</tt> einzufügen, schreiben Sie <tt>%SCHLAGWORT%</tt>. Grundlegende Markdown-"
+"Syntax für fett und kursiv wird unterstützt.\n"
 "            "
 
 #: data/resources/ui/citation_preview.ui:159
@@ -229,15 +229,15 @@ msgstr "Keine Zitate"
 msgid "Create a new citation"
 msgstr "Neues Zitat erstellen"
 
-#: data/resources/ui/entry_list_row.ui:91
+#: data/resources/ui/entry_list_row.ui:89
 msgid "_Open PDF"
 msgstr "PDF ö_ffnen"
 
-#: data/resources/ui/entry_list_row.ui:95
+#: data/resources/ui/entry_list_row.ui:93
 msgid "_Copy Key"
 msgstr "Schlüssel _kopieren"
 
-#: data/resources/ui/entry_list_row.ui:101 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
 msgid "_Delete"
 msgstr "_Löschen"
 
@@ -269,7 +269,7 @@ msgstr "_Titel"
 msgid "_Year"
 msgstr "_Jahr"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:400
+#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
 msgid "Open in Browser"
 msgstr "In Browser öffnen"
 
@@ -298,7 +298,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:107 data/resources/ui/window.ui:158
+#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
 msgid "_Open"
 msgstr "_Öffnen"
 
@@ -349,42 +349,47 @@ msgstr "Aus DOI"
 msgid "DOI"
 msgstr "DOI"
 
-#: data/resources/ui/shortcuts.ui:11
+#: data/resources/ui/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Allgemein"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:9
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Tastenkürzel anzeigen"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Neues Fenster"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Fenster schließen"
+
+#: data/resources/ui/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Beenden"
 
-#: data/resources/ui/shortcuts.ui:34
+#: data/resources/ui/shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Bibliography"
 msgstr "Bibliografie"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:38
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Öffnen"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:44
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Speichern"
 
-#: data/resources/ui/shortcuts.ui:49
+#: data/resources/ui/shortcuts.ui:50
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Suchen"
@@ -419,49 +424,49 @@ msgstr "In Google Scholar _suchen"
 msgid "_Search in arXiv"
 msgstr "In arXiv _suchen"
 
-#: data/resources/ui/window.ui:90 data/resources/ui/window.ui:131
-#: data/resources/ui/window.ui:212
+#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:210
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:98
 msgid "Open a BibTeX File"
 msgstr "Eine BibTeX-Datei öffnen"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:99
 msgid "Or drag-and-drop a file"
 msgstr "Oder legen Sie eine Datei ab"
 
-#: data/resources/ui/window.ui:140
+#: data/resources/ui/window.ui:137
 msgid "Manage your Citations"
 msgstr "Verwalten Sie Ihre Zitate"
 
-#: data/resources/ui/window.ui:150
+#: data/resources/ui/window.ui:147
 msgid "Recent Files"
 msgstr "Kürzlich verwendete Dateien"
 
-#: data/resources/ui/window.ui:194
+#: data/resources/ui/window.ui:192
 msgid "Sidebar"
 msgstr "Seitenleiste"
 
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:203
 msgid "Add New Citation"
 msgstr "Neues Zitat hinzufügen"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:217
 msgid "Search"
 msgstr "Suchen"
 
-#: data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:231
 msgid "Search…"
 msgstr "Suchen …"
 
-#: data/resources/ui/window.ui:255
+#: data/resources/ui/window.ui:253
 msgid "Content"
 msgstr "Inhalt"
 
-#: data/resources/ui/window.ui:265
+#: data/resources/ui/window.ui:263
 msgid "Secondary Menu"
 msgstr "Nebenmenü"
 
@@ -478,15 +483,19 @@ msgstr "PDF konnte nicht heruntergeladen werden"
 msgid "Make sure that {path} exists"
 msgstr "Stellen Sie sicher, dass {path} existiert"
 
-#: src/add_pdf_dialog.rs:193
+#: src/add_pdf_dialog.rs:194
 msgid "PDF Files"
 msgstr "PDF-Dateien"
 
-#: src/add_pdf_dialog.rs:201
+#: src/add_pdf_dialog.rs:202
 msgid "Select a PDF"
 msgstr "Ein PDF auswählen"
 
 #: src/application.rs:37
+msgid "Open a new window"
+msgstr "Ein neues Fenster öffnen"
+
+#: src/application.rs:46
 msgid "Enable debug messages"
 msgstr "Fehlerdiagnosemeldungen aktivieren"
 
@@ -508,7 +517,7 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:233
+#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "Kopiert"
 
@@ -520,24 +529,24 @@ msgstr "Benutzerdefiniert …"
 msgid "Author not set"
 msgstr "Autor nicht gesetzt"
 
-#: src/entry_list_row.rs:85
+#: src/entry_list_row.rs:84
 msgid "Title not set"
 msgstr "Titel nicht gesetzt"
 
-#: src/entry_page.rs:204
+#: src/entry_page.rs:200
 msgid "Other…"
 msgstr "Andere …"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:252
+#: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "Zitatschlüssel existiert bereits"
 
-#: src/entry_page.rs:605
+#: src/entry_page.rs:602
 msgid "PDF added"
 msgstr "PDF hinzugefügt"
 
-#: src/new_entry_dialog.rs:162
+#: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
 msgstr "BibTeX-Zitat hier einfügen"
 
@@ -630,45 +639,45 @@ msgstr "Schule"
 msgid "Institution"
 msgstr "Institution"
 
-#: src/window.rs:117
+#: src/window.rs:119
 msgid "Could not add entry"
 msgstr "Eintrag konnte nicht hinzugefügt werden"
 
-#: src/window.rs:357 src/window.rs:382
+#: src/window.rs:359 src/window.rs:384
 msgid "BibTeX Files"
 msgstr "BibTeX-Dateien"
 
-#: src/window.rs:391
+#: src/window.rs:393
 msgid "Create New Bibliography"
 msgstr "Neue Bibliografie erstellen"
 
-#: src/window.rs:392
+#: src/window.rs:394
 msgid "_Create"
 msgstr "_Erstellen"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:395
+#: src/window.rs:397
 msgid "bibliography"
 msgstr "Bibliografie"
 
-#: src/window.rs:518
+#: src/window.rs:520
 msgid "An entry with the given citation key already exists"
 msgstr "Es existiert bereits ein Eintrag mit diesem Zitatschlüssel"
 
-#: src/window.rs:533
+#: src/window.rs:535
 msgid "Bibliography saved"
 msgstr "Bibliografie gespeichert"
 
-#: src/window.rs:586
+#: src/window.rs:588
 msgid "Citation Deleted"
 msgstr "Zitat gelöscht"
 
-#: src/window.rs:588
+#: src/window.rs:590
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/window.rs:635
+#: src/window.rs:633
 msgid "translator-credits"
 msgstr ""
 "Philipp Kiemle <philipp.kiemle@gmail.com>\n"
@@ -699,9 +708,6 @@ msgstr "_Speichern und beenden"
 #: src/window.rs:699
 msgid "Remove From Recent Files"
 msgstr "Aus den kürzlich verwendeten Dateien entfernen"
-
-#~ msgid "Maximiliano Sandoval"
-#~ msgstr "Maximiliano Sandoval"
 
 #~ msgid "Back"
 #~ msgstr "Zurück"
