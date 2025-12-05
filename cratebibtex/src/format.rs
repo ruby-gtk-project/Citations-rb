@@ -3,19 +3,14 @@ use regex::Regex;
 use std::fmt;
 use std::sync::LazyLock;
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, glib::Enum)]
 #[enum_type(name = "Format")]
 #[repr(i32)]
 pub enum Format {
+    #[default]
     Plain = 0,
     Markdown = 1,
     LaTeX = 2,
-}
-
-impl Default for Format {
-    fn default() -> Self {
-        Self::Plain
-    }
 }
 
 impl From<i32> for Format {

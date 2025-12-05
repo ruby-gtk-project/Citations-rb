@@ -25,7 +25,7 @@ rust-version.workspace = true
 lto = true
 
 [dependencies]
-adw = { package = "libadwaita", version = "0.8", features = ["v1_8"] }
+adw = { package = "libadwaita", version = "0.8.1", features = ["v1_8"] }
 anyhow.workspace = true
 cairo-rs = { version = "0.21", features = ["png"] }
 cratebibtex = { path = "cratebibtex" }
