@@ -27,10 +27,11 @@ const CHICAGO_BOOK_TEMPLATE: &str = r#"%AUTHOR%. *%TITLE%*. Vol. %VOLUME%. %PUBL
 const HARVAR_BOOK_TEMPLATE: &str = r#"%AUTHOR%, %YEAR%. *%TITLE%* (Vol. %VOLUME%). %PUBLISHER%."#;
 const VANCOUVER_BOOK_TEMPLATE: &str = r#"%AUTHOR%: %TITLE%. %PUBLISHER%; %YEAR% %MONTH% %DAY%."#;
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, glib::Enum)]
 #[repr(i32)]
 #[enum_type(name = "Template")]
 pub enum Template {
+    #[default]
     Mla,
     Ams,
     Apa,
@@ -38,12 +39,6 @@ pub enum Template {
     Harvard,
     Vancouver,
     Custom,
-}
-
-impl Default for Template {
-    fn default() -> Self {
-        Self::Mla
-    }
 }
 
 impl Template {
