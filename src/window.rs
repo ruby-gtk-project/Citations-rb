@@ -657,7 +657,7 @@ impl Window {
         dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
         dialog.set_default_response(Some("save"));
 
-        match dialog.choose_future(self).await.as_str() {
+        match dialog.choose_future(Some(self)).await.as_str() {
             "discard" => self.force_close(),
             "save" => {
                 if let Err(err) = self.save().await {
