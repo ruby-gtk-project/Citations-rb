@@ -13,6 +13,14 @@ gettext-rs = { version = "0.7", features = ["gettext-system"] }
 log = "0.4"
 texer = { path = "texer" }
 
+adw = { package = "libadwaita", version = "0.8.1", features = ["v1_8"] }
+cairo-rs = { version = "0.21", features = ["png"] }
+gio = "0.21"
+glib = "0.21"
+gsv = { package = "sourceview5", version = "0.10" }
+gtk = { version = "0.10", package = "gtk4", features = ["gnome_47"] }
+poppler-rs = { version = "0.25", features = ["v0_82"] }
+
 [package]
 name = "citations"
 version = "0.6.2"
@@ -25,19 +33,19 @@ rust-version.workspace = true
 lto = true
 
 [dependencies]
-adw = { package = "libadwaita", version = "0.8.1", features = ["v1_8"] }
+adw.workspace = true
 anyhow.workspace = true
-cairo-rs = { version = "0.21", features = ["png"] }
+cairo-rs.workspace = true
 cratebibtex = { path = "cratebibtex" }
 formatx = "0.2.4"
 texer.workspace = true
 doi2bib = "0.2"
 futures-channel = "0.3"
 gettext-rs.workspace = true
-gsv = { package = "sourceview5", version = "0.10" }
-gtk = { version = "0.10", package = "gtk4", features = ["gnome_47"] }
+gsv.workspace = true
+gtk.workspace = true
 log.workspace = true
-poppler-rs = { version = "0.25", features = ["v0_82"] }
+poppler-rs.workspace = true
 reqwest = "0.12"
 sanitize-filename = "0.6"
 tokio = { version = "1.36", default-features = false, features = ["rt-multi-thread"] }
