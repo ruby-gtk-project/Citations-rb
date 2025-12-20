@@ -76,6 +76,8 @@
   </menu>
   <template class="Window" parent="AdwApplicationWindow">
     <property name="title" translatable="yes">Citations</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
     <child>
       <object class="AdwBreakpoint">
         <condition>max-width: 600sp</condition>
