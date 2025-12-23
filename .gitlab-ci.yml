@@ -82,6 +82,7 @@ cargo-audit:
   allow_failure: true
   script:
     - dnf install --quiet -y cargo-deny cargo
+    - cargo-deny --version
     - cargo-deny check
 
 check-potfiles:
