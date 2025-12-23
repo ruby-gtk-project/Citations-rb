@@ -7,7 +7,6 @@ mod config;
 mod entry_list;
 mod entry_list_row;
 mod entry_page;
-mod i18n;
 mod new_entry_dialog;
 mod selection;
 mod utils;

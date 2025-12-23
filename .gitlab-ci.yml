@@ -91,5 +91,3 @@ check-potfiles:
     - curl --proto '=https' --tlsv1.2 -sSf -O
         https://gitlab.gnome.org/msandova/check-potfiles/-/raw/master/check_potfiles.py
     - python3 check_potfiles.py --directory src --directory data
-        --keyword=gettext_f --keyword='ngettext_f:1,2'
-        --exclude src/i18n.rs

@@ -29,6 +29,7 @@ adw = { package = "libadwaita", version = "0.8.1", features = ["v1_8"] }
 anyhow.workspace = true
 cairo-rs = { version = "0.21", features = ["png"] }
 cratebibtex = { path = "cratebibtex" }
+formatx = "0.2.4"
 texer.workspace = true
 doi2bib = "0.2"
 futures-channel = "0.3"

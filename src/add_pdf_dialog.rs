@@ -1,12 +1,12 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use formatx::formatx;
 use gettextrs::gettext;
 use gtk::CompositeTemplate;
 use gtk::{gio, glib};
 use std::cell::OnceCell;
 use std::sync::LazyLock;
 
-use crate::i18n::gettext_f;
 use crate::utils;
 
 mod imp {
@@ -100,11 +100,14 @@ mod imp {
             if crate::utils::bibliography_path().is_none() {
                 let bibliography_path = crate::utils::bibliography_path_string();
                 self.error_box.set_visible(true);
-                self.error_label.set_label(&gettext_f(
-                    // TRANSLATORS Do NOT translate {path}, it is a variable name
-                    "Make sure that {path} exists",
-                    &[("path", &bibliography_path)],
-                ));
+                self.error_label.set_label(
+                    &formatx!(
+                        // TRANSLATORS Do NOT translate {path}, it is a variable name
+                        gettext("Make sure that {path} exists"),
+                        path = &bibliography_path
+                    )
+                    .expect("Wrong format in translatable string"),
+                );
             }
         }
     }
