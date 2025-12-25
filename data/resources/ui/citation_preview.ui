@@ -17,6 +17,7 @@
                   <object class="GtkMenuButton">
                     <property name="icon-name">dialog-question-symbolic</property>
                     <property name="popover">popover</property>
+                    <property name="tooltip-text" translatable="yes">Help</property>
                     <style>
                       <class name="flat"/>
                     </style>
