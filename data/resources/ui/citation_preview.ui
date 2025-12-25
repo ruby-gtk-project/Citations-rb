@@ -11,12 +11,13 @@
             <property name="reveal-child">False</property>
             <property name="transition-type">slide-up</property>
             <child>
-              <object class="AdwPreferencesGroup">
+              <object class="AdwPreferencesGroup" id="citation_fmt_group">
                 <property name="title" translatable="yes">Custom Citation Format</property>
                 <property name="header-suffix">
                   <object class="GtkMenuButton">
                     <property name="icon-name">dialog-question-symbolic</property>
                     <property name="popover">popover</property>
+                    <property name="tooltip-text" translatable="yes">Help</property>
                     <style>
                       <class name="flat"/>
                     </style>
@@ -34,6 +35,9 @@
                         <style>
                           <class name="inline"/>
                         </style>
+                        <accessibility>
+                          <relation name="labelled-by">citation_fmt_group</relation>
+                        </accessibility>
                       </object>
                     </child>
                     <style>
@@ -61,6 +65,9 @@
                     <property name="expression">
                       <closure type="gchararray" function="template_type_name"/>
                     </property>
+                    <accessibility>
+                      <relation name="controls">source_view</relation>
+                    </accessibility>
                   </object>
                 </child>
                 <child>
@@ -73,6 +80,9 @@
                     <property name="expression">
                       <closure type="gchararray" function="format_type_name"/>
                     </property>
+                    <accessibility>
+                      <relation name="controls">source_view</relation>
+                    </accessibility>
                   </object>
                 </child>
               </object>
