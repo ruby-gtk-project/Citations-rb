@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-07-27 14:41+0000\n"
-"PO-Revision-Date: 2025-07-27 21:09+0300\n"
+"POT-Creation-Date: 2025-12-25 08:54+0000\n"
+"PO-Revision-Date: 2025-12-25 21:08+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -89,14 +89,14 @@ msgid "Tech Report"
 msgstr "Технічний звіт"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:51
+#: cratebibtex/src/format.rs:46
 msgid "Plain"
 msgstr "Простий"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:67 src/main.rs:39
+#: data/resources/ui/window.ui:67 src/main.rs:38
 msgid "Citations"
 msgstr "Цитати"
 
@@ -109,12 +109,10 @@ msgstr "Керування вашою бібліографією"
 #: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr ""
-"bibliography;citing;literature;BibTeX;LaTeX;TeX;бібліографія;цитування;посилан"
-"ня;література;бібтех;латех;тех;"
+"bibliography;citing;literature;BibTeX;LaTeX;TeX;бібліографія;цитування;посила"
+"ння;література;бібтех;латех;тех;"
 
-#: data/org.gnome.World.Citations.desktop.in.in:18
-#| msgctxt "shortcut window"
-#| msgid "New Window"
+#: data/org.gnome.World.Citations.desktop.in.in:19
 msgid "New Window"
 msgstr "Створити вікно"
 
@@ -155,6 +153,11 @@ msgstr "Керування вашими бібліографіями з вико
 msgid "Main window"
 msgstr "Головне вікно"
 
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:138
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
 #. Translators: Selects a PDF file for the citation
 #: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
@@ -167,7 +170,8 @@ msgstr "Не встановлено теки бібліографії"
 #: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
-msgstr "Створює копію позначеного PDF і зберігає її у вашій теці бібліографії."
+msgstr ""
+"Створює копію позначеного PDF і зберігає її у вашій теці бібліографії."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
 msgid "Add From URL"
@@ -185,19 +189,24 @@ msgstr "Додати з файла…"
 msgid "Custom Citation Format"
 msgstr "Нетиповий формат цитування"
 
-#: data/resources/ui/citation_preview.ui:50
+#: data/resources/ui/citation_preview.ui:20
+msgid "Help"
+msgstr "Довідка"
+
+#: data/resources/ui/citation_preview.ui:54
 msgid "Citation"
 msgstr "Оголошувати подяку"
 
-#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:104
+#: data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "Копіювати"
 
-#: data/resources/ui/citation_preview.ui:137
+#: data/resources/ui/citation_preview.ui:147
 msgid "Custom Template"
 msgstr "Нетиповий шаблон"
 
-#: data/resources/ui/citation_preview.ui:153
+#: data/resources/ui/citation_preview.ui:163
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -209,7 +218,7 @@ msgstr ""
 "підтримку синтаксису markdown для напівжирного та курсивного шрифтів.\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:159
+#: data/resources/ui/citation_preview.ui:169
 msgid "Example:"
 msgstr "Приклад:"
 
@@ -262,7 +271,7 @@ msgstr "_Назва"
 msgid "_Year"
 msgstr "Р_ік"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
+#: data/resources/ui/entry_page.ui:152
 msgid "Open in Browser"
 msgstr "Відкрити у переглядачі"
 
@@ -471,20 +480,20 @@ msgid "Could not download PDF"
 msgstr "Не вдалося отримати PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:105
+#: src/add_pdf_dialog.rs:106
+#, rust-format
 msgid "Make sure that {path} exists"
 msgstr "Переконайтеся, що тека {path} існує"
 
-#: src/add_pdf_dialog.rs:194
+#: src/add_pdf_dialog.rs:197
 msgid "PDF Files"
 msgstr "файли PDF"
 
-#: src/add_pdf_dialog.rs:202
+#: src/add_pdf_dialog.rs:205
 msgid "Select a PDF"
 msgstr "Вибір PDF"
 
 #: src/application.rs:37
-#| msgid "Main window"
 msgid "Open a new window"
 msgstr "Відкрити нове вікно"
 
@@ -493,28 +502,28 @@ msgid "Enable debug messages"
 msgstr "Увімкнути діагностичні повідомлення"
 
 #. TODO Should this be translatable?
-#: src/citation_preview.rs:56
+#: src/citation_preview.rs:51
 msgid "Chicago"
 msgstr "Чикаго"
 
-#: src/citation_preview.rs:57
+#: src/citation_preview.rs:52
 msgid "Harvard"
 msgstr "Гарвард"
 
-#: src/citation_preview.rs:58
+#: src/citation_preview.rs:53
 msgid "Vancouver"
 msgstr "Ванкувер"
 
 #. NOTE: Custom as in Custom Template.
-#: src/citation_preview.rs:60
+#: src/citation_preview.rs:55
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
+#: src/citation_preview.rs:261 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "Скопійовано"
 
-#: src/citation_preview.rs:273
+#: src/citation_preview.rs:268
 msgid "Custom…"
 msgstr "Нетиповий…"
 
@@ -534,10 +543,6 @@ msgstr "Інше…"
 #: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "Ключ цитування вже існує"
-
-#: src/entry_page.rs:602
-msgid "PDF added"
-msgstr "Додано PDF"
 
 #: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
@@ -700,8 +705,8 @@ msgstr "З_берегти та вийти"
 msgid "Remove From Recent Files"
 msgstr "Вилучити з нещодавніх файлів"
 
-#~ msgid "Maximiliano Sandoval"
-#~ msgstr "Maximiliano Sandoval"
+#~ msgid "PDF added"
+#~ msgstr "Додано PDF"
 
 #~ msgid "Back"
 #~ msgstr "Назад"
