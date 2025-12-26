@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-09-25 19:46+0000\n"
-"PO-Revision-Date: 2025-07-26 07:55+0800\n"
+"POT-Creation-Date: 2025-12-25 08:54+0000\n"
+"PO-Revision-Date: 2025-12-26 07:59+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 49.0\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -89,14 +89,14 @@ msgid "Tech Report"
 msgstr "技术报告"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:51
+#: cratebibtex/src/format.rs:46
 msgid "Plain"
 msgstr "纯文本"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:67 src/main.rs:39
+#: data/resources/ui/window.ui:67 src/main.rs:38
 msgid "Citations"
 msgstr "引文"
 
@@ -187,19 +187,24 @@ msgstr "从文件添加…"
 msgid "Custom Citation Format"
 msgstr "自定义引用格式"
 
-#: data/resources/ui/citation_preview.ui:50
+#: data/resources/ui/citation_preview.ui:20
+msgid "Help"
+msgstr "帮助"
+
+#: data/resources/ui/citation_preview.ui:54
 msgid "Citation"
 msgstr "引文"
 
-#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:104
+#: data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "复制"
 
-#: data/resources/ui/citation_preview.ui:137
+#: data/resources/ui/citation_preview.ui:147
 msgid "Custom Template"
 msgstr "自定义模板"
 
-#: data/resources/ui/citation_preview.ui:153
+#: data/resources/ui/citation_preview.ui:163
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -210,7 +215,7 @@ msgstr ""
 "tt>。支持用于粗体和斜体的基础 markdown 语法。\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:159
+#: data/resources/ui/citation_preview.ui:169
 msgid "Example:"
 msgstr "示例："
 
@@ -263,7 +268,7 @@ msgstr "标题(_T)"
 msgid "_Year"
 msgstr "年份(_Y)"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
+#: data/resources/ui/entry_page.ui:152
 msgid "Open in Browser"
 msgstr "在浏览器中打开"
 
@@ -472,15 +477,16 @@ msgid "Could not download PDF"
 msgstr "无法下载 PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:105
+#: src/add_pdf_dialog.rs:106
+#, rust-format
 msgid "Make sure that {path} exists"
 msgstr "请确保 {path} 存在"
 
-#: src/add_pdf_dialog.rs:194
+#: src/add_pdf_dialog.rs:197
 msgid "PDF Files"
 msgstr "PDF 文件"
 
-#: src/add_pdf_dialog.rs:202
+#: src/add_pdf_dialog.rs:205
 msgid "Select a PDF"
 msgstr "选择 PDF"
 
@@ -493,28 +499,28 @@ msgid "Enable debug messages"
 msgstr "启用调试消息"
 
 #. TODO Should this be translatable?
-#: src/citation_preview.rs:56
+#: src/citation_preview.rs:51
 msgid "Chicago"
 msgstr "芝加哥"
 
-#: src/citation_preview.rs:57
+#: src/citation_preview.rs:52
 msgid "Harvard"
 msgstr "哈佛"
 
-#: src/citation_preview.rs:58
+#: src/citation_preview.rs:53
 msgid "Vancouver"
 msgstr "温哥华"
 
 #. NOTE: Custom as in Custom Template.
-#: src/citation_preview.rs:60
+#: src/citation_preview.rs:55
 msgid "Custom"
 msgstr "自定义"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
+#: src/citation_preview.rs:261 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "已复制"
 
-#: src/citation_preview.rs:273
+#: src/citation_preview.rs:268
 msgid "Custom…"
 msgstr "自定义…"
 
@@ -534,10 +540,6 @@ msgstr "其他…"
 #: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "引文密钥已存在"
-
-#: src/entry_page.rs:602
-msgid "PDF added"
-msgstr "PDF 已添加"
 
 #: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
@@ -701,6 +703,9 @@ msgstr "保存并退出(_S)"
 #: src/window.rs:699
 msgid "Remove From Recent Files"
 msgstr "从最近文件中移除"
+
+#~ msgid "PDF added"
+#~ msgstr "PDF 已添加"
 
 #~ msgid "Back"
 #~ msgstr "后退"
