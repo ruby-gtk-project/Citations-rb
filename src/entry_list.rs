@@ -175,16 +175,17 @@ impl EntryList {
     }
 
     pub fn set_selected(&self, pos: u32) {
-        self.imp()
-            .selection_model
-            .borrow()
-            .set_hide_selection(false);
-        self.imp()
-            .selection_model
-            .borrow()
-            .set_selected_position(pos);
-        self.imp()
-            .list_view
+        let imp = self.imp();
+
+        let n_items = imp.selection_model.borrow().n_items();
+        if pos >= n_items && pos != gtk::INVALID_LIST_POSITION {
+            log::error!("Invalid position: {pos}, the list has {n_items} items");
+            return;
+        }
+
+        imp.selection_model.borrow().set_hide_selection(false);
+        imp.selection_model.borrow().set_selected_position(pos);
+        imp.list_view
             .scroll_to(pos, gtk::ListScrollFlags::NONE, None::<gtk::ScrollInfo>);
     }
 

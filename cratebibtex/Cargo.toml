@@ -9,8 +9,8 @@ rust-version.workspace = true
 [dependencies]
 anyhow.workspace = true
 gettext-rs.workspace = true
-gio = "0.21"
-glib = { version = "0.21", features = ["v2_72"] }
+gio.workspace = true
+glib = { workspace = true, features = ["v2_72"] }
 log.workspace = true
 nom-bibtex = "0.5"
 regex = "1.7"
