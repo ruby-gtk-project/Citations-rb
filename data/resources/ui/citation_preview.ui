@@ -160,8 +160,7 @@
             <property name="lines">4</property>
             <property name="use-markup">True</property>
             <property name="max-width-chars">40</property>
-            <property name="label" translatable="yes">Write a custom format for your citations, to insert the contents of a tag &lt;tt&gt;sometag&lt;/tt&gt; write &lt;tt&gt;%SOMETAG%&lt;/tt&gt;. Basic markdown syntax for bold and italics is supported.
-            </property>
+            <property name="label" translatable="yes">Write a custom format for your citations, to insert the contents of a tag &lt;tt&gt;sometag&lt;/tt&gt; write &lt;tt&gt;%SOMETAG%&lt;/tt&gt;. Basic markdown syntax for bold and italics is supported. </property>
           </object>
         </child>
         <child>
