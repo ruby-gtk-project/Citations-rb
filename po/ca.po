@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-11-21 19:14+0000\n"
-"PO-Revision-Date: 2025-12-11 23:59+0100\n"
+"POT-Creation-Date: 2025-12-25 08:54+0000\n"
+"PO-Revision-Date: 2025-12-27 12:47+0100\n"
 "Last-Translator: \n"
 "Language-Team: Catalan <Catalan>\n"
 "Language: ca\n"
@@ -88,14 +88,14 @@ msgid "Tech Report"
 msgstr "Informe tecnològic"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:51
+#: cratebibtex/src/format.rs:46
 msgid "Plain"
 msgstr "Text pla"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:67 src/main.rs:39
+#: data/resources/ui/window.ui:67 src/main.rs:38
 msgid "Citations"
 msgstr "Citacions"
 
@@ -186,19 +186,24 @@ msgstr "Afegeix des d'un fitxer…"
 msgid "Custom Citation Format"
 msgstr "Format de citació personalitzat"
 
-#: data/resources/ui/citation_preview.ui:50
+#: data/resources/ui/citation_preview.ui:20
+msgid "Help"
+msgstr "Ajuda"
+
+#: data/resources/ui/citation_preview.ui:54
 msgid "Citation"
 msgstr "Cita"
 
-#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:104
+#: data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "Copia"
 
-#: data/resources/ui/citation_preview.ui:137
+#: data/resources/ui/citation_preview.ui:147
 msgid "Custom Template"
 msgstr "Plantilla personalitzada"
 
-#: data/resources/ui/citation_preview.ui:153
+#: data/resources/ui/citation_preview.ui:163
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -206,12 +211,12 @@ msgid ""
 "            "
 msgstr ""
 "Escriviu un format personalitzat per a les vostres cites, per inserir el "
-"contingut d'una etiqueta <tt>algunaetiqueta</tt> escriviu "
-"<tt>%ALGUNAETIQUETA%</tt>. S'admet la sintaxi bàsica de marcatge markdown "
-"per a negreta i cursiva.\n"
+"contingut d'una etiqueta <tt>%SOMETAG%</tt> escriviu <tt>%ALGUNAETIQUETA%</"
+"tt>. S'admet la sintaxi bàsica de marcatge markdown per a negreta i "
+"cursiva.\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:159
+#: data/resources/ui/citation_preview.ui:169
 msgid "Example:"
 msgstr "Exemple:"
 
@@ -264,7 +269,7 @@ msgstr "_Títol"
 msgid "_Year"
 msgstr "An_y"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
+#: data/resources/ui/entry_page.ui:152
 msgid "Open in Browser"
 msgstr "Obre al navegador"
 
@@ -473,15 +478,15 @@ msgid "Could not download PDF"
 msgstr "No s'ha pogut baixar el PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:105
+#: src/add_pdf_dialog.rs:106
 msgid "Make sure that {path} exists"
 msgstr "Assegureu-vos que {path} existeix"
 
-#: src/add_pdf_dialog.rs:194
+#: src/add_pdf_dialog.rs:197
 msgid "PDF Files"
 msgstr "Fitxers PDF"
 
-#: src/add_pdf_dialog.rs:202
+#: src/add_pdf_dialog.rs:205
 msgid "Select a PDF"
 msgstr "Selecciona un PDF"
 
@@ -494,28 +499,28 @@ msgid "Enable debug messages"
 msgstr "Habilita els missatges de depuració"
 
 #. TODO Should this be translatable?
-#: src/citation_preview.rs:56
+#: src/citation_preview.rs:51
 msgid "Chicago"
 msgstr "Chicago"
 
-#: src/citation_preview.rs:57
+#: src/citation_preview.rs:52
 msgid "Harvard"
 msgstr "Harvard"
 
-#: src/citation_preview.rs:58
+#: src/citation_preview.rs:53
 msgid "Vancouver"
 msgstr "Vancouver"
 
 #. NOTE: Custom as in Custom Template.
-#: src/citation_preview.rs:60
+#: src/citation_preview.rs:55
 msgid "Custom"
 msgstr "Personalitzat"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
+#: src/citation_preview.rs:261 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "S'ha copiat"
 
-#: src/citation_preview.rs:273
+#: src/citation_preview.rs:268
 msgid "Custom…"
 msgstr "Personalitzat…"
 
@@ -535,10 +540,6 @@ msgstr "Altres…"
 #: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "La clau de citació ja existeix"
-
-#: src/entry_page.rs:602
-msgid "PDF added"
-msgstr "S'ha afegit el PDF"
 
 #: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
@@ -700,3 +701,6 @@ msgstr "_Desa i surt"
 #: src/window.rs:699
 msgid "Remove From Recent Files"
 msgstr "Elimina dels fitxers recents"
+
+#~ msgid "PDF added"
+#~ msgstr "S'ha afegit el PDF"
