@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-08-09 12:32+0000\n"
-"PO-Revision-Date: 2025-08-10 13:30+0200\n"
+"POT-Creation-Date: 2025-12-25 08:54+0000\n"
+"PO-Revision-Date: 2025-12-26 22:39+0100\n"
 "Last-Translator: Julián Villodre <jvillodrede@gmail.com>\n"
 "Language-Team: es_ES\n"
 "Language: es_ES\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 49.0\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -89,14 +89,14 @@ msgid "Tech Report"
 msgstr "Informe técnico"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:51
+#: cratebibtex/src/format.rs:46
 msgid "Plain"
 msgstr "Plano"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:67 src/main.rs:39
+#: data/resources/ui/window.ui:67 src/main.rs:38
 msgid "Citations"
 msgstr "Citas"
 
@@ -110,7 +110,7 @@ msgstr "Gestionar su bibliografía"
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "bibliografía;citas;literatura;BibTeX;LaTeX;TeX;"
 
-#: data/org.gnome.World.Citations.desktop.in.in:18
+#: data/org.gnome.World.Citations.desktop.in.in:19
 msgid "New Window"
 msgstr "Nueva ventana"
 
@@ -151,6 +151,11 @@ msgstr "Gestione sus bibliografías usando un formato BibTeX."
 msgid "Main window"
 msgstr "Ventana principal"
 
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:138
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
 #. Translators: Selects a PDF file for the citation
 #: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
 msgid "Add PDF"
@@ -183,19 +188,24 @@ msgstr "Añadir desde un archivo…"
 msgid "Custom Citation Format"
 msgstr "Formato de cita personalizado"
 
-#: data/resources/ui/citation_preview.ui:50
+#: data/resources/ui/citation_preview.ui:20
+msgid "Help"
+msgstr "Ayuda"
+
+#: data/resources/ui/citation_preview.ui:54
 msgid "Citation"
 msgstr "Cita"
 
-#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:104
+#: data/resources/ui/entry_page.ui:113
 msgid "Copy"
 msgstr "Copiar"
 
-#: data/resources/ui/citation_preview.ui:137
+#: data/resources/ui/citation_preview.ui:147
 msgid "Custom Template"
 msgstr "Plantilla personalizada"
 
-#: data/resources/ui/citation_preview.ui:153
+#: data/resources/ui/citation_preview.ui:163
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -207,7 +217,7 @@ msgstr ""
 "de marcado básico para negritas y cursivas.\n"
 "            "
 
-#: data/resources/ui/citation_preview.ui:159
+#: data/resources/ui/citation_preview.ui:169
 msgid "Example:"
 msgstr "Ejemplo:"
 
@@ -260,7 +270,7 @@ msgstr "_Título"
 msgid "_Year"
 msgstr "_Año"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
+#: data/resources/ui/entry_page.ui:152
 msgid "Open in Browser"
 msgstr "Abrir enlace en el navegador"
 
@@ -469,15 +479,16 @@ msgid "Could not download PDF"
 msgstr "No se pudo descargar el PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:105
+#: src/add_pdf_dialog.rs:106
+#, rust-format
 msgid "Make sure that {path} exists"
 msgstr "Asegúrese de que la {path} existe"
 
-#: src/add_pdf_dialog.rs:194
+#: src/add_pdf_dialog.rs:197
 msgid "PDF Files"
 msgstr "Archivos PDF"
 
-#: src/add_pdf_dialog.rs:202
+#: src/add_pdf_dialog.rs:205
 msgid "Select a PDF"
 msgstr "Seleccionar un PDF"
 
@@ -490,28 +501,28 @@ msgid "Enable debug messages"
 msgstr "Activar mensajes de depuración"
 
 #. TODO Should this be translatable?
-#: src/citation_preview.rs:56
+#: src/citation_preview.rs:51
 msgid "Chicago"
 msgstr "Chicago"
 
-#: src/citation_preview.rs:57
+#: src/citation_preview.rs:52
 msgid "Harvard"
 msgstr "Harvard"
 
-#: src/citation_preview.rs:58
+#: src/citation_preview.rs:53
 msgid "Vancouver"
 msgstr "Vancouver"
 
 #. NOTE: Custom as in Custom Template.
-#: src/citation_preview.rs:60
+#: src/citation_preview.rs:55
 msgid "Custom"
 msgstr "Personalizado"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
+#: src/citation_preview.rs:261 src/entry_list_row.rs:59 src/entry_page.rs:229
 msgid "Copied"
 msgstr "Copiada"
 
-#: src/citation_preview.rs:273
+#: src/citation_preview.rs:268
 msgid "Custom…"
 msgstr "Personalizada…"
 
@@ -531,10 +542,6 @@ msgstr "Otra…"
 #: src/entry_page.rs:248
 msgid "Citation Key already exists"
 msgstr "La clave de la cita ya existe"
-
-#: src/entry_page.rs:602
-msgid "PDF added"
-msgstr "PDF añadido"
 
 #: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
@@ -670,7 +677,7 @@ msgstr "Deshacer"
 #: src/window.rs:633
 msgid "translator-credits"
 msgstr ""
-"Julián Villodre <jvillodrede@gmail.com>, 2024\n"
+"Julián Villodre <jvillodrede@gmail.com>, 2024-2025\n"
 "Daniel Mustieles <Daniel.mustieles@gmail.com>, 2022"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
@@ -699,8 +706,8 @@ msgstr "_Guardar y salir"
 msgid "Remove From Recent Files"
 msgstr "Quitar de archivos recientes"
 
-#~ msgid "Maximiliano Sandoval"
-#~ msgstr "Maximiliano Sandoval"
+#~ msgid "PDF added"
+#~ msgstr "PDF añadido"
 
 #~ msgid "Back"
 #~ msgstr "Atrás"
