@@ -2,14 +2,14 @@
 # Copyright (C) 2022 citations's COPYRIGHT HOLDER
 # This file is distributed under the same license as the citations package.
 # Boyuan Yang <073plan@gmail.com>, 2022.
-# lumingzh <lumingzh@qq.com>, 2022-2025.
+# lumingzh <lumingzh@qq.com>, 2022-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-12-27 21:11+0000\n"
-"PO-Revision-Date: 2025-12-28 08:09+0800\n"
+"POT-Creation-Date: 2026-01-05 21:04+0000\n"
+"PO-Revision-Date: 2026-01-06 07:55+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -96,7 +96,7 @@ msgstr "纯文本"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:67 src/main.rs:38
+#: data/resources/ui/window.ui:73 src/main.rs:38
 msgid "Citations"
 msgstr "引文"
 
@@ -234,7 +234,7 @@ msgstr "打开 PDF(_O)"
 msgid "_Copy Key"
 msgstr "复制密钥(_C)"
 
-#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:67
 msgid "_Delete"
 msgstr "删除(_D)"
 
@@ -295,7 +295,7 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
+#: data/resources/ui/window.ui:111 data/resources/ui/window.ui:161
 msgid "_Open"
 msgstr "打开(_O)"
 
@@ -420,49 +420,53 @@ msgstr "在谷歌学术中搜索(_S)"
 msgid "_Search in arXiv"
 msgstr "在 arXiv 中搜索(_S)"
 
-#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
-#: data/resources/ui/window.ui:210
+#: data/resources/ui/window.ui:61
+msgid "_Copy BibTeX Entry"
+msgstr "复制 BibTeX 条目(_C)"
+
+#: data/resources/ui/window.ui:94 data/resources/ui/window.ui:135
+#: data/resources/ui/window.ui:216
 msgid "Main Menu"
 msgstr "主菜单"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:98
+#: data/resources/ui/window.ui:104
 msgid "Open a BibTeX File"
 msgstr "打开 BibTeX 文件"
 
-#: data/resources/ui/window.ui:99
+#: data/resources/ui/window.ui:105
 msgid "Or drag-and-drop a file"
 msgstr "或拖放文件"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:143
 msgid "Manage your Citations"
 msgstr "管理您的引文"
 
-#: data/resources/ui/window.ui:147
+#: data/resources/ui/window.ui:153
 msgid "Recent Files"
 msgstr "最近的文件"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:198
 msgid "Sidebar"
 msgstr "侧边栏"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:209
 msgid "Add New Citation"
 msgstr "添加新引文"
 
-#: data/resources/ui/window.ui:217
+#: data/resources/ui/window.ui:223
 msgid "Search"
 msgstr "搜索"
 
-#: data/resources/ui/window.ui:231
+#: data/resources/ui/window.ui:237
 msgid "Search…"
 msgstr "搜索…"
 
-#: data/resources/ui/window.ui:253
+#: data/resources/ui/window.ui:259
 msgid "Content"
 msgstr "目录"
 
-#: data/resources/ui/window.ui:263
+#: data/resources/ui/window.ui:269
 msgid "Secondary Menu"
 msgstr "次级菜单"
 
@@ -515,6 +519,7 @@ msgid "Custom"
 msgstr "自定义"
 
 #: src/citation_preview.rs:261 src/entry_list_row.rs:59 src/entry_page.rs:229
+#: src/window.rs:626
 msgid "Copied"
 msgstr "已复制"
 
@@ -636,69 +641,69 @@ msgstr "机构"
 msgid "Could not add entry"
 msgstr "无法添加条目"
 
-#: src/window.rs:359 src/window.rs:384
+#: src/window.rs:364 src/window.rs:389
 msgid "BibTeX Files"
 msgstr "BibTeX 文件"
 
-#: src/window.rs:393
+#: src/window.rs:398
 msgid "Create New Bibliography"
 msgstr "创建新参考文献"
 
-#: src/window.rs:394
+#: src/window.rs:399
 msgid "_Create"
 msgstr "创建(_C)"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:397
+#: src/window.rs:402
 msgid "bibliography"
 msgstr "参考文献"
 
-#: src/window.rs:520
+#: src/window.rs:525
 msgid "An entry with the given citation key already exists"
 msgstr "带有指定引文密钥的条目已存在"
 
-#: src/window.rs:535
+#: src/window.rs:540
 msgid "Bibliography saved"
 msgstr "参考文献已保存"
 
-#: src/window.rs:588
+#: src/window.rs:593
 msgid "Citation Deleted"
 msgstr "引文已删除"
 
-#: src/window.rs:590
+#: src/window.rs:595
 msgid "Undo"
 msgstr "撤消"
 
-#: src/window.rs:633
+#: src/window.rs:644
 msgid "translator-credits"
 msgstr ""
 "杨博远 <byang@debian.org>, 2022.\n"
-"lumingzh <lumingzh@qq.com>, 2022-2025."
+"lumingzh <lumingzh@qq.com>, 2022-2026."
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:647
+#: src/window.rs:658
 msgid "Unsaved Changes"
 msgstr "未保存的更改"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:650
+#: src/window.rs:661
 msgid "Do you want to write all changes to the safe?"
 msgstr "您想要写入所有更改吗？"
 
-#: src/window.rs:654
+#: src/window.rs:665
 msgid "_Quit Without Saving"
 msgstr "不保存并退出(_Q)"
 
-#: src/window.rs:655
+#: src/window.rs:666
 msgid "_Don't Quit"
 msgstr "不退出(_D)"
 
-#: src/window.rs:656
+#: src/window.rs:667
 msgid "_Save and Quit"
 msgstr "保存并退出(_S)"
 
-#: src/window.rs:699
+#: src/window.rs:710
 msgid "Remove From Recent Files"
 msgstr "从最近文件中移除"
 
