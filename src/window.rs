@@ -130,6 +130,11 @@ mod imp {
                     obj.delete_entry(&entry);
                 }
             });
+            klass.install_action("win.copy_entry_bibtex", None, |window, _, _| {
+                if let Some(entry) = window.imp().entry_page.entry() {
+                    window.copy_entry_bibtex(&entry);
+                }
+            });
             klass.install_action("win.search-google-scholar", None, |obj, _, _| {
                 if let Err(err) = obj.search_google_schoolar_entry() {
                     log::error!("Could not search in Google Schoolar: {err}");
@@ -613,6 +618,12 @@ impl Window {
                 self.imp().entry_page.set_no_items_placeholder_view();
             }
         };
+    }
+
+    fn copy_entry_bibtex(&self, entry: &cratebibtex::Entry) {
+        let text = entry.serialize();
+        self.clipboard().set_text(&text);
+        self.send_toast(&gettext("Copied"));
     }
 
     fn start_search_action(&self) {

@@ -58,6 +58,12 @@
     </section>
     <section>
       <item>
+        <attribute name="label" translatable="yes">_Copy BibTeX Entry</attribute>
+        <attribute name="action">win.copy_entry_bibtex</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label" translatable="yes">_Delete</attribute>
         <attribute name="action">win.delete_entry</attribute>
       </item>
