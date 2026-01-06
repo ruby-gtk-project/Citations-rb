@@ -30,6 +30,11 @@
         <attribute name="action">win.save</attribute>
       </item>
       <item>
+        <attribute name="label" translatable="yes">_Open</attribute>
+        <attribute name="action">win.open</attribute>
+        <attribute name="target" translatable="no"></attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">New _Window</attribute>
         <attribute name="action">app.new-window</attribute>
       </item>
