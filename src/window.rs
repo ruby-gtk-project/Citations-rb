@@ -19,12 +19,12 @@ mod imp {
 
     use adw::subclass::prelude::*;
     use gtk::CompositeTemplate;
-    use std::cell::{Cell, OnceCell, RefCell};
+    use std::cell::{Cell, RefCell};
 
     #[derive(CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/window.ui")]
     pub struct Window {
-        pub bib: OnceCell<cratebibtex::Bib>,
+        pub bib: RefCell<Option<cratebibtex::Bib>>,
         pub settings: gio::Settings,
         pub file: RefCell<Option<gio::File>>,
         pub undo_entry: RefCell<Option<UndoInfo>>,
@@ -147,7 +147,12 @@ mod imp {
             });
             klass.install_action("win.undo_delete", None, |obj, _, _| {
                 if let Some(UndoInfo { entry, pos, .. }) = obj.imp().undo_entry.take() {
-                    obj.imp().bib.get().unwrap().add_entry_at_pos(entry, pos);
+                    obj.imp()
+                        .bib
+                        .borrow()
+                        .as_ref()
+                        .unwrap()
+                        .add_entry_at_pos(entry, pos);
                 }
             });
             klass.install_action("win.about", None, |obj, _, _| {
@@ -295,7 +300,7 @@ mod imp {
                 log::warn!("Failed to save window state, {}", &err);
             }
 
-            if let Some(bib) = self.bib.get() {
+            if let Some(bib) = self.bib.borrow().as_ref() {
                 if bib.modified() && !self.force_close.get() {
                     glib::spawn_future_local(glib::clone!(
                         #[weak]
@@ -416,7 +421,7 @@ impl Window {
 
     async fn open_wrapper(&self, file: &gio::File) -> anyhow::Result<()> {
         // TODO Maybe it makes more sense to open in the same window.
-        if self.imp().bib.get().is_some() {
+        if self.imp().bib.borrow().as_ref().is_some() {
             let app = self
                 .application()
                 .and_downcast::<crate::Application>()
@@ -445,7 +450,7 @@ impl Window {
         }
 
         self.imp().entry_list.populate(&bib);
-        self.imp().bib.set(bib).unwrap();
+        self.imp().bib.replace(Some(bib));
         self.imp().file.replace(Some(file.clone()));
         self.imp().search_bar.set_key_capture_widget(Some(self));
         self.imp()
@@ -499,7 +504,7 @@ impl Window {
     }
 
     pub fn bib(&self) -> cratebibtex::Bib {
-        self.imp().bib.get().cloned().unwrap()
+        self.imp().bib.borrow().as_ref().cloned().unwrap()
     }
 
     pub fn send_toast(&self, text: &str) {
@@ -520,13 +525,20 @@ impl Window {
     pub fn new_entry(&self, data: String) -> anyhow::Result<()> {
         let entry = cratebibtex::Entry::from_bibtex(&data)?;
         let citation_key = entry.citation_key();
-        if self.imp().bib.get().unwrap().key_exists(&citation_key) {
+        if self
+            .imp()
+            .bib
+            .borrow()
+            .as_ref()
+            .unwrap()
+            .key_exists(&citation_key)
+        {
             self.send_toast(&gettext(
                 "An entry with the given citation key already exists",
             ));
         } else {
             self.imp().search_bar.set_search_mode(false);
-            let pos = self.imp().bib.get().unwrap().add_entry(entry);
+            let pos = self.imp().bib.borrow().as_ref().unwrap().add_entry(entry);
             self.imp().entry_list.set_selected(pos);
         }
 
@@ -614,7 +626,7 @@ impl Window {
             self.imp().toast_overlay.add_toast(toast);
             self.imp().nav_split_view.set_show_content(false);
 
-            if self.imp().bib.get().unwrap().n_items() == 0 {
+            if self.imp().bib.borrow().as_ref().unwrap().n_items() == 0 {
                 self.imp().entry_page.set_no_items_placeholder_view();
             }
         };
