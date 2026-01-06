@@ -473,6 +473,7 @@ impl Window {
             .main_stack
             .set_visible_child(&*self.imp().nav_split_view);
 
+        self.action_set_enabled("win.new_biblio", false);
         self.action_set_enabled("win.new_entry", true);
         self.action_set_enabled("win.save", true);
         self.action_set_enabled("win.delete_entry", true);
