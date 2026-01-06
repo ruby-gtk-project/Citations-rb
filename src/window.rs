@@ -380,10 +380,10 @@ impl Window {
                 Err(err) if err.matches(gtk::DialogError::Dismissed) => return Ok(()),
                 res => res?,
             };
-            self.open_wrapper(&file).await?;
+            self.open(&file).await?;
         } else {
             let file = gio::File::for_path(&path);
-            self.open_wrapper(&file).await?;
+            self.open(&file).await?;
         }
 
         Ok(())
