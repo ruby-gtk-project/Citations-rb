@@ -26,7 +26,6 @@ mod imp {
         pub selection_model: RefCell<crate::Selection>,
         pub filter_model: gtk::FilterListModel,
         pub filter: gtk::StringFilter,
-        pub id: RefCell<Option<glib::SignalHandlerId>>,
     }
 
     #[glib::object_subclass]
@@ -145,17 +144,13 @@ impl EntryList {
         self.imp().filter_model.set_model(Some(bib));
         self.set_empty_view(bib.item(0).is_none());
 
-        let id = bib.connect_items_changed(glib::clone!(
+        bib.connect_items_changed(glib::clone!(
             #[weak(rename_to = obj)]
             self,
             move |model, _, _, _| {
                 obj.set_empty_view(model.item(0).is_none());
             }
         ));
-
-        if let Some(old_id) = self.imp().id.replace(Some(id)) {
-            bib.disconnect(old_id);
-        }
     }
 
     pub fn filter(&self, query: &str) {
