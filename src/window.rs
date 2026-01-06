@@ -647,7 +647,7 @@ impl Window {
             Some(&gettext("Unsaved Changes")),
             Some(&gettext(
                 // NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-                "Do you want to write all changes to the safe?",
+                "Do you want to write all changes to the bibliography?",
             )),
         );
 
