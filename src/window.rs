@@ -276,7 +276,7 @@ mod imp {
                             #[weak]
                             obj,
                             async move {
-                                if let Err(err) = obj.open_wrapper(&file).await {
+                                if let Err(err) = obj.drag_handler(&file).await {
                                     log::error!("Could not open file: {err:?}")
                                 };
                             }
@@ -364,6 +364,42 @@ impl Window {
     }
 
     async fn open_action(&self, path: String) -> anyhow::Result<()> {
+        if self
+            .imp()
+            .bib
+            .borrow()
+            .as_ref()
+            .is_some_and(cratebibtex::Bib::modified)
+        {
+            if self.ask_opening_new_bib_with_changes().await {
+                self.open_action_inner(path).await?;
+            }
+        } else {
+            self.open_action_inner(path).await?;
+        }
+
+        Ok(())
+    }
+
+    async fn drag_handler(&self, file: &gio::File) -> anyhow::Result<()> {
+        if self
+            .imp()
+            .bib
+            .borrow()
+            .as_ref()
+            .is_some_and(cratebibtex::Bib::modified)
+        {
+            if self.ask_opening_new_bib_with_changes().await {
+                self.open(file).await?;
+            }
+        } else {
+            self.open(file).await?;
+        }
+
+        Ok(())
+    }
+
+    async fn open_action_inner(&self, path: String) -> anyhow::Result<()> {
         if path.is_empty() {
             let bib_filter = gtk::FileFilter::new();
             bib_filter.set_name(Some(&gettext("BibTeX Files")));
@@ -414,27 +450,7 @@ impl Window {
             .create_future(gio::FileCreateFlags::NONE, glib::Priority::default())
             .await?;
         stream.close_future(glib::Priority::default()).await?;
-        self.open_wrapper(&file).await?;
-
-        Ok(())
-    }
-
-    async fn open_wrapper(&self, file: &gio::File) -> anyhow::Result<()> {
-        // TODO Maybe it makes more sense to open in the same window.
-        if self.imp().bib.borrow().as_ref().is_some() {
-            let app = self
-                .application()
-                .and_downcast::<crate::Application>()
-                .unwrap();
-            let window = Window::new(&app);
-            let group = gtk::WindowGroup::new();
-            group.add_window(&window);
-            window.open(file).await?;
-
-            window.present();
-        } else {
-            self.open(file).await?;
-        }
+        self.open(&file).await?;
 
         Ok(())
     }
@@ -662,6 +678,38 @@ impl Window {
         }
 
         dialog.present(Some(self));
+    }
+
+    async fn ask_opening_new_bib_with_changes(&self) -> bool {
+        let dialog = adw::AlertDialog::new(
+            // NOTE Dialog title which informs the user about unsaved changes.
+            Some(&gettext("Unsaved Changes")),
+            Some(&gettext(
+                // NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+                "Do you want to write all changes to the bibliography before opening the new one?",
+            )),
+        );
+
+        dialog.add_response("discard", &gettext("_Open Without Saving"));
+        dialog.add_response("cancel", &gettext("_Don't Open"));
+        dialog.add_response("save", &gettext("_Save and Open"));
+        dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
+        dialog.set_default_response(Some("save"));
+
+        match dialog.choose_future(Some(self)).await.as_str() {
+            "discard" => true,
+            "save" => {
+                if let Err(err) = self.save().await {
+                    log::error!("Could not save bib file: {err}");
+                    false
+                } else {
+                    true
+                }
+            }
+            // There are more responses based on keybindings and random
+            // interactions.
+            _ => false,
+        }
     }
 
     async fn show_save_dialog(&self) {
