@@ -19,12 +19,12 @@ mod imp {
 
     use adw::subclass::prelude::*;
     use gtk::CompositeTemplate;
-    use std::cell::{Cell, OnceCell, RefCell};
+    use std::cell::{Cell, RefCell};
 
     #[derive(CompositeTemplate)]
     #[template(resource = "/org/gnome/World/Citations/ui/window.ui")]
     pub struct Window {
-        pub bib: OnceCell<cratebibtex::Bib>,
+        pub bib: RefCell<Option<cratebibtex::Bib>>,
         pub settings: gio::Settings,
         pub file: RefCell<Option<gio::File>>,
         pub undo_entry: RefCell<Option<UndoInfo>>,
@@ -147,7 +147,12 @@ mod imp {
             });
             klass.install_action("win.undo_delete", None, |obj, _, _| {
                 if let Some(UndoInfo { entry, pos, .. }) = obj.imp().undo_entry.take() {
-                    obj.imp().bib.get().unwrap().add_entry_at_pos(entry, pos);
+                    obj.imp()
+                        .bib
+                        .borrow()
+                        .as_ref()
+                        .unwrap()
+                        .add_entry_at_pos(entry, pos);
                 }
             });
             klass.install_action("win.about", None, |obj, _, _| {
@@ -271,7 +276,7 @@ mod imp {
                             #[weak]
                             obj,
                             async move {
-                                if let Err(err) = obj.open_wrapper(&file).await {
+                                if let Err(err) = obj.drag_handler(&file).await {
                                     log::error!("Could not open file: {err:?}")
                                 };
                             }
@@ -295,7 +300,7 @@ mod imp {
                 log::warn!("Failed to save window state, {}", &err);
             }
 
-            if let Some(bib) = self.bib.get() {
+            if let Some(bib) = self.bib.borrow().as_ref() {
                 if bib.modified() && !self.force_close.get() {
                     glib::spawn_future_local(glib::clone!(
                         #[weak]
@@ -359,6 +364,42 @@ impl Window {
     }
 
     async fn open_action(&self, path: String) -> anyhow::Result<()> {
+        if self
+            .imp()
+            .bib
+            .borrow()
+            .as_ref()
+            .is_some_and(cratebibtex::Bib::modified)
+        {
+            if self.ask_opening_new_bib_with_changes().await {
+                self.open_action_inner(path).await?;
+            }
+        } else {
+            self.open_action_inner(path).await?;
+        }
+
+        Ok(())
+    }
+
+    async fn drag_handler(&self, file: &gio::File) -> anyhow::Result<()> {
+        if self
+            .imp()
+            .bib
+            .borrow()
+            .as_ref()
+            .is_some_and(cratebibtex::Bib::modified)
+        {
+            if self.ask_opening_new_bib_with_changes().await {
+                self.open(file).await?;
+            }
+        } else {
+            self.open(file).await?;
+        }
+
+        Ok(())
+    }
+
+    async fn open_action_inner(&self, path: String) -> anyhow::Result<()> {
         if path.is_empty() {
             let bib_filter = gtk::FileFilter::new();
             bib_filter.set_name(Some(&gettext("BibTeX Files")));
@@ -375,10 +416,10 @@ impl Window {
                 Err(err) if err.matches(gtk::DialogError::Dismissed) => return Ok(()),
                 res => res?,
             };
-            self.open_wrapper(&file).await?;
+            self.open(&file).await?;
         } else {
             let file = gio::File::for_path(&path);
-            self.open_wrapper(&file).await?;
+            self.open(&file).await?;
         }
 
         Ok(())
@@ -409,27 +450,7 @@ impl Window {
             .create_future(gio::FileCreateFlags::NONE, glib::Priority::default())
             .await?;
         stream.close_future(glib::Priority::default()).await?;
-        self.open_wrapper(&file).await?;
-
-        Ok(())
-    }
-
-    async fn open_wrapper(&self, file: &gio::File) -> anyhow::Result<()> {
-        // TODO Maybe it makes more sense to open in the same window.
-        if self.imp().bib.get().is_some() {
-            let app = self
-                .application()
-                .and_downcast::<crate::Application>()
-                .unwrap();
-            let window = Window::new(&app);
-            let group = gtk::WindowGroup::new();
-            group.add_window(&window);
-            window.open(file).await?;
-
-            window.present();
-        } else {
-            self.open(file).await?;
-        }
+        self.open(&file).await?;
 
         Ok(())
     }
@@ -445,13 +466,14 @@ impl Window {
         }
 
         self.imp().entry_list.populate(&bib);
-        self.imp().bib.set(bib).unwrap();
+        self.imp().bib.replace(Some(bib));
         self.imp().file.replace(Some(file.clone()));
         self.imp().search_bar.set_key_capture_widget(Some(self));
         self.imp()
             .main_stack
             .set_visible_child(&*self.imp().nav_split_view);
 
+        self.action_set_enabled("win.new_biblio", false);
         self.action_set_enabled("win.new_entry", true);
         self.action_set_enabled("win.save", true);
         self.action_set_enabled("win.delete_entry", true);
@@ -499,7 +521,7 @@ impl Window {
     }
 
     pub fn bib(&self) -> cratebibtex::Bib {
-        self.imp().bib.get().cloned().unwrap()
+        self.imp().bib.borrow().as_ref().cloned().unwrap()
     }
 
     pub fn send_toast(&self, text: &str) {
@@ -520,13 +542,20 @@ impl Window {
     pub fn new_entry(&self, data: String) -> anyhow::Result<()> {
         let entry = cratebibtex::Entry::from_bibtex(&data)?;
         let citation_key = entry.citation_key();
-        if self.imp().bib.get().unwrap().key_exists(&citation_key) {
+        if self
+            .imp()
+            .bib
+            .borrow()
+            .as_ref()
+            .unwrap()
+            .key_exists(&citation_key)
+        {
             self.send_toast(&gettext(
                 "An entry with the given citation key already exists",
             ));
         } else {
             self.imp().search_bar.set_search_mode(false);
-            let pos = self.imp().bib.get().unwrap().add_entry(entry);
+            let pos = self.imp().bib.borrow().as_ref().unwrap().add_entry(entry);
             self.imp().entry_list.set_selected(pos);
         }
 
@@ -614,7 +643,7 @@ impl Window {
             self.imp().toast_overlay.add_toast(toast);
             self.imp().nav_split_view.set_show_content(false);
 
-            if self.imp().bib.get().unwrap().n_items() == 0 {
+            if self.imp().bib.borrow().as_ref().unwrap().n_items() == 0 {
                 self.imp().entry_page.set_no_items_placeholder_view();
             }
         };
@@ -650,6 +679,38 @@ impl Window {
         }
 
         dialog.present(Some(self));
+    }
+
+    async fn ask_opening_new_bib_with_changes(&self) -> bool {
+        let dialog = adw::AlertDialog::new(
+            // NOTE Dialog title which informs the user about unsaved changes.
+            Some(&gettext("Unsaved Changes")),
+            Some(&gettext(
+                // NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+                "Do you want to write all changes to the bibliography before opening the new one?",
+            )),
+        );
+
+        dialog.add_response("discard", &gettext("_Open Without Saving"));
+        dialog.add_response("cancel", &gettext("_Don't Open"));
+        dialog.add_response("save", &gettext("_Save and Open"));
+        dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
+        dialog.set_default_response(Some("save"));
+
+        match dialog.choose_future(Some(self)).await.as_str() {
+            "discard" => true,
+            "save" => {
+                if let Err(err) = self.save().await {
+                    log::error!("Could not save bib file: {err}");
+                    false
+                } else {
+                    true
+                }
+            }
+            // There are more responses based on keybindings and random
+            // interactions.
+            _ => false,
+        }
     }
 
     async fn show_save_dialog(&self) {
