@@ -39,14 +39,14 @@ cairo-rs.workspace = true
 cratebibtex = { path = "cratebibtex" }
 formatx = "0.2.4"
 texer.workspace = true
-doi2bib = "0.2"
+doi2bib = "0.3"
 futures-channel = "0.3"
 gettext-rs.workspace = true
 gsv.workspace = true
 gtk.workspace = true
 log.workspace = true
 poppler-rs.workspace = true
-reqwest = "0.12"
+reqwest = "0.13"
 sanitize-filename = "0.6"
 tokio = { version = "1.36", default-features = false, features = ["rt-multi-thread"] }
 tracing-subscriber = "0.3"
