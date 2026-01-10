@@ -7,9 +7,8 @@ use std::sync::LazyLock;
 use nom::error::Error;
 use nom::error::ErrorKind;
 use nom::error::ParseError;
-use nom::sequence::Tuple;
 use nom::{
-    AsChar, IResult, InputTakeAtPosition,
+    AsChar, IResult, Input, Parser,
     branch::alt,
     bytes::complete::{tag, take, take_while, take_while1},
     character::complete::char,
@@ -36,7 +35,8 @@ fn parse_method(input: &str) -> IResult<&str, Method<'_>> {
         parse_method_with_arg,
         parse_method_without_arg,
         parse_nonalpha_method,
-    ))(input)
+    ))
+    .parse(input)
 }
 
 fn parse_method_with_arg(input: &str) -> IResult<&str, Method<'_>> {
@@ -105,7 +105,7 @@ fn parse_method_without_arg(input: &str) -> IResult<&str, Method<'_>> {
 
 // Parses `{anything}`.
 fn delimited_by_brackets(input: &str) -> IResult<&str, &str> {
-    delimited(tag("{"), take_until_unbalanced('{', '}'), tag("}"))(input)
+    delimited(tag("{"), take_until_unbalanced('{', '}'), tag("}")).parse(input)
 }
 
 fn till_symbol(s: &str) -> IResult<&str, &str> {
@@ -128,7 +128,7 @@ fn parser(input: &str) -> IResult<&str, Cow<'_, str>> {
             Ok((input, Cow::Borrowed(method)))
         }
     } else if input.starts_with("$") {
-        let (input, data) = delimited(tag("$"), take_while(|c| c != '$'), tag("$"))(input)?;
+        let (input, data) = delimited(tag("$"), take_while(|c| c != '$'), tag("$")).parse(input)?;
         Ok((input, Cow::Borrowed(data)))
     } else if input.starts_with("{") {
         let (input, mut data) = delimited_by_brackets(input)?;
@@ -240,12 +240,12 @@ fn multispacer(input: &str) -> IResult<&str, &str> {
 }
 
 fn weird_whitespaces(input: &str) -> IResult<&str, &str> {
-    let (input, _) = char('\u{2009}')(input)?;
+    let (input, _) = char('\u{2009}').parse(input)?;
     Ok((input, " "))
 }
 
 fn till_symbols_no_ws_once(input: &str) -> IResult<&str, &str> {
-    alt((multispacer, till_symbol1, weird_whitespaces))(input)
+    alt((multispacer, till_symbol1, weird_whitespaces)).parse(input)
 }
 
 fn till_symbols_no_ws(input: &str) -> IResult<&str, Cow<'_, str>> {
@@ -258,7 +258,8 @@ fn till_symbols_no_ws(input: &str) -> IResult<&str, Cow<'_, str>> {
                 acc.to_mut().push_str(item);
                 acc
             },
-        )(input)
+        )
+        .parse(input)
     } else {
         let (input, data) = till_symbol(data)?;
         Ok((input, Cow::Borrowed(data)))
