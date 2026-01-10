@@ -150,7 +150,7 @@ mod imp {
 
             // We want to only restore windows for normal launches by the user
             // (i.e. from the app grid).
-            if reason <= gtk::RestoreReason::Launch {
+            if reason <= gtk::RestoreReason::Launch && app.active_window().is_some() {
                 return;
             }
 
