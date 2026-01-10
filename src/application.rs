@@ -142,7 +142,27 @@ mod imp {
         }
     }
 
-    impl GtkApplicationImpl for Application {}
+    impl GtkApplicationImpl for Application {
+        fn restore_window(&self, reason: gtk::RestoreReason, state: &glib::Variant) {
+            log::debug!("Restoring window with reason: {reason:?}");
+
+            let app = self.obj();
+
+            // We want to only restore windows for normal launches by the user
+            // (i.e. from the app grid).
+            if reason <= gtk::RestoreReason::Launch {
+                return;
+            }
+
+            let window = Window::new(&app);
+            let group = gtk::WindowGroup::new();
+            group.add_window(&window);
+
+            window.restore(reason, state);
+            window.present();
+        }
+    }
+
     impl AdwApplicationImpl for Application {}
 }
 
@@ -158,6 +178,7 @@ impl Default for Application {
             .property("application-id", APP_ID)
             .property("resource-base-path", "/org/gnome/World/Citations/")
             .property("flags", gio::ApplicationFlags::HANDLES_OPEN)
+            .property("support-save", true)
             .build()
     }
 }
@@ -167,10 +188,6 @@ impl Application {
         let actions = [
             gio::ActionEntryBuilder::new("quit")
                 .activate(|app: &Self, _, _| {
-                    // This is needed to trigger the delete event and saving the window state
-                    if let Some(window) = app.active_window() {
-                        window.close();
-                    }
                     app.quit();
                 })
                 .build(),

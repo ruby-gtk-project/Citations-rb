@@ -180,8 +180,24 @@ impl EntryList {
 
         imp.selection_model.borrow().set_hide_selection(false);
         imp.selection_model.borrow().set_selected_position(pos);
-        imp.list_view
-            .scroll_to(pos, gtk::ListScrollFlags::NONE, None::<gtk::ScrollInfo>);
+
+        glib::idle_add_local_full(
+            glib::Priority::DEFAULT_IDLE,
+            glib::clone!(
+                #[weak(rename_to = list_view)]
+                imp.list_view,
+                #[upgrade_or]
+                glib::ControlFlow::Break,
+                move || {
+                    list_view.scroll_to(pos, gtk::ListScrollFlags::NONE, None::<gtk::ScrollInfo>);
+                    glib::ControlFlow::Break
+                }
+            ),
+        );
+    }
+
+    pub fn selected(&self) -> u32 {
+        self.imp().selection_model.borrow().selected_item_pos()
     }
 
     pub fn hide_selection(&self) {
