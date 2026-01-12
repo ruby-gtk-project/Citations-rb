@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2026-01-05 21:04+0000\n"
-"PO-Revision-Date: 2026-01-05 22:40+0100\n"
+"POT-Creation-Date: 2026-01-06 16:26+0000\n"
+"PO-Revision-Date: 2026-01-09 13:47+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.8\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -97,7 +97,7 @@ msgstr "Običajno"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:2 data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:73 src/main.rs:38
+#: data/resources/ui/window.ui:78 src/main.rs:38
 msgid "Citations"
 msgstr "Citati"
 
@@ -205,8 +205,8 @@ msgid ""
 "Write a custom format for your citations, to insert the contents of a tag <tt>sometag</tt> write "
 "<tt>%SOMETAG%</tt>. Basic markdown syntax for bold and italics is supported. "
 msgstr ""
-"Napišite lastno obliko za citate, da vstavite vsebino oznake <tt>nekaoznaka</tt>, napišite <tt>"
-"%NEKAOZNAKA%</tt>. Podprta je osnovna skladnja jezika markdown za krepko in poševno pisavo. "
+"Napišite lastno obliko za citate, da vstavite vsebino oznake <tt>nekaoznaka</tt>, napišite "
+"<tt>%NEKAOZNAKA%</tt>. Podprta je osnovna skladnja jezika markdown za krepko in poševno pisavo. "
 
 #: data/resources/ui/citation_preview.ui:168
 msgid "Example:"
@@ -229,7 +229,7 @@ msgstr "_Odpri PDF"
 msgid "_Copy Key"
 msgstr "_Kopiraj ključ"
 
-#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:67
+#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:72
 msgid "_Delete"
 msgstr "_Izbriši"
 
@@ -289,8 +289,8 @@ msgstr "Kopiraj opombe"
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10 data/resources/ui/window.ui:111
-#: data/resources/ui/window.ui:161
+#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10 data/resources/ui/window.ui:33
+#: data/resources/ui/window.ui:116 data/resources/ui/window.ui:166
 msgid "_Open"
 msgstr "_Odpri"
 
@@ -389,12 +389,12 @@ msgstr "Poišče iskalni niz"
 msgid "_Create New Bibliography"
 msgstr "_Ustvari nov bibliografski vnos"
 
-#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:44
 msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice"
 
 #. TRANSLATORS About dialog
-#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:48
 msgid "_About Citations"
 msgstr "_O programu"
 
@@ -402,65 +402,65 @@ msgstr "_O programu"
 msgid "_Save"
 msgstr "_Shrani"
 
-#: data/resources/ui/window.ui:33
+#: data/resources/ui/window.ui:38
 msgid "New _Window"
 msgstr "Novo _okno"
 
-#: data/resources/ui/window.ui:51
+#: data/resources/ui/window.ui:56
 msgid "_Search in Google Scholar"
 msgstr "_Poišči z Google Učenjak"
 
 #. TRANSLATORS arXiv is a proper name
-#: data/resources/ui/window.ui:55
+#: data/resources/ui/window.ui:60
 msgid "_Search in arXiv"
 msgstr "_Poišči v arXiv"
 
-#: data/resources/ui/window.ui:61
+#: data/resources/ui/window.ui:66
 msgid "_Copy BibTeX Entry"
 msgstr "_Kopiraj vnos BibTeX"
 
-#: data/resources/ui/window.ui:94 data/resources/ui/window.ui:135 data/resources/ui/window.ui:216
+#: data/resources/ui/window.ui:99 data/resources/ui/window.ui:140 data/resources/ui/window.ui:221
 msgid "Main Menu"
 msgstr "Glavni meni"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:104
+#: data/resources/ui/window.ui:109
 msgid "Open a BibTeX File"
 msgstr "Odpri datoteko BibTeX"
 
-#: data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:110
 msgid "Or drag-and-drop a file"
 msgstr "Ali povlecite in spustite datoteko"
 
-#: data/resources/ui/window.ui:143
+#: data/resources/ui/window.ui:148
 msgid "Manage your Citations"
 msgstr "Upravljajte s svojimi citati"
 
-#: data/resources/ui/window.ui:153
+#: data/resources/ui/window.ui:158
 msgid "Recent Files"
 msgstr "Nedavne datoteke"
 
-#: data/resources/ui/window.ui:198
+#: data/resources/ui/window.ui:203
 msgid "Sidebar"
 msgstr "Stranska vrstica"
 
-#: data/resources/ui/window.ui:209
+#: data/resources/ui/window.ui:214
 msgid "Add New Citation"
 msgstr "Dodaj novo navedbo"
 
-#: data/resources/ui/window.ui:223
+#: data/resources/ui/window.ui:228
 msgid "Search"
 msgstr "Poišči"
 
-#: data/resources/ui/window.ui:237
+#: data/resources/ui/window.ui:242
 msgid "Search…"
 msgstr "Poišči …"
 
-#: data/resources/ui/window.ui:259
+#: data/resources/ui/window.ui:264
 msgid "Content"
 msgstr "Vsebina"
 
-#: data/resources/ui/window.ui:269
+#: data/resources/ui/window.ui:274
 msgid "Secondary Menu"
 msgstr "Drugotni meni"
 
@@ -474,6 +474,7 @@ msgstr "PDF ni bilo mogoče prenesti"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
 #: src/add_pdf_dialog.rs:106
+#, rust-format
 msgid "Make sure that {path} exists"
 msgstr "Prepričajte se, da pot {path} obstaja"
 
@@ -511,7 +512,7 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Po meri"
 
-#: src/citation_preview.rs:261 src/entry_list_row.rs:59 src/entry_page.rs:229 src/window.rs:626
+#: src/citation_preview.rs:261 src/entry_list_row.rs:59 src/entry_page.rs:229 src/window.rs:655
 msgid "Copied"
 msgstr "Kopirano"
 
@@ -633,66 +634,83 @@ msgstr "Ustanova"
 msgid "Could not add entry"
 msgstr "Vnosa ni bilo mogoče dodati"
 
-#: src/window.rs:364 src/window.rs:389
+#: src/window.rs:405 src/window.rs:430
 msgid "BibTeX Files"
 msgstr "Datoteke BibTeX"
 
-#: src/window.rs:398
+#: src/window.rs:439
 msgid "Create New Bibliography"
 msgstr "Ustvari nov bibliografski vnos"
 
-#: src/window.rs:399
+#: src/window.rs:440
 msgid "_Create"
 msgstr "_Ustvari"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:402
+#: src/window.rs:443
 msgid "bibliography"
 msgstr "bibliografija"
 
-#: src/window.rs:525
+#: src/window.rs:554
 msgid "An entry with the given citation key already exists"
 msgstr "Vnos s podanim določilom navedbe že obstaja"
 
-#: src/window.rs:540
+#: src/window.rs:569
 msgid "Bibliography saved"
 msgstr "Bibliografija je shranjena"
 
-#: src/window.rs:593
+#: src/window.rs:622
 msgid "Citation Deleted"
 msgstr "Navedba je izbrisana"
 
-#: src/window.rs:595
+#: src/window.rs:624
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.rs:644
+#: src/window.rs:673
 msgid "translator-credits"
 msgstr "Matej Urbančič <mateju@src.gnome.org>,Martin Srebotnjak <miles@filmsi.net>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:658
+#: src/window.rs:687 src/window.rs:719
 msgid "Unsaved Changes"
 msgstr "Neshranjene spremembe"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:661
-msgid "Do you want to write all changes to the safe?"
-msgstr "Ali želite zapisati vse spremembe v sef?"
+#: src/window.rs:690
+msgid "Do you want to write all changes to the bibliography before opening the new one?"
+msgstr "Ali želite zapisati vse spremembe v bibliografijo, preden odprete novo?"
 
-#: src/window.rs:665
+#: src/window.rs:694
+msgid "_Open Without Saving"
+msgstr "_Odpri brez shranjevanja"
+
+#: src/window.rs:695
+msgid "_Don't Open"
+msgstr "_Ne odpri"
+
+#: src/window.rs:696
+msgid "_Save and Open"
+msgstr "_Shrani in odpri"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:722
+msgid "Do you want to write all changes to the bibliography?"
+msgstr "Ali želite zapisati vse spremembe v bibliografijo?"
+
+#: src/window.rs:726
 msgid "_Quit Without Saving"
 msgstr "_Končaj brez shranjevanja"
 
-#: src/window.rs:666
+#: src/window.rs:727
 msgid "_Don't Quit"
 msgstr "_Ne končaj"
 
-#: src/window.rs:667
+#: src/window.rs:728
 msgid "_Save and Quit"
 msgstr "_Shrani in končaj"
 
-#: src/window.rs:710
+#: src/window.rs:771
 msgid "Remove From Recent Files"
 msgstr "Odstrani iz seznama Nedavne datoteke"
