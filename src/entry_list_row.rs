@@ -141,6 +141,13 @@ mod imp {
         fn dispose(&self) {
             self.dispose_template();
         }
+
+        fn constructed(&self) {
+            self.parent_constructed();
+
+            self.obj()
+                .update_property(&[gtk::accessible::Property::HasPopup(true)]);
+        }
     }
     impl WidgetImpl for EntryListRow {}
 }
