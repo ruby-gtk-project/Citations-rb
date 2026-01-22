@@ -4,13 +4,24 @@
     <child>
       <object class="GtkGestureClick" id="menu_gesture">
         <property name="button">0</property>
+        <property name="exclusive">True</property>
         <signal name="pressed" handler="menu_gesture_pressed"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGestureLongPress">
+        <property name="delay-factor">2</property>
+        <property name="touch-only">True</property>
+        <property name="exclusive">True</property>
+        <signal name="pressed" handler="menu_long_gesture_pressed"/>
       </object>
     </child>
     <child>
       <object class="GtkPopoverMenu" id="popover">
         <property name="menu-model">row_menu</property>
         <property name="has-arrow">False</property>
+        <property name="halign">start</property>
+        <property name="position">bottom</property>
       </object>
     </child>
     <child>

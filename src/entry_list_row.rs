@@ -58,6 +58,22 @@ mod imp {
                 let window = row.root().and_downcast::<crate::Window>().unwrap();
                 window.send_toast(&gettext("Copied"));
             });
+
+            klass.install_action("entry-row.popup", None, |row, _, _| {
+                row.open_context_menu(-1.0, -1.0);
+            });
+
+            klass.add_binding_action(
+                gdk::Key::Menu,
+                gdk::ModifierType::NO_MODIFIER_MASK,
+                "entry-row.popup",
+            );
+
+            klass.add_binding_action(
+                gdk::Key::F10,
+                gdk::ModifierType::SHIFT_MASK,
+                "entry-row.popup",
+            );
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -99,19 +115,24 @@ mod imp {
                 .current_event()
                 .is_none_or(|e| !e.triggers_context_menu())
             {
+                gesture.set_state(gtk::EventSequenceState::Denied);
                 return;
             }
-            let has_pdf = crate::utils::has_pdf(&obj.entry().unwrap().citation_key());
-            obj.action_set_enabled("entry-row.open-pdf", has_pdf);
 
-            if x > -1.0 && y > -1.0 {
-                let rectangle = gdk::Rectangle::new(x as i32, y as i32, 1, 1);
-                obj.imp().popover.set_pointing_to(Some(&rectangle));
-            } else {
-                obj.imp().popover.set_pointing_to(None);
-            }
+            obj.open_context_menu(x, y);
             gesture.set_state(gtk::EventSequenceState::Claimed);
-            obj.imp().popover.popup();
+            gesture.reset();
+        }
+
+        #[template_callback]
+        fn menu_long_gesture_pressed(
+            gesture: &gtk::Gesture,
+            x: f64,
+            y: f64,
+            obj: &super::EntryListRow,
+        ) {
+            obj.open_context_menu(x, y);
+            gesture.set_state(gtk::EventSequenceState::Claimed);
         }
     }
 
@@ -119,18 +140,6 @@ mod imp {
     impl ObjectImpl for EntryListRow {
         fn dispose(&self) {
             self.dispose_template();
-        }
-
-        fn constructed(&self) {
-            self.parent_constructed();
-
-            let obj = self.obj();
-
-            if obj.direction() == gtk::TextDirection::Rtl {
-                self.popover.set_halign(gtk::Align::End);
-            } else {
-                self.popover.set_halign(gtk::Align::Start);
-            }
         }
     }
     impl WidgetImpl for EntryListRow {}
@@ -145,5 +154,24 @@ glib::wrapper! {
 impl Default for EntryListRow {
     fn default() -> Self {
         glib::Object::new()
+    }
+}
+
+impl EntryListRow {
+    fn open_context_menu(&self, x: f64, y: f64) {
+        let imp = self.imp();
+
+        let has_pdf = crate::utils::has_pdf(&self.entry().unwrap().citation_key());
+        self.action_set_enabled("entry-row.open-pdf", has_pdf);
+
+        let rectangle = if x > -0.5 && y > -0.5 {
+            gdk::Rectangle::new(x as i32, y as i32, 0, 0)
+        } else if self.direction() == gtk::TextDirection::Rtl {
+            gdk::Rectangle::new(self.width(), self.height(), 0, 0)
+        } else {
+            gdk::Rectangle::new(0, self.height(), 0, 0)
+        };
+        imp.popover.set_pointing_to(Some(&rectangle));
+        imp.popover.popup();
     }
 }
