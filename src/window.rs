@@ -237,6 +237,9 @@ mod imp {
                 self.no_recent_files_status_page.set_icon_name(Some(APP_ID));
             }
 
+            // Load latest window state
+            obj.load_window_size();
+
             obj.populate_recent_files();
             self.settings.connect_changed(
                 Some("recent-files"),
@@ -293,6 +296,9 @@ mod imp {
         // Save window state on delete event
         fn close_request(&self) -> glib::Propagation {
             let window = self.obj();
+            if let Err(err) = window.save_window_size() {
+                log::warn!("Failed to save window state, {}", &err);
+            }
 
             if let Some(bib) = self.bib.borrow().as_ref() {
                 if bib.modified() && !self.force_close.get() {
@@ -314,29 +320,7 @@ mod imp {
         }
     }
 
-    impl ApplicationWindowImpl for Window {
-        fn save_state(&self, state: &glib::VariantDict) -> bool {
-            if let Some(file_path) = self.file.borrow().as_ref().and_then(|f| f.path()) {
-                let pos = self.entry_list.selected();
-
-                log::debug!(
-                    "Saving state: selected {pos}, file: {}",
-                    file_path.display()
-                );
-
-                state.insert("file-path", file_path);
-                state.insert("selected", pos);
-
-                if pos != gtk::INVALID_LIST_POSITION {
-                    let adjustment = self.entry_page.scroll_value();
-                    state.insert("content-scroll-value", adjustment);
-                }
-            }
-
-            false
-        }
-    }
-
+    impl ApplicationWindowImpl for Window {}
     impl AdwApplicationWindowImpl for Window {}
 }
 
@@ -349,6 +333,34 @@ glib::wrapper! {
 impl Window {
     pub fn new(app: &Application) -> Self {
         glib::Object::builder().property("application", app).build()
+    }
+
+    fn save_window_size(&self) -> Result<(), glib::BoolError> {
+        let imp = self.imp();
+
+        let (width, height) = self.default_size();
+
+        imp.settings.set_int("window-width", width)?;
+        imp.settings.set_int("window-height", height)?;
+
+        imp.settings
+            .set_boolean("is-maximized", self.is_maximized())?;
+
+        Ok(())
+    }
+
+    fn load_window_size(&self) {
+        let imp = self.imp();
+
+        let width = imp.settings.int("window-width");
+        let height = imp.settings.int("window-height");
+        let is_maximized = imp.settings.boolean("is-maximized");
+
+        self.set_default_size(width, height);
+
+        if is_maximized {
+            self.maximize();
+        }
     }
 
     async fn open_action(&self, path: String) -> anyhow::Result<()> {
@@ -446,18 +458,6 @@ impl Window {
     pub async fn open(&self, file: &gio::File) -> anyhow::Result<()> {
         let slice = file.load_contents_future().await?.0;
         let data = std::str::from_utf8(&slice)?;
-
-        self.open_inner(file, data)
-    }
-
-    pub fn open_sync(&self, file: &gio::File) -> anyhow::Result<()> {
-        let slice = file.load_contents(gio::Cancellable::NONE)?.0;
-        let data = std::str::from_utf8(&slice)?;
-
-        self.open_inner(file, data)
-    }
-
-    fn open_inner(&self, file: &gio::File, data: &str) -> anyhow::Result<()> {
         let settings = &self.imp().settings;
         let bib = cratebibtex::Bib::default();
         bib.parse(data)?;
@@ -747,50 +747,6 @@ impl Window {
     fn force_close(&self) {
         self.imp().force_close.set(true);
         self.close();
-    }
-
-    pub fn set_selected(&self, pos: u32) {
-        self.imp().entry_list.set_selected(pos);
-    }
-
-    /// Restores the state of a window and then presents it. The present goes in
-    /// this function because it finishes async.
-    pub fn restore(&self, reason: gtk::RestoreReason, state: &glib::Variant) {
-        // We only restore the state on RESTORE.
-        if reason < gtk::RestoreReason::Restore {
-            return;
-        }
-
-        let dict = glib::VariantDict::from(state.clone());
-
-        if let Ok(Some(path)) = dict.lookup::<std::path::PathBuf>("file-path") {
-            log::debug!("Restoring opened file at {}", path.display());
-
-            let pos = dict
-                .lookup::<u32>("selected")
-                .ok()
-                .flatten()
-                .unwrap_or(gtk::INVALID_LIST_POSITION);
-            log::debug!("Restoring selected item position: {pos}");
-
-            let file = gio::File::for_path(&path);
-
-            // We need to block here so that the restore finishes before the
-            // GtkApplication.activate vfunc kicks in and presents the window.
-            // Since there is no UI at this point it is OK to block.
-            if let Err(err) = self.open_sync(&file) {
-                log::error!("Could not open file: {err:?}");
-                return;
-            };
-            if pos != gtk::INVALID_LIST_POSITION {
-                self.set_selected(pos);
-                if let Ok(Some(adj)) =
-                    dict.lookup::<crate::utils::Adjustment>("content-scroll-value")
-                {
-                    self.imp().entry_page.set_scroll_value(adj);
-                }
-            }
-        }
     }
 }
 

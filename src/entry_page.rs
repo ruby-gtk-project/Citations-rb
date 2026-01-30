@@ -46,7 +46,7 @@ mod imp {
         #[template_child]
         pub empty_page: TemplateChild<gtk::Widget>,
         #[template_child]
-        pub non_empty_page: TemplateChild<gtk::ScrolledWindow>,
+        pub non_empty_page: TemplateChild<gtk::Widget>,
         #[template_child]
         pub author_entry: TemplateChild<adw::EntryRow>,
         #[template_child]
@@ -607,16 +607,5 @@ impl EntryPage {
         dialog.present(Some(&window));
 
         Ok(())
-    }
-
-    pub fn scroll_value(&self) -> crate::utils::Adjustment {
-        self.imp().non_empty_page.get().vadjustment().into()
-    }
-
-    pub fn set_scroll_value(&self, value: crate::utils::Adjustment) {
-        self.imp()
-            .non_empty_page
-            .get()
-            .set_vadjustment(Some(&gtk::Adjustment::from(value)));
     }
 }

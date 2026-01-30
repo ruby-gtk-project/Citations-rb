@@ -2,7 +2,8 @@
 use std::path::PathBuf;
 
 use gettextrs::gettext;
-use gtk::{gio, glib, prelude::*};
+use gio::prelude::*;
+use gtk::{gio, glib};
 use std::sync::LazyLock;
 
 static RUNTIME: LazyLock<tokio::runtime::Runtime> =
@@ -231,50 +232,6 @@ async fn inner_get(uri: url::Url) -> anyhow::Result<Vec<u8>> {
 
 pub(crate) async fn get(uri: url::Url) -> anyhow::Result<Vec<u8>> {
     spawn_tokio(inner_get(uri)).await
-}
-
-#[derive(glib::Variant)]
-pub struct Adjustment {
-    value: f64,
-    lower: f64,
-    upper: f64,
-    step_increment: f64,
-    page_increment: f64,
-    page_size: f64,
-}
-
-impl From<gtk::Adjustment> for Adjustment {
-    fn from(v: gtk::Adjustment) -> Self {
-        Adjustment {
-            value: v.value(),
-            lower: v.lower(),
-            upper: v.upper(),
-            step_increment: v.step_increment(),
-            page_increment: v.page_increment(),
-            page_size: v.page_size(),
-        }
-    }
-}
-
-impl From<Adjustment> for gtk::Adjustment {
-    fn from(v: Adjustment) -> gtk::Adjustment {
-        let Adjustment {
-            value,
-            lower,
-            upper,
-            step_increment,
-            page_increment,
-            page_size,
-        } = v;
-        gtk::Adjustment::new(
-            value,
-            lower,
-            upper,
-            step_increment,
-            page_increment,
-            page_size,
-        )
-    }
 }
 
 #[cfg(test)]
