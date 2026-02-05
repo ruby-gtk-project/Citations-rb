@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2026-01-22 22:59+0000\n"
-"PO-Revision-Date: 2026-01-25 20:25+0500\n"
+"POT-Creation-Date: 2026-01-30 19:37+0000\n"
+"PO-Revision-Date: 2026-02-05 07:12+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <Kazakh>\n"
 "Language: kk\n"
@@ -29,8 +29,7 @@ msgstr "Кітап"
 msgid "Misc"
 msgstr "Әртүрлі"
 
-#. NOTE As in conference proceedings, see
-#. https://en.wikipedia.org/wiki/Conference_proceeding
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:121
 msgid "In Proceedings"
 msgstr "Материалдар жинағында"
@@ -78,8 +77,7 @@ msgstr "Магистрлік диссертация"
 msgid "PhD Thesis"
 msgstr "Докторлық диссертация"
 
-#. NOTE As in conference proceedings, see
-#. https://en.wikipedia.org/wiki/Conference_proceeding
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
 #: cratebibtex/src/entry_type.rs:136
 msgid "Proceedings"
 msgstr "Материалдар жинағы"
@@ -105,8 +103,7 @@ msgstr "Дәйексөздер"
 msgid "Manage your bibliography"
 msgstr "Библиографияңызды басқару"
 
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
 msgstr "библиография;дәйексөз келтіру;әдебиет;BibTeX;LaTeX;TeX;"
@@ -116,19 +113,31 @@ msgid "New Window"
 msgstr "Жаңа терезе"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "Терезе ені"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "Терезе биіктігі"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Терезенің максималды күйі"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
 msgid "List of paths of recent files"
 msgstr "Соңғы файлдардың жолдарының тізімі"
 
-#: data/org.gnome.World.Citations.gschema.xml.in:10
-#: data/org.gnome.World.Citations.gschema.xml.in:14
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
 msgid "Default template for book citation"
 msgstr "Кітап дәйексөзі үшін әдепкі үлгі"
 
-#: data/org.gnome.World.Citations.gschema.xml.in:18
+#: data/org.gnome.World.Citations.gschema.xml.in:30
 msgid "Default template kind for citations"
 msgstr "Дәйексөздер үшін әдепкі үлгі түрі"
 
-#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:34
 msgid "Default template format for citations"
 msgstr "Дәйексөздер үшін әдепкі үлгі пішімі"
 
@@ -156,8 +165,7 @@ msgstr "Библиография бумасы орнатылмаған"
 
 #: data/resources/ui/add_pdf_dialog.ui:65
 msgid ""
-"Creates a copy of the selected pdf and stores it in your Bibliography "
-"folder."
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr "Таңдалған PDF көшірмесін жасап, оны Библиография бумасында сақтайды."
 
 #: data/resources/ui/add_pdf_dialog.ui:80
@@ -285,8 +293,8 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:118
-#: data/resources/ui/window.ui:168
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:166
 msgid "_Open"
 msgstr "_Ашу"
 
@@ -415,49 +423,49 @@ msgstr "arXiv ішінен і_здеу"
 msgid "_Copy BibTeX Entry"
 msgstr "BibTeX жазбасын _көшіру"
 
-#: data/resources/ui/window.ui:101 data/resources/ui/window.ui:142
-#: data/resources/ui/window.ui:223
+#: data/resources/ui/window.ui:99 data/resources/ui/window.ui:140
+#: data/resources/ui/window.ui:221
 msgid "Main Menu"
 msgstr "Негізгі мәзір"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:111
+#: data/resources/ui/window.ui:109
 msgid "Open a BibTeX File"
 msgstr "BibTeX файлын ашу"
 
-#: data/resources/ui/window.ui:112
+#: data/resources/ui/window.ui:110
 msgid "Or drag-and-drop a file"
 msgstr "Немесе файлды сүйреп апарыңыз"
 
-#: data/resources/ui/window.ui:150
+#: data/resources/ui/window.ui:148
 msgid "Manage your Citations"
 msgstr "Дәйексөздеріңізді басқару"
 
-#: data/resources/ui/window.ui:160
+#: data/resources/ui/window.ui:158
 msgid "Recent Files"
 msgstr "Соңғы файлдар"
 
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:203
 msgid "Sidebar"
 msgstr "Бүйірлік панель"
 
-#: data/resources/ui/window.ui:216
+#: data/resources/ui/window.ui:214
 msgid "Add New Citation"
 msgstr "Жаңа дәйексөзді қосу"
 
-#: data/resources/ui/window.ui:230
+#: data/resources/ui/window.ui:228
 msgid "Search"
 msgstr "Іздеу"
 
-#: data/resources/ui/window.ui:244
+#: data/resources/ui/window.ui:242
 msgid "Search…"
 msgstr "Іздеу…"
 
-#: data/resources/ui/window.ui:266
+#: data/resources/ui/window.ui:264
 msgid "Content"
 msgstr "Мазмұны"
 
-#: data/resources/ui/window.ui:276
+#: data/resources/ui/window.ui:274
 msgid "Secondary Menu"
 msgstr "Қосымша мәзір"
 
@@ -539,94 +547,92 @@ msgstr "Сілтеме кілті қазірдің өзінде бар"
 msgid "Insert a BibTeX citation here"
 msgstr "Осында BibTeX сілтемесін кірістіру"
 
-#: src/utils.rs:13
+#: src/utils.rs:14
 msgid "Author"
 msgstr "Автор"
 
-#: src/utils.rs:14
+#: src/utils.rs:15
 msgid "Year"
 msgstr "Жыл"
 
-#: src/utils.rs:15
+#: src/utils.rs:16
 msgid "Title"
 msgstr "Атауы"
 
-#: src/utils.rs:16
+#: src/utils.rs:17
 msgid "Volume"
 msgstr "Томы"
 
-#: src/utils.rs:17
+#: src/utils.rs:18
 msgid "Number"
 msgstr "Нөмірі"
 
-#: src/utils.rs:18
+#: src/utils.rs:19
 msgid "Pages"
 msgstr "Беттер"
 
-#: src/utils.rs:19
+#: src/utils.rs:20
 msgid "Publisher"
 msgstr "Баспагер"
 
-#: src/utils.rs:20
+#: src/utils.rs:21
 msgid "Journal"
 msgstr "Журнал"
 
-#: src/utils.rs:21
+#: src/utils.rs:22
 msgid "Address"
 msgstr "Адрес"
 
-#. TRANSLATORS Method of publication, see
-#. https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:23
+#. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
+#: src/utils.rs:24
 msgid "How Published"
 msgstr "Жариялану түрі"
 
-#: src/utils.rs:24
+#: src/utils.rs:25
 msgid "Note"
 msgstr "Ескертпе"
 
-#: src/utils.rs:25
+#: src/utils.rs:26
 msgid "Book Title"
 msgstr "Кітап тақырыбы"
 
-#: src/utils.rs:26
+#: src/utils.rs:27
 msgid "Series"
 msgstr "Серия"
 
-#: src/utils.rs:27
+#: src/utils.rs:28
 msgid "Archive Prefix"
 msgstr "Архив префиксі"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:29
+#: src/utils.rs:30
 msgid "ePrint"
 msgstr "ePrint"
 
-#. TRANSLATORS Identifier used by arXiv, see
-#. https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:31
+#. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
+#: src/utils.rs:32
 msgid "Primary Class"
 msgstr "Негізгі класс"
 
-#: src/utils.rs:32
+#: src/utils.rs:33
 msgid "Month"
 msgstr "Ай"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:34
+#: src/utils.rs:35
 msgid "Editor"
 msgstr "Редактор"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:36
+#: src/utils.rs:37
 msgid "Organization"
 msgstr "Ұйым"
 
-#: src/utils.rs:37
+#: src/utils.rs:38
 msgid "School"
 msgstr "Оқу орны"
 
-#: src/utils.rs:38
+#: src/utils.rs:39
 msgid "Institution"
 msgstr "Мекеме"
 
@@ -634,21 +640,21 @@ msgstr "Мекеме"
 msgid "Could not add entry"
 msgstr "Жазбаны қосу мүмкін емес"
 
-#: src/window.rs:393 src/window.rs:418
+#: src/window.rs:405 src/window.rs:430
 msgid "BibTeX Files"
 msgstr "BibTeX файлдары"
 
-#: src/window.rs:427
+#: src/window.rs:439
 msgid "Create New Bibliography"
 msgstr "Жаңа библиография жасау"
 
-#: src/window.rs:428
+#: src/window.rs:440
 msgid "_Create"
 msgstr "_Жасау"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:431
+#: src/window.rs:443
 msgid "bibliography"
 msgstr "библиография"
 
@@ -677,8 +683,7 @@ msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 msgid "Unsaved Changes"
 msgstr "Сақталмаған өзгерістер"
 
-#. NOTE Dialog subtitle which informs the user about unsaved changes more
-#. detailed.
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
 #: src/window.rs:690
 msgid ""
 "Do you want to write all changes to the bibliography before opening the new "
@@ -698,8 +703,7 @@ msgstr "Аш_пау"
 msgid "_Save and Open"
 msgstr "Сақтау және _ашу"
 
-#. NOTE Dialog subtitle which informs the user about unsaved changes more
-#. detailed.
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
 #: src/window.rs:722
 msgid "Do you want to write all changes to the bibliography?"
 msgstr "Барлық өзгерістерді библиографияға сақтауды қалайсыз ба?"
@@ -716,6 +720,6 @@ msgstr "Шық_пау"
 msgid "_Save and Quit"
 msgstr "Сақтау және _шығу"
 
-#: src/window.rs:815
+#: src/window.rs:771
 msgid "Remove From Recent Files"
 msgstr "Соңғы файлдардан өшіру"
