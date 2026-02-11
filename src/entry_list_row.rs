@@ -20,9 +20,15 @@ mod imp {
         pub author: TemplateChild<gtk::Label>,
         #[template_child]
         pub popover: TemplateChild<gtk::PopoverMenu>,
+        #[template_child]
+        pub title_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        pub year_label: TemplateChild<gtk::Label>,
 
-        #[property(get, set)]
+        #[property(get, set = Self::set_entry, explicit_notify)]
         entry: RefCell<Option<cratebibtex::Entry>>,
+
+        binding_group: glib::BindingGroup,
     }
 
     #[glib::object_subclass]
@@ -83,24 +89,16 @@ mod imp {
 
     #[gtk::template_callbacks]
     impl EntryListRow {
-        #[template_callback]
-        fn pretty_author(&self, author: &str) -> String {
-            let author = texer::texer(author);
-            if author.is_empty() {
-                gettext("Author not set")
-            } else {
-                author.into_owned()
+        fn set_entry(&self, entry: Option<cratebibtex::Entry>) {
+            if self.entry.borrow().as_ref() == entry.as_ref() {
+                return;
             }
-        }
 
-        #[template_callback]
-        fn pretty_title(&self, title: &str) -> String {
-            let title = texer::texer(title);
-            if title.is_empty() {
-                gettext("Title not set")
-            } else {
-                title.into_owned()
-            }
+            self.binding_group.set_source(entry.as_ref());
+
+            self.entry.replace(entry);
+
+            self.obj().notify_entry();
         }
 
         #[template_callback]
@@ -147,6 +145,33 @@ mod imp {
 
             self.obj()
                 .update_property(&[gtk::accessible::Property::HasPopup(true)]);
+
+            self.binding_group
+                .bind("author", &self.author.get(), "label")
+                .sync_create()
+                .transform_to(|_binding, value| {
+                    value
+                        .get::<String>()
+                        .ok()
+                        .map(|s| pretty_author(&s).to_value())
+                })
+                .build();
+
+            self.binding_group
+                .bind("year", &self.year_label.get(), "label")
+                .sync_create()
+                .build();
+
+            self.binding_group
+                .bind("title", &self.title_label.get(), "label")
+                .sync_create()
+                .transform_to(|_binding, value| {
+                    value
+                        .get::<String>()
+                        .ok()
+                        .map(|s| pretty_title(&s).to_value())
+                })
+                .build();
         }
     }
     impl WidgetImpl for EntryListRow {}
@@ -180,5 +205,23 @@ impl EntryListRow {
         };
         imp.popover.set_pointing_to(Some(&rectangle));
         imp.popover.popup();
+    }
+}
+
+fn pretty_title(title: &str) -> String {
+    let title = texer::texer(title);
+    if title.is_empty() {
+        gettext("Title not set")
+    } else {
+        title.into_owned()
+    }
+}
+
+fn pretty_author(author: &str) -> String {
+    let author = texer::texer(author);
+    if author.is_empty() {
+        gettext("Author not set")
+    } else {
+        author.into_owned()
     }
 }
