@@ -44,6 +44,8 @@ mod imp {
         #[template_child]
         pub entry_type_label: TemplateChild<gtk::Label>,
         #[template_child]
+        pub citation_label: TemplateChild<gtk::Label>,
+        #[template_child]
         pub empty_page: TemplateChild<gtk::Widget>,
         #[template_child]
         pub non_empty_page: TemplateChild<gtk::Widget>,
@@ -204,11 +206,6 @@ mod imp {
         }
 
         #[template_callback]
-        fn entry_type_name_str(&self, type_: cratebibtex::EntryType) -> String {
-            type_.to_translatable_string()
-        }
-
-        #[template_callback]
         async fn on_doi_clicked(&self) {
             let value = self.doi_entry.text();
             if let Ok(uri) = crate::utils::doi_url(&value) {
@@ -324,6 +321,22 @@ mod imp {
                 .bind("notes", &notes_buffer, "text")
                 .sync_create()
                 .bidirectional()
+                .build();
+
+            self.bindings
+                .bind("entry-type", &self.entry_type_label.get(), "label")
+                .sync_create()
+                .transform_to(|_binding, value| {
+                    value
+                        .get::<cratebibtex::EntryType>()
+                        .map(|type_| type_.to_translatable_string().to_value())
+                        .ok()
+                })
+                .build();
+
+            self.bindings
+                .bind("citation-key", &self.citation_label.get(), "label")
+                .sync_create()
                 .build();
 
             obj.connect_scale_factor_notify(|obj| {

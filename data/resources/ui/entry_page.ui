@@ -43,27 +43,15 @@
                                     <property name="xalign">0</property>
                                     <property name="yalign">1</property>
                                     <property name="ellipsize">none</property>
-                                    <binding name="label">
-                                      <closure type="gchararray" function="entry_type_name_str">
-                                        <lookup name="entry-type">
-                                          <lookup name="entry">EntryPage</lookup>
-                                        </lookup>
-                                      </closure>
-                                    </binding>
                                     <style>
                                       <class name="title-1"/>
                                     </style>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel">
+                                  <object class="GtkLabel" id="citation_label">
                                     <property name="yalign">1</property>
                                     <property name="ellipsize">end</property>
-                                    <binding name="label">
-                                      <lookup name="citation-key">
-                                        <lookup name="entry">EntryPage</lookup>
-                                      </lookup>
-                                    </binding>
                                     <style>
                                       <class name="dimmed"/>
                                     </style>
@@ -250,9 +238,7 @@
                         </child>
                         <child>
                           <object class="CitationPreview">
-                            <binding name="entry">
-                              <lookup name="entry">EntryPage</lookup>
-                            </binding>
+                            <property name="entry" bind-source="EntryPage" bind-property="entry" bind-flags="sync-create"/>
                           </object>
                         </child>
                         <child>
