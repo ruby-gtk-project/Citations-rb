@@ -39,6 +39,7 @@ endif
 cargo_home = meson.project_build_root() / 'cargo-home'
 cargo_env = environment()
 cargo_env.set('CARGO_HOME', cargo_home)
+cargo_env.set('CARGO_TARGET_DIR', meson.project_build_root() / 'cargo-target')
 
 meson.add_devenv(cargo_env)
 
