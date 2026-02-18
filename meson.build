@@ -35,6 +35,14 @@ iconsdir = datadir / 'icons'
 podir = meson.project_source_root() / 'po'
 gettext_package = meson.project_name()
 
+cargo_home = meson.project_build_root() / 'cargo-home'
+cargo_target = meson.project_build_root() / 'cargo-target'
+cargo_env = environment()
+cargo_env.set('CARGO_HOME', cargo_home)
+cargo_env.set('CARGO_TARGET_DIR', cargo_target)
+
+meson.add_devenv(cargo_env)
+
 if get_option('profile') == 'development'
   profile = 'Devel'
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD', check: false).stdout().strip()
@@ -53,7 +61,8 @@ endif
 meson.add_dist_script(
   'build-aux/dist-vendor.sh',
   meson.project_build_root() / 'meson-dist' / meson.project_name() + '-' + version,
-  meson.project_source_root()
+  meson.project_source_root(),
+  cargo_home,
 )
 
 if get_option('profile') == 'development'

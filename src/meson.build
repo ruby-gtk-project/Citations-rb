@@ -24,25 +24,26 @@ run_command(
   check: true
 )
 
-cargo_options = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
-cargo_options += [ '--target-dir', meson.project_build_root() / 'src' ]
-
 if get_option('profile') == 'default'
-  cargo_options += [ '--release' ]
+  cargo_release_options = [ '--release' ]
+  cargo_clippy_deny_warnings = []
   rust_target = 'release'
   message('Building in release mode')
 else
+  cargo_release_options = []
+  cargo_clippy_deny_warnings = [
+    '--',
+    '--deny',
+    'warnings',
+  ]
   rust_target = 'debug'
   message('Building in debug mode')
 endif
 
-cargo_home = meson.project_build_root() / 'cargo-home'
-cargo_env = environment()
-cargo_env.set('CARGO_HOME', cargo_home)
-cargo_env.set('CARGO_TARGET_DIR', meson.project_build_root() / 'cargo-target')
-
-meson.add_devenv(cargo_env)
-
+cargo_build_options = [
+  '--manifest-path', meson.project_source_root() / 'Cargo.toml',
+  cargo_release_options,
+]
 cargo_build = custom_target(
   'cargo-build',
   build_by_default: true,
@@ -55,8 +56,42 @@ cargo_build = custom_target(
   env: cargo_env,
   command: [
     cargo, 'build',
-    cargo_options,
+    cargo_build_options,
     '&&',
-    'cp', 'src' / rust_target / meson.project_name(), '@OUTPUT@',
+    'cp', cargo_target / rust_target / meson.project_name(), '@OUTPUT@',
   ]
+)
+
+cargo_extra_options = [
+  cargo_release_options,
+  '--all-targets',
+  '--all-features',
+  '--workspace',
+]
+
+cargo_test_options = cargo_extra_options
+test(
+  'cargo-test',
+  cargo,
+  args: [
+    'test',
+    cargo_test_options,
+  ],
+  env: cargo_env,
+  timeout: 400,
+)
+
+cargo_clippy_options = [
+  cargo_extra_options,
+  cargo_clippy_deny_warnings,
+]
+test(
+  'cargo-clippy',
+  cargo,
+  args: [
+    'clippy',
+    cargo_clippy_options,
+  ],
+  env: cargo_env,
+  timeout: 400, # cargo might take a bit of time sometimes
 )
