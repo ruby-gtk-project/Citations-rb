@@ -36,8 +36,9 @@ else
   message('Building in debug mode')
 endif
 
+cargo_home = meson.project_build_root() / 'cargo-home'
 cargo_env = environment()
-cargo_env.set('CARGO_HOME',  meson.project_build_root() / 'cargo-home')
+cargo_env.set('CARGO_HOME', cargo_home)
 
 meson.add_devenv(cargo_env)
 
