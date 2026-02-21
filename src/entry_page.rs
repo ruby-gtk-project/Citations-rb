@@ -266,32 +266,16 @@ mod imp {
                 .bind("author", &*self.author_entry, "text")
                 .sync_create()
                 .bidirectional()
-                .transform_to(|_binding, value| {
-                    value
-                        .get::<String>()
-                        .map(|x| {
-                            x.split_whitespace()
-                                .collect::<Vec<_>>()
-                                .join(" ")
-                                .to_value()
-                        })
-                        .ok()
+                .transform_to(|_binding, value: String| {
+                    Some(value.split_whitespace().collect::<Vec<_>>().join(" "))
                 })
                 .build();
             self.bindings
                 .bind("title", &*self.title_entry, "text")
                 .sync_create()
                 .bidirectional()
-                .transform_to(|_binding, value| {
-                    value
-                        .get::<String>()
-                        .map(|x| {
-                            x.split_whitespace()
-                                .collect::<Vec<_>>()
-                                .join(" ")
-                                .to_value()
-                        })
-                        .ok()
+                .transform_to(|_binding, value: String| {
+                    Some(value.split_whitespace().collect::<Vec<_>>().join(" "))
                 })
                 .build();
             self.bindings
@@ -326,11 +310,8 @@ mod imp {
             self.bindings
                 .bind("entry-type", &self.entry_type_label.get(), "label")
                 .sync_create()
-                .transform_to(|_binding, value| {
-                    value
-                        .get::<cratebibtex::EntryType>()
-                        .map(|type_| type_.to_translatable_string().to_value())
-                        .ok()
+                .transform_to(|_binding, value: cratebibtex::EntryType| {
+                    Some(value.to_translatable_string())
                 })
                 .build();
 

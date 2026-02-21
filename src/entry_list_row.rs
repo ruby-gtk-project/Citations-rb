@@ -149,12 +149,7 @@ mod imp {
             self.binding_group
                 .bind("author", &self.author.get(), "label")
                 .sync_create()
-                .transform_to(|_binding, value| {
-                    value
-                        .get::<String>()
-                        .ok()
-                        .map(|s| pretty_author(&s).to_value())
-                })
+                .transform_to(|_binding, s: &str| Some(pretty_author(s)))
                 .build();
 
             self.binding_group
@@ -165,12 +160,7 @@ mod imp {
             self.binding_group
                 .bind("title", &self.title_label.get(), "label")
                 .sync_create()
-                .transform_to(|_binding, value| {
-                    value
-                        .get::<String>()
-                        .ok()
-                        .map(|s| pretty_title(&s).to_value())
-                })
+                .transform_to(|_binding, s: &str| Some(pretty_title(s)))
                 .build();
         }
     }
