@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-10-16 17:05+0000\n"
+"POT-Creation-Date: 2026-02-21 11:12+0000\n"
 "PO-Revision-Date: 2022-10-26 19:34+0300\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: Greek <gnome-el-list@gnome.org>\n"
@@ -88,14 +88,14 @@ msgid "Tech Report"
 msgstr "Τεχνική Αναφορά"
 
 #. NOTE Plain as in Plain Text
-#: cratebibtex/src/format.rs:51
+#: cratebibtex/src/format.rs:46
 msgid "Plain"
 msgstr "Απλό Κείμενο"
 
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:67 src/main.rs:39
+#: data/resources/ui/window.ui:78 src/main.rs:38
 msgid "Citations"
 msgstr "Citations"
 
@@ -107,7 +107,9 @@ msgstr "Διαχείριση της βιβλιογραφίας σας"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.World.Citations.desktop.in.in:9
 msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
-msgstr "βιβλιογραφία;παραπομπές;βιβλιογραφικές αναφορές;βιβλιογραφική παραπομπή;BibTeX;LaTeX;TeX;"
+msgstr ""
+"βιβλιογραφία;παραπομπές;βιβλιογραφικές αναφορές;βιβλιογραφική "
+"παραπομπή;BibTeX;LaTeX;TeX;"
 
 #: data/org.gnome.World.Citations.desktop.in.in:19
 msgid "New Window"
@@ -156,7 +158,7 @@ msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:254
 msgid "Add PDF"
 msgstr "Προσθήκη PDF"
 
@@ -187,31 +189,34 @@ msgstr "Προσθήκη από Αρχείο…"
 msgid "Custom Citation Format"
 msgstr "Προσαρμοσμένη Μορφή Παραπομπής"
 
-#: data/resources/ui/citation_preview.ui:50
+#: data/resources/ui/citation_preview.ui:20
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: data/resources/ui/citation_preview.ui:54
 msgid "Citation"
 msgstr "Παραπομπή"
 
-#: data/resources/ui/citation_preview.ui:94 data/resources/ui/entry_page.ui:113
+#: data/resources/ui/citation_preview.ui:104
+#: data/resources/ui/entry_page.ui:101
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: data/resources/ui/citation_preview.ui:137
+#: data/resources/ui/citation_preview.ui:147
 msgid "Custom Template"
 msgstr "Προσαρμοσμένο Πρότυπο"
 
-#: data/resources/ui/citation_preview.ui:153
+#: data/resources/ui/citation_preview.ui:163
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
-"and italics is supported.\n"
-"            "
+"and italics is supported. "
 msgstr ""
-"Γράψτε μια προσαρμοσμένη μορφή για τις παραπομπές σας, για να εισαγάγετε τα "
+"Γράψτε μια προσαρμοσμένη μορφή για τις παραπομπές σας· για να εισαγάγετε τα "
 "περιεχόμενα μιας ετικέτας <tt>sometag</tt> γράψτε <tt>%SOMETAG%</tt>. "
-"Υποστηρίζεται βασική σύνταξη markdown για έντονα και πλάγια.\n"
-"            "
+"Υποστηρίζεται βασική σύνταξη Markdown για έντονα και πλάγια γράμματα. "
 
-#: data/resources/ui/citation_preview.ui:159
+#: data/resources/ui/citation_preview.ui:168
 msgid "Example:"
 msgstr "Παράδειγμα:"
 
@@ -224,15 +229,15 @@ msgstr "Δεν υπάρχουν Παραπομπές"
 msgid "Create a new citation"
 msgstr "Δημιουργία νέας παραπομπής"
 
-#: data/resources/ui/entry_list_row.ui:89
+#: data/resources/ui/entry_list_row.ui:81
 msgid "_Open PDF"
 msgstr "_Άνοιγμα PDF"
 
-#: data/resources/ui/entry_list_row.ui:93
+#: data/resources/ui/entry_list_row.ui:85
 msgid "_Copy Key"
 msgstr "_Αντιγραφή Κλειδιού"
 
-#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:91 data/resources/ui/window.ui:72
 msgid "_Delete"
 msgstr "_Διαγραφή"
 
@@ -240,68 +245,69 @@ msgstr "_Διαγραφή"
 msgid "No Citation Selected"
 msgstr "Δεν έχει επιλεγεί Παραπομπή"
 
-#: data/resources/ui/entry_page.ui:82
+#: data/resources/ui/entry_page.ui:70
 msgid "Citation _Type"
 msgstr "_Τύπος Παραπομπής"
 
-#: data/resources/ui/entry_page.ui:98
+#: data/resources/ui/entry_page.ui:86
 msgid "_Other Citation Type"
 msgstr "_Άλλος Τύπος Παραπομπής"
 
-#: data/resources/ui/entry_page.ui:105
+#: data/resources/ui/entry_page.ui:93
 msgid "_Citation Key"
 msgstr "_Κλειδί Παραπομπής"
 
-#: data/resources/ui/entry_page.ui:124
+#: data/resources/ui/entry_page.ui:112
 msgid "_Author"
 msgstr "_Συγγραφέας"
 
-#: data/resources/ui/entry_page.ui:130
+#: data/resources/ui/entry_page.ui:118
 msgid "_Title"
 msgstr "_Τίτλος"
 
-#: data/resources/ui/entry_page.ui:136
+#: data/resources/ui/entry_page.ui:124
 msgid "_Year"
 msgstr "_Έτος"
 
-#: data/resources/ui/entry_page.ui:152 src/entry_page.rs:397
+#: data/resources/ui/entry_page.ui:140
 msgid "Open in Browser"
 msgstr "Άνοιγμα στο Πρόγραμμα Περιήγησης"
 
-#: data/resources/ui/entry_page.ui:168
+#: data/resources/ui/entry_page.ui:156
 msgid "Other Properties"
 msgstr "Άλλες Ιδιότητες"
 
-#: data/resources/ui/entry_page.ui:182
+#: data/resources/ui/entry_page.ui:170
 msgid "Abstract"
 msgstr "Περίληψη"
 
-#: data/resources/ui/entry_page.ui:186
+#: data/resources/ui/entry_page.ui:174
 msgid "Copy Abstract"
 msgstr "Αντιγραφή Περίληψης"
 
-#: data/resources/ui/entry_page.ui:218
+#: data/resources/ui/entry_page.ui:206
 msgid "Notes"
 msgstr "Σημειώσεις"
 
-#: data/resources/ui/entry_page.ui:222
+#: data/resources/ui/entry_page.ui:210
 msgid "Copy Notes"
 msgstr "Αντιγραφή Σημειώσεων"
 
-#: data/resources/ui/entry_page.ui:286
+#: data/resources/ui/entry_page.ui:272
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
+#: data/resources/ui/entry_page.ui:283 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:166
 msgid "_Open"
 msgstr "_Άνοιγμα"
 
-#: data/resources/ui/entry_page.ui:311
+#: data/resources/ui/entry_page.ui:297
 msgid "Delete PDF"
 msgstr "Διαγραφή PDF"
 
-#: data/resources/ui/entry_page.ui:352
+#: data/resources/ui/entry_page.ui:338
 msgid "Could not set PDF Preview"
 msgstr "Αδυναμία ρύθμισης Προεπισκόπησης PDF"
 
@@ -392,12 +398,12 @@ msgstr "Αναζήτηση"
 msgid "_Create New Bibliography"
 msgstr "_Δημιουργία Νέας Βιβλιογραφίας"
 
-#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:44
 msgid "_Keyboard Shortcuts"
 msgstr "Συντομεύσεις _Πληκτρολογίου"
 
 #. TRANSLATORS About dialog
-#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:48
 msgid "_About Citations"
 msgstr "_Σχετικά με το Citations"
 
@@ -405,62 +411,66 @@ msgstr "_Σχετικά με το Citations"
 msgid "_Save"
 msgstr "_Αποθήκευση"
 
-#: data/resources/ui/window.ui:33
+#: data/resources/ui/window.ui:38
 msgid "New _Window"
 msgstr "Νέο _Παράθυρο"
 
-#: data/resources/ui/window.ui:51
+#: data/resources/ui/window.ui:56
 msgid "_Search in Google Scholar"
 msgstr "_Αναζήτηση στο Google Scholar"
 
 #. TRANSLATORS arXiv is a proper name
-#: data/resources/ui/window.ui:55
+#: data/resources/ui/window.ui:60
 msgid "_Search in arXiv"
 msgstr "_Αναζήτηση στο arXiv"
 
-#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
-#: data/resources/ui/window.ui:210
+#: data/resources/ui/window.ui:66
+msgid "_Copy BibTeX Entry"
+msgstr "Αντιγραφή κατα_χώρισης BibTeX"
+
+#: data/resources/ui/window.ui:99 data/resources/ui/window.ui:140
+#: data/resources/ui/window.ui:221
 msgid "Main Menu"
-msgstr "Κύριο Μενού"
+msgstr "Κύριο μενού"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:98
+#: data/resources/ui/window.ui:109
 msgid "Open a BibTeX File"
 msgstr "Άνοιγμα Αρχείου BibTeX"
 
-#: data/resources/ui/window.ui:99
+#: data/resources/ui/window.ui:110
 msgid "Or drag-and-drop a file"
 msgstr "Ή σύρετε και αφήστε ένα αρχείο"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:148
 msgid "Manage your Citations"
 msgstr "Διαχειριστείτε τις Παραπομπές σας"
 
-#: data/resources/ui/window.ui:147
+#: data/resources/ui/window.ui:158
 msgid "Recent Files"
 msgstr "Πρόσφατα Αρχεία"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:203
 msgid "Sidebar"
 msgstr "Πλαϊνή Γραμμή"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:214
 msgid "Add New Citation"
 msgstr "Προσθήκη Νέας Παραπομπής"
 
-#: data/resources/ui/window.ui:217
+#: data/resources/ui/window.ui:228
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: data/resources/ui/window.ui:231
+#: data/resources/ui/window.ui:242
 msgid "Search…"
 msgstr "Αναζήτηση…"
 
-#: data/resources/ui/window.ui:253
+#: data/resources/ui/window.ui:264
 msgid "Content"
 msgstr "Περιεχόμενο"
 
-#: data/resources/ui/window.ui:263
+#: data/resources/ui/window.ui:274
 msgid "Secondary Menu"
 msgstr "Δευτερεύον Μενού"
 
@@ -473,15 +483,16 @@ msgid "Could not download PDF"
 msgstr "Αδυναμία λήψης PDF"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: src/add_pdf_dialog.rs:105
+#: src/add_pdf_dialog.rs:106
+#, rust-format
 msgid "Make sure that {path} exists"
 msgstr "Βεβαιωθείτε ότι το {path} υπάρχει"
 
-#: src/add_pdf_dialog.rs:194
+#: src/add_pdf_dialog.rs:197
 msgid "PDF Files"
 msgstr "Αρχεία PDF"
 
-#: src/add_pdf_dialog.rs:202
+#: src/add_pdf_dialog.rs:205
 msgid "Select a PDF"
 msgstr "Επιλογή PDF"
 
@@ -494,51 +505,48 @@ msgid "Enable debug messages"
 msgstr "Ενεργοποίηση μηνυμάτων αποσφαλμάτωσης"
 
 #. TODO Should this be translatable?
-#: src/citation_preview.rs:56
+#: src/citation_preview.rs:51
 msgid "Chicago"
 msgstr "Σικάγο"
 
-#: src/citation_preview.rs:57
+#: src/citation_preview.rs:52
 msgid "Harvard"
 msgstr "Χάρβαρντ"
 
-#: src/citation_preview.rs:58
+#: src/citation_preview.rs:53
 msgid "Vancouver"
 msgstr "Βανκούβερ"
 
 #. NOTE: Custom as in Custom Template.
-#: src/citation_preview.rs:60
+#: src/citation_preview.rs:55
 msgid "Custom"
 msgstr "Προσαρμοσμένο"
 
-#: src/citation_preview.rs:266 src/entry_list_row.rs:59 src/entry_page.rs:229
+#: src/citation_preview.rs:261 src/entry_list_row.rs:65 src/entry_page.rs:226
+#: src/window.rs:655
 msgid "Copied"
 msgstr "Αντιγράφηκε"
 
-#: src/citation_preview.rs:273
+#: src/citation_preview.rs:268
 msgid "Custom…"
 msgstr "Προσαρμοσμένο…"
 
-#: src/entry_list_row.rs:74
-msgid "Author not set"
-msgstr "Δεν έχει οριστεί συγγραφέας"
-
-#: src/entry_list_row.rs:84
+#: src/entry_list_row.rs:204
 msgid "Title not set"
 msgstr "Δεν έχει οριστεί τίτλος"
 
-#: src/entry_page.rs:200
+#: src/entry_list_row.rs:213
+msgid "Author not set"
+msgstr "Δεν έχει οριστεί συγγραφέας"
+
+#: src/entry_page.rs:202
 msgid "Other…"
 msgstr "Άλλο…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:248
+#: src/entry_page.rs:245
 msgid "Citation Key already exists"
 msgstr "Το Κλειδί Παραπομπής υπάρχει ήδη"
-
-#: src/entry_page.rs:602
-msgid "PDF added"
-msgstr "Προστέθηκε PDF"
 
 #: src/new_entry_dialog.rs:160
 msgid "Insert a BibTeX citation here"
@@ -637,41 +645,41 @@ msgstr "Ίδρυμα"
 msgid "Could not add entry"
 msgstr "Αδυναμία προσθήκης εγγραφής"
 
-#: src/window.rs:359 src/window.rs:384
+#: src/window.rs:405 src/window.rs:430
 msgid "BibTeX Files"
 msgstr "Αρχεία BibTeX"
 
-#: src/window.rs:393
+#: src/window.rs:439
 msgid "Create New Bibliography"
 msgstr "Δημιουργία Νέας Βιβλιογραφίας"
 
-#: src/window.rs:394
+#: src/window.rs:440
 msgid "_Create"
 msgstr "_Δημιουργία"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:397
+#: src/window.rs:443
 msgid "bibliography"
 msgstr "bibliography"
 
-#: src/window.rs:520
+#: src/window.rs:554
 msgid "An entry with the given citation key already exists"
 msgstr "Υπάρχει ήδη μια εγγραφή με το δοσμένο κλειδί παραπομπής"
 
-#: src/window.rs:535
+#: src/window.rs:569
 msgid "Bibliography saved"
 msgstr "Αποθηκεύτηκε η βιβλιογραφία"
 
-#: src/window.rs:588
+#: src/window.rs:622
 msgid "Citation Deleted"
 msgstr "Διαγράφηκε η Παραπομπή"
 
-#: src/window.rs:590
+#: src/window.rs:624
 msgid "Undo"
 msgstr "Αναίρεση"
 
-#: src/window.rs:633
+#: src/window.rs:673
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -681,30 +689,53 @@ msgstr ""
 "http://gnome.gr/"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:647
+#: src/window.rs:687 src/window.rs:719
 msgid "Unsaved Changes"
 msgstr "Μη Αποθηκευμένες Αλλαγές"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:650
-msgid "Do you want to write all changes to the safe?"
-msgstr "Θέλετε να γράψετε όλες τις αλλαγές στην ασφάλεια;"
+#: src/window.rs:690
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr ""
+"Θέλετε να εγγράψετε όλες τις αλλαγές στη βιβλιογραφία πριν ανοίξετε την καινούργια;"
 
-#: src/window.rs:654
+#: src/window.rs:694
+msgid "_Open Without Saving"
+msgstr "_Άνοιγμα χωρίς αποθήκευση"
+
+#: src/window.rs:695
+msgid "_Don't Open"
+msgstr "_Να μην γίνει άνοιγμα"
+
+#: src/window.rs:696
+msgid "_Save and Open"
+msgstr "_Αποθήκευση και άνοιγμα"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:722
+msgid "Do you want to write all changes to the bibliography?"
+msgstr "Θέλετε να εγγράψετε όλες τις αλλαγές στη βιβλιογραφία;"
+
+#: src/window.rs:726
 msgid "_Quit Without Saving"
 msgstr "_Έξοδος χωρίς Αποθήκευση"
 
-#: src/window.rs:655
+#: src/window.rs:727
 msgid "_Don't Quit"
 msgstr "_Να μην Γίνει Έξοδος"
 
-#: src/window.rs:656
+#: src/window.rs:728
 msgid "_Save and Quit"
 msgstr "_Αποθήκευση και Έξοδος"
 
-#: src/window.rs:699
+#: src/window.rs:771
 msgid "Remove From Recent Files"
 msgstr "Αφαίρεση από τα Πρόσφατα Αρχεία"
+
+#~ msgid "PDF added"
+#~ msgstr "Προστέθηκε PDF"
 
 #~ msgid "Back"
 #~ msgstr "Πίσω"
