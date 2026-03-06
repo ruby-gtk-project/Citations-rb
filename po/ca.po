@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2025-12-27 21:11+0000\n"
-"PO-Revision-Date: 2026-01-01 15:59+0100\n"
+"POT-Creation-Date: 2026-02-28 08:15+0000\n"
+"PO-Revision-Date: 2026-02-28 18:43+0100\n"
 "Last-Translator: \n"
 "Language-Team: Catalan <Catalan>\n"
 "Language: ca\n"
@@ -95,7 +95,7 @@ msgstr "Text pla"
 #. NOTE: This is the app name
 #: data/org.gnome.World.Citations.desktop.in.in:2
 #: data/org.gnome.World.Citations.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:67 src/main.rs:38
+#: data/resources/ui/window.ui:78 src/main.rs:38
 msgid "Citations"
 msgstr "Citacions"
 
@@ -156,7 +156,7 @@ msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:254
 msgid "Add PDF"
 msgstr "Afegeix un PDF"
 
@@ -195,7 +195,7 @@ msgid "Citation"
 msgstr "Cita"
 
 #: data/resources/ui/citation_preview.ui:104
-#: data/resources/ui/entry_page.ui:113
+#: data/resources/ui/entry_page.ui:101
 msgid "Copy"
 msgstr "Copia"
 
@@ -227,15 +227,15 @@ msgstr "Sense citacions"
 msgid "Create a new citation"
 msgstr "Crea una cita nova"
 
-#: data/resources/ui/entry_list_row.ui:89
+#: data/resources/ui/entry_list_row.ui:81
 msgid "_Open PDF"
 msgstr "_Obre el PDF"
 
-#: data/resources/ui/entry_list_row.ui:93
+#: data/resources/ui/entry_list_row.ui:85
 msgid "_Copy Key"
 msgstr "_Copia la clau"
 
-#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:61
+#: data/resources/ui/entry_list_row.ui:91 data/resources/ui/window.ui:72
 msgid "_Delete"
 msgstr "_Suprimeix"
 
@@ -243,68 +243,69 @@ msgstr "_Suprimeix"
 msgid "No Citation Selected"
 msgstr "No s'ha seleccionat cap cita"
 
-#: data/resources/ui/entry_page.ui:82
+#: data/resources/ui/entry_page.ui:70
 msgid "Citation _Type"
 msgstr "_Tipus de citació"
 
-#: data/resources/ui/entry_page.ui:98
+#: data/resources/ui/entry_page.ui:86
 msgid "_Other Citation Type"
 msgstr "_Altres tipus de cita"
 
-#: data/resources/ui/entry_page.ui:105
+#: data/resources/ui/entry_page.ui:93
 msgid "_Citation Key"
 msgstr "_Clau de citació"
 
-#: data/resources/ui/entry_page.ui:124
+#: data/resources/ui/entry_page.ui:112
 msgid "_Author"
 msgstr "_Autor"
 
-#: data/resources/ui/entry_page.ui:130
+#: data/resources/ui/entry_page.ui:118
 msgid "_Title"
 msgstr "_Títol"
 
-#: data/resources/ui/entry_page.ui:136
+#: data/resources/ui/entry_page.ui:124
 msgid "_Year"
 msgstr "An_y"
 
-#: data/resources/ui/entry_page.ui:152
+#: data/resources/ui/entry_page.ui:140
 msgid "Open in Browser"
 msgstr "Obre al navegador"
 
-#: data/resources/ui/entry_page.ui:168
+#: data/resources/ui/entry_page.ui:156
 msgid "Other Properties"
 msgstr "Altres propietats"
 
-#: data/resources/ui/entry_page.ui:182
+#: data/resources/ui/entry_page.ui:170
 msgid "Abstract"
 msgstr "Resum"
 
-#: data/resources/ui/entry_page.ui:186
+#: data/resources/ui/entry_page.ui:174
 msgid "Copy Abstract"
 msgstr "Copia el resum"
 
-#: data/resources/ui/entry_page.ui:218
+#: data/resources/ui/entry_page.ui:206
 msgid "Notes"
 msgstr "Notes"
 
-#: data/resources/ui/entry_page.ui:222
+#: data/resources/ui/entry_page.ui:210
 msgid "Copy Notes"
 msgstr "Copia les notes"
 
-#: data/resources/ui/entry_page.ui:286
+#: data/resources/ui/entry_page.ui:272
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:105 data/resources/ui/window.ui:155
+#: data/resources/ui/entry_page.ui:283 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:166
 msgid "_Open"
 msgstr "_Obre"
 
-#: data/resources/ui/entry_page.ui:311
+#: data/resources/ui/entry_page.ui:297
 msgid "Delete PDF"
 msgstr "Suprimeix el PDF"
 
-#: data/resources/ui/entry_page.ui:352
+#: data/resources/ui/entry_page.ui:338
 msgid "Could not set PDF Preview"
 msgstr "No s'ha pogut establir la vista prèvia del PDF"
 
@@ -395,12 +396,12 @@ msgstr "Cerca"
 msgid "_Create New Bibliography"
 msgstr "_Crea una bibliografia nova"
 
-#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:39
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:44
 msgid "_Keyboard Shortcuts"
 msgstr "_Dreceres de teclat"
 
 #. TRANSLATORS About dialog
-#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:43
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:48
 msgid "_About Citations"
 msgstr "_Quant al Citacions"
 
@@ -408,62 +409,66 @@ msgstr "_Quant al Citacions"
 msgid "_Save"
 msgstr "De_sa"
 
-#: data/resources/ui/window.ui:33
+#: data/resources/ui/window.ui:38
 msgid "New _Window"
 msgstr "Finestra _nova"
 
-#: data/resources/ui/window.ui:51
+#: data/resources/ui/window.ui:56
 msgid "_Search in Google Scholar"
 msgstr "_Cerca al Google Scholar"
 
 #. TRANSLATORS arXiv is a proper name
-#: data/resources/ui/window.ui:55
+#: data/resources/ui/window.ui:60
 msgid "_Search in arXiv"
 msgstr "_Cerca a l'arXiv"
 
-#: data/resources/ui/window.ui:88 data/resources/ui/window.ui:129
-#: data/resources/ui/window.ui:210
+#: data/resources/ui/window.ui:66
+msgid "_Copy BibTeX Entry"
+msgstr "_Copia l'entrada BibTeX"
+
+#: data/resources/ui/window.ui:99 data/resources/ui/window.ui:140
+#: data/resources/ui/window.ui:221
 msgid "Main Menu"
 msgstr "Menú principal"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:98
+#: data/resources/ui/window.ui:109
 msgid "Open a BibTeX File"
 msgstr "Obriu un fitxer BibTeX"
 
-#: data/resources/ui/window.ui:99
+#: data/resources/ui/window.ui:110
 msgid "Or drag-and-drop a file"
 msgstr "O arrossegueu i deixeu anar un fitxer"
 
-#: data/resources/ui/window.ui:137
+#: data/resources/ui/window.ui:148
 msgid "Manage your Citations"
 msgstr "Gestioneu les vostres citacions"
 
-#: data/resources/ui/window.ui:147
+#: data/resources/ui/window.ui:158
 msgid "Recent Files"
 msgstr "Fitxers recents"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:203
 msgid "Sidebar"
 msgstr "Barra lateral"
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:214
 msgid "Add New Citation"
 msgstr "Afegeix una cita nova"
 
-#: data/resources/ui/window.ui:217
+#: data/resources/ui/window.ui:228
 msgid "Search"
 msgstr "Cerca"
 
-#: data/resources/ui/window.ui:231
+#: data/resources/ui/window.ui:242
 msgid "Search…"
 msgstr "Cerca…"
 
-#: data/resources/ui/window.ui:253
+#: data/resources/ui/window.ui:264
 msgid "Content"
 msgstr "Contingut"
 
-#: data/resources/ui/window.ui:263
+#: data/resources/ui/window.ui:274
 msgid "Secondary Menu"
 msgstr "Menú secundari"
 
@@ -514,7 +519,8 @@ msgstr "Vancouver"
 msgid "Custom"
 msgstr "Personalitzat"
 
-#: src/citation_preview.rs:261 src/entry_list_row.rs:59 src/entry_page.rs:229
+#: src/citation_preview.rs:261 src/entry_list_row.rs:65 src/entry_page.rs:226
+#: src/window.rs:655
 msgid "Copied"
 msgstr "S'ha copiat"
 
@@ -522,20 +528,20 @@ msgstr "S'ha copiat"
 msgid "Custom…"
 msgstr "Personalitzat…"
 
-#: src/entry_list_row.rs:74
-msgid "Author not set"
-msgstr "No s'ha establert l'autor"
-
-#: src/entry_list_row.rs:84
+#: src/entry_list_row.rs:204
 msgid "Title not set"
 msgstr "No s'ha establert el títol"
 
-#: src/entry_page.rs:200
+#: src/entry_list_row.rs:213
+msgid "Author not set"
+msgstr "No s'ha establert l'autor"
+
+#: src/entry_page.rs:202
 msgid "Other…"
 msgstr "Altres…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:248
+#: src/entry_page.rs:245
 msgid "Citation Key already exists"
 msgstr "La clau de citació ja existeix"
 
@@ -636,67 +642,87 @@ msgstr "Institució"
 msgid "Could not add entry"
 msgstr "No s'ha pogut afegir l'entrada"
 
-#: src/window.rs:359 src/window.rs:384
+#: src/window.rs:405 src/window.rs:430
 msgid "BibTeX Files"
 msgstr "Fitxers BibTeX"
 
-#: src/window.rs:393
+#: src/window.rs:439
 msgid "Create New Bibliography"
 msgstr "Crea una bibliografia nova"
 
-#: src/window.rs:394
+#: src/window.rs:440
 msgid "_Create"
 msgstr "_Crea"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:397
+#: src/window.rs:443
 msgid "bibliography"
 msgstr "bibliografia"
 
-#: src/window.rs:520
+#: src/window.rs:554
 msgid "An entry with the given citation key already exists"
 msgstr "Ja existeix una entrada amb la clau de citació donada"
 
-#: src/window.rs:535
+#: src/window.rs:569
 msgid "Bibliography saved"
 msgstr "S'ha desat la bibliografia"
 
-#: src/window.rs:588
+#: src/window.rs:622
 msgid "Citation Deleted"
 msgstr "S'ha suprimit la cita"
 
-#: src/window.rs:590
+#: src/window.rs:624
 msgid "Undo"
 msgstr "Desfés"
 
-#: src/window.rs:633
+#: src/window.rs:673
 msgid "translator-credits"
 msgstr "Victor Dargallo <victordargallo@disroot.org>"
 
 #. NOTE Dialog title which informs the user about unsaved changes.
-#: src/window.rs:647
+#: src/window.rs:687 src/window.rs:719
 msgid "Unsaved Changes"
 msgstr "Hi ha canvis sense desar"
 
 #. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
-#: src/window.rs:650
-msgid "Do you want to write all changes to the safe?"
-msgstr "Voleu escriure tots els canvis a la caixa forta?"
+#: src/window.rs:690
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr ""
+"Voleu escriure tots els canvis a la bibliografia abans d'obrir la nova?"
 
-#: src/window.rs:654
+#: src/window.rs:694
+msgid "_Open Without Saving"
+msgstr "_Obre sense desar"
+
+#: src/window.rs:695
+msgid "_Don't Open"
+msgstr "_No obris"
+
+#: src/window.rs:696
+msgid "_Save and Open"
+msgstr "_Desa i obre"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:722
+msgid "Do you want to write all changes to the bibliography?"
+msgstr "Voleu escriure tots els canvis a la bibliografia?"
+
+#: src/window.rs:726
 msgid "_Quit Without Saving"
 msgstr "_Surt sense desar"
 
-#: src/window.rs:655
+#: src/window.rs:727
 msgid "_Don't Quit"
 msgstr "_No surtis"
 
-#: src/window.rs:656
+#: src/window.rs:728
 msgid "_Save and Quit"
 msgstr "_Desa i surt"
 
-#: src/window.rs:699
+#: src/window.rs:771
 msgid "Remove From Recent Files"
 msgstr "Elimina dels fitxers recents"
 
