@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2026-01-10 14:42+0000\n"
-"PO-Revision-Date: 2026-01-19 08:00+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2026-01-30 19:37+0000\n"
+"PO-Revision-Date: 2026-02-10 14:18+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -118,19 +118,31 @@ msgid "New Window"
 msgstr "Yeni Pencere"
 
 #: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "Pencere genişliği"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "Pencere yüksekliği"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Pencerenin ekranı kaplama durumu"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
 msgid "List of paths of recent files"
 msgstr "Son dosya yollarının listesi"
 
-#: data/org.gnome.World.Citations.gschema.xml.in:10
-#: data/org.gnome.World.Citations.gschema.xml.in:14
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
 msgid "Default template for book citation"
 msgstr "Kitap alıntısı için öntanımlı şablon"
 
-#: data/org.gnome.World.Citations.gschema.xml.in:18
+#: data/org.gnome.World.Citations.gschema.xml.in:30
 msgid "Default template kind for citations"
 msgstr "Alıntılar için öntanımlı şablon türü"
 
-#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:34
 msgid "Default template format for citations"
 msgstr "Alıntılar için öntanımlı şablon biçimi"
 
@@ -217,15 +229,15 @@ msgstr "Alıntı Yok"
 msgid "Create a new citation"
 msgstr "Yeni alıntı oluştur"
 
-#: data/resources/ui/entry_list_row.ui:89
+#: data/resources/ui/entry_list_row.ui:100
 msgid "_Open PDF"
 msgstr "PDF _Aç"
 
-#: data/resources/ui/entry_list_row.ui:93
+#: data/resources/ui/entry_list_row.ui:104
 msgid "_Copy Key"
 msgstr "Anahtarı _Kopyala"
 
-#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:72
+#: data/resources/ui/entry_list_row.ui:110 data/resources/ui/window.ui:72
 msgid "_Delete"
 msgstr "_Sil"
 
@@ -286,8 +298,8 @@ msgid "PDF"
 msgstr "PDF"
 
 #: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
-#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:118
-#: data/resources/ui/window.ui:168
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:166
 msgid "_Open"
 msgstr "_Aç"
 
@@ -416,49 +428,49 @@ msgstr "arXiv’de _Ara"
 msgid "_Copy BibTeX Entry"
 msgstr "BibTeX Girdisini _Kopyala"
 
-#: data/resources/ui/window.ui:101 data/resources/ui/window.ui:142
-#: data/resources/ui/window.ui:223
+#: data/resources/ui/window.ui:99 data/resources/ui/window.ui:140
+#: data/resources/ui/window.ui:221
 msgid "Main Menu"
 msgstr "Ana Menü"
 
 #. TRANSLATORS BibTeX is a proper name
-#: data/resources/ui/window.ui:111
+#: data/resources/ui/window.ui:109
 msgid "Open a BibTeX File"
 msgstr "BibTeX Dosyası Aç"
 
-#: data/resources/ui/window.ui:112
+#: data/resources/ui/window.ui:110
 msgid "Or drag-and-drop a file"
 msgstr "Ya da bir dosya sürükleyip bırak"
 
-#: data/resources/ui/window.ui:150
+#: data/resources/ui/window.ui:148
 msgid "Manage your Citations"
 msgstr "Kaynakçanızı Yönetin"
 
-#: data/resources/ui/window.ui:160
+#: data/resources/ui/window.ui:158
 msgid "Recent Files"
 msgstr "Son Kullanılan Dosyalar"
 
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:203
 msgid "Sidebar"
 msgstr "Kenar Çubuğu"
 
-#: data/resources/ui/window.ui:216
+#: data/resources/ui/window.ui:214
 msgid "Add New Citation"
 msgstr "Yeni Alıntı Ekle"
 
-#: data/resources/ui/window.ui:230
+#: data/resources/ui/window.ui:228
 msgid "Search"
 msgstr "Ara"
 
-#: data/resources/ui/window.ui:244
+#: data/resources/ui/window.ui:242
 msgid "Search…"
 msgstr "Ara…"
 
-#: data/resources/ui/window.ui:266
+#: data/resources/ui/window.ui:264
 msgid "Content"
 msgstr "İçindekiler"
 
-#: data/resources/ui/window.ui:276
+#: data/resources/ui/window.ui:274
 msgid "Secondary Menu"
 msgstr "İkincil Menü"
 
@@ -519,11 +531,11 @@ msgstr "Kopyalandı"
 msgid "Custom…"
 msgstr "Özel…"
 
-#: src/entry_list_row.rs:74
+#: src/entry_list_row.rs:90
 msgid "Author not set"
 msgstr "Yazar ayarlanmadı"
 
-#: src/entry_list_row.rs:84
+#: src/entry_list_row.rs:100
 msgid "Title not set"
 msgstr "Başlık ayarlanamadı"
 
@@ -540,92 +552,92 @@ msgstr "Alıntı Anahtarı zaten var"
 msgid "Insert a BibTeX citation here"
 msgstr "Buraya BibTex alıntısı ekle"
 
-#: src/utils.rs:13
+#: src/utils.rs:14
 msgid "Author"
 msgstr "Yazar"
 
-#: src/utils.rs:14
+#: src/utils.rs:15
 msgid "Year"
 msgstr "Yıl"
 
-#: src/utils.rs:15
+#: src/utils.rs:16
 msgid "Title"
 msgstr "Başlık"
 
-#: src/utils.rs:16
+#: src/utils.rs:17
 msgid "Volume"
 msgstr "Cilt"
 
-#: src/utils.rs:17
+#: src/utils.rs:18
 msgid "Number"
 msgstr "Sayı"
 
-#: src/utils.rs:18
+#: src/utils.rs:19
 msgid "Pages"
 msgstr "Sayfa"
 
-#: src/utils.rs:19
+#: src/utils.rs:20
 msgid "Publisher"
 msgstr "Yayıncı"
 
-#: src/utils.rs:20
+#: src/utils.rs:21
 msgid "Journal"
 msgstr "Günlük"
 
-#: src/utils.rs:21
+#: src/utils.rs:22
 msgid "Address"
 msgstr "Adres"
 
 #. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
-#: src/utils.rs:23
+#: src/utils.rs:24
 msgid "How Published"
 msgstr "Nasıl Yayımlandı"
 
-#: src/utils.rs:24
+#: src/utils.rs:25
 msgid "Note"
 msgstr "Not"
 
-#: src/utils.rs:25
+#: src/utils.rs:26
 msgid "Book Title"
 msgstr "Kitap Başlığı"
 
-#: src/utils.rs:26
+#: src/utils.rs:27
 msgid "Series"
 msgstr "Dizi"
 
-#: src/utils.rs:27
+#: src/utils.rs:28
 msgid "Archive Prefix"
 msgstr "Arşiv Ön Eki"
 
 #. TRANSLATORS As in digital print
-#: src/utils.rs:29
+#: src/utils.rs:30
 msgid "ePrint"
 msgstr "ePrint"
 
 #. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
-#: src/utils.rs:31
+#: src/utils.rs:32
 msgid "Primary Class"
 msgstr "Birincil Sınıf"
 
-#: src/utils.rs:32
+#: src/utils.rs:33
 msgid "Month"
 msgstr "Ay"
 
 #. TRANSLATORS As in chief editor
-#: src/utils.rs:34
+#: src/utils.rs:35
 msgid "Editor"
 msgstr "Editör"
 
 #. TRANSLATORS As in association
-#: src/utils.rs:36
+#: src/utils.rs:37
 msgid "Organization"
 msgstr "Kuruluş"
 
-#: src/utils.rs:37
+#: src/utils.rs:38
 msgid "School"
 msgstr "Okul"
 
-#: src/utils.rs:38
+#: src/utils.rs:39
 msgid "Institution"
 msgstr "Kurum"
 
@@ -633,21 +645,21 @@ msgstr "Kurum"
 msgid "Could not add entry"
 msgstr "Girdi eklenemedi"
 
-#: src/window.rs:393 src/window.rs:418
+#: src/window.rs:405 src/window.rs:430
 msgid "BibTeX Files"
 msgstr "BibTeX Dosyaları"
 
-#: src/window.rs:427
+#: src/window.rs:439
 msgid "Create New Bibliography"
 msgstr "Yeni Kaynakça Oluştur"
 
-#: src/window.rs:428
+#: src/window.rs:440
 msgid "_Create"
 msgstr "_Oluştur"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: src/window.rs:431
+#: src/window.rs:443
 msgid "bibliography"
 msgstr "kaynakça"
 
@@ -683,7 +695,8 @@ msgstr "Kaydedilmemiş Değişiklikler"
 msgid ""
 "Do you want to write all changes to the bibliography before opening the new "
 "one?"
-msgstr "Yenisini açmadan önce tüm değişiklikleri kaynakçaya yazmak ister misiniz?"
+msgstr ""
+"Yenisini açmadan önce tüm değişiklikleri kaynakçaya yazmak ister misiniz?"
 
 #: src/window.rs:694
 msgid "_Open Without Saving"
@@ -714,6 +727,6 @@ msgstr "Çık_ma"
 msgid "_Save and Quit"
 msgstr "_Kaydet ve Çık"
 
-#: src/window.rs:815
+#: src/window.rs:771
 msgid "Remove From Recent Files"
 msgstr "Son Kullanılan Dosyalardan Kaldır"
