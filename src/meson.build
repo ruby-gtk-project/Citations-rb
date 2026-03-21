@@ -63,7 +63,7 @@ cargo_build = custom_target(
 )
 
 cargo_extra_options = [
-  cargo_release_options,
+  cargo_build_options,
   '--all-targets',
   '--all-features',
   '--workspace',
