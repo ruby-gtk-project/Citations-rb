@@ -15,6 +15,5 @@ allow = [
     "GPL-3.0-or-later",
     "ISC",
     "MIT",
-    "OpenSSL",
     "Unicode-3.0",
 ]
