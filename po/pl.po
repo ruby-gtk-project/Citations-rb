@@ -1,0 +1,731 @@
+# Polish translation for citations.
+# Copyright (C) 2026 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+# Mira Luna <mlu98@protonmail.com>, 2023.
+# Victoria Niedzielska <victorian@gnome.org>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
+"POT-Creation-Date: 2026-03-14 18:22+0000\n"
+"PO-Revision-Date: 2026-03-26 08:10+0100\n"
+"Last-Translator: Victoria Niedzielska <victorian@gnome.org>\n"
+"Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Gtranslator 50.0\n"
+
+#: cratebibtex/src/entry_type.rs:117
+msgid "Article"
+msgstr "Artykuł"
+
+#: cratebibtex/src/entry_type.rs:118
+msgid "Book"
+msgstr "Książka"
+
+#: cratebibtex/src/entry_type.rs:119
+msgid "Misc"
+msgstr "Inne"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:121
+msgid "In Proceedings"
+msgstr "W postępowaniach"
+
+#: cratebibtex/src/entry_type.rs:122
+msgid "Unpublished"
+msgstr "Nieopublikowane"
+
+#. NOTE As in online source
+#: cratebibtex/src/entry_type.rs:124
+msgid "Online"
+msgstr "Online"
+
+#. NOTE As in other kind of source
+#: cratebibtex/src/entry_type.rs:126
+msgid "Other"
+msgstr "Inne"
+
+#: cratebibtex/src/entry_type.rs:127
+msgid "Booklet"
+msgstr "Broszura"
+
+#: cratebibtex/src/entry_type.rs:128
+msgid "Conference"
+msgstr "Konferencja"
+
+#: cratebibtex/src/entry_type.rs:129
+msgid "In Book"
+msgstr "W książce"
+
+#: cratebibtex/src/entry_type.rs:130
+msgid "In Collection"
+msgstr "W kolekcji"
+
+#. NOTE As in instruction manual
+#: cratebibtex/src/entry_type.rs:132
+msgid "Manual"
+msgstr "Instrukcja"
+
+#: cratebibtex/src/entry_type.rs:133
+msgid "Master's Thesis"
+msgstr "Praca magisterska"
+
+#: cratebibtex/src/entry_type.rs:134
+msgid "PhD Thesis"
+msgstr "Praca doktorska"
+
+#. NOTE As in conference proceedings, see https://en.wikipedia.org/wiki/Conference_proceeding
+#: cratebibtex/src/entry_type.rs:136
+msgid "Proceedings"
+msgstr "Postępowania"
+
+#: cratebibtex/src/entry_type.rs:137
+msgid "Tech Report"
+msgstr "Raport techniczny"
+
+#. NOTE Plain as in Plain Text
+#: cratebibtex/src/format.rs:46
+msgid "Plain"
+msgstr "Zwykły"
+
+#. NOTE: This is the app name
+#: data/org.gnome.World.Citations.desktop.in.in:2
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:78 src/main.rs:38
+msgid "Citations"
+msgstr "Cytaty"
+
+#: data/org.gnome.World.Citations.desktop.in.in:3
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:8
+msgid "Manage your bibliography"
+msgstr "Zarządzaj swoją bibliografią"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.World.Citations.desktop.in.in:9
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "bibliography;bibliografia;citing;cytowanie;literature;literatura;BibTeX;LaTeX;TeX;"
+
+#: data/org.gnome.World.Citations.desktop.in.in:19
+msgid "New Window"
+msgstr "Nowe okno"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:6
+msgid "Window width"
+msgstr "Szerokość okna"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:10
+msgid "Window height"
+msgstr "Wysokość okna"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:14
+msgid "Window maximized state"
+msgstr "Stan zmaksymalizowanego okna"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:18
+msgid "List of paths of recent files"
+msgstr "Lista ścieżek ostatnio używanych plików"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:22
+#: data/org.gnome.World.Citations.gschema.xml.in:26
+msgid "Default template for book citation"
+msgstr "Domyślny szablon dla cytatu książki"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:30
+msgid "Default template kind for citations"
+msgstr "Domyślny rodzaj szablonu dla cytatów"
+
+#: data/org.gnome.World.Citations.gschema.xml.in:34
+msgid "Default template format for citations"
+msgstr "Domyślny format szablonu dla cytatów"
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "Zarządzaj bibliografami używając formatu BibTeX."
+
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:15
+msgid "Main window"
+msgstr "Główne okno"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.World.Citations.metainfo.xml.in.in:147
+msgid "Maximiliano Sandoval"
+msgstr "Maximiliano Sandoval"
+
+#. Translators: Selects a PDF file for the citation
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:254
+msgid "Add PDF"
+msgstr "Dodaj plik PDF"
+
+#: data/resources/ui/add_pdf_dialog.ui:47
+msgid "Bibliography folder not set"
+msgstr "Nieustawiono katalogu bibliografii"
+
+#: data/resources/ui/add_pdf_dialog.ui:65
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"Tworzy kopię wybranego pliku pdf i przetrzymuje ją w katalogu z bibliografią."
+
+#: data/resources/ui/add_pdf_dialog.ui:80
+msgid "Add From URL"
+msgstr "Dodaj z odnośnika URL"
+
+#: data/resources/ui/add_pdf_dialog.ui:86
+msgid "Download…"
+msgstr "Pobierz…"
+
+#: data/resources/ui/add_pdf_dialog.ui:98
+msgid "Add From File…"
+msgstr "Dodaj z pliku…"
+
+#: data/resources/ui/citation_preview.ui:15
+msgid "Custom Citation Format"
+msgstr "Własny format cytatu"
+
+#: data/resources/ui/citation_preview.ui:20
+msgid "Help"
+msgstr "Pomoc"
+
+#: data/resources/ui/citation_preview.ui:54
+msgid "Citation"
+msgstr "Cytat"
+
+#: data/resources/ui/citation_preview.ui:104
+#: data/resources/ui/entry_page.ui:101
+msgid "Copy"
+msgstr "Skopiowanie"
+
+#: data/resources/ui/citation_preview.ui:147
+msgid "Custom Template"
+msgstr "Własny szablon"
+
+#: data/resources/ui/citation_preview.ui:163
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported. "
+msgstr ""
+"Napisz własny format dla cytatów, aby wstawić zawartość do tagu "
+"<tt>jakiś_tag</tt> napisz <tt>%JAKIŚ_TAG%</tt>. Prosta składnia markdown dla "
+"pogrubienia i kursywy jest wspierana."
+
+#: data/resources/ui/citation_preview.ui:168
+msgid "Example:"
+msgstr "Przykład:"
+
+#. TRANSLATORS Empty state widget
+#: data/resources/ui/entry_list.ui:9
+msgid "No Citations"
+msgstr "Brak cytatów"
+
+#: data/resources/ui/entry_list.ui:10
+msgid "Create a new citation"
+msgstr "Stwórz nowy cytat"
+
+#: data/resources/ui/entry_list_row.ui:81
+msgid "_Open PDF"
+msgstr "_Otwórz plik PDF"
+
+#: data/resources/ui/entry_list_row.ui:85
+msgid "_Copy Key"
+msgstr "_Skopiuj klucz"
+
+#: data/resources/ui/entry_list_row.ui:91 data/resources/ui/window.ui:72
+msgid "_Delete"
+msgstr "_Usuń"
+
+#: data/resources/ui/entry_page.ui:13
+msgid "No Citation Selected"
+msgstr "Nie wybrano żadnego cytatu"
+
+#: data/resources/ui/entry_page.ui:70
+msgid "Citation _Type"
+msgstr "_Typ cytatu"
+
+#: data/resources/ui/entry_page.ui:86
+msgid "_Other Citation Type"
+msgstr "_Inny rodzaj cytatu"
+
+#: data/resources/ui/entry_page.ui:93
+msgid "_Citation Key"
+msgstr "_Klucz cytatu"
+
+#: data/resources/ui/entry_page.ui:112
+msgid "_Author"
+msgstr "_Osoba tworząca"
+
+#: data/resources/ui/entry_page.ui:118
+msgid "_Title"
+msgstr "_Tytuł"
+
+#: data/resources/ui/entry_page.ui:124
+msgid "_Year"
+msgstr "_Rok"
+
+#: data/resources/ui/entry_page.ui:140
+msgid "Open in Browser"
+msgstr "Otwórz w przeglądarce"
+
+#: data/resources/ui/entry_page.ui:156
+msgid "Other Properties"
+msgstr "Pozostałe właściwości"
+
+#: data/resources/ui/entry_page.ui:170
+msgid "Abstract"
+msgstr "Abstrakt"
+
+#: data/resources/ui/entry_page.ui:174
+msgid "Copy Abstract"
+msgstr "Skopiuj abstrakt"
+
+#: data/resources/ui/entry_page.ui:206
+msgid "Notes"
+msgstr "Notatki"
+
+#: data/resources/ui/entry_page.ui:210
+msgid "Copy Notes"
+msgstr "Skopiuj notatki"
+
+#: data/resources/ui/entry_page.ui:272
+msgid "PDF"
+msgstr "PDF"
+
+#: data/resources/ui/entry_page.ui:283 data/resources/ui/window.ui:10
+#: data/resources/ui/window.ui:33 data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:166
+msgid "_Open"
+msgstr "_Otwórz"
+
+#: data/resources/ui/entry_page.ui:297
+msgid "Delete PDF"
+msgstr "Usuń plik PDF"
+
+#: data/resources/ui/entry_page.ui:338
+msgid "Could not set PDF Preview"
+msgstr "Nie udało się ustawić podglądu pliku PDF"
+
+#: data/resources/ui/new_entry_dialog.ui:7
+msgid "Add new Entry"
+msgstr "Dodaj nowy wpis"
+
+#: data/resources/ui/new_entry_dialog.ui:18
+msgid "_Cancel"
+msgstr "_Anuluj"
+
+#: data/resources/ui/new_entry_dialog.ui:26
+msgid "C_reate"
+msgstr "U_twórz"
+
+#: data/resources/ui/new_entry_dialog.ui:44
+msgid "New"
+msgstr "Nowy"
+
+#: data/resources/ui/new_entry_dialog.ui:63
+msgid "Citation Key"
+msgstr "Klucz cytatu"
+
+#: data/resources/ui/new_entry_dialog.ui:70
+msgid "Citation Type"
+msgstr "Typ cytatu"
+
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/new_entry_dialog.ui:90
+msgid "From BibTeX"
+msgstr "Z BibTeX"
+
+#: data/resources/ui/new_entry_dialog.ui:109
+msgid "From DOI"
+msgstr "Z DOI"
+
+#. TRANSLATORS DOI is a proper name
+#: data/resources/ui/new_entry_dialog.ui:120
+msgid "DOI"
+msgstr "DOI"
+
+#: data/resources/ui/shortcuts.ui:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ogólne"
+
+#: data/resources/ui/shortcuts.ui:9
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Wyświetlanie skrótów klawiszowych"
+
+#: data/resources/ui/shortcuts.ui:15
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nowe okno"
+
+#: data/resources/ui/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Zamknięcie okna"
+
+#: data/resources/ui/shortcuts.ui:27
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Zakończenie działania"
+
+#: data/resources/ui/shortcuts.ui:35
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Bibliografia"
+
+#: data/resources/ui/shortcuts.ui:38
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Otwarcie"
+
+#: data/resources/ui/shortcuts.ui:44
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Zapisanie"
+
+#: data/resources/ui/shortcuts.ui:50
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Wyszukiwanie"
+
+#: data/resources/ui/window.ui:6
+msgid "_Create New Bibliography"
+msgstr "_Utwórz nową bibliografię"
+
+#: data/resources/ui/window.ui:17 data/resources/ui/window.ui:44
+msgid "_Keyboard Shortcuts"
+msgstr "Skróty _klawiszowe"
+
+#. TRANSLATORS About dialog
+#: data/resources/ui/window.ui:21 data/resources/ui/window.ui:48
+msgid "_About Citations"
+msgstr "_O programie"
+
+#: data/resources/ui/window.ui:29
+msgid "_Save"
+msgstr "_Zapisz"
+
+#: data/resources/ui/window.ui:38
+msgid "New _Window"
+msgstr "Nowe _okno"
+
+#: data/resources/ui/window.ui:56
+msgid "_Search in Google Scholar"
+msgstr "_Wyszukaj w Google Scholar"
+
+#. TRANSLATORS arXiv is a proper name
+#: data/resources/ui/window.ui:60
+msgid "_Search in arXiv"
+msgstr "_Wyszukaj w arXiv"
+
+#: data/resources/ui/window.ui:66
+msgid "_Copy BibTeX Entry"
+msgstr "_Skopiuj wpis BibTeX"
+
+#: data/resources/ui/window.ui:99 data/resources/ui/window.ui:140
+#: data/resources/ui/window.ui:221
+msgid "Main Menu"
+msgstr "Menu główne"
+
+#. TRANSLATORS BibTeX is a proper name
+#: data/resources/ui/window.ui:109
+msgid "Open a BibTeX File"
+msgstr "Otwórz plik BibTeX"
+
+#: data/resources/ui/window.ui:110
+msgid "Or drag-and-drop a file"
+msgstr "Lub przeciągnij plik"
+
+#: data/resources/ui/window.ui:148
+msgid "Manage your Citations"
+msgstr "Zarządzaj swoimi cytatami"
+
+#: data/resources/ui/window.ui:158
+msgid "Recent Files"
+msgstr "Ostatnio używane pliki"
+
+#: data/resources/ui/window.ui:203
+msgid "Sidebar"
+msgstr "Panel boczny"
+
+#: data/resources/ui/window.ui:214
+msgid "Add New Citation"
+msgstr "Dodaj nowe cytaty"
+
+#: data/resources/ui/window.ui:228
+msgid "Search"
+msgstr "Szukaj"
+
+#: data/resources/ui/window.ui:242
+msgid "Search…"
+msgstr "Szukaj…"
+
+#: data/resources/ui/window.ui:264
+msgid "Content"
+msgstr "Zawartość"
+
+#: data/resources/ui/window.ui:274
+msgid "Secondary Menu"
+msgstr "Drugorzędne menu"
+
+#: src/add_pdf_dialog.rs:58
+msgid "Could not set PDF"
+msgstr "Nie można ustawić pliku PDF"
+
+#: src/add_pdf_dialog.rs:78
+msgid "Could not download PDF"
+msgstr "Nie można pobrać pliku PDF"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: src/add_pdf_dialog.rs:106
+#, rust-format
+msgid "Make sure that {path} exists"
+msgstr "Upewnij się że „{path}” istnieje"
+
+#: src/add_pdf_dialog.rs:197
+msgid "PDF Files"
+msgstr "Pliki PDF"
+
+#: src/add_pdf_dialog.rs:205
+msgid "Select a PDF"
+msgstr "Wybierz plik PDF"
+
+#: src/application.rs:37
+msgid "Open a new window"
+msgstr "Otwórz nowe okno"
+
+#: src/application.rs:46
+msgid "Enable debug messages"
+msgstr "Włącz komunikaty debugowania"
+
+#. TODO Should this be translatable?
+#: src/citation_preview.rs:51
+msgid "Chicago"
+msgstr "Chicago"
+
+#: src/citation_preview.rs:52
+msgid "Harvard"
+msgstr "Harvard"
+
+#: src/citation_preview.rs:53
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#. NOTE: Custom as in Custom Template.
+#: src/citation_preview.rs:55
+msgid "Custom"
+msgstr "Własne"
+
+#: src/citation_preview.rs:261 src/entry_list_row.rs:65 src/entry_page.rs:226
+#: src/window.rs:655
+msgid "Copied"
+msgstr "Skopiowano"
+
+#: src/citation_preview.rs:268
+msgid "Custom…"
+msgstr "Własne…"
+
+#: src/entry_list_row.rs:204
+msgid "Title not set"
+msgstr "Nie ustawiono tytułu"
+
+#: src/entry_list_row.rs:213
+msgid "Author not set"
+msgstr "Nie ustawiono osoby tworzącej"
+
+#: src/entry_page.rs:202
+msgid "Other…"
+msgstr "Inne…"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: src/entry_page.rs:245
+msgid "Citation Key already exists"
+msgstr "Klucz cytatów już istnieje"
+
+#: src/new_entry_dialog.rs:160
+msgid "Insert a BibTeX citation here"
+msgstr "Dodaj cytat BibTeX tutaj"
+
+#: src/utils.rs:14
+msgid "Author"
+msgstr "Osoby tworząca"
+
+#: src/utils.rs:15
+msgid "Year"
+msgstr "Rok"
+
+#: src/utils.rs:16
+msgid "Title"
+msgstr "Tytuł"
+
+#: src/utils.rs:17
+msgid "Volume"
+msgstr "Wolumin"
+
+#: src/utils.rs:18
+msgid "Number"
+msgstr "Numer"
+
+#: src/utils.rs:19
+msgid "Pages"
+msgstr "Strony"
+
+#: src/utils.rs:20
+msgid "Publisher"
+msgstr "Wydawnictwo"
+
+#: src/utils.rs:21
+msgid "Journal"
+msgstr "Dziennik"
+
+#: src/utils.rs:22
+msgid "Address"
+msgstr "Adres"
+
+#. TRANSLATORS Method of publication, see https://www.bibtex.com/f/howpublished-field/
+#: src/utils.rs:24
+msgid "How Published"
+msgstr "Jak opublikowano"
+
+#: src/utils.rs:25
+msgid "Note"
+msgstr "Notatka"
+
+#: src/utils.rs:26
+msgid "Book Title"
+msgstr "Tytuł książki"
+
+#: src/utils.rs:27
+msgid "Series"
+msgstr "Seria"
+
+#: src/utils.rs:28
+msgid "Archive Prefix"
+msgstr "Prefiks archiwum"
+
+#. TRANSLATORS As in digital print
+#: src/utils.rs:30
+msgid "ePrint"
+msgstr "Druk cyfrowy"
+
+#. TRANSLATORS Identifier used by arXiv, see https://arxiv.org/help/hypertex/bibstyles
+#: src/utils.rs:32
+msgid "Primary Class"
+msgstr "Klasa główna"
+
+#: src/utils.rs:33
+msgid "Month"
+msgstr "Miesiąc"
+
+#. TRANSLATORS As in chief editor
+#: src/utils.rs:35
+msgid "Editor"
+msgstr "Osoba redagująca"
+
+#. TRANSLATORS As in association
+#: src/utils.rs:37
+msgid "Organization"
+msgstr "Organizacja"
+
+#: src/utils.rs:38
+msgid "School"
+msgstr "Szkoła"
+
+#: src/utils.rs:39
+msgid "Institution"
+msgstr "Instytucja"
+
+#: src/window.rs:119
+msgid "Could not add entry"
+msgstr "Nie można dodać wpisu"
+
+#: src/window.rs:405 src/window.rs:430
+msgid "BibTeX Files"
+msgstr "Pliki BibTeX"
+
+#: src/window.rs:439
+msgid "Create New Bibliography"
+msgstr "Utwórz nową bibliografię"
+
+#: src/window.rs:440
+msgid "_Create"
+msgstr "_Utwórz"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: src/window.rs:443
+msgid "bibliography"
+msgstr "bibliografia"
+
+#: src/window.rs:554
+msgid "An entry with the given citation key already exists"
+msgstr "Wpis z podanym kluczem cytatu już istnieje"
+
+#: src/window.rs:569
+msgid "Bibliography saved"
+msgstr "Zapisano bibliografię"
+
+#: src/window.rs:622
+msgid "Citation Deleted"
+msgstr "Usunięto cytat"
+
+#: src/window.rs:624
+msgid "Undo"
+msgstr "Cofnij"
+
+#: src/window.rs:673
+msgid "translator-credits"
+msgstr ""
+"Mira Luna <mlu98@proton.me>, 2023\n"
+"Victoria Niedzielska <victorian@gnome.org>, 2026>"
+
+#. NOTE Dialog title which informs the user about unsaved changes.
+#: src/window.rs:687 src/window.rs:719
+msgid "Unsaved Changes"
+msgstr "Niezapisane zmiany"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:690
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr ""
+"Czy chcesz zapisać wszystkie zmiany do bibliografii zanim otworzysz nowy?"
+
+#: src/window.rs:694
+msgid "_Open Without Saving"
+msgstr "_Otwórz bez zapisywania"
+
+#: src/window.rs:695
+msgid "_Don't Open"
+msgstr "_Nie otwieraj"
+
+#: src/window.rs:696
+msgid "_Save and Open"
+msgstr "_Zapisz i otwórz"
+
+#. NOTE Dialog subtitle which informs the user about unsaved changes more detailed.
+#: src/window.rs:722
+msgid "Do you want to write all changes to the bibliography?"
+msgstr "Czy chcesz zapisać wszystkie zmiany do bibliografii?"
+
+#: src/window.rs:726
+msgid "_Quit Without Saving"
+msgstr "Za_kończ bez zapisywania"
+
+#: src/window.rs:727
+msgid "_Don't Quit"
+msgstr "_Nie kończ"
+
+#: src/window.rs:728
+msgid "_Save and Quit"
+msgstr "_Zapisz i wyjdź"
+
+#: src/window.rs:771
+msgid "Remove From Recent Files"
+msgstr "Usuń z ostatnio używanych plików"
