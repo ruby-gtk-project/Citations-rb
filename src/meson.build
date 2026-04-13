@@ -14,18 +14,18 @@ endif
 config = configure_file(
   input: 'config.rs.in',
   output: 'config.rs',
-  configuration: global_conf
+  configuration: global_conf,
 )
 # Copy the config.rs output to the source directory.
 run_command(
   'cp',
   meson.project_build_root() / 'src' / 'config.rs',
   meson.project_source_root() / 'src' / 'config.rs',
-  check: true
+  check: true,
 )
 
 if get_option('profile') == 'default'
-  cargo_release_options = [ '--release' ]
+  cargo_release_options = ['--release']
   cargo_clippy_deny_warnings = []
   rust_target = 'release'
   message('Building in release mode')
@@ -41,7 +41,8 @@ else
 endif
 
 cargo_build_options = [
-  '--manifest-path', meson.project_source_root() / 'Cargo.toml',
+  '--manifest-path',
+  meson.project_source_root() / 'Cargo.toml',
   cargo_release_options,
 ]
 cargo_build = custom_target(
@@ -55,11 +56,14 @@ cargo_build = custom_target(
   depends: resources,
   env: cargo_env,
   command: [
-    cargo, 'build',
+    cargo,
+    'build',
     cargo_build_options,
     '&&',
-    'cp', cargo_target / rust_target / meson.project_name(), '@OUTPUT@',
-  ]
+    'cp',
+    cargo_target / rust_target / meson.project_name(),
+    '@OUTPUT@',
+  ],
 )
 
 cargo_extra_options = [
@@ -93,5 +97,5 @@ test(
     cargo_clippy_options,
   ],
   env: cargo_env,
-  timeout: 400, # cargo might take a bit of time sometimes
+  timeout: 400,  # cargo might take a bit of time sometimes
 )
