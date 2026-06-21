@@ -113,6 +113,7 @@
                         <property name="hexpand">True</property>
                         <property name="wrap_mode">word</property>
                         <property name="editable">False</property>
+                        <property name="accepts-tab">False</property>
                         <style>
                           <class name="inline"/>
                         </style>
