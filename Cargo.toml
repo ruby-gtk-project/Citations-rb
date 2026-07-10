@@ -37,7 +37,7 @@ adw.workspace = true
 anyhow.workspace = true
 cairo-rs.workspace = true
 cratebibtex = { path = "cratebibtex" }
-formatx = "0.2.4"
+formatx = "0.4"
 texer.workspace = true
 doi2bib = "0.3"
 futures-channel = "0.3"

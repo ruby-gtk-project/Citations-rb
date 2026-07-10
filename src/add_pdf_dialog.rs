@@ -104,7 +104,7 @@ mod imp {
                     &formatx!(
                         // TRANSLATORS Do NOT translate {path}, it is a variable name
                         gettext("Make sure that {path} exists"),
-                        path = &bibliography_path
+                        path = bibliography_path
                     )
                     .expect("Wrong format in translatable string"),
                 );
