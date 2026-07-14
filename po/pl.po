@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2026-03-14 18:22+0000\n"
-"PO-Revision-Date: 2026-03-26 08:10+0100\n"
+"POT-Creation-Date: 2026-07-10 21:37+0000\n"
+"PO-Revision-Date: 2026-07-14 15:03+0200\n"
 "Last-Translator: Victoria Niedzielska <victorian@gnome.org>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
@@ -158,7 +158,7 @@ msgid "Maximiliano Sandoval"
 msgstr "Maximiliano Sandoval"
 
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:254
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:256
 msgid "Add PDF"
 msgstr "Dodaj plik PDF"
 
@@ -201,11 +201,11 @@ msgstr "Cytat"
 msgid "Copy"
 msgstr "Skopiowanie"
 
-#: data/resources/ui/citation_preview.ui:147
+#: data/resources/ui/citation_preview.ui:148
 msgid "Custom Template"
 msgstr "Własny szablon"
 
-#: data/resources/ui/citation_preview.ui:163
+#: data/resources/ui/citation_preview.ui:164
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -215,7 +215,7 @@ msgstr ""
 "<tt>jakiś_tag</tt> napisz <tt>%JAKIŚ_TAG%</tt>. Prosta składnia markdown dla "
 "pogrubienia i kursywy jest wspierana."
 
-#: data/resources/ui/citation_preview.ui:168
+#: data/resources/ui/citation_preview.ui:169
 msgid "Example:"
 msgstr "Przykład:"
 
@@ -258,7 +258,7 @@ msgstr "_Klucz cytatu"
 
 #: data/resources/ui/entry_page.ui:112
 msgid "_Author"
-msgstr "_Osoba tworząca"
+msgstr "_Autor"
 
 #: data/resources/ui/entry_page.ui:118
 msgid "_Title"
@@ -284,29 +284,29 @@ msgstr "Abstrakt"
 msgid "Copy Abstract"
 msgstr "Skopiuj abstrakt"
 
-#: data/resources/ui/entry_page.ui:206
+#: data/resources/ui/entry_page.ui:207
 msgid "Notes"
 msgstr "Notatki"
 
-#: data/resources/ui/entry_page.ui:210
+#: data/resources/ui/entry_page.ui:211
 msgid "Copy Notes"
 msgstr "Skopiuj notatki"
 
-#: data/resources/ui/entry_page.ui:272
+#: data/resources/ui/entry_page.ui:274
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:283 data/resources/ui/window.ui:10
+#: data/resources/ui/entry_page.ui:285 data/resources/ui/window.ui:10
 #: data/resources/ui/window.ui:33 data/resources/ui/window.ui:116
 #: data/resources/ui/window.ui:166
 msgid "_Open"
 msgstr "_Otwórz"
 
-#: data/resources/ui/entry_page.ui:297
+#: data/resources/ui/entry_page.ui:299
 msgid "Delete PDF"
 msgstr "Usuń plik PDF"
 
-#: data/resources/ui/entry_page.ui:338
+#: data/resources/ui/entry_page.ui:340
 msgid "Could not set PDF Preview"
 msgstr "Nie udało się ustawić podglądu pliku PDF"
 
@@ -404,7 +404,7 @@ msgstr "Skróty _klawiszowe"
 #. TRANSLATORS About dialog
 #: data/resources/ui/window.ui:21 data/resources/ui/window.ui:48
 msgid "_About Citations"
-msgstr "_O programie"
+msgstr "_O aplikacji"
 
 #: data/resources/ui/window.ui:29
 msgid "_Save"
@@ -536,7 +536,7 @@ msgstr "Nie ustawiono tytułu"
 
 #: src/entry_list_row.rs:213
 msgid "Author not set"
-msgstr "Nie ustawiono osoby tworzącej"
+msgstr "Nie ustawiono autora"
 
 #: src/entry_page.rs:202
 msgid "Other…"
@@ -553,7 +553,7 @@ msgstr "Dodaj cytat BibTeX tutaj"
 
 #: src/utils.rs:14
 msgid "Author"
-msgstr "Osoby tworząca"
+msgstr "Autor"
 
 #: src/utils.rs:15
 msgid "Year"
@@ -625,7 +625,7 @@ msgstr "Miesiąc"
 #. TRANSLATORS As in chief editor
 #: src/utils.rs:35
 msgid "Editor"
-msgstr "Osoba redagująca"
+msgstr "Redaktor"
 
 #. TRANSLATORS As in association
 #: src/utils.rs:37
