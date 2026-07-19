@@ -58,7 +58,7 @@
                 <child>
                   <object class="GtkDropDown" id="template_drop_down">
                     <property name="model">
-                      <object class="AdwEnumListModel">
+                      <object class="GtkEnumList">
                         <property name="enum-type">Template</property>
                       </object>
                     </property>
@@ -73,7 +73,7 @@
                 <child>
                   <object class="GtkDropDown" id="drop_down">
                     <property name="model">
-                      <object class="AdwEnumListModel">
+                      <object class="GtkEnumList">
                         <property name="enum-type">Format</property>
                       </object>
                     </property>

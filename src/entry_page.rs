@@ -196,7 +196,7 @@ mod imp {
         }
 
         #[template_callback]
-        fn drop_down_entry_type_name(item: &adw::EnumListItem) -> String {
+        fn drop_down_entry_type_name(item: &gtk::EnumListItem) -> String {
             let type_ = cratebibtex::EntryType::from(item.value());
             if type_ == cratebibtex::EntryType::Other {
                 gettext("Other…")

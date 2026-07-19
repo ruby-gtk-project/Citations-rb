@@ -18,7 +18,7 @@ cairo-rs = { version = "0.22", features = ["png"] }
 gio = "0.22"
 glib = "0.22"
 gsv = { package = "sourceview5", version = "0.11" }
-gtk = { version = "0.11", package = "gtk4", features = ["gnome_47"] }
+gtk = { version = "0.11", package = "gtk4", features = ["gnome_47", "v4_24"] }
 poppler-rs = { version = "0.26", features = ["v0_82"] }
 
 [package]

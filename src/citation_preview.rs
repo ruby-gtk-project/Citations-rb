@@ -262,7 +262,7 @@ mod imp {
         }
 
         #[template_callback]
-        fn template_type_name(item: &adw::EnumListItem) -> String {
+        fn template_type_name(item: &gtk::EnumListItem) -> String {
             let type_ = Template::from(item.value());
             if type_ == Template::Custom {
                 gettext("Custom…")
@@ -272,7 +272,7 @@ mod imp {
         }
 
         #[template_callback]
-        fn format_type_name(item: &adw::EnumListItem) -> String {
+        fn format_type_name(item: &gtk::EnumListItem) -> String {
             let type_ = Format::from(item.value());
             type_.to_translatable_string()
         }

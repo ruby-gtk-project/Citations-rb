@@ -70,7 +70,7 @@
                                     <property name="title" translatable="yes">Citation _Type</property>
                                     <property name="use-underline">True</property>
                                     <property name="model">
-                                      <object class="AdwEnumListModel">
+                                      <object class="GtkEnumList">
                                         <property name="enum-type">EntryType</property>
                                       </object>
                                     </property>
