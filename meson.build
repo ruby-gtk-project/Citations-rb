@@ -16,6 +16,7 @@ dependency('gio-2.0', version: '>= 2.76')
 dependency('gtk4', version: '>= 4.15.3')
 dependency('libadwaita-1', version: '>= 1.8.alpha')
 dependency('gtksourceview-5', version: '>= 5')
+dependency('poppler')
 
 glib_compile_resources = find_program('glib-compile-resources', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)
