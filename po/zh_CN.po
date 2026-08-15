@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/citations/-/issues\n"
-"POT-Creation-Date: 2026-01-06 16:26+0000\n"
-"PO-Revision-Date: 2026-01-08 08:05+0800\n"
+"POT-Creation-Date: 2026-07-19 21:21+0000\n"
+"PO-Revision-Date: 2026-08-15 17:33+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
 #: cratebibtex/src/entry_type.rs:117
 msgid "Article"
@@ -48,7 +48,7 @@ msgstr "在线"
 #. NOTE As in other kind of source
 #: cratebibtex/src/entry_type.rs:126
 msgid "Other"
-msgstr "其它"
+msgstr "其他"
 
 #: cratebibtex/src/entry_type.rs:127
 msgid "Booklet"
@@ -152,13 +152,8 @@ msgstr "使用 BibTeX 格式管理您的参考文献。"
 msgid "Main window"
 msgstr "主窗口"
 
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.World.Citations.metainfo.xml.in.in:138
-msgid "Maximiliano Sandoval"
-msgstr "Maximiliano Sandoval"
-
 #. Translators: Selects a PDF file for the citation
-#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:268
+#: data/resources/ui/add_pdf_dialog.ui:8 data/resources/ui/entry_page.ui:256
 msgid "Add PDF"
 msgstr "添加 PDF"
 
@@ -196,15 +191,15 @@ msgid "Citation"
 msgstr "引文"
 
 #: data/resources/ui/citation_preview.ui:104
-#: data/resources/ui/entry_page.ui:113
+#: data/resources/ui/entry_page.ui:101
 msgid "Copy"
 msgstr "复制"
 
-#: data/resources/ui/citation_preview.ui:147
+#: data/resources/ui/citation_preview.ui:148
 msgid "Custom Template"
 msgstr "自定义模板"
 
-#: data/resources/ui/citation_preview.ui:163
+#: data/resources/ui/citation_preview.ui:164
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -213,7 +208,7 @@ msgstr ""
 "为您的引用编写自定义格式，要插入<tt>一些标签</tt>内容则写入 <tt>%SOMETAG%</"
 "tt>。支持用于粗体和斜体的基础 markdown 语法。"
 
-#: data/resources/ui/citation_preview.ui:168
+#: data/resources/ui/citation_preview.ui:169
 msgid "Example:"
 msgstr "示例："
 
@@ -226,15 +221,15 @@ msgstr "无引文"
 msgid "Create a new citation"
 msgstr "创建新引文"
 
-#: data/resources/ui/entry_list_row.ui:89
+#: data/resources/ui/entry_list_row.ui:81
 msgid "_Open PDF"
 msgstr "打开 PDF(_O)"
 
-#: data/resources/ui/entry_list_row.ui:93
+#: data/resources/ui/entry_list_row.ui:85
 msgid "_Copy Key"
 msgstr "复制密钥(_C)"
 
-#: data/resources/ui/entry_list_row.ui:99 data/resources/ui/window.ui:72
+#: data/resources/ui/entry_list_row.ui:91 data/resources/ui/window.ui:72
 msgid "_Delete"
 msgstr "删除(_D)"
 
@@ -242,69 +237,69 @@ msgstr "删除(_D)"
 msgid "No Citation Selected"
 msgstr "未选中引文"
 
-#: data/resources/ui/entry_page.ui:82
+#: data/resources/ui/entry_page.ui:70
 msgid "Citation _Type"
 msgstr "引文类型(_T)"
 
-#: data/resources/ui/entry_page.ui:98
+#: data/resources/ui/entry_page.ui:86
 msgid "_Other Citation Type"
-msgstr "其它引文类型(_O)"
+msgstr "其他引文类型(_O)"
 
-#: data/resources/ui/entry_page.ui:105
+#: data/resources/ui/entry_page.ui:93
 msgid "_Citation Key"
 msgstr "引文密钥(_C)"
 
-#: data/resources/ui/entry_page.ui:124
+#: data/resources/ui/entry_page.ui:112
 msgid "_Author"
 msgstr "作者(_A)"
 
-#: data/resources/ui/entry_page.ui:130
+#: data/resources/ui/entry_page.ui:118
 msgid "_Title"
 msgstr "标题(_T)"
 
-#: data/resources/ui/entry_page.ui:136
+#: data/resources/ui/entry_page.ui:124
 msgid "_Year"
 msgstr "年份(_Y)"
 
-#: data/resources/ui/entry_page.ui:152
+#: data/resources/ui/entry_page.ui:140
 msgid "Open in Browser"
 msgstr "在浏览器中打开"
 
-#: data/resources/ui/entry_page.ui:168
+#: data/resources/ui/entry_page.ui:156
 msgid "Other Properties"
 msgstr "其他属性"
 
-#: data/resources/ui/entry_page.ui:182
+#: data/resources/ui/entry_page.ui:170
 msgid "Abstract"
 msgstr "摘要"
 
-#: data/resources/ui/entry_page.ui:186
+#: data/resources/ui/entry_page.ui:174
 msgid "Copy Abstract"
 msgstr "复制摘要"
 
-#: data/resources/ui/entry_page.ui:218
+#: data/resources/ui/entry_page.ui:207
 msgid "Notes"
 msgstr "备注"
 
-#: data/resources/ui/entry_page.ui:222
+#: data/resources/ui/entry_page.ui:211
 msgid "Copy Notes"
 msgstr "复制备注"
 
-#: data/resources/ui/entry_page.ui:286
+#: data/resources/ui/entry_page.ui:274
 msgid "PDF"
 msgstr "PDF"
 
-#: data/resources/ui/entry_page.ui:297 data/resources/ui/window.ui:10
+#: data/resources/ui/entry_page.ui:285 data/resources/ui/window.ui:10
 #: data/resources/ui/window.ui:33 data/resources/ui/window.ui:116
 #: data/resources/ui/window.ui:166
 msgid "_Open"
 msgstr "打开(_O)"
 
-#: data/resources/ui/entry_page.ui:311
+#: data/resources/ui/entry_page.ui:299
 msgid "Delete PDF"
 msgstr "删除 PDF"
 
-#: data/resources/ui/entry_page.ui:352
+#: data/resources/ui/entry_page.ui:340
 msgid "Could not set PDF Preview"
 msgstr "无法设置 PDF 预览"
 
@@ -519,7 +514,7 @@ msgstr "温哥华"
 msgid "Custom"
 msgstr "自定义"
 
-#: src/citation_preview.rs:261 src/entry_list_row.rs:59 src/entry_page.rs:229
+#: src/citation_preview.rs:261 src/entry_list_row.rs:65 src/entry_page.rs:226
 #: src/window.rs:655
 msgid "Copied"
 msgstr "已复制"
@@ -528,20 +523,20 @@ msgstr "已复制"
 msgid "Custom…"
 msgstr "自定义…"
 
-#: src/entry_list_row.rs:74
-msgid "Author not set"
-msgstr "未设定作者"
-
-#: src/entry_list_row.rs:84
+#: src/entry_list_row.rs:204
 msgid "Title not set"
 msgstr "未设定标题"
 
-#: src/entry_page.rs:200
+#: src/entry_list_row.rs:213
+msgid "Author not set"
+msgstr "未设定作者"
+
+#: src/entry_page.rs:202
 msgid "Other…"
 msgstr "其他…"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: src/entry_page.rs:248
+#: src/entry_page.rs:245
 msgid "Citation Key already exists"
 msgstr "引文密钥已存在"
 
@@ -726,6 +721,9 @@ msgstr "保存并退出(_S)"
 #: src/window.rs:771
 msgid "Remove From Recent Files"
 msgstr "从最近文件中移除"
+
+#~ msgid "Maximiliano Sandoval"
+#~ msgstr "Maximiliano Sandoval"
 
 #~ msgid "PDF added"
 #~ msgstr "PDF 已添加"
