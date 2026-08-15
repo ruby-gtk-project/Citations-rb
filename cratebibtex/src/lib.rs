@@ -11,9 +11,19 @@ pub use entry::Entry;
 pub use entry_type::EntryType;
 pub use format::Format;
 
-pub fn init(gettext_package: &str, localedir: &str) {
+/// # Safety
+///
+/// The underlying C API call of `setlocale` performs the following unsafe
+/// operations:
+///
+/// * it non-atomically modifies the locale object which is better regarded as constant;
+/// * it accesses the program environment without any synchronization.
+///
+/// Canonical way to ensure safety is to call `init()` as early as possible,
+/// prior to starting any more threads or enabling any POSIX signals.
+pub unsafe fn init(gettext_package: &str, localedir: &str) {
     // Prepare i18n
-    gettextrs::setlocale(gettextrs::LocaleCategory::LcAll, "");
+    unsafe { gettextrs::setlocale(gettextrs::LocaleCategory::LcAll, "") };
     gettextrs::bindtextdomain(gettext_package, localedir).expect("Unable to bind the text domain");
     gettextrs::textdomain(gettext_package).expect("Unable to switch to the text domain");
 

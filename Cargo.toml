@@ -9,7 +9,7 @@ authors = ["Maximiliano Sandoval <msandova@gnome.org>"]
 
 [workspace.dependencies]
 anyhow = "1"
-gettext-rs = { version = "0.7", features = ["gettext-system"] }
+gettext-rs = { version = "0.8", features = ["gettext-system"] }
 log = "0.4"
 texer = { path = "texer" }
 

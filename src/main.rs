@@ -28,11 +28,13 @@ use self::application::Application;
 use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
 
 fn main() -> glib::ExitCode {
-    // Prepare i18n
-    gettextrs::setlocale(LocaleCategory::LcAll, "");
+    // Safety: setlocale is safe to call because at this point the program is
+    // single-threaded
+    unsafe { gettextrs::setlocale(LocaleCategory::LcAll, "") };
     gettextrs::bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR).expect("Unable to bind the text domain");
     gettextrs::textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
-    cratebibtex::init(GETTEXT_PACKAGE, LOCALEDIR);
+
+    unsafe { cratebibtex::init(GETTEXT_PACKAGE, LOCALEDIR) };
 
     // NOTE: This is the app name
     glib::set_application_name(&gettext("Citations"));
