@@ -14,7 +14,7 @@ const APA_ARTICLE_TEMPLATE: &str =
     r#"%AUTHOR%. (%YEAR%). %TITLE%. *%JOURNAL%*, *%VOLUME%*(%NUMBER%), %PAGES%."#;
 const CHICAGO_ARTICLE_TEMPLATE: &str =
     r#"%AUTHOR%. "%TITLE%". *%JOURNAL%* %VOLUME%, no. %NUMBER% (%YEAR%): %PAGES%."#;
-const HARVAR_ARTICLE_TEMPLATE: &str =
+const HARVARD_ARTICLE_TEMPLATE: &str =
     r#"%AUTHOR% (%YEAR%) ‘%TITLE%’, *%JOURNAL%*, %VOLUME%(%NUMBER%), p%PAGES%."#;
 const VANCOUVER_ARTICLE_TEMPLATE: &str =
     r#"%AUTHOR%. %TITLE%. %JOURNAL%. %YEAR% %MONTH% %DAY%; %VOLUME%(%NUMBER%):%PAGES%."#;
@@ -24,7 +24,7 @@ const AMS_BOOK_TEMPLATE: &str = r#"%AUTHOR%, *%TITLE%*, %PUBLISHER%, %CITY%, %YE
 const MLA_BOOK_TEMPLATE: &str = r#"%AUTHOR%. *%TITLE%*. %PUBLISHER%, %YEAR%."#;
 const APA_BOOK_TEMPLATE: &str = r#"%AUTHOR%. (%YEAR%). *%TITLE%*. (Vol. %VOLUME%). %PUBLISHER%."#;
 const CHICAGO_BOOK_TEMPLATE: &str = r#"%AUTHOR%. *%TITLE%*. Vol. %VOLUME%. %PUBLISHER%, %YEAR%."#;
-const HARVAR_BOOK_TEMPLATE: &str = r#"%AUTHOR%, (%YEAR%) *%TITLE%*. %VOLUME%. %PUBLISHER%."#;
+const HARVARD_BOOK_TEMPLATE: &str = r#"%AUTHOR%, (%YEAR%) *%TITLE%*. %VOLUME%. %PUBLISHER%."#;
 const VANCOUVER_BOOK_TEMPLATE: &str = r#"%AUTHOR%: %TITLE%. %PUBLISHER%; %YEAR% %MONTH% %DAY%."#;
 
 #[derive(Debug, Default, Copy, Clone, PartialEq, Eq, glib::Enum)]
@@ -230,9 +230,9 @@ mod imp {
                 }
                 Template::Harvard => {
                     if obj.use_book_format() {
-                        HARVAR_BOOK_TEMPLATE.into()
+                        HARVARD_BOOK_TEMPLATE.into()
                     } else {
-                        HARVAR_ARTICLE_TEMPLATE.into()
+                        HARVARD_ARTICLE_TEMPLATE.into()
                     }
                 }
                 Template::Vancouver => {
