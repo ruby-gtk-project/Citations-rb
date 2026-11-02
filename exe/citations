@@ -3,4 +3,7 @@
 
 require "citations"
 
-Citations::Application.new.build.run
+# `build` wires the application up and answers the GtkApplication; `run` is
+# the port's own, so that ARGV reaches GApplication's option parser and a
+# .bib file named on the command line is opened rather than ignored.
+Citations::Application.new.tap(&:build).run
