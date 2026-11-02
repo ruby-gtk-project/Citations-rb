@@ -12,54 +12,78 @@ rows of both are unioned before comparing.
 
 ## State of the port
 
-`lib/` on `ruby` contains exactly three files:
+`lib/` on `ruby` now holds a ported file for every component below. The
+survey that opened this file found a bare scaffold; since then the models, the
+helpers, the window, the sidebar, the editor, the preview, the two dialogs and
+the shortcuts dialog have all been written, so the column that mattered on the
+first pass — "does this exist yet" — is now **present** everywhere, and what
+is left to check is parity inside each file rather than its absence.
 
-| File | What it is |
-|---|---|
-| `lib/citations.rb` | one `require_relative` |
-| `lib/citations/application.rb` | the untouched scaffold: `Gtk::Application` + `Adwaita::ApplicationWindow` + `Adwaita::ToolbarView` + `Adwaita::HeaderBar` + an `Adwaita::StatusPage` reading "The Ruby port has not been written yet." |
-| `lib/citations/rb/version.rb` | gem version |
-
-That scaffold is byte-for-byte the same shell the pilot port
-(`gnome-contacts-rb/lib/gnome_contacts/application.rb`) started from, so it is
-a placeholder, not a ported component. **Nothing upstream builds has been
-ported.** Every component below is missing.
+| File | Lines | Unit it carries |
+|---|---:|---|
+| `lib/main.rb` | 235 | the application object, actions and accelerators |
+| `lib/window.rb` | 909 | the main window, front page, menus, split view |
+| `lib/recent_file_row.rb` | 75 | one row of the Recent Files list |
+| `lib/about_dialog.rb` | 140 | the About Citations dialog |
+| `lib/entry_list.rb` | 200 | the sidebar list |
+| `lib/entry_list_row.rb` | 330 | one citation row |
+| `lib/entry_page.rb` | 885 | the citation editor |
+| `lib/citation_preview.rb` | 409 | the formatted citation |
+| `lib/new_entry_dialog.rb` | 304 | Add new Entry |
+| `lib/add_pdf_dialog.rb` | 330 | Add PDF |
+| `lib/shortcuts_dialog.rb` | 77 | the shortcuts dialog |
+| `lib/selection.rb` | 136 | the sidebar selection model |
+| `lib/utils.rb` | 317 | helpers behind the UI |
+| `lib/bib.rb` | 332 | the bibliography list model (`cratebibtex`) |
+| `lib/entry.rb` | 319 | one citation (`cratebibtex`) |
+| `lib/entry_type.rb` | 186 | the 16 entry types and their extra fields |
+| `lib/citation_format.rb` | 137 | Plain / Markdown / LaTeX |
+| `lib/texer.rb` | 375 | LaTeX → plain text (`texer`) |
+| `lib/settings.rb` | 123 | the GSettings keys |
+| `lib/style.rb` | 57 | the stylesheet, inline |
+| `lib/config.rb` | 24 | the build-time constants |
+| `lib/i18n.rb` | 49 | the gettext domain |
+| `lib/citations.rb`, `lib/citations/application.rb`, `lib/citations/rb/version.rb` | 3 + 10 + — | the gem-facing shell `exe/citations` requires |
 
 Target paths follow the pilot's shape: the ported components are flat
 `lib/<thing>.rb` files, the app class is `lib/main.rb`, and
-`lib/citations/application.rb` stays as the gem-facing shell that `exe/citations`
-requires.
+`lib/citations/application.rb` stays as the gem-facing shell.
 
 ## Totals
 
+Both columns from `component-scan.sh`; upstream's widget column counts the
+`.ui` files, where upstream's trees live, and the port's counts `lib/`.
+
 | | upstream | `ruby` branch |
 |---|---:|---:|
-| GtkBuilder templates / declarative roots | 9 (8 `template`, 1 named `AdwShortcutsDialog`) | 0 |
-| `Gtk*`/`Adw*` widget instantiations in `.ui` | 155 | 9 (all scaffold) |
-| distinct CSS classes in `.ui` | 21 | 0 |
-| CSS rules in `data/resources/style.css` | 5 selectors, 2 app-defined classes (`padded-sidebar`, `newentrydialog`) | 0 |
-| `GAction`s installed | 15 (`app.` 2, `win.` 11, `entry-page.` 2) + 4 `entry-row.` | 0 |
-| accelerators | 6 | 0 |
-| GSettings keys | 8 | 0 |
-| `po/` catalogues | 42 locales, 21 POTFILES entries | 0 |
+| GtkBuilder templates / declarative roots | 9 (8 `template`, 1 named `AdwShortcutsDialog`) | n/a — widgets are built in code |
+| `Gtk*`/`Adw*` widget instantiations | 155 (in `.ui`) | 152 (45 distinct types) |
+| distinct CSS classes | 21 (in `.ui`) | 21 — the same 21 |
+| distinct signals | — | 29 |
+| event controllers | — | 5 |
+| CSS rules in `data/resources/style.css` | 5 selectors, 2 app-defined classes (`padded-sidebar`, `newentrydialog`) | carried inline in `lib/style.rb` |
+| `GAction`s installed | 15 (`app.` 2, `win.` 11, `entry-page.` 2) + 4 `entry-row.` | 24 distinct action names across 34 sites |
+| accelerators | 6 | 6, in `lib/main.rb` |
+| GSettings keys | 8 | 8, in `lib/settings.rb` |
+| `po/` catalogues | 42 locales, 21 POTFILES entries | **0 — `po/` is empty** |
 
-Widget counts per `.ui` file: `entry_page.ui` 46, `window.ui` 31,
+Widget counts per upstream `.ui` file: `entry_page.ui` 46, `window.ui` 31,
 `citation_preview.ui` 23, `new_entry_dialog.ui` 17, `add_pdf_dialog.ui` 16,
 `shortcuts.ui` 10, `entry_list_row.ui` 8, `entry_list.ui` 4.
 
-The 21 CSS classes: `boxed-list`, `boxed-list-separate`, `card`, `compact`,
-`destructive-action`, `dimmed`, `error`, `flat`, `heading`, `icon-dropshadow`,
-`inline`, `navigation-sidebar`, `newentrydialog`, `numeric`, `osd`,
-`padded-sidebar`, `pill`, `subtitle`, `suggested-action`, `title`, `title-1`.
-Two more are applied from source only: `devel` (on the window, devel profile)
-and `error` (added/removed on `citation_key_entry` and `pdf_url_entry_row` on
-validation failure).
+The 21 CSS classes, present on both sides: `boxed-list`,
+`boxed-list-separate`, `card`, `compact`, `destructive-action`, `dimmed`,
+`error`, `flat`, `heading`, `icon-dropshadow`, `inline`, `navigation-sidebar`,
+`newentrydialog`, `numeric`, `osd`, `padded-sidebar`, `pill`, `subtitle`,
+`suggested-action`, `title`, `title-1`. Two more are applied from source only:
+`devel` (on the window, devel profile) and `error` (added/removed on
+`citation_key_entry` and `pdf_url_entry_row` on validation failure).
 
 ---
 
 ## src/application.rs + src/main.rs — the application object
 
-→ `lib/main.rb` · **missing**
+→ `lib/main.rb` · **present**
 
 Not a widget class, but it owns the actions, the accelerators and the
 multi-window behaviour.
@@ -82,7 +106,7 @@ itself.
 
 ## src/window.rs + data/resources/ui/window.ui — the main window
 
-→ `lib/window.rb` · **missing**
+→ `lib/window.rb` · **present**
 
 The largest unit. An `AdwApplicationWindow` whose content is an
 `AdwToastOverlay` wrapping a `GtkStack` that switches between the recent-files
@@ -130,7 +154,7 @@ front page and the split-view workspace.
 ### Recent file row (repeater)
 
 `recent_row(file)` in src/window.rs, one per existing recent path, newest first
-→ `lib/recent_file_row.rb` · **missing**
+→ `lib/recent_file_row.rb` · **present**
 
 | Widget | × | CSS | Signals / actions | Notes |
 |---|---:|---|---|---|
@@ -144,7 +168,7 @@ Non-existent paths are filtered out; an empty list switches
 ### Window menus
 
 `primary_menu_empty` (front page), `primary_menu` (workspace), `entry_menu`
-(content header) → `lib/window.rb` · **missing**
+(content header) → `lib/window.rb` · **present**
 
 | Menu | Items |
 |---|---|
@@ -178,9 +202,26 @@ Non-existent paths are filtered out; an empty list switches
 | Delete toast | `Adw.Toast` | "Citation Deleted" + button "Undo" → `win.undo_delete`; a second delete dismisses the pending one |
 | Other toasts | `Adw.Toast` | "Bibliography saved", "Copied", "Could not add entry", "An entry with the given citation key already exists", "Citation Key already exists", "PDF added" |
 
+## src/window.rs (`show_about_dialog`) — the About Citations dialog
+
+→ `lib/about_dialog.rb` · **present**
+
+Not a template of its own upstream: `Window::show_about_dialog` builds an
+`Adw.AboutDialog` with `from_appdata` on the bundled metainfo and then adds the
+credits. The port extracts it to its own file because the Ruby bindings do not
+expose `from_appdata`, so the metainfo (`data/org.rubygtkproject.Citations.metainfo.xml`)
+is parsed and the same fields are set by hand.
+
+| Item | Detail |
+|---|---|
+| widget | `Adw.AboutDialog` ×1 |
+| fields | name, summary, developer ("Maximiliano Sandoval"), designer ("Tobias Bernard"), translator credits, home page, issue tracker, translation page, newest release notes, GPL-3.0-or-later |
+| action | presented by `win.about` |
+| devel | shows the full version on a devel build |
+
 ## data/resources/ui/entry_list.ui + src/entry_list.rs — the sidebar list
 
-→ `lib/entry_list.rb` · **missing**
+→ `lib/entry_list.rb` · **present**
 
 An `AdwBin` with a stack between an empty state and the scrolled list.
 
@@ -201,7 +242,7 @@ a closure expression of `"{author} {title} {year} {citation_key}"`; methods
 
 ## data/resources/ui/entry_list_row.ui + src/entry_list_row.rs — one citation row
 
-→ `lib/entry_list_row.rb` · **missing**
+→ `lib/entry_list_row.rb` · **present**
 
 A bare `Gtk.Widget` subclass with a `BinLayout`.
 
@@ -226,7 +267,7 @@ Actions and keys: `entry-row.open-pdf` (enabled only when the PDF exists),
 
 ## data/resources/ui/entry_page.ui + src/entry_page.rs — the citation editor
 
-→ `lib/entry_page.rb` · **missing**
+→ `lib/entry_page.rb` · **present**
 
 The widest single unit: 46 widgets in the template. An `AdwBin` with a
 three-way stack — an empty `AdwBin`, a "No Citation Selected" status page, and
@@ -280,7 +321,7 @@ actions `entry-page.open-pdf` and `entry-page.set-pdf`.
 
 ## data/resources/ui/citation_preview.ui + src/citation_preview.rs — the formatted citation
 
-→ `lib/citation_preview.rb` · **missing**
+→ `lib/citation_preview.rb` · **present**
 
 | Widget | × | CSS | Signals / actions | Notes |
 |---|---:|---|---|---|
@@ -308,7 +349,7 @@ article/book decision live here. `custom-book-template` and
 
 ## data/resources/ui/new_entry_dialog.ui + src/new_entry_dialog.rs — Add new Entry
 
-→ `lib/new_entry_dialog.rb` · **missing**
+→ `lib/new_entry_dialog.rb` · **present**
 
 An `AdwDialog`, 360×360, content-height 270, title "Add new Entry",
 default widget `create_button`, initial focus `entry_row`.
@@ -331,7 +372,7 @@ default widget `create_button`, initial focus `entry_row`.
 
 ## data/resources/ui/add_pdf_dialog.ui + src/add_pdf_dialog.rs — Add PDF
 
-→ `lib/add_pdf_dialog.rb` · **missing**
+→ `lib/add_pdf_dialog.rb` · **present**
 
 An `AdwDialog`, 360×270 request, content 450×270, title "Add PDF", initial
 focus `pdf_url_entry_row`. Own signal `pdf-set`.
@@ -355,7 +396,7 @@ reloads its preview and the window toasts "PDF added") and closes the dialog.
 
 ## data/resources/ui/shortcuts.ui — the shortcuts dialog
 
-→ `lib/shortcuts_dialog.rb` · **missing**
+→ `lib/shortcuts_dialog.rb` · **present**
 
 A standalone named `AdwShortcutsDialog` with no backing source file; aliased in
 the gresource as `shortcuts-dialog.ui` so libadwaita wires `app.shortcuts` to
@@ -370,7 +411,7 @@ All titles carry the `shortcut window` message context.
 
 ## src/selection.rs — the sidebar selection model
 
-→ `lib/selection.rb` · **missing**
+→ `lib/selection.rb` · **present**
 
 Not a widget: a `GObject` implementing `Gio::ListModel` + `Gtk::SelectionModel`
 (upstream GType name `SidebarSelection`) with properties `model`,
@@ -380,7 +421,7 @@ across `items-changed`. `EntryList` is unusable without it.
 
 ## src/utils.rs — helpers behind the UI
 
-→ `lib/utils.rb` · **missing**
+→ `lib/utils.rb` · **present**
 
 `translated_key` (the 24 field labels listed under EntryPage),
 `build_google_schoolar_url`, `build_arxiv_url`, `bibliography_path` /
@@ -394,40 +435,41 @@ HTTP `get`. `generate_key` and `sanitize_key` carry upstream's only unit tests.
 
 | Upstream | → port | Kind | Present | Notes |
 |---|---|---|---|---|
-| `data/org.gnome.World.Citations.gschema.xml.in` | `lib/settings.rb` | GSettings schema | no | 8 keys: `window-width` 800, `window-height` 600, `is-maximized` false, `recent-files` `[]`, `custom-book-template`, `custom-article-template`, `template-kind` 0, `format-kind` 0 |
-| `data/resources/style.css` | `lib/style.rb` | stylesheet | no | `textview { padding: 6px }`, `.padded-sidebar`, inline-textview background reset, `textview.newentrydialog`, card-undershoot reset |
+| `data/org.gnome.World.Citations.gschema.xml.in` | `lib/settings.rb` | GSettings schema | yes | 8 keys: `window-width` 800, `window-height` 600, `is-maximized` false, `recent-files` `[]`, `custom-book-template`, `custom-article-template`, `template-kind` 0, `format-kind` 0 |
+| `data/resources/style.css` | `lib/style.rb` | stylesheet | yes — inline, no gresource | `textview { padding: 6px }`, `.padded-sidebar`, inline-textview background reset, `textview.newentrydialog`, card-undershoot reset |
 | `data/resources/resources.gresource.xml.in` | — | resource manifest | n/a | the port builds widgets in code; only the three bundled icons and `style.css` still need a home |
-| `data/resources/icons/*.svg` | `data/icons/` | assets | no | `document-text-symbolic`, `external-link-symbolic`, `image-missing-symbolic` — all three are referenced by the UI above |
-| `data/icons/org.gnome.World.Citations*.svg` | `data/icons/` | app icon | no | used by both front-page status pages and `set_default_icon_name` |
-| `data/org.gnome.World.Citations.metainfo.xml.in.in` | `data/` | appstream | no | the about dialog is built `from_appdata` on it |
-| `data/org.gnome.World.Citations.desktop.in.in` | `data/` | desktop entry | no | — |
-| `cratebibtex/src/bib.rs` | `lib/bib.rb` | model | no | the `Gio::ListModel` of entries: parse, save, modified flag, add/remove/find, `key_exists` |
-| `cratebibtex/src/entry.rs` | `lib/entry.rb` | model | no | one citation: author, title, year, doi, citation-key, entry-type, x-abstract, notes, dynamic extra fields, `from_bibtex`, `serialize`, `format_citation` |
-| `cratebibtex/src/entry_type.rs` | `lib/entry_type.rb` | enum + model | no | 16 types (Other, Article, Book, Misc, In Proceedings, Unpublished, Online, Booklet, Conference, In Book, In Collection, Manual, Master's Thesis, PhD Thesis, Proceedings, Tech Report), their translated names, `uses_abstract`, and the per-type extra-field lists that drive the extras repeater |
-| `cratebibtex/src/format.rs` | `lib/citation_format.rb` | enum | no | Plain / Markdown / LaTeX, their names, and `format_authors` |
-| `texer/src/lib.rs`, `texer/src/utils.rs` | `lib/texer.rb` | helper | no | LaTeX → plain text; every author and title shown in the sidebar and every search URL goes through it |
-| `po/` (42 locales, 21 POTFILES) | `po/` + `lib/i18n.rb` | translations | no | gettext domain `citations`; message contexts (`shortcut window`) and translator comments are part of the catalogue |
+| `data/resources/icons/*.svg` | `data/icons/` | assets | yes — under `data/icons/hicolor/scalable/actions/` | `document-text-symbolic`, `external-link-symbolic`, `image-missing-symbolic` — all three are referenced by the UI above |
+| `data/icons/org.gnome.World.Citations*.svg` | `data/icons/` | app icon | yes — `data/icons/hicolor/scalable/apps/` | used by both front-page status pages and `set_default_icon_name` |
+| `data/org.gnome.World.Citations.metainfo.xml.in.in` | `data/` | appstream | yes — `data/org.rubygtkproject.Citations.metainfo.xml` | the about dialog is built `from_appdata` on it |
+| `data/org.gnome.World.Citations.desktop.in.in` | `data/` | desktop entry | **no** | — |
+| `cratebibtex/src/bib.rs` | `lib/bib.rb` | model | yes | the `Gio::ListModel` of entries: parse, save, modified flag, add/remove/find, `key_exists` |
+| `cratebibtex/src/entry.rs` | `lib/entry.rb` | model | yes | one citation: author, title, year, doi, citation-key, entry-type, x-abstract, notes, dynamic extra fields, `from_bibtex`, `serialize`, `format_citation` |
+| `cratebibtex/src/entry_type.rs` | `lib/entry_type.rb` | enum + model | yes | 16 types (Other, Article, Book, Misc, In Proceedings, Unpublished, Online, Booklet, Conference, In Book, In Collection, Manual, Master's Thesis, PhD Thesis, Proceedings, Tech Report), their translated names, `uses_abstract`, and the per-type extra-field lists that drive the extras repeater |
+| `cratebibtex/src/format.rs` | `lib/citation_format.rb` | enum | yes | Plain / Markdown / LaTeX, their names, and `format_authors` |
+| `texer/src/lib.rs`, `texer/src/utils.rs` | `lib/texer.rb` | helper | yes | LaTeX → plain text; every author and title shown in the sidebar and every search URL goes through it |
+| `po/` (42 locales, 21 POTFILES) | `po/` + `lib/i18n.rb` | translations | **partly** — `lib/i18n.rb` binds the domain and every string goes through `_`/`p_`, but `po/` is empty: 0 of 42 catalogues | gettext domain `citations`; message contexts (`shortcut window`) and translator comments are part of the catalogue |
 
 ---
 
-## Where to start
+## What is left
 
-The dependency order falls out of the above: `lib/entry_type.rb`,
-`lib/citation_format.rb`, `lib/entry.rb`, `lib/bib.rb` and `lib/texer.rb`
-first, since nothing on screen renders without them; then `lib/selection.rb`
-and `lib/entry_list.rb` + `lib/entry_list_row.rb`; then `lib/window.rb` with
-its front page, menus and actions; then `lib/entry_page.rb`,
-`lib/citation_preview.rb` and the two dialogs; `lib/shortcuts_dialog.rb` last.
+The order the port was written in is the dependency order the first survey
+called for, and it held: models and helpers, then the selection model and the
+sidebar, then the window, then the editor, the preview and the dialogs. What
+remains is not a missing component but the parity work inside the files that
+exist, plus the two inputs that were never ported:
 
-## Blockers to settle before writing widget code
+- **`po/` is empty.** 42 upstream catalogues, 21 POTFILES entries, message contexts (`shortcut window`) and translator comments. The msgids are in place on the Ruby side; the catalogues are not. `translation-parity` owns this.
+- **No desktop entry.** `data/org.gnome.World.Citations.desktop.in.in` has no counterpart under `data/`.
 
-1. **Nothing is ported.** `lib/` holds the scaffold only; this is a from-zero port of 9 templates, 155 widget instantiations, 19 actions and 6 accelerators.
-2. **GtkSourceView.** `citation_preview` and `new_entry_dialog` both use `GtkSource::View`/`Buffer` with bibtex, markdown and latex languages and Adwaita style schemes. The dev shell must carry the GtkSource typelib, and the Ruby binding surface needs checking before either file is written.
-3. **Poppler.** The PDF preview (render page 0 onto a Cairo surface) and the download validator both need poppler-glib. Not in the scaffold's closure; may have no usable Ruby binding, in which case the preview needs another route and the gap must be recorded as a gap, not redesigned away.
-4. **Network.** "From DOI" (doi2bib) and "Add From URL" both fetch over HTTP from inside the GTK main loop. The port needs an async-safe Ruby HTTP path.
-5. **BibTeX parsing and LaTeX stripping.** `cratebibtex` and `texer` are upstream crates with no Ruby equivalent; both have to be written, and `texer` is on the path of every row the sidebar draws.
-6. **`AdwApplicationWindow` vs the bindings.** The `ruby-gtk` skill says `Adwaita::ApplicationWindow` is broken in the Ruby bindings and to use `Gtk::ApplicationWindow`, yet the scaffold already instantiates `Adwaita::ApplicationWindow.new(app)`. Upstream's window relies on `content`, `AdwBreakpoint` and `AdwToastOverlay`. Resolve this against the skill's quirks reference and a running window before porting `lib/window.rb`.
-7. **Binding coverage for the newer Adwaita widgets.** `AdwBreakpoint` (with `condition`/`setter`), `AdwShortcutsDialog`/`Section`/`Item`, `AdwButtonRow`, `AdwViewSwitcherBar`, and `GtkEnumList` + `Gtk::ClosureExpression` on `ComboRow`/`DropDown` all need verifying in the dev shell; the enum-list-plus-expression pattern in particular appears in three files.
-8. **GSettings.** 8 keys, and `recent-files` is watched for changes. The schema has to be compiled and visible to the dev shell; the flake already hand-builds its wrapper for this reason.
-9. **Translations.** 42 catalogues, message contexts and translator comments. `translation-parity` needs the gettext extraction path (`rake pot`, per the flake) working before strings are written.
-10. **`app.shortcuts` is implicit upstream.** libadwaita installs it from the aliased gresource; the port must install the action and present the dialog itself.
+## Known deviations from upstream, recorded as gaps
+
+These are places where a component exists but does not do what upstream's
+does. They are deviations, not omissions, and each is commented in the file
+that carries it.
+
+1. **GtkSourceView.** `citation_preview` and `new_entry_dialog` upstream use `GtkSource::View`/`Buffer` with the bibtex, markdown and latex languages and Adwaita style schemes. The port uses a plain `Gtk::TextView` in both, so the syntax highlighting is absent.
+2. **Poppler.** `entry_page`'s PDF preview renders page one with poppler upstream; `add_pdf_dialog` validates a download by handing the bytes to poppler. The port leaves the preview picture empty and validates without poppler.
+3. **`app.shortcuts` is implicit upstream.** libadwaita installs it from the aliased gresource; the port installs the action itself and presents `lib/shortcuts_dialog.rb`.
+4. **No gresource.** The port builds every widget in code, so `style.css` is carried inline in `lib/style.rb` and the three symbolic icons are installed as files under `data/icons/`.
+5. **Network from the main loop.** "From DOI" (doi2bib) and "Add From URL" fetch over HTTP; the Ruby path needs checking for main-loop safety under a slow or dead network.
