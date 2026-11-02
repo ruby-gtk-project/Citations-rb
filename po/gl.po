@@ -1,0 +1,674 @@
+# Galician translation for citations.
+# Copyright (C) 2022 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Fran Dieguez <frandieguez@gnome.org>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"PO-Revision-Date: 2022-09-06 11:52+0200\n"
+"Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
+"Language-Team: Galician <Proxecto Trasno <proxecto@trasno.gal>>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-DL-Team: gl\n"
+"X-DL-Module: citations\n"
+"X-DL-Branch: master\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#. TRANSLATORS Replace this with your name for it to show up in the
+#. about dialog.
+#: lib/about_dialog.rb:63
+msgid "translator-credits"
+msgstr "Fran Diéguez <frandieguez@gnome.org>, 2022"
+
+#: lib/add_pdf_dialog.rb:90
+msgid "Select a PDF"
+msgstr ""
+
+#: lib/add_pdf_dialog.rb:103
+msgid "PDF Files"
+msgstr "Ficheiros PDF"
+
+#. TRANSLATORS Selects a PDF file for the citation
+#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+msgid "Add PDF"
+msgstr "Engadir PDF"
+
+#: lib/add_pdf_dialog.rb:155
+msgid "Bibliography folder not set"
+msgstr "O cartafol de bibliografía non está estabelecido"
+
+#: lib/add_pdf_dialog.rb:170
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"Crea unha copia do pdf seleccionado e gárdao no cartafol de Bibliografía."
+
+#: lib/add_pdf_dialog.rb:189
+msgid "Add From URL"
+msgstr ""
+
+#: lib/add_pdf_dialog.rb:197
+msgid "Download…"
+msgstr ""
+
+#: lib/add_pdf_dialog.rb:204
+msgid "Add From File…"
+msgstr ""
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: lib/add_pdf_dialog.rb:217
+msgid "Make sure that {path} exists"
+msgstr "Asegúrese que existe {path}"
+
+#: lib/add_pdf_dialog.rb:294
+msgid "Could not download PDF"
+msgstr "Non foi posíbel descargar o PDF"
+
+#: lib/add_pdf_dialog.rb:321
+msgid "Could not set PDF"
+msgstr "Non se estabeleceu un PDF"
+
+#. TRANSLATORS Plain as in Plain Text
+#: lib/citation_format.rb:62
+msgid "Plain"
+msgstr "Plano"
+
+#: lib/citation_preview.rb:197
+msgid "Custom Citation Format"
+msgstr "Formato de cita personalizado"
+
+#: lib/citation_preview.rb:205
+msgid "Help"
+msgstr ""
+
+#: lib/citation_preview.rb:229
+msgid "Citation"
+msgstr "Cita"
+
+#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+msgid "Copy"
+msgstr "Copia"
+
+#: lib/citation_preview.rb:292
+msgid "Custom Template"
+msgstr "Modelo personalizado"
+
+#: lib/citation_preview.rb:307
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported. "
+msgstr ""
+
+#: lib/citation_preview.rb:316
+msgid "Example:"
+msgstr "Exemplo:"
+
+#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
+#: lib/window.rb:762
+msgid "Copied"
+msgstr "Copiado"
+
+#: lib/citation_preview.rb:400
+msgid "Custom…"
+msgstr "Personalizado…"
+
+#. TRANSLATORS Empty state widget
+#: lib/entry_list.rb:137
+msgid "No Citations"
+msgstr "Sen citas"
+
+#: lib/entry_list.rb:138
+msgid "Create a new citation"
+msgstr "Crear unha nova cita"
+
+#: lib/entry_list_row.rb:176
+msgid "_Open PDF"
+msgstr ""
+
+#: lib/entry_list_row.rb:177
+msgid "_Copy Key"
+msgstr ""
+
+#: lib/entry_list_row.rb:183 lib/window.rb:439
+msgid "_Delete"
+msgstr "E_liminar"
+
+#: lib/entry_list_row.rb:308
+msgid "Author not set"
+msgstr ""
+
+#: lib/entry_list_row.rb:322
+msgid "Title not set"
+msgstr ""
+
+#: lib/entry_page.rb:224
+msgid "No Citation Selected"
+msgstr "Non hai ningunha cita seleccionada"
+
+#: lib/entry_page.rb:281
+msgid "Citation _Type"
+msgstr "_Tipo de cita"
+
+#: lib/entry_page.rb:292
+msgid "Other…"
+msgstr "Outro…"
+
+#: lib/entry_page.rb:302
+msgid "_Other Citation Type"
+msgstr "_Outro tipo de cita"
+
+#: lib/entry_page.rb:309
+msgid "_Citation Key"
+msgstr "Chave da _cita"
+
+#: lib/entry_page.rb:326
+msgid "_Author"
+msgstr "_Autor"
+
+#: lib/entry_page.rb:333
+msgid "_Title"
+msgstr "_Título"
+
+#: lib/entry_page.rb:340
+msgid "_Year"
+msgstr "_Ano"
+
+#: lib/entry_page.rb:359 lib/entry_page.rb:866
+msgid "Open in Browser"
+msgstr "Abrir no navegador"
+
+#: lib/entry_page.rb:367
+msgid "Other Properties"
+msgstr "Outros propiedades"
+
+#: lib/entry_page.rb:381
+msgid "Abstract"
+msgstr ""
+
+#: lib/entry_page.rb:388
+msgid "Copy Abstract"
+msgstr ""
+
+#: lib/entry_page.rb:405
+msgid "Notes"
+msgstr ""
+
+#: lib/entry_page.rb:412
+msgid "Copy Notes"
+msgstr ""
+
+#: lib/entry_page.rb:468
+msgid "PDF"
+msgstr "PDF"
+
+#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
+#: lib/window.rb:401
+msgid "_Open"
+msgstr "_Abrir"
+
+#: lib/entry_page.rb:496
+msgid "Delete PDF"
+msgstr "Eliminar PDF"
+
+#: lib/entry_page.rb:533
+msgid "Could not set PDF Preview"
+msgstr "Non foi posíbel estabelecer a vista previa do PDF"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: lib/entry_page.rb:636
+msgid "Citation Key already exists"
+msgstr "Xa existe esa chave de cita"
+
+#: lib/entry_page.rb:725
+msgid "PDF added"
+msgstr "PDF engadido"
+
+#: lib/entry_type.rb:31
+msgid "Article"
+msgstr "Artigo"
+
+#: lib/entry_type.rb:32
+msgid "Book"
+msgstr "Libro"
+
+#: lib/entry_type.rb:33
+msgid "Misc"
+msgstr "Misceláneo"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:36
+msgid "In Proceedings"
+msgstr "En actas"
+
+#: lib/entry_type.rb:37
+msgid "Unpublished"
+msgstr "Sen publicar"
+
+#. TRANSLATORS As in online source
+#: lib/entry_type.rb:39
+msgid "Online"
+msgstr "En liña"
+
+#: lib/entry_type.rb:40
+msgid "Booklet"
+msgstr "Folleto"
+
+#: lib/entry_type.rb:41
+msgid "Conference"
+msgstr "Conferencia"
+
+#: lib/entry_type.rb:42
+msgid "In Book"
+msgstr "En libro"
+
+#: lib/entry_type.rb:43
+msgid "In Collection"
+msgstr "En colección"
+
+#. TRANSLATORS As in instruction manual
+#: lib/entry_type.rb:45
+msgid "Manual"
+msgstr "Manual"
+
+#: lib/entry_type.rb:46
+msgid "Master's Thesis"
+msgstr ""
+
+#: lib/entry_type.rb:47
+msgid "PhD Thesis"
+msgstr ""
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:50
+msgid "Proceedings"
+msgstr "Actas"
+
+#: lib/entry_type.rb:51
+msgid "Tech Report"
+msgstr "Informe técnico"
+
+#. TRANSLATORS As in other kind of source
+#: lib/entry_type.rb:53
+msgid "Other"
+msgstr "Outros"
+
+#: lib/main.rb:99
+msgid "Open a new window"
+msgstr ""
+
+#: lib/main.rb:108
+msgid "Enable debug messages"
+msgstr ""
+
+#: lib/main.rb:151 lib/window.rb:181
+msgid "Citations"
+msgstr "Citas"
+
+#: lib/new_entry_dialog.rb:73
+msgid "New"
+msgstr "Nova"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/new_entry_dialog.rb:80
+msgid "From BibTeX"
+msgstr "Desde BibTeX"
+
+#: lib/new_entry_dialog.rb:86
+msgid "From DOI"
+msgstr ""
+
+#: lib/new_entry_dialog.rb:115
+msgid "Insert a BibTeX citation here"
+msgstr "Insira a cita BibTeX aquí"
+
+#: lib/new_entry_dialog.rb:126
+msgid "Add new Entry"
+msgstr ""
+
+#: lib/new_entry_dialog.rb:141
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: lib/new_entry_dialog.rb:149
+msgid "C_reate"
+msgstr "C_rear"
+
+#: lib/new_entry_dialog.rb:189
+msgid "Citation Key"
+msgstr "Chave da cita"
+
+#: lib/new_entry_dialog.rb:196
+msgid "Citation Type"
+msgstr "Tipo de cita"
+
+#. TRANSLATORS DOI is a proper name
+#: lib/new_entry_dialog.rb:223
+msgid "DOI"
+msgstr ""
+
+#: lib/recent_file_row.rb:71
+msgid "Remove From Recent Files"
+msgstr "Eliminar dos ficheiros recentes"
+
+#: lib/shortcuts_dialog.rb:25
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Xeral"
+
+#: lib/shortcuts_dialog.rb:26
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Bibliografía"
+
+#: lib/shortcuts_dialog.rb:32
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostrar atallos"
+
+#: lib/shortcuts_dialog.rb:33
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr ""
+
+#: lib/shortcuts_dialog.rb:34
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: lib/shortcuts_dialog.rb:35
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Saír"
+
+#: lib/shortcuts_dialog.rb:41
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Abrir"
+
+#: lib/shortcuts_dialog.rb:42
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Gardar"
+
+#: lib/shortcuts_dialog.rb:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Buscar"
+
+#: lib/utils.rb:43
+msgid "Author"
+msgstr "Autor"
+
+#: lib/utils.rb:44
+msgid "Year"
+msgstr "Ano"
+
+#: lib/utils.rb:45
+msgid "Title"
+msgstr "Títuo"
+
+#: lib/utils.rb:46
+msgid "Volume"
+msgstr "Volume"
+
+#: lib/utils.rb:47
+msgid "Number"
+msgstr "Número"
+
+#: lib/utils.rb:48
+msgid "Pages"
+msgstr "Páxinas"
+
+#: lib/utils.rb:49
+msgid "Publisher"
+msgstr "Publicador"
+
+#: lib/utils.rb:50
+msgid "Journal"
+msgstr "Xornal"
+
+#: lib/utils.rb:51
+msgid "Address"
+msgstr "Enderezo"
+
+#. TRANSLATORS Method of publication, see
+#. https://www.bibtex.com/f/howpublished-field/
+#: lib/utils.rb:54
+msgid "How Published"
+msgstr "Como foi publicado"
+
+#: lib/utils.rb:55
+msgid "Note"
+msgstr "Nota"
+
+#: lib/utils.rb:56
+msgid "Book Title"
+msgstr "Título do libro"
+
+#: lib/utils.rb:57
+msgid "Series"
+msgstr "Serie"
+
+#: lib/utils.rb:58
+msgid "Archive Prefix"
+msgstr "Prefixo do arquivo"
+
+#. TRANSLATORS As in digital print
+#: lib/utils.rb:60
+msgid "ePrint"
+msgstr "ePrint"
+
+#. TRANSLATORS Identifier used by arXiv, see
+#. https://arxiv.org/help/hypertex/bibstyles
+#: lib/utils.rb:63
+msgid "Primary Class"
+msgstr "Clase primaria"
+
+#: lib/utils.rb:64
+msgid "Month"
+msgstr "Mes "
+
+#. TRANSLATORS As in chief editor
+#: lib/utils.rb:66
+msgid "Editor"
+msgstr "Editor"
+
+#. TRANSLATORS As in association
+#: lib/utils.rb:68
+msgid "Organization"
+msgstr "Organización"
+
+#: lib/utils.rb:69
+msgid "School"
+msgstr "Escola"
+
+#: lib/utils.rb:70
+msgid "Institution"
+msgstr "Intitución"
+
+#: lib/window.rb:166
+msgid "Bibliography saved"
+msgstr "Bibliografía gardada"
+
+#: lib/window.rb:216
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/window.rb:227
+msgid "Open a BibTeX File"
+msgstr "Abrir un ficheiro BibTeX"
+
+#: lib/window.rb:228
+msgid "Or drag-and-drop a file"
+msgstr ""
+
+#: lib/window.rb:249
+msgid "Manage your Citations"
+msgstr "Xestionar as súas citas"
+
+#: lib/window.rb:263
+msgid "Recent Files"
+msgstr "Ficheiros recentes"
+
+#: lib/window.rb:302
+msgid "Sidebar"
+msgstr ""
+
+#: lib/window.rb:306
+msgid "Content"
+msgstr ""
+
+#: lib/window.rb:329
+msgid "Add New Citation"
+msgstr "Engadir nova cita"
+
+#: lib/window.rb:338
+msgid "Search"
+msgstr "Buscar"
+
+#: lib/window.rb:345
+msgid "Secondary Menu"
+msgstr "Menú secundario"
+
+#: lib/window.rb:355
+msgid "Search…"
+msgstr ""
+
+#: lib/window.rb:385
+msgid "_Create New Bibliography"
+msgstr "Crear nova bibliografía"
+
+#: lib/window.rb:400
+msgid "_Save"
+msgstr "_Gardar"
+
+#: lib/window.rb:402
+msgid "New _Window"
+msgstr ""
+
+#: lib/window.rb:408
+msgid "_Keyboard Shortcuts"
+msgstr "Atallos de _teclado"
+
+#. TRANSLATORS About dialog
+#: lib/window.rb:410
+msgid "_About Citations"
+msgstr "_Sobre Citas"
+
+#: lib/window.rb:425
+msgid "_Search in Google Scholar"
+msgstr "_Busar en Google Scholar"
+
+#. TRANSLATORS arXiv is a proper name
+#: lib/window.rb:427
+msgid "_Search in arXiv"
+msgstr "_Buscar en arXiv"
+
+#: lib/window.rb:433
+msgid "_Copy BibTeX Entry"
+msgstr ""
+
+#: lib/window.rb:453
+msgid "Create New Bibliography"
+msgstr "Crear nova bibliografía"
+
+#: lib/window.rb:454
+msgid "_Create"
+msgstr ""
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: lib/window.rb:457
+msgid "bibliography"
+msgstr ""
+
+#: lib/window.rb:469
+msgid "BibTeX Files"
+msgstr ""
+
+#: lib/window.rb:516
+msgid "An entry with the given citation key already exists"
+msgstr "Xa existe unha entrada coa chave de cita fornecida"
+
+#: lib/window.rb:522
+msgid "Could not add entry"
+msgstr ""
+
+#: lib/window.rb:551
+msgid "Citation Deleted"
+msgstr "Cita eliminada"
+
+#: lib/window.rb:553
+msgid "Undo"
+msgstr "Desfacer"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:834
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr ""
+
+#: lib/window.rb:835
+msgid "_Open Without Saving"
+msgstr ""
+
+#: lib/window.rb:836
+msgid "_Don't Open"
+msgstr ""
+
+#: lib/window.rb:837
+msgid "_Save and Open"
+msgstr ""
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:866
+msgid "Do you want to write all changes to the bibliography?"
+msgstr ""
+
+#: lib/window.rb:867
+msgid "_Quit Without Saving"
+msgstr "_Saír sen gardar"
+
+#: lib/window.rb:868
+msgid "_Don't Quit"
+msgstr "_Non saír"
+
+#: lib/window.rb:869
+msgid "_Save and Quit"
+msgstr "_Gardar e saír"
+
+#. TRANSLATORS Dialog title which informs the user about unsaved changes.
+#: lib/window.rb:900
+msgid "Unsaved Changes"
+msgstr "Cambios sen gardar"
+
+#: data/org.rubygtkproject.Citations.desktop.in:3
+msgid "Manage your bibliography"
+msgstr "Xestione a súa bibliografía"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.rubygtkproject.Citations.desktop.in:9
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "bibliografía;citas;literatura;BibTeX;LaTeX;TeX;"
+
+#: data/org.rubygtkproject.Citations.desktop.in:18
+msgid "New Window"
+msgstr ""

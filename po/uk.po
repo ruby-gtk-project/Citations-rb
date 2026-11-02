@@ -1,0 +1,672 @@
+# Ukrainian translation for citations.
+# Copyright (C) 2022 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+#
+# Yuri Chornoivan <yurchor@ukr.net>, 2022, 2023, 2024, 2025, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"PO-Revision-Date: 2026-01-08 09:09+0200\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 23.04.3\n"
+
+#. TRANSLATORS Replace this with your name for it to show up in the
+#. about dialog.
+#: lib/about_dialog.rb:63
+msgid "translator-credits"
+msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2022"
+
+#: lib/add_pdf_dialog.rb:90
+msgid "Select a PDF"
+msgstr "Вибір PDF"
+
+#: lib/add_pdf_dialog.rb:103
+msgid "PDF Files"
+msgstr "файли PDF"
+
+#. TRANSLATORS Selects a PDF file for the citation
+#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+msgid "Add PDF"
+msgstr "Додати PDF"
+
+#: lib/add_pdf_dialog.rb:155
+msgid "Bibliography folder not set"
+msgstr "Не встановлено теки бібліографії"
+
+#: lib/add_pdf_dialog.rb:170
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr "Створює копію позначеного PDF і зберігає її у вашій теці бібліографії."
+
+#: lib/add_pdf_dialog.rb:189
+msgid "Add From URL"
+msgstr "Додати з адреси"
+
+#: lib/add_pdf_dialog.rb:197
+msgid "Download…"
+msgstr "Отримати…"
+
+#: lib/add_pdf_dialog.rb:204
+msgid "Add From File…"
+msgstr "Додати з файла…"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: lib/add_pdf_dialog.rb:217
+msgid "Make sure that {path} exists"
+msgstr "Переконайтеся, що тека {path} існує"
+
+#: lib/add_pdf_dialog.rb:294
+msgid "Could not download PDF"
+msgstr "Не вдалося отримати PDF"
+
+#: lib/add_pdf_dialog.rb:321
+msgid "Could not set PDF"
+msgstr "Не вдалося встановити PDF"
+
+#. TRANSLATORS Plain as in Plain Text
+#: lib/citation_format.rb:62
+msgid "Plain"
+msgstr "Простий"
+
+#: lib/citation_preview.rb:197
+msgid "Custom Citation Format"
+msgstr "Нетиповий формат цитування"
+
+#: lib/citation_preview.rb:205
+msgid "Help"
+msgstr "Довідка"
+
+#: lib/citation_preview.rb:229
+msgid "Citation"
+msgstr "Оголошувати подяку"
+
+#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+msgid "Copy"
+msgstr "Копіювати"
+
+#: lib/citation_preview.rb:292
+msgid "Custom Template"
+msgstr "Нетиповий шаблон"
+
+#: lib/citation_preview.rb:307
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported. "
+msgstr ""
+"Напишіть нетиповий формат для ваших посилань. Щоб вставити вміст теґу "
+"<tt>якийсь_теґ</tt>, напишіть <tt>%ЯКИЙСЬ_ТЕҐ%</tt>. Передбачено базову "
+"підтримку синтаксису markdown для напівжирного та курсивного "
+"шрифтів.             "
+
+#: lib/citation_preview.rb:316
+msgid "Example:"
+msgstr "Приклад:"
+
+#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
+#: lib/window.rb:762
+msgid "Copied"
+msgstr "Скопійовано"
+
+#: lib/citation_preview.rb:400
+msgid "Custom…"
+msgstr "Нетиповий…"
+
+#. TRANSLATORS Empty state widget
+#: lib/entry_list.rb:137
+msgid "No Citations"
+msgstr "Немає посилань"
+
+#: lib/entry_list.rb:138
+msgid "Create a new citation"
+msgstr "Створити посилання"
+
+#: lib/entry_list_row.rb:176
+msgid "_Open PDF"
+msgstr "_Відкрити PDF"
+
+#: lib/entry_list_row.rb:177
+msgid "_Copy Key"
+msgstr "_Копіювати ключ"
+
+#: lib/entry_list_row.rb:183 lib/window.rb:439
+msgid "_Delete"
+msgstr "В_илучити"
+
+#: lib/entry_list_row.rb:308
+msgid "Author not set"
+msgstr "Автора не встановлено"
+
+#: lib/entry_list_row.rb:322
+msgid "Title not set"
+msgstr "Заголовок не встановлено"
+
+#: lib/entry_page.rb:224
+msgid "No Citation Selected"
+msgstr "Не позначено жодного посилання"
+
+#: lib/entry_page.rb:281
+msgid "Citation _Type"
+msgstr "_Тип посилання"
+
+#: lib/entry_page.rb:292
+msgid "Other…"
+msgstr "Інше…"
+
+#: lib/entry_page.rb:302
+msgid "_Other Citation Type"
+msgstr "_Інший тип посилання"
+
+#: lib/entry_page.rb:309
+msgid "_Citation Key"
+msgstr "Кл_юч посилання"
+
+#: lib/entry_page.rb:326
+msgid "_Author"
+msgstr "_Автор"
+
+#: lib/entry_page.rb:333
+msgid "_Title"
+msgstr "_Назва"
+
+#: lib/entry_page.rb:340
+msgid "_Year"
+msgstr "Р_ік"
+
+#: lib/entry_page.rb:359 lib/entry_page.rb:866
+msgid "Open in Browser"
+msgstr "Відкрити у переглядачі"
+
+#: lib/entry_page.rb:367
+msgid "Other Properties"
+msgstr "Інші властивості"
+
+#: lib/entry_page.rb:381
+msgid "Abstract"
+msgstr "Резюме"
+
+#: lib/entry_page.rb:388
+msgid "Copy Abstract"
+msgstr "Копіювати резюме"
+
+#: lib/entry_page.rb:405
+msgid "Notes"
+msgstr "Нотатки"
+
+#: lib/entry_page.rb:412
+msgid "Copy Notes"
+msgstr "Копіювати нотатки"
+
+#: lib/entry_page.rb:468
+msgid "PDF"
+msgstr "PDF"
+
+#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
+#: lib/window.rb:401
+msgid "_Open"
+msgstr "_Відкрити"
+
+#: lib/entry_page.rb:496
+msgid "Delete PDF"
+msgstr "Вилучити PDF"
+
+#: lib/entry_page.rb:533
+msgid "Could not set PDF Preview"
+msgstr "Не вдалося встановити попередній перегляд PDF"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: lib/entry_page.rb:636
+msgid "Citation Key already exists"
+msgstr "Ключ цитування вже існує"
+
+#: lib/entry_page.rb:725
+msgid "PDF added"
+msgstr "Додано PDF"
+
+#: lib/entry_type.rb:31
+msgid "Article"
+msgstr "Стаття"
+
+#: lib/entry_type.rb:32
+msgid "Book"
+msgstr "Книга"
+
+#: lib/entry_type.rb:33
+msgid "Misc"
+msgstr "Інше"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:36
+msgid "In Proceedings"
+msgstr "У працях"
+
+#: lib/entry_type.rb:37
+msgid "Unpublished"
+msgstr "Неоприлюднений"
+
+#. TRANSLATORS As in online source
+#: lib/entry_type.rb:39
+msgid "Online"
+msgstr "У мережі"
+
+#: lib/entry_type.rb:40
+msgid "Booklet"
+msgstr "Брошура"
+
+#: lib/entry_type.rb:41
+msgid "Conference"
+msgstr "Конференція"
+
+#: lib/entry_type.rb:42
+msgid "In Book"
+msgstr "У книзі"
+
+#: lib/entry_type.rb:43
+msgid "In Collection"
+msgstr "У збірці"
+
+#. TRANSLATORS As in instruction manual
+#: lib/entry_type.rb:45
+msgid "Manual"
+msgstr "Підручник"
+
+#: lib/entry_type.rb:46
+msgid "Master's Thesis"
+msgstr "Магістерська дисертація"
+
+#: lib/entry_type.rb:47
+msgid "PhD Thesis"
+msgstr "Кандидатська дисертація"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:50
+msgid "Proceedings"
+msgstr "Доповіді"
+
+#: lib/entry_type.rb:51
+msgid "Tech Report"
+msgstr "Технічний звіт"
+
+#. TRANSLATORS As in other kind of source
+#: lib/entry_type.rb:53
+msgid "Other"
+msgstr "Інше"
+
+#: lib/main.rb:99
+msgid "Open a new window"
+msgstr "Відкрити нове вікно"
+
+#: lib/main.rb:108
+msgid "Enable debug messages"
+msgstr "Увімкнути діагностичні повідомлення"
+
+#: lib/main.rb:151 lib/window.rb:181
+msgid "Citations"
+msgstr "Цитати"
+
+#: lib/new_entry_dialog.rb:73
+msgid "New"
+msgstr "Створити"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/new_entry_dialog.rb:80
+msgid "From BibTeX"
+msgstr "З BibTeX"
+
+#: lib/new_entry_dialog.rb:86
+msgid "From DOI"
+msgstr "З DOI"
+
+#: lib/new_entry_dialog.rb:115
+msgid "Insert a BibTeX citation here"
+msgstr "Вставте сюди посилання BibTeX"
+
+#: lib/new_entry_dialog.rb:126
+msgid "Add new Entry"
+msgstr "Додавання нового запису"
+
+#: lib/new_entry_dialog.rb:141
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: lib/new_entry_dialog.rb:149
+msgid "C_reate"
+msgstr "С_творити"
+
+#: lib/new_entry_dialog.rb:189
+msgid "Citation Key"
+msgstr "Ключ посилання"
+
+#: lib/new_entry_dialog.rb:196
+msgid "Citation Type"
+msgstr "Тип посилання"
+
+#. TRANSLATORS DOI is a proper name
+#: lib/new_entry_dialog.rb:223
+msgid "DOI"
+msgstr "DOI"
+
+#: lib/recent_file_row.rb:71
+msgid "Remove From Recent Files"
+msgstr "Вилучити з нещодавніх файлів"
+
+#: lib/shortcuts_dialog.rb:25
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Загальне"
+
+#: lib/shortcuts_dialog.rb:26
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Бібліографія"
+
+#: lib/shortcuts_dialog.rb:32
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Показати клавіатурні скорочення"
+
+#: lib/shortcuts_dialog.rb:33
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Створити вікно"
+
+#: lib/shortcuts_dialog.rb:34
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Закрити вікно"
+
+#: lib/shortcuts_dialog.rb:35
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Вийти з програми"
+
+#: lib/shortcuts_dialog.rb:41
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Відкрити"
+
+#: lib/shortcuts_dialog.rb:42
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Зберегти"
+
+#: lib/shortcuts_dialog.rb:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Шукати"
+
+#: lib/utils.rb:43
+msgid "Author"
+msgstr "Автор"
+
+#: lib/utils.rb:44
+msgid "Year"
+msgstr "Рік"
+
+#: lib/utils.rb:45
+msgid "Title"
+msgstr "Назва"
+
+#: lib/utils.rb:46
+msgid "Volume"
+msgstr "Том"
+
+#: lib/utils.rb:47
+msgid "Number"
+msgstr "Номер"
+
+#: lib/utils.rb:48
+msgid "Pages"
+msgstr "Сторінки"
+
+#: lib/utils.rb:49
+msgid "Publisher"
+msgstr "Видавець"
+
+#: lib/utils.rb:50
+msgid "Journal"
+msgstr "Журнал"
+
+#: lib/utils.rb:51
+msgid "Address"
+msgstr "Адреса"
+
+#. TRANSLATORS Method of publication, see
+#. https://www.bibtex.com/f/howpublished-field/
+#: lib/utils.rb:54
+msgid "How Published"
+msgstr "Як видавалася"
+
+#: lib/utils.rb:55
+msgid "Note"
+msgstr "Нотатка"
+
+#: lib/utils.rb:56
+msgid "Book Title"
+msgstr "Назва книги"
+
+#: lib/utils.rb:57
+msgid "Series"
+msgstr "Цикл"
+
+#: lib/utils.rb:58
+msgid "Archive Prefix"
+msgstr "Префікс архівів"
+
+#. TRANSLATORS As in digital print
+#: lib/utils.rb:60
+msgid "ePrint"
+msgstr "Електронний відбиток"
+
+#. TRANSLATORS Identifier used by arXiv, see
+#. https://arxiv.org/help/hypertex/bibstyles
+#: lib/utils.rb:63
+msgid "Primary Class"
+msgstr "Основний клас"
+
+#: lib/utils.rb:64
+msgid "Month"
+msgstr "Місяць"
+
+#. TRANSLATORS As in chief editor
+#: lib/utils.rb:66
+msgid "Editor"
+msgstr "Редактор"
+
+#. TRANSLATORS As in association
+#: lib/utils.rb:68
+msgid "Organization"
+msgstr "Організація"
+
+#: lib/utils.rb:69
+msgid "School"
+msgstr "Школа"
+
+#: lib/utils.rb:70
+msgid "Institution"
+msgstr "Установа"
+
+#: lib/window.rb:166
+msgid "Bibliography saved"
+msgstr "Бібліографію збережено"
+
+#: lib/window.rb:216
+msgid "Main Menu"
+msgstr "Головне меню"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/window.rb:227
+msgid "Open a BibTeX File"
+msgstr "Відкрийте файл BibTeX"
+
+#: lib/window.rb:228
+msgid "Or drag-and-drop a file"
+msgstr "Або перетягніть і скиньте файл"
+
+#: lib/window.rb:249
+msgid "Manage your Citations"
+msgstr "Керування вашими посиланнями"
+
+#: lib/window.rb:263
+msgid "Recent Files"
+msgstr "Нещодавні файли"
+
+#: lib/window.rb:302
+msgid "Sidebar"
+msgstr "Бічна панель"
+
+#: lib/window.rb:306
+msgid "Content"
+msgstr "Вміст"
+
+#: lib/window.rb:329
+msgid "Add New Citation"
+msgstr "Додати нове посилання"
+
+#: lib/window.rb:338
+msgid "Search"
+msgstr "Пошук"
+
+#: lib/window.rb:345
+msgid "Secondary Menu"
+msgstr "Вторинне меню"
+
+#: lib/window.rb:355
+msgid "Search…"
+msgstr "Шукати…"
+
+#: lib/window.rb:385
+msgid "_Create New Bibliography"
+msgstr "С_творити бібліографію"
+
+#: lib/window.rb:400
+msgid "_Save"
+msgstr "З_берегти"
+
+#: lib/window.rb:402
+msgid "New _Window"
+msgstr "Створити _вікно"
+
+#: lib/window.rb:408
+msgid "_Keyboard Shortcuts"
+msgstr "_Клавіатурні скорочення"
+
+#. TRANSLATORS About dialog
+#: lib/window.rb:410
+msgid "_About Citations"
+msgstr "_Про «Цитати»"
+
+#: lib/window.rb:425
+msgid "_Search in Google Scholar"
+msgstr "_Шукати у Google Академія"
+
+#. TRANSLATORS arXiv is a proper name
+#: lib/window.rb:427
+msgid "_Search in arXiv"
+msgstr "_Шукати в arXiv"
+
+#: lib/window.rb:433
+msgid "_Copy BibTeX Entry"
+msgstr "_Копіювати запис BibTeX"
+
+#: lib/window.rb:453
+msgid "Create New Bibliography"
+msgstr "Створити бібліографію"
+
+#: lib/window.rb:454
+msgid "_Create"
+msgstr "С_творити"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: lib/window.rb:457
+msgid "bibliography"
+msgstr "bibliography"
+
+#: lib/window.rb:469
+msgid "BibTeX Files"
+msgstr "файли BibTeX"
+
+#: lib/window.rb:516
+msgid "An entry with the given citation key already exists"
+msgstr "Запис із вказаним ключем цитування вже існує"
+
+#: lib/window.rb:522
+msgid "Could not add entry"
+msgstr "Не вдалося додати запис"
+
+#: lib/window.rb:551
+msgid "Citation Deleted"
+msgstr "Посилання вилучено"
+
+#: lib/window.rb:553
+msgid "Undo"
+msgstr "Скасувати"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:834
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr "Хочете записати усі зміни до бібліографії, перш ніж відкривати нову?"
+
+#: lib/window.rb:835
+msgid "_Open Without Saving"
+msgstr "_Відкрити без збереження"
+
+#: lib/window.rb:836
+msgid "_Don't Open"
+msgstr "_Не відкривати"
+
+#: lib/window.rb:837
+msgid "_Save and Open"
+msgstr "З_берегти і відкрити"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:866
+msgid "Do you want to write all changes to the bibliography?"
+msgstr "Хочете записати усі зміни до бібліографії?"
+
+#: lib/window.rb:867
+msgid "_Quit Without Saving"
+msgstr "В_ийти без збереження"
+
+#: lib/window.rb:868
+msgid "_Don't Quit"
+msgstr "_Не виходити"
+
+#: lib/window.rb:869
+msgid "_Save and Quit"
+msgstr "З_берегти та вийти"
+
+#. TRANSLATORS Dialog title which informs the user about unsaved changes.
+#: lib/window.rb:900
+msgid "Unsaved Changes"
+msgstr "Незбережені зміни"
+
+#: data/org.rubygtkproject.Citations.desktop.in:3
+msgid "Manage your bibliography"
+msgstr "Керування вашою бібліографією"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.rubygtkproject.Citations.desktop.in:9
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "bibliography;citing;literature;BibTeX;LaTeX;TeX;бібліографія;цитування;посилання;література;бібтех;латех;тех;"
+
+#: data/org.rubygtkproject.Citations.desktop.in:18
+msgid "New Window"
+msgstr "Створити вікно"

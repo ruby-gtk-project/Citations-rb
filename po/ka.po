@@ -1,0 +1,671 @@
+# Georgian translation for citations.
+# Copyright (C) 2023 citations's authors
+# This file is distributed under the same license as the citations package.
+# Ekaterine Papava <papava.e@gtu.ge>, 2023-2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"PO-Revision-Date: 2026-01-08 06:30+0100\n"
+"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
+"Language-Team: Georgian <ka@li.org>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#. TRANSLATORS Replace this with your name for it to show up in the
+#. about dialog.
+#: lib/about_dialog.rb:63
+msgid "translator-credits"
+msgstr "თარგმანი-შესრულებულია"
+
+#: lib/add_pdf_dialog.rb:90
+msgid "Select a PDF"
+msgstr "აირჩიეთ PDF"
+
+#: lib/add_pdf_dialog.rb:103
+msgid "PDF Files"
+msgstr "PDF ფაილები"
+
+#. TRANSLATORS Selects a PDF file for the citation
+#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+msgid "Add PDF"
+msgstr "PDF-ის დამატება"
+
+#: lib/add_pdf_dialog.rb:155
+msgid "Bibliography folder not set"
+msgstr "ბიბლიოგრაფიის საქაღალდე მითითებული არაა"
+
+#: lib/add_pdf_dialog.rb:170
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"ქმნის მონიშნული PDF-ის ასლს და მას თქვენს ბიბლიოგრაფიის საქაღალდეში "
+"შეინახავს."
+
+#: lib/add_pdf_dialog.rb:189
+msgid "Add From URL"
+msgstr "დამატება ბმულიდან"
+
+#: lib/add_pdf_dialog.rb:197
+msgid "Download…"
+msgstr "გადმოწერა…"
+
+#: lib/add_pdf_dialog.rb:204
+msgid "Add From File…"
+msgstr "დამატება ფაილიდან…"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: lib/add_pdf_dialog.rb:217
+msgid "Make sure that {path} exists"
+msgstr "დარწმუნდით, რომ {path} არსებობს"
+
+#: lib/add_pdf_dialog.rb:294
+msgid "Could not download PDF"
+msgstr "PDF-ის გადმოწერის შეცდომა"
+
+#: lib/add_pdf_dialog.rb:321
+msgid "Could not set PDF"
+msgstr "PDF-ის დაყენების შეცდომა"
+
+#. TRANSLATORS Plain as in Plain Text
+#: lib/citation_format.rb:62
+msgid "Plain"
+msgstr "სუფთა"
+
+#: lib/citation_preview.rb:197
+msgid "Custom Citation Format"
+msgstr "მორგებული ციტირების ფორმატი"
+
+#: lib/citation_preview.rb:205
+msgid "Help"
+msgstr "დახმარება"
+
+#: lib/citation_preview.rb:229
+msgid "Citation"
+msgstr "ციტატა"
+
+#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+msgid "Copy"
+msgstr "კოპირება"
+
+#: lib/citation_preview.rb:292
+msgid "Custom Template"
+msgstr "მორგებული შაბლონი"
+
+#: lib/citation_preview.rb:307
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported. "
+msgstr ""
+"დაწერეთ ციტატების თქვენი საკუთარი ფორმატი, რომ ჭდის<tt>sometag</tt> "
+"შემცველობა <tt>%SOMETAG%</tt>-ში ჩაწეროთ. მხარდაჭერილია მარკდაუნის მარტივი "
+"სინტაქსი, როგორიცაა სქელი და კურსივი. "
+
+#: lib/citation_preview.rb:316
+msgid "Example:"
+msgstr "მაგალითი:"
+
+#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
+#: lib/window.rb:762
+msgid "Copied"
+msgstr "კოპირებულია"
+
+#: lib/citation_preview.rb:400
+msgid "Custom…"
+msgstr "ხელით…"
+
+#. TRANSLATORS Empty state widget
+#: lib/entry_list.rb:137
+msgid "No Citations"
+msgstr "ციტირების გარეშე"
+
+#: lib/entry_list.rb:138
+msgid "Create a new citation"
+msgstr "ახალი ციტატის შექმნა"
+
+#: lib/entry_list_row.rb:176
+msgid "_Open PDF"
+msgstr "_PDF-ის გახსნა"
+
+#: lib/entry_list_row.rb:177
+msgid "_Copy Key"
+msgstr "გასაღების _კოპირება"
+
+#: lib/entry_list_row.rb:183 lib/window.rb:439
+msgid "_Delete"
+msgstr "_წაშლა"
+
+#: lib/entry_list_row.rb:308
+msgid "Author not set"
+msgstr "ავტორი დაყენებული არაა"
+
+#: lib/entry_list_row.rb:322
+msgid "Title not set"
+msgstr "სათაური დაყენებული არაა"
+
+#: lib/entry_page.rb:224
+msgid "No Citation Selected"
+msgstr "ციტატა არჩეული არაა"
+
+#: lib/entry_page.rb:281
+msgid "Citation _Type"
+msgstr "ციტატის _ტიპი"
+
+#: lib/entry_page.rb:292
+msgid "Other…"
+msgstr "სხვა…"
+
+#: lib/entry_page.rb:302
+msgid "_Other Citation Type"
+msgstr "_სხვა ციტატის ტიპი"
+
+#: lib/entry_page.rb:309
+msgid "_Citation Key"
+msgstr "_ციტატის გასაღები"
+
+#: lib/entry_page.rb:326
+msgid "_Author"
+msgstr "_ავტორი"
+
+#: lib/entry_page.rb:333
+msgid "_Title"
+msgstr "_სათაური"
+
+#: lib/entry_page.rb:340
+msgid "_Year"
+msgstr "_წელი"
+
+#: lib/entry_page.rb:359 lib/entry_page.rb:866
+msgid "Open in Browser"
+msgstr "ბრაუზერში გახსნა"
+
+#: lib/entry_page.rb:367
+msgid "Other Properties"
+msgstr "სხვა თვისებები"
+
+#: lib/entry_page.rb:381
+msgid "Abstract"
+msgstr "ანოტაცია"
+
+#: lib/entry_page.rb:388
+msgid "Copy Abstract"
+msgstr "აბსტრაქციის კოპირება"
+
+#: lib/entry_page.rb:405
+msgid "Notes"
+msgstr "ჩანაწერები"
+
+#: lib/entry_page.rb:412
+msgid "Copy Notes"
+msgstr "შენიშვნების კოპირება"
+
+#: lib/entry_page.rb:468
+msgid "PDF"
+msgstr "PDF"
+
+#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
+#: lib/window.rb:401
+msgid "_Open"
+msgstr "_გახსნა"
+
+#: lib/entry_page.rb:496
+msgid "Delete PDF"
+msgstr "PDF-ის წაშლა"
+
+#: lib/entry_page.rb:533
+msgid "Could not set PDF Preview"
+msgstr "PDF მინიატურის დაყენების შეცდომა"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: lib/entry_page.rb:636
+msgid "Citation Key already exists"
+msgstr "ციტატის გასაღები უკვე არსებობს"
+
+#: lib/entry_page.rb:725
+msgid "PDF added"
+msgstr "PDF დაემატა"
+
+#: lib/entry_type.rb:31
+msgid "Article"
+msgstr "სტატია"
+
+#: lib/entry_type.rb:32
+msgid "Book"
+msgstr "წიგნი"
+
+#: lib/entry_type.rb:33
+msgid "Misc"
+msgstr "სხვანი"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:36
+msgid "In Proceedings"
+msgstr "მოხსენებებში"
+
+#: lib/entry_type.rb:37
+msgid "Unpublished"
+msgstr "გამოუქვეყნებელი"
+
+#. TRANSLATORS As in online source
+#: lib/entry_type.rb:39
+msgid "Online"
+msgstr "ონლაინ"
+
+#: lib/entry_type.rb:40
+msgid "Booklet"
+msgstr "ბუკლეტი"
+
+#: lib/entry_type.rb:41
+msgid "Conference"
+msgstr "კონფერენცია"
+
+#: lib/entry_type.rb:42
+msgid "In Book"
+msgstr "წიგნში"
+
+#: lib/entry_type.rb:43
+msgid "In Collection"
+msgstr "კოლექციაში"
+
+#. TRANSLATORS As in instruction manual
+#: lib/entry_type.rb:45
+msgid "Manual"
+msgstr "ხელით"
+
+#: lib/entry_type.rb:46
+msgid "Master's Thesis"
+msgstr "სამაგისტრო ნაშრომი"
+
+#: lib/entry_type.rb:47
+msgid "PhD Thesis"
+msgstr "სადოქტორო ნაშრომი"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:50
+msgid "Proceedings"
+msgstr "მოხსენებები"
+
+#: lib/entry_type.rb:51
+msgid "Tech Report"
+msgstr "ტექნიკური ანგარიში"
+
+#. TRANSLATORS As in other kind of source
+#: lib/entry_type.rb:53
+msgid "Other"
+msgstr "სხვა"
+
+#: lib/main.rb:99
+msgid "Open a new window"
+msgstr "ახალი ფანჯრის გახსნა"
+
+#: lib/main.rb:108
+msgid "Enable debug messages"
+msgstr "გამართვის შეტყობინებების ჩართვა"
+
+#: lib/main.rb:151 lib/window.rb:181
+msgid "Citations"
+msgstr "ციტატები"
+
+#: lib/new_entry_dialog.rb:73
+msgid "New"
+msgstr "ახალი"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/new_entry_dialog.rb:80
+msgid "From BibTeX"
+msgstr "BibTeX-დან"
+
+#: lib/new_entry_dialog.rb:86
+msgid "From DOI"
+msgstr "DOI-დან"
+
+#: lib/new_entry_dialog.rb:115
+msgid "Insert a BibTeX citation here"
+msgstr "BibTeX-ის ციტატები აქ ჩასვით"
+
+#: lib/new_entry_dialog.rb:126
+msgid "Add new Entry"
+msgstr "ახალი ელემენტის დამატება"
+
+#: lib/new_entry_dialog.rb:141
+msgid "_Cancel"
+msgstr "&გაუქმება"
+
+#: lib/new_entry_dialog.rb:149
+msgid "C_reate"
+msgstr "_შექმნა"
+
+#: lib/new_entry_dialog.rb:189
+msgid "Citation Key"
+msgstr "ციტატის გასაღები"
+
+#: lib/new_entry_dialog.rb:196
+msgid "Citation Type"
+msgstr "ციტატის ტიპი"
+
+#. TRANSLATORS DOI is a proper name
+#: lib/new_entry_dialog.rb:223
+msgid "DOI"
+msgstr "DOI"
+
+#: lib/recent_file_row.rb:71
+msgid "Remove From Recent Files"
+msgstr "უახლესი ფალებიდან წაშლა"
+
+#: lib/shortcuts_dialog.rb:25
+msgctxt "shortcut window"
+msgid "General"
+msgstr "ზოგადი"
+
+#: lib/shortcuts_dialog.rb:26
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "ბიბლიოგრაფია"
+
+#: lib/shortcuts_dialog.rb:32
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "მალსახმობების ჩვენება"
+
+#: lib/shortcuts_dialog.rb:33
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "ახალი ფანჯარა"
+
+#: lib/shortcuts_dialog.rb:34
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "ფანჯრის დახურვა"
+
+#: lib/shortcuts_dialog.rb:35
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "გასვლა"
+
+#: lib/shortcuts_dialog.rb:41
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "გახსნა"
+
+#: lib/shortcuts_dialog.rb:42
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "შენახვა"
+
+#: lib/shortcuts_dialog.rb:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "ძებნა"
+
+#: lib/utils.rb:43
+msgid "Author"
+msgstr "ავტორი"
+
+#: lib/utils.rb:44
+msgid "Year"
+msgstr "წელი"
+
+#: lib/utils.rb:45
+msgid "Title"
+msgstr "სათაური"
+
+#: lib/utils.rb:46
+msgid "Volume"
+msgstr "ხმა"
+
+#: lib/utils.rb:47
+msgid "Number"
+msgstr "რიცხვი"
+
+#: lib/utils.rb:48
+msgid "Pages"
+msgstr "გვერდები"
+
+#: lib/utils.rb:49
+msgid "Publisher"
+msgstr "გამომცემელი"
+
+#: lib/utils.rb:50
+msgid "Journal"
+msgstr "ჟურნალი"
+
+#: lib/utils.rb:51
+msgid "Address"
+msgstr "მისამართი"
+
+#. TRANSLATORS Method of publication, see
+#. https://www.bibtex.com/f/howpublished-field/
+#: lib/utils.rb:54
+msgid "How Published"
+msgstr "როგორ გამოიცა"
+
+#: lib/utils.rb:55
+msgid "Note"
+msgstr "ნოტი"
+
+#: lib/utils.rb:56
+msgid "Book Title"
+msgstr "წიგნის სათაური"
+
+#: lib/utils.rb:57
+msgid "Series"
+msgstr "სერია"
+
+#: lib/utils.rb:58
+msgid "Archive Prefix"
+msgstr "არქივის პრეფიქსი"
+
+#. TRANSLATORS As in digital print
+#: lib/utils.rb:60
+msgid "ePrint"
+msgstr "ePrint"
+
+#. TRANSLATORS Identifier used by arXiv, see
+#. https://arxiv.org/help/hypertex/bibstyles
+#: lib/utils.rb:63
+msgid "Primary Class"
+msgstr "ძირითადი კლასი"
+
+#: lib/utils.rb:64
+msgid "Month"
+msgstr "თვე"
+
+#. TRANSLATORS As in chief editor
+#: lib/utils.rb:66
+msgid "Editor"
+msgstr "რედაქტორი"
+
+#. TRANSLATORS As in association
+#: lib/utils.rb:68
+msgid "Organization"
+msgstr "ორგანიზაცია"
+
+#: lib/utils.rb:69
+msgid "School"
+msgstr "სკოლა"
+
+#: lib/utils.rb:70
+msgid "Institution"
+msgstr "ორგანიზაცია"
+
+#: lib/window.rb:166
+msgid "Bibliography saved"
+msgstr "ბიბლიოგრაფია შენახულია"
+
+#: lib/window.rb:216
+msgid "Main Menu"
+msgstr "მთავარი მენიუ"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/window.rb:227
+msgid "Open a BibTeX File"
+msgstr "BibTeX ფაილის გახსნა"
+
+#: lib/window.rb:228
+msgid "Or drag-and-drop a file"
+msgstr "ან გადაათრიეთ და დააგდეთ ფაილი"
+
+#: lib/window.rb:249
+msgid "Manage your Citations"
+msgstr "მართეთ თქვენი ციტატები"
+
+#: lib/window.rb:263
+msgid "Recent Files"
+msgstr "ბოლო ფაილები"
+
+#: lib/window.rb:302
+msgid "Sidebar"
+msgstr "გვერდითა ზოლი"
+
+#: lib/window.rb:306
+msgid "Content"
+msgstr "შემცველობა"
+
+#: lib/window.rb:329
+msgid "Add New Citation"
+msgstr "ახალი ციტატის დამატება"
+
+#: lib/window.rb:338
+msgid "Search"
+msgstr "ძებნა"
+
+#: lib/window.rb:345
+msgid "Secondary Menu"
+msgstr "მეორადი მენიუ"
+
+#: lib/window.rb:355
+msgid "Search…"
+msgstr "ძებნა…"
+
+#: lib/window.rb:385
+msgid "_Create New Bibliography"
+msgstr "ახალი ბიბლიოგრაფიის _შექმნა"
+
+#: lib/window.rb:400
+msgid "_Save"
+msgstr "_შენახვა"
+
+#: lib/window.rb:402
+msgid "New _Window"
+msgstr "ახალი _ფანჯარა"
+
+#: lib/window.rb:408
+msgid "_Keyboard Shortcuts"
+msgstr "_კლავიატურის მალსახმობები"
+
+#. TRANSLATORS About dialog
+#: lib/window.rb:410
+msgid "_About Citations"
+msgstr "_ციტირებების შესახებ"
+
+#: lib/window.rb:425
+msgid "_Search in Google Scholar"
+msgstr "Google Scholar-ში _ძებნა"
+
+#. TRANSLATORS arXiv is a proper name
+#: lib/window.rb:427
+msgid "_Search in arXiv"
+msgstr "arXiv-ში _ძებნა"
+
+#: lib/window.rb:433
+msgid "_Copy BibTeX Entry"
+msgstr "BibTeX-ის ჩანაწერის _კოპირება"
+
+#: lib/window.rb:453
+msgid "Create New Bibliography"
+msgstr "ახალი ბიბლიოგრაფიის შექმნა"
+
+#: lib/window.rb:454
+msgid "_Create"
+msgstr "_შექმნა"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: lib/window.rb:457
+msgid "bibliography"
+msgstr "ბიბლიოგრაფია"
+
+#: lib/window.rb:469
+msgid "BibTeX Files"
+msgstr "BibTeX ფაილები"
+
+#: lib/window.rb:516
+msgid "An entry with the given citation key already exists"
+msgstr "ჩანაწერი ციტატის მითითებული გასაღებით უკვე არსებობს"
+
+#: lib/window.rb:522
+msgid "Could not add entry"
+msgstr "ჩანაწერის დამატების შეცდომა"
+
+#: lib/window.rb:551
+msgid "Citation Deleted"
+msgstr "ციტატა წაიშალა"
+
+#: lib/window.rb:553
+msgid "Undo"
+msgstr "დაბრუნება"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:834
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr "გნებავთ ბიბლიოგრაფიაში ყველა ცვლილების ჩაწერა ახლის გახსნამდე?"
+
+#: lib/window.rb:835
+msgid "_Open Without Saving"
+msgstr "გახსნა შენახვის გარე_შე"
+
+#: lib/window.rb:836
+msgid "_Don't Open"
+msgstr "არ გახს_ნა"
+
+#: lib/window.rb:837
+msgid "_Save and Open"
+msgstr "შენახვა და გახ_სნა"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:866
+msgid "Do you want to write all changes to the bibliography?"
+msgstr "გნებავთ ბიბლიოგრაფიაში ყველა ცვლილებია ჩაწერა?"
+
+#: lib/window.rb:867
+msgid "_Quit Without Saving"
+msgstr "_დახურვა შენახვის გარეშე"
+
+#: lib/window.rb:868
+msgid "_Don't Quit"
+msgstr "_არ გახვიდე"
+
+#: lib/window.rb:869
+msgid "_Save and Quit"
+msgstr "_შენახვა და გასვლა"
+
+#. TRANSLATORS Dialog title which informs the user about unsaved changes.
+#: lib/window.rb:900
+msgid "Unsaved Changes"
+msgstr "შეუნახავი ცვლილებები"
+
+#: data/org.rubygtkproject.Citations.desktop.in:3
+msgid "Manage your bibliography"
+msgstr "მართეთ თქვენი ბიბლიოგრაფია"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.rubygtkproject.Citations.desktop.in:9
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "bibliography;citing;literature;BibTeX;LaTeX;TeX;ბიბლიოგრაფია;ლიტერატურა;"
+
+#: data/org.rubygtkproject.Citations.desktop.in:18
+msgid "New Window"
+msgstr "ახალი ფანჯარა"

@@ -10,6 +10,8 @@ require_relative 'i18n'
 # names, and the regex passes that turn a filled-in template into a citation.
 #
 class CitationFormat
+  include I18n::Translatable
+
   ALL = []
 
   attr_reader :index, :id
@@ -56,8 +58,8 @@ class CitationFormat
     elsif latex?
       'LaTeX'
     else
-      # NOTE Plain as in Plain Text
-      I18n.translate('Plain')
+      # TRANSLATORS Plain as in Plain Text
+      _('Plain')
     end
   end
 

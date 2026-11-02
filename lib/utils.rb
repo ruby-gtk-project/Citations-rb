@@ -31,39 +31,43 @@ module Utils
   ARXIV_URL = 'https://arxiv.org/search/advanced'
   DOI_RESOLVER = 'https://doi.org'
 
+  # The translated labels below go through the shorthands every other file
+  # in the port uses, so that the message extractor sees them.
+  extend I18n::Translatable
+
   module_function
 
   # The label the editor shows for a BibTeX tag.
   def translated_key(key)
     case key.to_s
-    when 'author' then I18n.translate('Author')
-    when 'year' then I18n.translate('Year')
-    when 'title' then I18n.translate('Title')
-    when 'volume' then I18n.translate('Volume')
-    when 'number' then I18n.translate('Number')
-    when 'pages' then I18n.translate('Pages')
-    when 'publisher' then I18n.translate('Publisher')
-    when 'journal' then I18n.translate('Journal')
-    when 'address' then I18n.translate('Address')
+    when 'author' then _('Author')
+    when 'year' then _('Year')
+    when 'title' then _('Title')
+    when 'volume' then _('Volume')
+    when 'number' then _('Number')
+    when 'pages' then _('Pages')
+    when 'publisher' then _('Publisher')
+    when 'journal' then _('Journal')
+    when 'address' then _('Address')
     # TRANSLATORS Method of publication, see
     # https://www.bibtex.com/f/howpublished-field/
-    when 'howpublished' then I18n.translate('How Published')
-    when 'note' then I18n.translate('Note')
-    when 'booktitle' then I18n.translate('Book Title')
-    when 'series' then I18n.translate('Series')
-    when 'archiveprefix' then I18n.translate('Archive Prefix')
+    when 'howpublished' then _('How Published')
+    when 'note' then _('Note')
+    when 'booktitle' then _('Book Title')
+    when 'series' then _('Series')
+    when 'archiveprefix' then _('Archive Prefix')
     # TRANSLATORS As in digital print
-    when 'eprint' then I18n.translate('ePrint')
+    when 'eprint' then _('ePrint')
     # TRANSLATORS Identifier used by arXiv, see
     # https://arxiv.org/help/hypertex/bibstyles
-    when 'primaryclass' then I18n.translate('Primary Class')
-    when 'month' then I18n.translate('Month')
+    when 'primaryclass' then _('Primary Class')
+    when 'month' then _('Month')
     # TRANSLATORS As in chief editor
-    when 'editor' then I18n.translate('Editor')
+    when 'editor' then _('Editor')
     # TRANSLATORS As in association
-    when 'organization' then I18n.translate('Organization')
-    when 'school' then I18n.translate('School')
-    when 'institution' then I18n.translate('Institution')
+    when 'organization' then _('Organization')
+    when 'school' then _('School')
+    when 'institution' then _('Institution')
     when 'issn' then 'ISSN'
     when 'isbn' then 'ISBN'
     when 'url' then 'url'

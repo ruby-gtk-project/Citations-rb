@@ -1,0 +1,667 @@
+# Hindi translation for citations.
+# Copyright (C) 2024 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"PO-Revision-Date: 2024-03-29 19:28+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.0\n"
+
+#. TRANSLATORS Replace this with your name for it to show up in the
+#. about dialog.
+#: lib/about_dialog.rb:63
+msgid "translator-credits"
+msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
+
+#: lib/add_pdf_dialog.rb:90
+msgid "Select a PDF"
+msgstr "PDF फाइल चुनें"
+
+#: lib/add_pdf_dialog.rb:103
+msgid "PDF Files"
+msgstr "PDF फाइलें"
+
+#. TRANSLATORS Selects a PDF file for the citation
+#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+msgid "Add PDF"
+msgstr "PDF जोड़ें"
+
+#: lib/add_pdf_dialog.rb:155
+msgid "Bibliography folder not set"
+msgstr "ग्रंथसूची फ़ोल्डर निर्धारित नहीं है"
+
+#: lib/add_pdf_dialog.rb:170
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr "चयनित PDF की एक प्रति बनाता है और उसे आपके ग्रंथसूची फ़ोल्डर में संग्रहीत करता है।"
+
+#: lib/add_pdf_dialog.rb:189
+msgid "Add From URL"
+msgstr ""
+
+#: lib/add_pdf_dialog.rb:197
+msgid "Download…"
+msgstr "डाउनलोड…"
+
+#: lib/add_pdf_dialog.rb:204
+msgid "Add From File…"
+msgstr ""
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: lib/add_pdf_dialog.rb:217
+msgid "Make sure that {path} exists"
+msgstr "सुनिश्चित करें कि {path} मौजूद है"
+
+#: lib/add_pdf_dialog.rb:294
+msgid "Could not download PDF"
+msgstr "PDF डाउनलोड नहीं हो सका"
+
+#: lib/add_pdf_dialog.rb:321
+msgid "Could not set PDF"
+msgstr "PDF निर्धारित नहीं कर सका"
+
+#. TRANSLATORS Plain as in Plain Text
+#: lib/citation_format.rb:62
+msgid "Plain"
+msgstr "सादा"
+
+#: lib/citation_preview.rb:197
+msgid "Custom Citation Format"
+msgstr "कस्टम उद्धरण प्रारूप"
+
+#: lib/citation_preview.rb:205
+msgid "Help"
+msgstr ""
+
+#: lib/citation_preview.rb:229
+msgid "Citation"
+msgstr "उद्धरण"
+
+#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+msgid "Copy"
+msgstr "कॉपी"
+
+#: lib/citation_preview.rb:292
+msgid "Custom Template"
+msgstr "कस्टम टेम्पलेट"
+
+#: lib/citation_preview.rb:307
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported. "
+msgstr ""
+
+#: lib/citation_preview.rb:316
+msgid "Example:"
+msgstr "उदाहरण:"
+
+#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
+#: lib/window.rb:762
+msgid "Copied"
+msgstr "कॉपी किया गया"
+
+#: lib/citation_preview.rb:400
+msgid "Custom…"
+msgstr "कस्टम…"
+
+#. TRANSLATORS Empty state widget
+#: lib/entry_list.rb:137
+msgid "No Citations"
+msgstr "कोई उद्धरण नहीं"
+
+#: lib/entry_list.rb:138
+msgid "Create a new citation"
+msgstr "नया उद्धरण बनाएँ"
+
+#: lib/entry_list_row.rb:176
+msgid "_Open PDF"
+msgstr "PDF खोलें (_O)"
+
+#: lib/entry_list_row.rb:177
+msgid "_Copy Key"
+msgstr "कुंजी कॉपी करें (_C)"
+
+#: lib/entry_list_row.rb:183 lib/window.rb:439
+msgid "_Delete"
+msgstr "हटाएं (_D)"
+
+#: lib/entry_list_row.rb:308
+msgid "Author not set"
+msgstr ""
+
+#: lib/entry_list_row.rb:322
+msgid "Title not set"
+msgstr ""
+
+#: lib/entry_page.rb:224
+msgid "No Citation Selected"
+msgstr "कोई उद्धरण चयनित नहीं"
+
+#: lib/entry_page.rb:281
+msgid "Citation _Type"
+msgstr "उद्धरण प्रकार (_T)"
+
+#: lib/entry_page.rb:292
+msgid "Other…"
+msgstr "अन्य..."
+
+#: lib/entry_page.rb:302
+msgid "_Other Citation Type"
+msgstr "अन्य उद्धरण प्रकार (_O)"
+
+#: lib/entry_page.rb:309
+msgid "_Citation Key"
+msgstr "उद्धरण कुंजी (_C)"
+
+#: lib/entry_page.rb:326
+msgid "_Author"
+msgstr "लेखक (_A)"
+
+#: lib/entry_page.rb:333
+msgid "_Title"
+msgstr "शीर्षक (_T)"
+
+#: lib/entry_page.rb:340
+msgid "_Year"
+msgstr "वर्ष (_Y)"
+
+#: lib/entry_page.rb:359 lib/entry_page.rb:866
+msgid "Open in Browser"
+msgstr "ब्राउज़र में खोलें"
+
+#: lib/entry_page.rb:367
+msgid "Other Properties"
+msgstr "अन्य प्रॉपर्टी"
+
+#: lib/entry_page.rb:381
+msgid "Abstract"
+msgstr "सार"
+
+#: lib/entry_page.rb:388
+msgid "Copy Abstract"
+msgstr "सार कॉपी करें"
+
+#: lib/entry_page.rb:405
+msgid "Notes"
+msgstr "टिप्पणियाँ"
+
+#: lib/entry_page.rb:412
+msgid "Copy Notes"
+msgstr "टिप्पणियाँ कॉपी करें"
+
+#: lib/entry_page.rb:468
+msgid "PDF"
+msgstr "PDF"
+
+#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
+#: lib/window.rb:401
+msgid "_Open"
+msgstr "खोलें (_O)"
+
+#: lib/entry_page.rb:496
+msgid "Delete PDF"
+msgstr "PDF हटाएं"
+
+#: lib/entry_page.rb:533
+msgid "Could not set PDF Preview"
+msgstr "PDF पूर्वावलोकन निर्धारित नहीं कर सका"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: lib/entry_page.rb:636
+msgid "Citation Key already exists"
+msgstr "उद्धरण कुंजी पहले से मौजूद है"
+
+#: lib/entry_page.rb:725
+msgid "PDF added"
+msgstr "PDF जोड़ा गया"
+
+#: lib/entry_type.rb:31
+msgid "Article"
+msgstr "लेख"
+
+#: lib/entry_type.rb:32
+msgid "Book"
+msgstr "पुस्तक"
+
+#: lib/entry_type.rb:33
+msgid "Misc"
+msgstr "विभिन्न"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:36
+msgid "In Proceedings"
+msgstr "कार्यवाही में"
+
+#: lib/entry_type.rb:37
+msgid "Unpublished"
+msgstr "अप्रकाशित"
+
+#. TRANSLATORS As in online source
+#: lib/entry_type.rb:39
+msgid "Online"
+msgstr "ऑनलाइन"
+
+#: lib/entry_type.rb:40
+msgid "Booklet"
+msgstr "पुस्तिका"
+
+#: lib/entry_type.rb:41
+msgid "Conference"
+msgstr "सम्मेलन"
+
+#: lib/entry_type.rb:42
+msgid "In Book"
+msgstr "पुस्तक में"
+
+#: lib/entry_type.rb:43
+msgid "In Collection"
+msgstr "संग्रह में"
+
+#. TRANSLATORS As in instruction manual
+#: lib/entry_type.rb:45
+msgid "Manual"
+msgstr "नियमावली"
+
+#: lib/entry_type.rb:46
+msgid "Master's Thesis"
+msgstr "मास्टर शोधलेख"
+
+#: lib/entry_type.rb:47
+msgid "PhD Thesis"
+msgstr "PhD शोधलेख"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:50
+msgid "Proceedings"
+msgstr "कार्यवाही"
+
+#: lib/entry_type.rb:51
+msgid "Tech Report"
+msgstr "तकनीकी रिपोर्ट"
+
+#. TRANSLATORS As in other kind of source
+#: lib/entry_type.rb:53
+msgid "Other"
+msgstr "अन्य"
+
+#: lib/main.rb:99
+msgid "Open a new window"
+msgstr ""
+
+#: lib/main.rb:108
+msgid "Enable debug messages"
+msgstr ""
+
+#: lib/main.rb:151 lib/window.rb:181
+msgid "Citations"
+msgstr "उद्धरण"
+
+#: lib/new_entry_dialog.rb:73
+msgid "New"
+msgstr "नया"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/new_entry_dialog.rb:80
+msgid "From BibTeX"
+msgstr "BibTeX से"
+
+#: lib/new_entry_dialog.rb:86
+msgid "From DOI"
+msgstr "DOI से"
+
+#: lib/new_entry_dialog.rb:115
+msgid "Insert a BibTeX citation here"
+msgstr "यहां BibTeX उद्धरण डालें"
+
+#: lib/new_entry_dialog.rb:126
+msgid "Add new Entry"
+msgstr "नई प्रविष्टि जोड़ें"
+
+#: lib/new_entry_dialog.rb:141
+msgid "_Cancel"
+msgstr "रद्द (_C)"
+
+#: lib/new_entry_dialog.rb:149
+msgid "C_reate"
+msgstr "बनाएं (_r)"
+
+#: lib/new_entry_dialog.rb:189
+msgid "Citation Key"
+msgstr "उद्धरण कुंजी"
+
+#: lib/new_entry_dialog.rb:196
+msgid "Citation Type"
+msgstr "उद्धरण प्रकार"
+
+#. TRANSLATORS DOI is a proper name
+#: lib/new_entry_dialog.rb:223
+msgid "DOI"
+msgstr "DOI"
+
+#: lib/recent_file_row.rb:71
+msgid "Remove From Recent Files"
+msgstr "हालिया फाइलों से हटाएँ"
+
+#: lib/shortcuts_dialog.rb:25
+msgctxt "shortcut window"
+msgid "General"
+msgstr "जनरल"
+
+#: lib/shortcuts_dialog.rb:26
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "ग्रन्थसूची"
+
+#: lib/shortcuts_dialog.rb:32
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "शॉर्टकट दिखाएँ"
+
+#: lib/shortcuts_dialog.rb:33
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "नई विंडो"
+
+#: lib/shortcuts_dialog.rb:34
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: lib/shortcuts_dialog.rb:35
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "छोड़ें"
+
+#: lib/shortcuts_dialog.rb:41
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "खोले"
+
+#: lib/shortcuts_dialog.rb:42
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "सहेजें"
+
+#: lib/shortcuts_dialog.rb:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "खोजें"
+
+#: lib/utils.rb:43
+msgid "Author"
+msgstr "लेखक"
+
+#: lib/utils.rb:44
+msgid "Year"
+msgstr "वर्ष"
+
+#: lib/utils.rb:45
+msgid "Title"
+msgstr "शीर्षक"
+
+#: lib/utils.rb:46
+msgid "Volume"
+msgstr "संस्करण"
+
+#: lib/utils.rb:47
+msgid "Number"
+msgstr "संख्या"
+
+#: lib/utils.rb:48
+msgid "Pages"
+msgstr "पन्ने"
+
+#: lib/utils.rb:49
+msgid "Publisher"
+msgstr "प्रकाशक"
+
+#: lib/utils.rb:50
+msgid "Journal"
+msgstr "पत्रिका"
+
+#: lib/utils.rb:51
+msgid "Address"
+msgstr "पता"
+
+#. TRANSLATORS Method of publication, see
+#. https://www.bibtex.com/f/howpublished-field/
+#: lib/utils.rb:54
+msgid "How Published"
+msgstr "कैसे प्रकाशित हुआ"
+
+#: lib/utils.rb:55
+msgid "Note"
+msgstr "टिप्पणी"
+
+#: lib/utils.rb:56
+msgid "Book Title"
+msgstr "पुस्तक का शीर्षक"
+
+#: lib/utils.rb:57
+msgid "Series"
+msgstr "शृंखला"
+
+#: lib/utils.rb:58
+msgid "Archive Prefix"
+msgstr "लेख उपसर्ग"
+
+#. TRANSLATORS As in digital print
+#: lib/utils.rb:60
+msgid "ePrint"
+msgstr "ई-प्रिंट"
+
+#. TRANSLATORS Identifier used by arXiv, see
+#. https://arxiv.org/help/hypertex/bibstyles
+#: lib/utils.rb:63
+msgid "Primary Class"
+msgstr "प्राथमिक कक्षा"
+
+#: lib/utils.rb:64
+msgid "Month"
+msgstr "महीना"
+
+#. TRANSLATORS As in chief editor
+#: lib/utils.rb:66
+msgid "Editor"
+msgstr "संपादक"
+
+#. TRANSLATORS As in association
+#: lib/utils.rb:68
+msgid "Organization"
+msgstr "संगठन"
+
+#: lib/utils.rb:69
+msgid "School"
+msgstr "विद्यालय"
+
+#: lib/utils.rb:70
+msgid "Institution"
+msgstr "संस्थान"
+
+#: lib/window.rb:166
+msgid "Bibliography saved"
+msgstr "ग्रंथसूची सहेजी गई"
+
+#: lib/window.rb:216
+msgid "Main Menu"
+msgstr "मुख्य मेन्यू"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/window.rb:227
+msgid "Open a BibTeX File"
+msgstr "एक BibTeX फाइल खोलें"
+
+#: lib/window.rb:228
+msgid "Or drag-and-drop a file"
+msgstr "या फाइल को खींचें और छोड़ें"
+
+#: lib/window.rb:249
+msgid "Manage your Citations"
+msgstr "अपने उद्धरण प्रबंधित करें"
+
+#: lib/window.rb:263
+msgid "Recent Files"
+msgstr "हालिया फाइलें"
+
+#: lib/window.rb:302
+msgid "Sidebar"
+msgstr "साइडबार"
+
+#: lib/window.rb:306
+msgid "Content"
+msgstr "सामग्री"
+
+#: lib/window.rb:329
+msgid "Add New Citation"
+msgstr "नया उद्धरण जोड़ें"
+
+#: lib/window.rb:338
+msgid "Search"
+msgstr "खोजें"
+
+#: lib/window.rb:345
+msgid "Secondary Menu"
+msgstr "द्वितीयक मेनू"
+
+#: lib/window.rb:355
+msgid "Search…"
+msgstr "खोजें…"
+
+#: lib/window.rb:385
+msgid "_Create New Bibliography"
+msgstr "नई ग्रंथसूची बनाएँ (_C)"
+
+#: lib/window.rb:400
+msgid "_Save"
+msgstr "सहेजें (_S)"
+
+#: lib/window.rb:402
+msgid "New _Window"
+msgstr "नई विंडो (_W)"
+
+#: lib/window.rb:408
+msgid "_Keyboard Shortcuts"
+msgstr "कीबोर्ड शॉर्टकट (_K)"
+
+#. TRANSLATORS About dialog
+#: lib/window.rb:410
+msgid "_About Citations"
+msgstr "Citations के बारे में (_A)"
+
+#: lib/window.rb:425
+msgid "_Search in Google Scholar"
+msgstr "Google Scholar में खोजें (_S)"
+
+#. TRANSLATORS arXiv is a proper name
+#: lib/window.rb:427
+msgid "_Search in arXiv"
+msgstr "arXiv में खोजें (_S)"
+
+#: lib/window.rb:433
+msgid "_Copy BibTeX Entry"
+msgstr ""
+
+#: lib/window.rb:453
+msgid "Create New Bibliography"
+msgstr "नई ग्रंथसूची बनाएँ"
+
+#: lib/window.rb:454
+msgid "_Create"
+msgstr "बनाएं (_C)"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: lib/window.rb:457
+msgid "bibliography"
+msgstr "ग्रंथसूची"
+
+#: lib/window.rb:469
+msgid "BibTeX Files"
+msgstr "BibTeX फाइलें"
+
+#: lib/window.rb:516
+msgid "An entry with the given citation key already exists"
+msgstr "दी गई उद्धरण कुंजी वाली एक प्रविष्टि पहले से मौजूद है"
+
+#: lib/window.rb:522
+msgid "Could not add entry"
+msgstr "प्रविष्टि जोड़ी नहीं जा सकी"
+
+#: lib/window.rb:551
+msgid "Citation Deleted"
+msgstr "उद्धरण हटाया गया"
+
+#: lib/window.rb:553
+msgid "Undo"
+msgstr "पूर्ववत"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:834
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr ""
+
+#: lib/window.rb:835
+msgid "_Open Without Saving"
+msgstr ""
+
+#: lib/window.rb:836
+msgid "_Don't Open"
+msgstr ""
+
+#: lib/window.rb:837
+msgid "_Save and Open"
+msgstr ""
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:866
+msgid "Do you want to write all changes to the bibliography?"
+msgstr ""
+
+#: lib/window.rb:867
+msgid "_Quit Without Saving"
+msgstr "बिना सहेजे छोड़ें (_Q)"
+
+#: lib/window.rb:868
+msgid "_Don't Quit"
+msgstr "छोड़ें मत (_D)"
+
+#: lib/window.rb:869
+msgid "_Save and Quit"
+msgstr "सहेजें और छोड़ें (_S)"
+
+#. TRANSLATORS Dialog title which informs the user about unsaved changes.
+#: lib/window.rb:900
+msgid "Unsaved Changes"
+msgstr "सहेजे न गए परिवर्तन"
+
+#: data/org.rubygtkproject.Citations.desktop.in:3
+msgid "Manage your bibliography"
+msgstr "अपनी ग्रंथसूची प्रबंधित करें"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.rubygtkproject.Citations.desktop.in:9
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "bibliography;citing;literature;BibTeX;LaTeX;TeX;ग्रंथसूची;उद्धरण;साहित्य;"
+
+#: data/org.rubygtkproject.Citations.desktop.in:18
+msgid "New Window"
+msgstr "नई विंडो"

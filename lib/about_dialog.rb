@@ -58,7 +58,7 @@ class AboutDialog
       about.version = @version
       about.developers = DEVELOPERS
       about.designers = DESIGNERS
-      # NOTE Translators: replace this with your name for it to show up in the
+      # TRANSLATORS Replace this with your name for it to show up in the
       # about dialog.
       about.translator_credits = _('translator-credits')
       about.developer_name = first_match(DEVELOPER_NAME_RE, 'Maximiliano Sandoval')

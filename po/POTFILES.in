@@ -1,0 +1,15 @@
+data/org.rubygtkproject.Citations.desktop.in
+lib/about_dialog.rb
+lib/add_pdf_dialog.rb
+lib/citation_format.rb
+lib/citation_preview.rb
+lib/entry_list.rb
+lib/entry_list_row.rb
+lib/entry_page.rb
+lib/entry_type.rb
+lib/main.rb
+lib/new_entry_dialog.rb
+lib/recent_file_row.rb
+lib/shortcuts_dialog.rb
+lib/utils.rb
+lib/window.rb

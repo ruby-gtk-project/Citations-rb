@@ -829,7 +829,7 @@ class Window
     # upstream's ask_opening_new_bib_with_changes
     def ask_opening_new_bib_with_changes(&on_proceed)
       unsaved_changes_dialog(
-        # NOTE Dialog subtitle which informs the user about unsaved changes
+        # TRANSLATORS Dialog subtitle which informs the user about unsaved changes
         # more detailed.
         _('Do you want to write all changes to the bibliography before opening the new one?'),
         _('_Open Without Saving'),
@@ -861,7 +861,7 @@ class Window
     # upstream's show_save_dialog
     def show_save_dialog
       unsaved_changes_dialog(
-        # NOTE Dialog subtitle which informs the user about unsaved changes
+        # TRANSLATORS Dialog subtitle which informs the user about unsaved changes
         # more detailed.
         _('Do you want to write all changes to the bibliography?'),
         _('_Quit Without Saving'),
@@ -896,7 +896,7 @@ class Window
     end
 
     def unsaved_changes_dialog(body, discard, cancel, confirm)
-      # NOTE Dialog title which informs the user about unsaved changes.
+      # TRANSLATORS Dialog title which informs the user about unsaved changes.
       Adwaita::AlertDialog.new(_('Unsaved Changes'), body).tap do |dialog|
         dialog.add_response('discard', discard)
         dialog.add_response('cancel', cancel)

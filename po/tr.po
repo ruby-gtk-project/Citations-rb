@@ -1,0 +1,677 @@
+# Turkish translation for citations.
+# Copyright (C) 2022-2024 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+#
+# Sabri Ünal <yakushabb@gmail.com>, 2022-2025.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2022-2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"PO-Revision-Date: 2026-02-10 14:18+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"Language-Team: Türkçe <takim@gnome.org.tr>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.8\n"
+
+#. TRANSLATORS Replace this with your name for it to show up in the
+#. about dialog.
+#: lib/about_dialog.rb:63
+msgid "translator-credits"
+msgstr ""
+"Sabri Ünal <yakushabb@gmail.com>\n"
+"Emin Tufan Çetin <etcetin@gmail.com>"
+
+#: lib/add_pdf_dialog.rb:90
+msgid "Select a PDF"
+msgstr "PDF Seç"
+
+#: lib/add_pdf_dialog.rb:103
+msgid "PDF Files"
+msgstr "PDF Dosyaları"
+
+#. TRANSLATORS Selects a PDF file for the citation
+#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+msgid "Add PDF"
+msgstr "PDF Ekle"
+
+#: lib/add_pdf_dialog.rb:155
+msgid "Bibliography folder not set"
+msgstr "Kaynakça klasörü ayarlanmadı"
+
+#: lib/add_pdf_dialog.rb:170
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr "Seçilen pdf’nin kopyasını oluşturur ve Kaynakça klasöründe saklar."
+
+#: lib/add_pdf_dialog.rb:189
+msgid "Add From URL"
+msgstr "URL’den Ekle"
+
+#: lib/add_pdf_dialog.rb:197
+msgid "Download…"
+msgstr "İndir…"
+
+#: lib/add_pdf_dialog.rb:204
+msgid "Add From File…"
+msgstr "Dosyadan Ekle…"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: lib/add_pdf_dialog.rb:217
+msgid "Make sure that {path} exists"
+msgstr "{path} yolunun var olduğuna emin olun"
+
+#: lib/add_pdf_dialog.rb:294
+msgid "Could not download PDF"
+msgstr "PDF indirilemedi"
+
+#: lib/add_pdf_dialog.rb:321
+msgid "Could not set PDF"
+msgstr "PDF ayarlanamadı"
+
+#. TRANSLATORS Plain as in Plain Text
+#: lib/citation_format.rb:62
+msgid "Plain"
+msgstr "Düz"
+
+#: lib/citation_preview.rb:197
+msgid "Custom Citation Format"
+msgstr "Özel Alıntı Biçimi"
+
+#: lib/citation_preview.rb:205
+msgid "Help"
+msgstr "Yardım"
+
+#: lib/citation_preview.rb:229
+msgid "Citation"
+msgstr "Alıntı"
+
+#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+msgid "Copy"
+msgstr "Kopyala"
+
+#: lib/citation_preview.rb:292
+msgid "Custom Template"
+msgstr "Özel Şablon"
+
+#: lib/citation_preview.rb:307
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported. "
+msgstr ""
+"Alıntılarınız için özel biçim yazın, <tt>biretiket</tt> gibi bir etiketin "
+"içeriğini yerleştirmek için <tt>%BIRETIKET%</tt> yazın. Kalın ya da eğik "
+"yazım için temel markdown söz dizimi desteklenmektedir. "
+
+#: lib/citation_preview.rb:316
+msgid "Example:"
+msgstr "Örnek:"
+
+#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
+#: lib/window.rb:762
+msgid "Copied"
+msgstr "Kopyalandı"
+
+#: lib/citation_preview.rb:400
+msgid "Custom…"
+msgstr "Özel…"
+
+#. TRANSLATORS Empty state widget
+#: lib/entry_list.rb:137
+msgid "No Citations"
+msgstr "Alıntı Yok"
+
+#: lib/entry_list.rb:138
+msgid "Create a new citation"
+msgstr "Yeni alıntı oluştur"
+
+#: lib/entry_list_row.rb:176
+msgid "_Open PDF"
+msgstr "PDF _Aç"
+
+#: lib/entry_list_row.rb:177
+msgid "_Copy Key"
+msgstr "Anahtarı _Kopyala"
+
+#: lib/entry_list_row.rb:183 lib/window.rb:439
+msgid "_Delete"
+msgstr "_Sil"
+
+#: lib/entry_list_row.rb:308
+msgid "Author not set"
+msgstr "Yazar ayarlanmadı"
+
+#: lib/entry_list_row.rb:322
+msgid "Title not set"
+msgstr "Başlık ayarlanamadı"
+
+#: lib/entry_page.rb:224
+msgid "No Citation Selected"
+msgstr "Alıntı Seçilmedi"
+
+#: lib/entry_page.rb:281
+msgid "Citation _Type"
+msgstr "Alıntı _Türü"
+
+#: lib/entry_page.rb:292
+msgid "Other…"
+msgstr "Diğer…"
+
+#: lib/entry_page.rb:302
+msgid "_Other Citation Type"
+msgstr "_Diğer Alıntı Türü"
+
+#: lib/entry_page.rb:309
+msgid "_Citation Key"
+msgstr "_Alıntı Anahtarı"
+
+#: lib/entry_page.rb:326
+msgid "_Author"
+msgstr "_Yazar"
+
+#: lib/entry_page.rb:333
+msgid "_Title"
+msgstr "_Başlık"
+
+#: lib/entry_page.rb:340
+msgid "_Year"
+msgstr "_Yıl"
+
+#: lib/entry_page.rb:359 lib/entry_page.rb:866
+msgid "Open in Browser"
+msgstr "Tarayıcıda Aç"
+
+#: lib/entry_page.rb:367
+msgid "Other Properties"
+msgstr "Diğer Özellikler"
+
+#: lib/entry_page.rb:381
+msgid "Abstract"
+msgstr "Özet"
+
+#: lib/entry_page.rb:388
+msgid "Copy Abstract"
+msgstr "Özeti Kopyala"
+
+#: lib/entry_page.rb:405
+msgid "Notes"
+msgstr "Notlar"
+
+#: lib/entry_page.rb:412
+msgid "Copy Notes"
+msgstr "Notları Kopyala"
+
+#: lib/entry_page.rb:468
+msgid "PDF"
+msgstr "PDF"
+
+#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
+#: lib/window.rb:401
+msgid "_Open"
+msgstr "_Aç"
+
+#: lib/entry_page.rb:496
+msgid "Delete PDF"
+msgstr "PDF Sil"
+
+#: lib/entry_page.rb:533
+msgid "Could not set PDF Preview"
+msgstr "PDF Ön İzle ayarlanamadı"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: lib/entry_page.rb:636
+msgid "Citation Key already exists"
+msgstr "Alıntı Anahtarı zaten var"
+
+#: lib/entry_page.rb:725
+msgid "PDF added"
+msgstr ""
+
+#: lib/entry_type.rb:31
+msgid "Article"
+msgstr "Makale"
+
+#: lib/entry_type.rb:32
+msgid "Book"
+msgstr "Kitap"
+
+#: lib/entry_type.rb:33
+msgid "Misc"
+msgstr "Türlü"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:36
+msgid "In Proceedings"
+msgstr "Bildirilerde"
+
+#: lib/entry_type.rb:37
+msgid "Unpublished"
+msgstr "Yayımlanmamış"
+
+#. TRANSLATORS As in online source
+#: lib/entry_type.rb:39
+msgid "Online"
+msgstr "Çevrim İçi"
+
+#: lib/entry_type.rb:40
+msgid "Booklet"
+msgstr "Kitapçık"
+
+#: lib/entry_type.rb:41
+msgid "Conference"
+msgstr "Konferans"
+
+#: lib/entry_type.rb:42
+msgid "In Book"
+msgstr "Kitapta"
+
+#: lib/entry_type.rb:43
+msgid "In Collection"
+msgstr "Koleksiyonda"
+
+#. TRANSLATORS As in instruction manual
+#: lib/entry_type.rb:45
+msgid "Manual"
+msgstr "Kılavuz"
+
+#: lib/entry_type.rb:46
+msgid "Master's Thesis"
+msgstr "Yüksek Lisans Tezi"
+
+#: lib/entry_type.rb:47
+msgid "PhD Thesis"
+msgstr "Doktora Tezi"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:50
+msgid "Proceedings"
+msgstr "Bildiriler"
+
+#: lib/entry_type.rb:51
+msgid "Tech Report"
+msgstr "Teknik Rapor"
+
+#. TRANSLATORS As in other kind of source
+#: lib/entry_type.rb:53
+msgid "Other"
+msgstr "Diğer"
+
+#: lib/main.rb:99
+msgid "Open a new window"
+msgstr "Yeni pencere aç"
+
+#: lib/main.rb:108
+msgid "Enable debug messages"
+msgstr "Hata ayıklama iletilerini etkinleştir"
+
+#: lib/main.rb:151 lib/window.rb:181
+msgid "Citations"
+msgstr "Alıntılar"
+
+#: lib/new_entry_dialog.rb:73
+msgid "New"
+msgstr "Yeni"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/new_entry_dialog.rb:80
+msgid "From BibTeX"
+msgstr "BibTeX’den"
+
+#: lib/new_entry_dialog.rb:86
+msgid "From DOI"
+msgstr "DOI’den"
+
+#: lib/new_entry_dialog.rb:115
+msgid "Insert a BibTeX citation here"
+msgstr "Buraya BibTex alıntısı ekle"
+
+#: lib/new_entry_dialog.rb:126
+msgid "Add new Entry"
+msgstr "Yeni Girdi Ekle"
+
+#: lib/new_entry_dialog.rb:141
+msgid "_Cancel"
+msgstr "İ_ptal"
+
+#: lib/new_entry_dialog.rb:149
+msgid "C_reate"
+msgstr "_Oluştur"
+
+#: lib/new_entry_dialog.rb:189
+msgid "Citation Key"
+msgstr "Alıntı Anahtarı"
+
+#: lib/new_entry_dialog.rb:196
+msgid "Citation Type"
+msgstr "Alıntı Türü"
+
+#. TRANSLATORS DOI is a proper name
+#: lib/new_entry_dialog.rb:223
+msgid "DOI"
+msgstr "DOI"
+
+#: lib/recent_file_row.rb:71
+msgid "Remove From Recent Files"
+msgstr "Son Kullanılan Dosyalardan Kaldır"
+
+#: lib/shortcuts_dialog.rb:25
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Genel"
+
+#: lib/shortcuts_dialog.rb:26
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Kaynakça"
+
+#: lib/shortcuts_dialog.rb:32
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Kısayolları Göster"
+
+#: lib/shortcuts_dialog.rb:33
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Yeni Pencere"
+
+#: lib/shortcuts_dialog.rb:34
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Pencereyi Kapat"
+
+#: lib/shortcuts_dialog.rb:35
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Çık"
+
+#: lib/shortcuts_dialog.rb:41
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Aç"
+
+#: lib/shortcuts_dialog.rb:42
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Kaydet"
+
+#: lib/shortcuts_dialog.rb:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Ara"
+
+#: lib/utils.rb:43
+msgid "Author"
+msgstr "Yazar"
+
+#: lib/utils.rb:44
+msgid "Year"
+msgstr "Yıl"
+
+#: lib/utils.rb:45
+msgid "Title"
+msgstr "Başlık"
+
+#: lib/utils.rb:46
+msgid "Volume"
+msgstr "Cilt"
+
+#: lib/utils.rb:47
+msgid "Number"
+msgstr "Sayı"
+
+#: lib/utils.rb:48
+msgid "Pages"
+msgstr "Sayfa"
+
+#: lib/utils.rb:49
+msgid "Publisher"
+msgstr "Yayıncı"
+
+#: lib/utils.rb:50
+msgid "Journal"
+msgstr "Günlük"
+
+#: lib/utils.rb:51
+msgid "Address"
+msgstr "Adres"
+
+#. TRANSLATORS Method of publication, see
+#. https://www.bibtex.com/f/howpublished-field/
+#: lib/utils.rb:54
+msgid "How Published"
+msgstr "Nasıl Yayımlandı"
+
+#: lib/utils.rb:55
+msgid "Note"
+msgstr "Not"
+
+#: lib/utils.rb:56
+msgid "Book Title"
+msgstr "Kitap Başlığı"
+
+#: lib/utils.rb:57
+msgid "Series"
+msgstr "Dizi"
+
+#: lib/utils.rb:58
+msgid "Archive Prefix"
+msgstr "Arşiv Ön Eki"
+
+#. TRANSLATORS As in digital print
+#: lib/utils.rb:60
+msgid "ePrint"
+msgstr "ePrint"
+
+#. TRANSLATORS Identifier used by arXiv, see
+#. https://arxiv.org/help/hypertex/bibstyles
+#: lib/utils.rb:63
+msgid "Primary Class"
+msgstr "Birincil Sınıf"
+
+#: lib/utils.rb:64
+msgid "Month"
+msgstr "Ay"
+
+#. TRANSLATORS As in chief editor
+#: lib/utils.rb:66
+msgid "Editor"
+msgstr "Editör"
+
+#. TRANSLATORS As in association
+#: lib/utils.rb:68
+msgid "Organization"
+msgstr "Kuruluş"
+
+#: lib/utils.rb:69
+msgid "School"
+msgstr "Okul"
+
+#: lib/utils.rb:70
+msgid "Institution"
+msgstr "Kurum"
+
+#: lib/window.rb:166
+msgid "Bibliography saved"
+msgstr "Kaynakça kaydedildi"
+
+#: lib/window.rb:216
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/window.rb:227
+msgid "Open a BibTeX File"
+msgstr "BibTeX Dosyası Aç"
+
+#: lib/window.rb:228
+msgid "Or drag-and-drop a file"
+msgstr "Ya da bir dosya sürükleyip bırak"
+
+#: lib/window.rb:249
+msgid "Manage your Citations"
+msgstr "Kaynakçanızı Yönetin"
+
+#: lib/window.rb:263
+msgid "Recent Files"
+msgstr "Son Kullanılan Dosyalar"
+
+#: lib/window.rb:302
+msgid "Sidebar"
+msgstr "Kenar Çubuğu"
+
+#: lib/window.rb:306
+msgid "Content"
+msgstr "İçindekiler"
+
+#: lib/window.rb:329
+msgid "Add New Citation"
+msgstr "Yeni Alıntı Ekle"
+
+#: lib/window.rb:338
+msgid "Search"
+msgstr "Ara"
+
+#: lib/window.rb:345
+msgid "Secondary Menu"
+msgstr "İkincil Menü"
+
+#: lib/window.rb:355
+msgid "Search…"
+msgstr "Ara…"
+
+#: lib/window.rb:385
+msgid "_Create New Bibliography"
+msgstr "_Yeni Kaynakça Oluştur"
+
+#: lib/window.rb:400
+msgid "_Save"
+msgstr "Kay_det"
+
+#: lib/window.rb:402
+msgid "New _Window"
+msgstr "Yeni _Pencere"
+
+#: lib/window.rb:408
+msgid "_Keyboard Shortcuts"
+msgstr "_Klavye Kısayolları"
+
+#. TRANSLATORS About dialog
+#: lib/window.rb:410
+msgid "_About Citations"
+msgstr "Alıntılar _Hakkında"
+
+#: lib/window.rb:425
+msgid "_Search in Google Scholar"
+msgstr "_Google Scholar’da Ara"
+
+#. TRANSLATORS arXiv is a proper name
+#: lib/window.rb:427
+msgid "_Search in arXiv"
+msgstr "arXiv’de _Ara"
+
+#: lib/window.rb:433
+msgid "_Copy BibTeX Entry"
+msgstr "BibTeX Girdisini _Kopyala"
+
+#: lib/window.rb:453
+msgid "Create New Bibliography"
+msgstr "Yeni Kaynakça Oluştur"
+
+#: lib/window.rb:454
+msgid "_Create"
+msgstr "_Oluştur"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: lib/window.rb:457
+msgid "bibliography"
+msgstr "kaynakça"
+
+#: lib/window.rb:469
+msgid "BibTeX Files"
+msgstr "BibTeX Dosyaları"
+
+#: lib/window.rb:516
+msgid "An entry with the given citation key already exists"
+msgstr "Belirtilen alıntı anahtarında girdi zaten var"
+
+#: lib/window.rb:522
+msgid "Could not add entry"
+msgstr "Girdi eklenemedi"
+
+#: lib/window.rb:551
+msgid "Citation Deleted"
+msgstr "Alıntı Silindi"
+
+#: lib/window.rb:553
+msgid "Undo"
+msgstr "Geri Al"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:834
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr ""
+"Yenisini açmadan önce tüm değişiklikleri kaynakçaya yazmak ister misiniz?"
+
+#: lib/window.rb:835
+msgid "_Open Without Saving"
+msgstr "Kaydetmeden _Aç"
+
+#: lib/window.rb:836
+msgid "_Don't Open"
+msgstr "Aç_ma"
+
+#: lib/window.rb:837
+msgid "_Save and Open"
+msgstr "_Kaydet ve Aç"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:866
+msgid "Do you want to write all changes to the bibliography?"
+msgstr "Tüm değişiklikleri kaynakçaya yazmak ister misiniz?"
+
+#: lib/window.rb:867
+msgid "_Quit Without Saving"
+msgstr "K_aydetmeden Çık"
+
+#: lib/window.rb:868
+msgid "_Don't Quit"
+msgstr "Çık_ma"
+
+#: lib/window.rb:869
+msgid "_Save and Quit"
+msgstr "_Kaydet ve Çık"
+
+#. TRANSLATORS Dialog title which informs the user about unsaved changes.
+#: lib/window.rb:900
+msgid "Unsaved Changes"
+msgstr "Kaydedilmemiş Değişiklikler"
+
+#: data/org.rubygtkproject.Citations.desktop.in:3
+msgid "Manage your bibliography"
+msgstr "Kaynakçanızı yönetin"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.rubygtkproject.Citations.desktop.in:9
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr ""
+"bibliography;citing;literature;BibTeX;LaTeX;TeX;kaynakça;kaynak "
+"dizini;alıntı;literatür;yazın;alanyazın;"
+
+#: data/org.rubygtkproject.Citations.desktop.in:18
+msgid "New Window"
+msgstr "Yeni Pencere"

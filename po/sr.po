@@ -1,0 +1,677 @@
+# Serbian translation for citations.
+# Copyright © 2022 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2022-2023.
+# Марко Костић <marko.m.kostic@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"PO-Revision-Date: 2026-03-21 11:16+0100\n"
+"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
+"Language-Team: Serbian <gnome-sr@googlegroups.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 3.9\n"
+
+#. TRANSLATORS Replace this with your name for it to show up in the
+#. about dialog.
+#: lib/about_dialog.rb:63
+msgid "translator-credits"
+msgstr ""
+"Мирослав Николић <miroslavnikolic@rocketmail.com>  \n"
+"Марко Костић <marko.m.kostic@gmail.com>\n"
+"Превод на српски језик https://гном.срб"
+
+#: lib/add_pdf_dialog.rb:90
+msgid "Select a PDF"
+msgstr "Изаберите ПДФ"
+
+#: lib/add_pdf_dialog.rb:103
+msgid "PDF Files"
+msgstr "ПДФ датотеке"
+
+#. TRANSLATORS Selects a PDF file for the citation
+#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+msgid "Add PDF"
+msgstr "Додај ПДФ"
+
+#: lib/add_pdf_dialog.rb:155
+msgid "Bibliography folder not set"
+msgstr "Фасцикла библиографије није постављена"
+
+#: lib/add_pdf_dialog.rb:170
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"Направите умножак изабраног пдф-а и сместите га у вашу фасциклу "
+"библиографије."
+
+#: lib/add_pdf_dialog.rb:189
+msgid "Add From URL"
+msgstr "Додај са адресе"
+
+#: lib/add_pdf_dialog.rb:197
+msgid "Download…"
+msgstr "Преузми…"
+
+#: lib/add_pdf_dialog.rb:204
+msgid "Add From File…"
+msgstr "Додај из датотеке…"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: lib/add_pdf_dialog.rb:217
+msgid "Make sure that {path} exists"
+msgstr "Уверите се да постоји „{path}“"
+
+#: lib/add_pdf_dialog.rb:294
+msgid "Could not download PDF"
+msgstr "Не могу да преузмем ПДФ"
+
+#: lib/add_pdf_dialog.rb:321
+msgid "Could not set PDF"
+msgstr "Не могу да поставим ПДФ"
+
+#. TRANSLATORS Plain as in Plain Text
+#: lib/citation_format.rb:62
+msgid "Plain"
+msgstr "Обично"
+
+#: lib/citation_preview.rb:197
+msgid "Custom Citation Format"
+msgstr "Произвољни формат цитата"
+
+#: lib/citation_preview.rb:205
+msgid "Help"
+msgstr "Помоћ"
+
+#: lib/citation_preview.rb:229
+msgid "Citation"
+msgstr "Цитат"
+
+#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+msgid "Copy"
+msgstr "Умножи"
+
+#: lib/citation_preview.rb:292
+msgid "Custom Template"
+msgstr "Произвољни шаблон"
+
+#: lib/citation_preview.rb:307
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported. "
+msgstr ""
+"Напишите произвољни формат за ваше цитате, да бисте уметнули садржај ознаке "
+"<tt>sometag</tt>, напишите <tt>%SOMETAG%</tt>. Подржана је основна маркдаун "
+"синтакса за подебљано и искошено. "
+
+#: lib/citation_preview.rb:316
+msgid "Example:"
+msgstr "Пример:"
+
+#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
+#: lib/window.rb:762
+msgid "Copied"
+msgstr "Умножено"
+
+#: lib/citation_preview.rb:400
+msgid "Custom…"
+msgstr "Произвољно…"
+
+#. TRANSLATORS Empty state widget
+#: lib/entry_list.rb:137
+msgid "No Citations"
+msgstr "Нема цитата"
+
+#: lib/entry_list.rb:138
+msgid "Create a new citation"
+msgstr "Направите нови цитат"
+
+#: lib/entry_list_row.rb:176
+msgid "_Open PDF"
+msgstr "_Отвори ПДФ"
+
+#: lib/entry_list_row.rb:177
+msgid "_Copy Key"
+msgstr "_Умножи кључ"
+
+#: lib/entry_list_row.rb:183 lib/window.rb:439
+msgid "_Delete"
+msgstr "_Обриши"
+
+#: lib/entry_list_row.rb:308
+msgid "Author not set"
+msgstr "Аутор није постављен"
+
+#: lib/entry_list_row.rb:322
+msgid "Title not set"
+msgstr "Наслов није постављен"
+
+#: lib/entry_page.rb:224
+msgid "No Citation Selected"
+msgstr "Није изабран ниједан цитат"
+
+#: lib/entry_page.rb:281
+msgid "Citation _Type"
+msgstr "_Врста цитата"
+
+#: lib/entry_page.rb:292
+msgid "Other…"
+msgstr "Друго…"
+
+#: lib/entry_page.rb:302
+msgid "_Other Citation Type"
+msgstr "_Друга врста цитата"
+
+#: lib/entry_page.rb:309
+msgid "_Citation Key"
+msgstr "_Кључ цитата"
+
+#: lib/entry_page.rb:326
+msgid "_Author"
+msgstr "_Аутор"
+
+#: lib/entry_page.rb:333
+msgid "_Title"
+msgstr "_Наслов"
+
+#: lib/entry_page.rb:340
+msgid "_Year"
+msgstr "_Година"
+
+#: lib/entry_page.rb:359 lib/entry_page.rb:866
+msgid "Open in Browser"
+msgstr "Отвори у прегледачу"
+
+#: lib/entry_page.rb:367
+msgid "Other Properties"
+msgstr "Остала својства"
+
+#: lib/entry_page.rb:381
+msgid "Abstract"
+msgstr "Апстракт"
+
+#: lib/entry_page.rb:388
+msgid "Copy Abstract"
+msgstr "Умножи апстракт"
+
+#: lib/entry_page.rb:405
+msgid "Notes"
+msgstr "Напомене"
+
+#: lib/entry_page.rb:412
+msgid "Copy Notes"
+msgstr "Умножи напомене"
+
+#: lib/entry_page.rb:468
+msgid "PDF"
+msgstr "ПДФ"
+
+#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
+#: lib/window.rb:401
+msgid "_Open"
+msgstr "_Отвори"
+
+#: lib/entry_page.rb:496
+msgid "Delete PDF"
+msgstr "Обриши ПДФ"
+
+#: lib/entry_page.rb:533
+msgid "Could not set PDF Preview"
+msgstr "Не могу да поставим ПДФ претпреглед"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: lib/entry_page.rb:636
+msgid "Citation Key already exists"
+msgstr "Кључ цитата већ постоји"
+
+#: lib/entry_page.rb:725
+msgid "PDF added"
+msgstr ""
+
+#: lib/entry_type.rb:31
+msgid "Article"
+msgstr "Чланак"
+
+#: lib/entry_type.rb:32
+msgid "Book"
+msgstr "Књига"
+
+#: lib/entry_type.rb:33
+msgid "Misc"
+msgstr "Разно"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:36
+msgid "In Proceedings"
+msgstr "У дешавањима"
+
+#: lib/entry_type.rb:37
+msgid "Unpublished"
+msgstr "Необјављено"
+
+#. TRANSLATORS As in online source
+#: lib/entry_type.rb:39
+msgid "Online"
+msgstr "На мрежи"
+
+#: lib/entry_type.rb:40
+msgid "Booklet"
+msgstr "Књижица"
+
+#: lib/entry_type.rb:41
+msgid "Conference"
+msgstr "Конференција"
+
+#: lib/entry_type.rb:42
+msgid "In Book"
+msgstr "У књизи"
+
+#: lib/entry_type.rb:43
+msgid "In Collection"
+msgstr "У збирци"
+
+#. TRANSLATORS As in instruction manual
+#: lib/entry_type.rb:45
+msgid "Manual"
+msgstr "Упутство"
+
+#: lib/entry_type.rb:46
+msgid "Master's Thesis"
+msgstr "Мастер теза"
+
+#: lib/entry_type.rb:47
+msgid "PhD Thesis"
+msgstr "Докторска теза"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:50
+msgid "Proceedings"
+msgstr "Дешавања"
+
+#: lib/entry_type.rb:51
+msgid "Tech Report"
+msgstr "Технички извештај"
+
+#. TRANSLATORS As in other kind of source
+#: lib/entry_type.rb:53
+msgid "Other"
+msgstr "Друго"
+
+#: lib/main.rb:99
+msgid "Open a new window"
+msgstr "Отвори нови прозор"
+
+#: lib/main.rb:108
+msgid "Enable debug messages"
+msgstr "Омогући поруке за исправљање грешака"
+
+#: lib/main.rb:151 lib/window.rb:181
+msgid "Citations"
+msgstr "Цитати"
+
+#: lib/new_entry_dialog.rb:73
+msgid "New"
+msgstr "Ново"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/new_entry_dialog.rb:80
+msgid "From BibTeX"
+msgstr "Из БибТеХ-а"
+
+#: lib/new_entry_dialog.rb:86
+msgid "From DOI"
+msgstr "Са DOI-ја"
+
+#: lib/new_entry_dialog.rb:115
+msgid "Insert a BibTeX citation here"
+msgstr "Овде убаците БибТеХ цитат"
+
+#: lib/new_entry_dialog.rb:126
+msgid "Add new Entry"
+msgstr "Додај нови унос"
+
+#: lib/new_entry_dialog.rb:141
+msgid "_Cancel"
+msgstr "_Откажи"
+
+#: lib/new_entry_dialog.rb:149
+msgid "C_reate"
+msgstr "_Направи"
+
+#: lib/new_entry_dialog.rb:189
+msgid "Citation Key"
+msgstr "Кључ цитата"
+
+#: lib/new_entry_dialog.rb:196
+msgid "Citation Type"
+msgstr "Врста цитата"
+
+#. TRANSLATORS DOI is a proper name
+#: lib/new_entry_dialog.rb:223
+msgid "DOI"
+msgstr "DOI"
+
+#: lib/recent_file_row.rb:71
+msgid "Remove From Recent Files"
+msgstr "Уконите из скорашњих датотека"
+
+#: lib/shortcuts_dialog.rb:25
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Опште"
+
+#: lib/shortcuts_dialog.rb:26
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Библиографија"
+
+#: lib/shortcuts_dialog.rb:32
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Приказује пречице"
+
+#: lib/shortcuts_dialog.rb:33
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Нови прозор"
+
+#: lib/shortcuts_dialog.rb:34
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Затвори прозор"
+
+#: lib/shortcuts_dialog.rb:35
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Напушта програм"
+
+#: lib/shortcuts_dialog.rb:41
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Отвара"
+
+#: lib/shortcuts_dialog.rb:42
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Чува"
+
+#: lib/shortcuts_dialog.rb:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Тражи"
+
+#: lib/utils.rb:43
+msgid "Author"
+msgstr "Аутор"
+
+#: lib/utils.rb:44
+msgid "Year"
+msgstr "Година"
+
+#: lib/utils.rb:45
+msgid "Title"
+msgstr "Наслов"
+
+#: lib/utils.rb:46
+msgid "Volume"
+msgstr "Волумен"
+
+#: lib/utils.rb:47
+msgid "Number"
+msgstr "Број"
+
+#: lib/utils.rb:48
+msgid "Pages"
+msgstr "Странице"
+
+#: lib/utils.rb:49
+msgid "Publisher"
+msgstr "Издавач"
+
+#: lib/utils.rb:50
+msgid "Journal"
+msgstr "Журнал"
+
+#: lib/utils.rb:51
+msgid "Address"
+msgstr "Адреса"
+
+#. TRANSLATORS Method of publication, see
+#. https://www.bibtex.com/f/howpublished-field/
+#: lib/utils.rb:54
+msgid "How Published"
+msgstr "Како је издато"
+
+#: lib/utils.rb:55
+msgid "Note"
+msgstr "Напомена"
+
+#: lib/utils.rb:56
+msgid "Book Title"
+msgstr "Наслов књиге"
+
+#: lib/utils.rb:57
+msgid "Series"
+msgstr "Серије"
+
+#: lib/utils.rb:58
+msgid "Archive Prefix"
+msgstr "Префикс архиве"
+
+#. TRANSLATORS As in digital print
+#: lib/utils.rb:60
+msgid "ePrint"
+msgstr "е-Штампа"
+
+#. TRANSLATORS Identifier used by arXiv, see
+#. https://arxiv.org/help/hypertex/bibstyles
+#: lib/utils.rb:63
+msgid "Primary Class"
+msgstr "Главни разред"
+
+#: lib/utils.rb:64
+msgid "Month"
+msgstr "Месец"
+
+#. TRANSLATORS As in chief editor
+#: lib/utils.rb:66
+msgid "Editor"
+msgstr "Уредник"
+
+#. TRANSLATORS As in association
+#: lib/utils.rb:68
+msgid "Organization"
+msgstr "Организација"
+
+#: lib/utils.rb:69
+msgid "School"
+msgstr "Школа"
+
+#: lib/utils.rb:70
+msgid "Institution"
+msgstr "Институција"
+
+#: lib/window.rb:166
+msgid "Bibliography saved"
+msgstr "Библиографија је сачувана"
+
+#: lib/window.rb:216
+msgid "Main Menu"
+msgstr "Главни изборник"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/window.rb:227
+msgid "Open a BibTeX File"
+msgstr "Отворите БибТеХ датотеку"
+
+#: lib/window.rb:228
+msgid "Or drag-and-drop a file"
+msgstr "Или превуците и убаците датотеку"
+
+#: lib/window.rb:249
+msgid "Manage your Citations"
+msgstr "Управљајте вашим цитатима"
+
+#: lib/window.rb:263
+msgid "Recent Files"
+msgstr "Скорашње датотеке"
+
+#: lib/window.rb:302
+msgid "Sidebar"
+msgstr "Бочна површ"
+
+#: lib/window.rb:306
+msgid "Content"
+msgstr "Садржај"
+
+#: lib/window.rb:329
+msgid "Add New Citation"
+msgstr "Додај нови цитат"
+
+#: lib/window.rb:338
+msgid "Search"
+msgstr "Тражи"
+
+#: lib/window.rb:345
+msgid "Secondary Menu"
+msgstr "Помоћни изборник"
+
+#: lib/window.rb:355
+msgid "Search…"
+msgstr "Потражи…"
+
+#: lib/window.rb:385
+msgid "_Create New Bibliography"
+msgstr "_Направите нову библиографију"
+
+#: lib/window.rb:400
+msgid "_Save"
+msgstr "_Сачувај"
+
+#: lib/window.rb:402
+msgid "New _Window"
+msgstr "Нови _прозор"
+
+#: lib/window.rb:408
+msgid "_Keyboard Shortcuts"
+msgstr "_Пречице тастатуре"
+
+#. TRANSLATORS About dialog
+#: lib/window.rb:410
+msgid "_About Citations"
+msgstr "_О Цитатима"
+
+#: lib/window.rb:425
+msgid "_Search in Google Scholar"
+msgstr "_Потражи у Гугловом школарцу"
+
+#. TRANSLATORS arXiv is a proper name
+#: lib/window.rb:427
+msgid "_Search in arXiv"
+msgstr "_Потражи у „арХив“-у"
+
+#: lib/window.rb:433
+msgid "_Copy BibTeX Entry"
+msgstr "_Умножи БибТеКс унос"
+
+#: lib/window.rb:453
+msgid "Create New Bibliography"
+msgstr "Направите нову библиографију"
+
+#: lib/window.rb:454
+msgid "_Create"
+msgstr "_Направи"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: lib/window.rb:457
+msgid "bibliography"
+msgstr "библиографија"
+
+#: lib/window.rb:469
+msgid "BibTeX Files"
+msgstr "Бибтех датотеке"
+
+#: lib/window.rb:516
+msgid "An entry with the given citation key already exists"
+msgstr "Унос са датим кључем цитата већ постоји"
+
+#: lib/window.rb:522
+msgid "Could not add entry"
+msgstr "Не могу да додам унос"
+
+#: lib/window.rb:551
+msgid "Citation Deleted"
+msgstr "Цитат је обрисан"
+
+#: lib/window.rb:553
+msgid "Undo"
+msgstr "Опозови"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:834
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr "Да ли желите да запишете све измене у библиографију пре отварања нове?"
+
+#: lib/window.rb:835
+msgid "_Open Without Saving"
+msgstr "_Отвори без чувања"
+
+#: lib/window.rb:836
+msgid "_Don't Open"
+msgstr "_Не отварај"
+
+#: lib/window.rb:837
+msgid "_Save and Open"
+msgstr "_Сачувај и отвори"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:866
+msgid "Do you want to write all changes to the bibliography?"
+msgstr "Да ли желите да запишете све измене у библиографију?"
+
+#: lib/window.rb:867
+msgid "_Quit Without Saving"
+msgstr "_Изађи без чувања"
+
+#: lib/window.rb:868
+msgid "_Don't Quit"
+msgstr "_Остани"
+
+#: lib/window.rb:869
+msgid "_Save and Quit"
+msgstr "_Сачувај и изађи"
+
+#. TRANSLATORS Dialog title which informs the user about unsaved changes.
+#: lib/window.rb:900
+msgid "Unsaved Changes"
+msgstr "Несачуване измене"
+
+#: data/org.rubygtkproject.Citations.desktop.in:3
+msgid "Manage your bibliography"
+msgstr "Управљајте вашом биографијом"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.rubygtkproject.Citations.desktop.in:9
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "библиографија;цитати;навођење;литература;БибТеХ;ЛаТеХ;ТеХ;bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+
+#: data/org.rubygtkproject.Citations.desktop.in:18
+msgid "New Window"
+msgstr "Нови прозор"

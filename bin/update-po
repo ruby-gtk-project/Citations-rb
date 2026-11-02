@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+#
+# Rebuilds po/: the catalogue template, every locale's catalogue, the compiled
+# catalogues the app loads at run time, and the localised desktop entry.
+#
+# Ported from the translation half of upstream's build: po/meson.build, which
+# runs `i18n.gettext(gettext_package, preset: 'glib')` over po/POTFILES.in and
+# po/LINGUAS, and data/meson.build, which merges the catalogues into the
+# desktop entry with `i18n.merge_file(type: 'desktop', …)`.
+#
+# A checkout has no configure step, so this script stands in for those two
+# meson calls. Run it inside the dev shell, which carries GNU gettext and the
+# gettext gem:
+#
+#   nix develop --command bin/update-po
+#
+# The Ruby sources go through the gettext gem's extractor rather than GNU
+# xgettext, which has no Ruby backend; the desktop entry goes through GNU
+# xgettext's Desktop backend, which GNOME's own build uses. The translations
+# themselves come from upstream's catalogues on origin/master, merged onto the
+# msgids the port's own sources carry.
+set -euo pipefail
+
+root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+cd "$root"
+
+domain=citations
+desktop_in=data/org.rubygtkproject.Citations.desktop.in
+desktop_out=data/org.rubygtkproject.Citations.desktop
+upstream=origin/master
+
+work=$(mktemp -d)
+trap 'rm -rf "$work"' EXIT
+
+# The Ruby sources. The extractor knows `_`, `p_` and `n_`, which is why the
+# port spells its translations that way.
+ruby -e '
+require "gettext/tools"
+GetText::Tools::XGetText.run(
+  *(Dir["lib/**/*.rb"].sort + Dir["exe/*"].sort),
+  "-o", ARGV[0],
+  "--add-comments=TRANSLATORS",
+  "--package-name=citations",
+  "--package-version=0.11.0",
+  "--msgid-bugs-address=https://github.com/ruby-gtk-project/Citations-rb/issues",
+  "--copyright-holder=The Citations authors",
+  "--sort-by-file"
+)
+' "po/ruby.pot"
+
+# The gem writes its references relative to the .pot file; GNU gettext's
+# convention, which the desktop backend follows and POTFILES.in lists, is
+# relative to the directory above po/.
+sed -i -E 's@(^|[[:space:]])\.\./@\1@g' po/ruby.pot
+
+# The desktop entry.
+xgettext --language=Desktop --add-comments=Translators --from-code=UTF-8 \
+  -o "$work/desktop.pot" "$desktop_in"
+
+# One template for the whole app.
+msgcat --use-first -o "po/$domain.pot" po/ruby.pot "$work/desktop.pot"
+rm -f po/ruby.pot
+
+# Every locale upstream ships, merged onto the port's msgids and compiled.
+while read -r lang; do
+  case "$lang" in ''|'#'*) continue ;; esac
+
+  git show "$upstream:po/$lang.po" > "$work/$lang.upstream"
+  msgmerge --quiet --no-fuzzy-matching \
+    -o "$work/$lang.merged" "$work/$lang.upstream" "po/$domain.pot"
+  msgattrib --no-obsolete -o "po/$lang.po" "$work/$lang.merged"
+
+  mkdir -p "po/$lang/LC_MESSAGES"
+  msgfmt --check-format -o "po/$lang/LC_MESSAGES/$domain.mo" "po/$lang.po"
+done < po/LINGUAS
+
+# The installed desktop entry, with its Name, Comment and Keywords localised
+# from those same catalogues.
+msgfmt --desktop --template="$desktop_in" -d po -o "$desktop_out"
+
+# What the catalogues cover.
+printf '%-8s %s\n' template "$(($(grep -c '^msgid "' "po/$domain.pot") - 1)) messages"
+while read -r lang; do
+  case "$lang" in ''|'#'*) continue ;; esac
+
+  printf '%-8s %s\n' "$lang" \
+    "$(msgfmt --statistics -o /dev/null "po/$lang.po" 2>&1 | tr '\n' ' ')"
+done < po/LINGUAS

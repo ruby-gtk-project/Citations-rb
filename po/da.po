@@ -1,0 +1,678 @@
+# Danish translation for citations.
+# Copyright (C) 2022-2026 citations's COPYRIGHT HOLDER
+# This file is distributed under the same license as the citations package.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2022-2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: citations master\n"
+"Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
+"issues\n"
+"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"PO-Revision-Date: 2026-03-14 23:55+0100\n"
+"Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. TRANSLATORS Replace this with your name for it to show up in the
+#. about dialog.
+#: lib/about_dialog.rb:63
+msgid "translator-credits"
+msgstr ""
+"Ask Hjorth Larsen\n"
+"\n"
+"Dansk-gruppen\n"
+"Websted http://dansk-gruppen.dk\n"
+"E-mail <dansk@dansk-gruppen.dk>"
+
+#: lib/add_pdf_dialog.rb:90
+msgid "Select a PDF"
+msgstr "Vælg en PDF"
+
+#: lib/add_pdf_dialog.rb:103
+msgid "PDF Files"
+msgstr "PDF-filer"
+
+#. TRANSLATORS Selects a PDF file for the citation
+#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+msgid "Add PDF"
+msgstr "Tilføj PDF"
+
+#: lib/add_pdf_dialog.rb:155
+msgid "Bibliography folder not set"
+msgstr "Bibliografimappe er ikke angivet"
+
+# pænest og sikrest med lile b
+#: lib/add_pdf_dialog.rb:170
+msgid ""
+"Creates a copy of the selected pdf and stores it in your Bibliography folder."
+msgstr ""
+"Opretter en kopi af den valgte pdf og gemmer den i din bibliografimappe."
+
+#: lib/add_pdf_dialog.rb:189
+msgid "Add From URL"
+msgstr "Tilføj fra URL"
+
+#: lib/add_pdf_dialog.rb:197
+msgid "Download…"
+msgstr "Hent …"
+
+#: lib/add_pdf_dialog.rb:204
+msgid "Add From File…"
+msgstr "Tilføj fra fil …"
+
+#. TRANSLATORS Do NOT translate {path}, it is a variable name
+#: lib/add_pdf_dialog.rb:217
+msgid "Make sure that {path} exists"
+msgstr "Sørg for, at {path} findes"
+
+#: lib/add_pdf_dialog.rb:294
+msgid "Could not download PDF"
+msgstr "Kunne ikke hente PDF"
+
+#: lib/add_pdf_dialog.rb:321
+msgid "Could not set PDF"
+msgstr "Kunne ikke angive PDF"
+
+#. TRANSLATORS Plain as in Plain Text
+#: lib/citation_format.rb:62
+msgid "Plain"
+msgstr "Almindelig tekst"
+
+#: lib/citation_preview.rb:197
+msgid "Custom Citation Format"
+msgstr "Brugertilpasset referenceformat"
+
+#: lib/citation_preview.rb:205
+msgid "Help"
+msgstr "Hjælp"
+
+#: lib/citation_preview.rb:229
+msgid "Citation"
+msgstr "Reference"
+
+# Skal det være kopi?  Jeg kan ikke se det fra kildekoden.
+#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+msgid "Copy"
+msgstr "Kopiér"
+
+#: lib/citation_preview.rb:292
+msgid "Custom Template"
+msgstr "Brugertilpasset skabelon"
+
+#: lib/citation_preview.rb:307
+msgid ""
+"Write a custom format for your citations, to insert the contents of a tag "
+"<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
+"and italics is supported. "
+msgstr ""
+"Skriv et brugertilpasset format til dine referencer. Brug <tt>%MÆRKE%</tt> "
+"til at indsætte mærket <tt>mærke</tt>. Fed og kursiv understøttes med "
+"markdownsyntaks."
+
+#: lib/citation_preview.rb:316
+msgid "Example:"
+msgstr "Eksempel:"
+
+#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
+#: lib/window.rb:762
+msgid "Copied"
+msgstr "Kopieret"
+
+#: lib/citation_preview.rb:400
+msgid "Custom…"
+msgstr "Brugertilpasset …"
+
+#. TRANSLATORS Empty state widget
+#: lib/entry_list.rb:137
+msgid "No Citations"
+msgstr "Ingen referencer"
+
+#: lib/entry_list.rb:138
+msgid "Create a new citation"
+msgstr "Opret en ny reference"
+
+#: lib/entry_list_row.rb:176
+msgid "_Open PDF"
+msgstr "_Åbn PDF"
+
+#: lib/entry_list_row.rb:177
+msgid "_Copy Key"
+msgstr "_Kopiér nøgle"
+
+#: lib/entry_list_row.rb:183 lib/window.rb:439
+msgid "_Delete"
+msgstr "_Slet"
+
+#: lib/entry_list_row.rb:308
+msgid "Author not set"
+msgstr "Forfatter ikke angivet"
+
+#: lib/entry_list_row.rb:322
+msgid "Title not set"
+msgstr "Titel ikke angivet"
+
+#: lib/entry_page.rb:224
+msgid "No Citation Selected"
+msgstr "Ingen reference valgt"
+
+#: lib/entry_page.rb:281
+msgid "Citation _Type"
+msgstr "Referencet_ype"
+
+# Anden type af indgang iflg. kildekoden
+#: lib/entry_page.rb:292
+msgid "Other…"
+msgstr "Anden …"
+
+#: lib/entry_page.rb:302
+msgid "_Other Citation Type"
+msgstr "_Anden referencetype"
+
+#: lib/entry_page.rb:309
+msgid "_Citation Key"
+msgstr "_Referencenøgle"
+
+#: lib/entry_page.rb:326
+msgid "_Author"
+msgstr "_Forfatter"
+
+#: lib/entry_page.rb:333
+msgid "_Title"
+msgstr "_Titel"
+
+#: lib/entry_page.rb:340
+msgid "_Year"
+msgstr "_År"
+
+#: lib/entry_page.rb:359 lib/entry_page.rb:866
+msgid "Open in Browser"
+msgstr "Åbn i browser"
+
+#: lib/entry_page.rb:367
+msgid "Other Properties"
+msgstr "Andre egenskaber"
+
+#: lib/entry_page.rb:381
+msgid "Abstract"
+msgstr "Abstract"
+
+#: lib/entry_page.rb:388
+msgid "Copy Abstract"
+msgstr "Kopiér abstract"
+
+#: lib/entry_page.rb:405
+msgid "Notes"
+msgstr "Noter"
+
+#: lib/entry_page.rb:412
+msgid "Copy Notes"
+msgstr "Kopiér noter"
+
+#: lib/entry_page.rb:468
+msgid "PDF"
+msgstr "PDF"
+
+#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
+#: lib/window.rb:401
+msgid "_Open"
+msgstr "_Åbn"
+
+#: lib/entry_page.rb:496
+msgid "Delete PDF"
+msgstr "Slet PDF"
+
+#: lib/entry_page.rb:533
+msgid "Could not set PDF Preview"
+msgstr "Kunne ikke angive forhåndsvisning af PDF"
+
+#. TRANSLATORS Every citation has an identifier called key
+#: lib/entry_page.rb:636
+msgid "Citation Key already exists"
+msgstr "Referencenøgle findes allerede"
+
+#: lib/entry_page.rb:725
+msgid "PDF added"
+msgstr "PDF tilføjet"
+
+#: lib/entry_type.rb:31
+msgid "Article"
+msgstr "Artikel"
+
+#: lib/entry_type.rb:32
+msgid "Book"
+msgstr "Bog"
+
+#: lib/entry_type.rb:33
+msgid "Misc"
+msgstr "Diverse"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:36
+msgid "In Proceedings"
+msgstr "I proceedings"
+
+#: lib/entry_type.rb:37
+msgid "Unpublished"
+msgstr "Ikke udgivet"
+
+#. TRANSLATORS As in online source
+#: lib/entry_type.rb:39
+msgid "Online"
+msgstr "Online"
+
+#: lib/entry_type.rb:40
+msgid "Booklet"
+msgstr "Brochure"
+
+#: lib/entry_type.rb:41
+msgid "Conference"
+msgstr "Konference"
+
+#: lib/entry_type.rb:42
+msgid "In Book"
+msgstr "I bog"
+
+#: lib/entry_type.rb:43
+msgid "In Collection"
+msgstr "I samling"
+
+#. TRANSLATORS As in instruction manual
+#: lib/entry_type.rb:45
+msgid "Manual"
+msgstr "Manual"
+
+#: lib/entry_type.rb:46
+msgid "Master's Thesis"
+msgstr "Kandidatafhandling"
+
+#: lib/entry_type.rb:47
+msgid "PhD Thesis"
+msgstr "Ph.d.-afhandling"
+
+#. TRANSLATORS As in conference proceedings, see
+#. https://en.wikipedia.org/wiki/Conference_proceeding
+#: lib/entry_type.rb:50
+msgid "Proceedings"
+msgstr "Proceedings"
+
+#: lib/entry_type.rb:51
+msgid "Tech Report"
+msgstr "Teknisk rapport"
+
+#. TRANSLATORS As in other kind of source
+#: lib/entry_type.rb:53
+msgid "Other"
+msgstr "Andet"
+
+#: lib/main.rb:99
+msgid "Open a new window"
+msgstr "Åbn et nyt vindue"
+
+#: lib/main.rb:108
+msgid "Enable debug messages"
+msgstr "Slå fejlsøgningsmeddelelser til"
+
+#: lib/main.rb:151 lib/window.rb:181
+msgid "Citations"
+msgstr "Citations"
+
+#: lib/new_entry_dialog.rb:73
+msgid "New"
+msgstr "Ny"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/new_entry_dialog.rb:80
+msgid "From BibTeX"
+msgstr "Fra BibTeX"
+
+#: lib/new_entry_dialog.rb:86
+msgid "From DOI"
+msgstr "Fra DOI"
+
+#: lib/new_entry_dialog.rb:115
+msgid "Insert a BibTeX citation here"
+msgstr "Indsæt en BibTeX-reference her"
+
+#: lib/new_entry_dialog.rb:126
+msgid "Add new Entry"
+msgstr "Tilføj ny indgang"
+
+#: lib/new_entry_dialog.rb:141
+msgid "_Cancel"
+msgstr "_Annullér"
+
+#: lib/new_entry_dialog.rb:149
+msgid "C_reate"
+msgstr "_Opret"
+
+#: lib/new_entry_dialog.rb:189
+msgid "Citation Key"
+msgstr "Referencenøgle"
+
+#: lib/new_entry_dialog.rb:196
+msgid "Citation Type"
+msgstr "Referencetype"
+
+#. TRANSLATORS DOI is a proper name
+#: lib/new_entry_dialog.rb:223
+msgid "DOI"
+msgstr "DOI"
+
+#: lib/recent_file_row.rb:71
+msgid "Remove From Recent Files"
+msgstr "Fjern fra seneste filer"
+
+#: lib/shortcuts_dialog.rb:25
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Generelle"
+
+#: lib/shortcuts_dialog.rb:26
+msgctxt "shortcut window"
+msgid "Bibliography"
+msgstr "Bibliografi"
+
+#: lib/shortcuts_dialog.rb:32
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Vis genveje"
+
+#: lib/shortcuts_dialog.rb:33
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nyt vindue"
+
+#: lib/shortcuts_dialog.rb:34
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Luk vindue"
+
+#: lib/shortcuts_dialog.rb:35
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afslut"
+
+#: lib/shortcuts_dialog.rb:41
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Åbn"
+
+#: lib/shortcuts_dialog.rb:42
+msgctxt "shortcut window"
+msgid "Save"
+msgstr "Gem"
+
+#: lib/shortcuts_dialog.rb:43
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Søg"
+
+#: lib/utils.rb:43
+msgid "Author"
+msgstr "Forfatter"
+
+#: lib/utils.rb:44
+msgid "Year"
+msgstr "År"
+
+#: lib/utils.rb:45
+msgid "Title"
+msgstr "Titel"
+
+#: lib/utils.rb:46
+msgid "Volume"
+msgstr "Bind"
+
+#: lib/utils.rb:47
+msgid "Number"
+msgstr "Nummer"
+
+#: lib/utils.rb:48
+msgid "Pages"
+msgstr "Sider"
+
+#: lib/utils.rb:49
+msgid "Publisher"
+msgstr "Forlag"
+
+#: lib/utils.rb:50
+msgid "Journal"
+msgstr "Tidsskrift"
+
+#: lib/utils.rb:51
+msgid "Address"
+msgstr "Adresse"
+
+#. TRANSLATORS Method of publication, see
+#. https://www.bibtex.com/f/howpublished-field/
+#: lib/utils.rb:54
+msgid "How Published"
+msgstr "Udgivelsesmetode"
+
+#: lib/utils.rb:55
+msgid "Note"
+msgstr "Note"
+
+#: lib/utils.rb:56
+msgid "Book Title"
+msgstr "Bogtitel"
+
+#: lib/utils.rb:57
+msgid "Series"
+msgstr "Serie"
+
+#: lib/utils.rb:58
+msgid "Archive Prefix"
+msgstr "Arkivpræfiks"
+
+#. TRANSLATORS As in digital print
+#: lib/utils.rb:60
+msgid "ePrint"
+msgstr "ePrint"
+
+#. TRANSLATORS Identifier used by arXiv, see
+#. https://arxiv.org/help/hypertex/bibstyles
+#: lib/utils.rb:63
+msgid "Primary Class"
+msgstr "Primær klasse"
+
+#: lib/utils.rb:64
+msgid "Month"
+msgstr "Måned"
+
+#. TRANSLATORS As in chief editor
+#: lib/utils.rb:66
+msgid "Editor"
+msgstr "Redaktør"
+
+#. TRANSLATORS As in association
+#: lib/utils.rb:68
+msgid "Organization"
+msgstr "Organisation"
+
+#: lib/utils.rb:69
+msgid "School"
+msgstr "Skole"
+
+#: lib/utils.rb:70
+msgid "Institution"
+msgstr "Institution"
+
+#: lib/window.rb:166
+msgid "Bibliography saved"
+msgstr "Bibliografi gemt"
+
+#: lib/window.rb:216
+msgid "Main Menu"
+msgstr "Hovedmenu"
+
+#. TRANSLATORS BibTeX is a proper name
+#: lib/window.rb:227
+msgid "Open a BibTeX File"
+msgstr "Åbn en BibTeX-fil"
+
+#: lib/window.rb:228
+msgid "Or drag-and-drop a file"
+msgstr "Eller træk og slip en fil"
+
+#: lib/window.rb:249
+msgid "Manage your Citations"
+msgstr "Håndtér dine referencer"
+
+#: lib/window.rb:263
+msgid "Recent Files"
+msgstr "Seneste filer"
+
+#: lib/window.rb:302
+msgid "Sidebar"
+msgstr "Sidebjælke"
+
+#: lib/window.rb:306
+msgid "Content"
+msgstr "Indhold"
+
+#: lib/window.rb:329
+msgid "Add New Citation"
+msgstr "Tilføj ny reference"
+
+#: lib/window.rb:338
+msgid "Search"
+msgstr "Søg"
+
+#: lib/window.rb:345
+msgid "Secondary Menu"
+msgstr "Sekundær menu"
+
+#: lib/window.rb:355
+msgid "Search…"
+msgstr "Søg …"
+
+#: lib/window.rb:385
+msgid "_Create New Bibliography"
+msgstr "_Opret ny bibliografi"
+
+#: lib/window.rb:400
+msgid "_Save"
+msgstr "_Gem"
+
+#: lib/window.rb:402
+msgid "New _Window"
+msgstr "Nyt _vindue"
+
+#: lib/window.rb:408
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastaturgenveje"
+
+#. TRANSLATORS About dialog
+#: lib/window.rb:410
+msgid "_About Citations"
+msgstr "_Om Citations"
+
+#: lib/window.rb:425
+msgid "_Search in Google Scholar"
+msgstr "_Søg i Google Scholar"
+
+#. TRANSLATORS arXiv is a proper name
+#: lib/window.rb:427
+msgid "_Search in arXiv"
+msgstr "_Søg i arXiv"
+
+#: lib/window.rb:433
+msgid "_Copy BibTeX Entry"
+msgstr "_Kopiér BibTeX-indgang"
+
+#: lib/window.rb:453
+msgid "Create New Bibliography"
+msgstr "Opret ny bibliografi"
+
+#: lib/window.rb:454
+msgid "_Create"
+msgstr "_Opret"
+
+#. TRANSLATORS This a file name, .bib will be appended e.g.
+#. bibliography.bib, please only use alphabetic characters.
+#: lib/window.rb:457
+msgid "bibliography"
+msgstr "bibliografi"
+
+#: lib/window.rb:469
+msgid "BibTeX Files"
+msgstr "BibTeX-filer"
+
+#: lib/window.rb:516
+msgid "An entry with the given citation key already exists"
+msgstr "Der findes allerede en indgang med den givne referencenøgle"
+
+#: lib/window.rb:522
+msgid "Could not add entry"
+msgstr "Kunne ikke tilføje indgang"
+
+#: lib/window.rb:551
+msgid "Citation Deleted"
+msgstr "Reference slettet"
+
+#: lib/window.rb:553
+msgid "Undo"
+msgstr "Fortryd"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:834
+msgid ""
+"Do you want to write all changes to the bibliography before opening the new "
+"one?"
+msgstr "Vil du skrive alle ændringer til bibliografien, før den nye åbnes?"
+
+#: lib/window.rb:835
+msgid "_Open Without Saving"
+msgstr "_Åbn uden at gemme"
+
+#: lib/window.rb:836
+msgid "_Don't Open"
+msgstr "Åbn _ikke"
+
+#: lib/window.rb:837
+msgid "_Save and Open"
+msgstr "_Gem og åbn"
+
+#. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
+#. more detailed.
+#: lib/window.rb:866
+msgid "Do you want to write all changes to the bibliography?"
+msgstr "Vil du skrive alle ændringer til bibliografien?"
+
+#: lib/window.rb:867
+msgid "_Quit Without Saving"
+msgstr "_Afslut uden at gemme"
+
+#: lib/window.rb:868
+msgid "_Don't Quit"
+msgstr "Afslut _ikke"
+
+#: lib/window.rb:869
+msgid "_Save and Quit"
+msgstr "_Gem og afslut"
+
+#. TRANSLATORS Dialog title which informs the user about unsaved changes.
+#: lib/window.rb:900
+msgid "Unsaved Changes"
+msgstr "Ændringer ikke gemt"
+
+#: data/org.rubygtkproject.Citations.desktop.in:3
+msgid "Manage your bibliography"
+msgstr "Håndtér din bibliografi"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.rubygtkproject.Citations.desktop.in:9
+msgid "bibliography;citing;literature;BibTeX;LaTeX;TeX;"
+msgstr "bibliografi;reference;citering;citere;litteratur;BibTeX;LaTeX;TeX;"
+
+#: data/org.rubygtkproject.Citations.desktop.in:18
+msgid "New Window"
+msgstr "Nyt vindue"

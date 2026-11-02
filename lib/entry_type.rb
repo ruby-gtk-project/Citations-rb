@@ -11,6 +11,8 @@ require_relative 'i18n'
 # rather than notes, and the extra fields each one adds to the editor.
 #
 class EntryType
+  include I18n::Translatable
+
   ALL = []
 
   attr_reader :index, :id, :fields
@@ -26,29 +28,29 @@ class EntryType
   # a language change is picked up without rebuilding the enum.
   def translated_name
     case @id
-    when 'article' then I18n.translate('Article')
-    when 'book' then I18n.translate('Book')
-    when 'misc' then I18n.translate('Misc')
-    # NOTE As in conference proceedings, see
+    when 'article' then _('Article')
+    when 'book' then _('Book')
+    when 'misc' then _('Misc')
+    # TRANSLATORS As in conference proceedings, see
     # https://en.wikipedia.org/wiki/Conference_proceeding
-    when 'inproceedings' then I18n.translate('In Proceedings')
-    when 'unpublished' then I18n.translate('Unpublished')
-    # NOTE As in online source
-    when 'online' then I18n.translate('Online')
-    when 'booklet' then I18n.translate('Booklet')
-    when 'conference' then I18n.translate('Conference')
-    when 'inbook' then I18n.translate('In Book')
-    when 'incollection' then I18n.translate('In Collection')
-    # NOTE As in instruction manual
-    when 'manual' then I18n.translate('Manual')
-    when 'masterthesis' then I18n.translate("Master's Thesis")
-    when 'phdthesis' then I18n.translate('PhD Thesis')
-    # NOTE As in conference proceedings, see
+    when 'inproceedings' then _('In Proceedings')
+    when 'unpublished' then _('Unpublished')
+    # TRANSLATORS As in online source
+    when 'online' then _('Online')
+    when 'booklet' then _('Booklet')
+    when 'conference' then _('Conference')
+    when 'inbook' then _('In Book')
+    when 'incollection' then _('In Collection')
+    # TRANSLATORS As in instruction manual
+    when 'manual' then _('Manual')
+    when 'masterthesis' then _("Master's Thesis")
+    when 'phdthesis' then _('PhD Thesis')
+    # TRANSLATORS As in conference proceedings, see
     # https://en.wikipedia.org/wiki/Conference_proceeding
-    when 'proceedings' then I18n.translate('Proceedings')
-    when 'techreport' then I18n.translate('Tech Report')
-    # NOTE As in other kind of source
-    else I18n.translate('Other')
+    when 'proceedings' then _('Proceedings')
+    when 'techreport' then _('Tech Report')
+    # TRANSLATORS As in other kind of source
+    else _('Other')
     end
   end
 
