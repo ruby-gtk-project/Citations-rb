@@ -14,10 +14,11 @@ rows of both are unioned before comparing.
 
 `lib/` on `ruby` now holds a ported file for every component below. The
 survey that opened this file found a bare scaffold; since then the models, the
-helpers, the window, the sidebar, the editor, the preview, the two dialogs and
-the shortcuts dialog have all been written, so the column that mattered on the
-first pass — "does this exist yet" — is now **present** everywhere, and what
-is left to check is parity inside each file rather than its absence.
+helpers, the window, the sidebar, the editor, the preview, the two dialogs,
+the shortcuts dialog, the translation catalogues and the desktop entry have
+all been written, so the column that mattered on the first pass — "does this
+exist yet" — is now **present** everywhere, and what is left to check is
+parity inside each file rather than its absence.
 
 | File | Lines | Unit it carries |
 |---|---:|---|
@@ -65,7 +66,7 @@ Both columns from `component-scan.sh`; upstream's widget column counts the
 | `GAction`s installed | 15 (`app.` 2, `win.` 11, `entry-page.` 2) + 4 `entry-row.` | 24 distinct action names across 34 sites |
 | accelerators | 6 | 6, in `lib/main.rb` |
 | GSettings keys | 8 | 8, in `lib/settings.rb` |
-| `po/` catalogues | 42 locales, 21 POTFILES entries | **0 — `po/` is empty** |
+| `po/` catalogues | 42 locales, 21 POTFILES entries | 42 of 42, under `po/` and `po/<locale>/` |
 
 Widget counts per upstream `.ui` file: `entry_page.ui` 46, `window.ui` 31,
 `citation_preview.ui` 23, `new_entry_dialog.ui` 17, `add_pdf_dialog.ui` 16,
@@ -441,13 +442,13 @@ HTTP `get`. `generate_key` and `sanitize_key` carry upstream's only unit tests.
 | `data/resources/icons/*.svg` | `data/icons/` | assets | yes — under `data/icons/hicolor/scalable/actions/` | `document-text-symbolic`, `external-link-symbolic`, `image-missing-symbolic` — all three are referenced by the UI above |
 | `data/icons/org.gnome.World.Citations*.svg` | `data/icons/` | app icon | yes — `data/icons/hicolor/scalable/apps/` | used by both front-page status pages and `set_default_icon_name` |
 | `data/org.gnome.World.Citations.metainfo.xml.in.in` | `data/` | appstream | yes — `data/org.rubygtkproject.Citations.metainfo.xml` | the about dialog is built `from_appdata` on it |
-| `data/org.gnome.World.Citations.desktop.in.in` | `data/` | desktop entry | **no** | — |
+| `data/org.gnome.World.Citations.desktop.in.in` | `data/` | desktop entry | yes — `data/org.rubygtkproject.Citations.desktop(.in)` | — |
 | `cratebibtex/src/bib.rs` | `lib/bib.rb` | model | yes | the `Gio::ListModel` of entries: parse, save, modified flag, add/remove/find, `key_exists` |
 | `cratebibtex/src/entry.rs` | `lib/entry.rb` | model | yes | one citation: author, title, year, doi, citation-key, entry-type, x-abstract, notes, dynamic extra fields, `from_bibtex`, `serialize`, `format_citation` |
 | `cratebibtex/src/entry_type.rs` | `lib/entry_type.rb` | enum + model | yes | 16 types (Other, Article, Book, Misc, In Proceedings, Unpublished, Online, Booklet, Conference, In Book, In Collection, Manual, Master's Thesis, PhD Thesis, Proceedings, Tech Report), their translated names, `uses_abstract`, and the per-type extra-field lists that drive the extras repeater |
 | `cratebibtex/src/format.rs` | `lib/citation_format.rb` | enum | yes | Plain / Markdown / LaTeX, their names, and `format_authors` |
 | `texer/src/lib.rs`, `texer/src/utils.rs` | `lib/texer.rb` | helper | yes | LaTeX → plain text; every author and title shown in the sidebar and every search URL goes through it |
-| `po/` (42 locales, 21 POTFILES) | `po/` + `lib/i18n.rb` | translations | **partly** — `lib/i18n.rb` binds the domain and every string goes through `_`/`p_`, but `po/` is empty: 0 of 42 catalogues | gettext domain `citations`; message contexts (`shortcut window`) and translator comments are part of the catalogue |
+| `po/` (42 locales, 21 POTFILES) | `po/` + `lib/i18n.rb` | translations | yes | gettext domain `citations`; `lib/i18n.rb` binds the domain and every string goes through `_`/`p_`; all 42 catalogues are present under `po/` |
 
 ---
 
@@ -455,12 +456,10 @@ HTTP `get`. `generate_key` and `sanitize_key` carry upstream's only unit tests.
 
 The order the port was written in is the dependency order the first survey
 called for, and it held: models and helpers, then the selection model and the
-sidebar, then the window, then the editor, the preview and the dialogs. What
-remains is not a missing component but the parity work inside the files that
-exist, plus the two inputs that were never ported:
-
-- **`po/` is empty.** 42 upstream catalogues, 21 POTFILES entries, message contexts (`shortcut window`) and translator comments. The msgids are in place on the Ruby side; the catalogues are not. `translation-parity` owns this.
-- **No desktop entry.** `data/org.gnome.World.Citations.desktop.in.in` has no counterpart under `data/`.
+sidebar, then the window, then the editor, the preview and the dialogs, then
+the translation catalogues and the desktop entry. Every upstream component and
+input now has a counterpart; what remains is parity work inside the files
+that exist (see `component-parity` and `test-parity`), not an absent file.
 
 ## Known deviations from upstream, recorded as gaps
 
