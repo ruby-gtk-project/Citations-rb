@@ -1,87 +1,109 @@
-# Component identification — Citations (audit pass, 2026-11-07, round 2)
+# Component identification — Citations (audit pass, 2026-11-07, round 3)
 
 | | |
 |---|---|
 | Upstream | `origin/master` |
-| Port | `ruby` @ `e4ebd9f` |
-| Runtime gate this round | `drive_ok=true`, 74/74 checks, 0 failed, 15 components claimed |
+| Port | `ruby` @ `d989da7` |
+| Runtime gate this round | `drive_ok=true`, 255 checks (78 drive + 93 models + 84 texer), 0 failed, 14 components claimed |
 
-This is a second pass. The previous round's three misses — the dropped
-gschema file, the undriven Add PDF dialog, and the `EntryList#filter`
-GObject-CRITICAL — were all addressed in commit `e4ebd9f` and are
-re-verified below as fixed, not re-opened. This pass's job was to find what
-that commit did *not* catch.
+This pass re-ran the gate independently (`nix develop --command xvfb-run -a
+ruby test/drive_main_window.rb`, `test/test_models.rb`, `test/test_texer.rb`)
+and got 78/78, 93/93, 84/84 — 255 total, matching the stated gate exactly —
+with no `GLib-GObject-CRITICAL` line in stderr. This is not a renumbering:
+the drive script's checks 33-42 actually open the Add PDF dialog, reject a
+bad URL, cancel, then reopen it and drive a real loopback-HTTP download to
+completion, asserting the PDF lands on disk and the preview texture is real.
 
-## Prior misses, re-verified fixed
+## Finding — two of the last round's checked-in reports are stale, not current
 
-| Miss (round 1) | Status | Evidence |
-|---|---|---|
-| No `gschema.xml.in` file, 7 summary strings unported | **fixed** | `data/org.rubygtkproject.Citations.gschema.xml.in` exists, all 8 keys and all 7 `<summary>` strings byte-identical to upstream's (including upstream's own duplicate "Default template for book citation" on both template keys, kept as-is) |
-| `lib/add_pdf_dialog.rb` had zero runtime coverage | **fixed** | `test/drive_main_window.rb` checks 33–38: opens the dialog from the empty PDF row, confirms it is titled "Add PDF" and empty, types a bad URL, confirms the download is rejected without a network call and the entry keeps the error style, cancels, confirms the entry is still PDF-less |
-| `GLib-GObject-CRITICAL` on every `EntryList#filter` build | **fixed** | `lib/entry_list.rb` now builds `Gtk::StringFilter.new` with a nil expression and assigns the real one through the setter; `test/gtk_driver.rb` now watches stderr for the whole drive run and fails on any CRITICAL line — reproduced a clean `DRIVE OK` with 74/74 this pass, no CRITICAL emitted |
-| RSpec banner advertised a suite that cannot load, with zero spec files | **fixed** | `spec/` is gone entirely; the dev-shell banner now names `test/test_models.rb` and `test/test_texer.rb` (the real 22 ported upstream tests) and the `xvfb-run` requirement; see `TEST_PARITY.md` |
+`COMPONENT_IDENTIFICATION.md` and `COMPONENT_PARITY.md` as committed at the
+head of `ruby` (prior to this pass) both asserted, as their lead and only
+open finding, that the devel-profile distinction — the `devel` CSS class,
+the two status-page icons, the About dialog's version string, all gated on
+upstream's `IS_DEVEL` / the port's `Config::IS_DEVEL` — was dropped with no
+code reading the constant at all.
 
-## New miss — the devel-profile distinction is silently absent
+That was true when those reports were written (commit `1ed4e33`, 15:29:23).
+It stopped being true at `19d4cff` (16:36:15), over an hour before those same
+report files were next touched (`7a7c438`/`31b14ee` at 20:26, `d989da7` at
+21:15) — and none of those three later commits re-checked or corrected the
+devel-gap section, even though `d989da7` edited the very same
+`COMPONENT_PARITY.md` file for an unrelated paragraph two sections below it.
 
-Upstream's `config.rs.in` carries `IS_DEVEL: bool`, set by `meson.build`
-from the build profile, and used in exactly two places in `src/window.rs`:
+Verified directly against the current tree, not against any report:
 
-1. **`constructed()` (line ~234)**: when `IS_DEVEL`, adds the `devel` CSS
-   class to the window (the red diagonal "Devel" ribbon GNOME apps show in
-   nightly/debug builds) and sets both empty-state status pages'
-   `icon-name` to the app id's full-colour icon.
-2. **`show_about_dialog()` (line ~677)**: when `IS_DEVEL`, sets the About
-   dialog's version string explicitly to the full `VERSION` (e.g. with a
-   git commit suffix); otherwise the version shown is whatever
-   `Adw::AboutDialog::from_appdata` derives from the metainfo release list.
+```
+$ grep -n "IS_DEVEL" lib/window.rb lib/about_dialog.rb
+lib/window.rb:53:      if Config::IS_DEVEL
+lib/window.rb:229:      if Config::IS_DEVEL
+lib/window.rb:256:      if Config::IS_DEVEL
+lib/about_dialog.rb:103:      if Config::IS_DEVEL
+```
 
-The port's `lib/config.rb` carries the same constant —
-`Config::IS_DEVEL = false` — but it is **read nowhere**. `grep -rn
-'IS_DEVEL' lib/ exe/` returns only its own definition.
+All three sites upstream gates — `win.add_css_class('devel')`, both status
+pages' `page.icon_name = Config::APP_ID`, and the About dialog's explicit
+`@version` override — are now conditioned on `Config::IS_DEVEL` in exactly
+the shape upstream's `window.rs`/`show_about_dialog` use. This is fixed, and
+has been fixed since `19d4cff`. The two report files calling it an open gap
+with no other evidence than their own prior text were simply never
+re-verified against the code they describe. This is corrected in this
+pass's `COMPONENT_PARITY.md` and recorded as the headline finding in
+`ACCOUNTABILITY_ENSURANCE.md`: a report that outlives the code state it
+describes is a false claim the moment the code moves, whichever direction
+it moves in.
 
-- `lib/window.rb` never adds the `devel` CSS class under any condition —
-  confirmed against the full component scan: `devel` is the one CSS class
-  present in upstream's scan output and absent from the port's.
-- `lib/window.rb`'s `no_recent_files_status_page` and
-  `recent_files_status_page` both set `page.icon_name = Config::APP_ID`
-  **unconditionally** (lines 225, 250) — upstream only does this when
-  `IS_DEVEL`; in a stable build those status pages fall back to GTK's
-  default icon rendering, not the full-colour app icon. The port always
-  shows the devel-only icon, in every build.
-- `lib/about_dialog.rb#initialize` sets `about.version = @version`
-  unconditionally (line 58) with no `IS_DEVEL` gate at all.
+## Second staleness — `component-inventory.md`'s item 5 is an unresolved question that is already answered in code
 
-This is a real, three-site behavioural gap, present in a file that already
-defines the exact constant upstream gates on and never consults it. Nothing
-in `lib/window.rb`, `lib/about_dialog.rb`, `lib/config.rb`'s comment, or any
-`.reports/` file mentions this tradeoff — it was simply never ported. See
-`COMPONENT_PARITY.md` for the full before/after table and
-`ACCOUNTABILITY_ENSURANCE.md` for why "never mentioned" is worse than an
-excuse.
+`component-inventory.md`'s "Known deviations" item 5 reads: *"Network from
+the main loop. 'From DOI' (doi2bib) and 'Add From URL' fetch over HTTP; the
+Ruby path needs checking for main-loop safety under a slow or dead
+network."* — phrased as an open question. Reading the two sites it names:
 
-## Held up this pass
+```
+lib/add_pdf_dialog.rb:238:      Thread.new do
+lib/add_pdf_dialog.rb:264:      GLib::Idle.add do
+lib/new_entry_dialog.rb:284:        Thread.new do
+lib/new_entry_dialog.rb:287:            GLib::Idle.add do
+```
 
-Full widget/CSS/signal/action scan re-run both sides this pass
-(`scripts/component-scan.sh`, symbol-table assisted). Outside the `devel`
-CSS class, every CSS class upstream's scan reports has a port counterpart
-and vice versa; all 8 gschema keys, all `win.*`/`app.*`/`entry-page.*`/
-`entry-row.*` actions, and all 6 accelerators (`app.quit`, `app.new-window`,
-`win.open('')`, `win.save`, `win.search`, `window.close`) match exactly.
-The shortcuts dialog (`shortcuts.ui` ↔ `lib/shortcuts_dialog.rb`) matches
-item-for-item, including the honestly-documented `app.shortcuts`
-self-install workaround for the missing libadwaita binding. The six
-built-in citation templates plus Custom, the 1:1 Rust-crate-to-`lib/`-file
-mapping (`cratebibtex` → `bib.rb`/`entry.rb`/`entry_type.rb`/
-`citation_format.rb`, `texer` crate → `texer.rb`) were all re-checked and
-held up. The `Gtk.SourceView` → plain `Gtk.TextView` syntax-highlighting
-downgrade this file used to flag in `new_entry_dialog.rb`/
-`citation_preview.rb` is fixed: both now use real `GtkSource::View`/
-`Buffer`, and `entry_page.rb`/`add_pdf_dialog.rb` use real `Poppler`
-rendering/validation (see `COMPONENT_PARITY.md`).
+Both do the download/HTTP fetch on a background `Thread`, and resume on the
+main loop via `GLib::Idle.add` to touch widgets — the standard main-loop-safe
+pattern, and the one the drive suite's checks 39-42 now exercise end to end
+for the Add PDF path (a real loopback download). The "needs checking"
+language is stale residue from before that pattern was written; it should
+read as resolved, not as an open item. Not a functional gap, but another
+instance of the same report-staleness failure as above.
+
+## Held up this pass (re-verified, not re-asserted)
+
+- 255/255 runtime checks, independently re-run, zero stderr CRITICAL.
+- All 8 `gschema` keys/defaults/`<summary>` strings present and byte-identical
+  (`data/org.rubygtkproject.Citations.gschema.xml.in` exists).
+- `GtkSource::View`/`Buffer` and `Poppler::Document` are real bindings, not
+  stand-ins — confirmed in `lib/citation_preview.rb`, `lib/new_entry_dialog.rb`,
+  `lib/entry_page.rb`, `lib/add_pdf_dialog.rb`, and exercised by drive checks
+  32 (preview rendering) and 42 (PDF texture after a real download).
+  `.rspec` (dead RSpec config for a runner this repo no longer has) is gone.
+- 22 upstream `#[test]` functions counted directly from `origin/master`
+  (`cratebibtex/src/entry.rs`:1, `format.rs`:4, `lib.rs`:1, `src/utils.rs`:2,
+  `texer/src/tests.rs`:14 = 22) against 29 `T.test(...)` blocks across
+  `test/test_models.rb`/`test/test_texer.rb` (15+14) — a superset, with the
+  extra 7 being added coverage (`bib::list_model`,
+  `bib::round_trips_through_a_file`, `entry_type::fields_and_names`,
+  `format::kinds`, `utils::urls_and_filenames`,
+  `settings::defaults_match_the_upstream_schema`, plus one extra split of
+  `entry.rs`'s single test into `entry::format`/`entry::serialize`), not a
+  shortfall.
+- 43/43 `.po` files present on both sides (basename diff empty).
+- No `TODO`/`FIXME`/`not implemented`/`for now`/`in a future` in `lib/` or
+  `exe/` (`grep -rniE` over both, clean).
 
 ## Verdict
 
-Not clean. Three prior misses confirmed fixed. One new, unexcused,
-undocumented gap found: the devel-profile distinction (CSS class, two
-status-page icons, About dialog version string) that upstream gates on
-`IS_DEVEL` and the port's own `Config::IS_DEVEL` constant is never read.
+Not clean. No new functional component gap found this pass — the one real
+gap carried from round 2 (the devel-profile distinction) is confirmed fixed
+in code. What is not clean is the reporting itself: two files committed on
+`ruby` asserted an open gap that had already been closed for five hours
+before the files were last edited, and a third's "known deviation" item is
+phrased as an open question the code already answers. See
+`ACCOUNTABILITY_ENSURANCE.md`.

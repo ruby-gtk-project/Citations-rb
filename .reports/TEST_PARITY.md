@@ -1,74 +1,76 @@
-# Test parity — Citations (audit pass, 2026-11-07, round 2)
+# Test parity — Citations (audit pass, 2026-11-07, round 3)
 
 | | |
 |---|---|
 | Upstream | `origin/master` |
-| Port | `ruby` @ `e4ebd9f` |
+| Port | `ruby` @ `d989da7` |
 | Upstream `#[test]` cases | 22 |
-| Named by a port test | 22/22 (unchanged from round 1's census, re-confirmed) |
-| Test commands run this pass | `nix develop --command xvfb-run -a ruby test/test_models.rb` → 93/93; `nix develop --command xvfb-run -a ruby test/test_texer.rb` → 84/84; `nix develop --command xvfb-run -a ruby test/drive_main_window.rb` → 74/74, `DRIVE OK`, no stderr CRITICAL lines |
+| Named by a port test | 29 `T.test(...)` blocks, a superset covering all 22 |
+| Test commands run this pass, fresh | `nix develop --command xvfb-run -a ruby test/test_models.rb` → 93/93; `nix develop --command xvfb-run -a ruby test/test_texer.rb` → 84/84; `nix develop --command xvfb-run -a ruby test/drive_main_window.rb` → 78/78, `DRIVE OK`, no stderr CRITICAL |
 
-## Round 1's gap, re-verified fixed
+This suite is not "ported but never executed" — it was run, in full, by
+this pass, independently of any prior report's claimed numbers.
 
-Round 1 flagged two problems: the dev-shell banner never mentioned
-`test/test_models.rb`/`test/test_texer.rb` (the files carrying all 22
-ported upstream tests) and never said they need `xvfb-run`; and the banner
-advertised a dead RSpec harness (`spec/spec_helper.rb` requiring
-`kettle/test/rspec`, zero `*_spec.rb` files anywhere) that could not even
-load.
-
-Both are fixed in `e4ebd9f`:
+## Upstream test census, counted directly from `origin/master`
 
 ```
-$ nix develop --command xvfb-run -a ruby test/test_models.rb
-Citations devshell — ruby 3.4.9
-run the app:    xvfb-run ruby exe/citations
-drive the app:  xvfb-run ruby test/drive_*.rb
-unit tests:     xvfb-run ruby test/test_models.rb && xvfb-run ruby test/test_texer.rb
-                (xvfb-run is needed here too: lib/bib.rb requires gtk4 unconditionally)
-93 of 93 checks passed in models
-models OK
+$ for f in cratebibtex/src/{entry,format,lib}.rs src/utils.rs texer/src/tests.rs; do
+    git show origin/master:"$f" | grep -c '#\[test\]'
+  done
+1   # entry.rs
+4   # format.rs
+1   # lib.rs
+2   # src/utils.rs
+14  # texer/src/tests.rs
 ```
 
-`spec/` no longer exists (`ls spec/` → "No such file or directory"); the
-banner's third line now names the real unit-test entry points and the
-`xvfb-run` requirement explicitly, rather than an RSpec command that never
-worked. This pass re-ran both unit suites fresh and both still pass in
-full (93/93, 84/84) — the 22-test bijection against upstream's `#[test]`
-functions (`cratebibtex`'s `entry.rs`/`format.rs`/`lib.rs`, `src/utils.rs`,
-`texer/src/tests.rs`) that round 1 spot-checked still holds; nothing in
-`e4ebd9f` touched the test files' content, only the banner and the dead
-`spec/` scaffolding.
+22 total. `test/test_models.rb` carries 15 `T.test(...)` blocks and
+`test/test_texer.rb` carries 14, 29 combined. The extra 7 beyond upstream's
+22 are added coverage, named and matched by reading, not assumed from the
+count alone:
 
-One minor, cosmetic leftover: `.rspec` still exists and still configures
-`--format html --out results/...` / `--format RspecJunitFormatter`
-formatters for a runner the repo no longer advertises or can invoke
-(no `rspec` gem is required anywhere, no spec files exist). It is dead
-config, not a false claim — nothing in the dev shell, `README`, or banner
-points at it — so it is noted here as residue, not scored as a gap.
+| Port test | Maps to |
+|---|---|
+| `format::test_clear_citation`, `format::test_format_authors`, `format::test_clear_latex`, `format::test_clear_markdown` | `format.rs`'s 4 |
+| `cratebibtex::test` | `lib.rs`'s 1 |
+| `entry::format`, `entry::serialize` | `entry.rs`'s 1 (split into two assertions) |
+| `utils::test_generate_key`, `utils::test_sanitize_key` | `src/utils.rs`'s 2 |
+| `bib::list_model`, `bib::round_trips_through_a_file`, `entry_type::fields_and_names`, `format::kinds`, `utils::urls_and_filenames`, `settings::defaults_match_the_upstream_schema` | added, no upstream `#[test]` counterpart — extra coverage, not a gap |
+| `test/test_texer.rb`'s 14 names | 1:1 against `texer/src/tests.rs`'s 14, by name (`parse_method_name`, `parse_method_with_arg`, `parse_method_without_arg`, `parse_method`, `parser`, `test_35`, `test_46`, `delimited_by_brackets`, `texer`, `multispacer`, `till_symbols_no_ws_once`, `till_symbols_no_ws`, `tag_consecutive_spaces`, `test_59`) |
 
-## Drive suite coverage, re-counted
+All 22 upstream cases are represented. 0 are missing.
 
-74 checks, 15 components per this round's gate (up from 65/14 in round 1
-— the +9 checks and +1 component are the Add PDF dialog driving added in
-`e4ebd9f`, confirmed by reading `test/drive_main_window.rb` checks 33–38 and
-counting: 6 new assertions plus the "opens from the empty PDF row" and
-"the add pdf dialog opens" step headers). This closes round 1's
-"`lib/add_pdf_dialog.rb` is unverified" finding specifically — it is now
-inside the denominator, not outside it.
+## Drive suite
 
-No new undriven component was found this pass that wasn't already a known,
-documented limitation (see `COMPONENT_PARITY.md`'s note on the Add PDF
-dialog's happy-download path still being unexercised — a narrower,
-secondary gap inside an otherwise-driven component, not an unverified
-component in the round-1 sense).
+78 checks, 14 components per this round's gate — down from round 2's
+reported 74/15. This pass did not chase that exact number against any file
+(no `components.json` or similar is tracked in the repo; "components" is
+an external accounting this report cannot independently recompute), but it
+did re-verify the two things that number could be hiding:
+
+- **No regression in what is driven.** Every component round 2's drive
+  script exercised is still exercised: recent files, the sidebar, the
+  editor (extras, preview, PDF row), the Add PDF dialog's reject path, the
+  custom template editor, opening a second window from argv.
+- **More is driven, not less, versus round 2's 74.** The Add PDF dialog's
+  successful-download path (checks 39-42) is new since round 2 and is a
+  real gain in coverage: a loopback HTTP server, a real one-page PDF
+  built with `Cairo::PDFSurface`, the download completing, the PDF
+  landing on disk, and the preview rendering a real `Gdk::Texture`.
+
+The devel-profile branch (`Config::IS_DEVEL` true) is not driven by any
+check on either round's suite — see `COMPONENT_PARITY.md`. That is a real
+coverage gap in the gate: the three sites behave correctly on inspection,
+but no check ever flips the flag and asserts on the CSS class, the icon, or
+the About dialog version actually changing. Noted here because "255/255"
+is otherwise read as "nothing is unverified," and that one branch is.
 
 ## Verdict
 
-22/22 upstream unit tests present, named, and passing under the correct
-(now correctly documented) invocation. The drive suite is 74/74 and now
-includes the one component round 1 found completely unverified. The dead
-RSpec scaffolding and its false banner line are gone. Not fully clean only
-because of the cosmetic `.rspec` leftover and the Add PDF dialog's
-unexercised success path noted above — neither is a suite that fails to
-run, so this report is otherwise clean on the question this skill asks.
+Clean on the question this skill asks directly: every upstream test is
+ported, named, and the suite was actually executed this pass (not merely
+claimed) — 255/255 across all three entry points, 0 failures, re-run
+independently rather than trusted from a prior report. The one standing gap
+is coverage of the devel-profile branch, which is a gate-coverage note
+rather than a test-parity failure (the behaviour it would exercise already
+has component parity per `COMPONENT_PARITY.md`).
