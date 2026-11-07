@@ -1,4 +1,5 @@
 data/org.rubygtkproject.Citations.desktop.in
+data/org.rubygtkproject.Citations.gschema.xml.in
 lib/about_dialog.rb
 lib/add_pdf_dialog.rb
 lib/citation_format.rb

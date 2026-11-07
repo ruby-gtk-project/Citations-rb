@@ -665,3 +665,32 @@ msgstr ""
 #: data/org.rubygtkproject.Citations.desktop.in:18
 msgid "New Window"
 msgstr ""
+
+#: data/org.rubygtkproject.Citations.gschema.xml.in:5
+msgid "Window width"
+msgstr ""
+
+#: data/org.rubygtkproject.Citations.gschema.xml.in:9
+msgid "Window height"
+msgstr ""
+
+#: data/org.rubygtkproject.Citations.gschema.xml.in:13
+msgid "Window maximized state"
+msgstr ""
+
+#: data/org.rubygtkproject.Citations.gschema.xml.in:17
+msgid "List of paths of recent files"
+msgstr ""
+
+#: data/org.rubygtkproject.Citations.gschema.xml.in:21
+#: data/org.rubygtkproject.Citations.gschema.xml.in:25
+msgid "Default template for book citation"
+msgstr ""
+
+#: data/org.rubygtkproject.Citations.gschema.xml.in:29
+msgid "Default template kind for citations"
+msgstr ""
+
+#: data/org.rubygtkproject.Citations.gschema.xml.in:33
+msgid "Default template format for citations"
+msgstr ""

@@ -57,6 +57,7 @@ module GtkDriver
       @failed_checks = []
       @errored_steps = []
       @window_block = nil
+      @stderr_criticals = []
     end
 
     # --- Registered from inside the block ---------------------------------
@@ -127,16 +128,54 @@ module GtkDriver
     def run
       yield(self, app_object)
 
-      app_object.build.tap do |application|
-        application.signal_connect('activate') { schedule(application) }
-        arm_watchdog(application)
-        application.run([])
+      with_stderr_watched do
+        app_object.build.tap do |application|
+          application.signal_connect('activate') { schedule(application) }
+          arm_watchdog(application)
+          application.run([])
+        end
       end
 
       report
     end
 
     private
+
+      # GLib/GObject-CRITICAL warnings (an assertion failing inside a C call,
+      # such as a bad argument to a GObject constructor) land on the process's
+      # stderr, not on anything a Ruby `rescue` ever sees, so a passing check
+      # list can hide a live defect. This re-homes fd 2 onto a pipe for the
+      # whole app run, tees every line back to the real stderr so nothing is
+      # lost from view, and remembers any CRITICAL line for `report` to fail
+      # the drive on.
+      def with_stderr_watched
+        read_end, write_end = IO.pipe
+        real_stderr = STDERR.dup
+        STDERR.reopen(write_end)
+        write_end.close
+
+        reader = Thread.new do
+          begin
+            read_end.each_line do |line|
+              real_stderr.write(line)
+              if line.include?('CRITICAL')
+                @stderr_criticals << line.strip
+              end
+            end
+          rescue IOError
+            nil
+          end
+        end
+
+        yield
+      ensure
+        STDERR.reopen(real_stderr)
+        real_stderr.close
+        unless read_end.closed?
+          read_end.close
+        end
+        reader&.join(5)
+      end
 
       def schedule(application)
         index = 0
@@ -204,8 +243,9 @@ module GtkDriver
         end
         @failed_checks.each { |check| puts "  failed check: #{check}" }
         @errored_steps.each { |step| puts "  errored step: #{step}" }
+        @stderr_criticals.uniq.each { |line| puts "  stderr CRITICAL: #{line}" }
 
-        (@failed_checks + @errored_steps).length.then do |total|
+        (@failed_checks + @errored_steps + @stderr_criticals).length.then do |total|
           puts(total.zero? ? 'DRIVE OK' : "DRIVE FAILED (#{total})")
           exit(total.zero? ? 0 : 1)
         end

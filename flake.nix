@@ -193,7 +193,10 @@
             # to support Ruby but only shells out to this, so without it
             # `xgettext --language=Ruby` fails.
             pkgs.rubyPackages_3_4.gettext
-            # The spec runner. The suite is plain RSpec, so this is enough.
+            # The port's own tests (test/test_models.rb, test/test_texer.rb,
+            # test/drive_*.rb) are dependency-free plain Ruby scripts, not
+            # RSpec — see test/test_helper.rb for why. This stays only for the
+            # generic kettle-dev Rakefile tasks that expect it to be present.
             pkgs.rubyPackages_3_4.rspec
             # This machine may have no display server at all, so the shell
             # carries one it can start itself: `xvfb-run ruby exe/<app>` both
@@ -212,9 +215,10 @@
             [ -d data/schemas ] && export GSETTINGS_SCHEMA_DIR="$PWD/data/schemas"
             unset BUNDLE_GEMFILE BUNDLE_FROZEN
             echo "Citations devshell — ruby $(ruby -e 'print RUBY_VERSION')"
-            echo "run the app:   xvfb-run ruby exe/citations"
-            echo "drive the app: xvfb-run ruby test/drive_*.rb"
-            echo "run the specs: ruby -e 'require \"rspec/core\"; exit RSpec::Core::Runner.run([\"--format\", \"progress\", \"--require\", \"spec_helper\", \"spec\"])'"
+            echo "run the app:    xvfb-run ruby exe/citations"
+            echo "drive the app:  xvfb-run ruby test/drive_*.rb"
+            echo "unit tests:     xvfb-run ruby test/test_models.rb && xvfb-run ruby test/test_texer.rb"
+            echo "                (xvfb-run is needed here too: lib/bib.rb requires gtk4 unconditionally)"
           '';
         };
       });

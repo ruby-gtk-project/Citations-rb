@@ -52,7 +52,11 @@ class EntryPage
     @syncing = false
   end
 
-  attr_reader :entry
+  # `pdf_dialog` exposes whichever AddPdfDialog is currently on screen, the
+  # way `entry` exposes the citation on screen: there is at most one at a
+  # time, and a driver script needs to reach into it (its URL row, its
+  # error labels) the same way it reaches into any other memoized widget.
+  attr_reader :entry, :pdf_dialog
 
   def build
     bin.tap do |root|
@@ -720,12 +724,17 @@ class EntryPage
 
     def present_add_pdf_dialog
       AddPdfDialog.new(@entry.citation_key).tap do |dialog|
+        @pdf_dialog = dialog
+
         dialog.on_pdf_set do
           setup_pdf
           @on_toast.call(_('PDF added'))
         end
 
-        dialog.build.present(bin.root)
+        dialog.build.tap do |widget|
+          widget.signal_connect('closed') { @pdf_dialog = nil }
+          widget.present(bin.root)
+        end
       end
     end
 

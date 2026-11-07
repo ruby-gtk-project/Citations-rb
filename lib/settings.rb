@@ -6,13 +6,21 @@ require 'fileutils'
 # Settings holds the keys of upstream's GSettings schema.
 #
 # Ported from upstream's data/org.gnome.World.Citations.gschema.xml.in: the
-# same eight keys, with the same defaults and the same meanings.
+# same eight keys, with the same defaults and the same meanings. The schema
+# file itself, with its seven translatable <summary> strings, is ported
+# separately to data/org.rubygtkproject.Citations.gschema.xml.in; nothing
+# here compiles or installs it.
 #
-# Upstream reads them through gio::Settings, which needs a compiled schema
-# installed into the system's glib-2.0/schemas directory; requiring an install
-# step before the app can run from a checkout is worse than the alternative, so
-# the same keys are backed by a small JSON file under XDG_CONFIG_HOME. The
-# change notification the recent files list relies on is kept.
+# Upstream reads the keys through gio::Settings, backed by that schema
+# compiled into the system's glib-2.0/schemas directory. I did not port that:
+# this class reads and writes the same eight keys from a small JSON file
+# under XDG_CONFIG_HOME instead. The cost I am naming, not glossing over, is
+# that a real GSettings schema gives every key a type the compiler enforces,
+# a `gsettings` CLI and dconf-editor entry for free, and change notification
+# that works across processes; this JSON file gives none of that — the
+# `connect_changed` below only notifies watchers inside this same process.
+# I chose it anyway because it needs no install step for a checkout to run,
+# which matters more here than those properties do.
 #
 class Settings
   DEFAULTS = {

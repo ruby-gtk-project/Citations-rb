@@ -300,6 +300,47 @@ GtkDriver.drive(app, shots: 'tmp/shots', interval: 400) do |d, application|
     d.shot('13b-editor-box', page.editor_box)
   end
 
+  d.step('the add pdf dialog opens from the empty PDF row') do
+    win.call.entry_page.widget.activate_action('entry-page.set-pdf', nil)
+  end
+
+  d.step('the add pdf dialog is up, titled and empty') do
+    win.call.entry_page.pdf_dialog.then do |pdf_dialog|
+      d.check('the dialog object exists') { !pdf_dialog.nil? }
+      d.check('it is titled Add PDF') { pdf_dialog&.dialog&.title == 'Add PDF' }
+      d.check('the URL row starts empty') { pdf_dialog&.pdf_url_entry_row&.text == '' }
+      d.check('no download is in flight yet') { !pdf_dialog&.progress_bar&.visible? }
+      d.shot('13c-add-pdf-dialog', pdf_dialog&.dialog)
+    end
+  end
+
+  d.step('typing a non-PDF URL into the add pdf dialog') do
+    win.call.entry_page.pdf_dialog.pdf_url_entry_row.text = 'not-a-url'
+  end
+
+  d.step('attempting the download rejects the bad URL without a network call') do
+    win.call.entry_page.pdf_dialog.then do |pdf_dialog|
+      pdf_dialog.download_button.clicked
+      d.check('the entry row took the error style') do
+        pdf_dialog.pdf_url_entry_row.has_css_class?('error')
+      end
+      d.check('the dialog did not close itself') { !win.call.entry_page.pdf_dialog.nil? }
+    end
+  end
+
+  d.step('cancelling the add pdf dialog') do
+    win.call.entry_page.pdf_dialog.dialog.close
+  end
+
+  d.step('the entry is left without a PDF after cancelling') do
+    page = win.call.entry_page
+    d.check('the dialog is gone') { page.pdf_dialog.nil? }
+    d.check('the PDF stack still offers to add one') do
+      page.pdf_stack.visible_child == page.pdf_add_list_box
+    end
+    d.check('the citation still has no PDF on disk') { !Utils.has_pdf?(page.entry.citation_key) }
+  end
+
   d.step('switching the citation template changes the rendering') do
     win.call.entry_page.citation_preview.template_drop_down.selected = 1
   end

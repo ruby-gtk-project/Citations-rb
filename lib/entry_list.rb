@@ -173,10 +173,15 @@ class EntryList
     @filter_model ||= Gtk::FilterListModel.new(nil, nil)
   end
 
+  # Gtk::StringFilter.new(expression) triggers a GLib-GObject-CRITICAL
+  # (g_object_ref: assertion 'G_IS_OBJECT (object)' failed) in the Ruby
+  # bindings: the constructor wrapper tries to ref the boxed GtkExpression as
+  # though it were a GObject. Building the filter with a nil expression and
+  # assigning the real one through the property setter afterward takes a
+  # different, correct code path and is silent.
   def filter
-    @filter ||= Gtk::StringFilter.new(
-      Gtk::PropertyExpression.new(Entry, nil, 'search-text'),
-    ).tap do |string_filter|
+    @filter ||= Gtk::StringFilter.new(nil).tap do |string_filter|
+      string_filter.expression = Gtk::PropertyExpression.new(Entry, nil, 'search-text')
       string_filter.match_mode = Gtk::StringFilterMatchMode::SUBSTRING
       string_filter.ignore_case = true
     end
