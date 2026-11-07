@@ -1,85 +1,76 @@
-# Translation parity — Citations (audit pass, 2026-11-07)
+# Translation parity — Citations (audit pass, 2026-11-07, round 2)
 
 | | |
 |---|---|
 | Upstream | `origin/master` |
-| Port | `ruby` @ `b9516f9` |
-| Upstream `.po` files | 43 (`po/*.po`), matching `LINGUAS` exactly |
-| Port `.po` files | 43 — `diff` of the basename lists is empty |
-| Upstream messages (rough re-census, this pass) | ~154–159 distinct keys (154 by direct `.po` msgid count on `en_GB.po`, excluding the header and `msgid_plural` rows; this pass's regex census over `.rs`/`.ui`/gschema/metainfo/desktop found 159 before excluding `<releases>` content, which is correct — release notes are not extracted per gettext's ITS rules) |
-| Port messages reached by this census | 144 literal-argument calls found; 7 confirmed absent; the remaining difference is accounted for below (not a gap) |
+| Port | `ruby` @ `e4ebd9f` |
+| Upstream `.po` files | 43, matching `LINGUAS` exactly |
+| Port `.po` files | 43 — basename diff empty (unchanged from round 1) |
 
-Note: no `scripts/catalogue.rb`/`msgid-census.sh` exist in this fork (the
-skill's reference tooling is not vendored here), so this pass wrote an
-equivalent ad hoc extractor (Python regex over `gettext(`/`ngettext(`/
-`pgettext(` on the upstream side and `_(`/`n_(`/`s_(`/`p_(` on the port
-side) rather than skip the census. The numbers below are a lead, confirmed
-by reading every flagged row's source, not a machine-verified catalogue
-diff — a real `catalogue.rb` run would be more exact and should replace
-this the next time the skill's scripts are available in this fork.
+## Round 1's 7-message gap, re-verified fixed
 
-## Confirmed gap — 7 messages with no port counterpart, anywhere
+Round 1 found 7 msgids with no port counterpart anywhere, all from
+`data/org.gnome.World.Citations.gschema.xml.in`, which had no port file at
+all. `e4ebd9f` ported the file to
+`data/org.rubygtkproject.Citations.gschema.xml.in`:
 
-All 7 come from `data/org.gnome.World.Citations.gschema.xml.in`, which has
-no file at all on the `ruby` branch (see `COMPONENT_IDENTIFICATION.md`):
+```
+$ diff <(grep -oP '<summary>\K[^<]+' /tmp/.../upstream/data/org.gnome.World.Citations.gschema.xml.in) \
+       <(grep -oP '<summary>\K[^<]+' data/org.rubygtkproject.Citations.gschema.xml.in)
+(empty)
+```
 
-| msgid | Upstream site |
-|---|---|
-| `Window width` | gschema `window-width` summary |
-| `Window height` | gschema `window-height` summary |
-| `Window maximized state` | gschema `is-maximized` summary |
-| `List of paths of recent files` | gschema `recent-files` summary |
-| `Default template for book citation` | gschema `custom-book-template` **and** `custom-article-template` summaries (upstream itself has a duplicate/wrong summary on the second key — not a port bug, noted for completeness) |
-| `Default template kind for citations` | gschema `template-kind` summary |
-| `Default template format for citations` | gschema `format-kind` summary |
+All 7 strings — `Window width`, `Window height`, `Window maximized state`,
+`List of paths of recent files`, `Default template for book citation`
+(appearing twice, upstream's own duplicate kept as-is and noted in the
+port file's comment rather than silently "fixed"), `Default template kind
+for citations`, `Default template format for citations` — are
+byte-identical in the new file. `po/POTFILES.in` was updated to include it
+and `po/citations.pot` carries all 7 msgids (confirmed: `grep -n "Window
+width" po/citations.pot` finds the new entry at line 670). These are new
+msgids as of this commit, so no `.po` file has a translated string for them
+yet (confirmed empty on `po/fr.po`) — that is the same state upstream's own
+untranslated-until-picked-up strings are in after any schema change, not a
+port defect.
 
-`grep -rn` for each exact string under `lib/` returns zero hits. These are
-real gaps: `lib/settings.rb` reimplements the 8 keys and their defaults
-correctly but carries no translation marker on any of them, because there
-is nothing to mark — the strings were never typed into the port at all.
+## Flagged-but-functional risk, re-confirmed present and unchanged
 
-## Not a gap, but flag it — `_(name)` on 7 template-kind labels
+Round 1 flagged `lib/citation_preview.rb`'s `TEMPLATES` table: the 7
+template-kind labels (`Mla`, `Ams`, `Apa`, `Chicago`, `Harvard`,
+`Vancouver`, `Custom`) are passed to `_(name)` as a variable, not a string
+literal, so a real `xgettext`/census tool run against this file alone would
+never discover them as translatable. This is unchanged by `e4ebd9f` (that
+commit did not touch `citation_preview.rb`'s template table) and remains
+true: the app translates correctly at runtime today because the `.po`
+files already carry these 7 keys from upstream's own `gettext("Chicago")`
+etc. calls, carried forward verbatim. The risk is only forward-looking (a
+future from-scratch `.pot` regeneration from this file alone would silently
+drop these 7), so it is recorded again here, not re-flagged as a new
+finding.
 
-`lib/citation_preview.rb` builds its `TEMPLATES` table with literal names
-(`'Mla'`, `'Ams'`, `'Apa'`, `'Chicago'`, `'Harvard'`, `'Vancouver'`,
-`'Custom'`) and calls `_(name)` with the variable, not the literal, at the
-display site (`lib/citation_preview.rb:404`). Each of those 7 literal
-strings is byte-identical to upstream's `gettext("Chicago")` etc.
-(`src/citation_preview.rs:51-55`), and the `.po` catalogues carried over
-verbatim already contain translations for all 7, so **the app translates
-correctly at runtime** — this is not a functional gap.
+## New this pass — no new gap found
 
-It is, however, exactly the "unresolved marker" case the skill calls out:
-a real `xgettext`/census tool run against `lib/citation_preview.rb` alone
-would never discover these 7 keys, because the argument to `_()` is a
-variable, not a string literal. If this port ever needs to regenerate its
-own `.pot` from source (rather than carrying upstream's forward forever),
-these 7 keys silently fall out unless someone censuses `TEMPLATES` by hand
-first. Recorded here so the next person doesn't have to rediscover it.
+This pass re-ran the ad hoc msgid census from round 1 against the new
+gschema file and against every `.rb` file touched by `e4ebd9f`
+(`lib/entry_list.rb`, `lib/entry_page.rb`, `lib/settings.rb`). None of
+those three introduce new user-facing strings (the settings class comment
+is a source comment, not a translatable string; the entry_list/entry_page
+changes are binding-usage fixes and a new accessor method, not new UI
+text). No new gap found.
 
-## Held up under spot-check
+## Held up, unchanged from round 1
 
-- Locale set: exact match, 43/43, confirmed by `diff` of basenames.
-- The custom-template help string (`lib/citation_preview.rb`'s
-  `help_label`) is byte-identical to `citation_preview.ui`'s translatable
-  label once the `.ui` file's `&lt;tt&gt;`/`&lt;/tt&gt;` XML entities are
-  decoded to `<tt>`/`</tt>` — an early read of this pass flagged it as a
-  gap and that was a false positive from not decoding entities; recorded
-  here so it is not re-flagged.
-- `Chicago`/`Harvard`/`Vancouver`/`Custom`/`General`/`Bibliography`/`Open`/
-  `Save`/`Quit`/`Close Window`/`Show Shortcuts` are all present and correct
-  in `lib/shortcuts_dialog.rb` via `p_('shortcut window', '…')`, matching
-  upstream's `pgettext("shortcut window", …)` context — an early pass of
-  this census also flagged these as gaps before the `p_(` extraction was
-  added to the script; also a false positive, also recorded so it is not
-  re-flagged.
+Locale set (43/43), the custom-template help string (byte-identical once
+`.ui` XML entities are decoded), and the `shortcuts.ui` ↔
+`shortcuts_dialog.rb` `p_('shortcut window', …)` context strings all still
+hold up — re-spot-checked this pass, no regression.
 
 ## Verdict
 
-Not clean. 7 confirmed gaps (the dropped gschema file's summaries), plus one
-flagged-but-functional unresolved-marker risk (the 7 `_(name)` template
-labels). Every other string checked this pass — including two early false
-positives from an incomplete first extraction — held up as byte-identical.
-A full machine census with the skill's own `catalogue.rb`/`msgid-census.sh`
-(not present in this fork) would be more exact than this pass's ad hoc
-regex and should be run once those scripts exist here.
+Not fully clean, but meaningfully improved: round 1's confirmed 7-message
+gap is fixed and verified byte-identical. The one standing risk (the
+`_(name)` variable-argument template labels, functionally fine today,
+fragile for a future `.pot` regeneration from this file) is unchanged and
+recorded again for the same reason as before — a real risk, not a crisis,
+and it is not invisible: `TRANSLATION_PARITY.md` itself is now where it is
+tracked. No new translation gap found this pass.

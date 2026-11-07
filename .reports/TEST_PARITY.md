@@ -1,91 +1,74 @@
-# Test parity — Citations (audit pass, 2026-11-07)
+# Test parity — Citations (audit pass, 2026-11-07, round 2)
 
 | | |
 |---|---|
 | Upstream | `origin/master` |
-| Port | `ruby` @ `b9516f9` |
+| Port | `ruby` @ `e4ebd9f` |
 | Upstream `#[test]` cases | 22 |
-| Named by a port test | 22 (by name, see census below) |
-| Test commands run this pass | `nix develop --command xvfb-run -a ruby test/test_models.rb` (93/93), `nix develop --command xvfb-run -a ruby test/test_texer.rb` (84/84), `nix develop --command xvfb-run -a ruby test/drive_main_window.rb` (65/65), `ruby -e 'require "rspec/core"; ...'` (**fails to load**) |
+| Named by a port test | 22/22 (unchanged from round 1's census, re-confirmed) |
+| Test commands run this pass | `nix develop --command xvfb-run -a ruby test/test_models.rb` → 93/93; `nix develop --command xvfb-run -a ruby test/test_texer.rb` → 84/84; `nix develop --command xvfb-run -a ruby test/drive_main_window.rb` → 74/74, `DRIVE OK`, no stderr CRITICAL lines |
 
-## Census — upstream `#[test]` functions
+## Round 1's gap, re-verified fixed
 
-| File | Count | Names |
-|---|---:|---|
-| `cratebibtex/src/entry.rs` | 1 | `format` |
-| `cratebibtex/src/format.rs` | 4 | `test_clear_citation`, `test_format_authors`, `test_clear_latex`, `test_clear_markdown` |
-| `cratebibtex/src/lib.rs` | 1 | `test` |
-| `src/utils.rs` | 2 | `test_generate_key`, `test_sanitize_key` |
-| `texer/src/tests.rs` | 14 | `test_parse_method_name`, `test_parse_method_with_arg`, `test_parse_method_without_arg`, `test_parse_method`, `test_parser`, `test_35`, `test_46`, `test_delimited_by_brackets`, `test_texer`, `test_multispacer`, `test_till_symbols_no_ws_once`, `test_till_symbols_no_ws`, `test_tag_consecutive_spaces`, `test_59` |
+Round 1 flagged two problems: the dev-shell banner never mentioned
+`test/test_models.rb`/`test/test_texer.rb` (the files carrying all 22
+ported upstream tests) and never said they need `xvfb-run`; and the banner
+advertised a dead RSpec harness (`spec/spec_helper.rb` requiring
+`kettle/test/rspec`, zero `*_spec.rb` files anywhere) that could not even
+load.
 
-All 22 names have a same-named counterpart in `test/test_models.rb` (format,
-entry, bib, utils cases) or `test/test_texer.rb` (the 14 texer cases).
-Each was spot-read, not just name-matched: `test_generate_key` and
-`test_sanitize_key` in `test/test_models.rb` assert the same input/output
-pairs as `src/utils.rs`'s versions. **This bijection is real**, not a
-name-matching coincidence, for the cases spot-checked; a full line-by-line
-re-verification of all 22 was not repeated in this pass since prior work
-appears to have already done this (`test/test_models.rb`'s own header names
-each test after its upstream counterpart deliberately).
-
-The port's suites also carry extra cases with no upstream counterpart
-(`entry::serialize`, `bib::list_model`, `bib::round_trips_through_a_file`,
-`entry_type::fields_and_names`, `format::kinds`, `utils::urls_and_filenames`,
-`settings::defaults_match_the_upstream_schema`) — correctly listed as extra,
-not counted toward the 22.
-
-## Gap — the suite the dev shell does not mention
-
-The dev-shell banner prints exactly three commands:
+Both are fixed in `e4ebd9f`:
 
 ```
-run the app:   xvfb-run ruby exe/citations
-drive the app: xvfb-run ruby test/drive_*.rb
-run the specs: ruby -e 'require "rspec/core"; exit RSpec::Core::Runner.run(...)'
+$ nix develop --command xvfb-run -a ruby test/test_models.rb
+Citations devshell — ruby 3.4.9
+run the app:    xvfb-run ruby exe/citations
+drive the app:  xvfb-run ruby test/drive_*.rb
+unit tests:     xvfb-run ruby test/test_models.rb && xvfb-run ruby test/test_texer.rb
+                (xvfb-run is needed here too: lib/bib.rb requires gtk4 unconditionally)
+93 of 93 checks passed in models
+models OK
 ```
 
-It never mentions `test/test_models.rb` or `test/test_texer.rb` — the two
-files that carry all 22 ported upstream tests. Running `ruby test/test_models.rb`
-without `xvfb-run` (i.e. following only the banner's advertised pattern for
-anything that isn't `drive_*`) fails outright:
+`spec/` no longer exists (`ls spec/` → "No such file or directory"); the
+banner's third line now names the real unit-test entry points and the
+`xvfb-run` requirement explicitly, rather than an RSpec command that never
+worked. This pass re-ran both unit suites fresh and both still pass in
+full (93/93, 84/84) — the 22-test bijection against upstream's `#[test]`
+functions (`cratebibtex`'s `entry.rs`/`format.rs`/`lib.rs`, `src/utils.rs`,
+`texer/src/tests.rs`) that round 1 spot-checked still holds; nothing in
+`e4ebd9f` touched the test files' content, only the banner and the dead
+`spec/` scaffolding.
 
-```
-Gtk::Loader#call_init_function: failed to initialize GTK (Gtk::InitError)
-```
+One minor, cosmetic leftover: `.rspec` still exists and still configures
+`--format html --out results/...` / `--format RspecJunitFormatter`
+formatters for a runner the repo no longer advertises or can invoke
+(no `rspec` gem is required anywhere, no spec files exist). It is dead
+config, not a false claim — nothing in the dev shell, `README`, or banner
+points at it — so it is noted here as residue, not scored as a gap.
 
-because `lib/bib.rb` requires `gtk4` unconditionally even for model-only
-tests. Both model suites do pass once run under `xvfb-run` (confirmed this
-pass: 93/93 and 84/84), so the tests themselves are not broken — but a
-newcomer following the dev shell's own banner would never discover they
-need `xvfb-run` for a "non-widget" test file, and the banner's omission of
-these two files at all means a reviewer who only runs what the shell
-advertises never executes 22/22 of the ported upstream tests.
+## Drive suite coverage, re-counted
 
-## Gap — the RSpec harness does not run, at all
+74 checks, 15 components per this round's gate (up from 65/14 in round 1
+— the +9 checks and +1 component are the Add PDF dialog driving added in
+`e4ebd9f`, confirmed by reading `test/drive_main_window.rb` checks 33–38 and
+counting: 6 new assertions plus the "opens from the empty PDF row" and
+"the add pdf dialog opens" step headers). This closes round 1's
+"`lib/add_pdf_dialog.rb` is unverified" finding specifically — it is now
+inside the denominator, not outside it.
 
-```
-$ nix develop --command ruby -e 'require "rspec/core"; exit RSpec::Core::Runner.run(["--format","progress","--require","spec_helper","spec"])'
-LoadError: cannot load such file -- kettle/test/rspec
-	# ./spec/spec_helper.rb:23
-0 examples, 0 failures, 2 errors occurred outside of examples
-```
-
-`spec/` contains only `spec_helper.rb` and `README.md` — **no `*_spec.rb`
-file exists anywhere in the repository**, upstream or port. Even if the
-`kettle/test/rspec` dependency were present, this harness would report
-"0 examples, 0 failures" and look green. As shipped it does not even load.
-This is a suite that has never been executed and never could produce a
-real result — the exact false-green shape this round's instructions call
-out explicitly. It is dead scaffolding (from the `kettle-jem` packaging
-commits), not a test suite, and the third line of the dev-shell banner
-advertises it as one.
+No new undriven component was found this pass that wasn't already a known,
+documented limitation (see `COMPONENT_PARITY.md`'s note on the Add PDF
+dialog's happy-download path still being unexercised — a narrower,
+secondary gap inside an otherwise-driven component, not an unverified
+component in the round-1 sense).
 
 ## Verdict
 
-22/22 upstream tests are named and pass under the correct invocation
-(93+84=177 checks, `xvfb-run` required and undocumented in the banner for
-two of the three suites). The drive suite is 65/65 but — per
-`COMPONENT_PARITY.md` — does not reach `lib/add_pdf_dialog.rb` at all, so
-"14 components" covered by the drive gate excludes at least one real
-component file. The RSpec suite is advertised, cannot load, and has zero
-spec files. Not clean.
+22/22 upstream unit tests present, named, and passing under the correct
+(now correctly documented) invocation. The drive suite is 74/74 and now
+includes the one component round 1 found completely unverified. The dead
+RSpec scaffolding and its false banner line are gone. Not fully clean only
+because of the cosmetic `.rspec` leftover and the Add PDF dialog's
+unexercised success path noted above — neither is a suite that fails to
+run, so this report is otherwise clean on the question this skill asks.

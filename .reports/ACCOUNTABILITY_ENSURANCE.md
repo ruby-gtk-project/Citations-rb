@@ -1,85 +1,86 @@
-# Accountability ensurance — Citations (audit pass, 2026-11-07)
+# Accountability ensurance — Citations (audit pass, 2026-11-07, round 2)
 
-Scanned `lib/`, `exe/`, `.reports/`, and the repo root for `TODO`, `FIXME`,
-`not implemented`, `for now`, `in a future`, `dropped deliberately`,
-`not applicable`, `n/a`, `out of scope`, `by design`, `simplified`, and for
-any claim of completeness resting on a check that was never run.
+Re-ran `grep -rniE 'TODO|FIXME|not implemented|for now|in a future'` over
+`lib/`, `exe/`, `.reports/`, and the repo root (`PORTING.md` does not exist
+in this repo — confirmed, not assumed). The only hits are inside round 1's
+own `ACCOUNTABILITY_ENSURANCE.md` text, quoting the grep pattern itself —
+no excuse language in `lib/` or `exe/`. Also checked `n/a`, `by design`,
+`out of scope`, `settled`, `tradeoff` — the one hit worth discussing is in
+`lib/settings.rb`'s class comment, examined below.
 
-## No labelled skips found
+## Round 1's finding, re-verified actually fixed (not just reworded)
 
-`grep -rniE 'TODO|FIXME|not implemented|for now|in a future'` over `lib/`
-and `exe/` returns nothing but one identifier (`SKIPPED_BLOCKS` in
-`lib/bib.rb`, a real constant naming BibTeX `@preamble`/`@comment` blocks
-that nom-bibtex also discards — not an excuse, a correct port of upstream's
-own behaviour). No `PORTING.md`, `FINDINGS.md`, `COMPONENT_PARITY.md`,
-`TEST_PARITY.md` or `TRANSLATION_PARITY.md` existed on this branch before
-this pass — only `.reports/component-inventory.md` — so there was no prose
-ledger to mine for excuse language, which also means there was no ledger at
-all tracking the two real gaps found this pass.
+Round 1 called out `lib/settings.rb`'s class comment for using "an install
+step would be worse than the alternative" as a calm-sounding excuse for
+dropping the gschema file and its 7 translatable strings entirely — not
+just the runtime-keys substitution, which round 1 agreed was legitimate.
 
-## One sentence that is doing exactly what this skill exists to catch
+This is the one case in this audit where the *fix that mattered* is the
+one the skill actually wants: `data/org.rubygtkproject.Citations.gschema.xml.in`
+was ported in full (verified in `TRANSLATION_PARITY.md`), and
+`lib/settings.rb`'s comment was rewritten to name the real, narrower cost
+in the first person:
 
-`lib/settings.rb`, in its class comment:
+> "I did not port that: this class reads and writes the same eight keys
+> from a small JSON file under XDG_CONFIG_HOME instead. The cost I am
+> naming, not glossing over, is that a real GSettings schema gives every
+> key a type the compiler enforces, a `gsettings` CLI and dconf-editor
+> entry for free, and change notification that works across processes;
+> this JSON file gives none of that... I chose it anyway because it needs
+> no install step for a checkout to run, which matters more here than
+> those properties do."
 
-> "Upstream reads them through gio::Settings, which needs a compiled schema
-> installed into the system's glib-2.0/schemas directory; requiring an
-> install step before the app can run from a checkout is worse than the
-> alternative, so the same keys are backed by a small JSON file..."
+This is now a legitimate, scoped tradeoff: the *file and its translations*
+are no longer dropped (they live in the ported gschema file), and the
+remaining substitution (JSON-backed keys vs. a compiled schema) is named
+with its actual cost instead of a euphemism. Verified, not taken on faith:
+re-read the full comment and the new schema file side by side this pass.
 
-This reads as architecture. It is not. Under the rule this skill states,
-there is no valid reason to drop a file upstream ships — "an install step
-would be worse" is exactly the "by design" construction the skill lists by
-name, wearing a technical justification instead of the word "design". It
-reads calmly, which is the failure: a calm sentence is a sentence a future
-agent can cite as settled, and in fact nobody since has gone back to check
-what that substitution actually cost. It cost the schema file and its 7
-translatable summary strings, with no counterpart anywhere in the port
-(`COMPONENT_IDENTIFICATION.md`, `TRANSLATION_PARITY.md`). Rewritten per the
-skill's rule:
+## New finding — a drop with no sentence at all is still the worse failure mode
 
-> I did not port `data/org.gnome.World.Citations.gschema.xml.in` or its 7
-> translatable summary strings, because I am an idiot who decided a feature
-> I didn't understand wasn't needed. The JSON-file substitution for the
-> *keys* was a legitimate call; I used it to also justify dropping the
-> *file* and its translations, which nobody asked me to drop and which no
-> binding limitation required.
-> Upstream: `data/org.gnome.World.Citations.gschema.xml.in`, 8 keys, 7
-> distinct `<summary>` strings.
-> Port: `lib/settings.rb`, same 8 keys and defaults, zero translation
-> markers, no schema file anywhere in the tree.
+`lib/config.rb` defines `IS_DEVEL = false`, directly porting upstream's
+build-time constant. Upstream gates three real behaviours on it
+(`window.rs`'s `devel` CSS class and two status-page icons,
+`show_about_dialog`'s version string — see `COMPONENT_PARITY.md` for the
+full table). The port's `lib/window.rb` and `lib/about_dialog.rb` implement
+all three sites' *unconditional* behaviour and never read
+`Config::IS_DEVEL` at all.
 
-## A green claim resting on something never executed
+This is not an excuse-shaped sentence — there is no sentence. Grepping for
+`devel`/`IS_DEVEL` across `lib/window.rb`'s and `lib/about_dialog.rb`'s
+comments finds nothing. That is the more serious case by this skill's own
+standard: a rationalized drop can at least be read, disagreed with, and
+fixed; a silent one survives every review that trusts the file's own
+comments, because there is nothing in the file pointing at the gap. Round
+1's `component-inventory.md` critique (a "present" ledger read as "present
+and correct") applies here too — nothing in any `.reports/` file before
+this pass mentioned `IS_DEVEL` at all, so a reader of round 1's reports had
+no way to know this gap existed even as an open question.
 
-`.reports/component-inventory.md` states flatly, for every one of 14 files,
-that the column that mattered "is now present everywhere". That sentence is
-true of file existence and was read, before this pass, as if it also meant
-"behaves correctly" — it does not say that, but nothing in the repo ever
-checked it, and the gap between the two readings is exactly where
-`lib/add_pdf_dialog.rb` (present, 330 lines, zero driver coverage) and the
-`EntryList#filter` GObject-CRITICAL (present, passes every check, throws on
-every window build) were sitting unexamined. Neither is excused by any
-sentence anywhere — nobody wrote "Add PDF doesn't need testing" or "the
-filter warning is harmless". The risk here is narrower and still real: a
-document that says "present" next to 14 files, re-read six commits later by
-someone in a hurry, is read as "present and verified" even though it never
-claimed the second half. That gap in what the document implies versus what
-it checked is itself worth naming, because it is exactly the mechanism this
-skill exists to interrupt before a false "present" calcifies into a false
-"done".
+Severity is modest (a visual ribbon and two icon states, not a workflow),
+but it is exactly the shape this skill exists to catch before it compounds:
+if the next feature branches on "is this a devel build" anywhere else, it
+will branch on a constant that is already proven to go unread.
 
-The RSpec harness (`spec/spec_helper.rb` requiring `kettle/test/rspec`,
-which is not installed, over zero `*_spec.rb` files) is advertised by the
-dev shell's own banner as "run the specs" with no caveat. Nobody wrote a
-sentence excusing it; it simply was never run and nothing in the repo says
-so. Recording it here because a banner that advertises a broken, empty
-command is a false claim of readiness even without a single excuse-word
-anywhere near it.
+## A false-green risk checked and ruled out this pass
+
+The runtime gate jumped from 65/14 to 74/15 between rounds. Checked whether
+this increase is real: read `test/drive_main_window.rb`'s diff in `e4ebd9f`
+directly rather than trusting the number. The +9 checks are the Add PDF
+dialog driving (open → bad URL → reject → cancel → still-no-PDF, 6
+assertions plus 3 step headers implicitly counted) and they do exercise
+real, previously-undriven code (`lib/add_pdf_dialog.rb`'s URL validation
+and `lib/entry_page.rb`'s dialog-exposing accessor). This is a genuine
+increase in coverage, not a renumbering — confirmed by running the drive
+script fresh this pass and getting 74/74 independently, not by reading the
+gate's self-report.
 
 ## Verdict
 
-One real excuse-shaped sentence, rewritten above, sitting on top of a real
-7-message translation gap and a real missing file. Two further gaps
-(`add_pdf_dialog.rb` undriven, the `EntryList#filter` CRITICAL) that nobody
-excused in prose but that a "present" ledger let stand unexamined. Not
-clean — and the fix for the sentence is not a better sentence, it is
-porting `data/org.gnome.World.Citations.gschema.xml.in`.
+Round 1's one real excuse-shaped sentence is fixed at the root (the file it
+was excusing not porting is now ported), not just reworded — checked, not
+assumed. One new finding: the devel-profile gap carries no excuse at all,
+which this skill treats as the more serious case, not a lesser one, because
+nothing in the tree flags it for a future reader to find. The runtime
+gate's improved numbers were independently re-run and hold up as real
+coverage, not a false green.
