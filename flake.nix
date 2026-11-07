@@ -12,6 +12,15 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
+        # nixpkgs' default poppler build has no GObject-Introspection data
+        # (poppler/default.nix gates the typelib behind `introspectionSupport`,
+        # off by default); the `poppler` gem needs that typelib to load at
+        # all, so this override turns it on.
+        popplerGlib = pkgs.poppler.override {
+          introspectionSupport = true;
+          gobject-introspection = pkgs.gobject-introspection;
+        };
+
         # Shared libraries every ruby-gnome extension links against.
         gtkStack = with pkgs; [
           glib
@@ -25,6 +34,8 @@
           libadwaita
           harfbuzz
           librsvg
+          popplerGlib
+          gtksourceview5
         ]
         # The Ruby `pkg-config` gem resolves `Requires.private` transitively and
         # hard-fails if any .pc in the chain is missing, so gtk4's whole private
@@ -87,6 +98,8 @@
           graphene1 = rubyGnomeGem;
           adwaita = rubyGnomeGem;
           rsvg2 = rubyGnomeGem;
+          poppler = rubyGnomeGem;
+          gtksourceview5 = rubyGnomeGem;
         };
 
         # `makeSearchPath` would take each package's *first* output, and glib's

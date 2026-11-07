@@ -6,6 +6,8 @@
 require 'tmpdir'
 require 'fileutils'
 require 'socket'
+require 'cairo'
+require 'stringio'
 
 ENV['XDG_CONFIG_HOME'] = Dir.mktmpdir('citations-config')
 ENV['XDG_DATA_HOME'] = Dir.mktmpdir('citations-data')
@@ -48,7 +50,19 @@ dir = Dir.mktmpdir('citations-bib')
 path = File.join(dir, 'library.bib')
 File.write(path, BIB)
 
-PDF_FIXTURE_BYTES = "%PDF-1.4\n% a fixture pdf for drive_main_window\n%%EOF\n"
+# A real, one-page PDF (not just a %PDF- header) so AddPdfDialog's poppler
+# validation (lib/add_pdf_dialog.rb, valid_pdf?) accepts the fixture the same
+# way it would accept a real download.
+PDF_FIXTURE_BYTES = StringIO.new.tap { |io| io.set_encoding(Encoding::BINARY) }.then do |io|
+  surface = Cairo::PDFSurface.new(io, 100, 100)
+  Cairo::Context.new(surface).tap do |ctx|
+    ctx.set_source_rgb(1, 1, 1)
+    ctx.paint
+    ctx.show_page
+  end
+  surface.finish
+  io.string
+end
 
 # Serves PDF_FIXTURE_BYTES to exactly one request, over plain HTTP on an
 # ephemeral loopback port, so the Add PDF dialog's download path (which
@@ -407,6 +421,9 @@ GtkDriver.drive(app, shots: 'tmp/shots', interval: 400) do |d, application|
     d.check('the pdf is on disk under the citation key') { Utils.has_pdf?(key) }
     d.check('the pdf stack switched off the add-one state') do
       win.call.entry_page.pdf_stack.visible_child != win.call.entry_page.pdf_add_list_box
+    end
+    d.check('the pdf preview rendered a real texture, not the error view') do
+      win.call.entry_page.pdf_picture.paintable.is_a?(Gdk::Texture)
     end
   end
 

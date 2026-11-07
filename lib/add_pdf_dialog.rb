@@ -2,6 +2,7 @@
 
 require 'adwaita'
 require 'fileutils'
+require 'poppler'
 
 require_relative 'i18n'
 require_relative 'utils'
@@ -16,9 +17,10 @@ require_relative 'utils'
 # when the bibliography folder is unknown, and the pdf-set signal the editor
 # listens for.
 #
-# Upstream validates the downloaded bytes by handing them to poppler. Poppler
-# has no Ruby bindings here, so the bytes are checked for the %PDF- header
-# instead, which is the same refusal for a URL that does not answer with a PDF.
+# Upstream validates the downloaded bytes by handing them to poppler
+# (poppler::Document::from_bytes); this port does the same, with the Poppler
+# gem's Poppler::Document.new(data:), and rejects the download the same way
+# on any Poppler::Error.
 #
 # Upstream downloads on a tokio runtime and awaits it; here the request runs on
 # a Ruby thread and finishes on the main loop through GLib::Idle, so the dialog
@@ -27,7 +29,6 @@ require_relative 'utils'
 class AddPdfDialog
   include I18n::Translatable
 
-  PDF_HEADER = '%PDF-'
   PULSE_INTERVAL = 100
 
   def initialize(citation_key)
@@ -264,7 +265,7 @@ class AddPdfDialog
         stop_pulsing
         progress_bar.visible = false
 
-        if result.is_a?(String) && result.start_with?(PDF_HEADER)
+        if result.is_a?(String) && valid_pdf?(result)
           store(result)
         else
           download_failed(result)
@@ -272,6 +273,16 @@ class AddPdfDialog
 
         false
       end
+    end
+
+    # upstream's download_pdf: validates the document by handing it to
+    # poppler, same as set_pdf_preview does for an existing PDF.
+    def valid_pdf?(bytes)
+      Poppler::Document.new(data: bytes)
+      true
+    rescue Poppler::Error, GLib::Error => e
+      warn "PDF validation failed: #{e.message}"
+      false
     end
 
     def store(bytes)

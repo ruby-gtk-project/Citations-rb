@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require 'adwaita'
+require 'cairo'
+require 'poppler'
+require 'stringio'
 
 require_relative 'add_pdf_dialog'
 require_relative 'citation_preview'
@@ -23,12 +26,11 @@ require_relative 'utils'
 # wired both ways by hand, with a guard so that writing a value back does not
 # bounce.
 #
-# I did not build the thumbnail of the PDF's first page, because I am an
-# idiot. Upstream renders page one with poppler into the preview picture
-# (src/entry_page.rs, set_pdf_preview); this port leaves the picture empty and
-# falls into the "Could not set PDF Preview" box whenever a PDF is present
-# (lib/entry_page.rb, set_pdf_preview). Adding, opening, renaming and deleting
-# the PDF all work.
+# The thumbnail of the PDF's first page is rendered with poppler into the
+# preview picture (lib/entry_page.rb, set_pdf_preview), matching upstream's
+# src/entry_page.rs: page one is rendered to a Cairo image surface at the
+# window's scale factor, encoded as PNG and handed to GdkTexture, the same
+# pipeline upstream runs through cairo and gdk::Texture::from_bytes.
 #
 class EntryPage
   include I18n::Translatable
@@ -593,16 +595,44 @@ class EntryPage
       end
     end
 
-    # upstream's EntryPage::set_pdf_preview. Rendering a page needs poppler;
-    # see the class comment.
+    # upstream's EntryPage::set_pdf_preview: renders page one of the PDF with
+    # poppler into the preview picture, or clears it when there is no PDF.
     def set_pdf_preview(file)
       if file.nil?
         pdf_picture.paintable = nil
         preview_error_stack.visible_child = pdf_picture
       else
-        pdf_picture.paintable = nil
-        preview_error_stack.visible_child = preview_error
+        pdf_picture.paintable = pdf_page_texture(file.path)
+        preview_error_stack.visible_child = pdf_picture
       end
+    rescue StandardError => e
+      warn "Could not set pdf preview: #{e.message}"
+      pdf_picture.paintable = nil
+      preview_error_stack.visible_child = preview_error
+    end
+
+    # Renders page one of the PDF at `path` to a Gdk::Texture, at the
+    # window's scale factor, the same way upstream's Cairo::ImageSurface +
+    # gdk::Texture::from_bytes pipeline does.
+    def pdf_page_texture(path)
+      document = Poppler::Document.new(path: path)
+      page = document.get_page(0)
+      if page.nil?
+        raise 'Document does not have any pages'
+      end
+
+      width, height = page.size
+      scale = bin.scale_factor
+      surface = Cairo::ImageSurface.new(:rgb24, (width * scale).to_i, (height * scale).to_i)
+      surface.set_device_scale(scale.to_f, scale.to_f)
+      context = Cairo::Context.new(surface)
+      context.set_source_rgb(1.0, 1.0, 1.0)
+      context.paint
+      page.render(context)
+
+      io = StringIO.new.tap { |stream| stream.set_encoding(Encoding::BINARY) }
+      surface.write_to_png(io)
+      Gdk::Texture.new(GLib::Bytes.new(io.string))
     end
 
     def on_entry_type_selected

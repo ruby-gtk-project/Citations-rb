@@ -467,8 +467,22 @@ These are places where a component exists but does not do what upstream's
 does. They are deviations, not omissions, and each is commented in the file
 that carries it.
 
-1. **GtkSourceView.** `citation_preview` and `new_entry_dialog` upstream use `GtkSource::View`/`Buffer` with the bibtex, markdown and latex languages and Adwaita style schemes. The port uses a plain `Gtk::TextView` in both, so the syntax highlighting is absent.
-2. **Poppler.** `entry_page`'s PDF preview renders page one with poppler upstream; `add_pdf_dialog` validates a download by handing the bytes to poppler. The port leaves the preview picture empty and validates without poppler.
+1. ~~**GtkSourceView.**~~ Fixed this round: the `gtksourceview5` gem is now a
+   runtime dependency (`nix/Gemfile`, `flake.nix` builds nixpkgs' `poppler`
+   with `introspectionSupport` and adds `gtksourceview5` to `gtkStack`).
+   `citation_preview.rb` and `new_entry_dialog.rb` use a real
+   `GtkSource::View`/`Buffer` with the markdown/latex/bibtex languages and the
+   Adwaita/Adwaita-dark style scheme, switched on `Adwaita::StyleManager`'s
+   dark-notify signal, matching upstream's `set_buffer`/`update_style_scheme`.
+2. ~~**Poppler.**~~ Fixed this round: the `poppler` gem is now a runtime
+   dependency. `entry_page.rb#set_pdf_preview` renders page one with
+   `Poppler::Document` onto a `Cairo::ImageSurface` and hands the PNG bytes to
+   `Gdk::Texture`, and `add_pdf_dialog.rb#valid_pdf?` validates a download by
+   handing it to `Poppler::Document.new(data:)`, rescuing `Poppler::Error`.
+   Driven end to end in `test/drive_main_window.rb` (the download fixture is
+   now a real one-page PDF built with `Cairo::PDFSurface`, not just a
+   `%PDF-` header, and a check asserts the preview picture holds a real
+   `Gdk::Texture` after a successful download).
 3. **`app.shortcuts` is implicit upstream.** libadwaita installs it from the aliased gresource; the port installs the action itself and presents `lib/shortcuts_dialog.rb`.
 4. **No gresource.** The port builds every widget in code, so `style.css` is carried inline in `lib/style.rb` and the three symbolic icons are installed as files under `data/icons/`.
 5. **Network from the main loop.** "From DOI" (doi2bib) and "Add From URL" fetch over HTTP; the Ruby path needs checking for main-loop safety under a slow or dead network.

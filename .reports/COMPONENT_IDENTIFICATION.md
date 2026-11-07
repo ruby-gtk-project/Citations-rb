@@ -72,10 +72,12 @@ item-for-item, including the honestly-documented `app.shortcuts`
 self-install workaround for the missing libadwaita binding. The six
 built-in citation templates plus Custom, the 1:1 Rust-crate-to-`lib/`-file
 mapping (`cratebibtex` → `bib.rb`/`entry.rb`/`entry_type.rb`/
-`citation_format.rb`, `texer` crate → `texer.rb`), and the `Gtk.SourceView`
-→ plain `Gtk.TextView` syntax-highlighting downgrade in
-`new_entry_dialog.rb`/`citation_preview.rb` (openly documented in both
-files' class comments, not hidden) were all re-checked and held up.
+`citation_format.rb`, `texer` crate → `texer.rb`) were all re-checked and
+held up. The `Gtk.SourceView` → plain `Gtk.TextView` syntax-highlighting
+downgrade this file used to flag in `new_entry_dialog.rb`/
+`citation_preview.rb` is fixed: both now use real `GtkSource::View`/
+`Buffer`, and `entry_page.rb`/`add_pdf_dialog.rb` use real `Poppler`
+rendering/validation (see `COMPONENT_PARITY.md`).
 
 ## Verdict
 

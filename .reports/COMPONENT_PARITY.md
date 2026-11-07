@@ -53,13 +53,17 @@ or on `Config::IS_DEVEL` toggling, so it will stay invisible to every future
   (search narrows the list, clearing restores it).
 - Full action/accelerator/shortcut inventory (see
   `COMPONENT_IDENTIFICATION.md`) — complete, 1:1.
-- The `Gtk.SourceView` → `Gtk.TextView` downgrade (no BibTeX/LaTeX syntax
-  highlighting in the snippet editor or the rendered-citation preview) is a
-  real, standing functional gap versus upstream, but it is the one gap in
-  this entire audit that is honestly and specifically documented in both
-  affected files' class comments (`lib/new_entry_dialog.rb`,
-  `lib/citation_preview.rb`) — named, not hidden, so it is recorded here as
-  a known limitation rather than a fresh finding.
+- Fixed this round: the `Gtk.SourceView` → `Gtk.TextView` downgrade is gone.
+  `gtksourceview5` and `poppler` are now runtime gem dependencies
+  (`nix/Gemfile`, `flake.nix`'s `popplerGlib` override and `gtkStack`
+  addition), and `lib/citation_preview.rb` / `lib/new_entry_dialog.rb` use a
+  real `GtkSource::View`/`Buffer` with the bibtex/markdown/latex languages
+  and the Adwaita/Adwaita-dark scheme. `lib/entry_page.rb`'s PDF preview and
+  `lib/add_pdf_dialog.rb`'s download validation both use `Poppler::Document`
+  for real now. The drive suite's PDF fixture was upgraded from a bare
+  `%PDF-` header to a real one-page PDF so the new poppler validation has
+  something genuine to accept, and a new check asserts the rendered preview
+  is a real `Gdk::Texture`.
 
 ## Verdict
 

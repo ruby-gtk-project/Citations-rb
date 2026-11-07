@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'adwaita'
+require 'gtksourceview5'
 
 require_relative 'citation_format'
 require_relative 'entry_type'
@@ -14,15 +15,11 @@ require_relative 'settings'
 # data/resources/ui/citation_preview.ui: the Template enum and its fourteen
 # built-in templates (an article and a book variant of each of MLA, AMS, APA,
 # Chicago, Harvard and Vancouver, plus the custom pair), the revealer holding
-# the custom template editor, the help popover, and the copy button.
-#
-# I did not build the syntax highlighting of the rendered citation, because I
-# am an idiot. Upstream shows it in a GtkSourceView with the markdown or latex
-# language and the Adwaita style scheme, switched with the dark preference
-# (src/citation_preview.rs, set_buffer and update_style_scheme); this port
-# shows the same text in a plain Gtk::TextView with the same style classes
-# (lib/citation_preview.rb, source_view). The templates, the formats, the
-# custom template editor, the help popover and the copy button are upstream's.
+# the custom template editor, the help popover, and the copy button. The
+# rendered citation shows in a real GtkSource::View (source_view), with the
+# markdown or latex language and the Adwaita/Adwaita-dark style scheme
+# switched with the dark preference, matching upstream's set_buffer and
+# update_style_scheme.
 #
 class CitationPreview
   include I18n::Translatable
@@ -129,6 +126,10 @@ class CitationPreview
       template_drop_down.selected = @settings['template-kind']
       format_drop_down.selected = @settings['format-kind']
 
+      reset_source_buffer
+      update_style_scheme
+      Adwaita::StyleManager.default.signal_connect('notify::dark') { update_style_scheme }
+
       update_citation
     end
   end
@@ -167,6 +168,8 @@ class CitationPreview
     unless kind == format_kind
       @format_kind = kind
       @settings['format-kind'] = kind.index
+      reset_source_buffer
+      update_style_scheme
       update_citation
     end
   end
@@ -266,9 +269,9 @@ class CitationPreview
     end
   end
 
-  # Upstream's GtkSourceView; see the class comment.
+  # upstream's GtkSourceView `source_view`
   def source_view
-    @source_view ||= Gtk::TextView.new.tap do |view|
+    @source_view ||= GtkSource::View.new.tap do |view|
       view.hexpand = true
       view.wrap_mode = :word
       view.editable = false
@@ -344,6 +347,40 @@ class CitationPreview
     def update_citation
       unless @entry.nil?
         source_view.buffer.text = @entry.format_citation(template.to_s, format_kind)
+      end
+    end
+
+    # upstream's CitationPreview::set_buffer: a fresh GtkSource::Buffer with
+    # the language matching format_kind, syntax highlighting on, matching
+    # bracket highlighting off (upstream turns it off unconditionally too).
+    def reset_source_buffer
+      language = source_language_id.then { |id| id && GtkSource::LanguageManager.default.get_language(id) }
+      GtkSource::Buffer.new(language).tap do |buffer|
+        buffer.highlight_syntax = true
+        buffer.highlight_matching_brackets = false
+        source_view.buffer = buffer
+      end
+    end
+
+    def source_language_id
+      if format_kind.markdown?
+        'markdown'
+      elsif format_kind.latex?
+        'latex'
+      end
+    end
+
+    # upstream's CitationPreview::update_style_scheme
+    def update_style_scheme
+      scheme = GtkSource::StyleSchemeManager.default.get_scheme(dark_scheme_name)
+      source_view.buffer.style_scheme = scheme
+    end
+
+    def dark_scheme_name
+      if Adwaita::StyleManager.default.dark?
+        'Adwaita-dark'
+      else
+        'Adwaita'
       end
     end
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'adwaita'
+require 'gtksourceview5'
 
 require_relative 'entry_type'
 require_relative 'i18n'
@@ -19,11 +20,9 @@ require_relative 'utils'
 # takes the block to call with the BibTeX text, or with nil when the dialog was
 # dismissed, which is the same contract without the executor.
 #
-# I did not build the BibTeX syntax highlighting of the snippet editor,
-# because I am an idiot. Upstream types into a GtkSourceView with the bibtex
-# language and the Adwaita style scheme (src/new_entry_dialog.rs,
-# constructed); this port types into a Gtk::TextView carrying the same
-# newentrydialog style class (lib/new_entry_dialog.rb, source_view).
+# The snippet editor is a real GtkSource::View with the bibtex language and
+# the Adwaita/Adwaita-dark style scheme, switched with the dark preference,
+# matching upstream's constructed and update_style_scheme.
 #
 class NewEntryDialog
   include I18n::Translatable
@@ -107,10 +106,14 @@ class NewEntryDialog
       entry_row.signal_connect('notify::text') { update_create_button }
       doi_row.signal_connect('notify::text') { update_create_button }
       view_stack.signal_connect('notify::visible-child') { update_create_button }
+      source_view.buffer = bibtex_buffer
       source_view.buffer.signal_connect('changed') { update_create_button }
       source_view.add_controller(focus_controller)
 
       dialog.signal_connect('closed') { answer(nil) }
+
+      update_style_scheme
+      Adwaita::StyleManager.default.signal_connect('notify::dark') { update_style_scheme }
 
       source_view.buffer.text = "#{_('Insert a BibTeX citation here')}\n\n#{SAMPLE_ENTRY}"
 
@@ -199,12 +202,21 @@ class NewEntryDialog
     end
   end
 
-  # Upstream's GtkSourceView, unhighlighted here; see the class comment.
+  # upstream's GtkSourceView `source_view`
   def source_view
-    @source_view ||= Gtk::TextView.new.tap do |view|
+    @source_view ||= GtkSource::View.new.tap do |view|
       view.hexpand = true
       view.wrap_mode = :word
       view.add_css_class('newentrydialog')
+    end
+  end
+
+  # upstream's constructed: a bibtex-language buffer with syntax highlighting
+  # on and matching-bracket highlighting off.
+  def bibtex_buffer
+    @bibtex_buffer ||= GtkSource::Buffer.new(GtkSource::LanguageManager.default.get_language('bibtex')).tap do |buffer|
+      buffer.highlight_syntax = true
+      buffer.highlight_matching_brackets = false
     end
   end
 
@@ -226,6 +238,20 @@ class NewEntryDialog
   end
 
   private
+
+    # upstream's NewEntryDialog::update_style_scheme
+    def update_style_scheme
+      scheme = GtkSource::StyleSchemeManager.default.get_scheme(dark_scheme_name)
+      source_view.buffer.style_scheme = scheme
+    end
+
+    def dark_scheme_name
+      if Adwaita::StyleManager.default.dark?
+        'Adwaita-dark'
+      else
+        'Adwaita'
+      end
+    end
 
     # The instructions go away the first time the editor is focused.
     def focus_controller

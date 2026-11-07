@@ -66,3 +66,5 @@ group :development do
   gem "rubocop"
 end
 gem "adwaita"
+gem "poppler"
+gem "gtksourceview5"
