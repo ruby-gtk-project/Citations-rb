@@ -39,6 +39,7 @@ class AboutDialog
   }.freeze
 
   RELEASE_RE = %r{<release\s[^>]*>(.*?)</release>}m
+  RELEASE_VERSION_RE = /<release\s+version="([^"]+)"/
   DESCRIPTION_RE = %r{<description>(.*?)</description>}m
   URL_RE = %r{<url\s+type="([^"]+)"\s*>([^<]*)</url>}
   NAME_RE = %r{<name>([^<]*)</name>}
@@ -55,7 +56,10 @@ class AboutDialog
       about.application_name = first_match(NAME_RE, 'Citations')
       about.application_icon = @application_icon
       about.comments = _(first_match(SUMMARY_RE, 'Manage your bibliography'))
-      about.version = @version
+      # upstream only shows the explicit VERSION in a devel build
+      # (show_about_dialog, src/window.rs); otherwise from_appdata derives the
+      # version from the metainfo's newest release, which this mirrors.
+      about.version = version
       about.developers = DEVELOPERS
       about.designers = DESIGNERS
       # TRANSLATORS Replace this with your name for it to show up in the
@@ -92,6 +96,14 @@ class AboutDialog
         File.read(METAINFO)
       else
         ''
+      end
+    end
+
+    def version
+      if Config::IS_DEVEL
+        @version
+      else
+        first_match(RELEASE_VERSION_RE, @version)
       end
     end
 

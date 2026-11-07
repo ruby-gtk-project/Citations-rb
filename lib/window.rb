@@ -50,6 +50,10 @@ class Window
       win.content = toast_overlay
       win.add_breakpoint(breakpoint)
 
+      if Config::IS_DEVEL
+        win.add_css_class('devel')
+      end
+
       toast_overlay.child = main_stack
 
       main_stack.tap do |stack|
@@ -222,7 +226,9 @@ class Window
   def no_recent_files_status_page
     @no_recent_files_status_page ||= Adwaita::StatusPage.new.tap do |page|
       page.vexpand = true
-      page.icon_name = Config::APP_ID
+      if Config::IS_DEVEL
+        page.icon_name = Config::APP_ID
+      end
       # TRANSLATORS BibTeX is a proper name
       page.title = _('Open a BibTeX File')
       page.description = _('Or drag-and-drop a file')
@@ -247,7 +253,9 @@ class Window
   def recent_files_status_page
     @recent_files_status_page ||= Adwaita::StatusPage.new.tap do |page|
       page.title = _('Manage your Citations')
-      page.icon_name = Config::APP_ID
+      if Config::IS_DEVEL
+        page.icon_name = Config::APP_ID
+      end
       page.add_css_class('icon-dropshadow')
     end
   end

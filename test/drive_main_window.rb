@@ -5,9 +5,20 @@
 
 require 'tmpdir'
 require 'fileutils'
+require 'socket'
 
 ENV['XDG_CONFIG_HOME'] = Dir.mktmpdir('citations-config')
 ENV['XDG_DATA_HOME'] = Dir.mktmpdir('citations-data')
+
+# The Add PDF dialog's successful-download path needs a Bibliography folder
+# (Utils.bibliography_path), which comes from the Documents directory that
+# user-dirs.dirs names. This environment may have none, so one is pointed at
+# a tmp dir here rather than depending on the real $HOME.
+documents_dir = Dir.mktmpdir('citations-documents')
+File.write(
+  File.join(ENV.fetch('XDG_CONFIG_HOME'), 'user-dirs.dirs'),
+  %(XDG_DOCUMENTS_DIR="#{documents_dir}"\n),
+)
 
 $LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
 
@@ -36,6 +47,41 @@ BIBTEX
 dir = Dir.mktmpdir('citations-bib')
 path = File.join(dir, 'library.bib')
 File.write(path, BIB)
+
+PDF_FIXTURE_BYTES = "%PDF-1.4\n% a fixture pdf for drive_main_window\n%%EOF\n"
+
+# Serves PDF_FIXTURE_BYTES to exactly one request, over plain HTTP on an
+# ephemeral loopback port, so the Add PDF dialog's download path (which
+# downloads with Net::HTTP, lib/utils.rb's Utils.get) has a reachable URL to
+# download a real PDF from without reaching the network.
+def serve_pdf_fixture_once
+  server = TCPServer.new('127.0.0.1', 0)
+  port = server.addr[1]
+
+  Thread.new do
+    begin
+      client = server.accept
+      client.gets
+      while (line = client.gets) && line != "\r\n"
+        nil
+      end
+      client.write(
+        "HTTP/1.1 200 OK\r\n" \
+        "Content-Type: application/pdf\r\n" \
+        "Content-Length: #{PDF_FIXTURE_BYTES.bytesize}\r\n" \
+        "Connection: close\r\n\r\n" \
+        "#{PDF_FIXTURE_BYTES}",
+      )
+      client.close
+    rescue StandardError
+      nil
+    ensure
+      server.close
+    end
+  end
+
+  "http://127.0.0.1:#{port}/fixture.pdf"
+end
 
 app = App.new(app_id: 'org.rubygtkproject.CitationsTest')
 
@@ -339,6 +385,29 @@ GtkDriver.drive(app, shots: 'tmp/shots', interval: 400) do |d, application|
       page.pdf_stack.visible_child == page.pdf_add_list_box
     end
     d.check('the citation still has no PDF on disk') { !Utils.has_pdf?(page.entry.citation_key) }
+  end
+
+  d.step('reopening the add pdf dialog for a real download') do
+    win.call.entry_page.widget.activate_action('entry-page.set-pdf', nil)
+  end
+
+  d.step('pointing it at a reachable PDF and downloading') do
+    win.call.entry_page.pdf_dialog.pdf_url_entry_row.text = serve_pdf_fixture_once
+    win.call.entry_page.pdf_dialog.download_button.clicked
+  end
+
+  d.step('giving the background download a turn of the loop') do
+    nil
+  end
+
+  d.step('the download completed and the pdf-path is set') do
+    key = win.call.entry_page.entry.citation_key
+
+    d.check('the dialog closed itself on success') { win.call.entry_page.pdf_dialog.nil? }
+    d.check('the pdf is on disk under the citation key') { Utils.has_pdf?(key) }
+    d.check('the pdf stack switched off the add-one state') do
+      win.call.entry_page.pdf_stack.visible_child != win.call.entry_page.pdf_add_list_box
+    end
   end
 
   d.step('switching the citation template changes the rendering') do
