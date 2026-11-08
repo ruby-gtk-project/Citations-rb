@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
 "issues\n"
-"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"POT-Creation-Date: 2026-11-08 01:08+0000\n"
 "PO-Revision-Date: 2026-01-08 21:48+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -24,58 +24,58 @@ msgstr ""
 
 #. TRANSLATORS Replace this with your name for it to show up in the
 #. about dialog.
-#: lib/about_dialog.rb:63
+#: lib/about_dialog.rb:67
 msgid "translator-credits"
 msgstr ""
 "Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Jürgen Benvenuti <gastornis@posteo.org>"
 
-#: lib/add_pdf_dialog.rb:90
+#: lib/add_pdf_dialog.rb:91
 msgid "Select a PDF"
 msgstr "Ein PDF auswählen"
 
-#: lib/add_pdf_dialog.rb:103
+#: lib/add_pdf_dialog.rb:104
 msgid "PDF Files"
 msgstr "PDF-Dateien"
 
 #. TRANSLATORS Selects a PDF file for the citation
-#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+#: lib/add_pdf_dialog.rb:115 lib/entry_page.rb:459
 msgid "Add PDF"
 msgstr "PDF hinzufügen"
 
-#: lib/add_pdf_dialog.rb:155
+#: lib/add_pdf_dialog.rb:156
 msgid "Bibliography folder not set"
 msgstr "Bibliografieordner nicht gesetzt"
 
-#: lib/add_pdf_dialog.rb:170
+#: lib/add_pdf_dialog.rb:171
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Erzeugt eine Kopie des ausgewählten PDFs und speichert sie in Ihrem "
 "Bibliografieordner."
 
-#: lib/add_pdf_dialog.rb:189
+#: lib/add_pdf_dialog.rb:190
 msgid "Add From URL"
 msgstr "Aus Adresse hinzufügen"
 
-#: lib/add_pdf_dialog.rb:197
+#: lib/add_pdf_dialog.rb:198
 msgid "Download…"
 msgstr "Herunterladen …"
 
-#: lib/add_pdf_dialog.rb:204
+#: lib/add_pdf_dialog.rb:205
 msgid "Add From File…"
 msgstr "Aus Datei hinzufügen …"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: lib/add_pdf_dialog.rb:217
+#: lib/add_pdf_dialog.rb:218
 msgid "Make sure that {path} exists"
 msgstr "Stellen Sie sicher, dass {path} existiert"
 
-#: lib/add_pdf_dialog.rb:294
+#: lib/add_pdf_dialog.rb:305
 msgid "Could not download PDF"
 msgstr "PDF konnte nicht heruntergeladen werden"
 
-#: lib/add_pdf_dialog.rb:321
+#: lib/add_pdf_dialog.rb:332
 msgid "Could not set PDF"
 msgstr "PDF konnte nicht gesetzt werden"
 
@@ -84,27 +84,27 @@ msgstr "PDF konnte nicht gesetzt werden"
 msgid "Plain"
 msgstr "Text"
 
-#: lib/citation_preview.rb:197
+#: lib/citation_preview.rb:200
 msgid "Custom Citation Format"
 msgstr "Benutzerdefiniertes Zitierformat"
 
-#: lib/citation_preview.rb:205
+#: lib/citation_preview.rb:208
 msgid "Help"
 msgstr "Hilfe"
 
-#: lib/citation_preview.rb:229
+#: lib/citation_preview.rb:232
 msgid "Citation"
 msgstr "Zitat"
 
-#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+#: lib/citation_preview.rb:267 lib/entry_page.rb:325
 msgid "Copy"
 msgstr "Kopieren"
 
-#: lib/citation_preview.rb:292
+#: lib/citation_preview.rb:295
 msgid "Custom Template"
 msgstr "Benutzerdefinierte Vorlage"
 
-#: lib/citation_preview.rb:307
+#: lib/citation_preview.rb:310
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -114,16 +114,28 @@ msgstr ""
 "eines <tt>Schlagworts</tt> einzufügen, schreiben Sie <tt>%SCHLAGWORT%</tt>. "
 "Grundlegende Markdown-Syntax für fett und kursiv wird unterstützt. "
 
-#: lib/citation_preview.rb:316
+#: lib/citation_preview.rb:319
 msgid "Example:"
 msgstr "Beispiel:"
 
-#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
-#: lib/window.rb:762
+#: lib/citation_preview.rb:389 lib/entry_list_row.rb:213 lib/entry_page.rb:685
+#: lib/window.rb:770
 msgid "Copied"
 msgstr "Kopiert"
 
-#: lib/citation_preview.rb:400
+#: lib/citation_preview.rb:439
+msgid "Chicago"
+msgstr "Chicago"
+
+#: lib/citation_preview.rb:441
+msgid "Harvard"
+msgstr "Harvard"
+
+#: lib/citation_preview.rb:443
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#: lib/citation_preview.rb:446
 msgid "Custom…"
 msgstr "Benutzerdefiniert …"
 
@@ -144,7 +156,7 @@ msgstr "PDF ö_ffnen"
 msgid "_Copy Key"
 msgstr "Schlüssel _kopieren"
 
-#: lib/entry_list_row.rb:183 lib/window.rb:439
+#: lib/entry_list_row.rb:183 lib/window.rb:447
 msgid "_Delete"
 msgstr "_Löschen"
 
@@ -156,85 +168,85 @@ msgstr "Autor nicht gesetzt"
 msgid "Title not set"
 msgstr "Titel nicht gesetzt"
 
-#: lib/entry_page.rb:224
+#: lib/entry_page.rb:230
 msgid "No Citation Selected"
 msgstr "Kein Zitat ausgewählt"
 
-#: lib/entry_page.rb:281
+#: lib/entry_page.rb:287
 msgid "Citation _Type"
 msgstr "Zitat_typ"
 
-#: lib/entry_page.rb:292
+#: lib/entry_page.rb:298
 msgid "Other…"
 msgstr "Andere …"
 
-#: lib/entry_page.rb:302
+#: lib/entry_page.rb:308
 msgid "_Other Citation Type"
 msgstr "_Anderer Zitattyp"
 
-#: lib/entry_page.rb:309
+#: lib/entry_page.rb:315
 msgid "_Citation Key"
 msgstr "Zitat_schlüssel"
 
-#: lib/entry_page.rb:326
+#: lib/entry_page.rb:332
 msgid "_Author"
 msgstr "_Autor"
 
-#: lib/entry_page.rb:333
+#: lib/entry_page.rb:339
 msgid "_Title"
 msgstr "_Titel"
 
-#: lib/entry_page.rb:340
+#: lib/entry_page.rb:346
 msgid "_Year"
 msgstr "_Jahr"
 
-#: lib/entry_page.rb:359 lib/entry_page.rb:866
+#: lib/entry_page.rb:365 lib/entry_page.rb:905
 msgid "Open in Browser"
 msgstr "In Browser öffnen"
 
-#: lib/entry_page.rb:367
+#: lib/entry_page.rb:373
 msgid "Other Properties"
 msgstr "Andere Eigenschaften"
 
-#: lib/entry_page.rb:381
+#: lib/entry_page.rb:387
 msgid "Abstract"
 msgstr "Zusammenfassung"
 
-#: lib/entry_page.rb:388
+#: lib/entry_page.rb:394
 msgid "Copy Abstract"
 msgstr "Zusammenfassung kopieren"
 
-#: lib/entry_page.rb:405
+#: lib/entry_page.rb:411
 msgid "Notes"
 msgstr "Notizen"
 
-#: lib/entry_page.rb:412
+#: lib/entry_page.rb:418
 msgid "Copy Notes"
 msgstr "Notizen kopieren"
 
-#: lib/entry_page.rb:468
+#: lib/entry_page.rb:474
 msgid "PDF"
 msgstr "PDF"
 
-#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
-#: lib/window.rb:401
+#: lib/entry_page.rb:492 lib/window.rb:241 lib/window.rb:286 lib/window.rb:394
+#: lib/window.rb:409
 msgid "_Open"
 msgstr "_Öffnen"
 
-#: lib/entry_page.rb:496
+#: lib/entry_page.rb:502
 msgid "Delete PDF"
 msgstr "PDF löschen"
 
-#: lib/entry_page.rb:533
+#: lib/entry_page.rb:539
 msgid "Could not set PDF Preview"
 msgstr "PDF-Vorschau konnte nicht gesetzt werden"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: lib/entry_page.rb:636
+#: lib/entry_page.rb:670
 msgid "Citation Key already exists"
 msgstr "Zitatschlüssel existiert bereits"
 
-#: lib/entry_page.rb:725
+#: lib/entry_page.rb:761
 msgid "PDF added"
 msgstr "PDF hinzugefügt"
 
@@ -322,50 +334,50 @@ msgstr "Ein neues Fenster öffnen"
 msgid "Enable debug messages"
 msgstr "Fehlerdiagnosemeldungen aktivieren"
 
-#: lib/main.rb:151 lib/window.rb:181
+#: lib/main.rb:151 lib/window.rb:185
 msgid "Citations"
 msgstr "Zitate"
 
-#: lib/new_entry_dialog.rb:73
+#: lib/new_entry_dialog.rb:72
 msgid "New"
 msgstr "Neu"
 
 #. TRANSLATORS BibTeX is a proper name
-#: lib/new_entry_dialog.rb:80
+#: lib/new_entry_dialog.rb:79
 msgid "From BibTeX"
 msgstr "Aus BibTeX"
 
-#: lib/new_entry_dialog.rb:86
+#: lib/new_entry_dialog.rb:85
 msgid "From DOI"
 msgstr "Aus DOI"
 
-#: lib/new_entry_dialog.rb:115
+#: lib/new_entry_dialog.rb:118
 msgid "Insert a BibTeX citation here"
 msgstr "BibTeX-Zitat hier einfügen"
 
-#: lib/new_entry_dialog.rb:126
+#: lib/new_entry_dialog.rb:129
 msgid "Add new Entry"
 msgstr "Neuen Eintrag hinzufügen"
 
-#: lib/new_entry_dialog.rb:141
+#: lib/new_entry_dialog.rb:144
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
-#: lib/new_entry_dialog.rb:149
+#: lib/new_entry_dialog.rb:152
 msgid "C_reate"
 msgstr "E_rstellen"
 
-#: lib/new_entry_dialog.rb:189
+#: lib/new_entry_dialog.rb:192
 msgid "Citation Key"
 msgstr "Zitatschlüssel"
 
-#: lib/new_entry_dialog.rb:196
+#: lib/new_entry_dialog.rb:199
 msgid "Citation Type"
 msgstr "Zitattyp"
 
 # https://de.wikipedia.org/wiki/Digital_Object_Identifier
 #. TRANSLATORS DOI is a proper name
-#: lib/new_entry_dialog.rb:223
+#: lib/new_entry_dialog.rb:235
 msgid "DOI"
 msgstr "DOI"
 
@@ -509,126 +521,126 @@ msgstr "Schule"
 msgid "Institution"
 msgstr "Institution"
 
-#: lib/window.rb:166
+#: lib/window.rb:170
 msgid "Bibliography saved"
 msgstr "Bibliografie gespeichert"
 
-#: lib/window.rb:216
+#: lib/window.rb:220
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
 #. TRANSLATORS BibTeX is a proper name
-#: lib/window.rb:227
+#: lib/window.rb:233
 msgid "Open a BibTeX File"
 msgstr "Eine BibTeX-Datei öffnen"
 
-#: lib/window.rb:228
+#: lib/window.rb:234
 msgid "Or drag-and-drop a file"
 msgstr "Oder legen Sie eine Datei ab"
 
-#: lib/window.rb:249
+#: lib/window.rb:255
 msgid "Manage your Citations"
 msgstr "Verwalten Sie Ihre Zitate"
 
-#: lib/window.rb:263
+#: lib/window.rb:271
 msgid "Recent Files"
 msgstr "Kürzlich verwendete Dateien"
 
-#: lib/window.rb:302
+#: lib/window.rb:310
 msgid "Sidebar"
 msgstr "Seitenleiste"
 
-#: lib/window.rb:306
+#: lib/window.rb:314
 msgid "Content"
 msgstr "Inhalt"
 
-#: lib/window.rb:329
+#: lib/window.rb:337
 msgid "Add New Citation"
 msgstr "Neues Zitat hinzufügen"
 
-#: lib/window.rb:338
+#: lib/window.rb:346
 msgid "Search"
 msgstr "Suchen"
 
-#: lib/window.rb:345
+#: lib/window.rb:353
 msgid "Secondary Menu"
 msgstr "Nebenmenü"
 
-#: lib/window.rb:355
+#: lib/window.rb:363
 msgid "Search…"
 msgstr "Suchen …"
 
-#: lib/window.rb:385
+#: lib/window.rb:393
 msgid "_Create New Bibliography"
 msgstr "Neue Bibliografie _erstellen"
 
-#: lib/window.rb:400
+#: lib/window.rb:408
 msgid "_Save"
 msgstr "_Speichern"
 
-#: lib/window.rb:402
+#: lib/window.rb:410
 msgid "New _Window"
 msgstr "Neues _Fenster"
 
-#: lib/window.rb:408
+#: lib/window.rb:416
 msgid "_Keyboard Shortcuts"
 msgstr "Tasten_kürzel"
 
 #. TRANSLATORS About dialog
-#: lib/window.rb:410
+#: lib/window.rb:418
 msgid "_About Citations"
 msgstr "_Info zu Zitate"
 
-#: lib/window.rb:425
+#: lib/window.rb:433
 msgid "_Search in Google Scholar"
 msgstr "In Google Scholar _suchen"
 
 #. TRANSLATORS arXiv is a proper name
-#: lib/window.rb:427
+#: lib/window.rb:435
 msgid "_Search in arXiv"
 msgstr "In arXiv _suchen"
 
-#: lib/window.rb:433
+#: lib/window.rb:441
 msgid "_Copy BibTeX Entry"
 msgstr "BibTeX-Eintrag _kopieren"
 
-#: lib/window.rb:453
+#: lib/window.rb:461
 msgid "Create New Bibliography"
 msgstr "Neue Bibliografie erstellen"
 
-#: lib/window.rb:454
+#: lib/window.rb:462
 msgid "_Create"
 msgstr "_Erstellen"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: lib/window.rb:457
+#: lib/window.rb:465
 msgid "bibliography"
 msgstr "Bibliografie"
 
-#: lib/window.rb:469
+#: lib/window.rb:477
 msgid "BibTeX Files"
 msgstr "BibTeX-Dateien"
 
-#: lib/window.rb:516
+#: lib/window.rb:524
 msgid "An entry with the given citation key already exists"
 msgstr "Es existiert bereits ein Eintrag mit diesem Zitatschlüssel"
 
-#: lib/window.rb:522
+#: lib/window.rb:530
 msgid "Could not add entry"
 msgstr "Eintrag konnte nicht hinzugefügt werden"
 
-#: lib/window.rb:551
+#: lib/window.rb:559
 msgid "Citation Deleted"
 msgstr "Zitat gelöscht"
 
-#: lib/window.rb:553
+#: lib/window.rb:561
 msgid "Undo"
 msgstr "Rückgängig"
 
 #. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
 #. more detailed.
-#: lib/window.rb:834
+#: lib/window.rb:842
 msgid ""
 "Do you want to write all changes to the bibliography before opening the new "
 "one?"
@@ -636,38 +648,38 @@ msgstr ""
 "Möchten Sie alle Änderungen in die Bibliografie speichern, bevor Sie eine "
 "neue öffnen?"
 
-#: lib/window.rb:835
+#: lib/window.rb:843
 msgid "_Open Without Saving"
 msgstr "Öffnen, _ohne zu speichern"
 
-#: lib/window.rb:836
+#: lib/window.rb:844
 msgid "_Don't Open"
 msgstr "_Nicht öffnen"
 
-#: lib/window.rb:837
+#: lib/window.rb:845
 msgid "_Save and Open"
 msgstr "_Speichern und öffnen"
 
 #. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
 #. more detailed.
-#: lib/window.rb:866
+#: lib/window.rb:874
 msgid "Do you want to write all changes to the bibliography?"
 msgstr "Möchten Sie alle Änderungen in die Bibliografie speichern?"
 
-#: lib/window.rb:867
+#: lib/window.rb:875
 msgid "_Quit Without Saving"
 msgstr "_Beenden ohne zu speichern"
 
-#: lib/window.rb:868
+#: lib/window.rb:876
 msgid "_Don't Quit"
 msgstr "_Nicht beenden"
 
-#: lib/window.rb:869
+#: lib/window.rb:877
 msgid "_Save and Quit"
 msgstr "_Speichern und beenden"
 
 #. TRANSLATORS Dialog title which informs the user about unsaved changes.
-#: lib/window.rb:900
+#: lib/window.rb:908
 msgid "Unsaved Changes"
 msgstr "Ungespeicherte Änderungen"
 
@@ -683,3 +695,11 @@ msgstr "bibliography;citing;literature;BibTeX;LaTeX;TeX;Bibliografie;zitieren;Zi
 #: data/org.rubygtkproject.Citations.desktop.in:18
 msgid "New Window"
 msgstr "Neues Fenster"
+
+#: data/org.rubygtkproject.Citations.metainfo.xml:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "Verwalten Sie Ihre Bibliografien im BibTeX-Format."
+
+#: data/org.rubygtkproject.Citations.metainfo.xml:15
+msgid "Main window"
+msgstr "Hauptfenster"

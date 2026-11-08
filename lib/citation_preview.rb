@@ -432,13 +432,18 @@ class CitationPreview
 
     def template_names
       TEMPLATES.map do |name, _article, _book|
-        if name == 'Custom'
+        case name
+        when 'Mla', 'Ams', 'Apa'
+          name.upcase
+        when 'Chicago'
+          _('Chicago')
+        when 'Harvard'
+          _('Harvard')
+        when 'Vancouver'
+          _('Vancouver')
+        when 'Custom'
           # NOTE: Custom as in Custom Template.
           _('Custom…')
-        elsif %w[Mla Ams Apa].include?(name)
-          name.upcase
-        else
-          _(name)
         end
       end
     end

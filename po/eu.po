@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
 "issues\n"
-"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"POT-Creation-Date: 2026-11-08 01:08+0000\n"
 "PO-Revision-Date: 2026-01-07 10:00+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
@@ -19,56 +19,56 @@ msgstr ""
 
 #. TRANSLATORS Replace this with your name for it to show up in the
 #. about dialog.
-#: lib/about_dialog.rb:63
+#: lib/about_dialog.rb:67
 msgid "translator-credits"
 msgstr "Asier Sarasua Garmendia <asiersarasua@ni.eus>"
 
-#: lib/add_pdf_dialog.rb:90
+#: lib/add_pdf_dialog.rb:91
 msgid "Select a PDF"
 msgstr "Hautatu PDF bat"
 
-#: lib/add_pdf_dialog.rb:103
+#: lib/add_pdf_dialog.rb:104
 msgid "PDF Files"
 msgstr "PDF fitxategiak"
 
 #. TRANSLATORS Selects a PDF file for the citation
-#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+#: lib/add_pdf_dialog.rb:115 lib/entry_page.rb:459
 msgid "Add PDF"
 msgstr "Gehitu PDFa"
 
-#: lib/add_pdf_dialog.rb:155
+#: lib/add_pdf_dialog.rb:156
 msgid "Bibliography folder not set"
 msgstr "Ez da bibliografia-karpeta ezarri"
 
-#: lib/add_pdf_dialog.rb:170
+#: lib/add_pdf_dialog.rb:171
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Hautatutako PDFaren kopia bat sortzen du eta zure bibliografia-karpetan "
 "biltegiratzen du."
 
-#: lib/add_pdf_dialog.rb:189
+#: lib/add_pdf_dialog.rb:190
 msgid "Add From URL"
 msgstr "Gehitu URLtik"
 
-#: lib/add_pdf_dialog.rb:197
+#: lib/add_pdf_dialog.rb:198
 msgid "Download…"
 msgstr "Deskargatu…"
 
-#: lib/add_pdf_dialog.rb:204
+#: lib/add_pdf_dialog.rb:205
 msgid "Add From File…"
 msgstr "Gehitu fitxategitik…"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: lib/add_pdf_dialog.rb:217
+#: lib/add_pdf_dialog.rb:218
 msgid "Make sure that {path} exists"
 msgstr "Ziurtatu {path} badagoela"
 
-#: lib/add_pdf_dialog.rb:294
+#: lib/add_pdf_dialog.rb:305
 msgid "Could not download PDF"
 msgstr "Ezin da PDFa deskargatu"
 
-#: lib/add_pdf_dialog.rb:321
+#: lib/add_pdf_dialog.rb:332
 msgid "Could not set PDF"
 msgstr "Ezin da PDFa ezarri"
 
@@ -77,27 +77,27 @@ msgstr "Ezin da PDFa ezarri"
 msgid "Plain"
 msgstr "Soila"
 
-#: lib/citation_preview.rb:197
+#: lib/citation_preview.rb:200
 msgid "Custom Citation Format"
 msgstr "Bibliografia-formatu lehenetsia"
 
-#: lib/citation_preview.rb:205
+#: lib/citation_preview.rb:208
 msgid "Help"
 msgstr "Laguntza"
 
-#: lib/citation_preview.rb:229
+#: lib/citation_preview.rb:232
 msgid "Citation"
 msgstr "Aipamena"
 
-#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+#: lib/citation_preview.rb:267 lib/entry_page.rb:325
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: lib/citation_preview.rb:292
+#: lib/citation_preview.rb:295
 msgid "Custom Template"
 msgstr "Txantiloi pertsonalizatua"
 
-#: lib/citation_preview.rb:307
+#: lib/citation_preview.rb:310
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
@@ -107,16 +107,28 @@ msgstr ""
 "etiketaren edukiak txertatzeko, idatzi <tt>%ETIKETABAT%</tt>. Oinarrizko "
 "markdown sintaxia onartzen da letra lodia eta etzana sortzeko. "
 
-#: lib/citation_preview.rb:316
+#: lib/citation_preview.rb:319
 msgid "Example:"
 msgstr "Adibidea:"
 
-#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
-#: lib/window.rb:762
+#: lib/citation_preview.rb:389 lib/entry_list_row.rb:213 lib/entry_page.rb:685
+#: lib/window.rb:770
 msgid "Copied"
 msgstr "Kopiatua"
 
-#: lib/citation_preview.rb:400
+#: lib/citation_preview.rb:439
+msgid "Chicago"
+msgstr "Chicago"
+
+#: lib/citation_preview.rb:441
+msgid "Harvard"
+msgstr "Harvard"
+
+#: lib/citation_preview.rb:443
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#: lib/citation_preview.rb:446
 msgid "Custom…"
 msgstr "Pertsonalizatua…"
 
@@ -137,7 +149,7 @@ msgstr "_Ireki PDFa"
 msgid "_Copy Key"
 msgstr "_Kopiatu gakoa"
 
-#: lib/entry_list_row.rb:183 lib/window.rb:439
+#: lib/entry_list_row.rb:183 lib/window.rb:447
 msgid "_Delete"
 msgstr "Ez_abatu"
 
@@ -149,85 +161,85 @@ msgstr "Egilea ez da ezarri"
 msgid "Title not set"
 msgstr "Izenburua ez da ezarri"
 
-#: lib/entry_page.rb:224
+#: lib/entry_page.rb:230
 msgid "No Citation Selected"
 msgstr "Ez da aipamenik hautatu"
 
-#: lib/entry_page.rb:281
+#: lib/entry_page.rb:287
 msgid "Citation _Type"
 msgstr "Aipamen _mota"
 
-#: lib/entry_page.rb:292
+#: lib/entry_page.rb:298
 msgid "Other…"
 msgstr "Bestelakoa…"
 
-#: lib/entry_page.rb:302
+#: lib/entry_page.rb:308
 msgid "_Other Citation Type"
 msgstr "_Beste aipamen mota bat"
 
-#: lib/entry_page.rb:309
+#: lib/entry_page.rb:315
 msgid "_Citation Key"
 msgstr "Aipamenaren _gakoa"
 
-#: lib/entry_page.rb:326
+#: lib/entry_page.rb:332
 msgid "_Author"
 msgstr "_Egilea"
 
-#: lib/entry_page.rb:333
+#: lib/entry_page.rb:339
 msgid "_Title"
 msgstr "_Titulua"
 
-#: lib/entry_page.rb:340
+#: lib/entry_page.rb:346
 msgid "_Year"
 msgstr "_Urtea"
 
-#: lib/entry_page.rb:359 lib/entry_page.rb:866
+#: lib/entry_page.rb:365 lib/entry_page.rb:905
 msgid "Open in Browser"
 msgstr "Ireki nabigatzailean"
 
-#: lib/entry_page.rb:367
+#: lib/entry_page.rb:373
 msgid "Other Properties"
 msgstr "Beste propietate batzuk"
 
-#: lib/entry_page.rb:381
+#: lib/entry_page.rb:387
 msgid "Abstract"
 msgstr "Abstraktua"
 
-#: lib/entry_page.rb:388
+#: lib/entry_page.rb:394
 msgid "Copy Abstract"
 msgstr "Kopiatu laburpena"
 
-#: lib/entry_page.rb:405
+#: lib/entry_page.rb:411
 msgid "Notes"
 msgstr "Oharrak"
 
-#: lib/entry_page.rb:412
+#: lib/entry_page.rb:418
 msgid "Copy Notes"
 msgstr "Kopiatu oharrak"
 
-#: lib/entry_page.rb:468
+#: lib/entry_page.rb:474
 msgid "PDF"
 msgstr "PDF"
 
-#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
-#: lib/window.rb:401
+#: lib/entry_page.rb:492 lib/window.rb:241 lib/window.rb:286 lib/window.rb:394
+#: lib/window.rb:409
 msgid "_Open"
 msgstr "_Ireki"
 
-#: lib/entry_page.rb:496
+#: lib/entry_page.rb:502
 msgid "Delete PDF"
 msgstr "Ezabatu PDFa"
 
-#: lib/entry_page.rb:533
+#: lib/entry_page.rb:539
 msgid "Could not set PDF Preview"
 msgstr "Ezin izan da PDF aurrebista ezarri"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: lib/entry_page.rb:636
+#: lib/entry_page.rb:670
 msgid "Citation Key already exists"
 msgstr "Aipamenaren gako hori badago lehendik"
 
-#: lib/entry_page.rb:725
+#: lib/entry_page.rb:761
 msgid "PDF added"
 msgstr "PDFa gehitu da"
 
@@ -310,49 +322,49 @@ msgstr "Ireki leiho berria"
 msgid "Enable debug messages"
 msgstr "Gaitu mezuak araztea"
 
-#: lib/main.rb:151 lib/window.rb:181
+#: lib/main.rb:151 lib/window.rb:185
 msgid "Citations"
 msgstr "Aipamenak"
 
-#: lib/new_entry_dialog.rb:73
+#: lib/new_entry_dialog.rb:72
 msgid "New"
 msgstr "Berria"
 
 #. TRANSLATORS BibTeX is a proper name
-#: lib/new_entry_dialog.rb:80
+#: lib/new_entry_dialog.rb:79
 msgid "From BibTeX"
 msgstr "BibTeX formatutik"
 
-#: lib/new_entry_dialog.rb:86
+#: lib/new_entry_dialog.rb:85
 msgid "From DOI"
 msgstr "DOItik"
 
-#: lib/new_entry_dialog.rb:115
+#: lib/new_entry_dialog.rb:118
 msgid "Insert a BibTeX citation here"
 msgstr "Txertatu BibTeX aipamen bat hemen"
 
-#: lib/new_entry_dialog.rb:126
+#: lib/new_entry_dialog.rb:129
 msgid "Add new Entry"
 msgstr "Gehitu sarrera berria"
 
-#: lib/new_entry_dialog.rb:141
+#: lib/new_entry_dialog.rb:144
 msgid "_Cancel"
 msgstr "_Utzi"
 
-#: lib/new_entry_dialog.rb:149
+#: lib/new_entry_dialog.rb:152
 msgid "C_reate"
 msgstr "_Sortu"
 
-#: lib/new_entry_dialog.rb:189
+#: lib/new_entry_dialog.rb:192
 msgid "Citation Key"
 msgstr "Aipamenaren gakoa"
 
-#: lib/new_entry_dialog.rb:196
+#: lib/new_entry_dialog.rb:199
 msgid "Citation Type"
 msgstr "Aipamen mota"
 
 #. TRANSLATORS DOI is a proper name
-#: lib/new_entry_dialog.rb:223
+#: lib/new_entry_dialog.rb:235
 msgid "DOI"
 msgstr "DOIa"
 
@@ -496,126 +508,126 @@ msgstr "Eskola"
 msgid "Institution"
 msgstr "Instituzioa"
 
-#: lib/window.rb:166
+#: lib/window.rb:170
 msgid "Bibliography saved"
 msgstr "Bibliografia gorde da"
 
-#: lib/window.rb:216
+#: lib/window.rb:220
 msgid "Main Menu"
 msgstr "Menu nagusia"
 
 #. TRANSLATORS BibTeX is a proper name
-#: lib/window.rb:227
+#: lib/window.rb:233
 msgid "Open a BibTeX File"
 msgstr "Ireki BibTeX fitxategi bat"
 
-#: lib/window.rb:228
+#: lib/window.rb:234
 msgid "Or drag-and-drop a file"
 msgstr "Edo arrastatu eta jaregin fitxategi bat"
 
-#: lib/window.rb:249
+#: lib/window.rb:255
 msgid "Manage your Citations"
 msgstr "Kudeatu zure aipamenak"
 
-#: lib/window.rb:263
+#: lib/window.rb:271
 msgid "Recent Files"
 msgstr "Azken fitxategiak"
 
-#: lib/window.rb:302
+#: lib/window.rb:310
 msgid "Sidebar"
 msgstr "Alboko barra"
 
-#: lib/window.rb:306
+#: lib/window.rb:314
 msgid "Content"
 msgstr "Edukia"
 
-#: lib/window.rb:329
+#: lib/window.rb:337
 msgid "Add New Citation"
 msgstr "Gehitu beste aipamen bat"
 
-#: lib/window.rb:338
+#: lib/window.rb:346
 msgid "Search"
 msgstr "Bilatu"
 
-#: lib/window.rb:345
+#: lib/window.rb:353
 msgid "Secondary Menu"
 msgstr "Bigarren mailako menua"
 
-#: lib/window.rb:355
+#: lib/window.rb:363
 msgid "Search…"
 msgstr "Bilatu…"
 
-#: lib/window.rb:385
+#: lib/window.rb:393
 msgid "_Create New Bibliography"
 msgstr "S_ortu bibliografia berria"
 
-#: lib/window.rb:400
+#: lib/window.rb:408
 msgid "_Save"
 msgstr "_Gorde"
 
-#: lib/window.rb:402
+#: lib/window.rb:410
 msgid "New _Window"
 msgstr "Leiho _berria"
 
-#: lib/window.rb:408
+#: lib/window.rb:416
 msgid "_Keyboard Shortcuts"
 msgstr "Las_ter-teklak"
 
 #. TRANSLATORS About dialog
-#: lib/window.rb:410
+#: lib/window.rb:418
 msgid "_About Citations"
 msgstr "Aipamenak aplikazioari _buruz"
 
-#: lib/window.rb:425
+#: lib/window.rb:433
 msgid "_Search in Google Scholar"
 msgstr "_Bilatu Google Scholar gunean"
 
 #. TRANSLATORS arXiv is a proper name
-#: lib/window.rb:427
+#: lib/window.rb:435
 msgid "_Search in arXiv"
 msgstr "_Bilatu arXiv gunean"
 
-#: lib/window.rb:433
+#: lib/window.rb:441
 msgid "_Copy BibTeX Entry"
 msgstr "_Kopiatu BibTeX sarrera"
 
-#: lib/window.rb:453
+#: lib/window.rb:461
 msgid "Create New Bibliography"
 msgstr "Sortu bibliografia berria"
 
-#: lib/window.rb:454
+#: lib/window.rb:462
 msgid "_Create"
 msgstr "_Sortu"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: lib/window.rb:457
+#: lib/window.rb:465
 msgid "bibliography"
 msgstr "bibliografia"
 
-#: lib/window.rb:469
+#: lib/window.rb:477
 msgid "BibTeX Files"
 msgstr "BibTeX fitxategiak"
 
-#: lib/window.rb:516
+#: lib/window.rb:524
 msgid "An entry with the given citation key already exists"
 msgstr "Badago emandako aipamena duen sarrera bat"
 
-#: lib/window.rb:522
+#: lib/window.rb:530
 msgid "Could not add entry"
 msgstr "Ezin da sarrera gehitu"
 
-#: lib/window.rb:551
+#: lib/window.rb:559
 msgid "Citation Deleted"
 msgstr "Aipamena ezabatu da"
 
-#: lib/window.rb:553
+#: lib/window.rb:561
 msgid "Undo"
 msgstr "Desegin"
 
 #. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
 #. more detailed.
-#: lib/window.rb:834
+#: lib/window.rb:842
 msgid ""
 "Do you want to write all changes to the bibliography before opening the new "
 "one?"
@@ -623,38 +635,38 @@ msgstr ""
 "Bibliografdiaren aldaketa guztiak idatzi nahi dituzu berria ireki baino "
 "lehen?"
 
-#: lib/window.rb:835
+#: lib/window.rb:843
 msgid "_Open Without Saving"
 msgstr "_Ireki gorde gabe"
 
-#: lib/window.rb:836
+#: lib/window.rb:844
 msgid "_Don't Open"
 msgstr "_Ez ireki"
 
-#: lib/window.rb:837
+#: lib/window.rb:845
 msgid "_Save and Open"
 msgstr "_Gorde eta ireki"
 
 #. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
 #. more detailed.
-#: lib/window.rb:866
+#: lib/window.rb:874
 msgid "Do you want to write all changes to the bibliography?"
 msgstr "Bibliografiaren aldaketa guztiak idatzi nahi dituzu?"
 
-#: lib/window.rb:867
+#: lib/window.rb:875
 msgid "_Quit Without Saving"
 msgstr "_Irten gorde gabe"
 
-#: lib/window.rb:868
+#: lib/window.rb:876
 msgid "_Don't Quit"
 msgstr "_Ez irten"
 
-#: lib/window.rb:869
+#: lib/window.rb:877
 msgid "_Save and Quit"
 msgstr "_Gorde eta irten"
 
 #. TRANSLATORS Dialog title which informs the user about unsaved changes.
-#: lib/window.rb:900
+#: lib/window.rb:908
 msgid "Unsaved Changes"
 msgstr "Gorde gabeko aldaketak"
 
@@ -670,3 +682,11 @@ msgstr "bibliografia;aipamenak;literature;BibTeX;LaTeX;TeX;"
 #: data/org.rubygtkproject.Citations.desktop.in:18
 msgid "New Window"
 msgstr "Leiho berria"
+
+#: data/org.rubygtkproject.Citations.metainfo.xml:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "Kudeatu zure bibliografia BibTeX formatua erabiliz."
+
+#: data/org.rubygtkproject.Citations.metainfo.xml:15
+msgid "Main window"
+msgstr "Leiho nagusia"

@@ -27,6 +27,7 @@ cd "$root"
 domain=citations
 desktop_in=data/org.rubygtkproject.Citations.desktop.in
 desktop_out=data/org.rubygtkproject.Citations.desktop
+metainfo=data/org.rubygtkproject.Citations.metainfo.xml
 upstream=origin/master
 
 work=$(mktemp -d)
@@ -57,8 +58,20 @@ sed -i -E 's@(^|[[:space:]])\.\./@\1@g' po/ruby.pot
 xgettext --language=Desktop --add-comments=Translators --from-code=UTF-8 \
   -o "$work/desktop.pot" "$desktop_in"
 
+# The metainfo file's <summary>, <description> and <screenshot><caption>
+# (po/POTFILES.in lists it, matching upstream's data/*.metainfo.xml.in.in).
+# xgettext's bundled metainfo.its rules also extract <developer_name>, which
+# the file marks translate="no"; that attribute isn't honoured by this
+# gettext's fallback rules, so the tag is stripped from a scratch copy before
+# extraction, and the scratch path is rewritten back to the real one after.
+scratch_metainfo="$work/scratch.metainfo.xml"
+sed '/<developer_name/d' "$metainfo" > "$scratch_metainfo"
+xgettext --from-code=UTF-8 --add-comments=Translators \
+  -o "$work/metainfo.pot" "$scratch_metainfo"
+sed -i "s@$scratch_metainfo@$metainfo@" "$work/metainfo.pot"
+
 # One template for the whole app.
-msgcat --use-first -o "po/$domain.pot" po/ruby.pot "$work/desktop.pot"
+msgcat --use-first -o "po/$domain.pot" po/ruby.pot "$work/desktop.pot" "$work/metainfo.pot"
 rm -f po/ruby.pot
 
 # Every locale upstream ships, merged onto the port's msgids and compiled.

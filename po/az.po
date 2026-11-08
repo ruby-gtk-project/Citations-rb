@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: citations master\n"
 "Report-Msgid-Bugs-To: https://github.com/ruby-gtk-project/Citations-rb/"
 "issues\n"
-"POT-Creation-Date: 2026-11-02 23:00+0000\n"
+"POT-Creation-Date: 2026-11-08 01:08+0000\n"
 "PO-Revision-Date: 2025-08-09 15:32+0300\n"
 "Last-Translator: Ramal Rəhimov <jhonaluman@gmail.com>\n"
 "Language-Team: Azerbaijani <contact@azlinux.org>\n"
@@ -21,55 +21,55 @@ msgstr ""
 
 #. TRANSLATORS Replace this with your name for it to show up in the
 #. about dialog.
-#: lib/about_dialog.rb:63
+#: lib/about_dialog.rb:67
 msgid "translator-credits"
 msgstr "Tərcümə: Ramal Rəhimov <jhonaluman@gmail.com>"
 
-#: lib/add_pdf_dialog.rb:90
+#: lib/add_pdf_dialog.rb:91
 msgid "Select a PDF"
 msgstr "PDF seçin"
 
-#: lib/add_pdf_dialog.rb:103
+#: lib/add_pdf_dialog.rb:104
 msgid "PDF Files"
 msgstr "PDF Faylları"
 
 #. TRANSLATORS Selects a PDF file for the citation
-#: lib/add_pdf_dialog.rb:114 lib/entry_page.rb:453
+#: lib/add_pdf_dialog.rb:115 lib/entry_page.rb:459
 msgid "Add PDF"
 msgstr "PDF əlavə et"
 
-#: lib/add_pdf_dialog.rb:155
+#: lib/add_pdf_dialog.rb:156
 msgid "Bibliography folder not set"
 msgstr "Biblioqrafiya qovluğu təyin edilməyib"
 
-#: lib/add_pdf_dialog.rb:170
+#: lib/add_pdf_dialog.rb:171
 msgid ""
 "Creates a copy of the selected pdf and stores it in your Bibliography folder."
 msgstr ""
 "Seçilmiş PDF-in surətini yaradır və onu Biblioqrafiya qovluğunda saxlayır."
 
-#: lib/add_pdf_dialog.rb:189
+#: lib/add_pdf_dialog.rb:190
 msgid "Add From URL"
 msgstr "URL-dən əlavə et"
 
-#: lib/add_pdf_dialog.rb:197
+#: lib/add_pdf_dialog.rb:198
 msgid "Download…"
 msgstr "Yüklə…"
 
-#: lib/add_pdf_dialog.rb:204
+#: lib/add_pdf_dialog.rb:205
 msgid "Add From File…"
 msgstr "Fayldan əlavə et…"
 
 #. TRANSLATORS Do NOT translate {path}, it is a variable name
-#: lib/add_pdf_dialog.rb:217
+#: lib/add_pdf_dialog.rb:218
 msgid "Make sure that {path} exists"
 msgstr "{path} mövcud olduğundan əmin olun"
 
-#: lib/add_pdf_dialog.rb:294
+#: lib/add_pdf_dialog.rb:305
 msgid "Could not download PDF"
 msgstr "PDF yüklənə bilmədi"
 
-#: lib/add_pdf_dialog.rb:321
+#: lib/add_pdf_dialog.rb:332
 msgid "Could not set PDF"
 msgstr "PDF təyin oluna bilmədi"
 
@@ -78,43 +78,55 @@ msgstr "PDF təyin oluna bilmədi"
 msgid "Plain"
 msgstr "Sadə"
 
-#: lib/citation_preview.rb:197
+#: lib/citation_preview.rb:200
 msgid "Custom Citation Format"
 msgstr "Xüsusi İstinad Formatı"
 
-#: lib/citation_preview.rb:205
+#: lib/citation_preview.rb:208
 msgid "Help"
 msgstr ""
 
-#: lib/citation_preview.rb:229
+#: lib/citation_preview.rb:232
 msgid "Citation"
 msgstr "İstinad"
 
-#: lib/citation_preview.rb:264 lib/entry_page.rb:319
+#: lib/citation_preview.rb:267 lib/entry_page.rb:325
 msgid "Copy"
 msgstr "Kopyala"
 
-#: lib/citation_preview.rb:292
+#: lib/citation_preview.rb:295
 msgid "Custom Template"
 msgstr "Xüsusi Şablon"
 
-#: lib/citation_preview.rb:307
+#: lib/citation_preview.rb:310
 msgid ""
 "Write a custom format for your citations, to insert the contents of a tag "
 "<tt>sometag</tt> write <tt>%SOMETAG%</tt>. Basic markdown syntax for bold "
 "and italics is supported. "
 msgstr ""
 
-#: lib/citation_preview.rb:316
+#: lib/citation_preview.rb:319
 msgid "Example:"
 msgstr "Nümunə:"
 
-#: lib/citation_preview.rb:352 lib/entry_list_row.rb:213 lib/entry_page.rb:651
-#: lib/window.rb:762
+#: lib/citation_preview.rb:389 lib/entry_list_row.rb:213 lib/entry_page.rb:685
+#: lib/window.rb:770
 msgid "Copied"
 msgstr "Kopyalandı"
 
-#: lib/citation_preview.rb:400
+#: lib/citation_preview.rb:439
+msgid "Chicago"
+msgstr "Chicago"
+
+#: lib/citation_preview.rb:441
+msgid "Harvard"
+msgstr "Harvard"
+
+#: lib/citation_preview.rb:443
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#: lib/citation_preview.rb:446
 msgid "Custom…"
 msgstr "Xüsusi…"
 
@@ -135,7 +147,7 @@ msgstr "PDF-i _aç"
 msgid "_Copy Key"
 msgstr "Açarı _kopyala"
 
-#: lib/entry_list_row.rb:183 lib/window.rb:439
+#: lib/entry_list_row.rb:183 lib/window.rb:447
 msgid "_Delete"
 msgstr "_Sil"
 
@@ -147,85 +159,85 @@ msgstr "Müəllif təyin edilməyib"
 msgid "Title not set"
 msgstr "Başlıq təyin edilməyib"
 
-#: lib/entry_page.rb:224
+#: lib/entry_page.rb:230
 msgid "No Citation Selected"
 msgstr "İstinad seçilməyib"
 
-#: lib/entry_page.rb:281
+#: lib/entry_page.rb:287
 msgid "Citation _Type"
 msgstr "İstinad _Növü"
 
-#: lib/entry_page.rb:292
+#: lib/entry_page.rb:298
 msgid "Other…"
 msgstr "Digər…"
 
-#: lib/entry_page.rb:302
+#: lib/entry_page.rb:308
 msgid "_Other Citation Type"
 msgstr "_Digər İstinad Növü"
 
-#: lib/entry_page.rb:309
+#: lib/entry_page.rb:315
 msgid "_Citation Key"
 msgstr "_İstinad Açarı"
 
-#: lib/entry_page.rb:326
+#: lib/entry_page.rb:332
 msgid "_Author"
 msgstr "_Müəllif"
 
-#: lib/entry_page.rb:333
+#: lib/entry_page.rb:339
 msgid "_Title"
 msgstr "_Başlıq"
 
-#: lib/entry_page.rb:340
+#: lib/entry_page.rb:346
 msgid "_Year"
 msgstr "_İl"
 
-#: lib/entry_page.rb:359 lib/entry_page.rb:866
+#: lib/entry_page.rb:365 lib/entry_page.rb:905
 msgid "Open in Browser"
 msgstr "Brauzerdə aç"
 
-#: lib/entry_page.rb:367
+#: lib/entry_page.rb:373
 msgid "Other Properties"
 msgstr "Digər Xüsusiyyətlər"
 
-#: lib/entry_page.rb:381
+#: lib/entry_page.rb:387
 msgid "Abstract"
 msgstr "Annotasiya"
 
-#: lib/entry_page.rb:388
+#: lib/entry_page.rb:394
 msgid "Copy Abstract"
 msgstr "Annotasiyanı kopyala"
 
-#: lib/entry_page.rb:405
+#: lib/entry_page.rb:411
 msgid "Notes"
 msgstr "Qeydlər"
 
-#: lib/entry_page.rb:412
+#: lib/entry_page.rb:418
 msgid "Copy Notes"
 msgstr "Qeydləri kopyala"
 
-#: lib/entry_page.rb:468
+#: lib/entry_page.rb:474
 msgid "PDF"
 msgstr "PDF"
 
-#: lib/entry_page.rb:486 lib/window.rb:235 lib/window.rb:278 lib/window.rb:386
-#: lib/window.rb:401
+#: lib/entry_page.rb:492 lib/window.rb:241 lib/window.rb:286 lib/window.rb:394
+#: lib/window.rb:409
 msgid "_Open"
 msgstr "_Aç"
 
-#: lib/entry_page.rb:496
+#: lib/entry_page.rb:502
 msgid "Delete PDF"
 msgstr "PDF-i sil"
 
-#: lib/entry_page.rb:533
+#: lib/entry_page.rb:539
 msgid "Could not set PDF Preview"
 msgstr "PDF önizləməsi təyin oluna bilmədi"
 
 #. TRANSLATORS Every citation has an identifier called key
-#: lib/entry_page.rb:636
+#: lib/entry_page.rb:670
 msgid "Citation Key already exists"
 msgstr "İstinad Açarı artıq mövcuddur"
 
-#: lib/entry_page.rb:725
+#: lib/entry_page.rb:761
 msgid "PDF added"
 msgstr "PDF əlavə edildi"
 
@@ -308,49 +320,49 @@ msgstr "Yeni pəncərə aç"
 msgid "Enable debug messages"
 msgstr "Sazlama mesajlarını aktivləşdir"
 
-#: lib/main.rb:151 lib/window.rb:181
+#: lib/main.rb:151 lib/window.rb:185
 msgid "Citations"
 msgstr "İstinadlar"
 
-#: lib/new_entry_dialog.rb:73
+#: lib/new_entry_dialog.rb:72
 msgid "New"
 msgstr "Yeni"
 
 #. TRANSLATORS BibTeX is a proper name
-#: lib/new_entry_dialog.rb:80
+#: lib/new_entry_dialog.rb:79
 msgid "From BibTeX"
 msgstr "BibTeX-dən"
 
-#: lib/new_entry_dialog.rb:86
+#: lib/new_entry_dialog.rb:85
 msgid "From DOI"
 msgstr "DOI-dən"
 
-#: lib/new_entry_dialog.rb:115
+#: lib/new_entry_dialog.rb:118
 msgid "Insert a BibTeX citation here"
 msgstr "Burada BibTeX istinadı daxil edin"
 
-#: lib/new_entry_dialog.rb:126
+#: lib/new_entry_dialog.rb:129
 msgid "Add new Entry"
 msgstr "Yeni giriş əlavə et"
 
-#: lib/new_entry_dialog.rb:141
+#: lib/new_entry_dialog.rb:144
 msgid "_Cancel"
 msgstr "_Ləğv et"
 
-#: lib/new_entry_dialog.rb:149
+#: lib/new_entry_dialog.rb:152
 msgid "C_reate"
 msgstr "_Yarat"
 
-#: lib/new_entry_dialog.rb:189
+#: lib/new_entry_dialog.rb:192
 msgid "Citation Key"
 msgstr "İstinad Açarı"
 
-#: lib/new_entry_dialog.rb:196
+#: lib/new_entry_dialog.rb:199
 msgid "Citation Type"
 msgstr "İstinad Növü"
 
 #. TRANSLATORS DOI is a proper name
-#: lib/new_entry_dialog.rb:223
+#: lib/new_entry_dialog.rb:235
 msgid "DOI"
 msgstr "DOI"
 
@@ -494,163 +506,163 @@ msgstr "Məktəb"
 msgid "Institution"
 msgstr "Müəssisə"
 
-#: lib/window.rb:166
+#: lib/window.rb:170
 msgid "Bibliography saved"
 msgstr "Biblioqrafiya saxlanıldı"
 
-#: lib/window.rb:216
+#: lib/window.rb:220
 msgid "Main Menu"
 msgstr "Əsas Menyu"
 
 #. TRANSLATORS BibTeX is a proper name
-#: lib/window.rb:227
+#: lib/window.rb:233
 msgid "Open a BibTeX File"
 msgstr "BibTeX Faylını Aç"
 
-#: lib/window.rb:228
+#: lib/window.rb:234
 msgid "Or drag-and-drop a file"
 msgstr "Və ya faylı sürükləyib buraxın"
 
-#: lib/window.rb:249
+#: lib/window.rb:255
 msgid "Manage your Citations"
 msgstr "İstinadlarınızı idarə edin"
 
-#: lib/window.rb:263
+#: lib/window.rb:271
 msgid "Recent Files"
 msgstr "Son Fayllar"
 
-#: lib/window.rb:302
+#: lib/window.rb:310
 msgid "Sidebar"
 msgstr "Yan Panel"
 
-#: lib/window.rb:306
+#: lib/window.rb:314
 msgid "Content"
 msgstr "Məzmun"
 
-#: lib/window.rb:329
+#: lib/window.rb:337
 msgid "Add New Citation"
 msgstr "Yeni İstinad Əlavə Et"
 
-#: lib/window.rb:338
+#: lib/window.rb:346
 msgid "Search"
 msgstr "Axtar"
 
-#: lib/window.rb:345
+#: lib/window.rb:353
 msgid "Secondary Menu"
 msgstr "İkinci Menyu"
 
-#: lib/window.rb:355
+#: lib/window.rb:363
 msgid "Search…"
 msgstr "Axtar…"
 
-#: lib/window.rb:385
+#: lib/window.rb:393
 msgid "_Create New Bibliography"
 msgstr "_Yeni Biblioqrafiya Yarat"
 
-#: lib/window.rb:400
+#: lib/window.rb:408
 msgid "_Save"
 msgstr "_Saxla"
 
-#: lib/window.rb:402
+#: lib/window.rb:410
 msgid "New _Window"
 msgstr "Yeni _Pəncərə"
 
-#: lib/window.rb:408
+#: lib/window.rb:416
 msgid "_Keyboard Shortcuts"
 msgstr "_Klaviatura Qısayolları"
 
 #. TRANSLATORS About dialog
-#: lib/window.rb:410
+#: lib/window.rb:418
 msgid "_About Citations"
 msgstr "_İstinadlar Haqqında"
 
-#: lib/window.rb:425
+#: lib/window.rb:433
 msgid "_Search in Google Scholar"
 msgstr "Google Scholar-da _Axtar"
 
 #. TRANSLATORS arXiv is a proper name
-#: lib/window.rb:427
+#: lib/window.rb:435
 msgid "_Search in arXiv"
 msgstr "arXiv-də _Axtar"
 
-#: lib/window.rb:433
+#: lib/window.rb:441
 msgid "_Copy BibTeX Entry"
 msgstr ""
 
-#: lib/window.rb:453
+#: lib/window.rb:461
 msgid "Create New Bibliography"
 msgstr "Yeni Biblioqrafiya Yarat"
 
-#: lib/window.rb:454
+#: lib/window.rb:462
 msgid "_Create"
 msgstr "_Yarat"
 
 #. TRANSLATORS This a file name, .bib will be appended e.g.
 #. bibliography.bib, please only use alphabetic characters.
-#: lib/window.rb:457
+#: lib/window.rb:465
 msgid "bibliography"
 msgstr "biblioqrafiya"
 
-#: lib/window.rb:469
+#: lib/window.rb:477
 msgid "BibTeX Files"
 msgstr "BibTeX Faylları"
 
-#: lib/window.rb:516
+#: lib/window.rb:524
 msgid "An entry with the given citation key already exists"
 msgstr "Verilmiş istinad açarı ilə giriş artıq mövcuddur"
 
-#: lib/window.rb:522
+#: lib/window.rb:530
 msgid "Could not add entry"
 msgstr "Giriş əlavə oluna bilmədi"
 
-#: lib/window.rb:551
+#: lib/window.rb:559
 msgid "Citation Deleted"
 msgstr "İstinad silindi"
 
-#: lib/window.rb:553
+#: lib/window.rb:561
 msgid "Undo"
 msgstr "Geri al"
 
 #. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
 #. more detailed.
-#: lib/window.rb:834
+#: lib/window.rb:842
 msgid ""
 "Do you want to write all changes to the bibliography before opening the new "
 "one?"
 msgstr ""
 
-#: lib/window.rb:835
+#: lib/window.rb:843
 msgid "_Open Without Saving"
 msgstr ""
 
-#: lib/window.rb:836
+#: lib/window.rb:844
 msgid "_Don't Open"
 msgstr ""
 
-#: lib/window.rb:837
+#: lib/window.rb:845
 msgid "_Save and Open"
 msgstr ""
 
 #. TRANSLATORS Dialog subtitle which informs the user about unsaved changes
 #. more detailed.
-#: lib/window.rb:866
+#: lib/window.rb:874
 msgid "Do you want to write all changes to the bibliography?"
 msgstr ""
 
-#: lib/window.rb:867
+#: lib/window.rb:875
 msgid "_Quit Without Saving"
 msgstr "_Saxlamadan Çıx"
 
-#: lib/window.rb:868
+#: lib/window.rb:876
 msgid "_Don't Quit"
 msgstr "_Çıxma"
 
-#: lib/window.rb:869
+#: lib/window.rb:877
 msgid "_Save and Quit"
 msgstr "_Saxla və Çıx"
 
 #. TRANSLATORS Dialog title which informs the user about unsaved changes.
-#: lib/window.rb:900
+#: lib/window.rb:908
 msgid "Unsaved Changes"
 msgstr "Saxlanılmamış Dəyişikliklər"
 
@@ -666,3 +678,11 @@ msgstr "biblioqrafiya;istinad;ədəbiyyat;BibTeX;LaTeX;TeX;"
 #: data/org.rubygtkproject.Citations.desktop.in:18
 msgid "New Window"
 msgstr "Yeni Pəncərə"
+
+#: data/org.rubygtkproject.Citations.metainfo.xml:10
+msgid "Manage your bibliographies using the BibTeX format."
+msgstr "BibTeX formatından istifadə edərək biblioqrafiyalarınızı idarə edin."
+
+#: data/org.rubygtkproject.Citations.metainfo.xml:15
+msgid "Main window"
+msgstr "Əsas pəncərə"
