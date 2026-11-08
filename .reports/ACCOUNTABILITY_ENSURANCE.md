@@ -1,100 +1,121 @@
-# Accountability ensurance — Citations (audit pass, 2026-11-07, round 3)
+# Accountability ensurance — Citations (audit pass, 2026-11-08, round 4)
 
 Re-ran `grep -rniE 'TODO|FIXME|not implemented|for now|in a future'` over
 `lib/`, `exe/`, `.reports/`, and the repo root (`PORTING.md` does not exist
-— confirmed, not assumed, same as round 2). The only hits are inside the
-`.reports/` files' own prose quoting this grep pattern or describing past
-findings — no excuse language in `lib/` or `exe/`.
+— confirmed again this pass, not assumed). Ran the skill's own
+`scripts/find-excuses.sh` over the whole tree as well, which catches a wider
+construction set (`by design`, `n/a`, `not applicable`, `out of scope`, etc.).
 
-## The most serious finding this round — a false green in round 2's own `TRANSLATION_PARITY.md`
-
-Round 2's `TRANSLATION_PARITY.md` wrote, about `lib/citation_preview.rb`'s
-`_(name)` variable-argument call for the `Chicago`/`Harvard`/`Vancouver`
-template labels:
-
-> "the app translates correctly at runtime today because the `.po` files
-> already carry these 7 keys from upstream's own `gettext("Chicago")` etc.
-> calls, carried forward verbatim. The risk is only forward-looking..."
-
-This pass checked that claim against the artifact it is actually about —
-the port's own `po/fr.po` and `po/citations.pot` — rather than taking the
-prior report's prose at face value, and the claim is false:
+## What the excuse scan found, and why none of the three hits is a real finding
 
 ```
-$ grep -F '"Chicago"' po/citations.pot
-(no output)
+$ bash .claude/skills/accountability-ensurance/scripts/find-excuses.sh .
+.reports/TRANSLATION_PARITY.md:111:by design: ...
+.reports/component-inventory.md:60:n/a: ...
+.reports/component-inventory.md:441:n/a: ...
 ```
 
-`Chicago`, `Harvard` and `Vancouver` are not in the port's catalogue at
-all, in any language, and have not been since this file was written —
-nothing about this pass's run changed that fact, it only checked it. The
-three labels show in English in every one of the port's 42 non-English
-locales today. See `TRANSLATION_PARITY.md` for the full evidence and
-`COMPONENT_PARITY.md` for the component-text-axis entry.
+Each was opened and read in context, per the rule that a construction match
+is a lead, not a verdict, and the two carved-out exceptions the skill names
+— a document *about* excuses, and a factual "n/a" that names real evidence
+rather than asserting a feature cannot exist:
 
-This is the shape of finding the skill asks to treat as most serious: a
-report asserted a thing was fine on the strength of its own narrative
-("carried forward verbatim," "functionally fine today") without the one
-command — a grep against the port's own `.po`/`.pot` output — that would
-have disproved it in seconds. It is also not a one-off: round 1 made the
-same claim about this exact code (round 2's report says "unchanged from
-round 1"), so the claim was carried through two full audit rounds without
-either one checking the file it was a claim about.
+- `TRANSLATION_PARITY.md:111`, *"One string survives by coincidence, not by
+  design"* — this sentence is pointing out the **absence** of a deliberate
+  mechanism behind a working-by-luck call site, as a warning that it is
+  fragile. It is the opposite of an excuse: it refuses to let the reader
+  credit the code with intent it does not have. Not a hit.
+- `component-inventory.md:60`, GtkBuilder template row marked `n/a` for the
+  port — the row's own text names the reason: *"widgets are built in
+  code"*, a structural fact about the house style (no `.ui` files exist on
+  the port side by design of the whole campaign, documented in the
+  `ruby-gtk` skill, not invented here to excuse this app), and the adjacent
+  columns in the same table show the actual widget/CSS/signal counts were
+  still compared. No behaviour is being waved away.
+- `component-inventory.md:441`, resource-manifest row marked `n/a` — same
+  shape: the row states plainly what still needs a home (three icons,
+  `style.css`) and confirms they are present elsewhere in the same cell.
+  Nothing is excused; the manifest format itself (a GResource XML index) has
+  no referent in a port that does not build gresources, and the row says so
+  while still accounting for every asset it would have listed.
 
-## Second finding — two reports asserted an open gap for five hours after it closed, and were not corrected when later touched
+None of the three converts a missing behaviour into settled architecture.
+No rewrite performed — rewriting would be adding a construction where there
+is no actual excuse, which would be the inverse failure (obscuring real
+clean prose with insult-bank boilerplate it does not deserve).
 
-`COMPONENT_IDENTIFICATION.md` and `COMPONENT_PARITY.md`, as committed at
-`1ed4e33` (15:29:23), both led with the devel-profile distinction
-(`Config::IS_DEVEL`) as the one open gap this port carries. Commit
-`19d4cff` (16:36:15) fixed exactly that gap in `lib/window.rb` and
-`lib/about_dialog.rb`. Three later commits touched the tree —
-`7a7c438`/`31b14ee` (20:26, both titled around "Inventory upstream
-components") and `d989da7` (21:15, which edited `COMPONENT_PARITY.md`
-directly, for an unrelated paragraph) — and none of them revisited the
-devel-gap section to confirm it was still open. It was committed as an
-open finding straight through to the head of `ruby` until this pass read
-`lib/window.rb` and `lib/about_dialog.rb` directly and found all three
-sites already gated.
+## Main finding — this round's two fixes are independently verified, not just read as fixed in the previous round's reports
 
-This is the gentler failure mode than the one above — the error is
-pessimistic, not a false green, and nobody shipped a false "all clear" on
-it — but it is the same root cause: a claim about code that was never
-re-checked against the code once the code changed, surviving across
-multiple commits that touched the very file carrying the claim. A reviewer
-reading `COMPONENT_PARITY.md` at `d989da7` and trusting its "Not clean —
-devel gap" verdict would spend time re-investigating an already-closed
-finding, which is its own kind of cost.
+Round 3's `ACCOUNTABILITY_ENSURANCE.md` called out two prior-round reports
+for asserting an open gap for five hours after the code closed it, with
+nobody re-checking the claim against the code. This round's discipline was
+applied to itself: every claim in this round's five reports that a round-3
+finding is now fixed is backed by a command run this pass against the
+regenerated artifact (`po/citations.pot`, `po/fr.po`, a fresh
+`catalogue.rb --compare` run, a fresh `drive_devel_build.rb` execution) —
+not by reading `265669c`'s commit message and trusting its own description
+of what it did. Specifically:
 
-`component-inventory.md`'s item 5 ("Network from the main loop... needs
-checking") is the same pattern a third time, smaller: the `Thread.new` +
-`GLib::Idle.add` pattern it asks about is already in both call sites
-(`lib/add_pdf_dialog.rb`, `lib/new_entry_dialog.rb`) and already driven by
-the suite. Nobody re-answered the question the file itself posed.
+- The `Chicago`/`Harvard`/`Vancouver` fix is confirmed by `grep -F '"Chicago"'
+  po/citations.pot` and by the catalogue compare script reporting `state:
+  ported` with real sites on both sides — not by reading the new
+  `case`/`when` in `lib/citation_preview.rb` and assuming it worked.
+- The metainfo fix is confirmed the same way, against `po/citations.pot` and
+  `po/fr.po` directly.
+- The devel-branch coverage fix is confirmed by actually running
+  `test/drive_devel_build.rb` under `nix develop --command xvfb-run -a
+  ruby` and reading `4 of 4 checks passed` / `DRIVE OK` from its own output
+  — not by reading the script's source and concluding it would pass.
+
+## Second finding — the fix commit's own catalogue work left one new, real gap and this round names it rather than accepting "fixed" as all-or-nothing
+
+`265669c`'s commit message describes itself as fixing the untranslatable
+template names. Taking that at face value and closing the book there is
+exactly the failure mode round 3 found in round 2: trusting a
+self-description instead of re-running the artifact it describes. This
+round's fresh catalogue diff (not read from the commit, generated fresh
+against both trees) surfaces that the fix closed 3 of upstream's 4
+`Template::to_translatable_string` literals and missed the fourth (bare
+`"Custom"`, dead code upstream, but still a key 43 catalogues carry). That
+is recorded as a gap in `TRANSLATION_PARITY.md` and `COMPONENT_PARITY.md`,
+not folded into "the template-text gap is fixed" as a rounding error.
+
+## Third finding — two of this pass's own scanner hits were verified false before being written down, so they could not become the next round's false green
+
+The catalogue compare script this pass reported two additional (gap, extra)
+message pairs beyond the real `"Custom"` gap. Writing those down as gaps
+without opening the actual `.po` files — the exact step round 2's
+`TRANSLATION_PARITY.md` skipped for the `Chicago` claim — would have
+produced two new false findings in this round's own ledger. Both were
+checked against `origin/master`'s `po/fr.po` and the port's, by hand, before
+being classified, and both turned out to be scanner artifacts (a `//`
+comment line breaking the upstream match, an un-decoded XML entity in a
+`.ui` file) rather than real divergence. Recorded in `TRANSLATION_PARITY.md`
+as named scanner limitations, per the skill's "fix the scanner, or state the
+discrepancy" rule, rather than silently dropped or silently reported as
+gaps.
 
 ## What this round verified rather than re-asserted
 
-- The runtime gate: re-ran all three entry points fresh
-  (`test/drive_main_window.rb`, `test/test_models.rb`, `test/test_texer.rb`)
-  rather than trusting "255/255" as a number. Got 78+93+84 = 255,
-  independently, with no stderr `CRITICAL`.
-- The devel-profile fix: read `lib/window.rb` and `lib/about_dialog.rb`
-  directly rather than trusting either round 2's "gap" claim or an
-  assumption that it must have been fixed since.
-- The 22-upstream-test census: recounted `#[test]` occurrences directly
-  from `origin/master`'s five source files rather than citing the
-  previous round's "22/22" figure.
-- The translation gap: diffed the port's own `po/fr.po` against upstream's
-  `po/fr.po`, msgid by msgid, rather than reading `TRANSLATION_PARITY.md`'s
-  prose and moving on.
+- The runtime gate: re-ran all four entry points fresh
+  (`drive_main_window.rb`, `drive_devel_build.rb`, `test_models.rb`,
+  `test_texer.rb`) rather than trusting any number from a prior report —
+  259/259, independently, zero stderr `CRITICAL`.
+- The translation catalogue: regenerated both sides' catalogues with the
+  skill's own scripts and diffed them fresh, rather than reading
+  `TRANSLATION_PARITY.md`'s prose from the previous commit.
+- Every "fixed" claim in this round's own reports: backed by a command run
+  this pass against the artifact the claim is about, named above.
 
 ## Verdict
 
-Not clean, and the reason is sharper than "one gap remains": round 2
-shipped a false green — a specific, checkable claim about the port's own
-translation output that was wrong and was never checked against that
-output across two audit rounds. Two more findings are reports left stale
-after the code under them moved, in both directions (one claimed a closed
-gap was still open; a third asked a question the code had already
-answered). None of this round's reports take a prior round's verdict on
-faith; each either reproduces the evidence fresh or names exactly where
-the prior claim diverged from the code.
+Not clean, and for a reason sharper than "one gap remains": the fix commit
+this round audits is real and independently verified — it is not a false
+green — but it was not complete, and this round's job was to find the
+remainder rather than accept the commit message's own scope. One real,
+narrow translation gap stands (upstream's dead-code `"Custom"` key). Two
+near-misses in this round's own scan were checked and dismissed correctly
+rather than written up as gaps. No excuse language found in `lib/`, `exe/`,
+or the reports; the three grep hits in `.reports/` are factual statements
+about structural absence, not sanctioned omissions, and were left as
+written.

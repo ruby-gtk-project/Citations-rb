@@ -1,147 +1,153 @@
-# Translation parity — Citations (audit pass, 2026-11-07, round 3)
+# Translation parity — Citations (audit pass, 2026-11-08, round 4)
 
 | | |
 |---|---|
-| Upstream | `origin/master` |
-| Port | `ruby` @ `d989da7` |
+| Upstream | `origin/master` @ `e360482` |
+| Port | `ruby` @ `265669c` |
 | Upstream `.po` files | 43 (`LINGUAS` diff with the port: empty) |
 | Port `.po` files | 43 — basenames identical |
+| Catalogue run this pass | `.claude/skills/translation-parity/scripts/catalogue.rb` against a fresh `git worktree` of `origin/master` and the live `ruby` tree, compared with `--compare` |
 
-## Confirmed gap, live today — three citation-template names are untranslatable in the port
+This pass ran the skill's own census and compare scripts fresh rather than
+reading either side's `.po`/`.pot` by eye, which is what round 3's reports
+did (and what caught round 2's false green). Raw numbers:
+`upstream: 160 messages, 181 occurrences, 13 reused, 2 unresolved` /
+`port: 161 messages, 180 occurrences, 10 reused, 7 unresolved`. Compare
+summary: `ported: 158, gaps: 2, extra: 3, kind_mismatch: 0, uses_mismatch: 9,
+languages: 43/43, domain_matches: true, parity: false`.
 
-Round 2's report named this as "a flagged-but-functional risk... the app
-translates correctly at runtime today because the `.po` files already
-carry these 7 keys from upstream's own `gettext("Chicago")` etc. calls,
-carried forward verbatim." **That claim is checked against the port's own
-`po/fr.po` this pass and is false.** The port's catalogues do not carry
-these keys — they were never extracted, because the port's own call site
-is the same kind of non-literal argument that would prevent extraction
-upstream too, and upstream avoids exactly that by calling `gettext` on a
-literal in each branch.
+**Every one of the 5 state-changing rows (2 gaps, 3 extra) was opened and
+read by hand before being recorded below — the scanner's raw count is a
+lead, not a verdict, per the skill.**
 
-Evidence, read both ways:
+## Confirmed fixed — the round-3 gap, re-checked against the regenerated catalogue, not against the fix commit's own message
 
-```
-# upstream: src/citation_preview.rs, Template::to_translatable_string
-Template::Chicago   => gettext("Chicago"),
-Template::Harvard   => gettext("Harvard"),
-Template::Vancouver => gettext("Vancouver"),
-Template::Custom     => gettext("Custom"),
-```
-Each is a literal argument — `xgettext` extracts all four into
-`po/citations.pot`, and all 43 locales carry (translated or not) msgids for
-them. `po/fr.po` on `origin/master` has `msgid "Chicago"`, `msgid
-"Harvard"`, `msgid "Vancouver"` present (confirmed directly, see below).
-
-```ruby
-# port: lib/citation_preview.rb#template_names
-TEMPLATES.map do |name, _article, _book|
-  if name == 'Custom'
-    _('Custom…')                         # literal — extracted correctly
-  elsif %w[Mla Ams Apa].include?(name)
-    name.upcase                           # correspondence: upstream doesn't
-                                           # gettext these either
-  else
-    _(name)                               # name is the LOOP VARIABLE here —
-  end                                      # never extracted, for "Chicago",
-end                                        # "Harvard", "Vancouver"
-```
-
-Direct comparison, this pass, msgid-by-msgid, between upstream's `po/fr.po`
-(`git show origin/master:po/fr.po`) and the port's `po/fr.po`:
+Round 3 found `Chicago`, `Harvard`, `Vancouver` absent from every port
+catalogue because `template_names` called `_(name)` on a loop variable.
+`265669c` rewrote it as a `case`/`when` with a literal `_()` per branch.
+This pass's fresh catalogue diff confirms all three are now `ported`:
 
 ```
-missing in the port's po/fr.po (present in upstream's):
-  'Chicago'
-  'Custom'
-  'Harvard'
-  'Vancouver'
-  ...(see metainfo finding below for the rest)
+upstream_sites: [src/citation_preview.rs:51/52/53]   (gettext("Chicago") etc., literal)
+port_sites:     [lib/citation_preview.rb:439/441/443] (_('Chicago') etc., literal)
+state: ported, kind: single/single, uses: 1 → 1, for all three
 ```
 
-`grep -F '"Chicago"' po/citations.pot` — **no match** — the port's own
-template confirms these three are absent from the catalogue entirely, not
-merely untranslated in French specifically. `'Custom'` (bare, no ellipsis)
-is also absent, but the port's only runtime use of that path is
-`_('Custom…')`, a different string that *is* in the catalogue — so `Custom`
-bare is a latent gap (no current call site uses it) while `Chicago`,
-`Harvard`, `Vancouver` are live: `template_names` is the dropdown
-builder, called every time the template picker renders.
+Also confirmed fixed: the metainfo catalogue gap. Round 3 found
+`data/org.rubygtkproject.Citations.metainfo.xml` missing entirely from
+`po/POTFILES.in`. `265669c` adds it; this pass's fresh diff shows both
+`"Manage your bibliography"` (the `<summary>`) and `"Main window"` (the
+screenshot `<caption>`) as `ported`, each with a real upstream and port
+site, present in `po/fr.po` on both sides.
 
-**Effect:** in any of the 42 non-English locales the port ships, the
-template-kind dropdown shows the English words "Chicago", "Harvard",
-"Vancouver" instead of the localized term upstream shows. This is not a
-cosmetic nit; it is a visible, every-session string the user interacts
-with on the one page (the citation editor) that round 2's own component
-scan already covers.
-
-## Second gap — the metainfo file is not in the port's `po/POTFILES.in` at all
-
-Upstream's `po/POTFILES.in` includes
-`data/org.gnome.World.Citations.metainfo.xml.in.in`. Its `<summary>`,
-`<description><p>` and `<screenshot><caption>` elements are translatable
-appstream content, extracted by the same build and present as msgids in
-every upstream `.po` file: `"Main window"` (the screenshot caption) and
-`"Manage your bibliographies using the BibTeX format."` (the long
-description) are both present in upstream's `po/fr.po`, both absent from
-the port's.
-
-The port's `po/POTFILES.in` has 16 entries and does **not** include
-`data/org.rubygtkproject.Citations.metainfo.xml`:
+## New, real gap — upstream's bare `"Custom"` has no counterpart in the port's catalogue
 
 ```
-$ cat po/POTFILES.in
-data/org.rubygtkproject.Citations.desktop.in
-data/org.rubygtkproject.Citations.gschema.xml.in
-lib/*.rb (14 files)
+id: Custom
+state: gap
+uses: {upstream: 1, port: 0}
+upstream_sites: [src/citation_preview.rs:55]      # gettext("Custom"), no ellipsis
+text_owed: Custom
 ```
 
-So the metainfo's own strings are never extracted, and the file's content
-is static, English-only appstream metadata in every locale — this affects
-the GNOME Software / Flathub listing (summary, screenshot caption, long
-description) in a way a running-app screenshot review would never catch,
-because the port's `lib/about_dialog.rb` reads the file by regex at
-runtime and does not render the long `<p>` description or the screenshot
-section at all (confirmed: `about_dialog.rb` only reads `NAME_RE`,
-`SUMMARY_RE`, `DEVELOPER_NAME_RE` — no description, no screenshots). This
-makes it a catalogue-completeness gap, not an in-app visible one — tracked
-here because the ledger this skill keeps is the catalogue, not the
-component.
+Traced by hand: `Template::to_translatable_string` is the only place
+upstream's bare `gettext("Custom")` lives, and its only caller
+(`template_type_name`, `src/citation_preview.rs:264-271`) is written as:
 
-One string survives by coincidence, not by design, and is worth naming so
-it is not mistaken for evidence the mechanism works: `about.comments =
-_(first_match(SUMMARY_RE, 'Manage your bibliography'))` calls `_()` on a
-value read from the file at runtime (non-literal, same failure mode as
-`Chicago` above) — it only translates correctly today because the
-identical English string `"Manage your bibliography"` is independently
-extracted from `data/org.rubygtkproject.Citations.desktop.in`'s `Comment=`
-line, which *is* in `POTFILES.in`. If the metainfo's `<summary>` and the
-desktop file's `Comment=` ever diverge by a single character, this call
-silently stops translating, with no indication anywhere in the code that
-it was ever relying on the coincidence.
+```rust
+if type_ == Template::Custom {
+    gettext("Custom…")      // always taken for Custom
+} else {
+    type_.to_translatable_string()   // never reached for Custom
+}
+```
 
-## What held up this round (re-verified)
+So the bare `"Custom"` branch is dead code upstream — no user of either app
+ever sees it — but `xgettext` extracts literals regardless of reachability,
+so all 43 upstream `.po` files carry the key and the port's do not. This is
+a catalogue-completeness gap by the letter of the rule (there is no
+third state for "the key is dead"), with zero visible effect: both apps
+show `"Custom…"` in the dropdown today. Recorded as a gap, not waved
+through, and recorded as low-impact rather than inflated into a visible
+regression — both of those are facts about the same row.
 
-- Locale set: 43 upstream, 43 port, identical basenames.
-- `data/org.rubygtkproject.Citations.gschema.xml.in`'s 7 `<summary>`
-  strings — present in `po/citations.pot`, byte-identical, confirmed again
-  this pass.
-- `shortcuts.ui` ↔ `shortcuts_dialog.rb`'s `p_('shortcut window', …)`
-  context strings — re-spot-checked, hold up.
-- `.rb` files' own literal `_()`/`n_()` calls outside the two gaps above —
-  spot-checked against `lib/entry_list.rb`, `lib/entry_page.rb`,
-  `lib/window.rb`, no unmarked or reworded string found.
+## Two pairs the scanner flagged as gap+extra, verified by hand to be false positives — not gaps
+
+The compare step reported two (gap, extra) pairs beyond the one above.
+Both were opened and checked against the actual `.po` content before being
+dismissed, per the skill's instruction to treat the census as a lead:
+
+**1. The two "Unsaved Changes" dialog subtitles.** The scanner reported
+`"Do you want to write all changes to the bibliography before opening the
+new one?"` and `"Do you want to write all changes to the bibliography?"`
+as upstream-absent / port-only. They are not: `src/window.rs:690` and
+`:722` call `gettext(...)` on exactly these two literals, each inside a
+block comment the scanner's line-joiner does not see past
+(`// NOTE Dialog subtitle which informs...`). Both strings are present and
+translated in 26-28 of the 43 `.po` files on each side (confirmed:
+`grep -A2 "Do you want to write all changes" po/fr.po` finds it in the
+port; `po/be.po`, `po/fr.po`, etc. on upstream). Port site:
+`lib/window.rb:842`, `:874`, byte-identical. **Not a gap — a scanner miss
+on the upstream side, caused by a `//` comment between `gettext(` and its
+string argument.**
+
+**2. The custom-template help text.** The scanner reported the help label
+(`"Write a custom format for your citations... <tt>sometag</tt> ..."`) as a
+gap/extra pair because upstream's `.ui` file XML-escapes the angle brackets
+(`&lt;tt&gt;`) and the port's Ruby source writes them literally (`<tt>`).
+Checked against `origin/master`'s own `po/fr.po`, which carries the
+*unescaped* form (`<tt>sometag</tt>`, confirmed: GtkBuilder's translatable
+extraction decodes XML entities before handing the string to `xgettext`) —
+the real msgid upstream ships is identical to the port's. **Not a gap — a
+scanner limitation (it does not decode `.ui` XML entities), reported here
+per the skill's "fix the scanner, or state the discrepancy" rule rather
+than silently reconciled.**
+
+## Unresolved markers — 6 of 7 on the port side are the gettext wrapper's own definitions, not call sites
+
+```
+port totals.unresolved: 7
+```
+6 of the 7 are `lib/i18n.rb`'s own method *definitions* (`def _(msgid) = ...`,
+`def p_(context, msgid) = ...`, `def n_(singular, plural, count) = ...` and
+the three abstract methods they implement) — the scanner matches the
+parameter name as if it were a literal argument, which it structurally
+cannot be; these are the translation primitives themselves, not calls to
+them. Not a real unresolved count.
+
+The 7th is real and was already named in round 3:
+`lib/about_dialog.rb:58`, `_(first_match(SUMMARY_RE, 'Manage your bibliography'))`
+— a non-literal argument. It resolves today to a msgid
+(`"Manage your bibliography"`) that is now independently extracted from the
+metainfo file itself (round 3's fix), which is a real improvement — it no
+longer relies on a coincidental match with an unrelated desktop-file string
+— but the call site is still non-literal and the scanner still cannot
+verify it without reading the file at runtime. Flagged again because the
+skill asks for `totals.unresolved` to be driven to 0 or censused by hand
+every round, not carried forward as accepted.
+
+## What held up this round (re-verified against the generated catalogue, not against prior prose)
+
+- Locale set: 43 upstream, 43 port, identical basenames, `languages_missing: []`.
+- `domain_matches: true` — both catalogues report domain `citations`.
+- `kind_mismatch: 0` — no message is plural on one side and single on the
+  other.
+- 158 of 160 upstream messages are `ported`; the `uses_mismatch` list (9
+  entries) was read in full and every entry beyond the two scanner-miss
+  pairs above is a structural difference `component-parity` owns (e.g.
+  `Citations` 4→5, `New Window` 1→2), not a translation-axis finding — per
+  the skill's rule that `uses_mismatch` opens a component investigation,
+  never a translation row.
 
 ## Verdict
 
-Not clean. Two confirmed gaps, both newly substantiated this pass against
-the port's actual `.po`/`.pot` files rather than against a prior report's
-prose: (1) `Chicago`/`Harvard`/`Vancouver` (and latently, bare `Custom`)
-are absent from every port catalogue and show in English in all 42
-non-English locales, live today, not a future risk; (2) the metainfo
-file's own translatable strings (`<summary>`, `<caption>`, the long
-`<description>`) are not in `po/POTFILES.in` and are never extracted,
-a catalogue-completeness gap the running app's own UI mostly does not
-expose, with one accidentally-working exception named above. Round 2's
-report characterized finding (1) as functionally fine; it was not fine,
-it had simply never been checked against the port's own `.po` output.
+Not clean, but narrowly so and precisely bounded: 158/160 messages ported,
+43/43 languages, domain matches, no kind mismatches. The one real gap is
+upstream's dead-code `"Custom"` key — zero visible effect, still owed by
+the letter of the rule. Two scanner-reported gap/extra pairs were opened,
+read against both sides' actual `.po` content, and found to be false
+positives (a `//`-comment line break and an un-decoded XML entity), named
+here rather than silently dismissed. One non-literal call site
+(`about_dialog.rb:58`) remains unresolved by the scanner and is tracked
+again rather than assumed closed because its resolved string happens to be
+correct today.

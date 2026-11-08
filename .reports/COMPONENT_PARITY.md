@@ -1,97 +1,91 @@
-# Component parity — Citations (audit pass, 2026-11-07, round 3)
+# Component parity — Citations (audit pass, 2026-11-08, round 4)
 
 | | |
 |---|---|
-| Upstream | `origin/master` |
-| Port | `ruby` @ `d989da7` |
-| Runtime gate this round | `drive_ok=true`, 255/255 checks, 0 failed, 14 components claimed |
+| Upstream | `origin/master` @ `e360482` |
+| Port | `ruby` @ `265669c` |
+| Runtime gate this round | `drive_ok=true`, 78/78 checks (+4/4 devel, +93/93 models, +84/84 texer), 0 failed, 18 components claimed |
 
-This round re-verifies round 2's one open finding (the devel-profile gap)
-rather than re-opening it blind, and re-runs the gate independently rather
-than trusting the number. See `COMPONENT_IDENTIFICATION.md` for the full
-account of why round 2's checked-in reports were stale on this point.
+This round re-verifies round 3's one open finding (the template-text gap on
+`lib/citation_preview.rb`) against the fix commit rather than re-opening it
+blind, and re-runs every gate fresh.
 
-## The devel-profile distinction — re-checked against code, confirmed fixed
-
-| Axis | Upstream (`IS_DEVEL`) | Port (`Config::IS_DEVEL`) | Verdict |
-|---|---|---|---|
-| Window CSS | `devel` class added to the window in `constructed()` | `lib/window.rb:53-55`: `win.add_css_class('devel') if Config::IS_DEVEL` | **parity** |
-| Empty-state icons | both status pages' `icon-name` set to the app id, devel only | `lib/window.rb:229`, `:256`: `page.icon_name = Config::APP_ID if Config::IS_DEVEL` | **parity** |
-| About dialog version | explicit `VERSION` string, devel only; else derived from metainfo | `lib/about_dialog.rb:103`: `if Config::IS_DEVEL` branches between `@version` and the metainfo-derived release version | **parity** |
-
-`Config::IS_DEVEL` is still hardcoded `false` in `lib/config.rb` (a checkout
-has no meson configure step, same as upstream's own `config.rs.in` without a
-build profile) — that is a correspondence, not a gap: the constant now
-*gates* real behaviour on both sides identically, which is what parity on
-this axis means. No driver check flips `IS_DEVEL` to `true` and screenshots
-the result, so the devel-on branch itself is unexercised by the runtime
-gate — worth naming, since "255/255" says nothing about a branch that is
-never taken by any check, but it is a coverage gap in the gate, not a
-component gap: the code path exists and matches upstream's shape on
-inspection.
-
-## What held up this round (re-verified, not re-asserted from round 2's text)
-
-- All 8 `gschema` keys, defaults, and `<summary>` strings — byte-identical,
-  file present at `data/org.rubygtkproject.Citations.gschema.xml.in`.
-- Add PDF dialog — now driven end to end on **both** branches: checks 33-38
-  (bad URL → rejected, error style, cancel, still no PDF) and checks 39-42
-  (new this round's verification: a real loopback HTTP download completes,
-  the PDF lands on disk under the citation key, the stack switches off the
-  add-one state, and the preview shows a real `Gdk::Texture`, not the error
-  view). Round 2 flagged the happy path as unexercised; it no longer is.
-- `EntryList#filter` — no CRITICAL on a fresh drive run this pass either;
-  confirmed by watching stderr for the whole run.
-- Full action/accelerator/shortcut inventory — complete, 1:1 (unchanged from
-  round 2, re-spot-checked: `app.quit`, `app.new-window`, `win.open('')`,
-  `win.save`, `win.search`, `window.close`, `app.shortcuts`).
-- `GtkSource::View`/`Buffer` (bibtex/markdown/latex languages, Adwaita /
-  Adwaita-dark scheme switched on `Adwaita::StyleManager`'s dark-notify) and
-  `Poppler::Document` (page-one preview rendering, download validation) are
-  real bindings in `lib/citation_preview.rb`, `lib/new_entry_dialog.rb`,
-  `lib/entry_page.rb`, `lib/add_pdf_dialog.rb` — confirmed by reading the
-  `require`s and the `GtkSource`/`Poppler` constant usage directly, not by
-  trusting the commit message that introduced them.
-- Network-bound work (`From DOI` in `lib/new_entry_dialog.rb`, `Add PDF`'s
-  download in `lib/add_pdf_dialog.rb`) runs on a background `Thread` and
-  resumes on the main loop via `GLib::Idle.add` before touching any widget —
-  the correct pattern, and no longer an open question (see
-  `COMPONENT_IDENTIFICATION.md`'s note on `component-inventory.md`'s stale
-  "needs checking" item).
-
-## New gap found this round — the text axis, `lib/citation_preview.rb`'s template names
-
-`component-parity`'s Step 3 requires the text axis to be checked per
-component, not deferred wholesale to `TRANSLATION_PARITY.md`. Checking it
-for `lib/citation_preview.rb` (unit: the citation preview / template picker)
-found a real, currently-live gap that round 2's `TRANSLATION_PARITY.md`
-characterized as a forward-looking risk only — it is not. See
-`TRANSLATION_PARITY.md` for the full evidence; summarized against this
-component:
+## The template-text gap — re-checked against code and catalogue, confirmed fixed, with one residual
 
 | Widget | Text | Verdict |
 |---|:-:|---|
-| Template dropdown item "Chicago" | ✗ | **gap**: `_(name)` on a variable never extracts; msgid absent from every port `.po`, including `fr.po` |
-| Template dropdown item "Harvard" | ✗ | **gap**: same cause |
-| Template dropdown item "Vancouver" | ✗ | **gap**: same cause |
-| Template dropdown item "Custom…" | ✓ | called as `_('Custom…')`, a literal — correctly extracted |
-| Template dropdown items "MLA"/"AMS"/"APA" | — | upstream does not call `gettext` on these either (`to_string()` literals); port's `.upcase` is a correspondence, not a gap |
+| Template dropdown item "Chicago" | ✓ | `_('Chicago')`, literal, in a `case`/`when` branch — extracted into `po/citations.pot` and every locale |
+| Template dropdown item "Harvard" | ✓ | same shape, confirmed extracted |
+| Template dropdown item "Vancouver" | ✓ | same shape, confirmed extracted |
+| Template dropdown item "Custom…" | ✓ | `_('Custom…')`, literal, unchanged from round 3 |
+| Template dropdown items "MLA"/"AMS"/"APA" | — | upstream does not call `gettext` on these either; `.upcase` is a correspondence |
 
-In any non-English locale, a user choosing "Chicago", "Harvard" or
-"Vancouver" from the template dropdown sees the English word, where
-upstream's `gettext("Chicago")` (a literal call, correctly extracted into
-every one of its 43 `.po` files) shows the localized term. This is a
-component-text-axis gap in its own right, tracked against the message in
-`TRANSLATION_PARITY.md`.
+Round 3's gap is closed: all three previously-untranslatable labels are now
+literal `_()` calls and are confirmed present in `po/citations.pot` and
+`po/fr.po` (not just read from source — see `TRANSLATION_PARITY.md`'s
+catalogue diff). This is the component this round's `COMPONENT_IDENTIFICATION.md`
+calls out as the headline fix.
+
+**Residual, found by running a fresh upstream/port catalogue diff for this
+component rather than re-trusting the fix's own commit message:** upstream's
+`Template` enum also has a bare `gettext("Custom")` (no ellipsis), extracted
+into every upstream `.po`, that the port's catalogue does not carry under any
+key. Tracing its one call site (`Template::to_translatable_string`, called
+only by `template_type_name`, which is guarded so `Template::Custom` always
+takes the `"Custom…"` branch instead) shows the upstream string is itself
+unreachable — no screenshot of either app will ever show "Custom" bare. So
+this is a catalogue-completeness gap on the text axis, not a rendering
+difference: the widget, in the running app, is correct, but the message set
+the port emits is missing one upstream key. Recorded as a gap because the
+skill defines no third state for "the key is dead code" — see
+`TRANSLATION_PARITY.md` for the full trace.
+
+## The devel-profile distinction — now driven, not just read
+
+Round 2 found this a gap; round 3 confirmed the code fixed but the branch
+unexercised by any check. `265669c` adds `test/drive_devel_build.rb`, which
+forces `Config::IS_DEVEL` true and drives all three sites. Re-run fresh this
+pass: 4/4, `DRIVE OK`.
+
+| Axis | Upstream (`IS_DEVEL`) | Port (`Config::IS_DEVEL`) | Driven? | Verdict |
+|---|---|---|---|---|
+| Window CSS | `devel` class added in `constructed()` | `lib/window.rb:53-55` | ✓ `drive_devel_build.rb` check 0 | **parity** |
+| Empty-state icons | both status pages' `icon-name` = app id, devel only | `lib/window.rb:229`, `:256` | ✓ checks 1-2 | **parity** |
+| About dialog version | explicit `VERSION`, devel only | `lib/about_dialog.rb:103` | ✓ check 3 | **parity** |
+
+This closes round 3's standing coverage note: the devel branch is no longer
+"correct on inspection, unexercised by any check" — it is now driven and
+asserted on, independently of the main 78-check gate (a separate script, not
+folded into it — see `COMPONENT_IDENTIFICATION.md`).
+
+## The metainfo catalogue gap — fixed
+
+Round 3 found `data/org.rubygtkproject.Citations.metainfo.xml` absent from
+`po/POTFILES.in`, so its `<summary>`/`<description>`/`<caption>` were never
+extracted. `265669c` adds it and regenerates every catalogue; confirmed this
+pass against `po/citations.pot` and `po/fr.po` directly (see
+`TRANSLATION_PARITY.md`). The one thing this fix does not touch: the About
+dialog's `comments` field (`lib/about_dialog.rb:58`) still reaches its
+string through `_(first_match(SUMMARY_RE, ...))`, a non-literal argument the
+scanner flags `!unresolved` on both rounds. It now resolves to a
+byte-identical, independently-extracted msgid (`"Manage your bibliography"`)
+rather than one borrowed by coincidence from the desktop file — a real
+improvement in robustness — but the call site itself is unchanged and is
+still worth naming as fragile: a future edit to either string breaks
+translation silently, with nothing in the code to catch it.
+
+## What held up this round (re-verified)
+
+- All 8 `gschema` keys, defaults, `<summary>` strings — unchanged, re-checked.
+- Add PDF dialog, `EntryList#filter`, action/accelerator/shortcut inventory,
+  `GtkSource`/`Poppler` bindings, background-thread network pattern — all
+  unchanged since round 3, re-spot-checked against the current tree (no
+  commit since `d989da7` touched any of these files except `citation_preview.rb`).
 
 ## Verdict
 
-Not clean. Parity holds on every widget/CSS/signal/action axis this pass
-re-checked, including the devel-profile gap round 2 left open, which is
-now confirmed fixed. One new gap found on the text axis: three of the
-seven citation-template names (`Chicago`, `Harvard`, `Vancouver`) are
-untranslatable in the port today, not merely "a risk for a future `.pot`
-regeneration" as round 2's `TRANSLATION_PARITY.md` claimed — that
-characterization was checked against the port's own `po/fr.po` this pass
-and found to be wrong. The remaining coverage item is the devel branch
-itself: no driver check builds the app with `IS_DEVEL` true.
+Not clean. Round 3's template-text gap is fixed for three of the four
+strings it named, confirmed against the regenerated catalogue, and the
+devel-profile branch is now driven, closing round 3's coverage note.
+One new, narrow gap found this pass: upstream's dead-code `"Custom"` (bare)
+key is absent from the port's catalogue. Everything else re-verified holds.

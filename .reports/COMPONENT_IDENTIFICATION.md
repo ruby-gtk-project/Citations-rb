@@ -1,109 +1,116 @@
-# Component identification — Citations (audit pass, 2026-11-07, round 3)
+# Component identification — Citations (audit pass, 2026-11-08, round 4)
 
 | | |
 |---|---|
-| Upstream | `origin/master` |
-| Port | `ruby` @ `d989da7` |
-| Runtime gate this round | `drive_ok=true`, 255 checks (78 drive + 93 models + 84 texer), 0 failed, 14 components claimed |
+| Upstream | `origin/master` @ `e360482` |
+| Port | `ruby` @ `265669c` |
+| Runtime gate this round | `drive_ok=true`, 78 checks (`test/drive_main_window.rb`), 0 failed, 18 components claimed |
 
-This pass re-ran the gate independently (`nix develop --command xvfb-run -a
-ruby test/drive_main_window.rb`, `test/test_models.rb`, `test/test_texer.rb`)
-and got 78/78, 93/93, 84/84 — 255 total, matching the stated gate exactly —
-with no `GLib-GObject-CRITICAL` line in stderr. This is not a renumbering:
-the drive script's checks 33-42 actually open the Add PDF dialog, reject a
-bad URL, cancel, then reopen it and drive a real loopback-HTTP download to
-completion, asserting the PDF lands on disk and the preview texture is real.
+This pass re-ran the gate independently
+(`nix develop --command xvfb-run -a ruby test/drive_main_window.rb`) and got
+78/78, `DRIVE OK`, no `GLib-GObject-CRITICAL` in stderr — matching the stated
+gate exactly. It also ran the other three entry points the repo carries
+(`test/drive_devel_build.rb`, `test/test_models.rb`, `test/test_texer.rb`):
+4/4, 93/93, 84/84, all green, none in the quoted 78.
 
-## Finding — two of the last round's checked-in reports are stale, not current
+## Round 3's two open findings are now fixed in code — independently re-verified, not re-asserted
 
-`COMPONENT_IDENTIFICATION.md` and `COMPONENT_PARITY.md` as committed at the
-head of `ruby` (prior to this pass) both asserted, as their lead and only
-open finding, that the devel-profile distinction — the `devel` CSS class,
-the two status-page icons, the About dialog's version string, all gated on
-upstream's `IS_DEVEL` / the port's `Config::IS_DEVEL` — was dropped with no
-code reading the constant at all.
-
-That was true when those reports were written (commit `1ed4e33`, 15:29:23).
-It stopped being true at `19d4cff` (16:36:15), over an hour before those same
-report files were next touched (`7a7c438`/`31b14ee` at 20:26, `d989da7` at
-21:15) — and none of those three later commits re-checked or corrected the
-devel-gap section, even though `d989da7` edited the very same
-`COMPONENT_PARITY.md` file for an unrelated paragraph two sections below it.
-
-Verified directly against the current tree, not against any report:
+Round 3 (`1297a7e`) left two things open: (1) `lib/citation_preview.rb`'s
+`template_names` called `gettext` on a loop variable for the `Chicago` /
+`Harvard` / `Vancouver` labels, so none of the three was ever extracted into
+any catalogue; (2) the devel-profile branch (`Config::IS_DEVEL` true) was
+correct on inspection but driven by no check on either side. Commit
+`265669c`, which landed since, addresses both:
 
 ```
-$ grep -n "IS_DEVEL" lib/window.rb lib/about_dialog.rb
-lib/window.rb:53:      if Config::IS_DEVEL
-lib/window.rb:229:      if Config::IS_DEVEL
-lib/window.rb:256:      if Config::IS_DEVEL
-lib/about_dialog.rb:103:      if Config::IS_DEVEL
+$ grep -n "when 'Chicago'" -A1 lib/citation_preview.rb
+443:        when 'Chicago'
+444:          _('Chicago')
+$ grep -F '"Chicago"' po/citations.pot
+msgid "Chicago"
 ```
 
-All three sites upstream gates — `win.add_css_class('devel')`, both status
-pages' `page.icon_name = Config::APP_ID`, and the About dialog's explicit
-`@version` override — are now conditioned on `Config::IS_DEVEL` in exactly
-the shape upstream's `window.rs`/`show_about_dialog` use. This is fixed, and
-has been fixed since `19d4cff`. The two report files calling it an open gap
-with no other evidence than their own prior text were simply never
-re-verified against the code they describe. This is corrected in this
-pass's `COMPONENT_PARITY.md` and recorded as the headline finding in
-`ACCOUNTABILITY_ENSURANCE.md`: a report that outlives the code state it
-describes is a false claim the moment the code moves, whichever direction
-it moves in.
+`template_names` is now a `case`/`when` with a literal `_()` per branch,
+mirroring upstream's `Template::to_translatable_string` match arms exactly.
+`Chicago`, `Harvard` and `Vancouver` are confirmed present in
+`po/citations.pot` and in `po/fr.po` (and all 43 locales — see
+`TRANSLATION_PARITY.md`), not merely in the source.
 
-## Second staleness — `component-inventory.md`'s item 5 is an unresolved question that is already answered in code
+`test/drive_devel_build.rb` is a new script (new in `265669c`) that forces
+`Config::IS_DEVEL` to `true` before `require 'main'` and drives all three
+gated sites: the window's `devel` CSS class, both status pages' app-id icon,
+and the About dialog's raw `VERSION` string. Run fresh this pass: 4/4,
+`DRIVE OK`. This is the one component this round's gate number (78,
+`drive_main_window.rb` only) does not cover — it is a second, separate drive
+script, not folded into the 78. Noted so "78/78" is not read as "every
+driven check in the repo"; the full count across all four entry points this
+pass ran is 78 + 4 + 93 + 84 = 259, all green.
 
-`component-inventory.md`'s "Known deviations" item 5 reads: *"Network from
-the main loop. 'From DOI' (doi2bib) and 'Add From URL' fetch over HTTP; the
-Ruby path needs checking for main-loop safety under a slow or dead
-network."* — phrased as an open question. Reading the two sites it names:
+## Third thing fixed: the metainfo file now has its own catalogue entries
+
+Round 3's `TRANSLATION_PARITY.md` found `data/org.rubygtkproject.Citations.metainfo.xml`
+missing from `po/POTFILES.in` entirely, so its `<summary>`, `<description><p>`
+and `<caption>` were never extracted and the about dialog's `comments` string
+translated only by accident (an independent, unrelated `Comment=` string in
+the desktop file happening to be byte-identical). `265669c` adds the metainfo
+file to `po/POTFILES.in` and regenerates every catalogue:
 
 ```
-lib/add_pdf_dialog.rb:238:      Thread.new do
-lib/add_pdf_dialog.rb:264:      GLib::Idle.add do
-lib/new_entry_dialog.rb:284:        Thread.new do
-lib/new_entry_dialog.rb:287:            GLib::Idle.add do
+$ cat po/POTFILES.in | grep metainfo
+data/org.rubygtkproject.Citations.metainfo.xml
+$ grep -F "Manage your bibliography" po/citations.pot
+msgid "Manage your bibliography"
+$ grep -F "Main window" po/fr.po
+msgid "Main window"
 ```
 
-Both do the download/HTTP fetch on a background `Thread`, and resume on the
-main loop via `GLib::Idle.add` to touch widgets — the standard main-loop-safe
-pattern, and the one the drive suite's checks 39-42 now exercise end to end
-for the Add PDF path (a real loopback download). The "needs checking"
-language is stale residue from before that pattern was written; it should
-read as resolved, not as an open item. Not a functional gap, but another
-instance of the same report-staleness failure as above.
+Both strings are present and independently extracted now, in every one of
+the 43 locale files (confirmed for `fr.po`; see `TRANSLATION_PARITY.md` for
+the full catalogue diff). The about dialog's `comments` call site
+(`lib/about_dialog.rb:58`, `_(first_match(SUMMARY_RE, ...))`) is still a
+non-literal argument the census cannot resolve on its own — see
+`TRANSLATION_PARITY.md` and `ACCOUNTABILITY_ENSURANCE.md` for why that is
+still worth naming even though the string it resolves to is now backed by a
+real, independently-extracted msgid rather than a coincidence with an
+unrelated file.
 
-## Held up this pass (re-verified, not re-asserted)
+## What held up this pass (re-verified, not re-asserted)
 
-- 255/255 runtime checks, independently re-run, zero stderr CRITICAL.
+- 78/78 `drive_main_window.rb` checks, 4/4 `drive_devel_build.rb`, 93/93
+  models, 84/84 texer — all re-run fresh, zero stderr `CRITICAL` across all
+  four.
 - All 8 `gschema` keys/defaults/`<summary>` strings present and byte-identical
-  (`data/org.rubygtkproject.Citations.gschema.xml.in` exists).
-- `GtkSource::View`/`Buffer` and `Poppler::Document` are real bindings, not
-  stand-ins — confirmed in `lib/citation_preview.rb`, `lib/new_entry_dialog.rb`,
-  `lib/entry_page.rb`, `lib/add_pdf_dialog.rb`, and exercised by drive checks
-  32 (preview rendering) and 42 (PDF texture after a real download).
-  `.rspec` (dead RSpec config for a runner this repo no longer has) is gone.
-- 22 upstream `#[test]` functions counted directly from `origin/master`
-  (`cratebibtex/src/entry.rs`:1, `format.rs`:4, `lib.rs`:1, `src/utils.rs`:2,
-  `texer/src/tests.rs`:14 = 22) against 29 `T.test(...)` blocks across
-  `test/test_models.rb`/`test/test_texer.rb` (15+14) — a superset, with the
-  extra 7 being added coverage (`bib::list_model`,
-  `bib::round_trips_through_a_file`, `entry_type::fields_and_names`,
-  `format::kinds`, `utils::urls_and_filenames`,
-  `settings::defaults_match_the_upstream_schema`, plus one extra split of
-  `entry.rs`'s single test into `entry::format`/`entry::serialize`), not a
-  shortfall.
-- 43/43 `.po` files present on both sides (basename diff empty).
+  (`data/org.rubygtkproject.Citations.gschema.xml.in` exists, unchanged this
+  round).
+- `GtkSource::View`/`Buffer` and `Poppler::Document` bindings unchanged and
+  still exercised by drive checks 32 and 42.
+- 22 upstream `#[test]` functions (recounted directly from `origin/master`'s
+  five source files) against 29 `T.test(...)` blocks in the port — a
+  superset; see `TEST_PARITY.md`.
+- 43/43 `.po` files present on both sides (basename diff empty, unchanged).
 - No `TODO`/`FIXME`/`not implemented`/`for now`/`in a future` in `lib/` or
-  `exe/` (`grep -rniE` over both, clean).
+  `exe/` (`grep -rniE` over both, clean, re-run this pass).
+
+## New finding this round — a real, if low-impact, translation gap in the exact string the round-3 fix targeted
+
+Fixing `Chicago`/`Harvard`/`Vancouver` did not fully close the catalogue for
+`Template::to_translatable_string`. Upstream's bare `gettext("Custom")`
+(`src/citation_preview.rs:55`) is extracted into every upstream `.po`, and
+the port's catalogue has no `"Custom"` key at all — only `"Custom…"`. Tracing
+every call site of `Template::to_translatable_string` upstream shows this
+branch is unreachable dead code (the one caller that can hit `Template::Custom`
+guards it and calls `gettext("Custom…")` instead), so no user-visible string
+is missing in practice — but the key itself is a real catalogue gap per
+`translation-parity`'s rule that there is no third state. See
+`TRANSLATION_PARITY.md` for the full trace and `COMPONENT_PARITY.md` for the
+component-axis entry.
 
 ## Verdict
 
-Not clean. No new functional component gap found this pass — the one real
-gap carried from round 2 (the devel-profile distinction) is confirmed fixed
-in code. What is not clean is the reporting itself: two files committed on
-`ruby` asserted an open gap that had already been closed for five hours
-before the files were last edited, and a third's "known deviation" item is
-phrased as an open question the code already answers. See
+Not clean. Both of round 3's open findings are fixed and independently
+re-verified against the running code and the regenerated catalogues, not
+against either side's prior prose. One new catalogue-completeness gap found
+this pass, on the same axis the round-3 fix targeted: upstream's bare
+`"Custom"` key (dead code upstream, but still a key 43 catalogues carry) has
+no counterpart in the port's catalogue. See `TRANSLATION_PARITY.md` and
 `ACCOUNTABILITY_ENSURANCE.md`.
