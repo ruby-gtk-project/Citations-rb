@@ -39,9 +39,6 @@ GEM
       atk (= 4.4.0)
       gdk4 (= 4.4.0)
       gsk4 (= 4.4.0)
-    gtksourceview5 (4.4.0)
-      gtk4 (= 4.4.0)
-      rake
     json (3.0.2)
     matrix (0.4.3)
     native-package-installer (1.1.9)
@@ -49,10 +46,6 @@ GEM
       cairo-gobject (= 4.4.0)
       gobject-introspection (= 4.4.0)
     pkg-config (1.6.5)
-    poppler (4.4.0)
-      cairo-gobject (= 4.4.0)
-      gio2 (= 4.4.0)
-      rake
     rake (13.4.2)
     red-colors (0.5.0)
       json
@@ -65,8 +58,6 @@ PLATFORMS
 DEPENDENCIES
   adwaita
   gtk4
-  gtksourceview5
-  poppler
 
 BUNDLED WITH
-   2.7.2
+   2.6.9
